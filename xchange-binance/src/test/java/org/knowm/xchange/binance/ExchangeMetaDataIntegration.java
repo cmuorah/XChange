@@ -24,9 +24,9 @@ public class ExchangeMetaDataIntegration {
   public void testEthBtcPairMetaData() {
     CurrencyPairMetaData pairMetaData = metaData.getCurrencyPairs().get(CurrencyPair.ETH_BTC);
     assertThat(pairMetaData.getPriceScale()).isEqualByComparingTo(6);
-    assertThat(pairMetaData.getMinimumAmount()).isEqualByComparingTo("0.001");
-    assertThat(pairMetaData.getMaximumAmount()).isEqualByComparingTo("100000");
-    assertThat(pairMetaData.getAmountStepSize()).isEqualByComparingTo("0.001");
+    assertThat(pairMetaData.getMinimumAmount()).isEqualByComparingTo(new Double("0.001"));
+    assertThat(pairMetaData.getMaximumAmount()).isEqualByComparingTo(new Double("100000"));
+    assertThat(pairMetaData.getAmountStepSize()).isEqualByComparingTo(new Double("0.001"));
   }
 
   @Test
@@ -34,8 +34,8 @@ public class ExchangeMetaDataIntegration {
     CurrencyPairMetaData pairMetaData =
         metaData.getCurrencyPairs().get(new CurrencyPair("GNT/BTC"));
     assertThat(pairMetaData.getPriceScale()).isEqualByComparingTo(8);
-    assertThat(pairMetaData.getMinimumAmount()).isEqualByComparingTo("1");
-    assertThat(pairMetaData.getMaximumAmount()).isEqualByComparingTo("90000000");
-    assertThat(pairMetaData.getAmountStepSize()).isEqualByComparingTo("1");
+    assertThat(pairMetaData.getMinimumAmount()).isEqualByComparingTo(new Double("1"));
+    assertThat(pairMetaData.getMaximumAmount()).isEqualByComparingTo(new Double("90000000"));
+    assertThat(pairMetaData.getAmountStepSize()).isEqualByComparingTo(new Double("1"));
   }
 }

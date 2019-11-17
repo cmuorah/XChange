@@ -60,7 +60,7 @@ public class BitmexBulkOrderTest {
     String nosOrdId = System.currentTimeMillis() + "";
     Double originalOrderSize = new Double("30");
     //    Double price = new Double("10000");
-    Double price = orderBook.getBids().get(0).getLimitPrice().add(new Double("0.5"));
+    Double price = orderBook.getBids().get(0).getLimitPrice() + (new Double("0.5"));
     //    LimitOrder limitOrder =
     //        new LimitOrder(
     //            Order.OrderType.ASK,

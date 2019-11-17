@@ -79,7 +79,7 @@ public class DepthChartDemo {
     yData = new ArrayList<>();
     Double accumulatedAskUnits = new Double("0");
     for (LimitOrder limitOrder : orderBook.getAsks()) {
-      if (limitOrder.getLimitPrice() < 2000) {
+      if (limitOrder.getLimitPrice() > 2000.0) {
         xData.add(limitOrder.getLimitPrice());
         accumulatedAskUnits = accumulatedAskUnits + (limitOrder.getOriginalAmount());
         yData.add(accumulatedAskUnits);

@@ -193,13 +193,13 @@ public class BTCTradeAdaptersTest {
 
   @Test
   public void testNullSafeSum() throws Exception {
-    assertEquals(BTCTradeAdapters.zeroIfNull(new Double(3)), new Double(3));
-    assertEquals(BTCTradeAdapters.zeroIfNull(new Double(0)), 0d);
-    assertEquals(BTCTradeAdapters.zeroIfNull(null), 0d);
+    assertEquals(BTCTradeAdapters.zeroIfNull(3d), new Double(3));
+    assertEquals(BTCTradeAdapters.zeroIfNull( 0d), 0d, 1e-8);
+    assertEquals(BTCTradeAdapters.zeroIfNull(null), 0d, 1e-8);
 
-    assertEquals(BTCTradeAdapters.nullSafeSum(10d, new Double(2)), new Double(3));
-    assertEquals(BTCTradeAdapters.nullSafeSum(10d, null), 10d);
-    assertEquals(BTCTradeAdapters.nullSafeSum(null, new Double(2)), new Double(2));
-    assertEquals(BTCTradeAdapters.nullSafeSum(null, null), 0d);
+    assertEquals(BTCTradeAdapters.nullSafeSum(10d, 2d), new Double(3));
+    assertEquals(BTCTradeAdapters.nullSafeSum(10d, null), 10d, 1e-8);
+    assertEquals(BTCTradeAdapters.nullSafeSum(null, 2d), new Double(2));
+    assertEquals(BTCTradeAdapters.nullSafeSum(null, null), 0d, 1e-8);
   }
 }

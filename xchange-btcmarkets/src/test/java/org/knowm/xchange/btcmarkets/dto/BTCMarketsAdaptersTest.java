@@ -118,7 +118,7 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
         .isEqualTo("0x1234abcdef1234abcdef1234abcdef1234abcdef1234abcdef1234abcdef");
     assertThat(fundingRecords.get(0).getDate()).isEqualTo(new Date(1530533761866L));
     assertThat(fundingRecords.get(0).getDescription()).isEqualTo("Ethereum Deposit, S 15");
-    assertThat(fundingRecords.get(0).getFee()).isEqualTo(0d.setScale(8));
+    assertThat(fundingRecords.get(0).getFee()).isEqualTo(0d);
     assertThat(fundingRecords.get(0).getInternalId()).isEqualTo("7485764826");
     assertThat(fundingRecords.get(0).getCurrency()).isEqualTo(Currency.ETH);
     assertThat(fundingRecords.get(0).getStatus()).isEqualTo(FundingRecord.Status.COMPLETE);
