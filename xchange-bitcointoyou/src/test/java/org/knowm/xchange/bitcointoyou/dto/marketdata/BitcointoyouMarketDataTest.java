@@ -38,10 +38,10 @@ public class BitcointoyouMarketDataTest {
     final SoftAssertions softly = new SoftAssertions();
 
     softly.assertThat(marketData.getLast().toString()).isEqualTo("49349.16");
-    softly.assertThat(marketData.getBuy().toString()).isEqualTo("48968.290000000000000");
-    softly.assertThat(marketData.getSell().toString()).isEqualTo("49349.150000000000000");
-    softly.assertThat(marketData.getHigh().toString()).isEqualTo("52990.00");
-    softly.assertThat(marketData.getLow().toString()).isEqualTo("47000.00");
+    softly.assertThat(marketData.getBuy().toString()).isEqualTo("48968.29");
+    softly.assertThat(marketData.getSell().toString()).isEqualTo("49349.15");
+    softly.assertThat(marketData.getHigh().toString()).isEqualTo("52990.0");
+    softly.assertThat(marketData.getLow().toString()).isEqualTo("47000.0");
     softly.assertThat(marketData.getVolume()).isEqualTo(new Double("136.99427076"));
     softly.assertThat(marketData.getDate()).isEqualTo(1515625901L);
 

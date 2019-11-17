@@ -22,18 +22,18 @@ public class BithumbMarketDataTest {
 
     final BithumbTicker bithumbTicker = mapper.readValue(is, BithumbTicker.class);
 
-    assertThat(bithumbTicker.getOpeningPrice()).isEqualTo("151300");
-    assertThat(bithumbTicker.getClosingPrice()).isEqualTo("168900");
-    assertThat(bithumbTicker.getMinPrice()).isEqualTo("148600");
-    assertThat(bithumbTicker.getMaxPrice()).isEqualTo("171600");
-    assertThat(bithumbTicker.getAveragePrice()).isEqualTo("161373.9643");
-    assertThat(bithumbTicker.getUnitsTraded()).isEqualTo("294028.02849871");
-    assertThat(bithumbTicker.getVolume1day()).isEqualTo("294028.02849871");
-    assertThat(bithumbTicker.getVolume7day()).isEqualTo("1276650.256763659925784183");
-    assertThat(bithumbTicker.getBuyPrice()).isEqualTo("168800");
-    assertThat(bithumbTicker.getSellPrice()).isEqualTo("168900");
-    assertThat(bithumbTicker.get_24HFluctate()).isEqualTo("17600");
-    assertThat(bithumbTicker.get_24HFluctateRate()).isEqualTo("11.63");
+    assertThat(bithumbTicker.getOpeningPrice()).isEqualTo(151300);
+    assertThat(bithumbTicker.getClosingPrice()).isEqualTo(168900);
+    assertThat(bithumbTicker.getMinPrice()).isEqualTo(148600);
+    assertThat(bithumbTicker.getMaxPrice()).isEqualTo(171600);
+    assertThat(bithumbTicker.getAveragePrice()).isEqualTo(161373.9643);
+    assertThat(bithumbTicker.getUnitsTraded()).isEqualTo(294028.02849871);
+    assertThat(bithumbTicker.getVolume1day()).isEqualTo(294028.02849871);
+    assertThat(bithumbTicker.getVolume7day()).isEqualTo(1276650.256763659925784183);
+    assertThat(bithumbTicker.getBuyPrice()).isEqualTo(168800);
+    assertThat(bithumbTicker.getSellPrice()).isEqualTo(168900);
+    assertThat(bithumbTicker.get_24HFluctate()).isEqualTo(17600);
+    assertThat(bithumbTicker.get_24HFluctateRate()).isEqualTo(11.63);
     assertThat(bithumbTicker.getDate()).isEqualTo(1546440237614L);
   }
 
@@ -84,12 +84,12 @@ public class BithumbMarketDataTest {
     final List<BithumbOrderbookEntry> asks = bithumbOrderbook.getAsks();
 
     assertThat(bids.size()).isEqualTo(2);
-    assertThat(bids.get(0).getQuantity()).isEqualTo("28.0241");
-    assertThat(bids.get(0).getPrice()).isEqualTo("168400");
+    assertThat(bids.get(0).getQuantity()).isEqualTo(28.0241);
+    assertThat(bids.get(0).getPrice()).isEqualTo(168400);
 
     assertThat(asks.size()).isEqualTo(2);
-    assertThat(asks.get(0).getQuantity()).isEqualTo("49.5577");
-    assertThat(asks.get(0).getPrice()).isEqualTo("168500");
+    assertThat(asks.get(0).getQuantity()).isEqualTo(49.5577);
+    assertThat(asks.get(0).getPrice()).isEqualTo(168500);
   }
 
   @Test
@@ -120,8 +120,8 @@ public class BithumbMarketDataTest {
     assertThat(bithumbOrderbook.getContNo()).isEqualTo(30062545L);
     assertThat(bithumbOrderbook.getTransactionDate()).isEqualTo("2019-01-03 00:54:08");
     assertThat(bithumbOrderbook.getType()).isEqualTo(BithumbAdapters.OrderType.ask);
-    assertThat(bithumbOrderbook.getUnitsTraded()).isEqualTo("0.3215");
-    assertThat(bithumbOrderbook.getPrice()).isEqualTo("166900");
-    assertThat(bithumbOrderbook.getTotal()).isEqualTo("53658");
+    assertThat(bithumbOrderbook.getUnitsTraded()).isEqualTo(0.3215);
+    assertThat(bithumbOrderbook.getPrice()).isEqualTo(166900);
+    assertThat(bithumbOrderbook.getTotal()).isEqualTo(53658);
   }
 }

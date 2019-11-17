@@ -20,6 +20,6 @@ public class BinanceAdaptersTest {
         assertThat(marketOrder.getOriginalAmount()).isEqualByComparingTo(new Double("0.10700000"));
         assertThat(marketOrder.getCumulativeAmount()).isEqualByComparingTo(new Double("0.10700000"));
         assertThat(marketOrder.getRemainingAmount()).isEqualByComparingTo(0d);
-        assertThat(marketOrder.getAveragePrice()).isEqualByComparingTo(new Double("0.01858383"));
+        assertThat(marketOrder.getAveragePrice()).isEqualByComparingTo(new Double("0.018583831775700936"));
     }
 }

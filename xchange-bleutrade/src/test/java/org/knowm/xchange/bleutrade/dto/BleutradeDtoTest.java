@@ -60,7 +60,7 @@ public class BleutradeDtoTest extends BleutradeDtoTestSupport {
   protected static final String MARKETS_RETURN_STR =
       "BleutradeMarketsReturn [success=true, message=, result=["
           + "BleutradeMarket [MarketCurrency=DOGE, BaseCurrency=BTC, MarketCurrencyLong=Dogecoin, "
-          + "BaseCurrencyLong=Bitcoin, MinTradeSize=0.10000000, "
+          + "BaseCurrencyLong=Bitcoin, MinTradeSize=0.1, "
           + "MarketName=DOGE_BTC, IsActive=true, additionalProperties={}], "
           + "BleutradeMarket [MarketCurrency=BLEU, BaseCurrency=BTC, MarketCurrencyLong=Bleutrade Share, "
           + "BaseCurrencyLong=Bitcoin, MinTradeSize=1E-8, "

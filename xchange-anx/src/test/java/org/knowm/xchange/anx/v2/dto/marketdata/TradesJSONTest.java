@@ -27,10 +27,10 @@ public class TradesJSONTest {
     assertThat(anxTrades).hasSize(2);
 
     ANXTrade anxTrade = anxTrades.get(0);
-    assertThat(anxTrade.getAmount()).isEqualTo("0.25");
+    assertThat(anxTrade.getAmount()).isEqualTo(0.25);
     assertThat(anxTrade.getAmountInt()).isEqualTo(25000000);
     assertThat(anxTrade.getItem()).isEqualTo("BTC");
-    assertThat(anxTrade.getPrice()).isEqualTo("655");
+    assertThat(anxTrade.getPrice()).isEqualTo(655.0);
     assertThat(anxTrade.getPriceInt()).isEqualTo(65500000);
     assertThat(anxTrade.getPriceCurrency()).isEqualTo("USD");
     assertThat(anxTrade.getPrimary()).isEqualTo("true");

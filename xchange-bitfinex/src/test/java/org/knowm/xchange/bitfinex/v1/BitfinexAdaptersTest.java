@@ -257,7 +257,7 @@ public class BitfinexAdaptersTest {
 
         for (int i = 0; i < responses.length; i++) {
             Trade trade = trades.getTrades().get(i);
-            long expectedTimestampMillis = (long) (responses[i].getTimestamp() * (1000d));
+            long expectedTimestampMillis = Double.doubleToLongBits(responses[i].getTimestamp() * (1000d));
             Order.OrderType expectedOrderType =
                     responses[i].getType().equalsIgnoreCase("buy") ? OrderType.BID : OrderType.ASK;
 

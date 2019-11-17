@@ -34,16 +34,16 @@ public class BitbayAdapterTest {
     assertThat(accountInfo.getUsername()).isEqualTo("Joe Mama");
     assertThat(accountInfo.getWallet().getBalance(Currency.USD).getCurrency())
         .isEqualTo(Currency.USD);
-    assertThat(accountInfo.getWallet().getBalance(Currency.USD).getTotal()).isEqualTo("2.20");
-    assertThat(accountInfo.getWallet().getBalance(Currency.USD).getAvailable()).isEqualTo("2.00");
-    assertThat(accountInfo.getWallet().getBalance(Currency.USD).getFrozen()).isEqualTo("0.20");
+    assertThat(accountInfo.getWallet().getBalance(Currency.USD).getTotal()).isEqualTo(2.20);
+    assertThat(accountInfo.getWallet().getBalance(Currency.USD).getAvailable()).isEqualTo(2.00);
+    assertThat(accountInfo.getWallet().getBalance(Currency.USD).getFrozen()).isEqualTo(0.20);
     assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getCurrency())
         .isEqualTo(Currency.BTC);
-    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getTotal()).isEqualTo("1.10000000");
+    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getTotal()).isEqualTo(1.10000000);
     assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getAvailable())
-        .isEqualTo("1.00000000");
+        .isEqualTo(1.00000000);
     assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getFrozen())
-        .isEqualTo("0.10000000");
+        .isEqualTo(0.10000000);
   }
 
   @Test
@@ -61,13 +61,13 @@ public class BitbayAdapterTest {
 
     assertThat(openOrders.getOpenOrders().size()).isEqualTo(2);
     assertThat(openOrders.getOpenOrders().get(0).getLimitPrice()).isEqualByComparingTo(new Double("1400"));
-    assertThat(openOrders.getOpenOrders().get(0).getOriginalAmount()).isEqualTo("0.10000000");
+    assertThat(openOrders.getOpenOrders().get(0).getOriginalAmount()).isEqualTo(0.10000000);
     assertThat(openOrders.getOpenOrders().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_EUR);
     assertThat(openOrders.getOpenOrders().get(0).getType()).isEqualTo(Order.OrderType.ASK);
     assertThat(openOrders.getOpenOrders().get(0).getId()).isEqualTo("59057271");
 
     assertThat(openOrders.getOpenOrders().get(1).getLimitPrice()).isEqualByComparingTo(new Double("1500"));
-    assertThat(openOrders.getOpenOrders().get(1).getOriginalAmount()).isEqualTo("0.10000000");
+    assertThat(openOrders.getOpenOrders().get(1).getOriginalAmount()).isEqualTo(0.10000000);
     assertThat(openOrders.getOpenOrders().get(1).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_EUR);
     assertThat(openOrders.getOpenOrders().get(1).getType()).isEqualTo(Order.OrderType.ASK);
     assertThat(openOrders.getOpenOrders().get(1).getId()).isEqualTo("59057261");

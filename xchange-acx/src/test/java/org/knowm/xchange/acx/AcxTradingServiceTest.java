@@ -64,8 +64,8 @@ public class AcxTradingServiceTest {
 
     LimitOrder order =
         new LimitOrder.Builder(Order.OrderType.BID, CurrencyPair.BTC_AUD)
-            .limitPrice(new Double(10.1234))
-            .originalAmount(new Double(0.1))
+            .limitPrice(10.1234)
+            .originalAmount(0.1)
             .build();
     String id = service.placeLimitOrder(order);
 

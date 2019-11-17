@@ -55,14 +55,14 @@ public class BleutradeExtendedDtoTest extends BleutradeDtoTestSupport {
       "BleutradeMarketHistoryReturn [success=true, message=, result=["
           + "BleutradeTrade [TimeStamp=2014-07-29 18:08:00, Quantity=654971.69417461, Price=5.5E-7, "
           + "Total=0.360234432, OrderType=BUY, additionalProperties={foo=1}], "
-          + "BleutradeTrade [TimeStamp=2014-07-29 18:12:35, Quantity=120.00000000, Price=0.00006600, "
+          + "BleutradeTrade [TimeStamp=2014-07-29 18:12:35, Quantity=120.0, Price=0.000066, "
           + "Total=0.360234432, OrderType=SELL, additionalProperties={bar=true}]], "
           + "additionalProperties={ext=extended value}]";
 
   protected static final String MARKETS_RETURN_STR =
       "BleutradeMarketsReturn [success=true, message=, result=["
           + "BleutradeMarket [MarketCurrency=DOGE, BaseCurrency=BTC, MarketCurrencyLong=Dogecoin, BaseCurrencyLong=Bitcoin, "
-          + "MinTradeSize=0.10000000, MarketName=DOGE_BTC, IsActive=true, additionalProperties={foo=1}], "
+          + "MinTradeSize=0.1, MarketName=DOGE_BTC, IsActive=true, additionalProperties={foo=1}], "
           + "BleutradeMarket [MarketCurrency=BLEU, BaseCurrency=BTC, MarketCurrencyLong=Bleutrade Share, BaseCurrencyLong=Bitcoin, "
           + "MinTradeSize=1E-8, MarketName=BLEU_BTC, IsActive=true, additionalProperties={bar=true}]], "
           + "additionalProperties={ext=extended value}]";
@@ -80,13 +80,13 @@ public class BleutradeExtendedDtoTest extends BleutradeDtoTestSupport {
   protected static final String ORDER_BOOK_RETURN_STR =
       "BleutradeOrderBookReturn [success=true, message=, result=BleutradeOrderBookResult "
           + "[buy=["
-          + "BleutradeLevel [Quantity=4.99400000, Rate=3.00650900, additionalProperties={ext=1}], "
-          + "BleutradeLevel [Quantity=50.00000000, Rate=3.50000000, additionalProperties={ext=2}]"
+          + "BleutradeLevel [Quantity=4.994, Rate=3.006509, additionalProperties={ext=1}], "
+          + "BleutradeLevel [Quantity=50.0, Rate=3.5, additionalProperties={ext=2}]"
           + "], "
           + "sell=["
           + "BleutradeLevel [Quantity=12.44147454, Rate=5.13540000, additionalProperties={ext=3}], "
-          + "BleutradeLevel [Quantity=100.00000000, Rate=6.25500000, additionalProperties={ext=4}], "
-          + "BleutradeLevel [Quantity=30.00000000, Rate=6.75500001, additionalProperties={ext=5}], "
+          + "BleutradeLevel [Quantity=100.0, Rate=6.255, additionalProperties={ext=4}], "
+          + "BleutradeLevel [Quantity=30.0, Rate=6.75500001, additionalProperties={ext=5}], "
           + "BleutradeLevel [Quantity=13.49989999, Rate=6.76260099, additionalProperties={ext=6}]], "
           + "additionalProperties={foo=1}], "
           + "additionalProperties={ext=extended value}]";
@@ -98,12 +98,12 @@ public class BleutradeExtendedDtoTest extends BleutradeDtoTestSupport {
 
   protected static final String TICKER_RETURN_STR =
       "BleutradeTickerReturn [success=true, message=, result=["
-          + "BleutradeTicker [MarketName=BLEU_BTC, PrevDay=0.00095000, High=0.00105000, Low=0.00086000, "
+          + "BleutradeTicker [MarketName=BLEU_BTC, PrevDay=0.00095, High=0.00105, Low=0.00086, "
           + "Last=0.00101977, Average=0.00103455, Volume=2450.97496015, BaseVolume=2.40781647, "
-          + "TimeStamp=2014-07-29 11:19:30, Bid=0.00100000, Ask=0.00101977, IsActive=true, additionalProperties={foo=1}], "
-          + "BleutradeTicker [MarketName=LTC_BTC, PrevDay=0.00095000, High=0.01333000, Low=0.01167001, "
-          + "Last=0.01333000, Average=0.01235000, Volume=14.46077245, BaseVolume=0.18765956, "
-          + "TimeStamp=2014-07-29 11:48:02, Bid=0.01268311, Ask=0.01333000, IsActive=true, additionalProperties={bar=true}]], "
+          + "TimeStamp=2014-07-29 11:19:30, Bid=0.001, Ask=0.00101977, IsActive=true, additionalProperties={foo=1}], "
+          + "BleutradeTicker [MarketName=LTC_BTC, PrevDay=0.00095, High=0.01333, Low=0.01167001, "
+          + "Last=0.01333000, Average=0.01235, Volume=14.46077245, BaseVolume=0.18765956, "
+          + "TimeStamp=2014-07-29 11:48:02, Bid=0.01268311, Ask=0.01333, IsActive=true, additionalProperties={bar=true}]], "
           + "additionalProperties={ext=extended value}]";
 
   @Test

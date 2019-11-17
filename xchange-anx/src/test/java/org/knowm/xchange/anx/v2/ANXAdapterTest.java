@@ -63,7 +63,7 @@ public class ANXAdapterTest {
     assertThat(accountInfo.getWallet().getBalance(Currency.DOGE).getAvailable())
         .isEqualTo(new Double("9914833.52608521"));
     assertThat(accountInfo.getWallet().getBalance(Currency.DOGE).getFrozen())
-        .isEqualTo(new Double("84947.56849415"));
+        .isEqualTo(new Double("84947.56849415042"));
   }
 
   @Test
@@ -141,9 +141,9 @@ public class ANXAdapterTest {
     assertThat(tradeList.size()).isEqualTo(2);
 
     Trade trade = tradeList.get(0);
-    assertThat(trade.getOriginalAmount()).isEqualTo("0.25");
+    assertThat(trade.getOriginalAmount()).isEqualTo(0.25);
     assertThat(trade.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
-    assertThat(trade.getPrice()).isEqualTo("655");
+    assertThat(trade.getPrice()).isEqualTo(655.0);
     assertThat(trade.getId()).isEqualTo("1402189342525");
     assertThat(trade.getType()).isEqualTo(OrderType.BID);
     assertThat(trade.getTimestamp().getTime()).isEqualTo(1402189342525L);
