@@ -174,7 +174,7 @@ public class CryptonitAdapterTest {
 
     assertThat(userTradeHistory.getUserTrades().get(1).getPrice()).isEqualTo(131.50);
     assertThat(userTradeHistory.getUserTrades().get(1).getType()).isEqualTo(OrderType.ASK);
-    assertThat(userTradeHistory.getUserTrades().get(1).getFeeAmount().toString()).isEqualTo(0.06);
+    assertThat(userTradeHistory.getUserTrades().get(1).getFeeAmount()).isEqualTo(0.06);
 
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     f.setTimeZone(TimeZone.getTimeZone("UTC"));

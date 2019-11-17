@@ -61,7 +61,7 @@ public class GeminiAdaptersTest {
 
     GeminiLevel lastLevel = levels[levels.length - 1];
     assertEquals(
-        lastLevel.getTimestamp() * (new Double(1000L)).longValue(), container.getTimestamp(), 1e-8);
+        lastLevel.getTimestamp() * (new Double(1000L)).longValue(), container.getTimestamp(), 1e-18);
     assertEquals(container.getLimitOrders().size(), levels.length);
 
     for (int i = 0; i < levels.length; i++) {

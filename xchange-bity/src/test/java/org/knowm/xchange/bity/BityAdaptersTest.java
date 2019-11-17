@@ -36,9 +36,9 @@ public class BityAdaptersTest {
     BityTickersHolder tickersHolder = new BityTickersHolder(tickersList);
     Ticker ticker = tickersHolder.getTicker(new CurrencyPair("ETH", "CHF"));
 
-    assertThat(ticker.getLast().toString()).isEqualTo("467.29460000");
-    assertThat(ticker.getBid().toString()).isEqualTo("460.21920000");
-    assertThat(ticker.getAsk().toString()).isEqualTo("475.53340000");
+    assertThat(ticker.getLast()).isEqualTo(467.29460000);
+    assertThat(ticker.getBid()).isEqualTo(460.21920000);
+    assertThat(ticker.getAsk()).isEqualTo(475.53340000);
   }
 
   @Test
@@ -73,9 +73,9 @@ public class BityAdaptersTest {
     assertThat(trades).isNotNull();
 
     BityOrder order = trades.getObjects().get(1);
-    assertThat(order.getBityInputTransactions().get(0).getAmount().toString())
-        .isEqualTo("30.00000000");
-    assertThat(order.getBityOutputTransactions().get(0).getAmount().toString())
-        .isEqualTo("0.07161155");
+    assertThat(order.getBityInputTransactions().get(0).getAmount())
+        .isEqualTo(30.00000000);
+    assertThat(order.getBityOutputTransactions().get(0).getAmount())
+        .isEqualTo(0.07161155);
   }
 }

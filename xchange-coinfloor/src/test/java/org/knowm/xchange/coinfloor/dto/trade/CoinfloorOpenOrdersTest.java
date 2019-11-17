@@ -30,7 +30,7 @@ public class CoinfloorOpenOrdersTest {
     assertThat(order1.getId()).isEqualTo(66688691);
     assertThat(order1.getDatetime()).isEqualTo("2017-04-05 11:34:04");
     assertThat(order1.getSide()).isEqualTo(OrderType.BID);
-    assertThat(order1.getPrice()).isEqualTo("2303.00");
-    assertThat(order1.getAmount()).isEqualTo("1.0001");
+    assertThat(order1.getPrice()).isEqualTo(2303.00);
+    assertThat(order1.getAmount()).isEqualTo(1.0001);
   }
 }

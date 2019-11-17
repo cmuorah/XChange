@@ -23,7 +23,7 @@ public class PlaceLimitOrderJSONTest {
     BitstampOrder newOrder = mapper.readValue(is, BitstampOrder.class);
 
     assertThat(newOrder.getId()).isEqualTo(1273070);
-    assertThat(newOrder.getAmount()).isEqualTo(10d);
+    assertThat(newOrder.getAmount()).isEqualTo(1d);
     assertThat(newOrder.getPrice()).isEqualTo(new Double("1.25"));
     assertThat(newOrder.getType()).isEqualTo(0);
   }

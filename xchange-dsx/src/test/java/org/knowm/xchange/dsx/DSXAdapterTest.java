@@ -85,9 +85,9 @@ public class DSXAdapterTest {
 
     assertThat(trades.getTrades().size() == 150);
 
-    assertThat(trades.getTrades().get(0).getPrice().toString()).isEqualTo("1588.09000");
+    assertThat(trades.getTrades().get(0).getPrice()).isEqualTo(1588.09000);
     assertThat(trades.getTrades().get(0).getType()).isEqualTo(Order.OrderType.BID);
-    assertThat(trades.getTrades().get(0).getOriginalAmount().toString()).isEqualTo("0.03202392");
+    assertThat(trades.getTrades().get(0).getOriginalAmount()).isEqualTo(0.03202392);
     assertThat(trades.getTrades().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
     assertThat(DateUtils.toUTCString(trades.getTrades().get(0).getTimestamp()))
         .isEqualTo("2017-05-04 17:10:10 GMT");
@@ -156,10 +156,10 @@ public class DSXAdapterTest {
     UserTrade lastTrade = tradeList.get(tradeList.size() - 1);
     assertThat(lastTrade.getId()).isEqualTo("1000");
     assertThat(lastTrade.getType()).isEqualTo(Order.OrderType.BID);
-    assertThat(lastTrade.getPrice().toString()).isEqualTo("300");
+    assertThat(lastTrade.getPrice()).isEqualTo(300);
     assertThat(lastTrade.getTimestamp().getTime()).isEqualTo(142123698000L);
     assertThat(DateUtils.toUTCString(lastTrade.getTimestamp()))
         .isEqualTo("1974-07-03 22:48:18 GMT");
-    assertThat(lastTrade.getFeeAmount()).isEqualTo("0.001");
+    assertThat(lastTrade.getFeeAmount()).isEqualTo(0.001);
   }
 }

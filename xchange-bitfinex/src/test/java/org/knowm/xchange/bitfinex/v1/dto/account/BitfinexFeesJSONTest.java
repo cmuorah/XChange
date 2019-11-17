@@ -39,8 +39,8 @@ public class BitfinexFeesJSONTest {
 
     readValue = readValues[1];
     responseRows = readValue.getTradingFees();
-    Double point025 = 25d / (1000d);
-    Double point01 = 10d / (100d);
+    Double point025 = 0.025;
+    Double point01 = 0.01;
     assertEquals(1, responseRows.length);
     assertEquals("DGC", responseRows[0].getCurrency());
     assertEquals(point025, responseRows[0].getMakerFee());

@@ -21,7 +21,7 @@ public class BleutradeDtoTest extends BleutradeDtoTestSupport {
 
   protected static final String BALANCE_RETURN_STR =
       "BleutradeBalanceReturn [success=true, message=, "
-          + "result=BleutradeBalance [Currency=BTC, Balance=15.49843675, Available=13.98901996, Pending=0E-8, "
+          + "result=BleutradeBalance [Currency=BTC, Balance=15.49843675, Available=13.98901996, Pending=0, "
           + "CryptoAddress=1NKh9X1z4Q4AbBnEgNiKU177GMyeQUexC9, IsActive=true, additionalProperties={}], "
           + "additionalProperties={}]";
 
@@ -69,22 +69,22 @@ public class BleutradeDtoTest extends BleutradeDtoTestSupport {
 
   protected static final String OPEN_ORDERS_RETURN_STR =
       "BleutradeOpenOrdersReturn [success=true, message=, result=["
-          + "BleutradeOpenOrder [OrderId=65489, Exchange=LTC_BTC, Type=BUY, Quantity=20.00000000, "
-          + "QuantityRemaining=5.00000000, QuantityBaseTraded=0.16549400, "
+          + "BleutradeOpenOrder [OrderId=65489, Exchange=LTC_BTC, Type=BUY, Quantity=20.0, "
+          + "QuantityRemaining=5.0, QuantityBaseTraded=0.165494, "
           + "Price=0.01268311, Status=OPEN, Created=2014-08-03 13:55:20, Comments=My optional comment, eg function id #123, "
           + "additionalProperties={}], "
-          + "BleutradeOpenOrder [OrderId=65724, Exchange=DOGE_BTC, Type=SELL, Quantity=150491.98700000, "
-          + "QuantityRemaining=795.00000000, QuantityBaseTraded=0.04349400, "
+          + "BleutradeOpenOrder [OrderId=65724, Exchange=DOGE_BTC, Type=SELL, Quantity=150491.987, "
+          + "QuantityRemaining=795.0, QuantityBaseTraded=0.043494, "
           + "Price=5.5E-7, Status=OPEN, Created=2014-07-29 18:45:17, Comments=Function #123 Connect #456, additionalProperties={}]], "
           + "additionalProperties={}]";
 
   protected static final String ORDER_BOOK_RETURN_STR =
       "BleutradeOrderBookReturn [success=true, message=, result=BleutradeOrderBookResult "
-          + "[buy=[BleutradeLevel [Quantity=4.99400000, Rate=3.00650900, additionalProperties={}], "
-          + "BleutradeLevel [Quantity=50.00000000, Rate=3.50000000, additionalProperties={}]], "
+          + "[buy=[BleutradeLevel [Quantity=4.994, Rate=3.006509, additionalProperties={}], "
+          + "BleutradeLevel [Quantity=50.0, Rate=3.5, additionalProperties={}]], "
           + "sell=[BleutradeLevel [Quantity=12.44147454, Rate=5.13540000, additionalProperties={}], "
-          + "BleutradeLevel [Quantity=100.00000000, Rate=6.25500000, additionalProperties={}], "
-          + "BleutradeLevel [Quantity=30.00000000, Rate=6.75500001, additionalProperties={}], "
+          + "BleutradeLevel [Quantity=100.0, Rate=6.255, additionalProperties={}], "
+          + "BleutradeLevel [Quantity=30.0, Rate=6.75500001, additionalProperties={}], "
           + "BleutradeLevel [Quantity=13.49989999, Rate=6.76260099, additionalProperties={}]], "
           + "additionalProperties={}], additionalProperties={}]";
 

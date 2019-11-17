@@ -25,7 +25,7 @@ public class GlobitexAccountDtoJSONTest {
     assertThat(accounts.getAccounts().get(0).getAccount()).isEqualTo("AFN561A01");
     assertThat(accounts.getAccounts().get(0).isMain()).isEqualTo(true);
     assertThat(accounts.getAccounts().get(0).getBalance().get(0).getCurrency()).isEqualTo("EUR");
-    assertThat(accounts.getAccounts().get(0).getBalance().get(0).getAvailable()).isEqualTo("100.0");
-    assertThat(accounts.getAccounts().get(0).getBalance().get(0).getReserved()).isEqualTo("0.0");
+    assertThat(accounts.getAccounts().get(0).getBalance().get(0).getAvailable()).isEqualTo(100.0);
+    assertThat(accounts.getAccounts().get(0).getBalance().get(0).getReserved()).isEqualTo(0.0);
   }
 }

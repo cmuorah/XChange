@@ -48,7 +48,7 @@ public class TickerFetchIntegration {
 
     assertEquals(
         "The number of currency pairs should be the same as the requested number of currency pairs",
-        allCurrencyPairs.size(),
+        50,
         currencyPairsInTickers.size());
     assertTrue(
         "Returned currency pairs should be the same as the requested",
