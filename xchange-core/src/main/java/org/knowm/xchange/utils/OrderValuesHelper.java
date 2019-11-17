@@ -44,14 +44,14 @@ public class OrderValuesHelper {
    */
   public Double adjustAmount(Double amount) {
     Double maximumAmount = metaData.getMaximumAmount();
-    if (maximumAmount != null && amount.compareTo(maximumAmount) > 0) {
+    if (maximumAmount != null && maximumAmount > 0 && amount.compareTo(maximumAmount) > 0) {
       return maximumAmount;
     }
     Double result = amount;
     Double stepSize = metaData.getAmountStepSize();
-    if (stepSize != null && stepSize.compareTo(0d) != 0) {
+    if (stepSize != null && stepSize.compareTo(0d) != 0.0) {
 
-      result = Maths.roundN(result, stepSize);
+      result = Maths.roundN(result, String.valueOf(stepSize).split("\\.")[1].length());
     }
     Integer baseScale = metaData.getBaseScale();
     if (baseScale != null) {

@@ -28,7 +28,7 @@ public class CobinhoodMarketDataDtoTest {
 
     //        verify that the example data was unmarshalled correctly
     assertThat(cobinhoodResponse.getResult().get(0).getId()).isEqualTo("BCHSV-USDT");
-    assertThat(cobinhoodResponse.getResult().get(0).getBaseMaxSize()).isEqualTo("4590.393");
-    assertThat(cobinhoodResponse.getResult().get(0).getTakerFee()).isEqualTo("0");
+    assertThat(cobinhoodResponse.getResult().get(0).getBaseMaxSize()).isEqualTo(4590.393);
+    assertThat(cobinhoodResponse.getResult().get(0).getTakerFee()).isEqualTo(0d);
   }
 }

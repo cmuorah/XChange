@@ -22,7 +22,7 @@ public class BitflyerMarginStatusJSONTest {
 
     // then
     assertThat(response.getCollateral()).isEqualTo(new Double(100000));
-    assertThat(response.getKeepRate().toString()).isEqualTo(5.000);
+    assertThat(response.getKeepRate()).isEqualTo(5.000);
     assertThat(response.getOpenPositionPnl()).isEqualTo(new Double(-715));
     assertThat(response.getRequireCollateral()).isEqualTo(new Double(19857));
   }

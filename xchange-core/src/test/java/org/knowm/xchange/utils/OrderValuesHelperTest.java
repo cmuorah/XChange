@@ -30,7 +30,7 @@ public class OrderValuesHelperTest {
     Double result = adjuster.adjustAmount(new Double("0.93851732"));
 
     // then
-    assertThat(result).isEqualByComparingTo(new Double("0.938"));
+    assertThat(result).isEqualByComparingTo(0.939);
   }
 
   @Test
@@ -43,7 +43,7 @@ public class OrderValuesHelperTest {
     Double result = adjuster.adjustAmount(new Double("10.123456789"));
 
     // then
-    assertThat(result).isEqualByComparingTo(new Double("10.12345"));
+    assertThat(result).isEqualByComparingTo(new Double("10.12346"));
   }
 
   @Test

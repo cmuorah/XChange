@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Graham Crockford
  */
-final class MatchingEngine {
+public final class MatchingEngine {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(MatchingEngine.class);
   private static final Double FEE_RATE = new Double("0.001");

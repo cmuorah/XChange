@@ -26,7 +26,7 @@ public class BitmexOrderBookFetchIntegration {
 
   @Test
   public void getOrderBookTest() throws IOException {
-    CurrencyPair pair = bitmexExchange.determineActiveContract("ETH", "USD", BitmexPrompt.MONTHLY);
+    CurrencyPair pair = bitmexExchange.determineActiveContract("ETH", "USD", BitmexPrompt.PERPETUAL);
     OrderBook orderBook = marketDataService.getOrderBook(pair);
 
     assertThat(orderBook).isNotNull();

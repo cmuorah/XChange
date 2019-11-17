@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.RoundingMode;
 import org.junit.Test;
 import org.knowm.xchange.globitex.dto.marketdata.GlobitexMarketDataDtoJSONTest;
 
@@ -80,8 +79,7 @@ public class GlobitexTradeDtoJSONTest {
     assertThat(activeOrders.getObject().getOrderStatus()).isEqualTo("canceled");
     assertThat(activeOrders.getObject().getSymbol()).isEqualTo("XBTEUR");
     assertThat(activeOrders.getObject().getSide()).isEqualTo("buy");
-    assertThat(activeOrders.getObject().getPrice())
-        .isEqualTo(0.1);
+    assertThat(activeOrders.getObject().getPrice()).isEqualTo(0.1);
     assertThat(activeOrders.getObject().getQuantity()).isEqualTo(new Double(100));
     assertThat(activeOrders.getObject().getType()).isEqualTo("limit");
     assertThat(activeOrders.getObject().getTimeInForce()).isEqualTo("GTC");

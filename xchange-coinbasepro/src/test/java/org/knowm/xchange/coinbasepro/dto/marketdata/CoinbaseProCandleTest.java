@@ -27,10 +27,10 @@ public class CoinbaseProCandleTest {
 
     CoinbaseProCandle candle = candles[0];
     assertThat(candle.getTime().getTime()).isEqualTo(1517443740000L);
-    assertThat(candle.getOpen()).isEqualTo("10106.01");
-    assertThat(candle.getHigh()).isEqualTo("10120.21");
-    assertThat(candle.getLow()).isEqualTo("10106");
-    assertThat(candle.getClose()).isEqualTo("10120.21");
-    assertThat(candle.getVolume()).isEqualTo("2.85107455");
+    assertThat(candle.getOpen()).isEqualTo(10106.01);
+    assertThat(candle.getHigh()).isEqualTo(10120.21);
+    assertThat(candle.getLow()).isEqualTo(10106);
+    assertThat(candle.getClose()).isEqualTo(10120.21);
+    assertThat(candle.getVolume()).isEqualTo(2.85107455);
   }
 }
