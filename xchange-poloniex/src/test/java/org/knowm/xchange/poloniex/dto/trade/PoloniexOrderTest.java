@@ -31,11 +31,11 @@ public class PoloniexOrderTest {
     assertThat(response.getPoloniexPublicTrades().size()).isEqualTo(1);
 
     PoloniexPublicTrade trade = response.getPoloniexPublicTrades().get(0);
-    assertThat(trade.getAmount()).isEqualTo("0.10000000");
+    assertThat(trade.getAmount()).isEqualTo(0.10000000);
     assertThat(trade.getDate()).isEqualTo("2016-08-19 12:06:35");
-    assertThat(trade.getRate()).isEqualTo("0.00623991");
-    assertThat(trade.getTotal()).isEqualTo("0.00062399");
-    assertThat(trade.getTradeID()).isEqualTo("1623424");
+    assertThat(trade.getRate()).isEqualTo(0.00623991);
+    assertThat(trade.getTotal()).isEqualTo(0.00062399);
+    assertThat(trade.getTradeID()).isEqualTo(1623424);
     assertThat(trade.getType()).isEqualTo("buy");
   }
 
@@ -49,7 +49,7 @@ public class PoloniexOrderTest {
 
     assertThat(response.getOrderNumber()).isEqualTo(213743244249L);
     assertThat(response.getPoloniexPublicTrades().size()).isEqualTo(0);
-    assertThat(response.getAmountUnfilled()).isEqualTo("1.00000000");
+    assertThat(response.getAmountUnfilled()).isEqualTo(1.00000000);
   }
 
   @Test(expected = PoloniexException.class)
@@ -92,10 +92,10 @@ public class PoloniexOrderTest {
     assertThat(response.getPoloniexPublicTrades().size()).isEqualTo(1);
 
     PoloniexPublicTrade trade = response.getPoloniexPublicTrades().get("BTC_LTC").get(0);
-    assertThat(trade.getAmount()).isEqualTo("0.10000000");
+    assertThat(trade.getAmount()).isEqualTo(0.10000000);
     assertThat(trade.getDate()).isEqualTo("2016-08-21 13:08:40");
-    assertThat(trade.getRate()).isEqualTo("0.00623069");
-    assertThat(trade.getTotal()).isEqualTo("0.00062306");
+    assertThat(trade.getRate()).isEqualTo(0.00623069);
+    assertThat(trade.getTotal()).isEqualTo(0.00062306);
     assertThat(trade.getTradeID()).isEqualTo("1623434");
     assertThat(trade.getType()).isEqualTo("buy");
   }

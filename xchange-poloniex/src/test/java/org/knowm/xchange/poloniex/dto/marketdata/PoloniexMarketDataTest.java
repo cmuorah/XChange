@@ -33,7 +33,7 @@ public class PoloniexMarketDataTest {
     assertThat(currencyInfo).hasSize(2);
 
     PoloniexCurrencyInfo abyCurrencyInfo = currencyInfo.get("ABY");
-    assertThat(abyCurrencyInfo.getTxFee()).isEqualTo("0.01");
+    assertThat(abyCurrencyInfo.getTxFee()).isEqualTo(0.01);
     assertThat(abyCurrencyInfo.getMinConf()).isEqualTo(8);
     assertThat(abyCurrencyInfo.isDisabled()).isFalse();
   }

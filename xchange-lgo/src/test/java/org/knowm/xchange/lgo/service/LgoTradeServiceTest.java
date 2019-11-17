@@ -59,7 +59,7 @@ public class LgoTradeServiceTest {
             CurrencyPair.BTC_USD,
             "",
             new Date(),
-            new Double(7000)));
+                7000d));
   }
 
   @Test
@@ -80,7 +80,7 @@ public class LgoTradeServiceTest {
                     CurrencyPair.BTC_USD,
                     "",
                     new Date(),
-                    new Double(7000)));
+                        7000d));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -98,7 +98,7 @@ public class LgoTradeServiceTest {
                     CurrencyPair.BTC_USD,
                     "",
                     new Date(),
-                    new Double(7000)));
+                        7000d));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -116,7 +116,7 @@ public class LgoTradeServiceTest {
                     CurrencyPair.BTC_USD,
                     "",
                     new Date(),
-                    new Double(9)));
+                        9d));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -134,7 +134,7 @@ public class LgoTradeServiceTest {
                     CurrencyPair.BTC_USD,
                     "",
                     new Date(),
-                    new Double(1000001)));
+                        1000001d));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)

@@ -1,6 +1,7 @@
 package org.knowm.xchange.poloniex.dto.trade;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -41,10 +42,10 @@ public class PoloniexUserTradeTest {
     PoloniexUserTrade trade = tradeHistory.get("BTC_DRK")[0];
     assertThat(trade.getTradeID()).isEqualTo("296610");
     assertThat(trade.getDate()).isEqualTo("2014-09-14 04:54:57");
-    assertThat(trade.getRate()).isEqualTo("0.00583818");
-    assertThat(trade.getAmount()).isEqualTo("0.03510854");
-    assertThat(trade.getTotal()).isEqualTo("0.00020497");
-    assertTrue(trade.getFee().compareTo(Double.valueOf(0.002)) == 0);
+    assertThat(trade.getRate()).isEqualTo(0.00583818);
+    assertThat(trade.getAmount()).isEqualTo(0.03510854);
+    assertThat(trade.getTotal()).isEqualTo(0.00020497);
+    assertEquals(0, trade.getFee().compareTo(0.002));
     assertThat(trade.getOrderNumber()).isEqualTo("19961972");
     assertThat(trade.getType()).isEqualTo("buy");
   }
@@ -66,10 +67,10 @@ public class PoloniexUserTradeTest {
     PoloniexUserTrade trade = tradeHistory[0];
     assertThat(trade.getTradeID()).isEqualTo("267356");
     assertThat(trade.getDate()).isEqualTo("2014-09-12 00:22:32");
-    assertThat(trade.getRate()).isEqualTo("0.01026896");
-    assertThat(trade.getAmount()).isEqualTo("0.01000000");
-    assertThat(trade.getTotal()).isEqualTo("0.00010269");
-    assertTrue(trade.getFee().compareTo(Double.valueOf(0.002)) == 0);
+    assertThat(trade.getRate()).isEqualTo(0.01026896);
+    assertThat(trade.getAmount()).isEqualTo(0.01000000);
+    assertThat(trade.getTotal()).isEqualTo(0.00010269);
+    assertEquals(0, trade.getFee().compareTo(0.002));
     assertThat(trade.getOrderNumber()).isEqualTo("17730787");
     assertThat(trade.getType()).isEqualTo("sell");
   }

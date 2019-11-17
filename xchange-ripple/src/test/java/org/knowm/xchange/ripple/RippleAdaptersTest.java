@@ -276,14 +276,14 @@ public class RippleAdaptersTest implements ITransferFeeSource {
 
     final UserTrade trade = RippleAdapters.adaptTrade(response, params, this, roundingScale);
     assertThat(trade.getCurrencyPair()).isEqualTo(CurrencyPair.XRP_BTC);
-    assertThat(trade.getFeeAmount()).isEqualTo("0.012");
+    assertThat(trade.getFeeAmount()).isEqualTo(0.012);
     assertThat(trade.getFeeCurrency()).isEqualTo(Currency.XRP);
     assertThat(trade.getId())
         .isEqualTo("1111111111111111111111111111111111111111111111111111111111111111");
     assertThat(trade.getOrderId()).isEqualTo("1111");
     assertThat(trade.getPrice()).isEqualTo(new Double("0.000028572057152"));
     assertThat(trade.getTimestamp()).isEqualTo(RippleExchange.ToDate("2011-11-11T11:11:11.111Z"));
-    assertThat(trade.getOriginalAmount()).isEqualTo("1");
+    assertThat(trade.getOriginalAmount()).isEqualTo(1d);
     assertThat(trade.getType()).isEqualTo(OrderType.ASK);
 
     assertThat(trade).isInstanceOf(RippleUserTrade.class);

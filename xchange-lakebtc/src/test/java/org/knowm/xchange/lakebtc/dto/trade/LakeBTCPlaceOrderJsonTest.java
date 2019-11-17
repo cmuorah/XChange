@@ -24,9 +24,9 @@ public class LakeBTCPlaceOrderJsonTest {
     LakeBTCOrderResponse order = mapper.readValue(is, LakeBTCOrderResponse.class);
 
     assertThat(order.getResult().getCurrency()).isEqualTo("CNY");
-    assertThat(order.getResult().getTotalTradedBtc().toString()).isEqualTo("1.132");
-    assertThat(order.getResult().getTotalTradedCurrency().toString()).isEqualTo("0");
-    assertThat(order.getResult().getTrades().toString()).isEqualTo("0");
+    assertThat(order.getResult().getTotalTradedBtc()).isEqualTo(1.132);
+    assertThat(order.getResult().getTotalTradedCurrency()).isEqualTo(0);
+    assertThat(order.getResult().getTrades()).isEqualTo(0);
     assertThat(order.getResult().getPpc()).isNull();
   }
 
@@ -44,9 +44,9 @@ public class LakeBTCPlaceOrderJsonTest {
     LakeBTCOrderResponse order = mapper.readValue(is, LakeBTCOrderResponse.class);
 
     assertThat(order.getResult().getCurrency()).isEqualTo("CNY");
-    assertThat(order.getResult().getTotalTradedBtc().toString()).isEqualTo("0");
-    assertThat(order.getResult().getTotalTradedCurrency().toString()).isEqualTo("12");
-    assertThat(order.getResult().getTrades().toString()).isEqualTo("1");
-    assertThat(order.getResult().getPpc().toString()).isEqualTo("4756.5");
+    assertThat(order.getResult().getTotalTradedBtc()).isEqualTo(0);
+    assertThat(order.getResult().getTotalTradedCurrency()).isEqualTo(12);
+    assertThat(order.getResult().getTrades()).isEqualTo(1);
+    assertThat(order.getResult().getPpc()).isEqualTo(4756.5);
   }
 }

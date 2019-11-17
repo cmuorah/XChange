@@ -15,7 +15,7 @@ public class LgoPlaceOrderTest {
 
     String payload = order.toPayload();
 
-    assertThat(payload).isEqualTo("L,B,BTC-USD,10.5,6001.50,gtc," + now.toEpochMilli());
+    assertThat(payload).isEqualTo("L,B,BTC-USD,10.5,6001.5,gtc," + now.toEpochMilli());
   }
 
   @Test
