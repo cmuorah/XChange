@@ -93,11 +93,11 @@ public class OkCoinTradeService extends OkCoinTradeServiceRaw implements TradeSe
     String symbol = OkCoinAdapters.adaptSymbol(marketOrder.getCurrencyPair());
     if (marketOrder.getType().equals(OrderType.BID)) {
       marketOrderType = "buy_market";
-      price = marketOrder.getOriginalAmount().toPlainString();
+      price = marketOrder.getOriginalAmount().toString();
       orderId = placeMarketOrderBuy(symbol, marketOrderType, price).getOrderId();
     } else {
       marketOrderType = "sell_market";
-      amount = marketOrder.getOriginalAmount().toPlainString();
+      amount = marketOrder.getOriginalAmount().toString();
       orderId = placeMarketOrderSell(symbol, marketOrderType, amount).getOrderId();
     }
     return String.valueOf(orderId);
@@ -110,8 +110,8 @@ public class OkCoinTradeService extends OkCoinTradeServiceRaw implements TradeSe
         trade(
                 OkCoinAdapters.adaptSymbol(limitOrder.getCurrencyPair()),
                 limitOrder.getType() == OrderType.BID ? "buy" : "sell",
-                limitOrder.getLimitPrice().toPlainString(),
-                limitOrder.getOriginalAmount().toPlainString())
+                limitOrder.getLimitPrice().toString(),
+                limitOrder.getOriginalAmount().toString())
             .getOrderId();
     return String.valueOf(orderId);
   }
@@ -135,8 +135,8 @@ public class OkCoinTradeService extends OkCoinTradeServiceRaw implements TradeSe
         .forEach(
             limitOrder -> {
               Map<String, Object> map = new HashMap<>();
-              map.put("price", limitOrder.getLimitPrice().toPlainString());
-              map.put("amount", limitOrder.getOriginalAmount().toPlainString());
+              map.put("price", limitOrder.getLimitPrice().toString());
+              map.put("amount", limitOrder.getOriginalAmount().toString());
               map.put("type", limitOrder.getType() == OrderType.BID ? "buy" : "sell");
               list.add(map);
             });

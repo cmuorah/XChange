@@ -1,6 +1,5 @@
 package org.knowm.xchange.coingi.dto.marketdata;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 /** A currency pair rolling aggregation. */
@@ -8,29 +7,29 @@ public class CoingiRollingAggregation {
 
   private CoingiAggregationCurrencyPair currencyPair;
 
-  private BigDecimal last;
+  private Double last;
 
-  private BigDecimal lowestAsk;
+  private Double lowestAsk;
 
-  private BigDecimal highestBid;
+  private Double highestBid;
 
-  private BigDecimal baseVolume;
+  private Double baseVolume;
 
-  private BigDecimal counterVolume;
+  private Double counterVolume;
 
-  private BigDecimal high;
+  private Double high;
 
-  private BigDecimal low;
+  private Double low;
 
   public CoingiRollingAggregation(
       CoingiAggregationCurrencyPair currencyPair,
-      BigDecimal last,
-      BigDecimal lowestAsk,
-      BigDecimal highestBid,
-      BigDecimal baseVolume,
-      BigDecimal counterVolume,
-      BigDecimal high,
-      BigDecimal low) {
+      Double last,
+      Double lowestAsk,
+      Double highestBid,
+      Double baseVolume,
+      Double counterVolume,
+      Double high,
+      Double low) {
     this.currencyPair = Objects.requireNonNull(currencyPair);
     this.last = Objects.requireNonNull(last);
     this.lowestAsk = Objects.requireNonNull(lowestAsk);
@@ -47,31 +46,31 @@ public class CoingiRollingAggregation {
     return currencyPair;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getLowestAsk() {
+  public Double getLowestAsk() {
     return lowestAsk;
   }
 
-  public BigDecimal getHighestBid() {
+  public Double getHighestBid() {
     return highestBid;
   }
 
-  public BigDecimal getBaseVolume() {
+  public Double getBaseVolume() {
     return baseVolume;
   }
 
-  public BigDecimal getCounterVolume() {
+  public Double getCounterVolume() {
     return counterVolume;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 

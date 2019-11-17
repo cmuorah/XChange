@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.upbit.dto.marketdata.UpbitOrderBookData;
 import org.knowm.xchange.upbit.dto.marketdata.UpbitOrderBooks;
@@ -25,11 +24,11 @@ public class UpbitAdaptersTest {
 
     UpbitTickers upbitTickers = mapper.readValue(is, UpbitTickers.class);
     UpbitTicker upbitTicker = upbitTickers.getTickers()[0];
-    assertThat(upbitTicker.getTrade_volume()).isEqualTo(new BigDecimal("0.00625758"));
-    assertThat(upbitTicker.getTrade_price()).isEqualTo(new BigDecimal("7050000"));
-    assertThat(upbitTicker.getOpening_price()).isEqualTo(new BigDecimal("7109000"));
-    assertThat(upbitTicker.getHigh_price()).isEqualTo(new BigDecimal("7109000"));
-    assertThat(upbitTicker.getLow_price()).isEqualTo(new BigDecimal("7024000"));
+    assertThat(upbitTicker.getTrade_volume()).isEqualTo(new Double("0.00625758"));
+    assertThat(upbitTicker.getTrade_price()).isEqualTo(new Double("7050000"));
+    assertThat(upbitTicker.getOpening_price()).isEqualTo(new Double("7109000"));
+    assertThat(upbitTicker.getHigh_price()).isEqualTo(new Double("7109000"));
+    assertThat(upbitTicker.getLow_price()).isEqualTo(new Double("7024000"));
   }
 
   @Test
@@ -43,10 +42,10 @@ public class UpbitAdaptersTest {
 
     UpbitOrderBookData data = upbitOrderBook.getUpbitOrderBooks()[0].getOrderbookUnits()[0];
 
-    assertThat(data.getBidPrice()).isEqualTo(new BigDecimal("0.07083262"));
-    assertThat(data.getBidSize()).isEqualTo(new BigDecimal("0.09857284"));
-    assertThat(data.getAskPrice()).isEqualTo(new BigDecimal("0.07084678"));
-    assertThat(data.getAskSize()).isEqualTo(new BigDecimal("228.42381741"));
+    assertThat(data.getBidPrice()).isEqualTo(new Double("0.07083262"));
+    assertThat(data.getBidSize()).isEqualTo(new Double("0.09857284"));
+    assertThat(data.getAskPrice()).isEqualTo(new Double("0.07084678"));
+    assertThat(data.getAskSize()).isEqualTo(new Double("228.42381741"));
   }
 
   @Test
@@ -60,8 +59,8 @@ public class UpbitAdaptersTest {
 
     UpbitTrade data = upbitTrades.getUpbitTrades()[0];
 
-    assertThat(data.getTradePrice()).isEqualTo(new BigDecimal("0.07092"));
-    assertThat(data.getTradeVolume()).isEqualTo(new BigDecimal("0.01840677"));
+    assertThat(data.getTradePrice()).isEqualTo(new Double("0.07092"));
+    assertThat(data.getTradeVolume()).isEqualTo(new Double("0.01840677"));
     assertThat(data.getAskBid()).isEqualTo("ASK");
   }
 }

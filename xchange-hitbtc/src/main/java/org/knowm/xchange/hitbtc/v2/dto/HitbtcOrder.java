@@ -1,7 +1,6 @@
 package org.knowm.xchange.hitbtc.v2.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class HitbtcOrder {
@@ -13,9 +12,9 @@ public class HitbtcOrder {
   public final String status;
   public final String type;
   public final String timeInForce;
-  public final BigDecimal quantity;
-  public final BigDecimal price;
-  public final BigDecimal cumQuantity;
+  public final Double quantity;
+  public final Double price;
+  public final Double cumQuantity;
 
   private final Date createdAt;
   private final Date updatedAt;
@@ -28,9 +27,9 @@ public class HitbtcOrder {
       @JsonProperty("status") String status,
       @JsonProperty("type") String type,
       @JsonProperty("timeInForce") String timeInForce,
-      @JsonProperty("quantity") BigDecimal quantity,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("cumQuantity") BigDecimal cumQuantity,
+      @JsonProperty("quantity") Double quantity,
+      @JsonProperty("price") Double price,
+      @JsonProperty("cumQuantity") Double cumQuantity,
       @JsonProperty("createdAt") Date createdAt,
       @JsonProperty("updatedAt") Date updatedAt) {
     super();

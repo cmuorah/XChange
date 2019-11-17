@@ -3,7 +3,6 @@ package org.knowm.xchange.coinbase.v2.dto.account;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.Assert;
@@ -31,7 +30,7 @@ public class CoinbaseAccountJsonTest {
             .collect(Collectors.toList())
             .get(0);
     Assert.assertEquals("xxx-xxx-xxx-xxx-xxx", btcAccount.getId());
-    Assert.assertEquals(new BigDecimal("0.12234387"), btcAccount.getBalance().getAmount());
+    Assert.assertEquals(new Double("0.12234387"), btcAccount.getBalance().getAmount());
     Assert.assertEquals("BTC", btcAccount.getBalance().getCurrency());
   }
 }

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -17,34 +16,34 @@ import javax.annotation.Generated;
 public class BiboxOrderBookEntry {
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("volume")
-  private BigDecimal volume;
+  private Double volume;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   /** @return The price */
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
   /** @param price The price */
   @JsonProperty("price")
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
   /** @return The volume */
   @JsonProperty("volume")
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
   /** @param volume The volume */
   @JsonProperty("volume")
-  public void setVolume(BigDecimal volume) {
+  public void setVolume(Double volume) {
     this.volume = volume;
   }
 

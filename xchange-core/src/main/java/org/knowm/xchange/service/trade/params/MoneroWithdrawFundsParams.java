@@ -1,18 +1,17 @@
 package org.knowm.xchange.service.trade.params;
 
-import java.math.BigDecimal;
 import javax.annotation.Nullable;
 import org.knowm.xchange.currency.Currency;
 
 public class MoneroWithdrawFundsParams extends DefaultWithdrawFundsParams {
   @Nullable public final String paymentId; // optional
 
-  public MoneroWithdrawFundsParams(String address, Currency currency, BigDecimal amount) {
+  public MoneroWithdrawFundsParams(String address, Currency currency, Double amount) {
     this(address, currency, amount, null);
   }
 
   public MoneroWithdrawFundsParams(
-      String address, Currency currency, BigDecimal amount, String paymentId) {
+      String address, Currency currency, Double amount, String paymentId) {
     super(address, currency, amount);
     this.paymentId = paymentId;
   }

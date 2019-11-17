@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /** Test BitcoiniumTickerHistory JSON parsing */
@@ -26,6 +25,6 @@ public class BitcoiniumTickerHistoryJSONTest {
 
     // Verify that the example data was unmarshalled correctly
     assertThat(bitcoiniumTickerHistory.getCondensedTickers()[0].getLast())
-        .isEqualTo(new BigDecimal("514.9"));
+        .isEqualTo(new Double("514.9"));
   }
 }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Comparator;
 import java.util.Date;
@@ -104,9 +103,8 @@ public class IdexMarketDataService extends BaseExchangeService implements Market
               returnOrderBookResponse.getAsks().stream()
                   .map(
                       ask -> {
-                        BigDecimal limitPrice = IdexExchange.Companion.safeParse(ask.getPrice());
-                        BigDecimal originalAmount =
-                            IdexExchange.Companion.safeParse(ask.getAmount());
+                        Double limitPrice = IdexExchange.Companion.safeParse(ask.getPrice());
+                        Double originalAmount = IdexExchange.Companion.safeParse(ask.getAmount());
                         String orderHash = ask.getOrderHash();
                         return new LimitOrder.Builder(Order.OrderType.ASK, currencyPair)
                             .limitPrice(limitPrice)
@@ -117,9 +115,8 @@ public class IdexMarketDataService extends BaseExchangeService implements Market
               returnOrderBookResponse.getBids().stream()
                   .map(
                       bid -> {
-                        BigDecimal limitPrice = IdexExchange.Companion.safeParse(bid.getPrice());
-                        BigDecimal originalAmount =
-                            IdexExchange.Companion.safeParse(bid.getAmount());
+                        Double limitPrice = IdexExchange.Companion.safeParse(bid.getPrice());
+                        Double originalAmount = IdexExchange.Companion.safeParse(bid.getAmount());
                         String orderHash = bid.getOrderHash();
                         return new LimitOrder.Builder(Order.OrderType.ASK, currencyPair)
                             .limitPrice(limitPrice)

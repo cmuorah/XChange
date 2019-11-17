@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.cryptopia.marketdata;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -53,11 +52,11 @@ public class DepthChartDemo {
     // BIDS
     List<Number> xData = new ArrayList<>();
     List<Number> yData = new ArrayList<>();
-    BigDecimal accumulatedBidUnits = new BigDecimal("0");
+    Double accumulatedBidUnits = new Double("0");
     for (LimitOrder limitOrder : orderBook.getBids()) {
-      if (limitOrder.getLimitPrice().doubleValue() > 0.01) {
+      if (limitOrder.getLimitPrice() > 0.01) {
         xData.add(limitOrder.getLimitPrice());
-        accumulatedBidUnits = accumulatedBidUnits.add(limitOrder.getOriginalAmount());
+        accumulatedBidUnits = accumulatedBidUnits + (limitOrder.getOriginalAmount());
         yData.add(accumulatedBidUnits);
       }
     }
@@ -71,11 +70,11 @@ public class DepthChartDemo {
     // ASKS
     xData = new ArrayList<>();
     yData = new ArrayList<>();
-    BigDecimal accumulatedAskUnits = new BigDecimal("0");
+    Double accumulatedAskUnits = new Double("0");
     for (LimitOrder limitOrder : orderBook.getAsks()) {
-      if (limitOrder.getLimitPrice().doubleValue() < 1) {
+      if (limitOrder.getLimitPrice() < 1) {
         xData.add(limitOrder.getLimitPrice());
-        accumulatedAskUnits = accumulatedAskUnits.add(limitOrder.getOriginalAmount());
+        accumulatedAskUnits = accumulatedAskUnits + (limitOrder.getOriginalAmount());
         yData.add(accumulatedAskUnits);
       }
     }

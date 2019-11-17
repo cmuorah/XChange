@@ -1,6 +1,5 @@
 package org.knowm.xchange.coinex;
 
-import java.math.BigDecimal;
 import java.util.*;
 import org.knowm.xchange.coinex.dto.account.CoinexBalanceInfo;
 import org.knowm.xchange.currency.Currency;
@@ -13,8 +12,7 @@ public class CoinexAdapters {
     List<Balance> balances = new ArrayList<>(coinexBalances.size());
     for (Map.Entry<String, CoinexBalanceInfo> balancePair : coinexBalances.entrySet()) {
       Currency currency = new Currency(balancePair.getKey());
-      BigDecimal total =
-          balancePair.getValue().getAvailable().add(balancePair.getValue().getFrozen());
+      Double total = balancePair.getValue().getAvailable() + (balancePair.getValue().getFrozen());
       Balance balance =
           new Balance(
               currency,

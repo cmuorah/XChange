@@ -6,7 +6,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +53,7 @@ public class MercadoBitcoinAdapterTest {
     // verify all fields filled
     assertThat(orderBook.getBids().get(0).getLimitPrice().toString()).isEqualTo("1004.16826");
     assertThat(orderBook.getBids().get(0).getType()).isEqualTo(OrderType.BID);
-    assertThat(orderBook.getBids().get(0).getOriginalAmount()).isEqualTo(new BigDecimal("0.16614"));
+    assertThat(orderBook.getBids().get(0).getOriginalAmount()).isEqualTo(new Double("0.16614"));
     assertThat(orderBook.getBids().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_BRL);
   }
 
@@ -78,7 +77,7 @@ public class MercadoBitcoinAdapterTest {
     assertThat(trades.getTrades().get(0).getId()).isEqualTo("98519");
     assertThat(trades.getTrades().get(0).getPrice().toString()).isEqualTo("1015");
     assertThat(trades.getTrades().get(0).getType() == OrderType.BID);
-    assertThat(trades.getTrades().get(0).getOriginalAmount()).isEqualTo(new BigDecimal("1"));
+    assertThat(trades.getTrades().get(0).getOriginalAmount()).isEqualTo(new Double("1"));
     assertThat(trades.getTrades().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_BRL);
   }
 
@@ -99,7 +98,7 @@ public class MercadoBitcoinAdapterTest {
     assertThat(ticker.getLast().toString()).isEqualTo("1019.99999");
     assertThat(ticker.getBid().toString()).isEqualTo("1019.99999");
     assertThat(ticker.getAsk().toString()).isEqualTo("1020");
-    assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("6.90157391"));
+    assertThat(ticker.getVolume()).isEqualTo(new Double("6.90157391"));
     assertThat(ticker.getTimestamp()).isEqualTo(new Date(1417226432L * 1000L));
   }
 
@@ -125,15 +124,15 @@ public class MercadoBitcoinAdapterTest {
     assertThat(accountInfo.getWallet().getBalance(Currency.BRL).getCurrency())
         .isEqualTo(Currency.BRL);
     assertThat(accountInfo.getWallet().getBalance(Currency.BRL).getTotal())
-        .isEqualTo(new BigDecimal("248.29516"));
+        .isEqualTo(new Double("248.29516"));
     assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getCurrency())
         .isEqualTo(Currency.BTC);
     assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getTotal())
-        .isEqualTo(new BigDecimal("0.25000000"));
+        .isEqualTo(new Double("0.25000000"));
     assertThat(accountInfo.getWallet().getBalance(Currency.LTC).getCurrency())
         .isEqualTo(Currency.LTC);
     assertThat(accountInfo.getWallet().getBalance(Currency.LTC).getTotal())
-        .isEqualTo(new BigDecimal("0.00000000"));
+        .isEqualTo(new Double("0.00000000"));
   }
 
   @Test
@@ -161,8 +160,8 @@ public class MercadoBitcoinAdapterTest {
 
     assertThat(orderById.get("1212").getType()).isEqualTo(OrderType.ASK);
     assertThat(orderById.get("1212").getTimestamp()).isEqualTo(new Date(1378929161000L));
-    assertThat(orderById.get("1212").getLimitPrice()).isEqualTo(new BigDecimal("6.00000"));
-    assertThat(orderById.get("1212").getOriginalAmount()).isEqualTo(new BigDecimal("165.47309607"));
+    assertThat(orderById.get("1212").getLimitPrice()).isEqualTo(new Double("6.00000"));
+    assertThat(orderById.get("1212").getOriginalAmount()).isEqualTo(new Double("165.47309607"));
     assertThat(orderById.get("1212").getCurrencyPair())
         .isEqualTo(new CurrencyPair(Currency.LTC, Currency.BRL));
   }

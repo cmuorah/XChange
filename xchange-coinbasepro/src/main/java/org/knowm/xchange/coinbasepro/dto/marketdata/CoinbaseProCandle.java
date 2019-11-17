@@ -1,22 +1,16 @@
 package org.knowm.xchange.coinbasepro.dto.marketdata;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonDeserialize(using = CoinbaseProCandleDeserializer.class)
 public class CoinbaseProCandle {
 
   private final Date time;
-  private final BigDecimal open, high, low, close, volume;
+  private final Double open, high, low, close, volume;
 
   public CoinbaseProCandle(
-      Date time,
-      BigDecimal open,
-      BigDecimal high,
-      BigDecimal low,
-      BigDecimal close,
-      BigDecimal volume) {
+      Date time, Double open, Double high, Double low, Double close, Double volume) {
     this.time = time;
     this.open = open;
     this.high = high;
@@ -29,23 +23,23 @@ public class CoinbaseProCandle {
     return time;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
     return close;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 

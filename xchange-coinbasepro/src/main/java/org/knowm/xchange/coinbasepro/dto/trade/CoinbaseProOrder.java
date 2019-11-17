@@ -1,43 +1,42 @@
 package org.knowm.xchange.coinbasepro.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseProOrder {
   private final String id;
-  private final BigDecimal price;
-  private final BigDecimal size;
+  private final Double price;
+  private final Double size;
   private final String productId;
   private final String side;
   private final String createdAt;
   private final String doneAt;
-  private final BigDecimal filledSize;
-  private final BigDecimal fillFees;
+  private final Double filledSize;
+  private final Double fillFees;
   private final String status;
   private final boolean settled;
   private final String type;
   private final String doneReason;
-  private final BigDecimal executedvalue;
+  private final Double executedvalue;
   private final String stop;
-  private final BigDecimal stopPrice;
+  private final Double stopPrice;
 
   public CoinbaseProOrder(
       @JsonProperty("id") String id,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("price") Double price,
+      @JsonProperty("size") Double size,
       @JsonProperty("product_id") String productId,
       @JsonProperty("side") String side,
       @JsonProperty("created_at") String createdAt,
       @JsonProperty("done_at") String doneAt,
-      @JsonProperty("filled_size") BigDecimal filledSize,
-      @JsonProperty("fill_fees") BigDecimal fillFees,
+      @JsonProperty("filled_size") Double filledSize,
+      @JsonProperty("fill_fees") Double fillFees,
       @JsonProperty("status") String status,
       @JsonProperty("settled") boolean settled,
       @JsonProperty("type") String type,
       @JsonProperty("done_reason") String doneReason,
-      @JsonProperty("executed_value") BigDecimal executedValue,
+      @JsonProperty("executed_value") Double executedValue,
       @JsonProperty("stop") String stop,
-      @JsonProperty("stop_price") BigDecimal stopPrice) {
+      @JsonProperty("stop_price") Double stopPrice) {
     this.id = id;
     this.price = price;
     this.size = size;
@@ -60,11 +59,11 @@ public class CoinbaseProOrder {
     return id;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
@@ -84,11 +83,11 @@ public class CoinbaseProOrder {
     return doneAt;
   }
 
-  public BigDecimal getFilledSize() {
+  public Double getFilledSize() {
     return filledSize;
   }
 
-  public BigDecimal getFillFees() {
+  public Double getFillFees() {
     return fillFees;
   }
 
@@ -108,7 +107,7 @@ public class CoinbaseProOrder {
     return doneReason;
   }
 
-  public BigDecimal getExecutedvalue() {
+  public Double getExecutedvalue() {
     return executedvalue;
   }
 
@@ -116,7 +115,7 @@ public class CoinbaseProOrder {
     return stop;
   }
 
-  public BigDecimal getStopPrice() {
+  public Double getStopPrice() {
     return stopPrice;
   }
 

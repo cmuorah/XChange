@@ -1,7 +1,6 @@
 package org.knowm.xchange.koineks.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.Currency;
 
 /** Created by semihunaldi on 05/12/2017 */
@@ -10,14 +9,14 @@ public class KoineksDOGETicker extends BaseKoineksTicker {
       @JsonProperty("short_code") Currency shortCode,
       @JsonProperty("name") String name,
       @JsonProperty("currency") Currency currency,
-      @JsonProperty("current") BigDecimal current,
+      @JsonProperty("current") Double current,
       @JsonProperty("change_amount") String changeAmount,
-      @JsonProperty("change_percentage") BigDecimal changePercentage,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("bid") BigDecimal bid,
+      @JsonProperty("change_percentage") Double changePercentage,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("bid") Double bid,
       @JsonProperty("timestamp") String timestamp) {
     super(
         shortCode,

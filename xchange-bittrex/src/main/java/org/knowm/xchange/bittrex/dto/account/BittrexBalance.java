@@ -1,24 +1,23 @@
 package org.knowm.xchange.bittrex.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BittrexBalance {
 
-  private BigDecimal available;
-  private BigDecimal balance;
+  private Double available;
+  private Double balance;
   private String cryptoAddress;
   private String currency;
-  private BigDecimal pending;
+  private Double pending;
   private boolean requested;
   private String uuid;
 
   public BittrexBalance(
-      @JsonProperty("Available") BigDecimal available,
-      @JsonProperty("Balance") BigDecimal balance,
+      @JsonProperty("Available") Double available,
+      @JsonProperty("Balance") Double balance,
       @JsonProperty("CryptoAddress") String cryptoAddress,
       @JsonProperty("Currency") String currency,
-      @JsonProperty("Pending") BigDecimal pending,
+      @JsonProperty("Pending") Double pending,
       @JsonProperty("Requested") boolean requested,
       @JsonProperty("Uuid") String uuid) {
 
@@ -32,22 +31,22 @@ public class BittrexBalance {
     this.uuid = uuid;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
 
     return available;
   }
 
-  public void setAvailable(BigDecimal available) {
+  public void setAvailable(Double available) {
 
     this.available = available;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
 
     return balance;
   }
 
-  public void setBalance(BigDecimal balance) {
+  public void setBalance(Double balance) {
 
     this.balance = balance;
   }
@@ -72,12 +71,12 @@ public class BittrexBalance {
     this.currency = currency;
   }
 
-  public BigDecimal getPending() {
+  public Double getPending() {
 
     return pending;
   }
 
-  public void setPending(BigDecimal pending) {
+  public void setPending(Double pending) {
 
     this.pending = pending;
   }

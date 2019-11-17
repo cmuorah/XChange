@@ -2,7 +2,6 @@ package org.knowm.xchange.bitflyer.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /**
  * Object representing json returned from <code>GET /v1/me/getcoinins</code> or <code>
@@ -40,10 +39,10 @@ public class BitflyerCoinHistory extends BitflyerBaseHistoryResponse {
   String address;
 
   @JsonProperty("fee")
-  BigDecimal fee;
+  Double fee;
 
   @JsonProperty("additional_fee")
-  BigDecimal additionalFee;
+  Double additionalFee;
 
   @JsonProperty("tx_hash")
   String txHash;
@@ -56,19 +55,19 @@ public class BitflyerCoinHistory extends BitflyerBaseHistoryResponse {
     this.address = address;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public void setFee(BigDecimal fee) {
+  public void setFee(Double fee) {
     this.fee = fee;
   }
 
-  public BigDecimal getAdditionalFee() {
+  public Double getAdditionalFee() {
     return additionalFee;
   }
 
-  public void setAdditionalFee(BigDecimal additionalFee) {
+  public void setAdditionalFee(Double additionalFee) {
     this.additionalFee = additionalFee;
   }
 

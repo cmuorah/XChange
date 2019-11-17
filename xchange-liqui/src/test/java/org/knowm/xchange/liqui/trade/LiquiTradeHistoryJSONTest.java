@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.junit.Test;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -33,8 +32,8 @@ public class LiquiTradeHistoryJSONTest {
     assertThat(trade.getOrderId()).isEqualTo(110486609L);
     assertThat(trade.getTradeId()).isEqualTo(37225796L);
     assertThat(trade.getType()).isEqualTo(LiquiTradeType.SELL);
-    assertThat(trade.getAmount()).isEqualTo(new BigDecimal("335.0"));
-    assertThat(trade.getRate()).isEqualTo(new BigDecimal("0.0000003"));
+    assertThat(trade.getAmount()).isEqualTo(new Double("335.0"));
+    assertThat(trade.getRate()).isEqualTo(new Double("0.0000003"));
     assertThat(trade.getTimestamp()).isEqualTo(1510008279);
   }
 }

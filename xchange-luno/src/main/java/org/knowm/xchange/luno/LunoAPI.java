@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.luno.dto.LunoBoolean;
 import org.knowm.xchange.luno.dto.LunoException;
 import org.knowm.xchange.luno.dto.account.LunoAccount;
@@ -157,8 +156,8 @@ public interface LunoAPI {
   LunoPostOrder postLimitOrder(
       String pair,
       OrderType type,
-      BigDecimal volume,
-      BigDecimal price,
+      Double volume,
+      Double price,
       String baseAccountId,
       String counterAccountId)
       throws IOException, LunoException;
@@ -188,8 +187,8 @@ public interface LunoAPI {
   LunoPostOrder postMarketOrder(
       String pair,
       OrderType type,
-      BigDecimal counterVolume,
-      BigDecimal baseVolume,
+      Double counterVolume,
+      Double baseVolume,
       String baseAccountId,
       String counterAccountId)
       throws IOException, LunoException;
@@ -290,7 +289,7 @@ public interface LunoAPI {
    * @throws IOException
    * @throws LunoException
    */
-  Withdrawal requestWithdrawal(String type, BigDecimal amount, String beneficiaryId)
+  Withdrawal requestWithdrawal(String type, Double amount, String beneficiaryId)
       throws IOException, LunoException;
 
   /**
@@ -332,7 +331,7 @@ public interface LunoAPI {
    * @throws LunoException
    */
   LunoBoolean send(
-      BigDecimal amount, String currency, String address, String description, String message)
+      Double amount, String currency, String address, String description, String message)
       throws IOException, LunoException;
 
   /**
@@ -354,7 +353,7 @@ public interface LunoAPI {
    * @throws IOException
    * @throws LunoException
    */
-  LunoQuote createQuote(OrderType type, BigDecimal baseAmount, String pair)
+  LunoQuote createQuote(OrderType type, Double baseAmount, String pair)
       throws IOException, LunoException;
 
   /**

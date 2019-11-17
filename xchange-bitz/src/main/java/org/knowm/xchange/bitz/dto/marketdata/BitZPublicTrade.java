@@ -2,26 +2,24 @@ package org.knowm.xchange.bitz.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 // TODO: Extend POJO To Remove Annotation
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BitZPublicTrade {
 
-  private final BigDecimal price;
-  private final BigDecimal volume;
+  private final Double price;
+  private final Double volume;
 
-  public BitZPublicTrade(
-      @JsonProperty("p") BigDecimal price, @JsonProperty("n") BigDecimal volume) {
+  public BitZPublicTrade(@JsonProperty("p") Double price, @JsonProperty("n") Double volume) {
     this.price = price;
     this.volume = volume;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 }

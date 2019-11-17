@@ -2,7 +2,6 @@ package org.knowm.xchange.kraken.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Set;
 import org.knowm.xchange.kraken.dto.trade.KrakenOrderFlags.KrakenOrderFlagsDeserializer;
 
@@ -13,16 +12,16 @@ public class KrakenOpenPosition {
   private final long tradeUnixTimestamp;
   private final KrakenType type;
   private final KrakenOrderType orderType;
-  private final BigDecimal cost;
-  private final BigDecimal fee;
-  private final BigDecimal volume;
-  private final BigDecimal volumeClosed;
-  private final BigDecimal margin;
-  private final BigDecimal value;
-  private final BigDecimal netDifference;
+  private final Double cost;
+  private final Double fee;
+  private final Double volume;
+  private final Double volumeClosed;
+  private final Double margin;
+  private final Double value;
+  private final Double netDifference;
   private final String miscellaneous;
   private final Set<KrakenOrderFlags> orderFlags;
-  private final BigDecimal volumeInQuoteCurrency;
+  private final Double volumeInQuoteCurrency;
 
   /**
    * Constructor
@@ -49,17 +48,17 @@ public class KrakenOpenPosition {
       @JsonProperty("time") long tradeUnixTimestamp,
       @JsonProperty("type") KrakenType type,
       @JsonProperty("ordertype") KrakenOrderType orderType,
-      @JsonProperty("cost") BigDecimal cost,
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("vol") BigDecimal volume,
-      @JsonProperty("vol_closed") BigDecimal volumeClosed,
-      @JsonProperty("margin") BigDecimal margin,
-      @JsonProperty("volue") BigDecimal value,
-      @JsonProperty("net") BigDecimal netDifference,
+      @JsonProperty("cost") Double cost,
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("vol") Double volume,
+      @JsonProperty("vol_closed") Double volumeClosed,
+      @JsonProperty("margin") Double margin,
+      @JsonProperty("volue") Double value,
+      @JsonProperty("net") Double netDifference,
       @JsonProperty("misc") String miscellaneous,
       @JsonProperty("oflags") @JsonDeserialize(using = KrakenOrderFlagsDeserializer.class)
           Set<KrakenOrderFlags> orderFlags,
-      @JsonProperty("viqc") BigDecimal volumeInQuoteCurrency) {
+      @JsonProperty("viqc") Double volumeInQuoteCurrency) {
 
     this.orderTxId = orderTxId;
     this.assetPair = assetPair;
@@ -103,37 +102,37 @@ public class KrakenOpenPosition {
     return orderType;
   }
 
-  public BigDecimal getCost() {
+  public Double getCost() {
 
     return cost;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getVolumeClosed() {
+  public Double getVolumeClosed() {
 
     return volumeClosed;
   }
 
-  public BigDecimal getMargin() {
+  public Double getMargin() {
 
     return margin;
   }
 
-  public BigDecimal getValue() {
+  public Double getValue() {
 
     return value;
   }
 
-  public BigDecimal getNetDifference() {
+  public Double getNetDifference() {
 
     return netDifference;
   }
@@ -148,7 +147,7 @@ public class KrakenOpenPosition {
     return orderFlags;
   }
 
-  public BigDecimal getVolumeInQuoteCurrency() {
+  public Double getVolumeInQuoteCurrency() {
 
     return volumeInQuoteCurrency;
   }

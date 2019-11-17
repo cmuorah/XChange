@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -117,7 +116,7 @@ public class BitfinexTradeServiceRaw extends BitfinexBaseService {
                 String.valueOf(exchange.getNonceFactory().createValue()),
                 pair,
                 marketOrder.getOriginalAmount(),
-                BigDecimal.ONE,
+                1d,
                 "bitfinex",
                 type,
                 orderType,
@@ -167,7 +166,7 @@ public class BitfinexTradeServiceRaw extends BitfinexBaseService {
 
     BitfinexOrderStatusResponse response;
     if (replaceOrderId == Long.MIN_VALUE) { // order entry
-      BigDecimal ocoAmount =
+      Double ocoAmount =
           limitOrder instanceof BitfinexLimitOrder
               ? ((BitfinexLimitOrder) limitOrder).getOcoStopLimit()
               : null;
@@ -246,7 +245,7 @@ public class BitfinexTradeServiceRaw extends BitfinexBaseService {
         String orderType = bitfinexOrderType.toString();
         bitfinexOrders[i] =
             new BitfinexNewOrder(
-                pair, "bitfinex", type, orderType, marketOrder.getOriginalAmount(), BigDecimal.ONE);
+                pair, "bitfinex", type, orderType, marketOrder.getOriginalAmount(), 1d);
       }
     }
 
@@ -292,7 +291,7 @@ public class BitfinexTradeServiceRaw extends BitfinexBaseService {
                 String.valueOf(exchange.getNonceFactory().createValue()),
                 loanOrder.getCurrency(),
                 loanOrder.getOriginalAmount(),
-                new BigDecimal("0.0"),
+                new Double("0.0"),
                 loanOrder.getDayPeriod(),
                 direction));
     return newOrderResponse;
@@ -437,18 +436,13 @@ public class BitfinexTradeServiceRaw extends BitfinexBaseService {
     return credits;
   }
 
-  public String withdraw(
-      String withdrawType, String walletSelected, BigDecimal amount, String address)
+  public String withdraw(String withdrawType, String walletSelected, Double amount, String address)
       throws IOException {
     return withdraw(withdrawType, walletSelected, amount, address, null);
   }
 
   public String withdraw(
-      String withdrawType,
-      String walletSelected,
-      BigDecimal amount,
-      String address,
-      String paymentId)
+      String withdrawType, String walletSelected, Double amount, String address, String paymentId)
       throws IOException {
 
     BitfinexWithdrawalResponse[] withdrawRepsonse =

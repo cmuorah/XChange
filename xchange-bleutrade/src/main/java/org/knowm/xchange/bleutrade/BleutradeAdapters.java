@@ -1,6 +1,5 @@
 package org.knowm.xchange.bleutrade;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -79,7 +78,7 @@ public class BleutradeAdapters {
       LimitOrder.Builder builder = new LimitOrder.Builder(OrderType.ASK, currencyPair);
       builder.limitPrice(ask.getRate());
       builder.originalAmount(ask.getQuantity());
-      builder.cumulativeAmount(BigDecimal.ZERO);
+      builder.cumulativeAmount(0d);
       asks.add(builder.build());
     }
 
@@ -88,7 +87,7 @@ public class BleutradeAdapters {
       LimitOrder.Builder builder = new LimitOrder.Builder(OrderType.BID, currencyPair);
       builder.limitPrice(bid.getRate());
       builder.originalAmount(bid.getQuantity());
-      builder.cumulativeAmount(BigDecimal.ZERO);
+      builder.cumulativeAmount(0d);
       bids.add(builder.build());
     }
 
@@ -164,7 +163,7 @@ public class BleutradeAdapters {
     }
 
     // https://bleutrade.com/help/fees_and_deadlines 11/25/2015 all == 0.25%
-    BigDecimal txFee = new BigDecimal("0.0025");
+    Double txFee = new Double("0.0025");
 
     for (BleutradeMarket bleutradeMarket : bleutradeMarkets) {
       CurrencyPair currencyPair =

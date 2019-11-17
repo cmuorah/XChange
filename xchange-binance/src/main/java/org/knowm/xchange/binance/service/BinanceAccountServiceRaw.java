@@ -2,7 +2,6 @@ package org.knowm.xchange.binance.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.binance.BinanceAdapters;
@@ -25,14 +24,14 @@ public class BinanceAccountServiceRaw extends BinanceBaseService {
   // the /wapi endpoint of binance is not stable yet and can be changed in future, there is also a
   // lack of current documentation
 
-  public String withdraw(String asset, String address, BigDecimal amount)
+  public String withdraw(String asset, String address, Double amount)
       throws IOException, BinanceException {
     // the name parameter seams to be mandatory
     String name = address.length() <= 10 ? address : address.substring(0, 10);
     return withdraw(asset, address, amount, name, null, getTimestamp());
   }
 
-  public String withdraw(String asset, String address, String addressTag, BigDecimal amount)
+  public String withdraw(String asset, String address, String addressTag, Double amount)
       throws IOException, BinanceException {
     // the name parameter seams to be mandatory
     String name = address.length() <= 10 ? address : address.substring(0, 10);
@@ -42,7 +41,7 @@ public class BinanceAccountServiceRaw extends BinanceBaseService {
   }
 
   private String withdraw(
-      String asset, String address, BigDecimal amount, String name, Long recvWindow, long timestamp)
+      String asset, String address, Double amount, String name, Long recvWindow, long timestamp)
       throws IOException, BinanceException {
     WithdrawRequest result =
         binance.withdraw(
@@ -63,7 +62,7 @@ public class BinanceAccountServiceRaw extends BinanceBaseService {
       String asset,
       String address,
       String addressTag,
-      BigDecimal amount,
+      Double amount,
       String name,
       Long recvWindow,
       long timestamp)

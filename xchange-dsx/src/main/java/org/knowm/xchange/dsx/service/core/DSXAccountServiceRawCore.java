@@ -1,7 +1,6 @@
 package org.knowm.xchange.dsx.service.core;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.dsx.DSXAuthenticatedV2;
@@ -53,8 +52,7 @@ public class DSXAccountServiceRawCore<T extends DSXAuthenticatedV2> extends DSXB
    * @return Transaction ID
    * @throws IOException
    */
-  public long withdrawCrypto(
-      String currency, String address, BigDecimal amount, BigDecimal commission)
+  public long withdrawCrypto(String currency, String address, Double amount, Double commission)
       throws IOException {
     DSXCryptoWithdrawReturn info =
         dsx.cryptoWithdraw(
@@ -69,7 +67,7 @@ public class DSXAccountServiceRawCore<T extends DSXAuthenticatedV2> extends DSXB
     return info.getReturnValue().getTransactionId();
   }
 
-  public long withdrawFiat(String currency, BigDecimal amount) throws IOException {
+  public long withdrawFiat(String currency, Double amount) throws IOException {
     DSXFiatWithdrawReturn info =
         dsx.fiatWithdraw(apiKey, signatureCreator, exchange.getNonceFactory(), currency, amount);
     checkResult(info);

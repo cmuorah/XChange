@@ -3,7 +3,6 @@ package org.knowm.xchange.okcoin.v3.dto.trade;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Data;
 
@@ -47,13 +46,13 @@ public class SpotOrderPlacementRequest {
   private OrderPlacementType orderType;
 
   /** required, quantity bought or sold */
-  private BigDecimal size;
+  private Double size;
 
   // Limit Order Parameters
   /** required, price */
-  private BigDecimal price;
+  private Double price;
 
   // Market Order Parameters
   /** required, amount bought. (for orders bought at market price only) */
-  private BigDecimal notional;
+  private Double notional;
 }

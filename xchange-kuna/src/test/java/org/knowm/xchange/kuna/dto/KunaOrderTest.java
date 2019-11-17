@@ -2,9 +2,6 @@ package org.knowm.xchange.kuna.dto;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
-import static java.math.BigDecimal.ONE;
-import static java.math.BigDecimal.TEN;
-import static java.math.BigDecimal.ZERO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.knowm.xchange.kuna.dto.enums.KunaOrderType.LIMIT;
@@ -78,7 +75,7 @@ public class KunaOrderTest {
 
   @Test
   public void test_price() {
-    assertEquals(ZERO, KunaOrder.builder().withPrice(ZERO).build().getPrice());
+    assertEquals(0d, KunaOrder.builder().withPrice(0d).build().getPrice());
     assertEquals(ONE, KunaOrder.builder().withPrice(ONE).build().getPrice());
     assertEquals(TEN, KunaOrder.builder().withPrice(TEN).build().getPrice());
 
@@ -87,7 +84,7 @@ public class KunaOrderTest {
 
   @Test
   public void test_average_price() {
-    assertEquals(ZERO, KunaOrder.builder().withAveragePrice(ZERO).build().getAveragePrice());
+    assertEquals(0d, KunaOrder.builder().withAveragePrice(0d).build().getAveragePrice());
     assertEquals(ONE, KunaOrder.builder().withAveragePrice(ONE).build().getAveragePrice());
     assertEquals(TEN, KunaOrder.builder().withAveragePrice(TEN).build().getAveragePrice());
 
@@ -124,7 +121,7 @@ public class KunaOrderTest {
 
   @Test
   public void test_volume() {
-    assertEquals(ZERO, KunaOrder.builder().withVolume(ZERO).build().getVolume());
+    assertEquals(0d, KunaOrder.builder().withVolume(0d).build().getVolume());
     assertEquals(ONE, KunaOrder.builder().withVolume(ONE).build().getVolume());
     assertEquals(TEN, KunaOrder.builder().withVolume(TEN).build().getVolume());
 
@@ -133,7 +130,7 @@ public class KunaOrderTest {
 
   @Test
   public void test_remaining_volume() {
-    assertEquals(ZERO, KunaOrder.builder().withRemainingVolume(ZERO).build().getRemainingVolume());
+    assertEquals(ZERO, KunaOrder.builder().withRemainingVolume(0d).build().getRemainingVolume());
     assertEquals(ONE, KunaOrder.builder().withRemainingVolume(ONE).build().getRemainingVolume());
     assertEquals(TEN, KunaOrder.builder().withRemainingVolume(TEN).build().getRemainingVolume());
 
@@ -142,7 +139,7 @@ public class KunaOrderTest {
 
   @Test
   public void test_executed_volume() {
-    assertEquals(ZERO, KunaOrder.builder().withExecutedVolume(ZERO).build().getExecutedVolume());
+    assertEquals(0d, KunaOrder.builder().withExecutedVolume(0d).build().getExecutedVolume());
     assertEquals(ONE, KunaOrder.builder().withExecutedVolume(ONE).build().getExecutedVolume());
     assertEquals(TEN, KunaOrder.builder().withExecutedVolume(TEN).build().getExecutedVolume());
 

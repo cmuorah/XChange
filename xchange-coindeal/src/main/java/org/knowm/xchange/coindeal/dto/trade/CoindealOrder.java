@@ -1,7 +1,6 @@
 package org.knowm.xchange.coindeal.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoindealOrder {
 
@@ -21,13 +20,13 @@ public class CoindealOrder {
   private final String status;
 
   @JsonProperty("quantity")
-  private final BigDecimal quantity;
+  private final Double quantity;
 
   @JsonProperty("price")
-  private final BigDecimal price;
+  private final Double price;
 
   @JsonProperty("cumQuantity")
-  private final BigDecimal cumQuantity;
+  private final Double cumQuantity;
 
   @JsonProperty("createdAt")
   private final String createdAt;
@@ -36,7 +35,7 @@ public class CoindealOrder {
   private final String updatedAt;
 
   @JsonProperty("stopPrice")
-  private final BigDecimal stopPrice;
+  private final Double stopPrice;
 
   @JsonProperty("expireTime")
   private final String expireTime;
@@ -47,12 +46,12 @@ public class CoindealOrder {
       @JsonProperty("symbol") String symbol,
       @JsonProperty("side") String side,
       @JsonProperty("status") String status,
-      @JsonProperty("quantity") BigDecimal quantity,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("cumQuantity") BigDecimal cumQuantity,
+      @JsonProperty("quantity") Double quantity,
+      @JsonProperty("price") Double price,
+      @JsonProperty("cumQuantity") Double cumQuantity,
       @JsonProperty("createdAt") String createdAt,
       @JsonProperty("updatedAt") String updatedAt,
-      @JsonProperty("stopPrice") BigDecimal stopPrice,
+      @JsonProperty("stopPrice") Double stopPrice,
       @JsonProperty("expireTime") String expireTime) {
     this.id = id;
     this.clientOrderId = clientOrderId;
@@ -88,15 +87,15 @@ public class CoindealOrder {
     return status;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getCumQuantity() {
+  public Double getCumQuantity() {
     return cumQuantity;
   }
 
@@ -108,7 +107,7 @@ public class CoindealOrder {
     return updatedAt;
   }
 
-  public BigDecimal getStopPrice() {
+  public Double getStopPrice() {
     return stopPrice;
   }
 

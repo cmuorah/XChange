@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.cryptonit2.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.cryptonit2.CryptonitAuthenticatedV2.Side;
 import org.knowm.xchange.cryptonit2.dto.trade.CryptonitOrder;
@@ -50,11 +49,11 @@ public class CryptonitTradeDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (OrderType.BID),
-            new BigDecimal(".01"),
+            new Double(".01"),
             CurrencyPair.BTC_EUR,
             null,
             null,
-            new BigDecimal("500.00"));
+            new Double("500.00"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 
@@ -82,7 +81,7 @@ public class CryptonitTradeDemo {
     // place a limit buy order
     CryptonitOrder order =
         tradeService.placeCryptonitOrder(
-            CurrencyPair.BTC_EUR, Side.sell, new BigDecimal(".001"), new BigDecimal("1000.00"));
+            CurrencyPair.BTC_EUR, Side.sell, new Double(".001"), new Double("1000.00"));
     System.out.println("CryptonitOrder return value: " + order);
 
     printRawOpenOrders(tradeService);

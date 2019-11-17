@@ -1,36 +1,35 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexOfferStatusResponse {
 
   private final long id;
   private final String currency;
-  private final BigDecimal rate;
+  private final Double rate;
   private final int period;
   private final String direction;
   private final String type;
-  private final BigDecimal timestamp;
+  private final Double timestamp;
   private final boolean isLive;
   private final boolean isCancelled;
-  private final BigDecimal originalAmount;
-  private final BigDecimal remainingAmount;
-  private final BigDecimal executedAmount;
+  private final Double originalAmount;
+  private final Double remainingAmount;
+  private final Double executedAmount;
 
   public BitfinexOfferStatusResponse(
       @JsonProperty("id") long id,
       @JsonProperty("currency") String currency,
-      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("rate") Double rate,
       @JsonProperty("period") int period,
       @JsonProperty("direction") String direction,
       @JsonProperty("type") String type,
-      @JsonProperty("timestamp") BigDecimal timestamp,
+      @JsonProperty("timestamp") Double timestamp,
       @JsonProperty("is_live") boolean isLive,
       @JsonProperty("is_cancelled") boolean isCancelled,
-      @JsonProperty("original_amount") BigDecimal originalAmount,
-      @JsonProperty("remaining_amount") BigDecimal remainingAmount,
-      @JsonProperty("executed_amount") BigDecimal executedAmount) {
+      @JsonProperty("original_amount") Double originalAmount,
+      @JsonProperty("remaining_amount") Double remainingAmount,
+      @JsonProperty("executed_amount") Double executedAmount) {
 
     this.id = id;
     this.currency = currency;
@@ -56,7 +55,7 @@ public class BitfinexOfferStatusResponse {
     return currency;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
 
     return rate;
   }
@@ -76,7 +75,7 @@ public class BitfinexOfferStatusResponse {
     return type;
   }
 
-  public BigDecimal getTimestamp() {
+  public Double getTimestamp() {
 
     return timestamp;
   }
@@ -91,17 +90,17 @@ public class BitfinexOfferStatusResponse {
     return isCancelled;
   }
 
-  public BigDecimal getOriginalAmount() {
+  public Double getOriginalAmount() {
 
     return originalAmount;
   }
 
-  public BigDecimal getRemainingAmount() {
+  public Double getRemainingAmount() {
 
     return remainingAmount;
   }
 
-  public BigDecimal getExecutedAmount() {
+  public Double getExecutedAmount() {
 
     return executedAmount;
   }

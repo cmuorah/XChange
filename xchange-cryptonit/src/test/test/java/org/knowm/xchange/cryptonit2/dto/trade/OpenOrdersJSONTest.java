@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
+
 import org.junit.Test;
 
 /** Test Transaction[] JSON parsing */
@@ -27,7 +27,7 @@ public class OpenOrdersJSONTest {
 
     // Verify that the example data was unmarshalled correctly
     assertThat(orders[1].getId()).isEqualTo(1262468);
-    assertThat(orders[1].getPrice()).isEqualTo(new BigDecimal("12.15"));
-    assertThat(orders[1].getAmount()).isEqualTo(new BigDecimal("3.00000000"));
+    assertThat(orders[1].getPrice()).isEqualTo(new Double("12.15"));
+    assertThat(orders[1].getAmount()).isEqualTo(new Double("3.00000000"));
   }
 }

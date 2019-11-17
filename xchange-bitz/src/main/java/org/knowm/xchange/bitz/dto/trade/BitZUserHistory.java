@@ -1,39 +1,38 @@
 package org.knowm.xchange.bitz.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class BitZUserHistory {
   private final long id;
   private final long uid;
-  private final BigDecimal price;
-  private final BigDecimal number;
-  private final BigDecimal total;
-  private final BigDecimal numberOver;
-  private final BigDecimal numberDeal;
+  private final Double price;
+  private final Double number;
+  private final Double total;
+  private final Double numberOver;
+  private final Double numberDeal;
   private final String flag;
   private final Integer status;
   private final String isNew;
   private final String coinFrom;
   private final String coinTo;
-  private final BigDecimal orderTotalPrice;
+  private final Double orderTotalPrice;
   private final Date created;
 
   public BitZUserHistory(
       @JsonProperty("id") long id,
       @JsonProperty("uid") long uid,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("number") BigDecimal number,
-      @JsonProperty("total") BigDecimal total,
-      @JsonProperty("numberOver") BigDecimal numberOver,
-      @JsonProperty("numberDeal") BigDecimal numberDeal,
+      @JsonProperty("price") Double price,
+      @JsonProperty("number") Double number,
+      @JsonProperty("total") Double total,
+      @JsonProperty("numberOver") Double numberOver,
+      @JsonProperty("numberDeal") Double numberDeal,
       @JsonProperty("flag") String flag,
       @JsonProperty("status") Integer status,
       @JsonProperty("isNew") String isNew,
       @JsonProperty("coinFrom") String coinFrom,
       @JsonProperty("coinTo") String coinTo,
-      @JsonProperty("orderTotalPrice") BigDecimal orderTotalPrice,
+      @JsonProperty("orderTotalPrice") Double orderTotalPrice,
       @JsonProperty("created") long created) {
     this.id = id;
     this.uid = uid;
@@ -59,23 +58,23 @@ public class BitZUserHistory {
     return uid;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getNumber() {
+  public Double getNumber() {
     return number;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 
-  public BigDecimal getNumberOver() {
+  public Double getNumberOver() {
     return numberOver;
   }
 
-  public BigDecimal getNumberDeal() {
+  public Double getNumberDeal() {
     return numberDeal;
   }
 
@@ -103,7 +102,7 @@ public class BitZUserHistory {
     return created;
   }
 
-  public BigDecimal getOrderTotalPrice() {
+  public Double getOrderTotalPrice() {
     return orderTotalPrice;
   }
 

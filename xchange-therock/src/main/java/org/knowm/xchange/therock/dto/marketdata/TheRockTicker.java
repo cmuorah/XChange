@@ -3,7 +3,6 @@ package org.knowm.xchange.therock.dto.marketdata;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.utils.jackson.CurrencyPairDeserializer;
@@ -17,7 +16,7 @@ public class TheRockTicker {
 
   private Date date;
 
-  private BigDecimal bid, ask, last, volume, volumeTraded, open, high, low, close;
+  private Double bid, ask, last, volume, volumeTraded, open, high, low, close;
 
   public CurrencyPair getFundId() {
     return fundId;
@@ -27,39 +26,39 @@ public class TheRockTicker {
     return date;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getVolumeTraded() {
+  public Double getVolumeTraded() {
     return volumeTraded;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
     return close;
   }
 

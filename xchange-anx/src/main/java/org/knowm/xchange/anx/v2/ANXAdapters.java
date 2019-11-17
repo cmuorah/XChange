@@ -1,6 +1,5 @@
 package org.knowm.xchange.anx.v2;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -56,8 +55,8 @@ public final class ANXAdapters {
     return accountInfo;
   }
 
-  public static BigDecimal percentToFactor(BigDecimal percent) {
-    return percent.movePointLeft(PERCENT_DECIMAL_SHIFT);
+  public static Double percentToFactor(Double percent) {
+    return percent / 100.0;
   }
 
   /**
@@ -68,8 +67,8 @@ public final class ANXAdapters {
    * @return
    */
   public static LimitOrder adaptOrder(
-      BigDecimal originalAmount,
-      BigDecimal price,
+      Double originalAmount,
+      Double price,
       String tradedCurrency,
       String transactionCurrency,
       String orderTypeString,
@@ -179,17 +178,17 @@ public final class ANXAdapters {
   //
   // OrderType orderType = anxDepthUpdate.getTradeType().equals("bid") ? OrderType.BID :
   // OrderType.ASK;
-  // BigDecimal volume = new BigDecimal(anxDepthUpdate.getVolumeInt()).divide(new
-  // BigDecimal(ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR));
+  // Double volume = new Double(anxDepthUpdate.getVolumeInt()).divide(new
+  // Double(ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR));
   //
   // String tradableIdentifier = anxDepthUpdate.getItem();
   // String transactionCurrency = anxDepthUpdate.getCurrency();
   // CurrencyPair currencyPair = new CurrencyPair(tradableIdentifier, transactionCurrency);
   //
-  // BigDecimal price = ANXUtils.getPrice(anxDepthUpdate.getPriceInt());
+  // Double price = ANXUtils.getPrice(anxDepthUpdate.getPriceInt());
   //
-  // BigDecimal totalVolume = new BigDecimal(anxDepthUpdate.getTotalVolumeInt()).divide(new
-  // BigDecimal(ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR));
+  // Double totalVolume = new Double(anxDepthUpdate.getTotalVolumeInt()).divide(new
+  // Double(ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR));
   // Date date = new Date(anxDepthUpdate.getNow() / 1000);
   //
   // OrderBookUpdate orderBookUpdate = new OrderBookUpdate(orderType, volume, currencyPair, price,
@@ -227,8 +226,8 @@ public final class ANXAdapters {
   public static Trade adaptTrade(ANXTrade anxTrade) {
 
     OrderType orderType = adaptSide(anxTrade.getTradeType());
-    BigDecimal amount = anxTrade.getAmount();
-    BigDecimal price = anxTrade.getPrice();
+    Double amount = anxTrade.getAmount();
+    Double price = anxTrade.getPrice();
     CurrencyPair currencyPair = adaptCurrencyPair(anxTrade.getItem(), anxTrade.getPriceCurrency());
     Date dateTime = DateUtils.fromMillisUtc(anxTrade.getTid());
     final String tradeId = String.valueOf(anxTrade.getTid());
@@ -238,12 +237,12 @@ public final class ANXAdapters {
 
   public static Ticker adaptTicker(ANXTicker anxTicker) {
 
-    BigDecimal volume = anxTicker.getVol().getValue();
-    BigDecimal last = anxTicker.getLast().getValue();
-    BigDecimal bid = anxTicker.getBuy().getValue();
-    BigDecimal ask = anxTicker.getSell().getValue();
-    BigDecimal high = anxTicker.getHigh().getValue();
-    BigDecimal low = anxTicker.getLow().getValue();
+    Double volume = anxTicker.getVol().getValue();
+    Double last = anxTicker.getLast().getValue();
+    Double bid = anxTicker.getBuy().getValue();
+    Double ask = anxTicker.getSell().getValue();
+    Double high = anxTicker.getHigh().getValue();
+    Double low = anxTicker.getLow().getValue();
     Date timestamp = new Date(anxTicker.getNow() / 1000);
 
     CurrencyPair currencyPair =
@@ -279,13 +278,9 @@ public final class ANXAdapters {
 
   private static UserTrade adaptUserTrade(ANXTradeResult aNXTradeResult, ANXMetaData meta) {
 
-    BigDecimal tradedCurrencyFillAmount = aNXTradeResult.getTradedCurrencyFillAmount();
+    Double tradedCurrencyFillAmount = aNXTradeResult.getTradedCurrencyFillAmount();
     CurrencyPair currencyPair = adaptCurrencyPair(aNXTradeResult.getCurrencyPair());
-    int priceScale = meta.getCurrencyPairs().get(currencyPair).getPriceScale();
-    BigDecimal price =
-        aNXTradeResult
-            .getSettlementCurrencyFillAmount()
-            .divide(tradedCurrencyFillAmount, priceScale, BigDecimal.ROUND_HALF_EVEN);
+    Double price = aNXTradeResult.getSettlementCurrencyFillAmount() / tradedCurrencyFillAmount;
     OrderType type = adaptSide(aNXTradeResult.getSide());
     // for fees, getWalletHistory should be used.
     return new UserTrade(
@@ -356,7 +351,7 @@ public final class ANXAdapters {
     else if (entryType.equalsIgnoreCase("withdraw")) type = FundingRecord.Type.WITHDRAWAL;
     else throw new IllegalStateException("should not get here");
 
-    BigDecimal fee = null;
+    Double fee = null;
     if (feeEntry != null) {
       if (!feeEntry.getType().equalsIgnoreCase("fee")) {
         throw new IllegalStateException("feeEntry not null and not of type fee " + feeEntry);

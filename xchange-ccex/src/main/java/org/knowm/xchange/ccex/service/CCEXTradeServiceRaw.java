@@ -67,8 +67,8 @@ public class CCEXTradeServiceRaw extends CCEXBaseService {
               exchange.getNonceFactory(),
               lpair,
               rpair,
-              limitOrder.getOriginalAmount().toPlainString(),
-              limitOrder.getLimitPrice().toPlainString());
+              limitOrder.getOriginalAmount().toString(),
+              limitOrder.getLimitPrice().toString());
 
       if (response.isSuccess()) {
         return response.getResult().getUuid();
@@ -84,8 +84,8 @@ public class CCEXTradeServiceRaw extends CCEXBaseService {
               exchange.getNonceFactory(),
               lpair,
               rpair,
-              limitOrder.getOriginalAmount().toPlainString(),
-              limitOrder.getLimitPrice().toPlainString());
+              limitOrder.getOriginalAmount().toString(),
+              limitOrder.getLimitPrice().toString());
 
       if (response.isSuccess()) {
         return response.getResult().getUuid();

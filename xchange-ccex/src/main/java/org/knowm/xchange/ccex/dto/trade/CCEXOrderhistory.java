@@ -1,7 +1,6 @@
 package org.knowm.xchange.ccex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CCEXOrderhistory {
 
@@ -9,12 +8,12 @@ public class CCEXOrderhistory {
   private String Exchange;
   private String TimeStamp;
   private String OrderType;
-  private BigDecimal Limit;
-  private BigDecimal Quantity;
-  private BigDecimal QuantityRemaining;
-  private BigDecimal Commission;
-  private BigDecimal Price;
-  private BigDecimal PricePerUnit;
+  private Double Limit;
+  private Double Quantity;
+  private Double QuantityRemaining;
+  private Double Commission;
+  private Double Price;
+  private Double PricePerUnit;
   private boolean IsConditional;
   private String Condition;
   private String ConditionTarget;
@@ -25,12 +24,12 @@ public class CCEXOrderhistory {
       @JsonProperty("Exchange") String exchange,
       @JsonProperty("TimeStamp") String timeStamp,
       @JsonProperty("OrderType") String orderType,
-      @JsonProperty("Limit") BigDecimal limit,
-      @JsonProperty("Quantity") BigDecimal quantity,
-      @JsonProperty("QuantityRemaining") BigDecimal quantityRemaining,
-      @JsonProperty("Commission") BigDecimal commission,
-      @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("PricePerUnit") BigDecimal pricePerUnit,
+      @JsonProperty("Limit") Double limit,
+      @JsonProperty("Quantity") Double quantity,
+      @JsonProperty("QuantityRemaining") Double quantityRemaining,
+      @JsonProperty("Commission") Double commission,
+      @JsonProperty("Price") Double price,
+      @JsonProperty("PricePerUnit") Double pricePerUnit,
       @JsonProperty("IsConditional") boolean isConditional,
       @JsonProperty("Condition") String condition,
       @JsonProperty("ConditionTarget") String conditionTarget,
@@ -84,51 +83,51 @@ public class CCEXOrderhistory {
     OrderType = orderType;
   }
 
-  public BigDecimal getLimit() {
+  public Double getLimit() {
     return Limit;
   }
 
-  public void setLimit(BigDecimal limit) {
+  public void setLimit(Double limit) {
     Limit = limit;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return Quantity;
   }
 
-  public void setQuantity(BigDecimal quantity) {
+  public void setQuantity(Double quantity) {
     Quantity = quantity;
   }
 
-  public BigDecimal getQuantityRemaining() {
+  public Double getQuantityRemaining() {
     return QuantityRemaining;
   }
 
-  public void setQuantityRemaining(BigDecimal quantityRemaining) {
+  public void setQuantityRemaining(Double quantityRemaining) {
     QuantityRemaining = quantityRemaining;
   }
 
-  public BigDecimal getCommission() {
+  public Double getCommission() {
     return Commission;
   }
 
-  public void setCommission(BigDecimal commission) {
+  public void setCommission(Double commission) {
     Commission = commission;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return Price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     Price = price;
   }
 
-  public BigDecimal getPricePerUnit() {
+  public Double getPricePerUnit() {
     return PricePerUnit;
   }
 
-  public void setPricePerUnit(BigDecimal pricePerUnit) {
+  public void setPricePerUnit(Double pricePerUnit) {
     PricePerUnit = pricePerUnit;
   }
 

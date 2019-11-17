@@ -1,7 +1,6 @@
 package org.knowm.xchange.wex.v3.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -39,8 +38,7 @@ public class WexAccountService extends WexAccountServiceRaw implements AccountSe
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return withdraw(WexAdapters.adaptCurrencyOut(currency), amount, address);
   }
 

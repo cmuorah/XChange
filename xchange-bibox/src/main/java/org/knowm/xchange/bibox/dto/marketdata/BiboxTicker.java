@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -28,31 +27,31 @@ import javax.annotation.Generated;
 public class BiboxTicker {
 
   @JsonProperty("buy")
-  private BigDecimal buy;
+  private Double buy;
 
   @JsonProperty("high")
-  private BigDecimal high;
+  private Double high;
 
   @JsonProperty("last")
-  private BigDecimal last;
+  private Double last;
 
   @JsonProperty("low")
-  private BigDecimal low;
+  private Double low;
 
   @JsonProperty("sell")
-  private BigDecimal sell;
+  private Double sell;
 
   @JsonProperty("timestamp")
   private long timestamp;
 
   @JsonProperty("vol")
-  private BigDecimal vol;
+  private Double vol;
 
   @JsonProperty("last_cny")
-  private BigDecimal lastCny;
+  private Double lastCny;
 
   @JsonProperty("last_usd")
-  private BigDecimal lastUsd;
+  private Double lastUsd;
   // yes, I'm lazy
   @JsonProperty("percent")
   private String percent;
@@ -61,61 +60,61 @@ public class BiboxTicker {
 
   /** @return The buy */
   @JsonProperty("buy")
-  public BigDecimal getBuy() {
+  public Double getBuy() {
     return buy;
   }
 
   /** @param buy The buy */
   @JsonProperty("buy")
-  public void setBuy(BigDecimal buy) {
+  public void setBuy(Double buy) {
     this.buy = buy;
   }
 
   /** @return The high */
   @JsonProperty("high")
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
   /** @param high The high */
   @JsonProperty("high")
-  public void setHigh(BigDecimal high) {
+  public void setHigh(Double high) {
     this.high = high;
   }
 
   /** @return The last */
   @JsonProperty("last")
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
   /** @param last The last */
   @JsonProperty("last")
-  public void setLast(BigDecimal last) {
+  public void setLast(Double last) {
     this.last = last;
   }
 
   /** @return The low */
   @JsonProperty("low")
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
   /** @param low The low */
   @JsonProperty("low")
-  public void setLow(BigDecimal low) {
+  public void setLow(Double low) {
     this.low = low;
   }
 
   /** @return The sell */
   @JsonProperty("sell")
-  public BigDecimal getSell() {
+  public Double getSell() {
     return sell;
   }
 
   /** @param sell The sell */
   @JsonProperty("sell")
-  public void setSell(BigDecimal sell) {
+  public void setSell(Double sell) {
     this.sell = sell;
   }
 
@@ -133,37 +132,37 @@ public class BiboxTicker {
 
   /** @return The vol */
   @JsonProperty("vol")
-  public BigDecimal getVol() {
+  public Double getVol() {
     return vol;
   }
 
   /** @param vol The vol */
   @JsonProperty("vol")
-  public void setVol(BigDecimal vol) {
+  public void setVol(Double vol) {
     this.vol = vol;
   }
 
   /** @return The lastCny */
   @JsonProperty("last_cny")
-  public BigDecimal getLastCny() {
+  public Double getLastCny() {
     return lastCny;
   }
 
   /** @param lastCny The last_cny */
   @JsonProperty("last_cny")
-  public void setLastCny(BigDecimal lastCny) {
+  public void setLastCny(Double lastCny) {
     this.lastCny = lastCny;
   }
 
   /** @return The lastUsd */
   @JsonProperty("last_usd")
-  public BigDecimal getLastUsd() {
+  public Double getLastUsd() {
     return lastUsd;
   }
 
   /** @param lastUsd The last_usd */
   @JsonProperty("last_usd")
-  public void setLastUsd(BigDecimal lastUsd) {
+  public void setLastUsd(Double lastUsd) {
     this.lastUsd = lastUsd;
   }
 

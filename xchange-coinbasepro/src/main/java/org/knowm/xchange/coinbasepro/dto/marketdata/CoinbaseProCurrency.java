@@ -1,11 +1,10 @@
 package org.knowm.xchange.coinbasepro.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseProCurrency {
 
-  private final BigDecimal maxPrecision;
+  private final Double maxPrecision;
   private final String name;
   private final String minSize;
   private final CoinbaseProCurrencyDetails details;
@@ -14,7 +13,7 @@ public class CoinbaseProCurrency {
   private final String status;
 
   public CoinbaseProCurrency(
-      @JsonProperty("max_precision") BigDecimal maxPrecision,
+      @JsonProperty("max_precision") Double maxPrecision,
       @JsonProperty("name") String name,
       @JsonProperty("min_size") String minSize,
       @JsonProperty("details") CoinbaseProCurrencyDetails details,
@@ -30,7 +29,7 @@ public class CoinbaseProCurrency {
     this.status = status;
   }
 
-  public BigDecimal getMaxPrecision() {
+  public Double getMaxPrecision() {
     return maxPrecision;
   }
 

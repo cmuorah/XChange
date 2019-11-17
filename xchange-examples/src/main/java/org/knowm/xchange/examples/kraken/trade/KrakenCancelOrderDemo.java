@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.kraken.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -35,11 +34,11 @@ public class KrakenCancelOrderDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (OrderType.ASK),
-            new BigDecimal(".01"),
+            new Double(".01"),
             CurrencyPair.BTC_LTC,
             "",
             null,
-            new BigDecimal("51.25"));
+            new Double("51.25"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 
@@ -61,11 +60,11 @@ public class KrakenCancelOrderDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (OrderType.ASK),
-            new BigDecimal(".01"),
+            new Double(".01"),
             CurrencyPair.BTC_LTC,
             "",
             null,
-            new BigDecimal("51.25"));
+            new Double("51.25"));
     KrakenOrderResponse limitOrderReturnValue = tradeService.placeKrakenLimitOrder(limitOrder);
 
     System.out.println("Limit Order return value: " + limitOrderReturnValue);

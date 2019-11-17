@@ -1,11 +1,7 @@
 package org.knowm.xchange.bitbay.v3.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import org.knowm.xchange.bitbay.v3.BitbayExchange;
 import org.knowm.xchange.bitbay.v3.dto.BitbayBalances;
 import org.knowm.xchange.bitbay.v3.dto.trade.BitbayBalancesHistoryQuery;
@@ -32,7 +28,7 @@ public class BitbayAccountService extends BitbayAccountServiceRaw implements Acc
     for (BitbayBalances.BitbayBalance balance : balances()) {
       Wallet wallet =
           Wallet.Builder.from(
-                  Arrays.asList(
+                  Collections.singletonList(
                       new Balance(
                           Currency.getInstance(balance.getCurrency()),
                           balance.getTotalFunds(),
@@ -90,13 +86,13 @@ public class BitbayAccountService extends BitbayAccountServiceRaw implements Acc
         .setType(type)
         .setBlockchainTransactionHash(null) // not available in the API yet
         .setAddress(null) // not available in the API yet
-        .setAmount(new BigDecimal(item.get("value").toString()).abs())
+        .setAmount(Math.abs(Double.parseDouble(item.get("value").toString())))
         .setCurrency(Currency.getInstance(((Map) item.get("balance")).get("currency").toString()))
-        .setDate(DateUtils.fromMillisUtc(Long.valueOf(item.get("time").toString())))
+        .setDate(DateUtils.fromMillisUtc(Long.parseLong(item.get("time").toString())))
         .setInternalId(item.get("historyId").toString()) // could be detailId maybe?
         .setFee(null) // not available in the API yet
         .setStatus(FundingRecord.Status.COMPLETE)
-        .setBalance(new BigDecimal(((Map) item.get("fundsAfter")).get("total").toString()))
+        .setBalance(new Double(((Map) item.get("fundsAfter")).get("total").toString()))
         .build();
   }
 }

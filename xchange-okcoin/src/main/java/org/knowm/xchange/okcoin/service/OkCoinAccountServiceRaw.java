@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.okcoin.dto.account.OKCoinWithdraw;
@@ -68,7 +67,7 @@ public class OkCoinAccountServiceRaw extends OKCoinBaseTradeService {
   }
 
   public OKCoinWithdraw withdraw(
-      String currencySymbol, String withdrawAddress, BigDecimal amount, String target)
+      String currencySymbol, String withdrawAddress, Double amount, String target)
       throws IOException {
     String fee = null;
     if (target.equals("address")) { // External address
@@ -88,7 +87,7 @@ public class OkCoinAccountServiceRaw extends OKCoinBaseTradeService {
   }
 
   public OKCoinWithdraw withdraw(
-      String currencySymbol, String withdrawAddress, BigDecimal amount, String target, String fee)
+      String currencySymbol, String withdrawAddress, Double amount, String target, String fee)
       throws IOException {
 
     if (tradepwd == null) {
@@ -133,16 +132,11 @@ public class OkCoinAccountServiceRaw extends OKCoinBaseTradeService {
     }
   }
 
-  public boolean moveFunds(String symbol, BigDecimal amount, AccountType from, AccountType to)
+  public boolean moveFunds(String symbol, Double amount, AccountType from, AccountType to)
       throws IOException {
     return okCoin
         .fundsTransfer(
-            apikey,
-            symbol,
-            amount.toPlainString(),
-            from.getValue(),
-            to.getValue(),
-            signatureCreator())
+            apikey, symbol, amount.toString(), from.getValue(), to.getValue(), signatureCreator())
         .isResult();
   }
 }

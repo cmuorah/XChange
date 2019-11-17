@@ -1,25 +1,24 @@
 package org.knowm.xchange.coinbasepro.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseProProductTicker {
 
   private final String tradeId;
-  private final BigDecimal price;
-  private final BigDecimal size;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
-  private final BigDecimal volume;
+  private final Double price;
+  private final Double size;
+  private final Double bid;
+  private final Double ask;
+  private final Double volume;
   private final String time;
 
   public CoinbaseProProductTicker(
       @JsonProperty("trade_id") String tradeId,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("size") BigDecimal size,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("price") Double price,
+      @JsonProperty("size") Double size,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("volume") Double volume,
       @JsonProperty("time") String time) {
 
     this.tradeId = tradeId;
@@ -35,23 +34,23 @@ public class CoinbaseProProductTicker {
     return tradeId;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 

@@ -1,7 +1,5 @@
 package org.knowm.xchange.bity;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 import org.knowm.xchange.bity.dto.account.BityInputTransaction;
 import org.knowm.xchange.bity.dto.account.BityOrder;
@@ -39,14 +37,14 @@ public final class BityAdapters {
   public static UserTrade adaptTrade(BityOrder order) {
     BityInputTransaction inputT = order.getBityInputTransactions().get(0);
     BityOutputTransaction outputT = order.getBityOutputTransactions().get(0);
-    BigDecimal fee = inputT.getPaymentProcessorFee();
+    Double fee = inputT.getPaymentProcessorFee();
 
-    BigDecimal price = inputT.getAmount().divide(outputT.getAmount(), 6, RoundingMode.HALF_UP);
+    Double price = inputT.getAmount() / outputT.getAmount();
     CurrencyPair currencyPair = new CurrencyPair(outputT.getCurrency(), inputT.getCurrency());
 
     Order.OrderType orderType =
         order.getCategory().contains("BUY") ? Order.OrderType.BID : Order.OrderType.ASK;
-    BigDecimal amount = outputT.getAmount();
+    Double amount = outputT.getAmount();
 
     Date date = order.getTimestampCreated();
     String orderId = order.getResourceUri();
@@ -104,9 +102,9 @@ public final class BityAdapters {
 
     CurrencyPair currencyPair = new CurrencyPair(bityTicker.getSource(), bityTicker.getTarget());
 
-    BigDecimal last = bityTicker.getRate();
-    BigDecimal bid = bityTicker.getRateWeBuy();
-    BigDecimal ask = bityTicker.getRateWeSell();
+    Double last = bityTicker.getRate();
+    Double bid = bityTicker.getRateWeBuy();
+    Double ask = bityTicker.getRateWeSell();
 
     Date timestamp = bityTicker.getTimestamp();
 

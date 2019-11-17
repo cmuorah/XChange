@@ -1,25 +1,24 @@
 package org.knowm.xchange.liqui.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class LiquiPublicAsk {
 
-  private final BigDecimal price;
-  private final BigDecimal volume;
+  private final Double price;
+  private final Double volume;
 
   @JsonCreator
   public LiquiPublicAsk(final List<String> ask) {
-    price = new BigDecimal(ask.get(0));
-    volume = new BigDecimal(ask.get(1));
+    price = new Double(ask.get(0));
+    volume = new Double(ask.get(1));
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 

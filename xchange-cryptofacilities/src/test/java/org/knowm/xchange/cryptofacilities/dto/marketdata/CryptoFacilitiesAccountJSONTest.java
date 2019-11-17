@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.cryptofacilities.dto.account.CryptoFacilitiesAccount;
 
@@ -29,37 +28,37 @@ public class CryptoFacilitiesAccountJSONTest {
     assertThat(cryptoFacilitiesAccount.isSuccess()).isTrue();
 
     assertThat(cryptoFacilitiesAccount.getBalances().get("f-xbt:usd-feb16-w4"))
-        .isEqualTo(new BigDecimal("50"));
+        .isEqualTo(new Double("50"));
     assertThat(cryptoFacilitiesAccount.getBalances().get("f-xbt:usd-mar16-w1"))
-        .isEqualTo(new BigDecimal("-15"));
+        .isEqualTo(new Double("-15"));
     assertThat(cryptoFacilitiesAccount.getBalances().get("xbt"))
-        .isEqualTo(new BigDecimal("141.31756797"));
+        .isEqualTo(new Double("141.31756797"));
 
     assertThat(cryptoFacilitiesAccount.getAuxiliary().get("af"))
-        .isEqualTo(new BigDecimal("100.73891563"));
+        .isEqualTo(new Double("100.73891563"));
     assertThat(cryptoFacilitiesAccount.getAuxiliary().get("pnl"))
-        .isEqualTo(new BigDecimal("12.42134766"));
+        .isEqualTo(new Double("12.42134766"));
     assertThat(cryptoFacilitiesAccount.getAuxiliary().get("pv"))
-        .isEqualTo(new BigDecimal("153.73891563"));
+        .isEqualTo(new Double("153.73891563"));
     assertThat(cryptoFacilitiesAccount.getAuxiliary().get("usd"))
-        .isEqualTo(new BigDecimal("-119012.92"));
+        .isEqualTo(new Double("-119012.92"));
 
     assertThat(cryptoFacilitiesAccount.getMarginRequirements().get("im"))
-        .isEqualTo(new BigDecimal("52.8"));
+        .isEqualTo(new Double("52.8"));
     assertThat(cryptoFacilitiesAccount.getMarginRequirements().get("mm"))
-        .isEqualTo(new BigDecimal("23.76"));
+        .isEqualTo(new Double("23.76"));
     assertThat(cryptoFacilitiesAccount.getMarginRequirements().get("lt"))
-        .isEqualTo(new BigDecimal("39.6"));
+        .isEqualTo(new Double("39.6"));
     assertThat(cryptoFacilitiesAccount.getMarginRequirements().get("tt"))
-        .isEqualTo(new BigDecimal("15.84"));
+        .isEqualTo(new Double("15.84"));
 
     assertThat(cryptoFacilitiesAccount.getTriggerEstimates().get("im"))
-        .isEqualTo(new BigDecimal("311"));
+        .isEqualTo(new Double("311"));
     assertThat(cryptoFacilitiesAccount.getTriggerEstimates().get("mm"))
-        .isEqualTo(new BigDecimal("300"));
+        .isEqualTo(new Double("300"));
     assertThat(cryptoFacilitiesAccount.getTriggerEstimates().get("lt"))
-        .isEqualTo(new BigDecimal("289"));
+        .isEqualTo(new Double("289"));
     assertThat(cryptoFacilitiesAccount.getTriggerEstimates().get("tt"))
-        .isEqualTo(new BigDecimal("283"));
+        .isEqualTo(new Double("283"));
   }
 }

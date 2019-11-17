@@ -1,22 +1,21 @@
 package org.knowm.xchange.kraken.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.kraken.dto.trade.KrakenOrderType;
 import org.knowm.xchange.kraken.dto.trade.KrakenType;
 
 public class KrakenPublicTrade {
 
-  private final BigDecimal price;
-  private final BigDecimal volume;
+  private final Double price;
+  private final Double volume;
   private final double time;
   private final KrakenType type;
   private final KrakenOrderType orderType;
   private final String miscellaneous;
 
   public KrakenPublicTrade(
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("price") Double price,
+      @JsonProperty("volume") Double volume,
       @JsonProperty("time") double time,
       @JsonProperty("type") KrakenType type,
       @JsonProperty("orderType") KrakenOrderType orderType,
@@ -30,12 +29,12 @@ public class KrakenPublicTrade {
     this.miscellaneous = miscellaneous;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }

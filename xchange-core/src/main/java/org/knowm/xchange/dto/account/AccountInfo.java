@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto.account;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.*;
 import javax.annotation.Nullable;
 
@@ -21,7 +20,7 @@ public final class AccountInfo implements Serializable {
    * The current fee this account must pay as a fraction of the value of each trade. Null if there
    * is no such fee.
    */
-  private final BigDecimal tradingFee;
+  private final Double tradingFee;
 
   /** The wallets owned by this account */
   private final Map<String, Wallet> wallets;
@@ -32,7 +31,7 @@ public final class AccountInfo implements Serializable {
    */
   @Nullable private final Date timestamp;
 
-  /** @see #AccountInfo(String, BigDecimal, Collection) */
+  /** @see #AccountInfo(String, Double, Collection) */
   public AccountInfo(Wallet... wallets) {
 
     // TODO when refactoring for separate feature interfaces, change this constructor to require at
@@ -40,7 +39,7 @@ public final class AccountInfo implements Serializable {
     this(null, null, wallets);
   }
 
-  /** @see #AccountInfo(String, BigDecimal, Collection, Date) */
+  /** @see #AccountInfo(String, Double, Collection, Date) */
   public AccountInfo(Date timestamp, Wallet... wallets) {
 
     // TODO when refactoring for separate feature interfaces, change this constructor to require at
@@ -48,19 +47,19 @@ public final class AccountInfo implements Serializable {
     this(null, null, Arrays.asList(wallets), timestamp);
   }
 
-  /** @see #AccountInfo(String, BigDecimal, Collection) */
+  /** @see #AccountInfo(String, Double, Collection) */
   public AccountInfo(Collection<Wallet> wallets) {
 
     this(null, null, wallets);
   }
 
-  /** @see #AccountInfo(String, BigDecimal, Collection) */
+  /** @see #AccountInfo(String, Double, Collection) */
   public AccountInfo(String username, Wallet... wallets) {
 
     this(username, null, wallets);
   }
 
-  /** @see #AccountInfo(String, BigDecimal, Collection) */
+  /** @see #AccountInfo(String, Double, Collection) */
   public AccountInfo(String username, Collection<Wallet> wallets) {
 
     this(username, null, wallets);
@@ -73,7 +72,7 @@ public final class AccountInfo implements Serializable {
    * @param tradingFee the trading fee.
    * @param wallets the user's wallets
    */
-  public AccountInfo(String username, BigDecimal tradingFee, Collection<Wallet> wallets) {
+  public AccountInfo(String username, Double tradingFee, Collection<Wallet> wallets) {
     this(username, tradingFee, wallets, null);
   }
 
@@ -86,7 +85,7 @@ public final class AccountInfo implements Serializable {
    * @param timestamp the timestamp for the account snapshot.
    */
   public AccountInfo(
-      String username, BigDecimal tradingFee, Collection<Wallet> wallets, Date timestamp) {
+      String username, Double tradingFee, Collection<Wallet> wallets, Date timestamp) {
 
     this.username = username;
     this.tradingFee = tradingFee;
@@ -108,8 +107,8 @@ public final class AccountInfo implements Serializable {
     }
   }
 
-  /** @see #AccountInfo(String, BigDecimal, Collection) */
-  public AccountInfo(String username, BigDecimal tradingFee, Wallet... wallets) {
+  /** @see #AccountInfo(String, Double, Collection) */
+  public AccountInfo(String username, Double tradingFee, Wallet... wallets) {
 
     this(username, tradingFee, Arrays.asList(wallets));
   }
@@ -174,7 +173,7 @@ public final class AccountInfo implements Serializable {
    *
    * @return The trading fee
    */
-  public BigDecimal getTradingFee() {
+  public Double getTradingFee() {
 
     return tradingFee;
   }

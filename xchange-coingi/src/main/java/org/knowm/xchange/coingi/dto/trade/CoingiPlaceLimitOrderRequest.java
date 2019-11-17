@@ -1,13 +1,12 @@
 package org.knowm.xchange.coingi.dto.trade;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.coingi.dto.CoingiAuthenticatedRequest;
 
 public class CoingiPlaceLimitOrderRequest extends CoingiAuthenticatedRequest {
   private String currencyPair;
   private int type;
-  private BigDecimal price;
-  private BigDecimal volume;
+  private Double price;
+  private Double volume;
 
   public String getCurrencyPair() {
     return currencyPair;
@@ -27,20 +26,20 @@ public class CoingiPlaceLimitOrderRequest extends CoingiAuthenticatedRequest {
     return this;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public CoingiPlaceLimitOrderRequest setPrice(BigDecimal price) {
+  public CoingiPlaceLimitOrderRequest setPrice(Double price) {
     this.price = price;
     return this;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public CoingiPlaceLimitOrderRequest setVolume(BigDecimal volume) {
+  public CoingiPlaceLimitOrderRequest setVolume(Double volume) {
     this.volume = volume;
     return this;
   }

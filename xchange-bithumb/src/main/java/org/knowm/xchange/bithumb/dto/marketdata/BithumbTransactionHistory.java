@@ -1,7 +1,6 @@
 package org.knowm.xchange.bithumb.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
 import org.apache.commons.lang3.time.FastDateFormat;
@@ -14,17 +13,17 @@ public class BithumbTransactionHistory {
   private final long contNo;
   private final String transactionDate;
   private final BithumbAdapters.OrderType type;
-  private final BigDecimal unitsTraded;
-  private final BigDecimal price;
-  private final BigDecimal total;
+  private final Double unitsTraded;
+  private final Double price;
+  private final Double total;
 
   public BithumbTransactionHistory(
       @JsonProperty("cont_no") long contNo,
       @JsonProperty("transaction_date") String transactionDate,
       @JsonProperty("type") BithumbAdapters.OrderType type,
-      @JsonProperty("units_traded") BigDecimal unitsTraded,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("total") BigDecimal total) {
+      @JsonProperty("units_traded") Double unitsTraded,
+      @JsonProperty("price") Double price,
+      @JsonProperty("total") Double total) {
     this.contNo = contNo;
     this.transactionDate = transactionDate;
     this.type = type;
@@ -45,15 +44,15 @@ public class BithumbTransactionHistory {
     return type;
   }
 
-  public BigDecimal getUnitsTraded() {
+  public Double getUnitsTraded() {
     return unitsTraded;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 

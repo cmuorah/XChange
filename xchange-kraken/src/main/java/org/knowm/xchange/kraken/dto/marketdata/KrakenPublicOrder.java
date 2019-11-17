@@ -8,29 +8,28 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.kraken.dto.marketdata.KrakenPublicOrder.KrakenOrderDeserializer;
 
 @JsonDeserialize(using = KrakenOrderDeserializer.class)
 public class KrakenPublicOrder {
 
-  private final BigDecimal price;
-  private final BigDecimal volume;
+  private final Double price;
+  private final Double volume;
   private final long timestamp;
 
-  public KrakenPublicOrder(BigDecimal price, BigDecimal volume, long timestamp) {
+  public KrakenPublicOrder(Double price, Double volume, long timestamp) {
 
     this.price = price;
     this.volume = volume;
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
@@ -55,8 +54,8 @@ public class KrakenPublicOrder {
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);
       if (node.isArray()) {
-        BigDecimal price = new BigDecimal(node.path(0).asText());
-        BigDecimal volume = new BigDecimal(node.path(1).asText());
+        Double price = new Double(node.path(0).asText());
+        Double volume = new Double(node.path(1).asText());
         long timestamp = node.path(2).asLong();
 
         return new KrakenPublicOrder(price, volume, timestamp);

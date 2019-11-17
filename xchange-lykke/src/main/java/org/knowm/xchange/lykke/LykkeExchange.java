@@ -1,7 +1,6 @@
 package org.knowm.xchange.lykke;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -62,7 +61,7 @@ public class LykkeExchange extends BaseExchange implements Exchange {
       Map<Currency, CurrencyMetaData> currencies = exchangeMetaData.getCurrencies();
       List<CurrencyPair> currencyPairList = getExchangeSymbols();
       List<FeeTier> feeTiers = new ArrayList<>();
-      feeTiers.add(new FeeTier(BigDecimal.ZERO, new Fee(BigDecimal.ZERO, BigDecimal.ZERO)));
+      feeTiers.add(new FeeTier(0d, new Fee(0d, 0d)));
 
       LykkeMarketDataService marketDataService = (LykkeMarketDataService) this.marketDataService;
       List<LykkeAssetPair> assetPairList = marketDataService.getAssetPairs();

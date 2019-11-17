@@ -3,7 +3,6 @@ package org.knowm.xchange.bittrex.service;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.*;
 
-import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -39,8 +38,8 @@ public class TradeMockedIntegrationTest extends BaseMockedIntegrationTest {
     String orderId =
         tradeService.placeLimitOrder(
             new LimitOrder.Builder(Order.OrderType.BID, CurrencyPair.ETH_BTC)
-                .limitPrice(new BigDecimal("0.004"))
-                .originalAmount(new BigDecimal("1"))
+                .limitPrice(new Double("0.004"))
+                .originalAmount(new Double("1"))
                 .build());
     assertThat(orderId).isNotNull().isNotEmpty();
   }

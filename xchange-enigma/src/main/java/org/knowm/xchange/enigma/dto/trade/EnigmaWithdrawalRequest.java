@@ -1,7 +1,6 @@
 package org.knowm.xchange.enigma.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.*;
 
 @Data
@@ -13,7 +12,7 @@ public class EnigmaWithdrawalRequest {
   private int withdrawalTypeId;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("currency")
   private String currency;

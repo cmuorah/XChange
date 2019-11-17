@@ -1,9 +1,7 @@
 package org.knowm.xchange.anx.v2.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.BaseExchange;
-import org.knowm.xchange.anx.ANXUtils;
 import org.knowm.xchange.anx.v2.ANXAdapters;
 import org.knowm.xchange.anx.v2.ANXExchange;
 import org.knowm.xchange.anx.v2.dto.trade.ANXTradeResultWrapper;
@@ -13,11 +11,7 @@ import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.dto.trade.UserTrades;
 import org.knowm.xchange.service.trade.TradeService;
-import org.knowm.xchange.service.trade.params.CancelOrderByIdParams;
-import org.knowm.xchange.service.trade.params.CancelOrderParams;
-import org.knowm.xchange.service.trade.params.DefaultTradeHistoryParamsTimeSpan;
-import org.knowm.xchange.service.trade.params.TradeHistoryParams;
-import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
+import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 import org.knowm.xchange.utils.Assert;
 import org.knowm.xchange.utils.DateUtils;
@@ -59,19 +53,10 @@ public class ANXTradeService extends ANXTradeServiceRaw implements TradeService 
     Assert.notNull(limitOrder.getLimitPrice(), "getLimitPrice() cannot be null");
     Assert.notNull(limitOrder.getOriginalAmount(), "getOriginalAmount() cannot be null");
 
-    if (limitOrder.getOriginalAmount().scale() > 8) {
-      throw new IllegalArgumentException("originalAmount scale exceeds max");
-    }
-
-    if (limitOrder.getLimitPrice().scale()
-        > ANXUtils.getMaxPriceScale(limitOrder.getCurrencyPair())) {
-      throw new IllegalArgumentException("price scale exceeds max");
-    }
-
     String type = limitOrder.getType().equals(OrderType.BID) ? "bid" : "ask";
 
-    BigDecimal amount = limitOrder.getOriginalAmount();
-    BigDecimal price = limitOrder.getLimitPrice();
+    Double amount = limitOrder.getOriginalAmount();
+    Double price = limitOrder.getLimitPrice();
 
     return placeANXLimitOrder(limitOrder.getCurrencyPair(), type, amount, price).getDataString();
   }

@@ -2,7 +2,6 @@ package org.knowm.xchange.cryptonit2.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -80,7 +79,7 @@ public class CryptonitAccountServiceRaw extends CryptonitBaseService {
     }
   }
 
-  public CryptonitWithdrawal withdrawCrypto(BigDecimal amount, String address, Currency currency)
+  public CryptonitWithdrawal withdrawCrypto(Double amount, String address, Currency currency)
       throws IOException {
 
     try {

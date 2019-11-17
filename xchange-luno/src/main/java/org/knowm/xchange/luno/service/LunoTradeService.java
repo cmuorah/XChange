@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -95,7 +94,7 @@ public class LunoTradeService extends LunoBaseService implements TradeService {
             : lunoAPI.postMarketOrder(
                 LunoUtil.toLunoPair(marketOrder.getCurrencyPair()),
                 org.knowm.xchange.luno.dto.trade.OrderType.BUY,
-                marketOrder.getOriginalAmount().multiply(marketOrder.getAveragePrice()),
+                marketOrder.getOriginalAmount() * (marketOrder.getAveragePrice()),
                 null,
                 null,
                 null);
@@ -163,9 +162,9 @@ public class LunoTradeService extends LunoBaseService implements TradeService {
     for (org.knowm.xchange.luno.dto.trade.LunoUserTrades.UserTrade t : lunoTrades.getTrades()) {
       final CurrencyPair pair = LunoUtil.fromLunoPair(t.pair);
       final String tradeId = null; // currently there is no trade id!
-      final BigDecimal feeAmount;
+      final Double feeAmount;
       final Currency feeCurrency;
-      if (t.feeBase.compareTo(BigDecimal.ZERO) > 0) {
+      if (t.feeBase.compareTo(0d) > 0) {
         feeAmount = t.feeBase;
         feeCurrency = pair.base;
       } else {

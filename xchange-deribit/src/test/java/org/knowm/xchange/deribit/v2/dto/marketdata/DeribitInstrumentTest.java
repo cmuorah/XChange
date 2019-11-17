@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.deribit.v2.dto.Kind;
 
@@ -25,10 +24,10 @@ public class DeribitInstrumentTest {
     // then
     assertThat(instrument).isNotNull();
 
-    assertThat(instrument.getTickSize()).isEqualTo(new BigDecimal("0.01"));
+    assertThat(instrument.getTickSize()).isEqualTo(new Double("0.01"));
     assertThat(instrument.getSettlementPeriod()).isEqualTo("week");
     assertThat(instrument.getQuoteCurrency()).isEqualTo("USD");
-    assertThat(instrument.getMinTradeAmount()).isEqualTo(new BigDecimal("1"));
+    assertThat(instrument.getMinTradeAmount()).isEqualTo(new Double("1"));
     assertThat(instrument.getKind()).isEqualTo(Kind.future);
     assertThat(instrument.isActive()).isTrue();
     assertThat(instrument.getInstrumentName()).isEqualTo("BTC-15FEB19");

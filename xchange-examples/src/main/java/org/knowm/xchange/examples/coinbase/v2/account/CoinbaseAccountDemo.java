@@ -30,7 +30,7 @@ public class CoinbaseAccountDemo {
     String depositAddress = accountService.requestDepositAddress(Currency.BTC);
     System.out.println("Deposit Address: " + depositAddress);
 
-    // String transactionHash = accountService.withdrawFunds(new BigDecimal(".01"), "???");
+    // String transactionHash = accountService.withdrawFunds(new Double(".01"), "???");
     // System.out.println("Bitcoin blockchain transaction hash: " + transactionHash);
   }
 

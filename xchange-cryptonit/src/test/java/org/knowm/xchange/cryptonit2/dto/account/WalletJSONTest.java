@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
@@ -31,12 +30,12 @@ public class WalletJSONTest {
     }
 
     // Verify that the example data was unmarshalled correctly
-    assertThat(balances.get("btc").getAvailable()).isEqualTo(new BigDecimal("6.99990000"));
-    assertThat(balances.get("btc").getReserved()).isEqualTo(new BigDecimal("0"));
-    assertThat(balances.get("btc").getBalance()).isEqualTo(new BigDecimal("6.99990000"));
-    assertThat(balances.get("usd").getAvailable()).isEqualTo(new BigDecimal("0.00"));
-    assertThat(balances.get("usd").getBalance()).isEqualTo(new BigDecimal("172.87"));
-    assertThat(balances.get("usd").getReserved()).isEqualTo(new BigDecimal("172.87"));
-    assertThat(cryptonitBalance.getFee()).isEqualTo(new BigDecimal("0.5000"));
+    assertThat(balances.get("btc").getAvailable()).isEqualTo(new Double("6.99990000"));
+    assertThat(balances.get("btc").getReserved()).isEqualTo(new Double("0"));
+    assertThat(balances.get("btc").getBalance()).isEqualTo(new Double("6.99990000"));
+    assertThat(balances.get("usd").getAvailable()).isEqualTo(new Double("0.00"));
+    assertThat(balances.get("usd").getBalance()).isEqualTo(new Double("172.87"));
+    assertThat(balances.get("usd").getReserved()).isEqualTo(new Double("172.87"));
+    assertThat(cryptonitBalance.getFee()).isEqualTo(new Double("0.5000"));
   }
 }

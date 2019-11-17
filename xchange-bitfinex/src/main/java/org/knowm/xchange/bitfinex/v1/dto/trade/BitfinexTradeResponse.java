@@ -1,18 +1,17 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexTradeResponse {
 
-  private final BigDecimal price;
-  private final BigDecimal amount;
-  private final BigDecimal timestamp;
+  private final Double price;
+  private final Double amount;
+  private final Double timestamp;
   private final String exchange;
   private final String type;
   private final String tradeId;
   private final String orderId;
-  private final BigDecimal feeAmount;
+  private final Double feeAmount;
   private final String feeCurrency;
 
   /**
@@ -29,14 +28,14 @@ public class BitfinexTradeResponse {
    * @param feeCurrency
    */
   public BitfinexTradeResponse(
-      @JsonProperty("price") final BigDecimal price,
-      @JsonProperty("amount") final BigDecimal amount,
-      @JsonProperty("timestamp") final BigDecimal timestamp,
+      @JsonProperty("price") final Double price,
+      @JsonProperty("amount") final Double amount,
+      @JsonProperty("timestamp") final Double timestamp,
       @JsonProperty("exchange") final String exchange,
       @JsonProperty("type") final String type,
       @JsonProperty("tid") final String tradeId,
       @JsonProperty("order_id") final String orderId,
-      @JsonProperty("fee_amount") final BigDecimal feeAmount,
+      @JsonProperty("fee_amount") final Double feeAmount,
       @JsonProperty("fee_currency") String feeCurrency) {
 
     this.price = price;
@@ -50,17 +49,17 @@ public class BitfinexTradeResponse {
     this.feeCurrency = feeCurrency;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getTimestamp() {
+  public Double getTimestamp() {
 
     return timestamp;
   }
@@ -80,7 +79,7 @@ public class BitfinexTradeResponse {
     return tradeId;
   }
 
-  public BigDecimal getFeeAmount() {
+  public Double getFeeAmount() {
 
     return feeAmount;
   }

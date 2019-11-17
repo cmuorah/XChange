@@ -1,38 +1,37 @@
 package org.knowm.xchange.coinbasepro.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseProProductStats {
-  private final BigDecimal open;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal volume;
+  private final Double open;
+  private final Double high;
+  private final Double low;
+  private final Double volume;
 
   public CoinbaseProProductStats(
-      @JsonProperty("open") BigDecimal open,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("volume") BigDecimal volume) {
+      @JsonProperty("open") Double open,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("volume") Double volume) {
     this.open = open;
     this.high = high;
     this.low = low;
     this.volume = volume;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 }

@@ -3,7 +3,6 @@ package org.knowm.xchange.coinbase.dto.merchant;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.coinbase.dto.CoinbaseBaseResponse;
@@ -241,7 +240,7 @@ public class CoinbaseButton extends CoinbaseBaseResponse {
 
     public CoinbaseButtonBuilder(String name, final String currency, final String priceString) {
 
-      this(name, new CoinbaseMoney(currency, new BigDecimal(priceString)));
+      this(name, new CoinbaseMoney(currency, new Double(priceString)));
     }
 
     public CoinbaseButtonBuilder(String name, final CoinbaseMoney price) {
@@ -295,7 +294,7 @@ public class CoinbaseButton extends CoinbaseBaseResponse {
 
     public String getPriceString() {
 
-      return price.getAmount().toPlainString();
+      return price.getAmount().toString();
     }
 
     public String getCurrency() {
@@ -647,7 +646,7 @@ public class CoinbaseButton extends CoinbaseBaseResponse {
     @JsonProperty("price_string")
     public String getPriceString() {
 
-      return price.getAmount().toPlainString();
+      return price.getAmount().toString();
     }
 
     @JsonProperty("price_currency_iso")

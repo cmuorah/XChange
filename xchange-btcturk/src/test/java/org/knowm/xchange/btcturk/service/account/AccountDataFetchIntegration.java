@@ -3,7 +3,6 @@ package org.knowm.xchange.btcturk.service.account;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
@@ -46,7 +45,7 @@ public class AccountDataFetchIntegration {
       BTCTurkAccountBalance accountBalance = btcTurkAccountService.getBTCTurkBalance();
       assertThat(accountBalance).isNotEqualTo(null);
       assertThat(accountBalance.getBtctry_maker_fee_percentage())
-          .isEqualTo(new BigDecimal("0.0012711860000000"));
+          .isEqualTo(new Double("0.0012711860000000"));
 
       // AccountInfo Test
       Thread.sleep(1000);

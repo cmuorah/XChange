@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitstamp.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.bitstamp.BitstampUtils;
 
@@ -10,15 +9,15 @@ public class BitstampOrderTransaction {
   private final Date datetime;
   private final long tid;
   private final BitstampUserTransaction.TransactionType type;
-  private final BigDecimal usd;
-  private final BigDecimal btc;
-  private final BigDecimal ltc;
-  private final BigDecimal eth;
-  private final BigDecimal eur;
-  private final BigDecimal xrp;
-  private final BigDecimal bch;
-  private final BigDecimal price;
-  private final BigDecimal fee;
+  private final Double usd;
+  private final Double btc;
+  private final Double ltc;
+  private final Double eth;
+  private final Double eur;
+  private final Double xrp;
+  private final Double bch;
+  private final Double price;
+  private final Double fee;
 
   /**
    * Constructor
@@ -35,15 +34,15 @@ public class BitstampOrderTransaction {
       @JsonProperty("datetime") String datetime,
       @JsonProperty("tid") long tid,
       @JsonProperty("type") BitstampUserTransaction.TransactionType type,
-      @JsonProperty("usd") BigDecimal usd,
-      @JsonProperty("btc") BigDecimal btc,
-      @JsonProperty("ltc") BigDecimal ltc,
-      @JsonProperty("eth") BigDecimal eth,
-      @JsonProperty("eur") BigDecimal eur,
-      @JsonProperty("xrp") BigDecimal xrp,
-      @JsonProperty("bch") BigDecimal bch,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("fee") BigDecimal fee) {
+      @JsonProperty("usd") Double usd,
+      @JsonProperty("btc") Double btc,
+      @JsonProperty("ltc") Double ltc,
+      @JsonProperty("eth") Double eth,
+      @JsonProperty("eur") Double eur,
+      @JsonProperty("xrp") Double xrp,
+      @JsonProperty("bch") Double bch,
+      @JsonProperty("price") Double price,
+      @JsonProperty("fee") Double fee) {
 
     this.datetime = BitstampUtils.parseDate(datetime);
     ;
@@ -75,43 +74,43 @@ public class BitstampOrderTransaction {
     return type;
   }
 
-  public BigDecimal getUsd() {
+  public Double getUsd() {
 
     return usd;
   }
 
-  public BigDecimal getBtc() {
+  public Double getBtc() {
 
     return btc;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }
 
-  public BigDecimal getLtc() {
+  public Double getLtc() {
     return ltc;
   }
 
-  public BigDecimal getEth() {
+  public Double getEth() {
     return eth;
   }
 
-  public BigDecimal getEur() {
+  public Double getEur() {
     return eur;
   }
 
-  public BigDecimal getXrp() {
+  public Double getXrp() {
     return xrp;
   }
 
-  public BigDecimal getBch() {
+  public Double getBch() {
     return bch;
   }
 }

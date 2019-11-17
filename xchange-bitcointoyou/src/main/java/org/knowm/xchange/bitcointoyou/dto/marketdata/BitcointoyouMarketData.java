@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -20,26 +19,26 @@ import javax.annotation.Generated;
 @JsonPropertyOrder({"high", "low", "vol", "last", "buy", "buyQty", "sell", "sellQty", "date"})
 public class BitcointoyouMarketData {
 
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal volume;
-  private final BigDecimal last;
-  private final BigDecimal buy;
-  private final BigDecimal buyQuantity;
-  private final BigDecimal sell;
-  private final BigDecimal sellQuantity;
+  private final Double high;
+  private final Double low;
+  private final Double volume;
+  private final Double last;
+  private final Double buy;
+  private final Double buyQuantity;
+  private final Double sell;
+  private final Double sellQuantity;
   private final Long date;
   @JsonIgnore private final Map<String, Object> additionalProperties = new HashMap<>();
 
   public BitcointoyouMarketData(
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("vol") BigDecimal volume,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("buy") BigDecimal buy,
-      @JsonProperty("buyQty") BigDecimal buyQuantity,
-      @JsonProperty("sell") BigDecimal sell,
-      @JsonProperty("sellQty") BigDecimal sellQuantity,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("vol") Double volume,
+      @JsonProperty("last") Double last,
+      @JsonProperty("buy") Double buy,
+      @JsonProperty("buyQty") Double buyQuantity,
+      @JsonProperty("sell") Double sell,
+      @JsonProperty("sellQty") Double sellQuantity,
       @JsonProperty("date") Long date) {
     this.high = high;
     this.low = low;
@@ -52,42 +51,42 @@ public class BitcointoyouMarketData {
     this.date = date;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
 
-  public BigDecimal getBuy() {
+  public Double getBuy() {
 
     return buy;
   }
 
-  public BigDecimal getBuyQuantity() {
+  public Double getBuyQuantity() {
 
     return buyQuantity;
   }
 
-  public BigDecimal getSell() {
+  public Double getSell() {
 
     return sell;
   }
 
-  public BigDecimal getSellQuantity() {
+  public Double getSellQuantity() {
 
     return sellQuantity;
   }

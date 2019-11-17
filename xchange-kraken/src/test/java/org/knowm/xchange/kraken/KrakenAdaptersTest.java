@@ -7,12 +7,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,21 +21,13 @@ import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.dto.meta.FeeTier;
-import org.knowm.xchange.dto.trade.LimitOrder;
-import org.knowm.xchange.dto.trade.MarketOrder;
-import org.knowm.xchange.dto.trade.OpenOrders;
-import org.knowm.xchange.dto.trade.UserTrade;
-import org.knowm.xchange.dto.trade.UserTrades;
+import org.knowm.xchange.dto.trade.*;
 import org.knowm.xchange.kraken.dto.account.KrakenLedger;
 import org.knowm.xchange.kraken.dto.account.results.KrakenBalanceResult;
 import org.knowm.xchange.kraken.dto.account.results.KrakenLedgerResult;
 import org.knowm.xchange.kraken.dto.marketdata.KrakenDepth;
 import org.knowm.xchange.kraken.dto.marketdata.KrakenFee;
-import org.knowm.xchange.kraken.dto.marketdata.results.KrakenAssetPairsResult;
-import org.knowm.xchange.kraken.dto.marketdata.results.KrakenAssetsResult;
-import org.knowm.xchange.kraken.dto.marketdata.results.KrakenDepthResult;
-import org.knowm.xchange.kraken.dto.marketdata.results.KrakenPublicTradesResult;
-import org.knowm.xchange.kraken.dto.marketdata.results.KrakenTickerResult;
+import org.knowm.xchange.kraken.dto.marketdata.results.*;
 import org.knowm.xchange.kraken.dto.trade.KrakenTrade;
 import org.knowm.xchange.kraken.dto.trade.KrakenUserTrade;
 import org.knowm.xchange.kraken.dto.trade.results.KrakenOpenOrdersResult;
@@ -89,14 +76,14 @@ public class KrakenAdaptersTest {
         KrakenAdapters.adaptTicker(krakenTicker.getResult().get(krakenCurencyPair), currencyPair);
 
     // Verify that the example data was unmarshalled correctly
-    assertThat(ticker.getAsk()).isEqualTo(new BigDecimal("562.26651"));
-    assertThat(ticker.getBid()).isEqualTo(new BigDecimal("560.46600"));
-    assertThat(ticker.getLow()).isEqualTo(new BigDecimal("560.00000"));
-    assertThat(ticker.getHigh()).isEqualTo(new BigDecimal("591.11000"));
-    assertThat(ticker.getLast()).isEqualTo(new BigDecimal("560.87711"));
-    assertThat(ticker.getVwap()).isEqualTo(new BigDecimal("576.77284"));
-    assertThat(ticker.getVolume()).isEqualByComparingTo("600.91850325");
-    assertThat(ticker.getOpen()).isEqualTo(new BigDecimal("568.98910"));
+    assertThat(ticker.getAsk()).isEqualTo(new Double("562.26651"));
+    assertThat(ticker.getBid()).isEqualTo(new Double("560.46600"));
+    assertThat(ticker.getLow()).isEqualTo(new Double("560.00000"));
+    assertThat(ticker.getHigh()).isEqualTo(new Double("591.11000"));
+    assertThat(ticker.getLast()).isEqualTo(new Double("560.87711"));
+    assertThat(ticker.getVwap()).isEqualTo(new Double("576.77284"));
+    assertThat(ticker.getVolume()).isEqualByComparingTo(new Double("600.91850325"));
+    assertThat(ticker.getOpen()).isEqualTo(new Double("568.98910"));
     assertThat(ticker.getCurrencyPair().base.getCurrencyCode())
         .isEqualTo(currencyPair.base.getCurrencyCode());
   }
@@ -167,7 +154,7 @@ public class KrakenAdaptersTest {
 
     assertThat(asks.size()).isEqualTo(3);
     LimitOrder order = asks.get(0);
-    assertThat(order.getLimitPrice()).isEqualTo(new BigDecimal("530.75513"));
+    assertThat(order.getLimitPrice()).isEqualTo(new Double("530.75513"));
     assertThat(order.getOriginalAmount()).isEqualTo("0.248");
     assertThat(order.getTimestamp()).isEqualTo(new Date(1391825343000L));
   }
@@ -186,11 +173,10 @@ public class KrakenAdaptersTest {
 
     Wallet wallet = KrakenAdapters.adaptWallet(krakenBalance.getResult());
 
-    assertThat(wallet.getBalance(Currency.EUR).getTotal()).isEqualTo(new BigDecimal("1.0539"));
-    assertThat(wallet.getBalance(Currency.BTC).getTotal())
-        .isEqualTo(new BigDecimal("0.4888583300"));
+    assertThat(wallet.getBalance(Currency.EUR).getTotal()).isEqualTo(new Double("1.0539"));
+    assertThat(wallet.getBalance(Currency.BTC).getTotal()).isEqualTo(new Double("0.4888583300"));
     assertThat(wallet.getBalance(Currency.getInstance("XDAO")).getTotal())
-        .isEqualTo(new BigDecimal("10.123"));
+        .isEqualTo(new Double("10.123"));
   }
 
   @Test
@@ -294,10 +280,9 @@ public class KrakenAdaptersTest {
     assertThat(fundingRecord).isInstanceOf(FundingRecord.class);
     assertThat(fundingRecord.getType()).isEqualTo(FundingRecord.Type.WITHDRAWAL);
     assertThat(fundingRecord.getStatus()).isEqualTo(FundingRecord.Status.COMPLETE);
-    assertThat(fundingRecord.getAmount()).isEqualTo(new BigDecimal("15.9857300000"));
-    assertThat(fundingRecord.getFee().doubleValue())
-        .isEqualTo(new BigDecimal("0.02").doubleValue());
-    assertThat(fundingRecord.getBalance().doubleValue()).isEqualTo(BigDecimal.ZERO.doubleValue());
+    assertThat(fundingRecord.getAmount()).isEqualTo(new Double("15.9857300000"));
+    assertThat(fundingRecord.getFee().doubleValue()).isEqualTo(Double.parseDouble("0.02"));
+    assertThat(fundingRecord.getBalance().doubleValue()).isEqualTo(0d);
   }
 
   @Test
@@ -320,8 +305,8 @@ public class KrakenAdaptersTest {
     Order order = orders.get(0);
 
     assertThat(order.getId()).isEqualTo("OHR2QC-2XDSQ-WHOFMW");
-    assertThat(order.getAveragePrice()).isEqualTo(new BigDecimal("260.23"));
-    assertThat(order.getCumulativeAmount()).isEqualTo(new BigDecimal("0.84962599"));
+    assertThat(order.getAveragePrice()).isEqualTo(new Double("260.23"));
+    assertThat(order.getCumulativeAmount()).isEqualTo(new Double("0.84962599"));
     assertThat(order.getCurrencyPair()).isEqualTo(CurrencyPair.LTC_USD);
     assertThat(MarketOrder.class.isAssignableFrom(order.getClass()));
   }
@@ -331,30 +316,24 @@ public class KrakenAdaptersTest {
     List<KrakenFee> krakenMakerFees = new ArrayList<KrakenFee>();
     List<KrakenFee> krakenTakerFees = new ArrayList<KrakenFee>();
 
-    krakenMakerFees.add(new KrakenFee(BigDecimal.TEN, BigDecimal.ONE));
-    krakenTakerFees.add(new KrakenFee(BigDecimal.TEN, new BigDecimal(2)));
-    krakenMakerFees.add(new KrakenFee(new BigDecimal(45), new BigDecimal(0.5)));
-    krakenTakerFees.add(new KrakenFee(new BigDecimal(30), new BigDecimal(0.75)));
+    krakenMakerFees.add(new KrakenFee(10d, 1d));
+    krakenTakerFees.add(new KrakenFee(10d, new Double(2)));
+    krakenMakerFees.add(new KrakenFee(new Double(45), new Double(0.5)));
+    krakenTakerFees.add(new KrakenFee(new Double(30), new Double(0.75)));
 
     FeeTier[] adaptedFeeTiers = KrakenAdapters.adaptFeeTiers(krakenMakerFees, krakenTakerFees);
     assertThat(adaptedFeeTiers.length).isEqualTo(3);
 
-    assertThat(adaptedFeeTiers[0].beginQuantity).isEqualByComparingTo(BigDecimal.TEN);
-    assertThat(adaptedFeeTiers[0].fee.getMakerFee())
-        .isEqualByComparingTo(BigDecimal.ONE.movePointLeft(2));
-    assertThat(adaptedFeeTiers[0].fee.getTakerFee())
-        .isEqualByComparingTo(new BigDecimal(2).movePointLeft(2));
+    assertThat(adaptedFeeTiers[0].beginQuantity).isEqualByComparingTo(10d);
+    assertThat(adaptedFeeTiers[0].fee.getMakerFee()).isEqualByComparingTo(1d / 100.0);
+    assertThat(adaptedFeeTiers[0].fee.getTakerFee()).isEqualByComparingTo(new Double(2) / 100.0);
 
-    assertThat(adaptedFeeTiers[1].beginQuantity).isEqualByComparingTo(new BigDecimal(30));
-    assertThat(adaptedFeeTiers[1].fee.getMakerFee())
-        .isEqualByComparingTo(BigDecimal.ONE.movePointLeft(2));
-    assertThat(adaptedFeeTiers[1].fee.getTakerFee())
-        .isEqualByComparingTo(new BigDecimal(0.75).movePointLeft(2));
+    assertThat(adaptedFeeTiers[1].beginQuantity).isEqualByComparingTo(new Double(30));
+    assertThat(adaptedFeeTiers[1].fee.getMakerFee()).isEqualByComparingTo(1d / 100.0);
+    assertThat(adaptedFeeTiers[1].fee.getTakerFee()).isEqualByComparingTo(new Double(0.75) / 100.0);
 
-    assertThat(adaptedFeeTiers[2].beginQuantity).isEqualByComparingTo(new BigDecimal(45));
-    assertThat(adaptedFeeTiers[2].fee.getMakerFee())
-        .isEqualByComparingTo(new BigDecimal(0.5).movePointLeft(2));
-    assertThat(adaptedFeeTiers[2].fee.getTakerFee())
-        .isEqualByComparingTo(new BigDecimal(0.75).movePointLeft(2));
+    assertThat(adaptedFeeTiers[2].beginQuantity).isEqualByComparingTo(new Double(45));
+    assertThat(adaptedFeeTiers[2].fee.getMakerFee()).isEqualByComparingTo(new Double(0.5) / 100.0);
+    assertThat(adaptedFeeTiers[2].fee.getTakerFee()).isEqualByComparingTo(new Double(0.75) / 100.0);
   }
 }

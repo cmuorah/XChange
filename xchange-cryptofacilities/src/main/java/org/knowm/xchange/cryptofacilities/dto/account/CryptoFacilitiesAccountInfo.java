@@ -3,7 +3,6 @@ package org.knowm.xchange.cryptofacilities.dto.account;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.Map;
 import javax.annotation.Generated;
 
@@ -27,16 +26,16 @@ public class CryptoFacilitiesAccountInfo {
   private String currency;
 
   @JsonProperty("balances")
-  private Map<String, BigDecimal> balances;
+  private Map<String, Double> balances;
 
   @JsonProperty("auxiliary")
-  private Map<String, BigDecimal> auxiliary;
+  private Map<String, Double> auxiliary;
 
   @JsonProperty("marginRequirements")
-  private Map<String, BigDecimal> marginRequirements;
+  private Map<String, Double> marginRequirements;
 
   @JsonProperty("triggerEstimates")
-  private Map<String, BigDecimal> triggerEstimates;
+  private Map<String, Double> triggerEstimates;
 
   @JsonProperty("type")
   public String getType() {
@@ -63,49 +62,49 @@ public class CryptoFacilitiesAccountInfo {
   }
 
   @JsonProperty("balances")
-  public Map<String, BigDecimal> getBalances() {
+  public Map<String, Double> getBalances() {
 
     return balances;
   }
 
   @JsonProperty("balances")
-  public void setBalances(Map<String, BigDecimal> balances) {
+  public void setBalances(Map<String, Double> balances) {
 
     this.balances = balances;
   }
 
   @JsonProperty("auxiliary")
-  public Map<String, BigDecimal> getAuxiliary() {
+  public Map<String, Double> getAuxiliary() {
 
     return auxiliary;
   }
 
   @JsonProperty("auxiliary")
-  public void setAuxiliary(Map<String, BigDecimal> auxiliary) {
+  public void setAuxiliary(Map<String, Double> auxiliary) {
 
     this.auxiliary = auxiliary;
   }
 
   @JsonProperty("marginRequirements")
-  public Map<String, BigDecimal> getMarginRequirements() {
+  public Map<String, Double> getMarginRequirements() {
 
     return marginRequirements;
   }
 
   @JsonProperty("marginRequirements")
-  public void setMarginRequirements(Map<String, BigDecimal> marginRequirements) {
+  public void setMarginRequirements(Map<String, Double> marginRequirements) {
 
     this.marginRequirements = marginRequirements;
   }
 
   @JsonProperty("triggerEstimates")
-  public Map<String, BigDecimal> getTriggerEstimates() {
+  public Map<String, Double> getTriggerEstimates() {
 
     return triggerEstimates;
   }
 
   @JsonProperty("triggerEstimates")
-  public void setTriggerEstimates(Map<String, BigDecimal> triggerEstimates) {
+  public void setTriggerEstimates(Map<String, Double> triggerEstimates) {
 
     this.triggerEstimates = triggerEstimates;
   }

@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import org.junit.Test;
 import org.knowm.xchange.currency.Currency;
@@ -16,13 +15,13 @@ public class UserTradeTest {
   @Test
   public void testBuilder() {
     final OrderType type = OrderType.BID;
-    final BigDecimal originalAmount = new BigDecimal("99.401");
+    final Double originalAmount = new Double("99.401");
     final CurrencyPair currencyPair = CurrencyPair.LTC_BTC;
-    final BigDecimal price = new BigDecimal("251.64");
+    final Double price = new Double("251.64");
     final Date timestamp = new Date();
     final String id = "id";
     final String orderId = "OrderId";
-    final BigDecimal feeAmount = new BigDecimal("0.0006");
+    final Double feeAmount = new Double("0.0006");
     final Currency feeCurrency = Currency.BTC;
 
     final UserTrade copy =
@@ -52,13 +51,13 @@ public class UserTradeTest {
   @Test
   public void testBuilderFrom() {
     final OrderType type = OrderType.ASK;
-    final BigDecimal originalAmount = new BigDecimal("100.501");
+    final Double originalAmount = new Double("100.501");
     final CurrencyPair currencyPair = CurrencyPair.BTC_USD;
-    final BigDecimal price = new BigDecimal("250.34");
+    final Double price = new Double("250.34");
     final Date timestamp = new Date();
     final String id = "id";
     final String orderId = "OrderId";
-    final BigDecimal feeAmount = new BigDecimal("0");
+    final Double feeAmount = new Double("0");
     final Currency feeCurrency = Currency.BTC;
 
     final UserTrade original =
@@ -88,13 +87,13 @@ public class UserTradeTest {
   @Test
   public void returnsEqualsCorrectlyWithEqualUserTrades() {
     final OrderType type = OrderType.ASK;
-    final BigDecimal originalAmount = new BigDecimal("100.501");
+    final Double originalAmount = new Double("100.501");
     final CurrencyPair currencyPair = CurrencyPair.BTC_USD;
-    final BigDecimal price = new BigDecimal("250.34");
+    final Double price = new Double("250.34");
     final Date timestamp = new Date();
     final String id = "id";
     final String orderId = "OrderId";
-    final BigDecimal feeAmount = new BigDecimal("0");
+    final Double feeAmount = new Double("0");
     final Currency feeCurrency = Currency.BTC;
 
     final UserTrade original =
@@ -128,25 +127,25 @@ public class UserTradeTest {
     final UserTrade original =
         new UserTrade(
             OrderType.ASK,
-            new BigDecimal("100.501"),
+            new Double("100.501"),
             CurrencyPair.BTC_USD,
-            new BigDecimal("250.34"),
+            new Double("250.34"),
             new Date(),
             "id",
             "FooOrderId",
-            new BigDecimal("0"),
+            new Double("0"),
             Currency.BTC);
 
     final UserTrade copy =
         new UserTrade(
             OrderType.ASK,
-            new BigDecimal("100.501"),
+            new Double("100.501"),
             CurrencyPair.BTC_USD,
-            new BigDecimal("250.34"),
+            new Double("250.34"),
             new Date(),
             "id",
             "BarOrderId",
-            new BigDecimal("0.15"),
+            new Double("0.15"),
             Currency.USD);
 
     assertFalse(original.equals(copy));
@@ -157,25 +156,25 @@ public class UserTradeTest {
     final UserTrade original =
         new UserTrade(
             OrderType.ASK,
-            new BigDecimal("100.501"),
+            new Double("100.501"),
             CurrencyPair.BTC_USD,
-            new BigDecimal("250.34"),
+            new Double("250.34"),
             new Date(),
             "FooTradeId",
             "OrderId",
-            new BigDecimal("0"),
+            new Double("0"),
             Currency.BTC);
 
     final UserTrade copy =
         new UserTrade(
             OrderType.ASK,
-            new BigDecimal("100.501"),
+            new Double("100.501"),
             CurrencyPair.BTC_USD,
-            new BigDecimal("250.34"),
+            new Double("250.34"),
             new Date(),
             "BarTradeId",
             "OrderId",
-            new BigDecimal("0"),
+            new Double("0"),
             Currency.BTC);
 
     assertFalse(original.equals(copy));

@@ -1,7 +1,6 @@
 /** Copyright 2019 Mek Global Limited. */
 package org.knowm.xchange.kucoin.dto.request;
 
-import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -25,13 +24,13 @@ public class OrderCreateApiRequest {
   private final String side;
 
   /** price per base currency */
-  private final BigDecimal price;
+  private final Double price;
 
   /** amount of base currency to buy or sell */
-  private final BigDecimal size;
+  private final Double size;
 
   /** [optional] Desired amount of quote currency to use */
-  private final BigDecimal funds;
+  private final Double funds;
 
   /** [optional] self trade protect , CN, CO, CB or DC */
   @Builder.Default private final String stp = "";
@@ -40,7 +39,7 @@ public class OrderCreateApiRequest {
   @Builder.Default private final String stop = "";
 
   /** [optional] Only if stop is defined. Sets trigger price for stop order */
-  private final BigDecimal stopPrice;
+  private final Double stopPrice;
 
   /** [optional] GTC, GTT, IOC, or FOK (default is GTC) */
   @Builder.Default private final String timeInForce = "GTC";
@@ -58,7 +57,7 @@ public class OrderCreateApiRequest {
   private final boolean iceberg;
 
   /** [optional] The maximum visible size of an iceberg order */
-  private final BigDecimal visibleSize;
+  private final Double visibleSize;
 
   /** Unique order id selected by you to identify your order e.g. UUID */
   private final String clientOid;

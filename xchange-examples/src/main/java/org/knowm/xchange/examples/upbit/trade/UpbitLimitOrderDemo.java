@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.upbit.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Collection;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
@@ -23,8 +22,8 @@ public class UpbitLimitOrderDemo {
   private static void generic(Exchange upbit) throws IOException, InterruptedException {
     // create
     TradeService tradeService = upbit.getTradeService();
-    BigDecimal amount = new BigDecimal("0.01");
-    BigDecimal price = new BigDecimal("200000");
+    Double amount = new Double("0.01");
+    Double price = new Double("200000");
     LimitOrder limitOrder =
         new LimitOrder(
             OrderType.BID, amount, new CurrencyPair(Currency.ETH, Currency.KRW), null, null, price);

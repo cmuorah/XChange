@@ -1,6 +1,5 @@
 package org.knowm.xchange.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -19,7 +18,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
   private static final long serialVersionUID = -5166848178471347540L;
 
   /** The limit price */
-  protected final BigDecimal limitPrice;
+  protected final Double limitPrice;
 
   /**
    * @param type Either BID (buying) or ASK (selling)
@@ -33,11 +32,11 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
    */
   public LimitOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal limitPrice) {
+      Double limitPrice) {
 
     super(type, originalAmount, currencyPair, id, timestamp);
     this.limitPrice = limitPrice;
@@ -56,12 +55,12 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
    */
   public LimitOrder(
       OrderType type,
-      BigDecimal originalAmount,
-      BigDecimal cumulativeAmount,
+      Double originalAmount,
+      Double cumulativeAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal limitPrice) {
+      Double limitPrice) {
 
     super(
         type,
@@ -69,9 +68,9 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
         currencyPair,
         id,
         timestamp,
-        BigDecimal.ZERO,
+        0d,
         cumulativeAmount,
-        BigDecimal.ZERO,
+        0d,
         OrderStatus.PENDING_NEW);
     this.limitPrice = limitPrice;
   }
@@ -92,14 +91,14 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
    */
   public LimitOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal limitPrice,
-      BigDecimal averagePrice,
-      BigDecimal cumulativeAmount,
-      BigDecimal fee,
+      Double limitPrice,
+      Double averagePrice,
+      Double cumulativeAmount,
+      Double fee,
       OrderStatus status) {
 
     super(
@@ -116,7 +115,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
   }
 
   /** @return The limit price */
-  public BigDecimal getLimitPrice() {
+  public Double getLimitPrice() {
 
     return limitPrice;
   }
@@ -128,7 +127,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
   }
 
   private String printLimitPrice() {
-    return limitPrice == null ? null : limitPrice.toPlainString();
+    return limitPrice == null ? null : limitPrice.toString();
   }
 
   @Override
@@ -177,7 +176,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
 
   public static class Builder extends Order.Builder {
 
-    protected BigDecimal limitPrice;
+    protected Double limitPrice;
 
     public Builder(OrderType orderType, CurrencyPair currencyPair) {
 
@@ -210,18 +209,18 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
     }
 
     @Override
-    public Builder originalAmount(BigDecimal originalAmount) {
+    public Builder originalAmount(Double originalAmount) {
 
       return (Builder) super.originalAmount(originalAmount);
     }
 
     @Override
-    public Builder cumulativeAmount(BigDecimal originalAmount) {
+    public Builder cumulativeAmount(Double originalAmount) {
 
       return (Builder) super.cumulativeAmount(originalAmount);
     }
 
-    public Builder remainingAmount(BigDecimal remainingAmount) {
+    public Builder remainingAmount(Double remainingAmount) {
 
       return (Builder) super.remainingAmount(remainingAmount);
     }
@@ -251,7 +250,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
     }
 
     @Override
-    public Builder averagePrice(BigDecimal averagePrice) {
+    public Builder averagePrice(Double averagePrice) {
 
       return (Builder) super.averagePrice(averagePrice);
     }
@@ -269,11 +268,11 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
     }
 
     @Override
-    public Builder fee(BigDecimal fee) {
+    public Builder fee(Double fee) {
       return (Builder) super.fee(fee);
     }
 
-    public Builder limitPrice(BigDecimal limitPrice) {
+    public Builder limitPrice(Double limitPrice) {
 
       this.limitPrice = limitPrice;
       return this;
@@ -292,7 +291,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
               averagePrice,
               originalAmount == null || remainingAmount == null
                   ? cumulativeAmount
-                  : originalAmount.subtract(remainingAmount),
+                  : originalAmount - remainingAmount,
               fee,
               status);
       order.setOrderFlags(flags);

@@ -2,7 +2,6 @@ package org.knowm.xchange.coinbasepro.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /**
  * MARKET ORDER PARAMETERS
@@ -20,11 +19,11 @@ import java.math.BigDecimal;
 public class CoinbaseProPlaceMarketOrder extends CoinbaseProPlaceOrder {
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
   @JsonProperty("size")
-  BigDecimal size;
+  Double size;
 
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
   @JsonProperty("funds")
-  BigDecimal funds;
+  Double funds;
 
   public CoinbaseProPlaceMarketOrder(
       String clientOld,
@@ -33,9 +32,9 @@ public class CoinbaseProPlaceMarketOrder extends CoinbaseProPlaceOrder {
       String productId,
       SelfTradePrevention stp,
       Stop stop,
-      BigDecimal stopPrice,
-      BigDecimal size,
-      BigDecimal funds) {
+      Double stopPrice,
+      Double size,
+      Double funds) {
     super(clientOld, type, side, productId, stp, stop, stopPrice);
     this.size = size;
     this.funds = funds;
@@ -44,11 +43,11 @@ public class CoinbaseProPlaceMarketOrder extends CoinbaseProPlaceOrder {
       throw new IllegalArgumentException("One of size or funds is required.");
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
-  public BigDecimal getFunds() {
+  public Double getFunds() {
     return funds;
   }
 
@@ -77,15 +76,15 @@ public class CoinbaseProPlaceMarketOrder extends CoinbaseProPlaceOrder {
 
   public static class Builder
       extends CoinbaseProPlaceOrder.Builder<CoinbaseProPlaceMarketOrder, Builder> {
-    BigDecimal size;
-    BigDecimal funds;
+    Double size;
+    Double funds;
 
-    public Builder size(BigDecimal size) {
+    public Builder size(Double size) {
       this.size = size;
       return this;
     }
 
-    public Builder funds(BigDecimal funds) {
+    public Builder funds(Double funds) {
       this.funds = funds;
       return this;
     }

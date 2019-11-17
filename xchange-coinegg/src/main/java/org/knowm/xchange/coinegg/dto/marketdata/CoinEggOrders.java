@@ -2,7 +2,6 @@ package org.knowm.xchange.coinegg.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinEggOrders {
 
@@ -26,14 +25,14 @@ public class CoinEggOrders {
   @JsonFormat(shape = JsonFormat.Shape.ARRAY)
   public static class CoinEggOrder {
 
-    @JsonProperty() private BigDecimal price;
-    @JsonProperty() private BigDecimal quantity;
+    @JsonProperty() private Double price;
+    @JsonProperty() private Double quantity;
 
-    public final BigDecimal getPrice() {
+    public final Double getPrice() {
       return price;
     }
 
-    public final BigDecimal getQuantity() {
+    public final Double getQuantity() {
       return quantity;
     }
   }

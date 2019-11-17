@@ -3,7 +3,6 @@ package org.knowm.xchange.btcmarkets.dto;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -34,9 +33,8 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
     Wallet wallet = BTCMarketsAdapters.adaptWallet(Arrays.asList(response));
 
     assertThat(wallet.getBalances()).hasSize(3);
-    assertThat(wallet.getBalance(Currency.LTC).getTotal()).isEqualTo(new BigDecimal("10.00000000"));
-    assertThat(wallet.getBalance(Currency.LTC).getAvailable())
-        .isEqualTo(new BigDecimal("10.00000000"));
+    assertThat(wallet.getBalance(Currency.LTC).getTotal()).isEqualTo(new Double("10.00000000"));
+    assertThat(wallet.getBalance(Currency.LTC).getAvailable()).isEqualTo(new Double("10.00000000"));
   }
 
   @Test
@@ -47,8 +45,8 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
 
     assertThat(orderBook.getTimeStamp().getTime()).isEqualTo(1442997827000L);
     assertThat(orderBook.getAsks()).hasSize(135);
-    assertThat(orderBook.getAsks().get(2).getLimitPrice()).isEqualTo(new BigDecimal("329.41"));
-    assertThat(orderBook.getAsks().get(2).getOriginalAmount()).isEqualTo(new BigDecimal("10.0"));
+    assertThat(orderBook.getAsks().get(2).getLimitPrice()).isEqualTo(new Double("329.41"));
+    assertThat(orderBook.getAsks().get(2).getOriginalAmount()).isEqualTo(new Double("10.0"));
     assertThat(orderBook.getBids()).hasSize(94);
   }
 
@@ -67,10 +65,10 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
     assertThat(openOrders.getOpenOrders().get(1).getLimitPrice()).isEqualTo("130.00000000");
     assertThat(openOrders.getOpenOrders().get(1).getOriginalAmount()).isEqualTo("0.10000000");
     assertThat(openOrders.getOpenOrders().get(1).getCumulativeAmount())
-        .isEqualTo(BigDecimal.valueOf(0.1));
+        .isEqualTo(Double.valueOf(0.1));
     assertThat(openOrders.getOpenOrders().get(1).getAveragePrice())
-        .isEqualTo(BigDecimal.valueOf(130.0));
-    assertThat(openOrders.getOpenOrders().get(1).getFee()).isEqualTo(BigDecimal.valueOf(0.001));
+        .isEqualTo(Double.valueOf(130.0));
+    assertThat(openOrders.getOpenOrders().get(1).getFee()).isEqualTo(Double.valueOf(0.001));
   }
 
   @Test
@@ -114,13 +112,13 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
 
     assertThat(fundingRecords).hasSize(1);
     assertThat(fundingRecords.get(0).getAddress()).isNull();
-    assertThat(fundingRecords.get(0).getAmount()).isEqualTo(BigDecimal.valueOf(15.04872041));
+    assertThat(fundingRecords.get(0).getAmount()).isEqualTo(Double.valueOf(15.04872041));
     assertThat(fundingRecords.get(0).getBalance()).isNull();
     assertThat(fundingRecords.get(0).getBlockchainTransactionHash())
         .isEqualTo("0x1234abcdef1234abcdef1234abcdef1234abcdef1234abcdef1234abcdef");
     assertThat(fundingRecords.get(0).getDate()).isEqualTo(new Date(1530533761866L));
     assertThat(fundingRecords.get(0).getDescription()).isEqualTo("Ethereum Deposit, S 15");
-    assertThat(fundingRecords.get(0).getFee()).isEqualTo(BigDecimal.ZERO.setScale(8));
+    assertThat(fundingRecords.get(0).getFee()).isEqualTo(0d.setScale(8));
     assertThat(fundingRecords.get(0).getInternalId()).isEqualTo("7485764826");
     assertThat(fundingRecords.get(0).getCurrency()).isEqualTo(Currency.ETH);
     assertThat(fundingRecords.get(0).getStatus()).isEqualTo(FundingRecord.Status.COMPLETE);

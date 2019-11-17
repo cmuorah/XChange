@@ -1,7 +1,6 @@
 package org.knowm.xchange.bithumb.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BithumbOrderDetail {
 
@@ -9,20 +8,20 @@ public class BithumbOrderDetail {
   private final String type;
   private final String orderCurrency;
   private final String paymentCurrency;
-  private final BigDecimal unitsTraded;
-  private final BigDecimal price;
-  private final BigDecimal fee;
-  private final BigDecimal total;
+  private final Double unitsTraded;
+  private final Double price;
+  private final Double fee;
+  private final Double total;
 
   public BithumbOrderDetail(
       @JsonProperty("transaction_date") long transactionDate,
       @JsonProperty("type") String type,
       @JsonProperty("order_currency") String orderCurrency,
       @JsonProperty("payment_currency") String paymentCurrency,
-      @JsonProperty("units_traded") BigDecimal unitsTraded,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("total") BigDecimal total) {
+      @JsonProperty("units_traded") Double unitsTraded,
+      @JsonProperty("price") Double price,
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("total") Double total) {
     this.transactionDate = transactionDate;
     this.type = type;
     this.orderCurrency = orderCurrency;
@@ -49,19 +48,19 @@ public class BithumbOrderDetail {
     return paymentCurrency;
   }
 
-  public BigDecimal getUnitsTraded() {
+  public Double getUnitsTraded() {
     return unitsTraded;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 

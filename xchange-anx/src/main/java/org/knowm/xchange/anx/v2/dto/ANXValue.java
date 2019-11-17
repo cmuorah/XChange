@@ -1,12 +1,11 @@
 package org.knowm.xchange.anx.v2.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Data object representing a Value from ANX */
 public final class ANXValue {
 
-  private final BigDecimal value;
+  private final Double value;
   private final String currency;
 
   /**
@@ -15,14 +14,13 @@ public final class ANXValue {
    * @param value
    * @param currency
    */
-  public ANXValue(
-      @JsonProperty("value") BigDecimal value, @JsonProperty("currency") String currency) {
+  public ANXValue(@JsonProperty("value") Double value, @JsonProperty("currency") String currency) {
 
     this.value = value;
     this.currency = currency;
   }
 
-  public BigDecimal getValue() {
+  public Double getValue() {
 
     return value;
   }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.campbx.account;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.campbx.CampBXExchange;
@@ -28,7 +27,7 @@ public class CampBXAccountDataDemo {
     String depositAddr = accountService.requestDepositAddress(Currency.BTC);
     System.out.println("depositAddr = " + depositAddr);
 
-    String txid = accountService.withdrawFunds(Currency.BTC, new BigDecimal("0.1"), "XXX");
+    String txid = accountService.withdrawFunds(Currency.BTC, new Double("0.1"), "XXX");
     System.out.println("See the withdrawal transaction: http://blockchain.info/tx-index/" + txid);
   }
 }

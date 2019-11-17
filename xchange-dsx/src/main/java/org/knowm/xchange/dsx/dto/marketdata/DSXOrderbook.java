@@ -1,22 +1,21 @@
 package org.knowm.xchange.dsx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 /** @author Mikhail Wall */
 public final class DSXOrderbook {
 
-  private final List<BigDecimal[]> asks;
-  private final List<BigDecimal[]> bids;
-  private final BigDecimal marketBuyPrice;
-  private final BigDecimal marketSellPrice;
+  private final List<Double[]> asks;
+  private final List<Double[]> bids;
+  private final Double marketBuyPrice;
+  private final Double marketSellPrice;
 
   public DSXOrderbook(
-      @JsonProperty("asks") List<BigDecimal[]> asks,
-      @JsonProperty("bids") List<BigDecimal[]> bids,
-      @JsonProperty("market_buy_price") BigDecimal marketBuyPrice,
-      @JsonProperty("market_sell_price") BigDecimal marketSellPrice) {
+      @JsonProperty("asks") List<Double[]> asks,
+      @JsonProperty("bids") List<Double[]> bids,
+      @JsonProperty("market_buy_price") Double marketBuyPrice,
+      @JsonProperty("market_sell_price") Double marketSellPrice) {
 
     this.asks = asks;
     this.bids = bids;
@@ -24,22 +23,22 @@ public final class DSXOrderbook {
     this.marketSellPrice = marketSellPrice;
   }
 
-  public List<BigDecimal[]> getAsks() {
+  public List<Double[]> getAsks() {
 
     return asks;
   }
 
-  public List<BigDecimal[]> getBids() {
+  public List<Double[]> getBids() {
 
     return bids;
   }
 
-  public BigDecimal getMarketBuyPrice() {
+  public Double getMarketBuyPrice() {
 
     return marketBuyPrice;
   }
 
-  public BigDecimal getMarketSellPrice() {
+  public Double getMarketSellPrice() {
 
     return marketSellPrice;
   }
@@ -48,11 +47,11 @@ public final class DSXOrderbook {
   public String toString() {
 
     StringBuilder sb = new StringBuilder("DSXOrderbook [asks=");
-    for (BigDecimal[] a : asks) {
+    for (Double[] a : asks) {
       sb.append("[").append(a[0].toString()).append(",").append(a[1].toString()).append("],");
     }
     sb.append(" bids=");
-    for (BigDecimal[] b : bids) {
+    for (Double[] b : bids) {
       sb.append("[").append(b[0].toString()).append(",").append(b[1].toString()).append("],");
     }
     sb.append(", marketBuyPrice=");

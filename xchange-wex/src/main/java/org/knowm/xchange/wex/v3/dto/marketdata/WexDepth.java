@@ -1,14 +1,13 @@
 package org.knowm.xchange.wex.v3.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 /** Data object representing depth from Wex */
 public class WexDepth {
 
-  private final List<BigDecimal[]> asks;
-  private final List<BigDecimal[]> bids;
+  private final List<Double[]> asks;
+  private final List<Double[]> bids;
 
   /**
    * Constructor
@@ -17,19 +16,18 @@ public class WexDepth {
    * @param bids
    */
   public WexDepth(
-      @JsonProperty("asks") List<BigDecimal[]> asks,
-      @JsonProperty("bids") List<BigDecimal[]> bids) {
+      @JsonProperty("asks") List<Double[]> asks, @JsonProperty("bids") List<Double[]> bids) {
 
     this.asks = asks;
     this.bids = bids;
   }
 
-  public List<BigDecimal[]> getAsks() {
+  public List<Double[]> getAsks() {
 
     return asks;
   }
 
-  public List<BigDecimal[]> getBids() {
+  public List<Double[]> getBids() {
 
     return bids;
   }
@@ -38,11 +36,11 @@ public class WexDepth {
   public String toString() {
 
     StringBuilder sb = new StringBuilder("WexDepth [asks=");
-    for (BigDecimal[] a : asks) {
+    for (Double[] a : asks) {
       sb.append("[").append(a[0].toString()).append(",").append(a[1].toString()).append("],");
     }
     sb.append(" bids=");
-    for (BigDecimal[] b : bids) {
+    for (Double[] b : bids) {
       sb.append("[").append(b[0].toString()).append(",").append(b[1].toString()).append("],");
     }
     sb.append("]");

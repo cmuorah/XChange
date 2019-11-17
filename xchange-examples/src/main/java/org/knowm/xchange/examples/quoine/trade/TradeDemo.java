@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.quoine.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -30,7 +29,7 @@ public class TradeDemo {
     // place a limit buy order
     QuoineOrderResponse quoinePlaceOrderResponse =
         tradeServiceRaw.placeLimitOrder(
-            CurrencyPair.BTC_USD, "sell", new BigDecimal(".1"), new BigDecimal("250.00"));
+            CurrencyPair.BTC_USD, "sell", new Double(".1"), new Double("250.00"));
     System.out.println("QuoineOrderResponse return value: " + quoinePlaceOrderResponse.toString());
 
     // cancel the order
@@ -51,11 +50,11 @@ public class TradeDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (OrderType.ASK),
-            new BigDecimal(".1"),
+            new Double(".1"),
             CurrencyPair.BTC_USD,
             "",
             null,
-            new BigDecimal("200.00"));
+            new Double("200.00"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 

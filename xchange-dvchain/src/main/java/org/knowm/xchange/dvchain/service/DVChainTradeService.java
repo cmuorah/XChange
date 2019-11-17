@@ -1,7 +1,6 @@
 package org.knowm.xchange.dvchain.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.dto.Order;
@@ -29,8 +28,8 @@ public class DVChainTradeService extends DVChainTradeServiceRaw implements Trade
     return cancelDVChainOrder(orderId).equals("");
   }
 
-  private BigDecimal getPriceForMarketOrder(List<DVChainLevel> levels, MarketOrder marketOrder) {
-    BigDecimal quantity = marketOrder.getOriginalAmount();
+  private Double getPriceForMarketOrder(List<DVChainLevel> levels, MarketOrder marketOrder) {
+    Double quantity = marketOrder.getOriginalAmount();
     for (DVChainLevel level : levels) {
       if (quantity.compareTo(level.getMaxQuantity()) <= 0) {
         return marketOrder.getType() == Order.OrderType.BID

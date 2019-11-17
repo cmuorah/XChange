@@ -1,19 +1,18 @@
 package org.knowm.xchange.ccex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CCEXOpenorder {
 
   private String OrderUuid;
   private String Exchange;
   private String OrderType;
-  private BigDecimal Quantity;
-  private BigDecimal QuantityRemaining;
-  private BigDecimal Limit;
-  private BigDecimal CommissionPaid;
-  private BigDecimal Price;
-  private BigDecimal PricePerUnit;
+  private Double Quantity;
+  private Double QuantityRemaining;
+  private Double Limit;
+  private Double CommissionPaid;
+  private Double Price;
+  private Double PricePerUnit;
   private String Opened;
   private String Closed;
   private boolean CancelInitiated;
@@ -26,12 +25,12 @@ public class CCEXOpenorder {
       @JsonProperty("OrderUuid") String orderUuid,
       @JsonProperty("Exchange") String exchange,
       @JsonProperty("OrderType") String orderType,
-      @JsonProperty("Quantity") BigDecimal quantity,
-      @JsonProperty("QuantityRemaining") BigDecimal quantityRemaining,
-      @JsonProperty("Limit") BigDecimal limit,
-      @JsonProperty("CommissionPaid") BigDecimal commissionPaid,
-      @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("PricePerUnit") BigDecimal pricePerUnit,
+      @JsonProperty("Quantity") Double quantity,
+      @JsonProperty("QuantityRemaining") Double quantityRemaining,
+      @JsonProperty("Limit") Double limit,
+      @JsonProperty("CommissionPaid") Double commissionPaid,
+      @JsonProperty("Price") Double price,
+      @JsonProperty("PricePerUnit") Double pricePerUnit,
       @JsonProperty("Opened") String opened,
       @JsonProperty("Closed") String closed,
       @JsonProperty("CancelInitiated") boolean cancelInitiated,
@@ -82,51 +81,51 @@ public class CCEXOpenorder {
     OrderType = orderType;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return Quantity;
   }
 
-  public void setQuantity(BigDecimal quantity) {
+  public void setQuantity(Double quantity) {
     Quantity = quantity;
   }
 
-  public BigDecimal getQuantityRemaining() {
+  public Double getQuantityRemaining() {
     return QuantityRemaining;
   }
 
-  public void setQuantityRemaining(BigDecimal quantityRemaining) {
+  public void setQuantityRemaining(Double quantityRemaining) {
     QuantityRemaining = quantityRemaining;
   }
 
-  public BigDecimal getLimit() {
+  public Double getLimit() {
     return Limit;
   }
 
-  public void setLimit(BigDecimal limit) {
+  public void setLimit(Double limit) {
     Limit = limit;
   }
 
-  public BigDecimal getCommissionPaid() {
+  public Double getCommissionPaid() {
     return CommissionPaid;
   }
 
-  public void setCommissionPaid(BigDecimal commissionPaid) {
+  public void setCommissionPaid(Double commissionPaid) {
     CommissionPaid = commissionPaid;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return Price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     Price = price;
   }
 
-  public BigDecimal getPricePerUnit() {
+  public Double getPricePerUnit() {
     return PricePerUnit;
   }
 
-  public void setPricePerUnit(BigDecimal pricePerUnit) {
+  public void setPricePerUnit(Double pricePerUnit) {
     PricePerUnit = pricePerUnit;
   }
 

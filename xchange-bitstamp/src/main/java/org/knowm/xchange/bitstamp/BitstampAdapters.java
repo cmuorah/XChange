@@ -1,8 +1,5 @@
 package org.knowm.xchange.bitstamp;
 
-import static java.math.BigDecimal.ZERO;
-
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,10 +65,10 @@ public final class BitstampAdapters {
               b.getBalance(),
               b.getAvailable(),
               b.getReserved(),
-              ZERO,
-              ZERO,
-              b.getBalance().subtract(b.getAvailable()).subtract(b.getReserved()),
-              ZERO);
+              0d,
+              0d,
+              b.getBalance() - (b.getAvailable()) - (b.getReserved()),
+              0d);
       balances.add(xchangeBalance);
     }
     return new AccountInfo(
@@ -95,10 +92,10 @@ public final class BitstampAdapters {
   }
 
   public static List<LimitOrder> createOrders(
-      CurrencyPair currencyPair, Order.OrderType orderType, List<List<BigDecimal>> orders) {
+      CurrencyPair currencyPair, Order.OrderType orderType, List<List<Double>> orders) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (List<BigDecimal> ask : orders) {
+    for (List<Double> ask : orders) {
       checkArgument(
           ask.size() == 2, "Expected a pair (price, amount) but got {0} elements.", ask.size());
       limitOrders.add(createOrder(currencyPair, ask, orderType));
@@ -107,7 +104,7 @@ public final class BitstampAdapters {
   }
 
   public static LimitOrder createOrder(
-      CurrencyPair currencyPair, List<BigDecimal> priceAndAmount, Order.OrderType orderType) {
+      CurrencyPair currencyPair, List<Double> priceAndAmount, Order.OrderType orderType) {
 
     return new LimitOrder(
         orderType, priceAndAmount.get(1), currencyPair, "", null, priceAndAmount.get(0));
@@ -170,14 +167,14 @@ public final class BitstampAdapters {
    */
   public static Ticker adaptTicker(BitstampTicker bitstampTicker, CurrencyPair currencyPair) {
 
-    BigDecimal open = bitstampTicker.getOpen();
-    BigDecimal last = bitstampTicker.getLast();
-    BigDecimal bid = bitstampTicker.getBid();
-    BigDecimal ask = bitstampTicker.getAsk();
-    BigDecimal high = bitstampTicker.getHigh();
-    BigDecimal low = bitstampTicker.getLow();
-    BigDecimal vwap = bitstampTicker.getVwap();
-    BigDecimal volume = bitstampTicker.getVolume();
+    Double open = bitstampTicker.getOpen();
+    Double last = bitstampTicker.getLast();
+    Double bid = bitstampTicker.getBid();
+    Double ask = bitstampTicker.getAsk();
+    Double high = bitstampTicker.getHigh();
+    Double low = bitstampTicker.getLow();
+    Double vwap = bitstampTicker.getVwap();
+    Double volume = bitstampTicker.getVolume();
     Date timestamp = new Date(bitstampTicker.getTimestamp() * 1000L);
 
     return new Ticker.Builder()
@@ -194,12 +191,6 @@ public final class BitstampAdapters {
         .build();
   }
 
-  /**
-   * Adapt the user's trades
-   *
-   * @param bitstampUserTransactions
-   * @return
-   */
   public static UserTrades adaptTradeHistory(BitstampUserTransaction[] bitstampUserTransactions) {
 
     List<UserTrade> trades = new ArrayList<>();
@@ -212,10 +203,10 @@ public final class BitstampAdapters {
         continue;
       }
       final OrderType orderType;
-      if (t.getCounterAmount().doubleValue() == 0.0) {
-        orderType = t.getBaseAmount().doubleValue() < 0.0 ? OrderType.ASK : OrderType.BID;
+      if (t.getCounterAmount() == 0.0) {
+        orderType = t.getBaseAmount() < 0.0 ? OrderType.ASK : OrderType.BID;
       } else {
-        orderType = t.getCounterAmount().doubleValue() > 0.0 ? OrderType.ASK : OrderType.BID;
+        orderType = t.getCounterAmount() > 0.0 ? OrderType.ASK : OrderType.BID;
       }
 
       long tradeId = t.getId();
@@ -227,9 +218,9 @@ public final class BitstampAdapters {
       UserTrade trade =
           new UserTrade(
               orderType,
-              t.getBaseAmount().abs(),
+              Math.abs(t.getBaseAmount()),
               pair,
-              t.getPrice().abs(),
+              Math.abs(t.getPrice()),
               t.getDatetime(),
               Long.toString(tradeId),
               Long.toString(t.getOrderId()),
@@ -240,15 +231,15 @@ public final class BitstampAdapters {
     return new UserTrades(trades, lastTradeId, TradeSortType.SortByID);
   }
 
-  public static Map.Entry<String, BigDecimal> findNonzeroAmount(BitstampUserTransaction transaction)
+  public static Map.Entry<String, Double> findNon0dAmount(BitstampUserTransaction transaction)
       throws ExchangeException {
-    for (Map.Entry<String, BigDecimal> entry : transaction.getAmounts().entrySet()) {
-      if (entry.getValue().abs().compareTo(new BigDecimal(1e-6)) == 1) {
+    for (Map.Entry<String, Double> entry : transaction.getAmounts().entrySet()) {
+      if (Math.abs(entry.getValue()) > 1e-6) {
         return entry;
       }
     }
     throw new ExchangeException(
-        "Could not find non-zero amount in transaction (id: " + transaction.getId() + ")");
+        "Could not find non-0d amount in transaction (id: " + transaction.getId() + ")");
   }
 
   public static List<FundingRecord> adaptFundingHistory(
@@ -258,13 +249,13 @@ public final class BitstampAdapters {
       if (trans.isDeposit() || trans.isWithdrawal()) {
         FundingRecord.Type type =
             trans.isDeposit() ? FundingRecord.Type.DEPOSIT : FundingRecord.Type.WITHDRAWAL;
-        Map.Entry<String, BigDecimal> amount = BitstampAdapters.findNonzeroAmount(trans);
+        Map.Entry<String, Double> amount = BitstampAdapters.findNon0dAmount(trans);
         FundingRecord record =
             new FundingRecord(
                 null,
                 trans.getDatetime(),
                 Currency.getInstance(amount.getKey()),
-                amount.getValue().abs(),
+                Math.abs(amount.getValue()),
                 String.valueOf(trans.getId()),
                 null,
                 type,
@@ -311,12 +302,10 @@ public final class BitstampAdapters {
 
     if (transaction.getBch() != null && transaction.getBtc() != null) return CurrencyPair.BCH_BTC;
 
-    if (transaction.getBch() != null && transaction.getBtc() != null) return CurrencyPair.BCH_BTC;
-
     throw new NotYetImplementedForExchangeException();
   }
 
-  private static BigDecimal getBaseCurrencyAmountFromBitstampTransaction(
+  private static Double getBaseCurrencyAmountFromBitstampTransaction(
       BitstampOrderTransaction bitstampTransaction) {
 
     CurrencyPair currencyPair = adaptCurrencyPair(bitstampTransaction);
@@ -363,37 +352,37 @@ public final class BitstampAdapters {
     CurrencyPair currencyPair = adaptCurrencyPair(bitstampTransactions[0]);
     Date date = bitstampTransactions[0].getDatetime();
 
-    BigDecimal averagePrice =
+    Double averagePrice =
         Arrays.stream(bitstampTransactions)
-            .map(t -> t.getPrice())
-            .reduce((x, y) -> x.add(y))
-            .get()
-            .divide(BigDecimal.valueOf(bitstampTransactions.length), 2);
+                .map(BitstampOrderTransaction::getPrice)
+                .reduce(Double::sum)
+                .get()
+            / bitstampTransactions.length;
 
-    BigDecimal cumulativeAmount =
+    Double cumulativeAmount =
         Arrays.stream(bitstampTransactions)
-            .map(t -> getBaseCurrencyAmountFromBitstampTransaction(t))
-            .reduce((x, y) -> x.add(y))
+            .map(BitstampAdapters::getBaseCurrencyAmountFromBitstampTransaction)
+            .reduce(Double::sum)
             .get();
 
-    BigDecimal totalFee =
-        Arrays.stream(bitstampTransactions).map(t -> t.getFee()).reduce((x, y) -> x.add(y)).get();
+    Double totalFee =
+        Arrays.stream(bitstampTransactions)
+            .map(BitstampOrderTransaction::getFee)
+            .reduce(Double::sum)
+            .get();
 
     Order.OrderStatus orderStatus = adaptOrderStatus(bitstampOrderStatusResponse.getStatus());
 
-    BitstampGenericOrder bitstampGenericOrder =
-        new BitstampGenericOrder(
-            null, // not discernable from response data
-            null, // not discernable from the data
-            currencyPair,
-            orderId,
-            date,
-            averagePrice,
-            cumulativeAmount,
-            totalFee,
-            orderStatus);
-
-    return bitstampGenericOrder;
+    return new BitstampGenericOrder(
+        null, // not discernable from response data
+        null, // not discernable from the data
+        currencyPair,
+        orderId,
+        date,
+        averagePrice,
+        cumulativeAmount,
+        totalFee,
+        orderStatus);
   }
 
   public static List<CurrencyPair> adaptCurrencyPairs(

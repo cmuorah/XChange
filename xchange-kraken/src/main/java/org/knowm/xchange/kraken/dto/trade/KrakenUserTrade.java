@@ -1,6 +1,5 @@
 package org.knowm.xchange.kraken.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -9,31 +8,31 @@ import org.knowm.xchange.dto.trade.UserTrade;
 
 public class KrakenUserTrade extends UserTrade {
 
-  private final BigDecimal cost;
+  private final Double cost;
 
   public KrakenUserTrade(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
-      BigDecimal price,
+      Double price,
       Date timestamp,
       String id,
       String orderId,
-      BigDecimal feeAmount,
+      Double feeAmount,
       Currency feeCurrency,
-      BigDecimal cost) {
+      Double cost) {
     super(
         type, originalAmount, currencyPair, price, timestamp, id, orderId, feeAmount, feeCurrency);
     this.cost = cost;
   }
 
-  public BigDecimal getCost() {
+  public Double getCost() {
     return cost;
   }
 
   public static class Builder extends UserTrade.Builder {
 
-    private BigDecimal cost;
+    private Double cost;
 
     public static Builder from(KrakenUserTrade trade) {
       Builder builder = new Builder().cost(trade.getCost());
@@ -51,7 +50,7 @@ public class KrakenUserTrade extends UserTrade {
       return builder;
     }
 
-    public Builder cost(BigDecimal cost) {
+    public Builder cost(Double cost) {
       this.cost = cost;
       return this;
     }

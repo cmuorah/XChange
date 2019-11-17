@@ -2,7 +2,6 @@ package org.knowm.xchange.mercadobitcoin;
 
 import static org.knowm.xchange.utils.DateUtils.fromUnixTime;
 
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,10 +60,10 @@ public final class MercadoBitcoinAdapters {
   }
 
   public static List<LimitOrder> createOrders(
-      CurrencyPair currencyPair, OrderType orderType, List<List<BigDecimal>> orders) {
+      CurrencyPair currencyPair, OrderType orderType, List<List<Double>> orders) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (List<BigDecimal> ask : orders) {
+    for (List<Double> ask : orders) {
       checkArgument(
           ask.size() == 2, "Expected a pair (price, amount) but got {0} elements.", ask.size());
       limitOrders.add(createOrder(currencyPair, ask, orderType));
@@ -73,7 +72,7 @@ public final class MercadoBitcoinAdapters {
   }
 
   public static LimitOrder createOrder(
-      CurrencyPair currencyPair, List<BigDecimal> priceAndAmount, OrderType orderType) {
+      CurrencyPair currencyPair, List<Double> priceAndAmount, OrderType orderType) {
 
     return new LimitOrder(
         orderType, priceAndAmount.get(1), currencyPair, "", null, priceAndAmount.get(0));
@@ -96,12 +95,12 @@ public final class MercadoBitcoinAdapters {
   public static Ticker adaptTicker(
       MercadoBitcoinTicker mercadoBitcoinTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = mercadoBitcoinTicker.getTicker().getLast();
-    BigDecimal bid = mercadoBitcoinTicker.getTicker().getBuy();
-    BigDecimal ask = mercadoBitcoinTicker.getTicker().getSell();
-    BigDecimal high = mercadoBitcoinTicker.getTicker().getHigh();
-    BigDecimal low = mercadoBitcoinTicker.getTicker().getLow();
-    BigDecimal volume = mercadoBitcoinTicker.getTicker().getVol();
+    Double last = mercadoBitcoinTicker.getTicker().getLast();
+    Double bid = mercadoBitcoinTicker.getTicker().getBuy();
+    Double ask = mercadoBitcoinTicker.getTicker().getSell();
+    Double high = mercadoBitcoinTicker.getTicker().getHigh();
+    Double low = mercadoBitcoinTicker.getTicker().getLow();
+    Double volume = mercadoBitcoinTicker.getTicker().getVol();
     Date timestamp = new Date(mercadoBitcoinTicker.getTicker().getDate() * 1000L);
 
     return new Ticker.Builder()
@@ -190,8 +189,8 @@ public final class MercadoBitcoinAdapters {
 
     String type = userOrdersEntry.getType();
     OrderType orderType = toOrderType(type);
-    BigDecimal price = userOrdersEntry.getPrice();
-    BigDecimal volume = userOrdersEntry.getVolume();
+    Double price = userOrdersEntry.getPrice();
+    Double volume = userOrdersEntry.getVolume();
     long time = userOrdersEntry.getCreated() * 1000L;
     return new LimitOrder(orderType, volume, currencyPair, id, new Date(time), price);
   }

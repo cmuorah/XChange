@@ -1,6 +1,5 @@
 package org.knowm.xchange.simulated;
 
-import static java.math.BigDecimal.ZERO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.knowm.xchange.currency.Currency.BTC;
 import static org.knowm.xchange.currency.Currency.USD;
@@ -13,7 +12,6 @@ import static org.knowm.xchange.simulated.SimulatedExchange.ACCOUNT_FACTORY_PARA
 import static org.knowm.xchange.simulated.SimulatedExchange.ENGINE_FACTORY_PARAM;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
@@ -34,7 +32,7 @@ import org.knowm.xchange.service.trade.params.orders.OpenOrdersParamCurrencyPair
 
 public class TestSimulatedExchange {
 
-  private static final BigDecimal INITIAL_BALANCE = new BigDecimal(1000);
+  private static final Double INITIAL_BALANCE = new Double(1000);
 
   private SimulatedExchange exchange;
   private MatchingEngineFactory matchingEngineFactory;
@@ -77,20 +75,20 @@ public class TestSimulatedExchange {
     // Then
 
     assertThat(orderBook.getAsks()).hasSize(4);
-    assertThat(orderBook.getAsks().get(0).getLimitPrice()).isEqualTo(new BigDecimal(98));
+    assertThat(orderBook.getAsks().get(0).getLimitPrice()).isEqualTo(new Double(98));
     assertThat(orderBook.getBids()).hasSize(6);
-    assertThat(orderBook.getBids().get(0).getLimitPrice()).isEqualTo(new BigDecimal(97));
-    assertThat(ticker.getAsk()).isEqualTo(new BigDecimal(98));
-    assertThat(ticker.getBid()).isEqualTo(new BigDecimal(97));
+    assertThat(orderBook.getBids().get(0).getLimitPrice()).isEqualTo(new Double(97));
+    assertThat(ticker.getAsk()).isEqualTo(new Double(98));
+    assertThat(ticker.getBid()).isEqualTo(new Double(97));
     assertThat(ticker.getLast()).isNull();
     assertThat(getOpenOrders().getAllOpenOrders()).isEmpty();
     assertThat(getTradeHistory(exchange).getTrades()).isEmpty();
     assertThat(baseBalance.getAvailable()).isEqualTo(INITIAL_BALANCE);
     assertThat(baseBalance.getTotal()).isEqualTo(INITIAL_BALANCE);
-    assertThat(baseBalance.getFrozen()).isEqualTo(ZERO);
+    assertThat(baseBalance.getFrozen()).isEqualTo(0d);
     assertThat(counterBalance.getAvailable()).isEqualTo(INITIAL_BALANCE);
     assertThat(counterBalance.getTotal()).isEqualTo(INITIAL_BALANCE);
-    assertThat(counterBalance.getFrozen()).isEqualTo(ZERO);
+    assertThat(counterBalance.getFrozen()).isEqualTo(0d);
   }
 
   @Test(expected = ExchangeException.class)
@@ -98,7 +96,7 @@ public class TestSimulatedExchange {
     exchange
         .getTradeService()
         .placeMarketOrder(
-            new MarketOrder.Builder(BID, BTC_USD).originalAmount(new BigDecimal("250")).build());
+            new MarketOrder.Builder(BID, BTC_USD).originalAmount(new Double("250")).build());
   }
 
   @Test(expected = ExchangeException.class)
@@ -106,7 +104,7 @@ public class TestSimulatedExchange {
     exchange
         .getTradeService()
         .placeMarketOrder(
-            new MarketOrder.Builder(ASK, BTC_USD).originalAmount(new BigDecimal("1002.1")).build());
+            new MarketOrder.Builder(ASK, BTC_USD).originalAmount(new Double("1002.1")).build());
   }
 
   @Test(expected = FundsExceededException.class)
@@ -114,7 +112,7 @@ public class TestSimulatedExchange {
     exchange
         .getTradeService()
         .placeMarketOrder(
-            new MarketOrder.Builder(BID, BTC_USD).originalAmount(new BigDecimal("150")).build());
+            new MarketOrder.Builder(BID, BTC_USD).originalAmount(new Double("150")).build());
   }
 
   @Test(expected = FundsExceededException.class)
@@ -122,9 +120,7 @@ public class TestSimulatedExchange {
     exchange
         .getTradeService()
         .placeMarketOrder(
-            new MarketOrder.Builder(ASK, BTC_USD)
-                .originalAmount(new BigDecimal("1000.01"))
-                .build());
+            new MarketOrder.Builder(ASK, BTC_USD).originalAmount(new Double("1000.01")).build());
   }
 
   @Test
@@ -142,7 +138,7 @@ public class TestSimulatedExchange {
     exchange
         .getTradeService()
         .placeMarketOrder(
-            new MarketOrder.Builder(ASK, BTC_USD).originalAmount(new BigDecimal("0.7")).build());
+            new MarketOrder.Builder(ASK, BTC_USD).originalAmount(new Double("0.7")).build());
 
     // Then
     assertThat(exchange.getMarketDataService().getTrades(BTC_USD).getTrades()).hasSize(3);
@@ -159,7 +155,7 @@ public class TestSimulatedExchange {
     exchange
         .getTradeService()
         .placeMarketOrder(
-            new MarketOrder.Builder(ASK, BTC_USD).originalAmount(new BigDecimal("0.7")).build());
+            new MarketOrder.Builder(ASK, BTC_USD).originalAmount(new Double("0.7")).build());
     OrderBook orderBook = exchange.getMarketDataService().getOrderBook(BTC_USD);
     Ticker ticker = exchange.getMarketDataService().getTicker(BTC_USD);
     Balance baseBalance = exchange.getAccountService().getAccountInfo().getWallet().getBalance(BTC);
@@ -169,22 +165,19 @@ public class TestSimulatedExchange {
     // Then
     assertThat(orderBook.getAsks()).hasSize(4);
     assertThat(orderBook.getBids()).hasSize(5);
-    assertThat(ticker.getAsk()).isEqualTo(new BigDecimal(98));
-    assertThat(ticker.getBid()).isEqualTo(new BigDecimal(96));
-    assertThat(ticker.getLast()).isEqualTo(new BigDecimal(96));
+    assertThat(ticker.getAsk()).isEqualTo(new Double(98));
+    assertThat(ticker.getBid()).isEqualTo(new Double(96));
+    assertThat(ticker.getLast()).isEqualTo(new Double(96));
     assertThat(getTradeHistory(exchange).getTrades()).hasSize(3);
 
-    BigDecimal expectedUsdProceeds =
-        new BigDecimal(97)
-            .multiply(new BigDecimal("0.40"))
-            .add(new BigDecimal(96).multiply(new BigDecimal("0.30")));
-    assertThat(baseBalance.getAvailable())
-        .isEqualTo(INITIAL_BALANCE.subtract(new BigDecimal("0.70")));
-    assertThat(baseBalance.getTotal()).isEqualTo(INITIAL_BALANCE.subtract(new BigDecimal("0.70")));
-    assertThat(baseBalance.getFrozen()).isEqualTo(ZERO);
+    Double expectedUsdProceeds =
+        new Double(97) * (new Double("0.40")).add(new Double(96) * (new Double("0.30")));
+    assertThat(baseBalance.getAvailable()).isEqualTo(INITIAL_BALANCE - (new Double("0.70")));
+    assertThat(baseBalance.getTotal()).isEqualTo(INITIAL_BALANCE - (new Double("0.70")));
+    assertThat(baseBalance.getFrozen()).isEqualTo(0d);
     assertThat(counterBalance.getAvailable()).isEqualTo(INITIAL_BALANCE.add(expectedUsdProceeds));
     assertThat(counterBalance.getTotal()).isEqualTo(INITIAL_BALANCE.add(expectedUsdProceeds));
-    assertThat(counterBalance.getFrozen()).isEqualTo(ZERO);
+    assertThat(counterBalance.getFrozen()).isEqualTo(0d);
   }
 
   @Test
@@ -196,8 +189,8 @@ public class TestSimulatedExchange {
             .getTradeService()
             .placeLimitOrder(
                 new LimitOrder.Builder(ASK, BTC_USD)
-                    .limitPrice(new BigDecimal(97))
-                    .originalAmount(new BigDecimal("0.7"))
+                    .limitPrice(new Double(97))
+                    .originalAmount(new Double("0.7"))
                     .build());
     OrderBook orderBook = exchange.getMarketDataService().getOrderBook(BTC_USD);
     Ticker ticker = exchange.getMarketDataService().getTicker(BTC_USD);
@@ -208,28 +201,26 @@ public class TestSimulatedExchange {
     // THen
     assertThat(orderBook.getAsks()).hasSize(5);
     assertThat(orderBook.getBids()).hasSize(5);
-    assertThat(ticker.getAsk()).isEqualTo(new BigDecimal(97));
-    assertThat(ticker.getBid()).isEqualTo(new BigDecimal(96));
-    assertThat(ticker.getLast()).isEqualTo(new BigDecimal(97));
+    assertThat(ticker.getAsk()).isEqualTo(new Double(97));
+    assertThat(ticker.getBid()).isEqualTo(new Double(96));
+    assertThat(ticker.getLast()).isEqualTo(new Double(97));
 
     OpenOrders orders = getOpenOrders();
     assertThat(orders.getOpenOrders()).hasSize(1);
-    assertThat(orders.getOpenOrders().get(0).getRemainingAmount()).isEqualTo(new BigDecimal("0.3"));
-    assertThat(orders.getOpenOrders().get(0).getCumulativeAmount())
-        .isEqualTo(new BigDecimal("0.4"));
-    assertThat(orders.getOpenOrders().get(0).getAveragePrice()).isEqualTo(new BigDecimal(97));
+    assertThat(orders.getOpenOrders().get(0).getRemainingAmount()).isEqualTo(new Double("0.3"));
+    assertThat(orders.getOpenOrders().get(0).getCumulativeAmount()).isEqualTo(new Double("0.4"));
+    assertThat(orders.getOpenOrders().get(0).getAveragePrice()).isEqualTo(new Double(97));
     assertThat(orders.getOpenOrders().get(0).getId()).isEqualTo(orderId);
     assertThat(orders.getOpenOrders().get(0).getStatus()).isEqualTo(PARTIALLY_FILLED);
 
     assertThat(getTradeHistory(exchange).getTrades()).hasSize(1);
 
-    BigDecimal expectedUsdProceeds = new BigDecimal(97).multiply(new BigDecimal("0.4"));
-    assertThat(baseBalance.getTotal()).isEqualTo(INITIAL_BALANCE.subtract(new BigDecimal("0.4")));
-    assertThat(baseBalance.getFrozen()).isEqualTo(new BigDecimal("0.3"));
-    assertThat(baseBalance.getAvailable())
-        .isEqualTo(INITIAL_BALANCE.subtract(new BigDecimal("0.7")));
+    Double expectedUsdProceeds = new Double(97) * (new Double("0.4"));
+    assertThat(baseBalance.getTotal()).isEqualTo(INITIAL_BALANCE - (new Double("0.4")));
+    assertThat(baseBalance.getFrozen()).isEqualTo(new Double("0.3"));
+    assertThat(baseBalance.getAvailable()).isEqualTo(INITIAL_BALANCE - (new Double("0.7")));
     assertThat(counterBalance.getTotal()).isEqualTo(INITIAL_BALANCE.add(expectedUsdProceeds));
-    assertThat(counterBalance.getFrozen()).isEqualTo(ZERO);
+    assertThat(counterBalance.getFrozen()).isEqualTo(0d);
     assertThat(counterBalance.getAvailable()).isEqualTo(INITIAL_BALANCE.add(expectedUsdProceeds));
   }
 
@@ -240,7 +231,7 @@ public class TestSimulatedExchange {
     exchange
         .getTradeService()
         .placeMarketOrder(
-            new MarketOrder.Builder(BID, BTC_USD).originalAmount(new BigDecimal("0.56")).build());
+            new MarketOrder.Builder(BID, BTC_USD).originalAmount(new Double("0.56")).build());
     OrderBook orderBook = exchange.getMarketDataService().getOrderBook(BTC_USD);
     Ticker ticker = exchange.getMarketDataService().getTicker(BTC_USD);
     Balance baseBalance = exchange.getAccountService().getAccountInfo().getWallet().getBalance(BTC);
@@ -250,21 +241,19 @@ public class TestSimulatedExchange {
     // THen
     assertThat(orderBook.getAsks()).hasSize(3);
     assertThat(orderBook.getBids()).hasSize(6);
-    assertThat(ticker.getAsk()).isEqualTo(new BigDecimal(99));
-    assertThat(ticker.getBid()).isEqualTo(new BigDecimal(97));
-    assertThat(ticker.getLast()).isEqualTo(new BigDecimal(99));
+    assertThat(ticker.getAsk()).isEqualTo(new Double(99));
+    assertThat(ticker.getBid()).isEqualTo(new Double(97));
+    assertThat(ticker.getLast()).isEqualTo(new Double(99));
     assertThat(getTradeHistory(exchange).getTrades()).hasSize(3);
 
-    BigDecimal expectedUsdCost =
-        new BigDecimal(98)
-            .multiply(new BigDecimal("0.3"))
-            .add(new BigDecimal(99).multiply(new BigDecimal("0.26")));
-    assertThat(baseBalance.getAvailable()).isEqualTo(INITIAL_BALANCE.add(new BigDecimal("0.56")));
-    assertThat(baseBalance.getTotal()).isEqualTo(INITIAL_BALANCE.add(new BigDecimal("0.56")));
-    assertThat(baseBalance.getFrozen()).isEqualTo(ZERO);
-    assertThat(counterBalance.getAvailable()).isEqualTo(INITIAL_BALANCE.subtract(expectedUsdCost));
-    assertThat(counterBalance.getTotal()).isEqualTo(INITIAL_BALANCE.subtract(expectedUsdCost));
-    assertThat(counterBalance.getFrozen()).isEqualTo(ZERO);
+    Double expectedUsdCost =
+        new Double(98) * (new Double("0.3")).add(new Double(99) * (new Double("0.26")));
+    assertThat(baseBalance.getAvailable()).isEqualTo(INITIAL_BALANCE.add(new Double("0.56")));
+    assertThat(baseBalance.getTotal()).isEqualTo(INITIAL_BALANCE.add(new Double("0.56")));
+    assertThat(baseBalance.getFrozen()).isEqualTo(0d);
+    assertThat(counterBalance.getAvailable()).isEqualTo(INITIAL_BALANCE - (expectedUsdCost));
+    assertThat(counterBalance.getTotal()).isEqualTo(INITIAL_BALANCE - (expectedUsdCost));
+    assertThat(counterBalance.getFrozen()).isEqualTo(0d);
   }
 
   @Test
@@ -276,16 +265,16 @@ public class TestSimulatedExchange {
             .getTradeService()
             .placeLimitOrder(
                 new LimitOrder.Builder(BID, BTC_USD)
-                    .limitPrice(new BigDecimal(99))
-                    .originalAmount(new BigDecimal("0.7"))
+                    .limitPrice(new Double(99))
+                    .originalAmount(new Double("0.7"))
                     .build());
     String orderId2 =
         exchange
             .getTradeService()
             .placeLimitOrder(
                 new LimitOrder.Builder(BID, BTC_USD)
-                    .limitPrice(new BigDecimal(90))
-                    .originalAmount(new BigDecimal("1"))
+                    .limitPrice(new Double(90))
+                    .originalAmount(new Double("1"))
                     .build());
     OrderBook orderBook = exchange.getMarketDataService().getOrderBook(BTC_USD);
     Ticker ticker = exchange.getMarketDataService().getTicker(BTC_USD);
@@ -296,9 +285,9 @@ public class TestSimulatedExchange {
     // THen
     assertThat(orderBook.getAsks()).hasSize(2);
     assertThat(orderBook.getBids()).hasSize(8);
-    assertThat(ticker.getAsk()).isEqualTo(new BigDecimal(100));
-    assertThat(ticker.getBid()).isEqualTo(new BigDecimal(99));
-    assertThat(ticker.getLast()).isEqualTo(new BigDecimal(99));
+    assertThat(ticker.getAsk()).isEqualTo(new Double(100));
+    assertThat(ticker.getBid()).isEqualTo(new Double(99));
+    assertThat(ticker.getLast()).isEqualTo(new Double(99));
 
     OpenOrders orders = getOpenOrders();
     assertThat(orders.getOpenOrders()).hasSize(2);
@@ -312,32 +301,28 @@ public class TestSimulatedExchange {
             .filter(o -> o.getId().equals(orderId2))
             .findFirst()
             .get();
-    assertThat(order1.getRemainingAmount()).isEqualTo(new BigDecimal("0.10"));
-    assertThat(order1.getCumulativeAmount()).isEqualTo(new BigDecimal("0.60"));
-    assertThat(order1.getAveragePrice()).isEqualTo(new BigDecimal("98.50"));
+    assertThat(order1.getRemainingAmount()).isEqualTo(new Double("0.10"));
+    assertThat(order1.getCumulativeAmount()).isEqualTo(new Double("0.60"));
+    assertThat(order1.getAveragePrice()).isEqualTo(new Double("98.50"));
     assertThat(order1.getStatus()).isEqualTo(PARTIALLY_FILLED);
-    assertThat(order2.getRemainingAmount()).isEqualTo(new BigDecimal(1));
-    assertThat(order2.getCumulativeAmount()).isEqualTo(ZERO);
+    assertThat(order2.getRemainingAmount()).isEqualTo(new Double(1));
+    assertThat(order2.getCumulativeAmount()).isEqualTo(0d);
     assertThat(order2.getAveragePrice()).isNull();
     assertThat(order2.getStatus()).isEqualTo(NEW);
 
     assertThat(getTradeHistory(exchange).getTrades()).hasSize(3);
 
-    BigDecimal expectedUsdCost =
-        new BigDecimal(98)
-            .multiply(new BigDecimal("0.30"))
-            .add(new BigDecimal(99).multiply(new BigDecimal("0.30")));
-    BigDecimal expectedUsdReserved =
-        new BigDecimal(99)
-            .multiply(new BigDecimal("0.10"))
-            .add(new BigDecimal(90).multiply(new BigDecimal(1)));
-    assertThat(baseBalance.getTotal()).isEqualTo(INITIAL_BALANCE.add(new BigDecimal("0.60")));
+    Double expectedUsdCost =
+        new Double(98) * (new Double("0.30")).add(new Double(99) * (new Double("0.30")));
+    Double expectedUsdReserved =
+        new Double(99) * (new Double("0.10")).add(new Double(90) * (new Double(1)));
+    assertThat(baseBalance.getTotal()).isEqualTo(INITIAL_BALANCE.add(new Double("0.60")));
     assertThat(baseBalance.getFrozen()).isEqualTo(ZERO);
-    assertThat(baseBalance.getAvailable()).isEqualTo(INITIAL_BALANCE.add(new BigDecimal("0.60")));
-    assertThat(counterBalance.getTotal()).isEqualTo(INITIAL_BALANCE.subtract(expectedUsdCost));
+    assertThat(baseBalance.getAvailable()).isEqualTo(INITIAL_BALANCE.add(new Double("0.60")));
+    assertThat(counterBalance.getTotal()).isEqualTo(INITIAL_BALANCE - (expectedUsdCost));
     assertThat(counterBalance.getFrozen()).isEqualTo(expectedUsdReserved);
     assertThat(counterBalance.getAvailable())
-        .isEqualTo(INITIAL_BALANCE.subtract(expectedUsdCost).subtract(expectedUsdReserved));
+        .isEqualTo(INITIAL_BALANCE - (expectedUsdCost) - (expectedUsdReserved));
   }
 
   private OpenOrders getOpenOrders() throws IOException {
@@ -362,8 +347,8 @@ public class TestSimulatedExchange {
     exchangeSpecification.setExchangeSpecificParametersItem(ACCOUNT_FACTORY_PARAM, accountFactory);
     SimulatedExchange marketMakerExchange =
         (SimulatedExchange) ExchangeFactory.INSTANCE.createExchange(exchangeSpecification);
-    marketMakerExchange.getAccountService().deposit(USD, new BigDecimal(10000));
-    marketMakerExchange.getAccountService().deposit(BTC, new BigDecimal(10000));
+    marketMakerExchange.getAccountService().deposit(USD, new Double(10000));
+    marketMakerExchange.getAccountService().deposit(BTC, new Double(10000));
     MockMarket.mockMarket(marketMakerExchange);
   }
 }

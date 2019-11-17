@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
@@ -28,11 +27,11 @@ public class CoinbaseMarketDataJsonTest {
     JavaType javaType = mapper.getTypeFactory().constructType(CoinbaseExchangeRateData.class);
     CoinbaseExchangeRateData rawdata = mapper.readValue(is, javaType);
 
-    Map<String, BigDecimal> exchangeRates = rawdata.getData().getRates();
+    Map<String, Double> exchangeRates = rawdata.getData().getRates();
     assertThat(exchangeRates.size()).isEqualTo(170);
 
-    BigDecimal exchangeRate = exchangeRates.get("EUR");
-    assertThat(exchangeRate).isEqualByComparingTo("9980.00");
+    Double exchangeRate = exchangeRates.get("EUR");
+    assertThat(exchangeRate).isEqualByComparingTo(Double.parseDouble("9980.00"));
   }
 
   @Test
@@ -71,6 +70,6 @@ public class CoinbaseMarketDataJsonTest {
 
     CoinbasePrice price = rawdata.getData();
     assertThat(price)
-        .isEqualToComparingFieldByField(new CoinbasePrice(new BigDecimal("11832.46"), "USD"));
+        .isEqualToComparingFieldByField(new CoinbasePrice(new Double("11832.46"), "USD"));
   }
 }

@@ -3,7 +3,6 @@ package org.knowm.xchange.bitcointoyou.dto.marketdata;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -43,7 +42,7 @@ public class BitcointoyouMarketDataTest {
     softly.assertThat(marketData.getSell().toString()).isEqualTo("49349.150000000000000");
     softly.assertThat(marketData.getHigh().toString()).isEqualTo("52990.00");
     softly.assertThat(marketData.getLow().toString()).isEqualTo("47000.00");
-    softly.assertThat(marketData.getVolume()).isEqualTo(new BigDecimal("136.99427076"));
+    softly.assertThat(marketData.getVolume()).isEqualTo(new Double("136.99427076"));
     softly.assertThat(marketData.getDate()).isEqualTo(1515625901L);
 
     softly.assertAll();

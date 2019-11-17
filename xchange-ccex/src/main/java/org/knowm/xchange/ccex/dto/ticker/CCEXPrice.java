@@ -8,31 +8,30 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.ccex.dto.ticker.CCEXPrice.CCEXPriceDeserializer;
 
 @JsonDeserialize(using = CCEXPriceDeserializer.class)
 public class CCEXPrice {
 
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal avg;
-  private final BigDecimal lastbuy;
-  private final BigDecimal lastsell;
-  private final BigDecimal buy;
-  private final BigDecimal sell;
-  private final BigDecimal lastprice;
+  private final Double high;
+  private final Double low;
+  private final Double avg;
+  private final Double lastbuy;
+  private final Double lastsell;
+  private final Double buy;
+  private final Double sell;
+  private final Double lastprice;
   private final int updated;
 
   private CCEXPrice(
-      BigDecimal high,
-      BigDecimal low,
-      BigDecimal avg,
-      BigDecimal lastbuy,
-      BigDecimal lastsell,
-      BigDecimal buy,
-      BigDecimal sell,
-      BigDecimal lastprice,
+      Double high,
+      Double low,
+      Double avg,
+      Double lastbuy,
+      Double lastsell,
+      Double buy,
+      Double sell,
+      Double lastprice,
       int updated) {
 
     this.high = high;
@@ -46,35 +45,35 @@ public class CCEXPrice {
     this.updated = updated;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getAvg() {
+  public Double getAvg() {
     return avg;
   }
 
-  public BigDecimal getLastbuy() {
+  public Double getLastbuy() {
     return lastbuy;
   }
 
-  public BigDecimal getLastsell() {
+  public Double getLastsell() {
     return lastsell;
   }
 
-  public BigDecimal getBuy() {
+  public Double getBuy() {
     return buy;
   }
 
-  public BigDecimal getSell() {
+  public Double getSell() {
     return sell;
   }
 
-  public BigDecimal getLastprice() {
+  public Double getLastprice() {
     return lastprice;
   }
 
@@ -107,22 +106,22 @@ public class CCEXPrice {
 
   static class CCEXPriceDeserializer extends JsonDeserializer<CCEXPrice> {
 
-    private static BigDecimal getNumberIfPresent(JsonNode numberNode) {
+    private static Double getNumberIfPresent(JsonNode numberNode) {
 
       final String numberString = numberNode.asText();
-      return numberString.isEmpty() ? null : new BigDecimal(numberString);
+      return numberString.isEmpty() ? null : new Double(numberString);
     }
 
     public static CCEXPrice deserializeFromNode(JsonNode tickerNode) {
 
-      final BigDecimal high = getNumberIfPresent(tickerNode.path("high"));
-      final BigDecimal low = getNumberIfPresent(tickerNode.path("low"));
-      final BigDecimal avg = getNumberIfPresent(tickerNode.path("avg"));
-      final BigDecimal lastbuy = getNumberIfPresent(tickerNode.path("lastbuy"));
-      final BigDecimal lastsell = getNumberIfPresent(tickerNode.path("lastsell"));
-      final BigDecimal buy = getNumberIfPresent(tickerNode.path("buy"));
-      final BigDecimal sell = getNumberIfPresent(tickerNode.path("sell"));
-      final BigDecimal lastprice = getNumberIfPresent(tickerNode.path("lastprice"));
+      final Double high = getNumberIfPresent(tickerNode.path("high"));
+      final Double low = getNumberIfPresent(tickerNode.path("low"));
+      final Double avg = getNumberIfPresent(tickerNode.path("avg"));
+      final Double lastbuy = getNumberIfPresent(tickerNode.path("lastbuy"));
+      final Double lastsell = getNumberIfPresent(tickerNode.path("lastsell"));
+      final Double buy = getNumberIfPresent(tickerNode.path("buy"));
+      final Double sell = getNumberIfPresent(tickerNode.path("sell"));
+      final Double lastprice = getNumberIfPresent(tickerNode.path("lastprice"));
       final int updated = tickerNode.path("updated").asInt();
 
       return new CCEXPrice(high, low, avg, lastbuy, lastsell, buy, sell, lastprice, updated);

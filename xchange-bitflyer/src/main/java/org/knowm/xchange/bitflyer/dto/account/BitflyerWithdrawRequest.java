@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitflyer.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /**
  * Object representing body of request <code>POST /v1/me/withdraw</code>
@@ -18,9 +17,9 @@ public class BitflyerWithdrawRequest {
   private String bankAccountID;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
-  public BitflyerWithdrawRequest(String currencyCode, String bankAccountID, BigDecimal amount) {
+  public BitflyerWithdrawRequest(String currencyCode, String bankAccountID, Double amount) {
     super();
     this.currencyCode = currencyCode;
     this.bankAccountID = bankAccountID;
@@ -43,11 +42,11 @@ public class BitflyerWithdrawRequest {
     this.bankAccountID = bankAccountID;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 

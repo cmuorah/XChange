@@ -1,6 +1,5 @@
 package org.knowm.xchange.vaultoro;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +26,7 @@ import org.knowm.xchange.vaultoro.dto.trade.VaultoroOpenOrder;
 /** Various adapters for converting from Vaultoro DTOs to XChange DTOs */
 public final class VaultoroAdapters {
 
-  public static Ticker adaptVaultoroLatest(BigDecimal latest) {
+  public static Ticker adaptVaultoroLatest(Double latest) {
 
     return new Ticker.Builder().last(latest).build();
   }

@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.bithumb.BithumbAdapters;
@@ -54,18 +53,18 @@ public class BithumbMarketDataTest {
     assertThat(bithumbTickers.getTickers()).containsKeys("BTC", "ETH", "DASH");
 
     final BithumbTicker btc = bithumbTickers.getTickers().get("BTC");
-    assertThat(btc.getOpeningPrice()).isEqualTo(BigDecimal.valueOf(4185000L));
-    assertThat(btc.getClosingPrice()).isEqualTo(BigDecimal.valueOf(4297000L));
-    assertThat(btc.getMinPrice()).isEqualTo(BigDecimal.valueOf(4137000L));
-    assertThat(btc.getMaxPrice()).isEqualTo(BigDecimal.valueOf(4328000L));
-    assertThat(btc.getAveragePrice()).isEqualTo(BigDecimal.valueOf(4252435.9159));
-    assertThat(btc.getUnitsTraded()).isEqualTo(BigDecimal.valueOf(3815.4174696));
-    assertThat(btc.getVolume1day()).isEqualTo(BigDecimal.valueOf(3815.4174696));
-    assertThat(btc.getVolume7day()).isEqualTo(BigDecimal.valueOf(31223.31245306));
-    assertThat(btc.getBuyPrice()).isEqualTo(BigDecimal.valueOf(4296000));
-    assertThat(btc.getSellPrice()).isEqualTo(BigDecimal.valueOf(4297000));
-    assertThat(btc.get_24HFluctate()).isEqualTo(BigDecimal.valueOf(112000));
-    assertThat(btc.get_24HFluctateRate()).isEqualTo(BigDecimal.valueOf(2.67));
+    assertThat(btc.getOpeningPrice()).isEqualTo(Double.valueOf(4185000L));
+    assertThat(btc.getClosingPrice()).isEqualTo(Double.valueOf(4297000L));
+    assertThat(btc.getMinPrice()).isEqualTo(Double.valueOf(4137000L));
+    assertThat(btc.getMaxPrice()).isEqualTo(Double.valueOf(4328000L));
+    assertThat(btc.getAveragePrice()).isEqualTo(Double.valueOf(4252435.9159));
+    assertThat(btc.getUnitsTraded()).isEqualTo(Double.valueOf(3815.4174696));
+    assertThat(btc.getVolume1day()).isEqualTo(Double.valueOf(3815.4174696));
+    assertThat(btc.getVolume7day()).isEqualTo(Double.valueOf(31223.31245306));
+    assertThat(btc.getBuyPrice()).isEqualTo(Double.valueOf(4296000));
+    assertThat(btc.getSellPrice()).isEqualTo(Double.valueOf(4297000));
+    assertThat(btc.get_24HFluctate()).isEqualTo(Double.valueOf(112000));
+    assertThat(btc.get_24HFluctateRate()).isEqualTo(Double.valueOf(2.67));
     assertThat(btc.getDate()).isEqualTo(1546440191110L);
   }
 

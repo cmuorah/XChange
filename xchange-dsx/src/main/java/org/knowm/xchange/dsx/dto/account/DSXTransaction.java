@@ -2,7 +2,6 @@ package org.knowm.xchange.dsx.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,22 +12,22 @@ public class DSXTransaction {
   private final long id;
   private final Date timestamp;
   private final Type type;
-  private final BigDecimal amount;
+  private final Double amount;
   private final String currency;
   private final String address;
   private final Status status;
-  private final BigDecimal commission;
+  private final Double commission;
   private final String txId;
 
   public DSXTransaction(
       @JsonProperty("id") long id,
       @JsonProperty("timestamp") long timestamp,
       @JsonProperty("type") Type type,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("currency") String currency,
       @JsonProperty("address") String address,
       @JsonProperty("status") Status status,
-      @JsonProperty("commission") BigDecimal commission,
+      @JsonProperty("commission") Double commission,
       @JsonProperty("txid") String txId) {
 
     this.id = id;
@@ -54,7 +53,7 @@ public class DSXTransaction {
     return type;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -70,7 +69,7 @@ public class DSXTransaction {
     return status;
   }
 
-  public BigDecimal getCommission() {
+  public Double getCommission() {
     return commission;
   }
 

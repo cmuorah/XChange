@@ -1,19 +1,18 @@
 package org.knowm.xchange.binance.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.Currency;
 
 public final class BinanceBalance {
 
   private final Currency currency;
-  private final BigDecimal free;
-  private final BigDecimal locked;
+  private final Double free;
+  private final Double locked;
 
   public BinanceBalance(
       @JsonProperty("asset") String asset,
-      @JsonProperty("free") BigDecimal free,
-      @JsonProperty("locked") BigDecimal locked) {
+      @JsonProperty("free") Double free,
+      @JsonProperty("locked") Double locked) {
     this.currency = Currency.getInstance(asset);
     this.locked = locked;
     this.free = free;
@@ -23,15 +22,15 @@ public final class BinanceBalance {
     return currency;
   }
 
-  public BigDecimal getTotal() {
-    return free.add(locked);
+  public Double getTotal() {
+    return free + locked;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return free;
   }
 
-  public BigDecimal getLocked() {
+  public Double getLocked() {
     return locked;
   }
 

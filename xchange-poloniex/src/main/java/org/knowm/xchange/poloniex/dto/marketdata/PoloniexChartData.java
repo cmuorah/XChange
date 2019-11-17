@@ -3,32 +3,31 @@ package org.knowm.xchange.poloniex.dto.marketdata;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.poloniex.PoloniexUtils;
 
 public class PoloniexChartData {
   private Date date;
-  private BigDecimal high;
-  private BigDecimal low;
-  private BigDecimal open;
-  private BigDecimal close;
-  private BigDecimal volume;
-  private BigDecimal quoteVolume;
-  private BigDecimal weightedAverage;
+  private Double high;
+  private Double low;
+  private Double open;
+  private Double close;
+  private Double volume;
+  private Double quoteVolume;
+  private Double weightedAverage;
 
   @JsonCreator
   public PoloniexChartData(
       @JsonProperty(value = "date", required = true)
           @JsonDeserialize(using = PoloniexUtils.UnixTimestampDeserializer.class)
           Date date,
-      @JsonProperty(value = "high", required = true) BigDecimal high,
-      @JsonProperty(value = "low", required = true) BigDecimal low,
-      @JsonProperty(value = "open", required = true) BigDecimal open,
-      @JsonProperty(value = "close", required = true) BigDecimal close,
-      @JsonProperty(value = "volume", required = true) BigDecimal volume,
-      @JsonProperty(value = "quoteVolume", required = true) BigDecimal quoteVolume,
-      @JsonProperty(value = "weightedAverage", required = true) BigDecimal weightedAverage) {
+      @JsonProperty(value = "high", required = true) Double high,
+      @JsonProperty(value = "low", required = true) Double low,
+      @JsonProperty(value = "open", required = true) Double open,
+      @JsonProperty(value = "close", required = true) Double close,
+      @JsonProperty(value = "volume", required = true) Double volume,
+      @JsonProperty(value = "quoteVolume", required = true) Double quoteVolume,
+      @JsonProperty(value = "weightedAverage", required = true) Double weightedAverage) {
     this.date = date;
     this.high = high;
     this.low = low;
@@ -43,31 +42,31 @@ public class PoloniexChartData {
     return date;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
     return close;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getQuoteVolume() {
+  public Double getQuoteVolume() {
     return quoteVolume;
   }
 
-  public BigDecimal getWeightedAverage() {
+  public Double getWeightedAverage() {
     return weightedAverage;
   }
 

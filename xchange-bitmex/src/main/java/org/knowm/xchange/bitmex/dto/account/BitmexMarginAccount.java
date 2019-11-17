@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.knowm.xchange.bitmex.AbstractHttpResponseAware;
@@ -62,7 +61,7 @@ public final class BitmexMarginAccount extends AbstractHttpResponseAware {
   public String currency;
 
   @JsonProperty("riskLimit")
-  public BigDecimal riskLimit;
+  public Double riskLimit;
 
   @JsonProperty("prevState")
   public String prevState;
@@ -74,109 +73,109 @@ public final class BitmexMarginAccount extends AbstractHttpResponseAware {
   public String action;
 
   @JsonProperty("amount")
-  public BigDecimal amount;
+  public Double amount;
 
   @JsonProperty("pendingCredit")
-  public BigDecimal pendingCredit;
+  public Double pendingCredit;
 
   @JsonProperty("pendingDebit")
-  public BigDecimal pendingDebit;
+  public Double pendingDebit;
 
   @JsonProperty("confirmedDebit")
-  public BigDecimal confirmedDebit;
+  public Double confirmedDebit;
 
   @JsonProperty("prevRealisedPnl")
-  public BigDecimal prevRealisedPnl;
+  public Double prevRealisedPnl;
 
   @JsonProperty("prevUnrealisedPnl")
-  public BigDecimal prevUnrealisedPnl;
+  public Double prevUnrealisedPnl;
 
   @JsonProperty("grossComm")
-  public BigDecimal grossComm;
+  public Double grossComm;
 
   @JsonProperty("grossOpenCost")
-  public BigDecimal grossOpenCost;
+  public Double grossOpenCost;
 
   @JsonProperty("grossOpenPremium")
-  public BigDecimal grossOpenPremium;
+  public Double grossOpenPremium;
 
   @JsonProperty("grossExecCost")
-  public BigDecimal grossExecCost;
+  public Double grossExecCost;
 
   @JsonProperty("grossMarkValue")
-  public BigDecimal grossMarkValue;
+  public Double grossMarkValue;
 
   @JsonProperty("riskValue")
-  public BigDecimal riskValue;
+  public Double riskValue;
 
   @JsonProperty("taxableMargin")
-  public BigDecimal taxableMargin;
+  public Double taxableMargin;
 
   @JsonProperty("initMargin")
-  public BigDecimal initMargin;
+  public Double initMargin;
 
   @JsonProperty("maintMargin")
-  public BigDecimal maintMargin;
+  public Double maintMargin;
 
   @JsonProperty("sessionMargin")
-  public BigDecimal sessionMargin;
+  public Double sessionMargin;
 
   @JsonProperty("targetExcessMargin")
-  public BigDecimal targetExcessMargin;
+  public Double targetExcessMargin;
 
   @JsonProperty("varMargin")
-  public BigDecimal varMargin;
+  public Double varMargin;
 
   @JsonProperty("realisedPnl")
-  public BigDecimal realisedPnl;
+  public Double realisedPnl;
 
   @JsonProperty("unrealisedPnl")
-  public BigDecimal unrealisedPnl;
+  public Double unrealisedPnl;
 
   @JsonProperty("indicativeTax")
-  public BigDecimal indicativeTax;
+  public Double indicativeTax;
 
   @JsonProperty("unrealisedProfit")
-  public BigDecimal unrealisedProfit;
+  public Double unrealisedProfit;
 
   @JsonProperty("syntheticMargin")
-  public BigDecimal syntheticMargin;
+  public Double syntheticMargin;
 
   @JsonProperty("walletBalance")
-  public BigDecimal walletBalance;
+  public Double walletBalance;
 
   @JsonProperty("marginBalance")
-  public BigDecimal marginBalance;
+  public Double marginBalance;
 
   @JsonProperty("marginBalancePcnt")
-  public BigDecimal marginBalancePcnt;
+  public Double marginBalancePcnt;
 
   @JsonProperty("marginLeverage")
-  public BigDecimal marginLeverage;
+  public Double marginLeverage;
 
   @JsonProperty("marginUsedPcnt")
-  public BigDecimal marginUsedPcnt;
+  public Double marginUsedPcnt;
 
   @JsonProperty("excessMargin")
-  public BigDecimal excessMargin;
+  public Double excessMargin;
 
   @JsonProperty("excessMarginPcnt")
-  public BigDecimal excessMarginPcnt;
+  public Double excessMarginPcnt;
 
   @JsonProperty("availableMargin")
-  public BigDecimal availableMargin;
+  public Double availableMargin;
 
   @JsonProperty("withdrawableMargin")
-  public BigDecimal withdrawableMargin;
+  public Double withdrawableMargin;
 
   @JsonProperty("timestamp")
   public String timestamp;
 
   @JsonProperty("grossLastValue")
-  public BigDecimal grossLastValue;
+  public Double grossLastValue;
 
   @JsonProperty("commission")
-  public BigDecimal commission;
+  public Double commission;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<>();
 
@@ -188,7 +187,7 @@ public final class BitmexMarginAccount extends AbstractHttpResponseAware {
     return currency;
   }
 
-  public BigDecimal getRiskLimit() {
+  public Double getRiskLimit() {
     return riskLimit;
   }
 
@@ -204,131 +203,131 @@ public final class BitmexMarginAccount extends AbstractHttpResponseAware {
     return action;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getPendingCredit() {
+  public Double getPendingCredit() {
     return pendingCredit;
   }
 
-  public BigDecimal getPendingDebit() {
+  public Double getPendingDebit() {
     return pendingDebit;
   }
 
-  public BigDecimal getConfirmedDebit() {
+  public Double getConfirmedDebit() {
     return confirmedDebit;
   }
 
-  public BigDecimal getPrevRealisedPnl() {
+  public Double getPrevRealisedPnl() {
     return prevRealisedPnl;
   }
 
-  public BigDecimal getPrevUnrealisedPnl() {
+  public Double getPrevUnrealisedPnl() {
     return prevUnrealisedPnl;
   }
 
-  public BigDecimal getGrossComm() {
+  public Double getGrossComm() {
     return grossComm;
   }
 
-  public BigDecimal getGrossOpenCost() {
+  public Double getGrossOpenCost() {
     return grossOpenCost;
   }
 
-  public BigDecimal getGrossOpenPremium() {
+  public Double getGrossOpenPremium() {
     return grossOpenPremium;
   }
 
-  public BigDecimal getGrossExecCost() {
+  public Double getGrossExecCost() {
     return grossExecCost;
   }
 
-  public BigDecimal getGrossMarkValue() {
+  public Double getGrossMarkValue() {
     return grossMarkValue;
   }
 
-  public BigDecimal getRiskValue() {
+  public Double getRiskValue() {
     return riskValue;
   }
 
-  public BigDecimal getTaxableMargin() {
+  public Double getTaxableMargin() {
     return taxableMargin;
   }
 
-  public BigDecimal getInitMargin() {
+  public Double getInitMargin() {
     return initMargin;
   }
 
-  public BigDecimal getMaintMargin() {
+  public Double getMaintMargin() {
     return maintMargin;
   }
 
-  public BigDecimal getSessionMargin() {
+  public Double getSessionMargin() {
     return sessionMargin;
   }
 
-  public BigDecimal getTargetExcessMargin() {
+  public Double getTargetExcessMargin() {
     return targetExcessMargin;
   }
 
-  public BigDecimal getVarMargin() {
+  public Double getVarMargin() {
     return varMargin;
   }
 
-  public BigDecimal getRealisedPnl() {
+  public Double getRealisedPnl() {
     return realisedPnl;
   }
 
-  public BigDecimal getUnrealisedPnl() {
+  public Double getUnrealisedPnl() {
     return unrealisedPnl;
   }
 
-  public BigDecimal getIndicativeTax() {
+  public Double getIndicativeTax() {
     return indicativeTax;
   }
 
-  public BigDecimal getUnrealisedProfit() {
+  public Double getUnrealisedProfit() {
     return unrealisedProfit;
   }
 
-  public BigDecimal getSyntheticMargin() {
+  public Double getSyntheticMargin() {
     return syntheticMargin;
   }
 
-  public BigDecimal getWalletBalance() {
+  public Double getWalletBalance() {
     return walletBalance;
   }
 
-  public BigDecimal getMarginBalance() {
+  public Double getMarginBalance() {
     return marginBalance;
   }
 
-  public BigDecimal getMarginBalancePcnt() {
+  public Double getMarginBalancePcnt() {
     return marginBalancePcnt;
   }
 
-  public BigDecimal getMarginLeverage() {
+  public Double getMarginLeverage() {
     return marginLeverage;
   }
 
-  public BigDecimal getMarginUsedPcnt() {
+  public Double getMarginUsedPcnt() {
     return marginUsedPcnt;
   }
 
-  public BigDecimal getExcessMargin() {
+  public Double getExcessMargin() {
     return excessMargin;
   }
 
-  public BigDecimal getExcessMarginPcnt() {
+  public Double getExcessMarginPcnt() {
     return excessMarginPcnt;
   }
 
-  public BigDecimal getAvailableMargin() {
+  public Double getAvailableMargin() {
     return availableMargin;
   }
 
-  public BigDecimal getWithdrawableMargin() {
+  public Double getWithdrawableMargin() {
     return withdrawableMargin;
   }
 
@@ -336,11 +335,11 @@ public final class BitmexMarginAccount extends AbstractHttpResponseAware {
     return timestamp;
   }
 
-  public BigDecimal getGrossLastValue() {
+  public Double getGrossLastValue() {
     return grossLastValue;
   }
 
-  public BigDecimal getCommission() {
+  public Double getCommission() {
     return commission;
   }
 

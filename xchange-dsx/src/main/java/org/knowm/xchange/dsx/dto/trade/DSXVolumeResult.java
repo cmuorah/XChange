@@ -1,17 +1,16 @@
 package org.knowm.xchange.dsx.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Mikhail Wall */
 public class DSXVolumeResult {
 
-  private final BigDecimal tradingVolume;
+  private final Double tradingVolume;
   private final Long tradesCount;
   private final String currency;
 
   public DSXVolumeResult(
-      @JsonProperty("tradingVolume") BigDecimal tradingVolume,
+      @JsonProperty("tradingVolume") Double tradingVolume,
       @JsonProperty("tradesCount") Long tradesCount,
       @JsonProperty("currency") String currency) {
 
@@ -20,7 +19,7 @@ public class DSXVolumeResult {
     this.currency = currency;
   }
 
-  public BigDecimal getTradingVolume() {
+  public Double getTradingVolume() {
     return tradingVolume;
   }
 

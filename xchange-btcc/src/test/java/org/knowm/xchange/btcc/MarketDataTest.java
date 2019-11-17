@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.junit.Test;
 import org.knowm.xchange.btcc.dto.marketdata.BTCCTicker;
@@ -27,11 +26,11 @@ public class MarketDataTest {
 
     Ticker ticker = BTCCAdapters.adaptTicker(btccTicker, CurrencyPair.BTC_USD);
 
-    assertThat(ticker.getHigh()).isEqualTo(new BigDecimal("1730"));
-    assertThat(ticker.getLow()).isEqualTo(new BigDecimal("1688"));
-    assertThat(ticker.getLast()).isEqualTo(new BigDecimal("1725"));
-    assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("113.3411"));
-    assertThat(ticker.getAsk()).isEqualTo(new BigDecimal("1729"));
-    assertThat(ticker.getBid()).isEqualTo(new BigDecimal("1725"));
+    assertThat(ticker.getHigh()).isEqualTo(new Double("1730"));
+    assertThat(ticker.getLow()).isEqualTo(new Double("1688"));
+    assertThat(ticker.getLast()).isEqualTo(new Double("1725"));
+    assertThat(ticker.getVolume()).isEqualTo(new Double("113.3411"));
+    assertThat(ticker.getAsk()).isEqualTo(new Double("1729"));
+    assertThat(ticker.getBid()).isEqualTo(new Double("1725"));
   }
 }

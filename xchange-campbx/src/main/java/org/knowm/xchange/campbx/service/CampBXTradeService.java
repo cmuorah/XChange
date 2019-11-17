@@ -1,7 +1,6 @@
 package org.knowm.xchange.campbx.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +61,7 @@ public class CampBXTradeService extends CampBXTradeServiceRaw implements TradeSe
           logger.debug("Skipping non-order in Buy: " + cbo);
         } else {
           String id = composeOrderId(CampBX.OrderType.Buy, cbo.getOrderID());
-          BigDecimal price = cbo.getPrice();
+          Double price = cbo.getPrice();
           orders.add(
               new LimitOrder(
                   Order.OrderType.BID,
@@ -79,7 +78,7 @@ public class CampBXTradeService extends CampBXTradeServiceRaw implements TradeSe
         } else {
 
           String id = composeOrderId(CampBX.OrderType.Sell, cbo.getOrderID());
-          BigDecimal price = cbo.getPrice();
+          Double price = cbo.getPrice();
           orders.add(
               new LimitOrder(
                   Order.OrderType.ASK,

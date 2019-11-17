@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -29,12 +28,12 @@ public class LunoUserTrades {
     public final String orderId;
     public final OrderType type;
     public final long timestamp;
-    public final BigDecimal price;
-    public final BigDecimal volume;
-    public final BigDecimal base;
-    public final BigDecimal counter;
-    public final BigDecimal feeBase;
-    public final BigDecimal feeCounter;
+    public final Double price;
+    public final Double volume;
+    public final Double base;
+    public final Double counter;
+    public final Double feeBase;
+    public final Double feeCounter;
     public final boolean buy;
 
     public UserTrade(
@@ -42,12 +41,12 @@ public class LunoUserTrades {
         @JsonProperty(value = "order_id", required = true) String orderId,
         @JsonProperty(value = "type", required = false) OrderType type,
         @JsonProperty(value = "timestamp", required = true) long timestamp,
-        @JsonProperty(value = "price", required = true) BigDecimal price,
-        @JsonProperty(value = "volume", required = true) BigDecimal volume,
-        @JsonProperty(value = "base", required = true) BigDecimal base,
-        @JsonProperty(value = "counter", required = true) BigDecimal counter,
-        @JsonProperty(value = "fee_base", required = true) BigDecimal feeBase,
-        @JsonProperty(value = "fee_counter", required = true) BigDecimal feeCounter,
+        @JsonProperty(value = "price", required = true) Double price,
+        @JsonProperty(value = "volume", required = true) Double volume,
+        @JsonProperty(value = "base", required = true) Double base,
+        @JsonProperty(value = "counter", required = true) Double counter,
+        @JsonProperty(value = "fee_base", required = true) Double feeBase,
+        @JsonProperty(value = "fee_counter", required = true) Double feeCounter,
         @JsonProperty(value = "is_buy", required = true) boolean buy) {
       this.pair = pair;
       this.orderId = orderId;

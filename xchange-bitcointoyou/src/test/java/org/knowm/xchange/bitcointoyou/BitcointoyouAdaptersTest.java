@@ -3,7 +3,6 @@ package org.knowm.xchange.bitcointoyou;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.TimeZone;
@@ -96,13 +95,13 @@ public class BitcointoyouAdaptersTest {
     softly.assertThat(bidsLimitOrders.size()).isEqualTo(325);
     softly
         .assertThat(bidsLimitOrders.get(300).getOriginalAmount())
-        .isEqualTo(new BigDecimal("0.000104710000000"));
+        .isEqualTo(new Double("0.000104710000000"));
 
     List<LimitOrder> asksLimitOrders = orderBook.getAsks();
     softly.assertThat(asksLimitOrders.size()).isEqualTo(515);
     softly
         .assertThat(asksLimitOrders.get(300).getLimitPrice())
-        .isEqualTo(new BigDecimal("55900.230000000000000"));
+        .isEqualTo(new Double("55900.230000000000000"));
 
     softly.assertAll();
   }
@@ -118,7 +117,7 @@ public class BitcointoyouAdaptersTest {
     softly.assertThat(bidsOrders.size()).isEqualTo(325);
     softly
         .assertThat(bidsOrders.get(300).getOriginalAmount())
-        .isEqualTo(new BigDecimal("0.000104710000000"));
+        .isEqualTo(new Double("0.000104710000000"));
 
     List<LimitOrder> asksOrders =
         BitcointoyouAdapters.adaptBitcointoyouPublicOrders(
@@ -126,7 +125,7 @@ public class BitcointoyouAdaptersTest {
     softly.assertThat(asksOrders.size()).isEqualTo(515);
     softly
         .assertThat(asksOrders.get(300).getLimitPrice())
-        .isEqualTo(new BigDecimal("55900.230000000000000"));
+        .isEqualTo(new Double("55900.230000000000000"));
 
     softly.assertAll();
   }
@@ -141,7 +140,7 @@ public class BitcointoyouAdaptersTest {
     softly.assertThat(ticker.getAsk().toString()).isEqualTo("49349.150000000000000");
     softly.assertThat(ticker.getHigh().toString()).isEqualTo("52990.00");
     softly.assertThat(ticker.getLow().toString()).isEqualTo("47000.00");
-    softly.assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("136.99427076"));
+    softly.assertThat(ticker.getVolume()).isEqualTo(new Double("136.99427076"));
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     f.setTimeZone(TimeZone.getTimeZone("UTC"));
     String dateString = f.format(ticker.getTimestamp());
@@ -174,11 +173,11 @@ public class BitcointoyouAdaptersTest {
     softly
         .assertThat(balances)
         .contains(
-            new Balance(Currency.BRL, new BigDecimal("8657.531311027634275")),
-            new Balance(Currency.BTC, new BigDecimal("35.460074025529646")),
-            new Balance(Currency.LTC, new BigDecimal("9.840918628667236")),
-            new Balance(Currency.DOGE, new BigDecimal("5419.490003406479187")),
-            new Balance(Currency.DRK, new BigDecimal("0.121461143982142")));
+            new Balance(Currency.BRL, new Double("8657.531311027634275")),
+            new Balance(Currency.BTC, new Double("35.460074025529646")),
+            new Balance(Currency.LTC, new Double("9.840918628667236")),
+            new Balance(Currency.DOGE, new Double("5419.490003406479187")),
+            new Balance(Currency.DRK, new Double("0.121461143982142")));
 
     softly.assertAll();
   }

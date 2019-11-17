@@ -3,7 +3,6 @@ package org.knowm.xchange.coinfloor.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
@@ -26,7 +25,7 @@ public class CoinfloorOrderBookIntegration {
 
     LimitOrder order = orderBook.getBids().get(0);
     assertThat(order.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_GBP);
-    assertThat(order.getOriginalAmount()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(order.getLimitPrice()).isGreaterThan(BigDecimal.ZERO);
+    assertThat(order.getOriginalAmount()).isGreaterThan(0d);
+    assertThat(order.getLimitPrice()).isGreaterThan(0d);
   }
 }

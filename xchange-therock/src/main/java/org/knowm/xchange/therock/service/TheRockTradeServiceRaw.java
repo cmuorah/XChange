@@ -1,7 +1,6 @@
 package org.knowm.xchange.therock.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeSpecification;
@@ -32,8 +31,8 @@ public class TheRockTradeServiceRaw extends TheRockBaseService {
 
   public TheRockOrder placeTheRockOrder(
       CurrencyPair currencyPair,
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       TheRockOrder.Side side,
       TheRockOrder.Type type)
       throws ExchangeException, IOException {

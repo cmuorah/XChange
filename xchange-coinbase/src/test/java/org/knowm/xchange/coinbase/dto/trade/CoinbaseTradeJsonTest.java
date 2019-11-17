@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.coinbase.dto.marketdata.CoinbaseMoney;
@@ -35,9 +34,9 @@ public class CoinbaseTradeJsonTest {
     assertThat(transfer.getCreatedAt())
         .isEqualTo(DateUtils.fromISO8601DateString("2014-02-06T18:12:38-08:00"));
     assertThat(transfer.getCoinbaseFee())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new BigDecimal("9.05")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new Double("9.05")));
     assertThat(transfer.getBankFee())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new BigDecimal(".15")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new Double(".15")));
     assertThat(transfer.getPayoutDate())
         .isEqualTo(DateUtils.fromISO8601DateString("2014-02-06T18:12:37-08:00"));
     assertThat(transfer.getTransactionId()).isEqualTo("52f4411767c71baf9000003f");
@@ -46,11 +45,11 @@ public class CoinbaseTradeJsonTest {
     assertThat(transfer.getType()).isEqualTo(CoinbaseTransferType.BUY);
     assertThat(transfer.getStatus()).isEqualTo(CoinbaseTransferStatus.COMPLETED);
     assertThat(transfer.getBtcAmount())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal("1.20000000")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double("1.20000000")));
     assertThat(transfer.getSubtotal())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new BigDecimal("905.10")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new Double("905.10")));
     assertThat(transfer.getTotal())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new BigDecimal("914.30")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new Double("914.30")));
     assertThat(transfer.getDescription())
         .isEqualTo(
             "Bought 1.20 BTC for $914.30.  \n\nPaid for with Bank ****. Your bitcoin will arrive by the end of day on Thursday Feb  6, 2014.");

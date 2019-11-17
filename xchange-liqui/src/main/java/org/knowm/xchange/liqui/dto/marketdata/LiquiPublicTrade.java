@@ -1,14 +1,13 @@
 package org.knowm.xchange.liqui.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.liqui.dto.LiquiTradeType;
 
 public class LiquiPublicTrade {
 
   private final LiquiTradeType type;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final long tradeId;
   private final long timestamp;
 
@@ -19,8 +18,8 @@ public class LiquiPublicTrade {
       @JsonProperty("tid") final long tradeId,
       @JsonProperty("timestamp") final long timestamp) {
     this.type = type;
-    this.price = new BigDecimal(price);
-    this.amount = new BigDecimal(amount);
+    this.price = new Double(price);
+    this.amount = new Double(amount);
     this.tradeId = tradeId;
     this.timestamp = timestamp;
   }
@@ -29,11 +28,11 @@ public class LiquiPublicTrade {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

@@ -2,7 +2,6 @@ package org.knowm.xchange.bankera.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.apache.commons.lang3.StringUtils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -33,10 +32,10 @@ public class CreateOrderRequest {
   private final Long nonce;
 
   public CreateOrderRequest(
-      String market, String side, BigDecimal amount, String clientOrderId, Long nonce) {
+      String market, String side, Double amount, String clientOrderId, Long nonce) {
     this.market = market;
     this.side = side;
-    this.amount = amount.toPlainString();
+    this.amount = amount.toString();
     this.type = MARKET_ORDER_TYPE;
     this.price = StringUtils.EMPTY;
     this.clientOrderId = clientOrderId;
@@ -44,17 +43,12 @@ public class CreateOrderRequest {
   }
 
   public CreateOrderRequest(
-      String market,
-      String side,
-      BigDecimal amount,
-      BigDecimal price,
-      String clientOrderId,
-      Long nonce) {
+      String market, String side, Double amount, Double price, String clientOrderId, Long nonce) {
     this.market = market;
     this.side = side;
-    this.amount = amount.toPlainString();
+    this.amount = amount.toString();
     this.type = LIMIT_ORDER_TYPE;
-    this.price = price.toPlainString();
+    this.price = price.toString();
     this.clientOrderId = clientOrderId;
     this.nonce = nonce;
   }

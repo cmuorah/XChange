@@ -1,21 +1,20 @@
 package org.knowm.xchange.hitbtc.v2.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class HitbtcTrade {
 
   private final String id;
-  private final BigDecimal price;
-  private final BigDecimal quantity;
+  private final Double price;
+  private final Double quantity;
   private final HitbtcSide side;
   private final Date timestamp;
 
   public HitbtcTrade(
       @JsonProperty("id") String id,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("quantity") BigDecimal quantity,
+      @JsonProperty("price") Double price,
+      @JsonProperty("quantity") Double quantity,
       @JsonProperty("side") HitbtcSide side,
       @JsonProperty("timestamp") Date timestamp) {
     this.id = id;
@@ -29,11 +28,11 @@ public class HitbtcTrade {
     return id;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 

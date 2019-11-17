@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,16 +30,16 @@ public class CmcTickerTest {
     assertThat(ticker.getName()).isEqualTo(Currency.BTC.getDisplayName());
     assertThat(ticker.getSymbol()).isEqualTo(Currency.BTC.getSymbol());
     assertThat(ticker.getSlug()).isEqualTo("bitcoin");
-    assertThat(ticker.getCirculatingSupply()).isEqualTo(new BigDecimal("17519062"));
-    assertThat(ticker.getTotalSupply()).isEqualTo(new BigDecimal("17519062"));
-    assertThat(ticker.getMaxSupply()).isEqualTo(new BigDecimal("21000000"));
+    assertThat(ticker.getCirculatingSupply()).isEqualTo(new Double("17519062"));
+    assertThat(ticker.getTotalSupply()).isEqualTo(new Double("17519062"));
+    assertThat(ticker.getMaxSupply()).isEqualTo(new Double("21000000"));
 
     SimpleDateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     iso8601Format.setTimeZone(TimeZone.getTimeZone("UTC"));
     Date dateAdded = iso8601Format.parse("2013-04-28T00:00:00.000Z");
 
     assertThat(ticker.getDateAdded()).isEqualTo(dateAdded);
-    assertThat(ticker.getNumMarketPairs()).isEqualTo(new BigDecimal("6513"));
+    assertThat(ticker.getNumMarketPairs()).isEqualTo(new Double("6513"));
     assertThat(ticker.getTags().get(0)).isEqualTo("mineable");
     assertThat(ticker.getCmcRank()).isEqualTo(1);
 
@@ -48,12 +47,12 @@ public class CmcTickerTest {
     assertThat(ticker.getLastUpdated()).isEqualTo(lastUpdated);
 
     CmcQuote quote = ticker.getQuote().get("USD");
-    assertThat(quote.getPrice()).isEqualTo(new BigDecimal("3463.69103385"));
-    assertThat(quote.getVolume24h()).isEqualTo(new BigDecimal("5327785294.41072"));
-    assertThat(quote.getPercentChange1h()).isEqualTo(new BigDecimal("0.25934"));
-    assertThat(quote.getPercentChange24h()).isEqualTo(new BigDecimal("-0.342853"));
-    assertThat(quote.getPercentChange7d()).isEqualTo(new BigDecimal("0.070337"));
-    assertThat(quote.getMarketCap()).isEqualTo(new BigDecimal("60680617970.86225"));
+    assertThat(quote.getPrice()).isEqualTo(new Double("3463.69103385"));
+    assertThat(quote.getVolume24h()).isEqualTo(new Double("5327785294.41072"));
+    assertThat(quote.getPercentChange1h()).isEqualTo(new Double("0.25934"));
+    assertThat(quote.getPercentChange24h()).isEqualTo(new Double("-0.342853"));
+    assertThat(quote.getPercentChange7d()).isEqualTo(new Double("0.070337"));
+    assertThat(quote.getMarketCap()).isEqualTo(new Double("60680617970.86225"));
     assertThat(quote.getLastUpdated()).isEqualTo(lastUpdated);
   }
 }

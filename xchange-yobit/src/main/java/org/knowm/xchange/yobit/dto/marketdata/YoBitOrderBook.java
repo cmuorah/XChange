@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.yobit.dto.marketdata.YoBitOrderBook.YoBitOrderBookDeserializer;
@@ -54,8 +53,8 @@ public class YoBitOrderBook {
         for (JsonNode jsonNode : nodeArray) {
           res.add(
               new YoBitAsksBidsData(
-                  BigDecimal.valueOf(jsonNode.get(1).asDouble()),
-                  BigDecimal.valueOf(jsonNode.get(0).asDouble())));
+                  Double.valueOf(jsonNode.get(1).asDouble()),
+                  Double.valueOf(jsonNode.get(0).asDouble())));
         }
       }
 

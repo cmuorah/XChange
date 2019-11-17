@@ -1,7 +1,6 @@
 package org.knowm.xchange.dsx.service.core;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,8 +52,7 @@ public class DSXAccountServiceCore<T extends DSXAuthenticatedV2> extends DSXAcco
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     String c = currency.getCurrencyCode();
     // currently DSX support 3 fiat currencies: EUR, USD, RUB
     boolean fiat =

@@ -1,7 +1,6 @@
 package org.knowm.xchange.paymium.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -55,7 +54,7 @@ public class PaymiumTradeService extends PaymiumTradeServiceRaw implements Trade
     for (PaymiumOrder order : orders) {
       Order.OrderType orderType = null;
       Currency currencyFee = null;
-      BigDecimal fee = null;
+      Double fee = null;
 
       switch (order.getDirection()) {
         case "buy":

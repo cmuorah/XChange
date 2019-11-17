@@ -1,14 +1,13 @@
 package org.knowm.xchange.okcoin.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class OkCoinTrade {
 
   private final Date date;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final long tid;
   private final String type;
 
@@ -23,8 +22,8 @@ public class OkCoinTrade {
    */
   public OkCoinTrade(
       @JsonProperty("date") final long date,
-      @JsonProperty("price") final BigDecimal price,
-      @JsonProperty("amount") final BigDecimal amount,
+      @JsonProperty("price") final Double price,
+      @JsonProperty("amount") final Double amount,
       @JsonProperty("tid") final long tid,
       @JsonProperty("type") final String type) {
 
@@ -40,12 +39,12 @@ public class OkCoinTrade {
     return date;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

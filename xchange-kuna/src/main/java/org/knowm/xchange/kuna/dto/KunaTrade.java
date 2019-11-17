@@ -1,7 +1,6 @@
 package org.knowm.xchange.kuna.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.kuna.dto.enums.KunaSide;
 import org.knowm.xchange.kuna.util.KunaUtils;
@@ -12,9 +11,9 @@ public class KunaTrade {
   public static final String CREATED_AT = "created_at";
 
   private int id;
-  private BigDecimal price;
-  private BigDecimal volume;
-  private BigDecimal funds;
+  private Double price;
+  private Double volume;
+  private Double funds;
   private String market;
   private Date createdAt;
   private KunaSide side;
@@ -35,15 +34,15 @@ public class KunaTrade {
     return id;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getFunds() {
+  public Double getFunds() {
     return funds;
   }
 
@@ -74,12 +73,12 @@ public class KunaTrade {
       return this;
     }
 
-    public Builder withPrice(BigDecimal price) {
+    public Builder withPrice(Double price) {
       target.price = price;
       return this;
     }
 
-    public Builder withFunds(BigDecimal funds) {
+    public Builder withFunds(Double funds) {
       target.funds = funds;
       return this;
     }
@@ -99,7 +98,7 @@ public class KunaTrade {
       return this;
     }
 
-    public Builder withVolume(BigDecimal volume) {
+    public Builder withVolume(Double volume) {
       target.volume = volume;
       return this;
     }

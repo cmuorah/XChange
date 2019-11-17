@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptofacilities;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
@@ -43,8 +42,8 @@ public interface CryptoFacilitiesAuthenticated extends CryptoFacilities {
       @QueryParam("orderType") String orderType,
       @QueryParam("symbol") String symbol,
       @QueryParam("side") String side,
-      @QueryParam("size") BigDecimal size,
-      @QueryParam("limitPrice") BigDecimal limitPrice)
+      @QueryParam("size") Double size,
+      @QueryParam("limitPrice") Double limitPrice)
       throws IOException;
 
   @POST

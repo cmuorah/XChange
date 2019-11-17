@@ -3,7 +3,6 @@ package org.knowm.xchange.quadrigacx.service;
 import static org.knowm.xchange.dto.Order.OrderType.BID;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -69,7 +68,7 @@ public class QuadrigaCxTradeService extends QuadrigaCxTradeServiceRaw implements
       for (QuadrigaCxOrder quadrigaCxOrder : openOrders) {
         OrderType orderType = quadrigaCxOrder.getType() == 0 ? OrderType.BID : OrderType.ASK;
         String id = quadrigaCxOrder.getId();
-        BigDecimal price = quadrigaCxOrder.getPrice();
+        Double price = quadrigaCxOrder.getPrice();
 
         limitOrders.add(
             new LimitOrder(

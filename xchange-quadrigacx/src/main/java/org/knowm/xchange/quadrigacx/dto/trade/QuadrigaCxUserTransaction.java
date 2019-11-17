@@ -3,7 +3,6 @@ package org.knowm.xchange.quadrigacx.dto.trade;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.knowm.xchange.quadrigacx.util.QuadrigaCxTransactionTypeDeserializer;
@@ -14,10 +13,10 @@ public final class QuadrigaCxUserTransaction {
   private final long id;
   private final String order_id;
   private final TransactionType type;
-  private final BigDecimal rate;
-  private final BigDecimal fee;
+  private final Double rate;
+  private final Double fee;
   private final String method;
-  private Map<String, BigDecimal> currencyAmount = new HashMap<>();
+  private Map<String, Double> currencyAmount = new HashMap<>();
 
   /**
    * Constructor
@@ -36,8 +35,8 @@ public final class QuadrigaCxUserTransaction {
       @JsonProperty("order_id") String order_id,
       @JsonProperty("type") @JsonDeserialize(using = QuadrigaCxTransactionTypeDeserializer.class)
           TransactionType type,
-      @JsonProperty("rate") BigDecimal rate,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("rate") Double rate,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("method") String method) {
 
     this.datetime = datetime;
@@ -84,12 +83,12 @@ public final class QuadrigaCxUserTransaction {
     return type == TransactionType.trade;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return rate;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }
@@ -100,11 +99,11 @@ public final class QuadrigaCxUserTransaction {
   }
 
   @JsonAnySetter
-  public void setCurrencyAmount(String currency, BigDecimal ammount) {
+  public void setCurrencyAmount(String currency, Double ammount) {
     this.currencyAmount.put(currency, ammount);
   }
 
-  public BigDecimal getCurrencyAmount(String currency) {
+  public Double getCurrencyAmount(String currency) {
     return this.currencyAmount.get(currency.toLowerCase());
   }
 

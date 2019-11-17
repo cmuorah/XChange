@@ -2,7 +2,6 @@ package org.knowm.xchange.bitstamp.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.bitstamp.BitstampUtils;
 import org.knowm.xchange.currency.Currency;
@@ -12,7 +11,7 @@ public class WithdrawalRequest {
   private final Date datetime;
   private Long id;
   private Type type;
-  private BigDecimal amount;
+  private Double amount;
 
   private Currency currency;
 
@@ -42,7 +41,7 @@ public class WithdrawalRequest {
     return type;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

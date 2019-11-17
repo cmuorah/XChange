@@ -1,7 +1,6 @@
 package org.knowm.xchange.binance;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.DELETE;
@@ -60,11 +59,11 @@ public interface BinanceAuthenticated extends Binance {
       @FormParam("side") OrderSide side,
       @FormParam("type") OrderType type,
       @FormParam("timeInForce") TimeInForce timeInForce,
-      @FormParam("quantity") BigDecimal quantity,
-      @FormParam("price") BigDecimal price,
+      @FormParam("quantity") Double quantity,
+      @FormParam("price") Double price,
       @FormParam("newClientOrderId") String newClientOrderId,
-      @FormParam("stopPrice") BigDecimal stopPrice,
-      @FormParam("icebergQty") BigDecimal icebergQty,
+      @FormParam("stopPrice") Double stopPrice,
+      @FormParam("icebergQty") Double icebergQty,
       @FormParam("recvWindow") Long recvWindow,
       @FormParam("timestamp") long timestamp,
       @HeaderParam(X_MBX_APIKEY) String apiKey,
@@ -98,11 +97,11 @@ public interface BinanceAuthenticated extends Binance {
       @FormParam("side") OrderSide side,
       @FormParam("type") OrderType type,
       @FormParam("timeInForce") TimeInForce timeInForce,
-      @FormParam("quantity") BigDecimal quantity,
-      @FormParam("price") BigDecimal price,
+      @FormParam("quantity") Double quantity,
+      @FormParam("price") Double price,
       @FormParam("newClientOrderId") String newClientOrderId,
-      @FormParam("stopPrice") BigDecimal stopPrice,
-      @FormParam("icebergQty") BigDecimal icebergQty,
+      @FormParam("stopPrice") Double stopPrice,
+      @FormParam("icebergQty") Double icebergQty,
       @FormParam("recvWindow") Long recvWindow,
       @FormParam("timestamp") long timestamp,
       @HeaderParam(X_MBX_APIKEY) String apiKey,
@@ -302,7 +301,7 @@ public interface BinanceAuthenticated extends Binance {
       @FormParam("asset") String asset,
       @FormParam("address") String address,
       @FormParam("addressTag") String addressTag,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("name") String name,
       @FormParam("recvWindow") Long recvWindow,
       @FormParam("timestamp") long timestamp,

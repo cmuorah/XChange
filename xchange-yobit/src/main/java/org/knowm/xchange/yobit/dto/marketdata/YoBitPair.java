@@ -8,31 +8,30 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.yobit.dto.marketdata.YoBitPair.YoBitPairDeserializer;
 
 @JsonDeserialize(using = YoBitPairDeserializer.class)
 public class YoBitPair {
   private Integer decimal_places;
-  private BigDecimal min_price;
-  private BigDecimal max_price;
-  private BigDecimal min_amount;
-  private BigDecimal min_total;
+  private Double min_price;
+  private Double max_price;
+  private Double min_amount;
+  private Double min_total;
   private Integer hidden;
-  private BigDecimal fee;
-  private BigDecimal fee_buyer;
-  private BigDecimal fee_seller;
+  private Double fee;
+  private Double fee_buyer;
+  private Double fee_seller;
 
   public YoBitPair(
       Integer decimal_places,
-      BigDecimal min_price,
-      BigDecimal max_price,
-      BigDecimal min_amount,
-      BigDecimal min_total,
+      Double min_price,
+      Double max_price,
+      Double min_amount,
+      Double min_total,
       Integer hidden,
-      BigDecimal fee,
-      BigDecimal fee_buyer,
-      BigDecimal fee_seller) {
+      Double fee,
+      Double fee_buyer,
+      Double fee_seller) {
     super();
     this.decimal_places = decimal_places;
     this.min_price = min_price;
@@ -49,19 +48,19 @@ public class YoBitPair {
     return decimal_places;
   }
 
-  public BigDecimal getMin_price() {
+  public Double getMin_price() {
     return min_price;
   }
 
-  public BigDecimal getMax_price() {
+  public Double getMax_price() {
     return max_price;
   }
 
-  public BigDecimal getMin_amount() {
+  public Double getMin_amount() {
     return min_amount;
   }
 
-  public BigDecimal getMin_total() {
+  public Double getMin_total() {
     return min_total;
   }
 
@@ -69,15 +68,15 @@ public class YoBitPair {
     return hidden;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public BigDecimal getFee_buyer() {
+  public Double getFee_buyer() {
     return fee_buyer;
   }
 
-  public BigDecimal getFee_seller() {
+  public Double getFee_seller() {
     return fee_seller;
   }
 
@@ -106,23 +105,23 @@ public class YoBitPair {
 
   static class YoBitPairDeserializer extends JsonDeserializer<YoBitPair> {
 
-    private static BigDecimal getNumberIfPresent(JsonNode numberNode) {
+    private static Double getNumberIfPresent(JsonNode numberNode) {
 
       final String numberString = numberNode.asText();
-      return numberString.isEmpty() ? null : new BigDecimal(numberString);
+      return numberString.isEmpty() ? null : new Double(numberString);
     }
 
     public static YoBitPair deserializeFromNode(JsonNode tickerNode) {
 
       final Integer decimal_places = tickerNode.path("decimal_places").asInt();
-      final BigDecimal min_price = getNumberIfPresent(tickerNode.path("min_price"));
-      final BigDecimal max_price = getNumberIfPresent(tickerNode.path("max_price"));
-      final BigDecimal min_amount = getNumberIfPresent(tickerNode.path("min_amount"));
-      final BigDecimal min_total = getNumberIfPresent(tickerNode.path("min_total"));
+      final Double min_price = getNumberIfPresent(tickerNode.path("min_price"));
+      final Double max_price = getNumberIfPresent(tickerNode.path("max_price"));
+      final Double min_amount = getNumberIfPresent(tickerNode.path("min_amount"));
+      final Double min_total = getNumberIfPresent(tickerNode.path("min_total"));
       final Integer hidden = tickerNode.path("hidden").asInt();
-      final BigDecimal fee = getNumberIfPresent(tickerNode.path("fee"));
-      final BigDecimal fee_buyer = getNumberIfPresent(tickerNode.path("fee_buyer"));
-      final BigDecimal fee_seller = getNumberIfPresent(tickerNode.path("fee_seller"));
+      final Double fee = getNumberIfPresent(tickerNode.path("fee"));
+      final Double fee_buyer = getNumberIfPresent(tickerNode.path("fee_buyer"));
+      final Double fee_seller = getNumberIfPresent(tickerNode.path("fee_seller"));
 
       return new YoBitPair(
           decimal_places,

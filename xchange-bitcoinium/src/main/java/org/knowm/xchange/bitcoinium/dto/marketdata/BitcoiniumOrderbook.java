@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitcoinium.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Data object representing Orderbook from Bitcoinium WebService */
 public final class BitcoiniumOrderbook {
@@ -48,8 +47,8 @@ public final class BitcoiniumOrderbook {
    */
   public static final class CondensedOrder {
 
-    private final BigDecimal price;
-    private final BigDecimal volume;
+    private final Double price;
+    private final Double volume;
 
     /**
      * Constructor
@@ -57,19 +56,18 @@ public final class BitcoiniumOrderbook {
      * @param price
      * @param volume
      */
-    public CondensedOrder(
-        @JsonProperty("p") BigDecimal price, @JsonProperty("v") BigDecimal volume) {
+    public CondensedOrder(@JsonProperty("p") Double price, @JsonProperty("v") Double volume) {
 
       this.price = price;
       this.volume = volume;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
 
       return price;
     }
 
-    public BigDecimal getVolume() {
+    public Double getVolume() {
 
       return volume;
     }

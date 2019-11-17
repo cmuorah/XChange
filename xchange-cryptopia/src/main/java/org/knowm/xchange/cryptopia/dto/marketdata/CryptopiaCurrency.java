@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptopia.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public final class CryptopiaCurrency {
 
@@ -9,12 +8,12 @@ public final class CryptopiaCurrency {
   private final String name;
   private final String symbol;
   private final String algorithm;
-  private final BigDecimal withdrawFee;
-  private final BigDecimal minWithdraw;
-  private final BigDecimal maxWithdraw;
-  private final BigDecimal minBaseTrade;
+  private final Double withdrawFee;
+  private final Double minWithdraw;
+  private final Double maxWithdraw;
+  private final Double minBaseTrade;
   private final boolean isTipEnabled;
-  private final BigDecimal minTip;
+  private final Double minTip;
   private final long depositConfirmations;
   private final String status;
   private final String statusMessage;
@@ -25,12 +24,12 @@ public final class CryptopiaCurrency {
       @JsonProperty("Name") String name,
       @JsonProperty("Symbol") String symbol,
       @JsonProperty("Algorithm") String algorithm,
-      @JsonProperty("WithdrawFee") BigDecimal withdrawFee,
-      @JsonProperty("MinWithdraw") BigDecimal minWithdraw,
-      @JsonProperty("MaxWithdraw") BigDecimal maxWithdraw,
-      @JsonProperty("MinBaseTrade") BigDecimal minBaseTrade,
+      @JsonProperty("WithdrawFee") Double withdrawFee,
+      @JsonProperty("MinWithdraw") Double minWithdraw,
+      @JsonProperty("MaxWithdraw") Double maxWithdraw,
+      @JsonProperty("MinBaseTrade") Double minBaseTrade,
       @JsonProperty("IsTipEnabled") boolean isTipEnabled,
-      @JsonProperty("MinTip") BigDecimal minTip,
+      @JsonProperty("MinTip") Double minTip,
       @JsonProperty("DepositConfirmations") long depositConfirmations,
       @JsonProperty("Status") String status,
       @JsonProperty("StatusMessage") String statusMessage,
@@ -67,19 +66,19 @@ public final class CryptopiaCurrency {
     return algorithm;
   }
 
-  public BigDecimal getWithdrawFee() {
+  public Double getWithdrawFee() {
     return withdrawFee;
   }
 
-  public BigDecimal getMinWithdraw() {
+  public Double getMinWithdraw() {
     return minWithdraw;
   }
 
-  public BigDecimal getMaxWithdraw() {
+  public Double getMaxWithdraw() {
     return maxWithdraw;
   }
 
-  public BigDecimal getMinBaseTrade() {
+  public Double getMinBaseTrade() {
     return minBaseTrade;
   }
 
@@ -87,7 +86,7 @@ public final class CryptopiaCurrency {
     return isTipEnabled;
   }
 
-  public BigDecimal getMinTip() {
+  public Double getMinTip() {
     return minTip;
   }
 

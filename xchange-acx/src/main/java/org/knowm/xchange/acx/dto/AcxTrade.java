@@ -1,18 +1,17 @@
 package org.knowm.xchange.acx.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class AcxTrade {
   /** Unique ID */
   public final String id;
   /** trade price */
-  public final BigDecimal price;
+  public final Double price;
   /** trade volume */
-  public final BigDecimal volume;
+  public final Double volume;
 
-  public final BigDecimal funds;
+  public final Double funds;
   /** the market trade belongs to, like ‘btcaud’ */
   public final String market;
   /** trade time */
@@ -23,9 +22,9 @@ public class AcxTrade {
 
   public AcxTrade(
       @JsonProperty("id") String id,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("funds") BigDecimal funds,
+      @JsonProperty("price") Double price,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("funds") Double funds,
       @JsonProperty("market") String market,
       @JsonProperty("created_at") Date createdAt,
       @JsonProperty("trend") String trend,

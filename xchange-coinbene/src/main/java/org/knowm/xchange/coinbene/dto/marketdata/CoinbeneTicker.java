@@ -1,33 +1,28 @@
 package org.knowm.xchange.coinbene.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.List;
-import org.knowm.xchange.coinbene.CoinbeneBigDecimalDeserializer;
 import org.knowm.xchange.coinbene.dto.CoinbeneResponse;
 
 public class CoinbeneTicker {
   private final String symbol;
-  private final BigDecimal dayHigh;
-  private final BigDecimal dayLow;
-  private final BigDecimal last;
-  private final BigDecimal ask;
-  private final BigDecimal bid;
-  private final BigDecimal dayVolume;
-  private final BigDecimal dayAmount;
+  private final Double dayHigh;
+  private final Double dayLow;
+  private final Double last;
+  private final Double ask;
+  private final Double bid;
+  private final Double dayVolume;
+  private final Double dayAmount;
 
   public CoinbeneTicker(
       @JsonProperty("symbol") String symbol,
-      @JsonProperty("24hrHigh") BigDecimal dayHigh,
-      @JsonProperty("24hrLow") BigDecimal dayLow,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("ask") @JsonDeserialize(using = CoinbeneBigDecimalDeserializer.class)
-          BigDecimal ask,
-      @JsonProperty("bid") @JsonDeserialize(using = CoinbeneBigDecimalDeserializer.class)
-          BigDecimal bid,
-      @JsonProperty("24hrVol") BigDecimal dayVolume,
-      @JsonProperty("24hrAmt") BigDecimal dayAmount) {
+      @JsonProperty("24hrHigh") Double dayHigh,
+      @JsonProperty("24hrLow") Double dayLow,
+      @JsonProperty("last") Double last,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("24hrVol") Double dayVolume,
+      @JsonProperty("24hrAmt") Double dayAmount) {
     this.symbol = symbol;
     this.dayHigh = dayHigh;
     this.dayLow = dayLow;
@@ -42,31 +37,31 @@ public class CoinbeneTicker {
     return symbol;
   }
 
-  public BigDecimal getDayHigh() {
+  public Double getDayHigh() {
     return dayHigh;
   }
 
-  public BigDecimal getDayLow() {
+  public Double getDayLow() {
     return dayLow;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getDayVolume() {
+  public Double getDayVolume() {
     return dayVolume;
   }
 
-  public BigDecimal getDayAmount() {
+  public Double getDayAmount() {
     return dayAmount;
   }
 

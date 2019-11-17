@@ -1,19 +1,18 @@
 package org.knowm.xchange.dvchain.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class DVChainNewLimitOrder {
   private String side;
-  private BigDecimal qty;
+  private Double qty;
   private String asset;
-  private BigDecimal limitPrice;
+  private Double limitPrice;
   private String orderType;
 
   public DVChainNewLimitOrder(
       @JsonProperty("side") String side,
-      @JsonProperty("limitPrice") BigDecimal limitPrice,
-      @JsonProperty("qty") BigDecimal qty,
+      @JsonProperty("limitPrice") Double limitPrice,
+      @JsonProperty("qty") Double qty,
       @JsonProperty("asset") String asset) {
     this.asset = asset;
     this.limitPrice = limitPrice;
@@ -22,7 +21,7 @@ public class DVChainNewLimitOrder {
     this.orderType = "limit";
   }
 
-  public BigDecimal getQty() {
+  public Double getQty() {
     return qty;
   }
 
@@ -34,7 +33,7 @@ public class DVChainNewLimitOrder {
     return side;
   }
 
-  public BigDecimal getLimitPrice() {
+  public Double getLimitPrice() {
     return limitPrice;
   }
 

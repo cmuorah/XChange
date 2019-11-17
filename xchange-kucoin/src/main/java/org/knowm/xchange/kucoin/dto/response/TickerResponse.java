@@ -2,7 +2,6 @@
 package org.knowm.xchange.kucoin.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.math.BigDecimal;
 import lombok.Data;
 
 /** Created by chenshiwei on 2019/1/10. */
@@ -12,17 +11,17 @@ public class TickerResponse {
 
   private String sequence;
 
-  private BigDecimal bestAsk;
+  private Double bestAsk;
 
-  private BigDecimal bestBid;
+  private Double bestBid;
 
-  private BigDecimal size;
+  private Double size;
 
-  private BigDecimal price;
+  private Double price;
 
-  private BigDecimal bestAskSize;
+  private Double bestAskSize;
 
-  private BigDecimal bestBidSize;
+  private Double bestBidSize;
 
   private long time;
 }

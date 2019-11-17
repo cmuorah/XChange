@@ -2,7 +2,6 @@ package org.knowm.xchange.kucoin.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -23,5 +22,5 @@ public class InnerTransferRequest {
    * Transfer amount, a quantity that exceeds the precision of the currency（ Obtained through the
    * currencies interface ）.
    */
-  private final BigDecimal amount;
+  private final Double amount;
 }

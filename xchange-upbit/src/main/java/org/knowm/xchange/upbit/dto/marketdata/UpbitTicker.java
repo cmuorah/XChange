@@ -1,7 +1,6 @@
 package org.knowm.xchange.upbit.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class UpbitTicker {
   private final String market;
@@ -10,26 +9,26 @@ public class UpbitTicker {
   private final String trade_date_kst;
   private final String trade_time_kst;
   private final String trade_timestamp;
-  private final BigDecimal opening_price;
-  private final BigDecimal high_price;
-  private final BigDecimal low_price;
-  private final BigDecimal trade_price;
-  private final BigDecimal prev_closing_price;
+  private final Double opening_price;
+  private final Double high_price;
+  private final Double low_price;
+  private final Double trade_price;
+  private final Double prev_closing_price;
   private final String change;
-  private final BigDecimal change_price;
-  private final BigDecimal change_rate;
-  private final BigDecimal signed_change_price;
-  private final BigDecimal signed_change_rate;
-  private final BigDecimal trade_volume;
-  private final BigDecimal acc_trade_price;
-  private final BigDecimal acc_trade_price_24h;
-  private final BigDecimal acc_trade_volume;
-  private final BigDecimal acc_trade_volume_24h;
-  private final BigDecimal highest_52_week_price;
+  private final Double change_price;
+  private final Double change_rate;
+  private final Double signed_change_price;
+  private final Double signed_change_rate;
+  private final Double trade_volume;
+  private final Double acc_trade_price;
+  private final Double acc_trade_price_24h;
+  private final Double acc_trade_volume;
+  private final Double acc_trade_volume_24h;
+  private final Double highest_52_week_price;
   private final String highest_52_week_date;
-  private final BigDecimal lowest_52_week_price;
+  private final Double lowest_52_week_price;
   private final String lowest_52_week_date;
-  private final BigDecimal timestamp;
+  private final Double timestamp;
 
   /**
    * @param market
@@ -66,26 +65,26 @@ public class UpbitTicker {
       @JsonProperty("trade_date_kst") String trade_date_kst,
       @JsonProperty("trade_time_kst") String trade_time_kst,
       @JsonProperty("trade_timestamp") String trade_timestamp,
-      @JsonProperty("opening_price") BigDecimal opening_price,
-      @JsonProperty("high_price") BigDecimal high_price,
-      @JsonProperty("low_price") BigDecimal low_price,
-      @JsonProperty("trade_price") BigDecimal trade_price,
-      @JsonProperty("prev_closing_price") BigDecimal prev_closing_price,
+      @JsonProperty("opening_price") Double opening_price,
+      @JsonProperty("high_price") Double high_price,
+      @JsonProperty("low_price") Double low_price,
+      @JsonProperty("trade_price") Double trade_price,
+      @JsonProperty("prev_closing_price") Double prev_closing_price,
       @JsonProperty("change") String change,
-      @JsonProperty("change_price") BigDecimal change_price,
-      @JsonProperty("change_rate") BigDecimal change_rate,
-      @JsonProperty("signed_change_price") BigDecimal signed_change_price,
-      @JsonProperty("signed_change_rate") BigDecimal signed_change_rate,
-      @JsonProperty("trade_volume") BigDecimal trade_volume,
-      @JsonProperty("acc_trade_price") BigDecimal acc_trade_price,
-      @JsonProperty("acc_trade_price_24h") BigDecimal acc_trade_price_24h,
-      @JsonProperty("acc_trade_volume") BigDecimal acc_trade_volume,
-      @JsonProperty("acc_trade_volume_24h") BigDecimal acc_trade_volume_24h,
-      @JsonProperty("highest_52_week_price") BigDecimal highest_52_week_price,
+      @JsonProperty("change_price") Double change_price,
+      @JsonProperty("change_rate") Double change_rate,
+      @JsonProperty("signed_change_price") Double signed_change_price,
+      @JsonProperty("signed_change_rate") Double signed_change_rate,
+      @JsonProperty("trade_volume") Double trade_volume,
+      @JsonProperty("acc_trade_price") Double acc_trade_price,
+      @JsonProperty("acc_trade_price_24h") Double acc_trade_price_24h,
+      @JsonProperty("acc_trade_volume") Double acc_trade_volume,
+      @JsonProperty("acc_trade_volume_24h") Double acc_trade_volume_24h,
+      @JsonProperty("highest_52_week_price") Double highest_52_week_price,
       @JsonProperty("highest_52_week_date") String highest_52_week_date,
-      @JsonProperty("lowest_52_week_price") BigDecimal lowest_52_week_price,
+      @JsonProperty("lowest_52_week_price") Double lowest_52_week_price,
       @JsonProperty("lowest_52_week_date") String lowest_52_week_date,
-      @JsonProperty("timestamp") BigDecimal timestamp) {
+      @JsonProperty("timestamp") Double timestamp) {
     this.market = market;
     this.trade_date = trade_date;
     this.trade_time = trade_time;
@@ -138,23 +137,23 @@ public class UpbitTicker {
     return trade_timestamp;
   }
 
-  public BigDecimal getOpening_price() {
+  public Double getOpening_price() {
     return opening_price;
   }
 
-  public BigDecimal getHigh_price() {
+  public Double getHigh_price() {
     return high_price;
   }
 
-  public BigDecimal getLow_price() {
+  public Double getLow_price() {
     return low_price;
   }
 
-  public BigDecimal getTrade_price() {
+  public Double getTrade_price() {
     return trade_price;
   }
 
-  public BigDecimal getPrev_closing_price() {
+  public Double getPrev_closing_price() {
     return prev_closing_price;
   }
 
@@ -162,43 +161,43 @@ public class UpbitTicker {
     return change;
   }
 
-  public BigDecimal getChange_price() {
+  public Double getChange_price() {
     return change_price;
   }
 
-  public BigDecimal getChange_rate() {
+  public Double getChange_rate() {
     return change_rate;
   }
 
-  public BigDecimal getSigned_change_price() {
+  public Double getSigned_change_price() {
     return signed_change_price;
   }
 
-  public BigDecimal getSigned_change_rate() {
+  public Double getSigned_change_rate() {
     return signed_change_rate;
   }
 
-  public BigDecimal getTrade_volume() {
+  public Double getTrade_volume() {
     return trade_volume;
   }
 
-  public BigDecimal getAcc_trade_price() {
+  public Double getAcc_trade_price() {
     return acc_trade_price;
   }
 
-  public BigDecimal getAcc_trade_price_24h() {
+  public Double getAcc_trade_price_24h() {
     return acc_trade_price_24h;
   }
 
-  public BigDecimal getAcc_trade_volume() {
+  public Double getAcc_trade_volume() {
     return acc_trade_volume;
   }
 
-  public BigDecimal getAcc_trade_volume_24h() {
+  public Double getAcc_trade_volume_24h() {
     return acc_trade_volume_24h;
   }
 
-  public BigDecimal getHighest_52_week_price() {
+  public Double getHighest_52_week_price() {
     return highest_52_week_price;
   }
 
@@ -206,7 +205,7 @@ public class UpbitTicker {
     return highest_52_week_date;
   }
 
-  public BigDecimal getLowest_52_week_price() {
+  public Double getLowest_52_week_price() {
     return lowest_52_week_price;
   }
 
@@ -214,7 +213,7 @@ public class UpbitTicker {
     return lowest_52_week_date;
   }
 
-  public BigDecimal getTimestamp() {
+  public Double getTimestamp() {
     return timestamp;
   }
 }

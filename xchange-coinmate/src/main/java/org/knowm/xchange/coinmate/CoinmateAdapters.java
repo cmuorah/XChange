@@ -23,7 +23,6 @@
  */
 package org.knowm.xchange.coinmate;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,12 +61,12 @@ public class CoinmateAdapters {
    */
   public static Ticker adaptTicker(CoinmateTicker coinmateTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = coinmateTicker.getData().getLast();
-    BigDecimal bid = coinmateTicker.getData().getBid();
-    BigDecimal ask = coinmateTicker.getData().getAsk();
-    BigDecimal high = coinmateTicker.getData().getHigh();
-    BigDecimal low = coinmateTicker.getData().getLow();
-    BigDecimal volume = coinmateTicker.getData().getAmount();
+    Double last = coinmateTicker.getData().getLast();
+    Double bid = coinmateTicker.getData().getBid();
+    Double ask = coinmateTicker.getData().getAsk();
+    Double high = coinmateTicker.getData().getHigh();
+    Double low = coinmateTicker.getData().getLow();
+    Double volume = coinmateTicker.getData().getAmount();
     Date timestamp = new Date(coinmateTicker.getData().getTimestamp() * 1000L);
 
     return new Ticker.Builder()

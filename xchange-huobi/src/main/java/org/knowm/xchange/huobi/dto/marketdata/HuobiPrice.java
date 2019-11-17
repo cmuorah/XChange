@@ -1,22 +1,20 @@
 package org.knowm.xchange.huobi.dto.marketdata;
 
-import java.math.BigDecimal;
-
 public class HuobiPrice {
 
-  private final BigDecimal price;
-  private final BigDecimal volume;
+  private final Double price;
+  private final Double volume;
 
-  HuobiPrice(BigDecimal[] inputData) {
+  HuobiPrice(Double[] inputData) {
     this.price = inputData[0];
     this.volume = inputData[1];
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  private BigDecimal getVolume() {
+  private Double getVolume() {
     return volume;
   }
 

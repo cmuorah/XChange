@@ -8,27 +8,26 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.bitmex.dto.marketdata.BitmexFee.BitmexFeeDeserializer;
 
 @JsonDeserialize(using = BitmexFeeDeserializer.class)
 public class BitmexFee {
 
-  private final BigDecimal volume;
-  private final BigDecimal percentFee;
+  private final Double volume;
+  private final Double percentFee;
 
-  public BitmexFee(BigDecimal volume, BigDecimal percentFee) {
+  public BitmexFee(Double volume, Double percentFee) {
 
     this.volume = volume;
     this.percentFee = percentFee;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getPercentFee() {
+  public Double getPercentFee() {
 
     return percentFee;
   }
@@ -47,8 +46,8 @@ public class BitmexFee {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);
-      BigDecimal volume = new BigDecimal(node.path(0).asText());
-      BigDecimal fee = new BigDecimal(node.path(1).asText());
+      Double volume = new Double(node.path(0).asText());
+      Double fee = new Double(node.path(1).asText());
 
       return new BitmexFee(volume, fee);
     }

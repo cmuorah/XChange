@@ -106,7 +106,7 @@ public class OkCoinFuturesTradeService extends OkCoinTradeServiceRaw implements 
                   OkCoinAdapters.adaptSymbol(marketOrder.getCurrencyPair()),
                   marketOrder.getType() == OrderType.BID ? "1" : "2",
                   "0",
-                  marketOrder.getOriginalAmount().toPlainString(),
+                  marketOrder.getOriginalAmount().toString(),
                   futuresContract,
                   1,
                   leverRate)
@@ -130,7 +130,7 @@ public class OkCoinFuturesTradeService extends OkCoinTradeServiceRaw implements 
                     ? "3"
                     : "4",
                 "0",
-                marketOrder.getOriginalAmount().toPlainString(),
+                marketOrder.getOriginalAmount().toString(),
                 futuresContract,
                 1,
                 leverRate)
@@ -154,8 +154,8 @@ public class OkCoinFuturesTradeService extends OkCoinTradeServiceRaw implements 
           futuresTrade(
                   OkCoinAdapters.adaptSymbol(limitOrder.getCurrencyPair()),
                   limitOrder.getType() == OrderType.BID ? "1" : "2",
-                  limitOrder.getLimitPrice().toPlainString(),
-                  limitOrder.getOriginalAmount().toPlainString(),
+                  limitOrder.getLimitPrice().toString(),
+                  limitOrder.getOriginalAmount().toString(),
                   futuresContract,
                   0,
                   leverRate)
@@ -180,8 +180,8 @@ public class OkCoinFuturesTradeService extends OkCoinTradeServiceRaw implements 
                 limitOrder.getType() == OrderType.BID || limitOrder.getType() == OrderType.EXIT_BID
                     ? "3"
                     : "4",
-                limitOrder.getLimitPrice().toPlainString(),
-                limitOrder.getOriginalAmount().toPlainString(),
+                limitOrder.getLimitPrice().toString(),
+                limitOrder.getOriginalAmount().toString(),
                 futuresContract,
                 0,
                 leverRate)

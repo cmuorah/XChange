@@ -1,6 +1,5 @@
 package org.knowm.xchange.btcmarkets;
 
-import java.math.BigDecimal;
 import java.util.*;
 import org.knowm.xchange.btcmarkets.dto.account.BTCMarketsBalance;
 import org.knowm.xchange.btcmarkets.dto.account.BTCMarketsFundtransfer;
@@ -28,23 +27,11 @@ import org.slf4j.LoggerFactory;
 
 public final class BTCMarketsAdapters {
 
-  private static final Logger logger = LoggerFactory.getLogger(BTCMarketsAdapters.class);
-
   public static final Comparator<LimitOrder> ASK_COMPARATOR =
-      new Comparator<LimitOrder>() {
-        @Override
-        public int compare(LimitOrder o1, LimitOrder o2) {
-          return o1.getLimitPrice().compareTo(o2.getLimitPrice());
-        }
-      };
+      Comparator.comparing(LimitOrder::getLimitPrice);
   public static final Comparator<LimitOrder> BID_COMPARATOR =
-      new Comparator<LimitOrder>() {
-        @Override
-        public int compare(LimitOrder o1, LimitOrder o2) {
-          return o2.getLimitPrice().compareTo(o1.getLimitPrice());
-        }
-      };
-
+      (o1, o2) -> o2.getLimitPrice().compareTo(o1.getLimitPrice());
+  private static final Logger logger = LoggerFactory.getLogger(BTCMarketsAdapters.class);
   private static final Map<String, Order.OrderStatus> orderStatusMap = new HashMap<>();
 
   static {
@@ -75,15 +62,15 @@ public final class BTCMarketsAdapters {
         createOrders(Order.OrderType.ASK, btcmarketsOrderBook.getAsks(), currencyPair);
     List<LimitOrder> bids =
         createOrders(Order.OrderType.BID, btcmarketsOrderBook.getBids(), currencyPair);
-    Collections.sort(bids, BID_COMPARATOR);
-    Collections.sort(asks, ASK_COMPARATOR);
+    bids.sort(BID_COMPARATOR);
+    asks.sort(ASK_COMPARATOR);
     return new OrderBook(btcmarketsOrderBook.getTimestamp(), asks, bids);
   }
 
   public static List<LimitOrder> createOrders(
-      Order.OrderType orderType, List<BigDecimal[]> orders, CurrencyPair currencyPair) {
+      Order.OrderType orderType, List<Double[]> orders, CurrencyPair currencyPair) {
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (BigDecimal[] o : orders) {
+    for (Double[] o : orders) {
       limitOrders.add(new LimitOrder(orderType, o[1], currencyPair, null, null, o[0]));
     }
     return limitOrders;
@@ -99,18 +86,14 @@ public final class BTCMarketsAdapters {
   }
 
   public static LimitOrder adaptOrder(BTCMarketsOrder o) {
-    BigDecimal averagePrice =
-        BigDecimal.valueOf(
-            o.getTrades().stream()
-                .mapToDouble(value -> value.getPrice().doubleValue())
-                .summaryStatistics()
-                .getAverage());
-    BigDecimal fee =
-        BigDecimal.valueOf(
-            o.getTrades().stream().mapToDouble(value -> value.getFee().doubleValue()).sum());
-    BigDecimal cumulativeAmount =
-        BigDecimal.valueOf(
-            o.getTrades().stream().mapToDouble(value -> value.getVolume().doubleValue()).sum());
+    Double averagePrice =
+        o.getTrades().stream()
+            .mapToDouble(BTCMarketsUserTrade::getPrice)
+            .summaryStatistics()
+            .getAverage();
+    Double fee = o.getTrades().stream().mapToDouble(BTCMarketsUserTrade::getFee).sum();
+    Double cumulativeAmount =
+        o.getTrades().stream().mapToDouble(BTCMarketsUserTrade::getVolume).sum();
     return new LimitOrder(
         adaptOrderType(o.getOrderSide()),
         o.getVolume(),
@@ -143,7 +126,7 @@ public final class BTCMarketsAdapters {
         type,
         trade.getVolume(),
         currencyPair,
-        trade.getPrice().abs(),
+        Math.abs(trade.getPrice()),
         trade.getCreationTime(),
         tradeId,
         String.valueOf(orderId),
@@ -190,7 +173,7 @@ public final class BTCMarketsAdapters {
       } else if (transfer.getTransferType().equals("DEPOSIT")) {
         fundingrecordType = FundingRecord.Type.DEPOSIT;
       }
-      FundingRecord.Status fundingRecordStatus = null;
+      FundingRecord.Status fundingRecordStatus;
       if (transfer.getStatus().equals("Complete")) {
         fundingRecordStatus = FundingRecord.Status.COMPLETE;
       } else {

@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.coinone.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinone.dto.trade.CoinoneTradeCancelRequest;
 import org.knowm.xchange.currency.Currency;
@@ -26,11 +25,11 @@ public class CoinoneOrderDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (OrderType.BID),
-            new BigDecimal("0.01"),
+            new Double("0.01"),
             new CurrencyPair(Currency.ETH, Currency.KRW),
             null,
             null,
-            new BigDecimal("500000.00"));
+            new Double("500000.00"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
 
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
@@ -45,11 +44,11 @@ public class CoinoneOrderDemo {
     limitOrder =
         new LimitOrder(
             (OrderType.ASK),
-            new BigDecimal("0.01"),
+            new Double("0.01"),
             new CurrencyPair(Currency.ETH, Currency.KRW),
             null,
             null,
-            new BigDecimal("1000000.00"));
+            new Double("1000000.00"));
     limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
 
     System.out.println("Limit Order return value: " + limitOrderReturnValue);

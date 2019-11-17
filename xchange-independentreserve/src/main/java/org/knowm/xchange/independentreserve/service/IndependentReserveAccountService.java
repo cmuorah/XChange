@@ -1,7 +1,6 @@
 package org.knowm.xchange.independentreserve.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Function;
@@ -46,8 +45,7 @@ public class IndependentReserveAccountService extends IndependentReserveAccountS
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     withdrawDigitalCurrency(amount, address, "", currency.getCurrencyCode(), null);
     return null;
   }

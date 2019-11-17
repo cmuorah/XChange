@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /** Test BTCEDepth JSON parsing */
@@ -23,6 +22,6 @@ public class BitfinexWalletJSONTest {
     ObjectMapper mapper = new ObjectMapper();
     BitfinexBalancesResponse readValue = mapper.readValue(is, BitfinexBalancesResponse.class);
 
-    assertEquals(readValue.getAmount().toString(), new BigDecimal("8.53524686").toString());
+    assertEquals(readValue.getAmount().toString(), new Double("8.53524686").toString());
   }
 }

@@ -1,19 +1,18 @@
 package org.knowm.xchange.coinbene.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbeneCoinBalance {
   private final String asset;
-  private final BigDecimal available;
-  private final BigDecimal reserved;
-  private final BigDecimal total;
+  private final Double available;
+  private final Double reserved;
+  private final Double total;
 
   public CoinbeneCoinBalance(
       @JsonProperty("asset") String asset,
-      @JsonProperty("available") BigDecimal available,
-      @JsonProperty("reserved") BigDecimal reserved,
-      @JsonProperty("total") BigDecimal total) {
+      @JsonProperty("available") Double available,
+      @JsonProperty("reserved") Double reserved,
+      @JsonProperty("total") Double total) {
     this.asset = asset;
     this.available = available;
     this.reserved = reserved;
@@ -24,15 +23,15 @@ public class CoinbeneCoinBalance {
     return asset;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 
-  public BigDecimal getReserved() {
+  public Double getReserved() {
     return reserved;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 }

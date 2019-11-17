@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbase.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinbase.dto.marketdata.CoinbaseMoney;
@@ -31,7 +30,7 @@ class CoinbaseMarketDataServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://coinbase.com/api/doc/1.0/currencies/exchange_rates.html">coinbase.com/api/doc/1.0/currencies/exchange_rates.html</a>
    */
-  public Map<String, BigDecimal> getCoinbaseCurrencyExchangeRates() throws IOException {
+  public Map<String, Double> getCoinbaseCurrencyExchangeRates() throws IOException {
 
     return coinbase.getCurrencyExchangeRates();
   }
@@ -58,7 +57,7 @@ class CoinbaseMarketDataServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://coinbase.com/api/doc/1.0/prices/buy.html">coinbase.com/api/doc/1.0/prices/buy.html</a>
    */
-  public CoinbasePrice getCoinbaseBuyPrice(BigDecimal quantity) throws IOException {
+  public CoinbasePrice getCoinbaseBuyPrice(Double quantity) throws IOException {
 
     return getCoinbaseBuyPrice(quantity, null);
   }
@@ -73,8 +72,7 @@ class CoinbaseMarketDataServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://coinbase.com/api/doc/1.0/prices/buy.html">coinbase.com/api/doc/1.0/prices/buy.html</a>
    */
-  public CoinbasePrice getCoinbaseBuyPrice(BigDecimal quantity, String currency)
-      throws IOException {
+  public CoinbasePrice getCoinbaseBuyPrice(Double quantity, String currency) throws IOException {
 
     return coinbase.getBuyPrice(quantity, currency);
   }
@@ -103,7 +101,7 @@ class CoinbaseMarketDataServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://coinbase.com/api/doc/1.0/prices/sell.html">coinbase.com/api/doc/1.0/prices/sell.html</a>
    */
-  public CoinbasePrice getCoinbaseSellPrice(BigDecimal quantity) throws IOException {
+  public CoinbasePrice getCoinbaseSellPrice(Double quantity) throws IOException {
 
     return getCoinbaseSellPrice(quantity, null);
   }
@@ -119,8 +117,7 @@ class CoinbaseMarketDataServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://coinbase.com/api/doc/1.0/prices/sell.html">coinbase.com/api/doc/1.0/prices/sell.html</a>
    */
-  public CoinbasePrice getCoinbaseSellPrice(BigDecimal quantity, String currency)
-      throws IOException {
+  public CoinbasePrice getCoinbaseSellPrice(Double quantity, String currency) throws IOException {
 
     return coinbase.getSellPrice(quantity, currency);
   }

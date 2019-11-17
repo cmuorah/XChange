@@ -8,7 +8,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.junit.Before;
@@ -206,12 +205,12 @@ public class BleutradeAccountServiceIntegration extends BleutradeServiceTestSupp
             any(ParamsDigest.class),
             any(SynchronizedValueFactory.class),
             eq("BTC"),
-            eq(BigDecimal.TEN),
+            eq(10d),
             eq("any address")))
         .thenReturn(new BleutradeWithdrawReturn(true, "message", new String[0]));
 
     // when
-    String message = accountService.withdrawFunds(Currency.BTC, BigDecimal.TEN, "any address");
+    String message = accountService.withdrawFunds(Currency.BTC, 10d, "any address");
 
     assertThat(message).isEqualTo("message");
   }

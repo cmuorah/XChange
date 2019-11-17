@@ -24,26 +24,25 @@
 package org.knowm.xchange.coinmate.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Martin Stachon */
 public class CoinmateOrderBookEntry {
 
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
 
   public CoinmateOrderBookEntry(
-      @JsonProperty("price") BigDecimal price, @JsonProperty("amount") BigDecimal amount) {
+      @JsonProperty("price") Double price, @JsonProperty("amount") Double amount) {
 
     this.price = price;
     this.amount = amount;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 }

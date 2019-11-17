@@ -1,6 +1,5 @@
 package org.knowm.xchange.kucoin.dto.response;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 
@@ -10,11 +9,11 @@ public class DepositResponse {
   /** Creation time of the database record */
   private Date createdAt;
   /** Deposit amount */
-  private BigDecimal amount;
+  private Double amount;
   /** Deposit address */
   private String address;
   /** Deposit fee */
-  private BigDecimal fee;
+  private Double fee;
   /**
    * The note which was left on the deposit address. When you withdraw from other platforms to the
    * KuCoin, you need to fill in memo(tag). If you do not fill memo (tag), your deposit may not be

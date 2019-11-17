@@ -1,7 +1,6 @@
 package org.knowm.xchange.bibox.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BiboxTransferCommandBody {
 
@@ -19,7 +18,7 @@ public class BiboxTransferCommandBody {
 
   @JsonProperty
   /** withdrawal amount */
-  public final BigDecimal amount;
+  public final Double amount;
 
   @JsonProperty
   /** withdrawal address */
@@ -33,7 +32,7 @@ public class BiboxTransferCommandBody {
       int totpCode,
       String tradePwd,
       String coinSymbol,
-      BigDecimal amount,
+      Double amount,
       String addr,
       String addrRemark) {
     super();

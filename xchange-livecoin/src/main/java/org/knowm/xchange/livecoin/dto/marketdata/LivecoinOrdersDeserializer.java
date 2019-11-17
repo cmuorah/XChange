@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,16 +29,16 @@ public class LivecoinOrdersDeserializer extends JsonDeserializer<List<LivecoinOr
       if (!order.isArray() || order.size() < 2) {
         throw new JsonParseException(order.traverse(), "Expected array of at least two elements");
       }
-      BigDecimal rate = toBigDecimal(order.get(0));
-      BigDecimal quantity = toBigDecimal(order.get(1));
+      Double rate = toDouble(order.get(0));
+      Double quantity = toDouble(order.get(1));
       result.add(new LivecoinOrder(rate, quantity));
     }
     return result;
   }
 
-  private BigDecimal toBigDecimal(JsonNode elem) throws JsonProcessingException {
+  private Double toDouble(JsonNode elem) throws JsonProcessingException {
     try {
-      return new BigDecimal(elem.asText());
+      return new Double(elem.asText());
     } catch (NumberFormatException e) {
       throw new JsonParseException(elem.traverse(), "Expected decimal", e);
     }

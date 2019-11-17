@@ -1,7 +1,6 @@
 package org.knowm.xchange.therock.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,8 +54,7 @@ public class TheRockAccountService extends TheRockAccountServiceRaw implements A
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     final TheRockWithdrawalResponse response = withdrawDefault(currency, amount, address);
     return String.format("%d", response.getTransactionId());
   }

@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -63,8 +62,8 @@ public class KrakenSpreads {
         } else if (value.isArray()) {
           for (JsonNode jsonSpreadNode : value) {
             long time = jsonSpreadNode.path(0).asLong();
-            BigDecimal bid = new BigDecimal(jsonSpreadNode.path(1).asText());
-            BigDecimal ask = new BigDecimal(jsonSpreadNode.path(2).asText());
+            Double bid = new Double(jsonSpreadNode.path(1).asText());
+            Double ask = new Double(jsonSpreadNode.path(2).asText());
 
             krakenTrades.add(new KrakenSpread(time, bid, ask));
           }

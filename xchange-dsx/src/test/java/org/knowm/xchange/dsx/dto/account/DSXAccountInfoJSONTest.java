@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /**
@@ -27,10 +26,9 @@ public class DSXAccountInfoJSONTest {
 
     assertThat(ai.getReturnValue().getRights().isInfo()).isTrue();
     assertThat(ai.getReturnValue().getFunds().get("BTC"))
-        .isEqualToComparingFieldByField(
-            new DSXCurrencyAmount(new BigDecimal("100"), new BigDecimal("95")));
+        .isEqualToComparingFieldByField(new DSXCurrencyAmount(new Double("100"), new Double("95")));
     assertThat(ai.getReturnValue().getFunds().get("USD"))
         .isEqualToComparingFieldByField(
-            new DSXCurrencyAmount(new BigDecimal("10000"), new BigDecimal("9995")));
+            new DSXCurrencyAmount(new Double("10000"), new Double("9995")));
   }
 }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbase.dto.marketdata;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import org.knowm.xchange.coinbase.dto.serialization.CoinbaseMoneyDeserializer;
 
 /** @author jamespedwards42 */
@@ -9,9 +8,9 @@ import org.knowm.xchange.coinbase.dto.serialization.CoinbaseMoneyDeserializer;
 public class CoinbaseMoney {
 
   private final String currency;
-  private final BigDecimal amount;
+  private final Double amount;
 
-  public CoinbaseMoney(String currency, final BigDecimal amount) {
+  public CoinbaseMoney(String currency, final Double amount) {
 
     this.currency = currency;
     this.amount = amount;
@@ -22,7 +21,7 @@ public class CoinbaseMoney {
     return currency;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

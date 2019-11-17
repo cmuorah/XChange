@@ -1,29 +1,28 @@
 package org.knowm.xchange.coinbasepro.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseProFill {
   private final String tradeId;
   private final String productId;
-  private final BigDecimal price;
-  private final BigDecimal size;
+  private final Double price;
+  private final Double size;
   private final String orderId;
   private final String createdAt;
   private final String liquidity;
-  private final BigDecimal fee;
+  private final Double fee;
   private final boolean settled;
   private final String side;
 
   public CoinbaseProFill(
       @JsonProperty("trade_id") String tradeId,
       @JsonProperty("product_id") String productId,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("price") Double price,
+      @JsonProperty("size") Double size,
       @JsonProperty("order_id") String orderId,
       @JsonProperty("created_at") String createdAt,
       @JsonProperty("liquidity") String liquidity,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("settled") boolean settled,
       @JsonProperty("side") String side) {
     this.tradeId = tradeId;
@@ -46,11 +45,11 @@ public class CoinbaseProFill {
     return productId;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
@@ -66,7 +65,7 @@ public class CoinbaseProFill {
     return liquidity;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

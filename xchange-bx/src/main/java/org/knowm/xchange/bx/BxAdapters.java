@@ -1,6 +1,5 @@
 package org.knowm.xchange.bx;
 
-import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -122,8 +121,8 @@ public class BxAdapters {
               currencies.get(record).getTotal(),
               currencies.get(record).getAvailable(),
               currencies.get(record).getOrders(),
-              BigDecimal.ZERO,
-              BigDecimal.ZERO,
+              0d,
+              0d,
               currencies.get(record).getWithdrawals(),
               currencies.get(record).getDeposits());
       balances.add(balance);
@@ -163,25 +162,19 @@ public class BxAdapters {
       }
     }
     if ((indexOfFirstTrade > -1) && (indexOfSecondTrade > -1)) {
-      if (!histories.get(indexOfSecondTrade).getAmount().equals(BigDecimal.ZERO)) {
+      if (!histories.get(indexOfSecondTrade).getAmount().equals(0d)) {
         BxTradeHistory history = histories.get(indexOfSecondTrade);
         trade =
             new UserTrade(
-                (history.getAmount().compareTo(BigDecimal.ZERO) > 0)
-                    ? OrderType.BID
-                    : OrderType.ASK,
-                history.getAmount().abs(),
+                (history.getAmount().compareTo(0d) > 0) ? OrderType.BID : OrderType.ASK,
+                Math.abs(history.getAmount()),
                 new CurrencyPair(
                     history.getCurrency(), histories.get(indexOfFirstTrade).getCurrency()),
-                histories
-                    .get(indexOfFirstTrade)
-                    .getAmount()
-                    .divide(history.getAmount(), 6, BigDecimal.ROUND_HALF_UP)
-                    .abs(),
+                Math.abs(histories.get(indexOfFirstTrade).getAmount() / history.getAmount()),
                 adaptDate(history.getDate()),
                 String.valueOf(history.getTransactionId()),
                 String.valueOf(history.getRefId()),
-                (indexOfFee < 0) ? null : histories.get(indexOfFee).getAmount().abs(),
+                (indexOfFee < 0) ? null : Math.abs(histories.get(indexOfFee).getAmount()),
                 (indexOfFee < 0)
                     ? null
                     : BxUtils.translateCurrency(histories.get(indexOfFee).getCurrency()));

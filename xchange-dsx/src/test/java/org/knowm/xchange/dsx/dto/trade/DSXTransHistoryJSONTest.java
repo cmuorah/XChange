@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.junit.Test;
 
@@ -26,12 +25,12 @@ public class DSXTransHistoryJSONTest {
     Map.Entry<Long, DSXTransHistoryResult> firstEntry = result.entrySet().iterator().next();
     assertThat(firstEntry.getKey()).isEqualTo(1000L);
     assertThat(firstEntry.getValue().getType()).isEqualTo(DSXTransHistoryResult.Type.Incoming);
-    assertThat(firstEntry.getValue().getAmount()).isEqualTo(new BigDecimal("2.5"));
+    assertThat(firstEntry.getValue().getAmount()).isEqualTo(new Double("2.5"));
     assertThat(firstEntry.getValue().getCurrency()).isEqualTo("USD");
     assertThat(firstEntry.getValue().getDesc()).isEqualTo("Income");
     assertThat(firstEntry.getValue().getStatus()).isEqualTo(DSXTransHistoryResult.Status.Completed);
     assertThat(firstEntry.getValue().getTimestamp()).isEqualTo(142123698L);
-    assertThat(firstEntry.getValue().getCommission()).isEqualTo(new BigDecimal("1.0"));
+    assertThat(firstEntry.getValue().getCommission()).isEqualTo(new Double("1.0"));
     assertThat(firstEntry.getValue().getAddress()).isEqualTo("address string");
     assertThat(firstEntry.getValue().getTxId()).isEqualTo("uid2");
   }

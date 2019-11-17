@@ -1,7 +1,6 @@
 package org.knowm.xchange.vaultoro.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -64,7 +63,7 @@ public class VaultoroMarketDataService extends VaultoroMarketDataServiceRaw
   @Override
   public Ticker getTicker(CurrencyPair arg0, Object... arg1) throws IOException {
 
-    BigDecimal latest = super.getLast(arg0);
+    Double latest = super.getLast(arg0);
     return VaultoroAdapters.adaptVaultoroLatest(latest);
   }
 

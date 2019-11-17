@@ -1,7 +1,6 @@
 package org.knowm.xchange.dragonex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.dragonex.DragonexUtils;
 
@@ -12,7 +11,7 @@ import org.knowm.xchange.dragonex.DragonexUtils;
  */
 public class Deal {
   /** commission of current trade */
-  public final BigDecimal charge;
+  public final Double charge;
   /** deal type: 1-buy, 2-sell */
   public final int dealType;
 
@@ -20,24 +19,24 @@ public class Deal {
   /** order type: 1-buy, 2-sell */
   public final int orderType;
 
-  public final BigDecimal price;
+  public final Double price;
   public final int symbolId;
   /** timestamp is provided in nano seconds */
   public final String timestamp;
 
   public final String tradeId;
-  public final BigDecimal volume;
+  public final Double volume;
 
   public Deal(
-      @JsonProperty("charge") BigDecimal charge,
+      @JsonProperty("charge") Double charge,
       @JsonProperty("deal_type") int dealType,
       @JsonProperty("order_id") String orderId,
       @JsonProperty("order_type") int orderType,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("symbol_id") int symbolId,
       @JsonProperty("timestamp") String timestamp,
       @JsonProperty("trade_id") String tradeId,
-      @JsonProperty("volume") BigDecimal volume) {
+      @JsonProperty("volume") Double volume) {
     this.charge = charge;
     this.dealType = dealType;
     this.orderId = orderId;

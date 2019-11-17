@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.coinbase.dto.account.CoinbaseAccountChange.CoinbaseCache;
@@ -38,7 +37,7 @@ public class CoinbaseAccountJsonTest {
     assertThat(currentUser.getName()).isEqualTo("first last");
 
     assertThat(accountChanges.getBalance())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal("7.10000000")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double("7.10000000")));
 
     assertThat(accountChanges.getTotalCount()).isEqualTo(2);
     assertThat(accountChanges.getNumPages()).isEqualTo(1);
@@ -54,7 +53,7 @@ public class CoinbaseAccountJsonTest {
     assertThat(accountChange.getTransactionId()).isEqualTo("52f4411aabf9534a02000081");
     assertThat(accountChange.isConfirmed()).isTrue();
     assertThat(accountChange.getAmount())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal("1.20000000")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double("1.20000000")));
 
     CoinbaseCache cache = accountChange.getCache();
     assertThat(cache.isNotesPresent()).isTrue();
@@ -90,11 +89,11 @@ public class CoinbaseAccountJsonTest {
     assertThat(user.getBuyLevel()).isEqualTo(CoinbaseBuySellLevel.TWO);
     assertThat(user.getSellLevel()).isEqualTo(CoinbaseBuySellLevel.TWO);
     assertThat(user.getBalance())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal("7.10770000")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double("7.10770000")));
     assertThat(user.getBuyLimit())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal("79.20000000")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double("79.20000000")));
     assertThat(user.getSellLimit())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal("79.20000000")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double("79.20000000")));
 
     CoinbaseMerchant merchant = user.getMerchant();
     assertThat(merchant.getCompanyName()).isEqualTo("XChange Demo");
@@ -114,7 +113,7 @@ public class CoinbaseAccountJsonTest {
     CoinbaseMoney balance = mapper.readValue(is, CoinbaseMoney.class);
 
     assertThat(balance)
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal("7.10000000")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double("7.10000000")));
   }
 
   @Test
@@ -195,7 +194,7 @@ public class CoinbaseAccountJsonTest {
         .isEqualTo(DateUtils.fromISO8601DateString("2014-01-16T23:14:48-08:00"));
     assertThat(transaction.getTransactionHash()).isNull();
     assertThat(transaction.getAmount())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal("1.00000000")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double("1.00000000")));
     assertThat(transaction.isRequest()).isFalse();
     assertThat(transaction.getStatus()).isEqualTo(CoinbaseTransactionStatus.COMPLETE);
 
@@ -248,6 +247,6 @@ public class CoinbaseAccountJsonTest {
     assertThat(recurringPayment.getNotes()).isEqualTo("For Demo");
     assertThat(recurringPayment.getDescription()).isEqualTo("Buy 0.01 BTC");
     assertThat(recurringPayment.getAmount())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal("0.01000000")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double("0.01000000")));
   }
 }

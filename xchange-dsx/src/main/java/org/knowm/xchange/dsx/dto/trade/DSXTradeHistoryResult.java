@@ -1,7 +1,6 @@
 package org.knowm.xchange.dsx.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 
 /** @author Mikhail Wall */
@@ -9,21 +8,21 @@ public class DSXTradeHistoryResult {
 
   private final String pair;
   private final Type type;
-  private final BigDecimal amount;
-  private final BigDecimal rate;
+  private final Double amount;
+  private final Double rate;
   private final Long orderId;
   private final Long timestamp;
-  private BigDecimal commission;
+  private Double commission;
   private String commissionCurrency;
 
   public DSXTradeHistoryResult(
       @JsonProperty("pair") String pair,
       @JsonProperty("type") Type type,
-      @JsonProperty("volume") BigDecimal amount,
-      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("volume") Double amount,
+      @JsonProperty("rate") Double rate,
       @JsonProperty("orderId") Long orderId,
       @JsonProperty("timestamp") Long timestamp,
-      @JsonProperty("commission") BigDecimal commission,
+      @JsonProperty("commission") Double commission,
       @JsonProperty("commissionCurrency") String commissionCurrency) {
 
     this.pair = pair;
@@ -44,11 +43,11 @@ public class DSXTradeHistoryResult {
     return type;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 
@@ -60,7 +59,7 @@ public class DSXTradeHistoryResult {
     return timestamp;
   }
 
-  public BigDecimal getCommission() {
+  public Double getCommission() {
     return commission;
   }
 

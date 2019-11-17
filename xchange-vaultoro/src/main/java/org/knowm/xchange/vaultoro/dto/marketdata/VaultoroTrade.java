@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -20,10 +19,10 @@ public class VaultoroTrade {
   private String Time;
 
   @JsonProperty("Gold_Price")
-  private BigDecimal GoldPrice;
+  private Double GoldPrice;
 
   @JsonProperty("Gold_Amount")
-  private BigDecimal GoldAmount;
+  private Double GoldAmount;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -43,28 +42,28 @@ public class VaultoroTrade {
 
   /** @return The GoldPrice */
   @JsonProperty("Gold_Price")
-  public BigDecimal getGoldPrice() {
+  public Double getGoldPrice() {
 
     return GoldPrice;
   }
 
   /** @param GoldPrice The Gold_Price */
   @JsonProperty("Gold_Price")
-  public void setGoldPrice(BigDecimal GoldPrice) {
+  public void setGoldPrice(Double GoldPrice) {
 
     this.GoldPrice = GoldPrice;
   }
 
   /** @return The GoldAmount */
   @JsonProperty("Gold_Amount")
-  public BigDecimal getGoldAmount() {
+  public Double getGoldAmount() {
 
     return GoldAmount;
   }
 
   /** @param GoldAmount The Gold_Amount */
   @JsonProperty("Gold_Amount")
-  public void setGoldAmount(BigDecimal GoldAmount) {
+  public void setGoldAmount(Double GoldAmount) {
 
     this.GoldAmount = GoldAmount;
   }

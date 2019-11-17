@@ -1,7 +1,6 @@
 package org.knowm.xchange.hitbtc.v2;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.Consumes;
@@ -54,7 +53,7 @@ public interface HitbtcAuthenticated extends Hitbtc {
   @POST
   @Path("account/transfer")
   HitbtcInternalTransferResponse transferToTrading(
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("currency") String currency,
       @FormParam("type") String type)
       throws IOException, HitbtcException;
@@ -62,7 +61,7 @@ public interface HitbtcAuthenticated extends Hitbtc {
   @POST
   @Path("account/crypto/withdraw")
   Map payout(
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("currency") String currency,
       @FormParam("address") String address,
       @FormParam("paymentId") String paymentId,
@@ -83,8 +82,8 @@ public interface HitbtcAuthenticated extends Hitbtc {
       @FormParam("clientOrderId") String clientOrderId,
       @FormParam("symbol") String symbol,
       @FormParam("side") String side,
-      @FormParam("price") BigDecimal price,
-      @FormParam("quantity") BigDecimal quantity,
+      @FormParam("price") Double price,
+      @FormParam("quantity") Double quantity,
       @FormParam("type") HitbtcOrderType type,
       @FormParam("timeInForce") HitbtcTimeInForce timeInForce)
       throws IOException, HitbtcException;
@@ -94,9 +93,9 @@ public interface HitbtcAuthenticated extends Hitbtc {
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   HitbtcOrder updateHitbtcOrder(
       @PathParam("clientOrderId") String clientOrderId,
-      @FormParam("quantity") BigDecimal quantity,
+      @FormParam("quantity") Double quantity,
       @FormParam("requestClientId") String requestClientId,
-      @FormParam("price") BigDecimal price)
+      @FormParam("price") Double price)
       throws IOException, HitbtcException;
 
   @DELETE

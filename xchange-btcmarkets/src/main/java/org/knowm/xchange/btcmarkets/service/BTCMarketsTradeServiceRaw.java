@@ -1,7 +1,6 @@
 package org.knowm.xchange.btcmarkets.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 import org.knowm.xchange.Exchange;
@@ -31,8 +30,8 @@ public class BTCMarketsTradeServiceRaw extends BTCMarketsBaseService {
 
   public BTCMarketsPlaceOrderResponse placeBTCMarketsOrder(
       CurrencyPair currencyPair,
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       BTCMarketsOrder.Side side,
       BTCMarketsOrder.Type type)
       throws IOException {

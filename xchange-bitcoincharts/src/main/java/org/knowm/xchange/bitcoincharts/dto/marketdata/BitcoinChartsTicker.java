@@ -1,22 +1,21 @@
 package org.knowm.xchange.bitcoincharts.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Matija Mazi */
 public final class BitcoinChartsTicker {
 
-  private final BigDecimal ask;
-  private final BigDecimal avg;
-  private final BigDecimal bid;
-  private final BigDecimal close;
+  private final Double ask;
+  private final Double avg;
+  private final Double bid;
+  private final Double close;
   private final String currency;
-  private final BigDecimal currencyVolume;
-  private final BigDecimal high;
+  private final Double currencyVolume;
+  private final Double high;
   private final long latestTrade;
-  private final BigDecimal low;
+  private final Double low;
   private final String symbol;
-  private final BigDecimal volume;
+  private final Double volume;
 
   /**
    * Constructor
@@ -34,17 +33,17 @@ public final class BitcoinChartsTicker {
    * @param volume
    */
   public BitcoinChartsTicker(
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("avg") BigDecimal avg,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("close") BigDecimal close,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("avg") Double avg,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("close") Double close,
       @JsonProperty("currency") String currency,
-      @JsonProperty("currency_volume") BigDecimal currencyVolume,
-      @JsonProperty("high") BigDecimal high,
+      @JsonProperty("currency_volume") Double currencyVolume,
+      @JsonProperty("high") Double high,
       @JsonProperty("latest_trade") long latestTrade,
-      @JsonProperty("low") BigDecimal low,
+      @JsonProperty("low") Double low,
       @JsonProperty("symbol") String symbol,
-      @JsonProperty("volume") BigDecimal volume) {
+      @JsonProperty("volume") Double volume) {
 
     this.ask = ask;
     this.avg = avg;
@@ -59,22 +58,22 @@ public final class BitcoinChartsTicker {
     this.volume = volume;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return ask;
   }
 
-  public BigDecimal getAvg() {
+  public Double getAvg() {
 
     return avg;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return bid;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
 
     return close;
   }
@@ -84,12 +83,12 @@ public final class BitcoinChartsTicker {
     return currency;
   }
 
-  public BigDecimal getCurrencyVolume() {
+  public Double getCurrencyVolume() {
 
     return currencyVolume;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
@@ -99,7 +98,7 @@ public final class BitcoinChartsTicker {
     return latestTrade;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
@@ -109,7 +108,7 @@ public final class BitcoinChartsTicker {
     return symbol;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }

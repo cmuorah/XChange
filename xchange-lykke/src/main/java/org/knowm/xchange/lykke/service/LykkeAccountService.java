@@ -1,7 +1,6 @@
 package org.knowm.xchange.lykke.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
@@ -25,8 +24,7 @@ public class LykkeAccountService extends LykkeAccountServiceRaw implements Accou
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 

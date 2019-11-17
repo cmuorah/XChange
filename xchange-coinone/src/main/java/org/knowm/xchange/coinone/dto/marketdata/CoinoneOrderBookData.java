@@ -1,13 +1,12 @@
 package org.knowm.xchange.coinone.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author interwater */
 public class CoinoneOrderBookData {
 
-  private final BigDecimal price;
-  private final BigDecimal qty;
+  private final Double price;
+  private final Double qty;
 
   /**
    * @param price
@@ -15,15 +14,15 @@ public class CoinoneOrderBookData {
    */
   public CoinoneOrderBookData(
       @JsonProperty("price") String price, @JsonProperty("qty") String qty) {
-    this.price = new BigDecimal(price);
-    this.qty = new BigDecimal(qty);
+    this.price = new Double(price);
+    this.qty = new Double(qty);
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getQty() {
+  public Double getQty() {
     return qty;
   }
 

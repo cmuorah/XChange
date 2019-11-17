@@ -1,7 +1,6 @@
 package org.knowm.xchange.yobit.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.*;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.dto.account.AccountInfo;
@@ -45,22 +44,24 @@ public abstract class YoBitAccountServiceRaw extends YoBitBaseService<YoBit>
     for (Object key : funds.keySet()) {
       Currency currency = YoBitAdapters.adaptCurrency(key.toString());
 
-      BigDecimal amountAvailable = new BigDecimal(funds.get(key).toString());
-      BigDecimal amountIncludingOrders = new BigDecimal(fundsIncludingOrders.get(key).toString());
+      Double amountAvailable = new Double(funds.get(key).toString());
+      Double amountIncludingOrders = new Double(fundsIncludingOrders.get(key).toString());
 
       Balance balance =
           new Balance(
               currency,
               amountIncludingOrders,
               amountAvailable,
-              amountIncludingOrders.subtract(amountAvailable),
-              BigDecimal.ZERO,
-              BigDecimal.ZERO,
-              BigDecimal.ZERO,
-              BigDecimal.ZERO);
+              amountIncludingOrders - (amountAvailable),
+              0d,
+              0d,
+              0d,
+              0d);
 
       wallets.add(
-          Wallet.Builder.from(Arrays.asList(balance)).id(currency.getCurrencyCode()).build());
+          Wallet.Builder.from(Collections.singletonList(balance))
+              .id(currency.getCurrencyCode())
+              .build());
     }
 
     return new AccountInfo(wallets);

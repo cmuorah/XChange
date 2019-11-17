@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 import org.junit.Test;
@@ -37,8 +36,8 @@ public class CryptoFacilitiesHistoryJSONTest {
     CryptoFacilitiesPublicFill fill = it.next();
 
     assertThat(fill.getFillId()).isEqualTo("865");
-    assertThat(fill.getPrice()).isEqualTo(new BigDecimal("4322"));
-    assertThat(fill.getSize()).isEqualTo(new BigDecimal("5000"));
+    assertThat(fill.getPrice()).isEqualTo(new Double("4322"));
+    assertThat(fill.getSize()).isEqualTo(new Double("5000"));
     assertThat(fill.getSide()).isEqualTo("buy");
     assertThat(fill.getFillType()).isEqualTo("fill");
   }

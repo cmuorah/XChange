@@ -1,7 +1,6 @@
 package org.knowm.xchange.bl3p.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
@@ -49,7 +48,7 @@ public class Bl3pAccountServiceIntegration {
   public void withdrawFunds() throws IOException {
     Bl3pWithdrawFundsParams.Coins withdrawCoins =
         new Bl3pWithdrawFundsParams.Coins(
-            "BTC", "1P6Wyq83s7CJSd9s82xJ8HszUa4qUV7EgM", new BigDecimal("0.001"));
+            "BTC", "1P6Wyq83s7CJSd9s82xJ8HszUa4qUV7EgM", new Double("0.001"));
 
     String id = accountService.withdrawFunds(withdrawCoins);
     System.out.println(id);

@@ -3,7 +3,6 @@ package org.knowm.xchange.cryptofacilities.dto.trade;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 // {"order":"send","order_tag":"1","orderType":"lmt","symbol":"FI_XBTUSD_180511","side":"buy","size":1,"limitPrice":1.0,"cliOrdId":"my_another_client_id"
 /** https://www.cryptofacilities.com/resources/hc/en-us/articles/360000547454-Batch-Order */
@@ -24,15 +23,15 @@ public class OrderPlacement implements OrderCommand {
   /** The direction of the order, either buy for a buy order or sell for a sell order */
   public final OrderSide side;
   /** The size associated with the order */
-  public final BigDecimal size;
+  public final Double size;
   /** The limit price associated with the order. Must not have more than 2 decimal places */
-  public final BigDecimal limitPrice;
+  public final Double limitPrice;
   /**
    * Optional. The stop price associated with a stop order. Required if orderType is stp. Must not
    * have more than 2 decimal places. Note that for stp orders, limitPrice is also required and
    * denotes the worst price at which the stp order can get filled
    */
-  public final BigDecimal stopPrice;
+  public final Double stopPrice;
   /** Optional. The order identity that is specified from the user. It must be globally unique. */
   public final String cliOrdId;
 
@@ -41,9 +40,9 @@ public class OrderPlacement implements OrderCommand {
       OrderType orderType,
       String symbol,
       OrderSide side,
-      BigDecimal size,
-      BigDecimal limitPrice,
-      BigDecimal stopPrice,
+      Double size,
+      Double limitPrice,
+      Double stopPrice,
       String cliOrdId) {
     this.orderTag = orderTag;
     this.orderType = orderType;

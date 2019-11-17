@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Map;
 import org.junit.Test;
@@ -39,7 +38,7 @@ public class WexTradeDataJSONTest {
     Map<Long, WexOrderInfoResult> rv = result.getReturnValue();
     assertThat(rv.keySet()).containsAll(Arrays.asList(343152L));
     assertThat(rv.get(343152L).getTimestampCreated()).isEqualTo(1342448420L);
-    assertThat(rv.get(343152L).getStartAmount()).isEqualTo(new BigDecimal("2.00000000"));
+    assertThat(rv.get(343152L).getStartAmount()).isEqualTo(new Double("2.00000000"));
   }
 
   @Test
@@ -56,7 +55,7 @@ public class WexTradeDataJSONTest {
     WexTradeHistoryResult trade = rv.get(7258275L);
     assertThat(trade.getPair()).isEqualTo("btc_usd");
     assertThat(trade.getType()).isEqualTo(Type.sell);
-    assertThat(trade.getAmount()).isEqualTo(new BigDecimal("0.1"));
+    assertThat(trade.getAmount()).isEqualTo(new Double("0.1"));
     assertThat(trade.getOrderId()).isEqualTo(34870919L);
     assertThat(trade.isYourOrder()).isEqualTo(false);
     assertThat(trade.getTimestamp()).isEqualTo(1378194574L);
@@ -71,9 +70,9 @@ public class WexTradeDataJSONTest {
             WexCancelOrderReturn.class);
     // Verify that the example data was unmarshalled correctly
     WexCancelOrderResult rv = result.getReturnValue();
-    Map<String, BigDecimal> funds = rv.getFunds();
+    Map<String, Double> funds = rv.getFunds();
     assertThat(funds.keySet().containsAll(Arrays.asList("btc", "nmc", "usd"))).isTrue();
-    assertThat(funds.get("usd")).isEqualTo(new BigDecimal(325));
+    assertThat(funds.get("usd")).isEqualTo(new Double(325));
     assertThat(rv.getOrderId()).isEqualTo(343154L);
   }
 
@@ -86,9 +85,9 @@ public class WexTradeDataJSONTest {
             WexPlaceOrderReturn.class);
     // Verify that the example data was unmarshalled correctly
     WexPlaceOrderResult rv = result.getReturnValue();
-    Map<String, BigDecimal> funds = rv.getFunds();
+    Map<String, Double> funds = rv.getFunds();
     assertThat(funds.keySet().containsAll(Arrays.asList("btc", "nmc", "usd"))).isTrue();
-    assertThat(funds.get("btc")).isEqualTo(new BigDecimal("2.498"));
+    assertThat(funds.get("btc")).isEqualTo(new Double("2.498"));
     assertThat(rv.getOrderId()).isEqualTo(0L);
   }
 

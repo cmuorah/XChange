@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import org.junit.Test;
@@ -30,13 +29,13 @@ public class WexTickerJSONTest {
 
     // Verify that the example data was unmarshalled correctly
     assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getLast())
-        .isEqualTo(new BigDecimal("757"));
+        .isEqualTo(new Double("757"));
     assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getHigh())
-        .isEqualTo(new BigDecimal("770"));
+        .isEqualTo(new Double("770"));
     assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getLow())
-        .isEqualTo(new BigDecimal("655"));
+        .isEqualTo(new Double("655"));
     assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getVol())
-        .isEqualTo(new BigDecimal("17512163.25736"));
+        .isEqualTo(new Double("17512163.25736"));
 
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     f.setTimeZone(TimeZone.getTimeZone("UTC"));

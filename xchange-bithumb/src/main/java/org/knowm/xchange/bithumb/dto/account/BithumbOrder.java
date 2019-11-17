@@ -2,7 +2,6 @@ package org.knowm.xchange.bithumb.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.knowm.xchange.bithumb.BithumbAdapters;
@@ -15,11 +14,11 @@ public class BithumbOrder {
   private final String paymentCurrency;
   private final BithumbAdapters.OrderType type;
   private final String status;
-  private final BigDecimal units;
-  private final BigDecimal unitsRemaining;
-  private final BigDecimal price;
-  private final BigDecimal fee;
-  private final BigDecimal total;
+  private final Double units;
+  private final Double unitsRemaining;
+  private final Double price;
+  private final Double fee;
+  private final Double total;
   private final long dateCompleted;
   private final Map<String, Object> additionalProperties = new HashMap<>();
 
@@ -30,11 +29,11 @@ public class BithumbOrder {
       @JsonProperty("payment_currency") String paymentCurrency,
       @JsonProperty("type") BithumbAdapters.OrderType type,
       @JsonProperty("status") String status,
-      @JsonProperty("units") BigDecimal units,
-      @JsonProperty("units_remaining") BigDecimal unitsRemaining,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("total") BigDecimal total,
+      @JsonProperty("units") Double units,
+      @JsonProperty("units_remaining") Double unitsRemaining,
+      @JsonProperty("price") Double price,
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("total") Double total,
       @JsonProperty("date_completed") long dateCompleted) {
     this.orderId = orderId;
     this.orderCurrency = orderCurrency;
@@ -74,23 +73,23 @@ public class BithumbOrder {
     return status;
   }
 
-  public BigDecimal getUnits() {
+  public Double getUnits() {
     return units;
   }
 
-  public BigDecimal getUnitsRemaining() {
+  public Double getUnitsRemaining() {
     return unitsRemaining;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 

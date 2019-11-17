@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.btctrade.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.ExchangeSpecification;
@@ -14,8 +13,8 @@ import org.knowm.xchange.service.trade.TradeService;
 
 public class TradeDemo {
 
-  private static final BigDecimal MIN_AMOUNT_PER_ORDER = new BigDecimal("0.001");
-  private static final BigDecimal MIN_PRICE_IN_CNY = new BigDecimal("0.1");
+  private static final Double MIN_AMOUNT_PER_ORDER = new Double("0.001");
+  private static final Double MIN_PRICE_IN_CNY = new Double("0.1");
 
   public static void main(String[] args) throws IOException {
 
@@ -41,7 +40,7 @@ public class TradeDemo {
         tradeService.placeLimitOrder(
             new LimitOrder(
                 OrderType.BID,
-                MIN_AMOUNT_PER_ORDER.multiply(new BigDecimal("1000")),
+                MIN_AMOUNT_PER_ORDER * (new Double("1000")),
                 CurrencyPair.BTC_CNY,
                 null,
                 null,
@@ -59,7 +58,7 @@ public class TradeDemo {
                 CurrencyPair.BTC_CNY,
                 null,
                 null,
-                new BigDecimal(Integer.MAX_VALUE)));
+                new Double(Integer.MAX_VALUE)));
 
     // Cancel.
     tradeService.cancelOrder(orderId);
@@ -71,15 +70,13 @@ public class TradeDemo {
 
     // Buy.
     String orderId =
-        tradeService
-            .buy(MIN_AMOUNT_PER_ORDER.multiply(new BigDecimal("1000")), MIN_PRICE_IN_CNY)
-            .getId();
+        tradeService.buy(MIN_AMOUNT_PER_ORDER * (new Double("1000")), MIN_PRICE_IN_CNY).getId();
 
     // Cancel.
     tradeService.cancelBTCTradeOrder(orderId);
 
     // Sell.
-    orderId = tradeService.sell(MIN_AMOUNT_PER_ORDER, new BigDecimal(Integer.MAX_VALUE)).getId();
+    orderId = tradeService.sell(MIN_AMOUNT_PER_ORDER, new Double(Integer.MAX_VALUE)).getId();
 
     // Cancel.
     tradeService.cancelBTCTradeOrder(orderId);

@@ -1,7 +1,6 @@
 package org.knowm.xchange.btcturk.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -94,9 +93,7 @@ public class BTCTurkTradeService extends BTCTurkTradeServiceRaw implements Trade
       if (transaction.getOperation().equals(BTCTurkOperations.trade))
         trades.add(
             new UserTrade(
-                ((transaction.getAmount().compareTo(BigDecimal.ZERO) > 0)
-                    ? OrderType.ASK
-                    : OrderType.BID),
+                ((transaction.getAmount().compareTo(0d) > 0) ? OrderType.ASK : OrderType.BID),
                 transaction.getAmount(),
                 null,
                 transaction.getPrice(),

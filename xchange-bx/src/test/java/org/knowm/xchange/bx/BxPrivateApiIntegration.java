@@ -3,7 +3,6 @@ package org.knowm.xchange.bx;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Collection;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
@@ -30,11 +29,11 @@ public class BxPrivateApiIntegration {
     LimitOrder limitOrder =
         new LimitOrder(
             Order.OrderType.BID,
-            new BigDecimal(10),
+            new Double(10),
             new CurrencyPair("THB", "BTC"),
             null,
             null,
-            new BigDecimal(20000));
+            new Double(20000));
     String orderId = exchange.getTradeService().placeLimitOrder(limitOrder);
     System.out.println(String.format("Order created with ID %s", orderId));
     assertThat(orderId).isNotBlank();

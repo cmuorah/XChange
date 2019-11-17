@@ -1,15 +1,14 @@
 package org.knowm.xchange.quoine.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class QuoineTransaction {
   public final String id;
   public final Long createdAt;
-  public final BigDecimal gross_amount;
-  public final BigDecimal net_amount;
-  public final BigDecimal exchange_fee;
-  public final BigDecimal network_fee;
+  public final Double gross_amount;
+  public final Double net_amount;
+  public final Double exchange_fee;
+  public final Double network_fee;
   public final String transaction_type;
   public final String from_account_id;
   public final String to_account_id;
@@ -24,10 +23,10 @@ public class QuoineTransaction {
   public QuoineTransaction(
       @JsonProperty("id") String id,
       @JsonProperty("created_at") Long createdAt,
-      @JsonProperty("gross_amount") BigDecimal gross_amount,
-      @JsonProperty("net_amount") BigDecimal net_amount,
-      @JsonProperty("exchange_fee") BigDecimal exchange_fee,
-      @JsonProperty("network_fee") BigDecimal network_fee,
+      @JsonProperty("gross_amount") Double gross_amount,
+      @JsonProperty("net_amount") Double net_amount,
+      @JsonProperty("exchange_fee") Double exchange_fee,
+      @JsonProperty("network_fee") Double network_fee,
       @JsonProperty("transaction_type") String transaction_type,
       @JsonProperty("from_account_id") String from_account_id,
       @JsonProperty("to_account_id") String to_account_id,

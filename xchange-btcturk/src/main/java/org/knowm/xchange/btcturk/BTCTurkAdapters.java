@@ -1,6 +1,5 @@
 package org.knowm.xchange.btcturk;
 
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,15 +42,15 @@ public final class BTCTurkAdapters {
    */
   public static Ticker adaptTicker(BTCTurkTicker btcTurkTicker) {
     CurrencyPair pair = btcTurkTicker.getPair();
-    BigDecimal high = btcTurkTicker.getHigh();
-    BigDecimal last = btcTurkTicker.getLast();
+    Double high = btcTurkTicker.getHigh();
+    Double last = btcTurkTicker.getLast();
     Date timestamp = new Date(btcTurkTicker.getTimestamp());
-    BigDecimal bid = btcTurkTicker.getBid();
-    BigDecimal volume = btcTurkTicker.getVolume();
-    BigDecimal low = btcTurkTicker.getLow();
-    BigDecimal ask = btcTurkTicker.getAsk();
-    BigDecimal open = btcTurkTicker.getOpen();
-    BigDecimal average = btcTurkTicker.getAverage();
+    Double bid = btcTurkTicker.getBid();
+    Double volume = btcTurkTicker.getVolume();
+    Double low = btcTurkTicker.getLow();
+    Double ask = btcTurkTicker.getAsk();
+    Double open = btcTurkTicker.getOpen();
+    Double average = btcTurkTicker.getAverage();
 
     return new Ticker.Builder()
         .currencyPair(pair != null ? pair : null)
@@ -83,7 +82,7 @@ public final class BTCTurkAdapters {
    */
   public static Trades adaptTrades(List<BTCTurkTrades> btcTurkTrades, CurrencyPair currencyPair) {
     List<Trade> trades = new ArrayList<>();
-    BigDecimal lastTradeId = new BigDecimal("0");
+    Double lastTradeId = new Double("0");
     for (BTCTurkTrades btcTurkTrade : btcTurkTrades) {
       if (btcTurkTrade.getTid().compareTo(lastTradeId) > 0) {
         lastTradeId = btcTurkTrade.getTid();
@@ -128,9 +127,9 @@ public final class BTCTurkAdapters {
   }
 
   public static List<LimitOrder> createOrders(
-      CurrencyPair currencyPair, Order.OrderType orderType, List<List<BigDecimal>> orders) {
+      CurrencyPair currencyPair, Order.OrderType orderType, List<List<Double>> orders) {
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (List<BigDecimal> ask : orders) {
+    for (List<Double> ask : orders) {
       checkArgument(
           ask.size() == 2, "Expected a pair (price, amount) but got {0} elements.", ask.size());
       limitOrders.add(createOrder(currencyPair, ask, orderType));
@@ -139,7 +138,7 @@ public final class BTCTurkAdapters {
   }
 
   public static LimitOrder createOrder(
-      CurrencyPair currencyPair, List<BigDecimal> priceAndAmount, Order.OrderType orderType) {
+      CurrencyPair currencyPair, List<Double> priceAndAmount, Order.OrderType orderType) {
 
     return new LimitOrder(
         orderType, priceAndAmount.get(1), currencyPair, "", null, priceAndAmount.get(0));
@@ -244,7 +243,7 @@ public final class BTCTurkAdapters {
         order.getPrice(),
         order.getPrice(),
         order.getAmount(),
-        BigDecimal.ZERO,
+        0d,
         OrderStatus.FILLED);
   }
 }

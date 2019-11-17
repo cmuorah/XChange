@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinfloor.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
@@ -34,7 +33,7 @@ public class CoinfloorPlaceMarketOrderIntegration {
 
     CoinfloorTradeServiceRaw rawService = (CoinfloorTradeServiceRaw) exchange.getTradeService();
     CoinfloorMarketOrderResponse order =
-        rawService.placeMarketOrder(CurrencyPair.BTC_EUR, OrderType.ASK, new BigDecimal("0.0001"));
+        rawService.placeMarketOrder(CurrencyPair.BTC_EUR, OrderType.ASK, new Double("0.0001"));
     logger.info("placed market order with remainingQty={}", order.getRemaining());
   }
 }

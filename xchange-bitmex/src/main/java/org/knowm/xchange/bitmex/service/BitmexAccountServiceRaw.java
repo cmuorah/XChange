@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitmex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.bitmex.BitmexExchange;
 import org.knowm.xchange.bitmex.dto.account.BitmexAccount;
@@ -80,7 +79,7 @@ public class BitmexAccountServiceRaw extends BitmexBaseService {
     }
   }
 
-  public String withdrawFunds(String currency, BigDecimal amount, String address)
+  public String withdrawFunds(String currency, Double amount, String address)
       throws ExchangeException {
     BitmexWalletTransaction transaction =
         updateRateLimit(

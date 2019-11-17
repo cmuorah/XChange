@@ -1,19 +1,18 @@
 package org.knowm.xchange.kraken.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class KrakenTradeBalanceInfo {
 
-  private final BigDecimal tradeBalance; // trade balance (combined balance of all currencies)
-  private final BigDecimal margin; // initial margin amount of open positions
-  private final BigDecimal unrealizedGainsLosses; // unrealized net profit/loss of open positions
-  private final BigDecimal costBasis; // cost basis of open positions
-  private final BigDecimal floatingValuation; // current floating valuation of open positions
-  private final BigDecimal equity; // trade balance + unrealized net profit/loss
-  private final BigDecimal
+  private final Double tradeBalance; // trade balance (combined balance of all currencies)
+  private final Double margin; // initial margin amount of open positions
+  private final Double unrealizedGainsLosses; // unrealized net profit/loss of open positions
+  private final Double costBasis; // cost basis of open positions
+  private final Double floatingValuation; // current floating valuation of open positions
+  private final Double equity; // trade balance + unrealized net profit/loss
+  private final Double
       freeMargin; // equity - initial margin (maximum margin available to open new positions)
-  private final BigDecimal marginLevel; // (equity / initial margin) * 100
+  private final Double marginLevel; // (equity / initial margin) * 100
 
   /**
    * Constructor
@@ -28,14 +27,14 @@ public class KrakenTradeBalanceInfo {
    * @param marginLevel
    */
   public KrakenTradeBalanceInfo(
-      @JsonProperty("tb") BigDecimal tradeBalance,
-      @JsonProperty("m") BigDecimal margin,
-      @JsonProperty("n") BigDecimal unrealizedGainsLosses,
-      @JsonProperty("c") BigDecimal costBasis,
-      @JsonProperty("v") BigDecimal floatingValuation,
-      @JsonProperty("e") BigDecimal equity,
-      @JsonProperty("mf") BigDecimal freeMargin,
-      @JsonProperty("ml") BigDecimal marginLevel) {
+      @JsonProperty("tb") Double tradeBalance,
+      @JsonProperty("m") Double margin,
+      @JsonProperty("n") Double unrealizedGainsLosses,
+      @JsonProperty("c") Double costBasis,
+      @JsonProperty("v") Double floatingValuation,
+      @JsonProperty("e") Double equity,
+      @JsonProperty("mf") Double freeMargin,
+      @JsonProperty("ml") Double marginLevel) {
 
     this.tradeBalance = tradeBalance;
     this.margin = margin;
@@ -47,42 +46,42 @@ public class KrakenTradeBalanceInfo {
     this.marginLevel = marginLevel;
   }
 
-  public BigDecimal getTradeBalance() {
+  public Double getTradeBalance() {
 
     return tradeBalance;
   }
 
-  public BigDecimal getMargin() {
+  public Double getMargin() {
 
     return margin;
   }
 
-  public BigDecimal getUnrealizedGainsLosses() {
+  public Double getUnrealizedGainsLosses() {
 
     return unrealizedGainsLosses;
   }
 
-  public BigDecimal getCostBasis() {
+  public Double getCostBasis() {
 
     return costBasis;
   }
 
-  public BigDecimal getFloatingValuation() {
+  public Double getFloatingValuation() {
 
     return floatingValuation;
   }
 
-  public BigDecimal getEquity() {
+  public Double getEquity() {
 
     return equity;
   }
 
-  public BigDecimal getFreeMargin() {
+  public Double getFreeMargin() {
 
     return freeMargin;
   }
 
-  public BigDecimal getMarginLevel() {
+  public Double getMarginLevel() {
 
     return marginLevel;
   }

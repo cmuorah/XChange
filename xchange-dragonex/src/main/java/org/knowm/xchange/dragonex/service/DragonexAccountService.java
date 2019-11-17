@@ -1,7 +1,6 @@
 package org.knowm.xchange.dragonex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +35,7 @@ public class DragonexAccountService extends DragonexAccountServiceRaw implements
                     new org.knowm.xchange.dto.account.Balance(
                         Currency.getInstance(b.code.toUpperCase()),
                         b.volume,
-                        b.volume.subtract(b.frozen),
+                        b.volume - (b.frozen),
                         b.frozen))
             .collect(Collectors.toList());
     return new AccountInfo(Wallet.Builder.from(balances).build());
@@ -94,8 +93,7 @@ public class DragonexAccountService extends DragonexAccountServiceRaw implements
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     // here the address must be the internal dragonex withdrawal_address_id
     long addressId;
     try {

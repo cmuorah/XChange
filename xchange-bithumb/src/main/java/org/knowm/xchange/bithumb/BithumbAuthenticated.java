@@ -1,7 +1,6 @@
 package org.knowm.xchange.bithumb;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -123,8 +122,8 @@ public interface BithumbAuthenticated {
       @FormParam(ENDPOINT) ParamsDigest endpointGenerator,
       @FormParam("order_currency") String orderCurrency,
       @FormParam("payment_currency") String paymentCurrency,
-      @FormParam("units") BigDecimal units,
-      @FormParam("price") BigDecimal price,
+      @FormParam("units") Double units,
+      @FormParam("price") Double price,
       @FormParam("type") String type)
       throws BithumbException, IOException;
 
@@ -151,7 +150,7 @@ public interface BithumbAuthenticated {
       @HeaderParam(API_NONCE) SynchronizedValueFactory<Long> nonce,
       @HeaderParam(API_CLIENT_TYPE) String apiClientType,
       @FormParam(ENDPOINT) ParamsDigest endpointGenerator,
-      @FormParam("units") BigDecimal units,
+      @FormParam("units") Double units,
       @FormParam("currency") String currency)
       throws BithumbException, IOException;
 
@@ -164,7 +163,7 @@ public interface BithumbAuthenticated {
       @HeaderParam(API_NONCE) SynchronizedValueFactory<Long> nonce,
       @HeaderParam(API_CLIENT_TYPE) String apiClientType,
       @FormParam(ENDPOINT) ParamsDigest endpointGenerator,
-      @FormParam("units") BigDecimal units,
+      @FormParam("units") Double units,
       @FormParam("currency") String currency)
       throws BithumbException, IOException;
 }

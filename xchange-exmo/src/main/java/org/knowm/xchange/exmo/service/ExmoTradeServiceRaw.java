@@ -2,7 +2,6 @@ package org.knowm.xchange.exmo.service;
 
 import static org.apache.commons.lang3.StringUtils.join;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -25,7 +24,7 @@ public class ExmoTradeServiceRaw extends BaseExmoService {
   }
 
   protected String placeOrder(
-      String type, BigDecimal price, CurrencyPair currencyPair, BigDecimal originalAmount) {
+      String type, Double price, CurrencyPair currencyPair, Double originalAmount) {
     Map map =
         exmo.orderCreate(
             signatureCreator,
@@ -54,9 +53,9 @@ public class ExmoTradeServiceRaw extends BaseExmoService {
 
       for (Map<String, String> order : map.get(market)) {
         Order.OrderType type = ExmoAdapters.adaptOrderType(order);
-        BigDecimal amount = new BigDecimal(order.get("quantity"));
+        Double amount = new Double(order.get("quantity"));
         String id = order.get("order_id");
-        BigDecimal price = new BigDecimal(order.get("price"));
+        Double price = new Double(order.get("price"));
         Date created = DateUtils.fromUnixTime(Long.valueOf(order.get("created")));
 
         openOrders.add(new LimitOrder(type, amount, currencyPair, id, created, price));
@@ -74,7 +73,7 @@ public class ExmoTradeServiceRaw extends BaseExmoService {
     Boolean result = (Boolean) map.get("result");
     if (result != null && !result) return null;
 
-    BigDecimal originalAmount = new BigDecimal(map.get("out_amount").toString());
+    Double originalAmount = new Double(map.get("out_amount").toString());
 
     for (Map<String, Object> tradeDatum : (List<Map<String, Object>>) map.get("trades")) {
       CurrencyPair market = adaptMarket(tradeDatum.get("pair").toString());

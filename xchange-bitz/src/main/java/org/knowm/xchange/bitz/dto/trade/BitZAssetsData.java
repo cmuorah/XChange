@@ -1,23 +1,22 @@
 package org.knowm.xchange.bitz.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitZAssetsData {
-  private final BigDecimal bzLock;
-  private final BigDecimal bzOver;
+  private final Double bzLock;
+  private final Double bzOver;
 
   public BitZAssetsData(
-      @JsonProperty("bz_lock") BigDecimal bzLock, @JsonProperty("bz_over") BigDecimal bzOver) {
+      @JsonProperty("bz_lock") Double bzLock, @JsonProperty("bz_over") Double bzOver) {
     this.bzLock = bzLock;
     this.bzOver = bzOver;
   }
 
-  public BigDecimal getBzLock() {
+  public Double getBzLock() {
     return bzLock;
   }
 
-  public BigDecimal getBzOver() {
+  public Double getBzOver() {
     return bzOver;
   }
 }

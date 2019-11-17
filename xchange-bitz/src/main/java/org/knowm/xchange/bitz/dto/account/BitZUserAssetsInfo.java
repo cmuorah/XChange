@@ -1,25 +1,24 @@
 package org.knowm.xchange.bitz.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitZUserAssetsInfo {
   private final String name;
-  private final BigDecimal num;
-  private final BigDecimal over;
-  private final BigDecimal lock;
-  private final BigDecimal btc;
-  private final BigDecimal usd;
-  private final BigDecimal cny;
+  private final Double num;
+  private final Double over;
+  private final Double lock;
+  private final Double btc;
+  private final Double usd;
+  private final Double cny;
 
   public BitZUserAssetsInfo(
       @JsonProperty("name") String name,
-      @JsonProperty("num") BigDecimal num,
-      @JsonProperty("over") BigDecimal over,
-      @JsonProperty("lock") BigDecimal lock,
-      @JsonProperty("btc") BigDecimal btc,
-      @JsonProperty("usd") BigDecimal usd,
-      @JsonProperty("cny") BigDecimal cny) {
+      @JsonProperty("num") Double num,
+      @JsonProperty("over") Double over,
+      @JsonProperty("lock") Double lock,
+      @JsonProperty("btc") Double btc,
+      @JsonProperty("usd") Double usd,
+      @JsonProperty("cny") Double cny) {
     this.name = name;
     this.num = num;
     this.over = over;
@@ -33,27 +32,27 @@ public class BitZUserAssetsInfo {
     return name;
   }
 
-  public BigDecimal getNum() {
+  public Double getNum() {
     return num;
   }
 
-  public BigDecimal getOver() {
+  public Double getOver() {
     return over;
   }
 
-  public BigDecimal getLock() {
+  public Double getLock() {
     return lock;
   }
 
-  public BigDecimal getBtc() {
+  public Double getBtc() {
     return btc;
   }
 
-  public BigDecimal getUsd() {
+  public Double getUsd() {
     return usd;
   }
 
-  public BigDecimal getCny() {
+  public Double getCny() {
     return cny;
   }
 

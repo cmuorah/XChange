@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.HashMap;
@@ -175,31 +174,31 @@ public class BitmexTicker {
   private String publishTime;
 
   @JsonProperty("maxOrderQty")
-  private BigDecimal maxOrderQty;
+  private Double maxOrderQty;
 
   @JsonProperty("maxPrice")
-  private BigDecimal maxPrice;
+  private Double maxPrice;
 
   @JsonProperty("lotSize")
-  private BigDecimal lotSize;
+  private Double lotSize;
 
   @JsonProperty("tickSize")
-  private BigDecimal tickSize;
+  private Double tickSize;
 
   @JsonProperty("multiplier")
-  private BigDecimal multiplier;
+  private Double multiplier;
 
   @JsonProperty("settlCurrency")
   private String settlCurrency;
 
   @JsonProperty("underlyingToPositionMultiplier")
-  private BigDecimal underlyingToPositionMultiplier;
+  private Double underlyingToPositionMultiplier;
 
   @JsonProperty("underlyingToSettleMultiplier")
-  private BigDecimal underlyingToSettleMultiplier;
+  private Double underlyingToSettleMultiplier;
 
   @JsonProperty("quoteToSettleMultiplier")
-  private BigDecimal quoteToSettleMultiplier;
+  private Double quoteToSettleMultiplier;
 
   @JsonProperty("isQuanto")
   private Boolean isQuanto;
@@ -208,10 +207,10 @@ public class BitmexTicker {
   private Boolean isInverse;
 
   @JsonProperty("initMargin")
-  private BigDecimal initMargin;
+  private Double initMargin;
 
   @JsonProperty("maintMargin")
-  private BigDecimal maintMargin;
+  private Double maintMargin;
 
   @JsonProperty("riskLimit")
   private BigInteger riskLimit;
@@ -220,7 +219,7 @@ public class BitmexTicker {
   private BigInteger riskStep;
 
   @JsonProperty("limit")
-  private BigDecimal limit;
+  private Double limit;
 
   @JsonProperty("capped")
   private Boolean capped;
@@ -232,16 +231,16 @@ public class BitmexTicker {
   private Boolean deleverage;
 
   @JsonProperty("makerFee")
-  private BigDecimal makerFee;
+  private Double makerFee;
 
   @JsonProperty("takerFee")
-  private BigDecimal takerFee;
+  private Double takerFee;
 
   @JsonProperty("settlementFee")
-  private BigDecimal settlementFee;
+  private Double settlementFee;
 
   @JsonProperty("insuranceFee")
-  private BigDecimal insuranceFee;
+  private Double insuranceFee;
 
   @JsonProperty("fundingBaseSymbol")
   private String fundingBaseSymbol;
@@ -259,10 +258,10 @@ public class BitmexTicker {
   private Date fundingInterval;
 
   @JsonProperty("fundingRate")
-  private BigDecimal fundingRate;
+  private Double fundingRate;
 
   @JsonProperty("indicativeFundingRate")
-  private BigDecimal indicativeFundingRate;
+  private Double indicativeFundingRate;
 
   @JsonProperty("rebalanceTimestamp")
   private String rebalanceTimestamp;
@@ -280,31 +279,31 @@ public class BitmexTicker {
   private Date sessionInterval;
 
   @JsonProperty("prevClosePrice")
-  private BigDecimal prevClosePrice;
+  private Double prevClosePrice;
 
   @JsonProperty("limitDownPrice")
-  private BigDecimal limitDownPrice;
+  private Double limitDownPrice;
 
   @JsonProperty("limitUpPrice")
-  private BigDecimal limitUpPrice;
+  private Double limitUpPrice;
 
   @JsonProperty("bankruptLimitDownPrice")
-  private BigDecimal bankruptLimitDownPrice;
+  private Double bankruptLimitDownPrice;
 
   @JsonProperty("bankruptLimitUpPrice")
-  private BigDecimal bankruptLimitUpPrice;
+  private Double bankruptLimitUpPrice;
 
   @JsonProperty("prevTotalVolume")
-  private BigDecimal prevTotalVolume;
+  private Double prevTotalVolume;
 
   @JsonProperty("totalVolume")
-  private BigDecimal totalVolume;
+  private Double totalVolume;
 
   @JsonProperty("volume")
-  private BigDecimal volume;
+  private Double volume;
 
   @JsonProperty("volume24h")
-  private BigDecimal volume24h;
+  private Double volume24h;
 
   @JsonProperty("prevTotalTurnover")
   private BigInteger prevTotalTurnover;
@@ -325,76 +324,76 @@ public class BitmexTicker {
   private BigInteger vwap;
 
   @JsonProperty("highPrice")
-  private BigDecimal highPrice;
+  private Double highPrice;
 
   @JsonProperty("lowPrice")
-  private BigDecimal lowPrice;
+  private Double lowPrice;
 
   @JsonProperty("lastPrice")
-  private BigDecimal lastPrice;
+  private Double lastPrice;
 
   @JsonProperty("lastPriceProtected")
-  private BigDecimal lastPriceProtected;
+  private Double lastPriceProtected;
 
   @JsonProperty("lastTickDirection")
   private String lastTickDirection;
 
   @JsonProperty("lastChangePcnt")
-  private BigDecimal lastChangePcnt;
+  private Double lastChangePcnt;
 
   @JsonProperty("bidPrice")
-  private BigDecimal bidPrice;
+  private Double bidPrice;
 
   @JsonProperty("midPrice")
-  private BigDecimal midPrice;
+  private Double midPrice;
 
   @JsonProperty("askPrice")
-  private BigDecimal askPrice;
+  private Double askPrice;
 
   @JsonProperty("impactBidPrice")
-  private BigDecimal impactBidPrice;
+  private Double impactBidPrice;
 
   @JsonProperty("impactMidPrice")
-  private BigDecimal impactMidPrice;
+  private Double impactMidPrice;
 
   @JsonProperty("impactAskPrice")
-  private BigDecimal impactAskPrice;
+  private Double impactAskPrice;
 
   @JsonProperty("hasLiquidity")
   private Boolean hasLiquidity;
 
   @JsonProperty("openInterest")
-  private BigDecimal openInterest;
+  private Double openInterest;
 
   @JsonProperty("openValue")
-  private BigDecimal openValue;
+  private Double openValue;
 
   @JsonProperty("fairMethod")
   private String fairMethod;
 
   @JsonProperty("fairBasisRate")
-  private BigDecimal fairBasisRate;
+  private Double fairBasisRate;
 
   @JsonProperty("fairBasis")
-  private BigDecimal fairBasis;
+  private Double fairBasis;
 
   @JsonProperty("fairPrice")
-  private BigDecimal fairPrice;
+  private Double fairPrice;
 
   @JsonProperty("markMethod")
   private String markMethod;
 
   @JsonProperty("markPrice")
-  private BigDecimal markPrice;
+  private Double markPrice;
 
   @JsonProperty("indicativeTaxRate")
-  private BigDecimal indicativeTaxRate;
+  private Double indicativeTaxRate;
 
   @JsonProperty("indicativeSettlePrice")
-  private BigDecimal indicativeSettlePrice;
+  private Double indicativeSettlePrice;
 
   @JsonProperty("settledPrice")
-  private BigDecimal settledPrice;
+  private Double settledPrice;
 
   @JsonProperty("timestamp")
   private Date timestamp;
@@ -485,23 +484,23 @@ public class BitmexTicker {
     return publishTime;
   }
 
-  public BigDecimal getMaxOrderQty() {
+  public Double getMaxOrderQty() {
     return maxOrderQty;
   }
 
-  public BigDecimal getMaxPrice() {
+  public Double getMaxPrice() {
     return maxPrice;
   }
 
-  public BigDecimal getLotSize() {
+  public Double getLotSize() {
     return lotSize;
   }
 
-  public BigDecimal getTickSize() {
+  public Double getTickSize() {
     return tickSize;
   }
 
-  public BigDecimal getMultiplier() {
+  public Double getMultiplier() {
     return multiplier;
   }
 
@@ -509,15 +508,15 @@ public class BitmexTicker {
     return settlCurrency;
   }
 
-  public BigDecimal getUnderlyingToPositionMultiplier() {
+  public Double getUnderlyingToPositionMultiplier() {
     return underlyingToPositionMultiplier;
   }
 
-  public BigDecimal getUnderlyingToSettleMultiplier() {
+  public Double getUnderlyingToSettleMultiplier() {
     return underlyingToSettleMultiplier;
   }
 
-  public BigDecimal getQuoteToSettleMultiplier() {
+  public Double getQuoteToSettleMultiplier() {
     return quoteToSettleMultiplier;
   }
 
@@ -529,11 +528,11 @@ public class BitmexTicker {
     return isInverse;
   }
 
-  public BigDecimal getInitMargin() {
+  public Double getInitMargin() {
     return initMargin;
   }
 
-  public BigDecimal getMaintMargin() {
+  public Double getMaintMargin() {
     return maintMargin;
   }
 
@@ -545,7 +544,7 @@ public class BitmexTicker {
     return riskStep;
   }
 
-  public BigDecimal getLimit() {
+  public Double getLimit() {
     return limit;
   }
 
@@ -561,19 +560,19 @@ public class BitmexTicker {
     return deleverage;
   }
 
-  public BigDecimal getMakerFee() {
+  public Double getMakerFee() {
     return makerFee;
   }
 
-  public BigDecimal getTakerFee() {
+  public Double getTakerFee() {
     return takerFee;
   }
 
-  public BigDecimal getSettlementFee() {
+  public Double getSettlementFee() {
     return settlementFee;
   }
 
-  public BigDecimal getInsuranceFee() {
+  public Double getInsuranceFee() {
     return insuranceFee;
   }
 
@@ -597,11 +596,11 @@ public class BitmexTicker {
     return fundingInterval;
   }
 
-  public BigDecimal getFundingRate() {
+  public Double getFundingRate() {
     return fundingRate;
   }
 
-  public BigDecimal getIndicativeFundingRate() {
+  public Double getIndicativeFundingRate() {
     return indicativeFundingRate;
   }
 
@@ -625,39 +624,39 @@ public class BitmexTicker {
     return sessionInterval;
   }
 
-  public BigDecimal getPrevClosePrice() {
+  public Double getPrevClosePrice() {
     return prevClosePrice;
   }
 
-  public BigDecimal getLimitDownPrice() {
+  public Double getLimitDownPrice() {
     return limitDownPrice;
   }
 
-  public BigDecimal getLimitUpPrice() {
+  public Double getLimitUpPrice() {
     return limitUpPrice;
   }
 
-  public BigDecimal getBankruptLimitDownPrice() {
+  public Double getBankruptLimitDownPrice() {
     return bankruptLimitDownPrice;
   }
 
-  public BigDecimal getBankruptLimitUpPrice() {
+  public Double getBankruptLimitUpPrice() {
     return bankruptLimitUpPrice;
   }
 
-  public BigDecimal getPrevTotalVolume() {
+  public Double getPrevTotalVolume() {
     return prevTotalVolume;
   }
 
-  public BigDecimal getTotalVolume() {
+  public Double getTotalVolume() {
     return totalVolume;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getVolume24h() {
+  public Double getVolume24h() {
     return volume24h;
   }
 
@@ -685,19 +684,19 @@ public class BitmexTicker {
     return vwap;
   }
 
-  public BigDecimal getHighPrice() {
+  public Double getHighPrice() {
     return highPrice;
   }
 
-  public BigDecimal getLowPrice() {
+  public Double getLowPrice() {
     return lowPrice;
   }
 
-  public BigDecimal getLastPrice() {
+  public Double getLastPrice() {
     return lastPrice;
   }
 
-  public BigDecimal getLastPriceProtected() {
+  public Double getLastPriceProtected() {
     return lastPriceProtected;
   }
 
@@ -705,31 +704,31 @@ public class BitmexTicker {
     return lastTickDirection;
   }
 
-  public BigDecimal getLastChangePcnt() {
+  public Double getLastChangePcnt() {
     return lastChangePcnt;
   }
 
-  public BigDecimal getBidPrice() {
+  public Double getBidPrice() {
     return bidPrice;
   }
 
-  public BigDecimal getMidPrice() {
+  public Double getMidPrice() {
     return midPrice;
   }
 
-  public BigDecimal getAskPrice() {
+  public Double getAskPrice() {
     return askPrice;
   }
 
-  public BigDecimal getImpactBidPrice() {
+  public Double getImpactBidPrice() {
     return impactBidPrice;
   }
 
-  public BigDecimal getImpactMidPrice() {
+  public Double getImpactMidPrice() {
     return impactMidPrice;
   }
 
-  public BigDecimal getImpactAskPrice() {
+  public Double getImpactAskPrice() {
     return impactAskPrice;
   }
 
@@ -737,11 +736,11 @@ public class BitmexTicker {
     return hasLiquidity;
   }
 
-  public BigDecimal getOpenInterest() {
+  public Double getOpenInterest() {
     return openInterest;
   }
 
-  public BigDecimal getOpenValue() {
+  public Double getOpenValue() {
     return openValue;
   }
 
@@ -749,15 +748,15 @@ public class BitmexTicker {
     return fairMethod;
   }
 
-  public BigDecimal getFairBasisRate() {
+  public Double getFairBasisRate() {
     return fairBasisRate;
   }
 
-  public BigDecimal getFairBasis() {
+  public Double getFairBasis() {
     return fairBasis;
   }
 
-  public BigDecimal getFairPrice() {
+  public Double getFairPrice() {
     return fairPrice;
   }
 
@@ -765,19 +764,19 @@ public class BitmexTicker {
     return markMethod;
   }
 
-  public BigDecimal getMarkPrice() {
+  public Double getMarkPrice() {
     return markPrice;
   }
 
-  public BigDecimal getIndicativeTaxRate() {
+  public Double getIndicativeTaxRate() {
     return indicativeTaxRate;
   }
 
-  public BigDecimal getIndicativeSettlePrice() {
+  public Double getIndicativeSettlePrice() {
     return indicativeSettlePrice;
   }
 
-  public BigDecimal getSettledPrice() {
+  public Double getSettledPrice() {
     return settledPrice;
   }
 

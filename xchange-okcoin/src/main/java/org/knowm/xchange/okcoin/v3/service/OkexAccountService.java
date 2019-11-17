@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.v3.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -75,13 +74,12 @@ public class OkexAccountService extends OkexAccountServiceRaw implements Account
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return withdrawFunds0(currency, amount, address, null);
   }
 
-  private String withdrawFunds0(
-      Currency currency, BigDecimal amount, String address, BigDecimal fee) throws IOException {
+  private String withdrawFunds0(Currency currency, Double amount, String address, Double fee)
+      throws IOException {
     if (fee == null) {
       fee = getStaticFee(currency.getCurrencyCode());
     }
@@ -98,7 +96,7 @@ public class OkexAccountService extends OkexAccountServiceRaw implements Account
     return withdrawal.getWithdrawalId();
   }
 
-  public BigDecimal getStaticFee(String currency) {
+  public Double getStaticFee(String currency) {
     CurrencyMetaData cmd =
         this.exchange.getExchangeMetaData().getCurrencies().get(Currency.getInstance(currency));
     if (cmd == null || cmd.getWithdrawalFee() == null) {

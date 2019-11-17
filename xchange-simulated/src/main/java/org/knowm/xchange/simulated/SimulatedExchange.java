@@ -1,7 +1,5 @@
 package org.knowm.xchange.simulated;
 
-import static java.math.BigDecimal.ZERO;
-
 import java.io.IOException;
 import org.apache.commons.lang3.StringUtils;
 import org.knowm.xchange.BaseExchange;
@@ -125,8 +123,8 @@ public class SimulatedExchange extends BaseExchange {
     }
     return engineFactory.create(
         currencyPair,
-        currencyPairMetaData == null ? 8 : currencyPairMetaData.getPriceScale(),
-        currencyPairMetaData == null ? ZERO : currencyPairMetaData.getMinimumAmount());
+        currencyPairMetaData.getPriceScale(),
+        currencyPairMetaData.getMinimumAmount());
   }
 
   @Override

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitcoinde;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -44,8 +43,8 @@ public interface Bitcoinde {
       @HeaderParam("X-API-KEY") String apiKey,
       @HeaderParam("X-API-NONCE") SynchronizedValueFactory<Long> nonce,
       @HeaderParam("X-API-SIGNATURE") ParamsDigest paramsDigest,
-      @FormParam("max_amount") BigDecimal max_amount,
-      @FormParam("price") BigDecimal price,
+      @FormParam("max_amount") Double max_amount,
+      @FormParam("price") Double price,
       @FormParam("trading_pair") String trading_pair,
       @FormParam("type") String type)
       throws BitcoindeException, IOException;

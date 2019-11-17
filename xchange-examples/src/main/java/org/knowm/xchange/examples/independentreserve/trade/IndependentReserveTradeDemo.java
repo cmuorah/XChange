@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.independentreserve.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -30,11 +29,11 @@ public class IndependentReserveTradeDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (Order.OrderType.ASK),
-            new BigDecimal(".01"),
+            new Double(".01"),
             CurrencyPair.BTC_USD,
             "",
             null,
-            new BigDecimal("500.00"));
+            new Double("500.00"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 

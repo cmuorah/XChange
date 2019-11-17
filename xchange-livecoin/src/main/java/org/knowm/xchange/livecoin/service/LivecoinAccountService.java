@@ -1,7 +1,6 @@
 package org.knowm.xchange.livecoin.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -36,8 +35,7 @@ public class LivecoinAccountService extends LivecoinAccountServiceRaw implements
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }
 

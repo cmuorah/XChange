@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -25,28 +24,28 @@ public class GlobitexTicker implements Serializable {
   private final String symbol;
 
   @JsonProperty("ask")
-  private final BigDecimal ask;
+  private final Double ask;
 
   @JsonProperty("bid")
-  private final BigDecimal bid;
+  private final Double bid;
 
   @JsonProperty("last")
-  private final BigDecimal last;
+  private final Double last;
 
   @JsonProperty("low")
-  private final BigDecimal low;
+  private final Double low;
 
   @JsonProperty("high")
-  private final BigDecimal high;
+  private final Double high;
 
   @JsonProperty("open")
-  private final BigDecimal open;
+  private final Double open;
 
   @JsonProperty("volume")
-  private final BigDecimal volume;
+  private final Double volume;
 
   @JsonProperty("volumeQuote")
-  private final BigDecimal volumeQuote;
+  private final Double volumeQuote;
 
   @JsonProperty("timestamp")
   private final long timestamp;
@@ -65,14 +64,14 @@ public class GlobitexTicker implements Serializable {
    */
   public GlobitexTicker(
       @JsonProperty("symbol") String symbol,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("open") BigDecimal open,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("volumeQuote") BigDecimal volumeQuote,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("last") Double last,
+      @JsonProperty("low") Double low,
+      @JsonProperty("high") Double high,
+      @JsonProperty("open") Double open,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("volumeQuote") Double volumeQuote,
       @JsonProperty("timestamp") long timestamp) {
     super();
     this.symbol = symbol;
@@ -91,35 +90,35 @@ public class GlobitexTicker implements Serializable {
     return symbol;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getVolumeQuote() {
+  public Double getVolumeQuote() {
     return volumeQuote;
   }
 

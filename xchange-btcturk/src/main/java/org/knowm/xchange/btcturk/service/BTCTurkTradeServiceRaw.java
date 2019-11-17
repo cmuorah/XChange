@@ -1,7 +1,6 @@
 package org.knowm.xchange.btcturk.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,22 +68,20 @@ public class BTCTurkTradeServiceRaw extends BTCTurkBaseService {
   }
 
   public BTCTurkExchangeResult placeMarketOrder(
-      BigDecimal total, CurrencyPair pair, BTCTurkOrderTypes orderTypes) throws IOException {
-    return postExchange(
-        total, BigDecimal.ZERO, BigDecimal.ZERO, pair, BTCTurkOrderMethods.MARKET, orderTypes);
+      Double total, CurrencyPair pair, BTCTurkOrderTypes orderTypes) throws IOException {
+    return postExchange(total, 0d, 0d, pair, BTCTurkOrderMethods.MARKET, orderTypes);
   }
 
   public BTCTurkExchangeResult placeLimitOrder(
-      BigDecimal amount, BigDecimal price, CurrencyPair pair, BTCTurkOrderTypes orderTypes)
+      Double amount, Double price, CurrencyPair pair, BTCTurkOrderTypes orderTypes)
       throws IOException {
-    return postExchange(
-        amount, price, BigDecimal.ZERO, pair, BTCTurkOrderMethods.LIMIT, orderTypes);
+    return postExchange(amount, price, 0d, pair, BTCTurkOrderMethods.LIMIT, orderTypes);
   }
 
   public BTCTurkExchangeResult placeStopLimitOrder(
-      BigDecimal amount,
-      BigDecimal price,
-      BigDecimal triggerPrice,
+      Double amount,
+      Double price,
+      Double triggerPrice,
       CurrencyPair pair,
       BTCTurkOrderTypes orderTypes)
       throws IOException {
@@ -92,7 +89,7 @@ public class BTCTurkTradeServiceRaw extends BTCTurkBaseService {
         amount, price, triggerPrice, pair, BTCTurkOrderMethods.STOP_LIMIT, orderTypes);
   }
 
-  protected String getLocalizedBigDecimalValue(BigDecimal input) {
+  protected String getLocalizedDoubleValue(Double input) {
     final NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
     numberFormat.setGroupingUsed(true);
     numberFormat.setMaximumFractionDigits(8);
@@ -101,9 +98,9 @@ public class BTCTurkTradeServiceRaw extends BTCTurkBaseService {
   }
 
   private BTCTurkExchangeResult postExchange(
-      BigDecimal total_amount,
-      BigDecimal price,
-      BigDecimal triggerPrice,
+      Double total_amount,
+      Double price,
+      Double triggerPrice,
       CurrencyPair pair,
       BTCTurkOrderMethods orderMethod,
       BTCTurkOrderTypes orderTypes)
@@ -111,10 +108,10 @@ public class BTCTurkTradeServiceRaw extends BTCTurkBaseService {
     BTCTurkOrderTypes tempordertype;
     tempordertype = orderTypes;
 
-    String[] _zero = getLocalizedBigDecimalValue(BigDecimal.ZERO).split("\\.");
+    String[] _zero = getLocalizedDoubleValue(0d).split("\\.");
     String[] _price = _zero;
     if (orderMethod.equals(BTCTurkOrderMethods.LIMIT)) {
-      _price = getLocalizedBigDecimalValue(price).split("\\.");
+      _price = getLocalizedDoubleValue(price).split("\\.");
       _price[0] = _price[0].replace(",", "");
       /* String tmp = _amount[0];
       _amount[0] = _total[0];
@@ -124,13 +121,13 @@ public class BTCTurkTradeServiceRaw extends BTCTurkBaseService {
     String[] _triggerPrice = _zero;
     if (orderMethod.equals(BTCTurkOrderMethods.STOP_LIMIT)
         || orderMethod.equals(BTCTurkOrderMethods.STOP_MARKET))
-      _triggerPrice = getLocalizedBigDecimalValue(triggerPrice).split("\\.");
+      _triggerPrice = getLocalizedDoubleValue(triggerPrice).split("\\.");
 
-    String[] _total = getLocalizedBigDecimalValue(total_amount).split("\\.");
+    String[] _total = getLocalizedDoubleValue(total_amount).split("\\.");
     String[] _amount = _zero;
     if (orderTypes.equals(BTCTurkOrderTypes.Sell)
         || orderMethod.equals(BTCTurkOrderMethods.LIMIT)) {
-      _amount = getLocalizedBigDecimalValue(total_amount).split("\\.");
+      _amount = getLocalizedDoubleValue(total_amount).split("\\.");
       _total = _zero;
       if (orderMethod.equals(BTCTurkOrderMethods.LIMIT)) {
         if (orderTypes.equals(BTCTurkOrderTypes.Sell)) tempordertype = BTCTurkOrderTypes.Buy;

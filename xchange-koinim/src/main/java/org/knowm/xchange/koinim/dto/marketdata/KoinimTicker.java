@@ -1,35 +1,34 @@
 package org.knowm.xchange.koinim.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author ahmet.oz */
 public final class KoinimTicker {
 
-  private final BigDecimal sell;
-  private final BigDecimal high;
-  private final BigDecimal buy;
-  private final BigDecimal change_rate;
-  private final BigDecimal bid;
-  private final BigDecimal wavg;
-  private final BigDecimal last_order;
-  private final BigDecimal volume;
-  private final BigDecimal low;
-  private final BigDecimal ask;
-  private final BigDecimal avg;
+  private final Double sell;
+  private final Double high;
+  private final Double buy;
+  private final Double change_rate;
+  private final Double bid;
+  private final Double wavg;
+  private final Double last_order;
+  private final Double volume;
+  private final Double low;
+  private final Double ask;
+  private final Double avg;
 
   public KoinimTicker(
-      @JsonProperty("sell") BigDecimal sell,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("buy") BigDecimal buy,
-      @JsonProperty("change_rate") BigDecimal change_rate,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("wavg") BigDecimal wavg,
-      @JsonProperty("last_order") BigDecimal last_order,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("avg") BigDecimal avg) {
+      @JsonProperty("sell") Double sell,
+      @JsonProperty("high") Double high,
+      @JsonProperty("buy") Double buy,
+      @JsonProperty("change_rate") Double change_rate,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("wavg") Double wavg,
+      @JsonProperty("last_order") Double last_order,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("low") Double low,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("avg") Double avg) {
     this.sell = sell;
     this.high = high;
     this.buy = buy;
@@ -43,43 +42,43 @@ public final class KoinimTicker {
     this.avg = avg;
   }
 
-  public BigDecimal getAvg() {
+  public Double getAvg() {
     return avg;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getSell() {
+  public Double getSell() {
     return sell;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getBuy() {
+  public Double getBuy() {
     return buy;
   }
 
-  public BigDecimal getChangeRate() {
+  public Double getChangeRate() {
     return change_rate;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getWavg() {
+  public Double getWavg() {
     return wavg;
   }
 
-  public BigDecimal getLastOrder() {
+  public Double getLastOrder() {
     return last_order;
   }
 
@@ -111,7 +110,7 @@ public final class KoinimTicker {
         + '}';
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 }

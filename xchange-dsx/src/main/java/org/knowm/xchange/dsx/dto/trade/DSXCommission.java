@@ -1,33 +1,32 @@
 package org.knowm.xchange.dsx.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Mikhail Wall */
 public class DSXCommission {
 
-  private BigDecimal tradingVolume;
-  private BigDecimal takerCommission;
-  private BigDecimal makerCommission;
+  private Double tradingVolume;
+  private Double takerCommission;
+  private Double makerCommission;
 
   public DSXCommission(
-      @JsonProperty("tradingVolume") BigDecimal tradingVolume,
-      @JsonProperty("takerCommission") BigDecimal takerCommission,
-      @JsonProperty("makerCommission") BigDecimal makerCommission) {
+      @JsonProperty("tradingVolume") Double tradingVolume,
+      @JsonProperty("takerCommission") Double takerCommission,
+      @JsonProperty("makerCommission") Double makerCommission) {
     this.tradingVolume = tradingVolume;
     this.takerCommission = takerCommission;
     this.makerCommission = makerCommission;
   }
 
-  public BigDecimal getTradingVolume() {
+  public Double getTradingVolume() {
     return tradingVolume;
   }
 
-  public BigDecimal getTakerCommission() {
+  public Double getTakerCommission() {
     return takerCommission;
   }
 
-  public BigDecimal getMakerCommission() {
+  public Double getMakerCommission() {
     return makerCommission;
   }
 }

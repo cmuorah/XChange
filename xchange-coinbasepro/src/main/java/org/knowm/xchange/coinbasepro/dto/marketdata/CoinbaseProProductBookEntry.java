@@ -1,24 +1,22 @@
 package org.knowm.xchange.coinbasepro.dto.marketdata;
 
-import java.math.BigDecimal;
-
 public abstract class CoinbaseProProductBookEntry {
 
-  private final BigDecimal price;
-  private final BigDecimal volume;
+  private final Double price;
+  private final Double volume;
 
-  public CoinbaseProProductBookEntry(BigDecimal price, BigDecimal volume) {
+  public CoinbaseProProductBookEntry(Double price, Double volume) {
 
     this.price = price;
     this.volume = volume;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }

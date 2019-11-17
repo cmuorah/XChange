@@ -1,6 +1,5 @@
 package org.knowm.xchange.lgo.dto.order;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.StringJoiner;
 
@@ -8,15 +7,15 @@ public class LgoPlaceLimitOrder extends LgoPlaceOrder {
 
   private final String side;
   private final String productId;
-  private final BigDecimal quantity;
-  private final BigDecimal price;
+  private final Double quantity;
+  private final Double price;
 
   public LgoPlaceLimitOrder(
       long reference,
       String side,
       String productId,
-      BigDecimal quantity,
-      BigDecimal price,
+      Double quantity,
+      Double price,
       Instant timestamp) {
     super(reference, timestamp);
     this.side = side;
@@ -30,8 +29,8 @@ public class LgoPlaceLimitOrder extends LgoPlaceOrder {
         .add("L")
         .add(side)
         .add(productId)
-        .add(quantity.toPlainString())
-        .add(price == null ? "" : price.toPlainString())
+        .add(quantity.toString())
+        .add(price == null ? "" : price.toString())
         .add("gtc")
         .add(String.valueOf(getTimestamp().toEpochMilli()))
         .toString();
@@ -45,11 +44,11 @@ public class LgoPlaceLimitOrder extends LgoPlaceOrder {
     return productId;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 }

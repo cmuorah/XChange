@@ -2,7 +2,6 @@ package org.knowm.xchange.deribit.v2.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 import org.knowm.xchange.deribit.v2.dto.Kind;
@@ -16,7 +15,7 @@ public class DeribitInstrument {
    * prices
    */
   @JsonProperty("tick_size")
-  private BigDecimal tickSize;
+  private Double tickSize;
 
   /** The settlement period */
   @JsonProperty("settlement_period")
@@ -31,7 +30,7 @@ public class DeribitInstrument {
    * of corresponding cryptocurrency contracts, e.g., BTC or ETH.
    */
   @JsonProperty("min_trade_amount")
-  private BigDecimal minTradeAmount;
+  private Double minTradeAmount;
 
   /** Instrument kind, "future" or "option" */
   @JsonProperty("kind")
@@ -63,7 +62,7 @@ public class DeribitInstrument {
 
   /** The strike value. (only for options) */
   @JsonProperty("strike")
-  private BigDecimal strike;
+  private Double strike;
 
   /** The option type (only for options) */
   @JsonProperty("option_type")

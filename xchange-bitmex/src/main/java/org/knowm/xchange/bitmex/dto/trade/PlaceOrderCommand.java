@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitmex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import javax.annotation.Nullable;
 import org.knowm.xchange.bitmex.Bitmex;
 
@@ -16,23 +15,23 @@ public class PlaceOrderCommand {
 
   @Nullable
   @JsonProperty("orderQty")
-  public final BigDecimal orderQuantity;
+  public final Double orderQuantity;
 
   @Nullable
   @JsonProperty("simpleOrderQuantity")
-  public final BigDecimal simpleOrderQuantity;
+  public final Double simpleOrderQuantity;
 
   @Nullable
   @JsonProperty("displayQuantity")
-  public final BigDecimal displayQuantity;
+  public final Double displayQuantity;
 
   @Nullable
   @JsonProperty("price")
-  public final BigDecimal price;
+  public final Double price;
 
   @Nullable
   @JsonProperty("stopPx")
-  public final BigDecimal stopPrice;
+  public final Double stopPrice;
 
   @Nullable
   @JsonProperty("ordType")
@@ -56,7 +55,7 @@ public class PlaceOrderCommand {
 
   @Nullable
   @JsonProperty("pegOffsetValue")
-  public final BigDecimal pegOffsetValue;
+  public final Double pegOffsetValue;
 
   @Nullable
   @JsonProperty("pegPriceType")

@@ -1,24 +1,22 @@
 package org.knowm.xchange.hitbtc.v2.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class HitbtcOrderLimit {
 
-  private final BigDecimal price;
-  private final BigDecimal size;
+  private final Double price;
+  private final Double size;
 
-  public HitbtcOrderLimit(
-      @JsonProperty("price") BigDecimal price, @JsonProperty("size") BigDecimal size) {
+  public HitbtcOrderLimit(@JsonProperty("price") Double price, @JsonProperty("size") Double size) {
     this.price = price;
     this.size = size;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 

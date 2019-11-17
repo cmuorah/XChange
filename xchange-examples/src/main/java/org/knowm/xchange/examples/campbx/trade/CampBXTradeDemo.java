@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.campbx.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.ExchangeSpecification;
@@ -37,22 +36,17 @@ public class CampBXTradeDemo {
     LimitOrder lo =
         new LimitOrder(
             (OrderType.ASK),
-            new BigDecimal("0.1"),
+            new Double("0.1"),
             CurrencyPair.BTC_USD,
             "",
             null,
-            new BigDecimal("28.99"));
+            new Double("28.99"));
     String rv = tradeService.placeLimitOrder(lo);
     System.out.println("Limit Order return value: " + rv);
     // place a limit sell order
     LimitOrder limitOrder =
         new LimitOrder(
-            (OrderType.ASK),
-            new BigDecimal("0.1"),
-            CurrencyPair.BTC_USD,
-            "",
-            null,
-            new BigDecimal("110"));
+            (OrderType.ASK), new Double("0.1"), CurrencyPair.BTC_USD, "", null, new Double("110"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 

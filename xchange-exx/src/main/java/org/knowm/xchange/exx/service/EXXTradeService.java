@@ -1,7 +1,6 @@
 package org.knowm.xchange.exx.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.trade.LimitOrder;
@@ -50,9 +49,9 @@ public class EXXTradeService extends EXXTradeServiceRaw implements TradeService 
 
   @Override
   public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
-    BigDecimal amount = limitOrder.getOriginalAmount();
+    Double amount = limitOrder.getOriginalAmount();
     String currency = currencyPairFormat(limitOrder.getCurrencyPair());
-    BigDecimal price = limitOrder.getLimitPrice();
+    Double price = limitOrder.getLimitPrice();
     String type = EXXAdapters.convertByType(limitOrder.getType());
 
     EXXPlaceOrder exxPlaceOrder = placeExxOrder(amount, currency, price, type);

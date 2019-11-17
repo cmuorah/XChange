@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.knowm.xchange.coinbase.dto.CoinbaseBaseResponse;
@@ -46,9 +45,9 @@ public class CoinbaseTransaction extends CoinbaseBaseResponse implements Coinbas
   }
 
   public static CoinbaseRequestMoneyRequest createMoneyRequest(
-      String from, final String currency, final BigDecimal amount) {
+      String from, final String currency, final Double amount) {
 
-    return createMoneyRequest(from, currency, amount.toPlainString());
+    return createMoneyRequest(from, currency, amount.toString());
   }
 
   public static CoinbaseRequestMoneyRequest createMoneyRequest(
@@ -64,9 +63,9 @@ public class CoinbaseTransaction extends CoinbaseBaseResponse implements Coinbas
   }
 
   public static CoinbaseSendMoneyRequest createSendMoneyRequest(
-      String from, final String currency, final BigDecimal amount) {
+      String from, final String currency, final Double amount) {
 
-    return createSendMoneyRequest(from, currency, amount.toPlainString());
+    return createSendMoneyRequest(from, currency, amount.toString());
   }
 
   public static CoinbaseSendMoneyRequest createSendMoneyRequest(
@@ -202,7 +201,7 @@ public class CoinbaseTransaction extends CoinbaseBaseResponse implements Coinbas
     @Override
     public CoinbaseMoney getAmount() {
 
-      return new CoinbaseMoney(currencyIso, new BigDecimal(amountString));
+      return new CoinbaseMoney(currencyIso, new Double(amountString));
     }
 
     @Override

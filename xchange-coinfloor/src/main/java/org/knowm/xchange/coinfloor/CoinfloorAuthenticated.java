@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinfloor;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -45,8 +44,8 @@ public interface CoinfloorAuthenticated {
   CoinfloorOrder buy(
       @PathParam("base") Currency base,
       @PathParam("counter") Currency counter,
-      @FormParam("amount") BigDecimal amount,
-      @FormParam("price") BigDecimal price)
+      @FormParam("amount") Double amount,
+      @FormParam("price") Double price)
       throws CoinfloorException, IOException;
 
   @GET
@@ -54,7 +53,7 @@ public interface CoinfloorAuthenticated {
   CoinfloorMarketOrderResponse buyMarket(
       @PathParam("base") Currency base,
       @PathParam("counter") Currency counter,
-      @FormParam("quantity") BigDecimal quantity)
+      @FormParam("quantity") Double quantity)
       throws CoinfloorException, IOException;
 
   @GET
@@ -62,8 +61,8 @@ public interface CoinfloorAuthenticated {
   CoinfloorOrder sell(
       @PathParam("base") Currency base,
       @PathParam("counter") Currency counter,
-      @FormParam("amount") BigDecimal amount,
-      @FormParam("price") BigDecimal price)
+      @FormParam("amount") Double amount,
+      @FormParam("price") Double price)
       throws CoinfloorException, IOException;
 
   @GET
@@ -71,7 +70,7 @@ public interface CoinfloorAuthenticated {
   CoinfloorMarketOrderResponse sellMarket(
       @PathParam("base") Currency base,
       @PathParam("counter") Currency counter,
-      @FormParam("quantity") BigDecimal quantity)
+      @FormParam("quantity") Double quantity)
       throws CoinfloorException, IOException;
 
   @GET

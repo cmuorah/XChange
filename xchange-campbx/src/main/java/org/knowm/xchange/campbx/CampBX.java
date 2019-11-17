@@ -1,7 +1,6 @@
 package org.knowm.xchange.campbx;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.annotation.Nonnull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -81,8 +80,8 @@ public interface CampBX {
       @FormParam("user") String user,
       @FormParam("pass") String password,
       @FormParam("TradeMode") TradeMode mode,
-      @FormParam("Quantity") BigDecimal quantity,
-      @FormParam("Price") BigDecimal price)
+      @FormParam("Quantity") Double quantity,
+      @FormParam("Price") Double price)
       throws IOException;
 
   /**
@@ -118,8 +117,8 @@ public interface CampBX {
       @Nonnull @FormParam("user") String user,
       @Nonnull @FormParam("pass") String password,
       @Nonnull @FormParam("TradeMode") AdvTradeMode mode,
-      @Nonnull @FormParam("Quantity") BigDecimal quantity,
-      @Nonnull @FormParam("Price") BigDecimal price,
+      @Nonnull @FormParam("Quantity") Double quantity,
+      @Nonnull @FormParam("Price") Double price,
       @FormParam("FillType") FillType fillType,
       @FormParam("DarkPool") DarkPool darkPool,
       @FormParam("Expiry") String expiry)
@@ -131,7 +130,7 @@ public interface CampBX {
       @Nonnull @FormParam("user") String user,
       @Nonnull @FormParam("pass") String password,
       @Nonnull @FormParam("TradeMode") AdvTradeMode mode,
-      @Nonnull @FormParam("Quantity") BigDecimal quantity,
+      @Nonnull @FormParam("Quantity") Double quantity,
       @Nonnull @FormParam("Price") MarketPrice market,
       @FormParam("FillType") FillType fillType,
       @FormParam("DarkPool") DarkPool darkPool,
@@ -211,7 +210,7 @@ public interface CampBX {
       @FormParam("user") String user,
       @FormParam("pass") String password,
       @FormParam("BTCTo") String btcToAddress,
-      @FormParam("BTCAmt") BigDecimal amount)
+      @FormParam("BTCAmt") Double amount)
       throws IOException;
 
   enum TradeMode {

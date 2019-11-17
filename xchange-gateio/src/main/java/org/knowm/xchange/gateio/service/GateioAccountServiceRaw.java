@@ -1,7 +1,6 @@
 package org.knowm.xchange.gateio.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
@@ -39,8 +38,7 @@ public class GateioAccountServiceRaw extends GateioBaseService {
     return depositAddress;
   }
 
-  public String withdraw(
-      Currency currency, BigDecimal amount, String baseAddress, String addressTag)
+  public String withdraw(Currency currency, Double amount, String baseAddress, String addressTag)
       throws IOException {
     String withdrawAddress = baseAddress;
     if (addressTag != null && addressTag.length() > 0) {
@@ -59,7 +57,7 @@ public class GateioAccountServiceRaw extends GateioBaseService {
     return handleResponse(gateioDepositsWithdrawals);
   }
 
-  public String withdraw(String currency, BigDecimal amount, String address) throws IOException {
+  public String withdraw(String currency, Double amount, String address) throws IOException {
     GateioBaseResponse withdraw =
         bter.withdraw(
             exchange.getExchangeSpecification().getApiKey(),

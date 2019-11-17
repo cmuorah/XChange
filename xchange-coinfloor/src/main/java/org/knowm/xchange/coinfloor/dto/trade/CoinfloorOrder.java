@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinfloor.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
 
@@ -12,9 +11,9 @@ public class CoinfloorOrder {
   // 0 - buy, 1 - sell
   private final int type;
 
-  private final BigDecimal price;
+  private final Double price;
 
-  private final BigDecimal amount;
+  private final Double amount;
 
   // this is used by the CoinfloorTradeService to temporarily store details of the currency pair
   private CurrencyPair pair = null;
@@ -25,8 +24,8 @@ public class CoinfloorOrder {
       @JsonProperty("id") int id,
       @JsonProperty("datetime") String datetime,
       @JsonProperty("type") int type,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount) {
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount) {
 
     this.id = id;
     this.datetime = datetime;
@@ -58,11 +57,11 @@ public class CoinfloorOrder {
     }
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

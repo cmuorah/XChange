@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinegg.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.coinegg.dto.marketdata.CoinEggTrade.Type;
 
 public class CoinEggTradeView extends CoinEggTradeList {
@@ -12,9 +11,9 @@ public class CoinEggTradeView extends CoinEggTradeList {
       @JsonProperty("id") int id,
       @JsonProperty("datetime") String datetime,
       @JsonProperty("type") Type type,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount_original") BigDecimal amountOriginal,
-      @JsonProperty("amount_outstanding") BigDecimal amountOutstanding,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount_original") Double amountOriginal,
+      @JsonProperty("amount_outstanding") Double amountOutstanding,
       @JsonProperty("status") String status) {
 
     super(id, datetime, type, price, amountOriginal, amountOutstanding);

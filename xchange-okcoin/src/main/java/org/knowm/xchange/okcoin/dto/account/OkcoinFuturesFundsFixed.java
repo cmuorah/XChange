@@ -1,25 +1,24 @@
 package org.knowm.xchange.okcoin.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class OkcoinFuturesFundsFixed {
 
-  private final BigDecimal balance;
+  private final Double balance;
   private final OkcoinFuturesFunds[] contracts;
-  private final BigDecimal rights;
+  private final Double rights;
 
   public OkcoinFuturesFundsFixed(
-      @JsonProperty("balance") BigDecimal balance,
+      @JsonProperty("balance") Double balance,
       @JsonProperty("contracts") OkcoinFuturesFunds[] contracts,
-      @JsonProperty("rights") BigDecimal rights) {
+      @JsonProperty("rights") Double rights) {
 
     this.balance = balance;
     this.contracts = contracts;
     this.rights = rights;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
@@ -27,7 +26,7 @@ public class OkcoinFuturesFundsFixed {
     return contracts;
   }
 
-  public BigDecimal getRights() {
+  public Double getRights() {
     return rights;
   }
 }

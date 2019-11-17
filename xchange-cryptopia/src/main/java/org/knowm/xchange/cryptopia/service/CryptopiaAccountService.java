@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptopia.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.cryptopia.CryptopiaErrorAdapter;
 import org.knowm.xchange.cryptopia.CryptopiaExchange;
@@ -38,8 +37,7 @@ public class CryptopiaAccountService extends CryptopiaAccountServiceRaw implemen
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }
 

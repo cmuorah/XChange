@@ -1,26 +1,25 @@
 package org.knowm.xchange.coingi.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Depth range. */
 public class CoingiDepthRange {
-  private BigDecimal price;
+  private Double price;
 
-  private BigDecimal amount;
+  private Double amount;
 
   public CoingiDepthRange(
-      @JsonProperty("price") BigDecimal price, @JsonProperty("amount") BigDecimal amount) {
+      @JsonProperty("price") Double price, @JsonProperty("amount") Double amount) {
     this.price = Objects.requireNonNull(price);
     this.amount = Objects.requireNonNull(amount);
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

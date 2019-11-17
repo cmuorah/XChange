@@ -1,20 +1,19 @@
 package org.knowm.xchange.huobi.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class HuobiTrade {
   private final String id;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final String direction;
   private final Date ts;
 
   public HuobiTrade(
       @JsonProperty("id") String id,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("direction") String direction,
       @JsonProperty("ts") Date ts) {
     this.id = id;
@@ -28,11 +27,11 @@ public class HuobiTrade {
     return id;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

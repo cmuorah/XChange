@@ -1,35 +1,34 @@
 package org.knowm.xchange.bitso.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Matija Mazi */
 public final class BitsoBalance {
 
-  private final BigDecimal mxnBalance;
+  private final Double mxnBalance;
 
-  private final BigDecimal btcBalance;
+  private final Double btcBalance;
 
-  private final BigDecimal mxnReserved;
+  private final Double mxnReserved;
 
-  private final BigDecimal btcReserved;
+  private final Double btcReserved;
 
-  private final BigDecimal mxnAvailable;
+  private final Double mxnAvailable;
 
-  private final BigDecimal btcAvailable;
+  private final Double btcAvailable;
 
-  private final BigDecimal fee;
+  private final Double fee;
 
   private final String error;
 
   public BitsoBalance(
-      @JsonProperty("mxn_balance") BigDecimal mxnBalance,
-      @JsonProperty("btc_balance") BigDecimal btcBalance,
-      @JsonProperty("mxn_reserved") BigDecimal mxnReserved,
-      @JsonProperty("btc_reserved") BigDecimal btcReserved,
-      @JsonProperty("mxn_available") BigDecimal mxnAvailable,
-      @JsonProperty("btc_available") BigDecimal btcAvailable,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("mxn_balance") Double mxnBalance,
+      @JsonProperty("btc_balance") Double btcBalance,
+      @JsonProperty("mxn_reserved") Double mxnReserved,
+      @JsonProperty("btc_reserved") Double btcReserved,
+      @JsonProperty("mxn_available") Double mxnAvailable,
+      @JsonProperty("btc_available") Double btcAvailable,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("error") String error) {
 
     this.mxnBalance = mxnBalance;
@@ -42,37 +41,37 @@ public final class BitsoBalance {
     this.error = error;
   }
 
-  public BigDecimal getMxnBalance() {
+  public Double getMxnBalance() {
 
     return mxnBalance;
   }
 
-  public BigDecimal getBtcBalance() {
+  public Double getBtcBalance() {
 
     return btcBalance;
   }
 
-  public BigDecimal getMxnReserved() {
+  public Double getMxnReserved() {
 
     return mxnReserved;
   }
 
-  public BigDecimal getBtcReserved() {
+  public Double getBtcReserved() {
 
     return btcReserved;
   }
 
-  public BigDecimal getMxnAvailable() {
+  public Double getMxnAvailable() {
 
     return mxnAvailable;
   }
 
-  public BigDecimal getBtcAvailable() {
+  public Double getBtcAvailable() {
 
     return btcAvailable;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }

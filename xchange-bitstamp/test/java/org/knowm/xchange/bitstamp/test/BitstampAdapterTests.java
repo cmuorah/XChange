@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
+
 
 import org.junit.Test;
 import org.knowm.xchange.bitstamp.BitstampAdapters;
@@ -29,8 +29,8 @@ public class BitstampAdapterTests {
     BitstampGenericOrder order = BitstampAdapters.adaptOrder("123", krakenQueryOrderResult);
 
     assertThat(order.getId()).isEqualTo("123");
-    assertThat(order.getAveragePrice()).isEqualTo(new BigDecimal("256.08000000"));
-    assertThat(order.getCumulativeAmount()).isEqualTo(new BigDecimal("0.20236360"));
+    assertThat(order.getAveragePrice()).isEqualTo(new Double("256.08000000"));
+    assertThat(order.getCumulativeAmount()).isEqualTo(new Double("0.20236360"));
     assertThat(order.getCurrencyPair()).isEqualTo(CurrencyPair.LTC_USD);
 
   }

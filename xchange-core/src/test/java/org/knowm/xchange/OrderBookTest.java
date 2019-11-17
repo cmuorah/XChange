@@ -2,9 +2,8 @@ package org.knowm.xchange;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import org.junit.Before;
@@ -20,54 +19,31 @@ public class OrderBookTest {
   private OrderBook orderBook;
 
   @Before
-  public void setUp() throws Exception {
-
+  public void setUp() {
     LimitOrder askOrder =
-        new LimitOrder(
-            OrderType.ASK,
-            BigDecimal.ONE,
-            CurrencyPair.BTC_USD,
-            "",
-            null,
-            BigDecimal.TEN.add(BigDecimal.ONE));
-    LimitOrder bidOrder =
-        new LimitOrder(
-            OrderType.BID, BigDecimal.ONE, CurrencyPair.BTC_USD, "", null, BigDecimal.TEN);
+        new LimitOrder(OrderType.ASK, 1d, CurrencyPair.BTC_USD, "", null, 10d + (1d));
+    LimitOrder bidOrder = new LimitOrder(OrderType.BID, 1d, CurrencyPair.BTC_USD, "", null, 10d);
 
-    List<LimitOrder> asks = new ArrayList<>(Arrays.asList(askOrder));
-    List<LimitOrder> bids = new ArrayList<>(Arrays.asList(bidOrder));
+    List<LimitOrder> asks = new ArrayList<>(Collections.singletonList(askOrder));
+    List<LimitOrder> bids = new ArrayList<>(Collections.singletonList(bidOrder));
     Date timeStamp = new Date(0);
     orderBook = new OrderBook(timeStamp, asks, bids);
   }
 
   @Test
   public void testUpdateAddOrder() {
-
     Date timeStamp = new Date(0);
     OrderBookUpdate lowerBidUpdate =
-        new OrderBookUpdate(
-            OrderType.BID,
-            BigDecimal.ONE,
-            CurrencyPair.BTC_USD,
-            BigDecimal.TEN.subtract(BigDecimal.ONE),
-            timeStamp,
-            BigDecimal.ONE);
+        new OrderBookUpdate(OrderType.BID, 1d, CurrencyPair.BTC_USD, 10d - (1d), timeStamp, 1d);
     orderBook.update(lowerBidUpdate);
     assertThat(orderBook.getBids().size()).isEqualTo(2);
   }
 
   @Test
   public void testUpdateRemoveOrder() {
-
     Date timeStamp = new Date(0);
     OrderBookUpdate lowerBidUpdate =
-        new OrderBookUpdate(
-            OrderType.BID,
-            BigDecimal.ONE,
-            CurrencyPair.BTC_USD,
-            BigDecimal.TEN,
-            timeStamp,
-            BigDecimal.ZERO);
+        new OrderBookUpdate(OrderType.BID, 1d, CurrencyPair.BTC_USD, 10d, timeStamp, 0d);
     orderBook.update(lowerBidUpdate);
     assertThat(orderBook.getBids().size()).isEqualTo(0);
   }
@@ -77,16 +53,10 @@ public class OrderBookTest {
 
     Date timeStamp = new Date(0);
     OrderBookUpdate lowerBidUpdate =
-        new OrderBookUpdate(
-            OrderType.BID,
-            BigDecimal.ONE,
-            CurrencyPair.BTC_USD,
-            BigDecimal.TEN,
-            timeStamp,
-            BigDecimal.TEN);
+        new OrderBookUpdate(OrderType.BID, 1d, CurrencyPair.BTC_USD, 10d, timeStamp, 10d);
     orderBook.update(lowerBidUpdate);
     assertThat(orderBook.getBids().size()).isEqualTo(1);
-    assertThat(orderBook.getBids().get(0).getOriginalAmount()).isEqualTo(BigDecimal.TEN);
+    assertThat(orderBook.getBids().get(0).getOriginalAmount()).isEqualTo(10d);
   }
 
   @Test
@@ -94,13 +64,7 @@ public class OrderBookTest {
 
     Date timeStamp = new Date(0);
     OrderBookUpdate lowerBidUpdate =
-        new OrderBookUpdate(
-            OrderType.BID,
-            BigDecimal.ONE,
-            CurrencyPair.BTC_USD,
-            BigDecimal.TEN,
-            timeStamp,
-            BigDecimal.TEN);
+        new OrderBookUpdate(OrderType.BID, 1d, CurrencyPair.BTC_USD, 10d, timeStamp, 10d);
     Date oldDate = orderBook.getTimeStamp();
     orderBook.update(lowerBidUpdate);
     assertThat(orderBook.getTimeStamp()).isEqualTo(oldDate);
@@ -111,13 +75,7 @@ public class OrderBookTest {
 
     Date timeStamp = new Date(10);
     OrderBookUpdate lowerBidUpdate =
-        new OrderBookUpdate(
-            OrderType.BID,
-            BigDecimal.ONE,
-            CurrencyPair.BTC_USD,
-            BigDecimal.TEN,
-            timeStamp,
-            BigDecimal.TEN);
+        new OrderBookUpdate(OrderType.BID, 1d, CurrencyPair.BTC_USD, 10d, timeStamp, 10d);
     Date oldDate = orderBook.getTimeStamp();
     orderBook.update(lowerBidUpdate);
     assertThat(orderBook.getTimeStamp()).isAfter(oldDate);

@@ -2,7 +2,6 @@ package org.knowm.xchange.bitflyer.dto.trade.results;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BitflyerQueryChildOrderResult {
@@ -19,12 +18,12 @@ public class BitflyerQueryChildOrderResult {
   @JsonProperty("child_order_type")
   private String childOrderType;
 
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("average_price")
-  private BigDecimal averagePrice;
+  private Double averagePrice;
 
-  private BigDecimal size;
+  private Double size;
 
   @JsonProperty("child_order_state")
   private String childOrderState;
@@ -39,16 +38,16 @@ public class BitflyerQueryChildOrderResult {
   private String childOrderAcceptanceId;
 
   @JsonProperty("outstanding_size")
-  private BigDecimal outstandingSize;
+  private Double outstandingSize;
 
   @JsonProperty("cancel_size")
-  private BigDecimal cancelSize;
+  private Double cancelSize;
 
   @JsonProperty("executed_size")
-  private BigDecimal executedSize;
+  private Double executedSize;
 
   @JsonProperty("total_commission")
-  private BigDecimal totalCommission;
+  private Double totalCommission;
 
   public Long getId() {
     return id;
@@ -90,27 +89,27 @@ public class BitflyerQueryChildOrderResult {
     this.childOrderType = childOrderType;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
-  public BigDecimal getAveragePrice() {
+  public Double getAveragePrice() {
     return averagePrice;
   }
 
-  public void setAveragePrice(BigDecimal averagePrice) {
+  public void setAveragePrice(Double averagePrice) {
     this.averagePrice = averagePrice;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
-  public void setSize(BigDecimal size) {
+  public void setSize(Double size) {
     this.size = size;
   }
 
@@ -146,35 +145,35 @@ public class BitflyerQueryChildOrderResult {
     this.childOrderAcceptanceId = childOrderAcceptanceId;
   }
 
-  public BigDecimal getOutstandingSize() {
+  public Double getOutstandingSize() {
     return outstandingSize;
   }
 
-  public void setOutstandingSize(BigDecimal outstandingSize) {
+  public void setOutstandingSize(Double outstandingSize) {
     this.outstandingSize = outstandingSize;
   }
 
-  public BigDecimal getCancelSize() {
+  public Double getCancelSize() {
     return cancelSize;
   }
 
-  public void setCancelSize(BigDecimal cancelSize) {
+  public void setCancelSize(Double cancelSize) {
     this.cancelSize = cancelSize;
   }
 
-  public BigDecimal getExecutedSize() {
+  public Double getExecutedSize() {
     return executedSize;
   }
 
-  public void setExecutedSize(BigDecimal executedSize) {
+  public void setExecutedSize(Double executedSize) {
     this.executedSize = executedSize;
   }
 
-  public BigDecimal getTotalCommission() {
+  public Double getTotalCommission() {
     return totalCommission;
   }
 
-  public void setTotalCommission(BigDecimal totalCommission) {
+  public void setTotalCommission(Double totalCommission) {
     this.totalCommission = totalCommission;
   }
 

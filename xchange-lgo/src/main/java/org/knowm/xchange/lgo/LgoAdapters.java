@@ -1,6 +1,5 @@
 package org.knowm.xchange.lgo;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -48,12 +47,12 @@ public final class LgoAdapters {
           new CurrencyMetaData(lgoCurrency.getDecimals(), null));
     }
     for (LgoProduct product : products.getProducts()) {
-      BigDecimal minAmount = product.getBase().getLimits().getMin();
-      BigDecimal maxAmount = product.getBase().getLimits().getMax();
+      Double minAmount = product.getBase().getLimits().getMin();
+      Double maxAmount = product.getBase().getLimits().getMax();
       Integer baseScale = currency.get(Currency.getInstance(product.getBase().getId())).getScale();
       Integer priceScale =
           currency.get(Currency.getInstance(product.getQuote().getId())).getScale();
-      BigDecimal increment = product.getQuote().getIncrement();
+      Double increment = product.getQuote().getIncrement();
       currencyPairs.put(
           toPair(product),
           new CurrencyPairMetaData(

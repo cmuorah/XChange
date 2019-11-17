@@ -1,24 +1,23 @@
 package org.knowm.xchange.bx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BxOrderBookItem {
 
-  private final BigDecimal total;
-  private final BigDecimal volume;
-  private final BigDecimal highBid;
+  private final Double total;
+  private final Double volume;
+  private final Double highBid;
 
   public BxOrderBookItem(
-      @JsonProperty("total") BigDecimal total,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("highbid") BigDecimal highBid) {
+      @JsonProperty("total") Double total,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("highbid") Double highBid) {
     this.total = total;
     this.volume = volume;
     this.highBid = highBid;
   }
 
-  public BigDecimal getHighBid() {
+  public Double getHighBid() {
     return highBid;
   }
 

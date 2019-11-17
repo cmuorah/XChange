@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 public class EnigmaQuoteJSONTest {
@@ -21,9 +20,9 @@ public class EnigmaQuoteJSONTest {
     assertThat(quote.getProductId()).isEqualTo(2);
     assertThat(quote.getProductName()).isEqualTo("BTC-USD");
     assertThat(quote.getSide()).isEqualTo("buy");
-    assertThat(quote.getQuantity()).isEqualTo(new BigDecimal("0.002"));
-    assertThat(quote.getNominal()).isEqualTo(new BigDecimal("21.4849"));
-    assertThat(quote.getPrice()).isEqualTo(new BigDecimal("10742.4675"));
+    assertThat(quote.getQuantity()).isEqualTo(new Double("0.002"));
+    assertThat(quote.getNominal()).isEqualTo(new Double("21.4849"));
+    assertThat(quote.getPrice()).isEqualTo(new Double("10742.4675"));
     assertThat(quote.getInfra()).isEqualTo("dev");
   }
 }

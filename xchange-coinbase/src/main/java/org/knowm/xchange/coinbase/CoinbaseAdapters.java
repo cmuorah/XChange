@@ -1,9 +1,7 @@
 package org.knowm.xchange.coinbase;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import org.knowm.xchange.coinbase.dto.account.CoinbaseUser;
@@ -33,15 +31,12 @@ public final class CoinbaseAdapters {
   private CoinbaseAdapters() {}
 
   public static AccountInfo adaptAccountInfo(CoinbaseUser user) {
-
     final String username = user.getEmail();
     final CoinbaseMoney money = user.getBalance();
     final Balance balance =
         new Balance(Currency.getInstance(money.getCurrency()), money.getAmount());
-
-    final AccountInfo accountInfoTemporaryName =
-        new AccountInfo(username, Wallet.Builder.from(Arrays.asList(balance)).build());
-    return accountInfoTemporaryName;
+    return new AccountInfo(
+        username, Wallet.Builder.from(Collections.singletonList(balance)).build());
   }
 
   public static UserTrades adaptTrades(CoinbaseTransfers transfers) {
@@ -58,15 +53,15 @@ public final class CoinbaseAdapters {
 
     final OrderType orderType = adaptOrderType(transfer.getType());
     final CoinbaseMoney btcAmount = transfer.getBtcAmount();
-    final BigDecimal originalAmount = btcAmount.getAmount();
+    final Double originalAmount = btcAmount.getAmount();
     final String tradableIdentifier = btcAmount.getCurrency();
     final CoinbaseMoney subTotal = transfer.getSubtotal();
     final String transactionCurrency = subTotal.getCurrency();
-    final BigDecimal price = subTotal.getAmount().divide(originalAmount, RoundingMode.HALF_EVEN);
+    final Double price = subTotal.getAmount() / originalAmount;
     final Date timestamp = transfer.getCreatedAt();
     final String id = transfer.getTransactionId();
     final String transferId = transfer.getId();
-    final BigDecimal feeAmount = transfer.getCoinbaseFee().getAmount();
+    final Double feeAmount = transfer.getCoinbaseFee().getAmount();
     final String feeCurrency = transfer.getCoinbaseFee().getCurrency();
 
     return new UserTrade(
@@ -108,8 +103,8 @@ public final class CoinbaseAdapters {
 
     // Get the 24 hour high and low spot price if the history is provided.
     if (coinbaseSpotPriceHistory != null) {
-      BigDecimal observedHigh = spotRate.getAmount();
-      BigDecimal observedLow = spotRate.getAmount();
+      Double observedHigh = spotRate.getAmount();
+      Double observedLow = spotRate.getAmount();
       Date twentyFourHoursAgo = null;
       // The spot price history list is sorted in descending order by timestamp when deserialized.
       for (CoinbaseHistoricalSpotPrice historicalSpotPrice :
@@ -122,7 +117,7 @@ public final class CoinbaseAdapters {
           break;
         }
 
-        final BigDecimal spotPriceAmount = historicalSpotPrice.getSpotRate();
+        final Double spotPriceAmount = historicalSpotPrice.getSpotRate();
         if (spotPriceAmount.compareTo(observedLow) < 0) {
           observedLow = spotPriceAmount;
         } else if (spotPriceAmount.compareTo(observedHigh) > 0) {

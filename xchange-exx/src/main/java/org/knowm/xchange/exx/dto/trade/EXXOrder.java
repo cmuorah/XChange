@@ -1,22 +1,21 @@
 package org.knowm.xchange.exx.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class EXXOrder {
 
   @JsonProperty("fees")
-  private BigDecimal fees;
+  private Double fees;
 
   @JsonProperty("total_amount")
-  private BigDecimal totalAmount;
+  private Double totalAmount;
 
   @JsonProperty("trade_amount")
-  private BigDecimal tradeAmount;
+  private Double tradeAmount;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("currency")
   private String currency;
@@ -25,7 +24,7 @@ public class EXXOrder {
   private String id;
 
   @JsonProperty("trade_money")
-  private BigDecimal tradeMoney;
+  private Double tradeMoney;
 
   @JsonProperty("type")
   private String type;
@@ -52,13 +51,13 @@ public class EXXOrder {
    * @param currency
    */
   public EXXOrder(
-      BigDecimal fees,
-      BigDecimal totalAmount,
-      BigDecimal tradeAmount,
-      BigDecimal price,
+      Double fees,
+      Double totalAmount,
+      Double tradeAmount,
+      Double price,
       String currency,
       String id,
-      BigDecimal tradeMoney,
+      Double tradeMoney,
       String type,
       Long tradeDate,
       int status) {
@@ -76,42 +75,42 @@ public class EXXOrder {
   }
 
   @JsonProperty("fees")
-  public BigDecimal getFees() {
+  public Double getFees() {
     return fees;
   }
 
   @JsonProperty("fees")
-  public void setFees(BigDecimal fees) {
+  public void setFees(Double fees) {
     this.fees = fees;
   }
 
   @JsonProperty("total_amount")
-  public BigDecimal getTotalAmount() {
+  public Double getTotalAmount() {
     return totalAmount;
   }
 
   @JsonProperty("total_amount")
-  public void setTotalAmount(BigDecimal totalAmount) {
+  public void setTotalAmount(Double totalAmount) {
     this.totalAmount = totalAmount;
   }
 
   @JsonProperty("trade_amount")
-  public BigDecimal getTradeAmount() {
+  public Double getTradeAmount() {
     return tradeAmount;
   }
 
   @JsonProperty("trade_amount")
-  public void setTradeAmount(BigDecimal tradeAmount) {
+  public void setTradeAmount(Double tradeAmount) {
     this.tradeAmount = tradeAmount;
   }
 
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
   @JsonProperty("price")
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
@@ -136,12 +135,12 @@ public class EXXOrder {
   }
 
   @JsonProperty("trade_money")
-  public BigDecimal getTradeMoney() {
+  public Double getTradeMoney() {
     return tradeMoney;
   }
 
   @JsonProperty("trade_money")
-  public void setTradeMoney(BigDecimal tradeMoney) {
+  public void setTradeMoney(Double tradeMoney) {
     this.tradeMoney = tradeMoney;
   }
 

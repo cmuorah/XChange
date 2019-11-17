@@ -1,7 +1,6 @@
 package org.knowm.xchange.kuna.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 
 /**
  * Ticker of crypto currency. Instances of this type are immutable, constructed with a dedicated
@@ -12,13 +11,13 @@ import java.math.BigDecimal;
 @JsonDeserialize(builder = KunaTicker.Builder.class)
 public class KunaTicker {
 
-  private BigDecimal buy;
-  private BigDecimal sell;
-  private BigDecimal low;
-  private BigDecimal high;
-  private BigDecimal last;
-  private BigDecimal vol;
-  private BigDecimal price;
+  private Double buy;
+  private Double sell;
+  private Double low;
+  private Double high;
+  private Double last;
+  private Double vol;
+  private Double price;
 
   /** Hide default constructor. */
   private KunaTicker() {}
@@ -37,7 +36,7 @@ public class KunaTicker {
    *
    * @return buy price
    */
-  public BigDecimal getBuy() {
+  public Double getBuy() {
     return buy;
   }
 
@@ -46,7 +45,7 @@ public class KunaTicker {
    *
    * @return sale price
    */
-  public BigDecimal getSell() {
+  public Double getSell() {
     return sell;
   }
 
@@ -55,7 +54,7 @@ public class KunaTicker {
    *
    * @return the lowest price
    */
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
@@ -64,7 +63,7 @@ public class KunaTicker {
    *
    * @return the highest price
    */
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
@@ -73,7 +72,7 @@ public class KunaTicker {
    *
    * @return price of the last trade
    */
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
@@ -82,7 +81,7 @@ public class KunaTicker {
    *
    * @return volume of trading
    */
-  public BigDecimal getVol() {
+  public Double getVol() {
     return vol;
   }
 
@@ -91,7 +90,7 @@ public class KunaTicker {
    *
    * @return total price of trading
    */
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -121,7 +120,7 @@ public class KunaTicker {
 
     public Builder withBuy(double buy) {
       if (buy >= 0) {
-        target.buy = BigDecimal.valueOf(buy);
+        target.buy = Double.valueOf(buy);
       } else {
         throw new IllegalArgumentException("Ticker 'buy' cannot be negative");
       }
@@ -130,7 +129,7 @@ public class KunaTicker {
 
     public Builder withSell(double sell) {
       if (sell >= 0) {
-        target.sell = BigDecimal.valueOf(sell);
+        target.sell = Double.valueOf(sell);
       } else {
         throw new IllegalArgumentException("Ticker 'sell' cannot be negative");
       }
@@ -139,7 +138,7 @@ public class KunaTicker {
 
     public Builder withLow(double low) {
       if (low >= 0) {
-        target.low = BigDecimal.valueOf(low);
+        target.low = Double.valueOf(low);
       } else {
         throw new IllegalArgumentException("Ticker 'low' cannot be negative");
       }
@@ -148,7 +147,7 @@ public class KunaTicker {
 
     public Builder withHigh(double high) {
       if (high >= 0) {
-        target.high = BigDecimal.valueOf(high);
+        target.high = Double.valueOf(high);
       } else {
         throw new IllegalArgumentException("Ticker 'high' cannot be negative");
       }
@@ -157,7 +156,7 @@ public class KunaTicker {
 
     public Builder withLast(double last) {
       if (last >= 0) {
-        target.last = BigDecimal.valueOf(last);
+        target.last = Double.valueOf(last);
       } else {
         throw new IllegalArgumentException("Ticker 'last' cannot be negative");
       }
@@ -166,7 +165,7 @@ public class KunaTicker {
 
     public Builder withVol(double volume) {
       if (volume >= 0) {
-        target.vol = BigDecimal.valueOf(volume);
+        target.vol = Double.valueOf(volume);
       } else {
         throw new IllegalArgumentException("Ticker 'volume' cannot be negative");
       }
@@ -175,7 +174,7 @@ public class KunaTicker {
 
     public Builder withPrice(double price) {
       if (price >= 0) {
-        target.price = BigDecimal.valueOf(price);
+        target.price = Double.valueOf(price);
       } else {
         throw new IllegalArgumentException("Ticker 'price' cannot be negative");
       }

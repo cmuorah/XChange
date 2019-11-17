@@ -1,13 +1,12 @@
 package org.knowm.xchange.anx.v2.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Data object representing a buy or sell order from ANX */
 public final class ANXOrder {
 
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final long priceInt;
   private final long amountInt;
   private final long stamp;
@@ -22,8 +21,8 @@ public final class ANXOrder {
    * @param stamp
    */
   public ANXOrder(
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("price_int") long priceInt,
       @JsonProperty("amount_int") long amountInt,
       @JsonProperty("stamp") long stamp) {
@@ -35,12 +34,12 @@ public final class ANXOrder {
     this.stamp = stamp;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

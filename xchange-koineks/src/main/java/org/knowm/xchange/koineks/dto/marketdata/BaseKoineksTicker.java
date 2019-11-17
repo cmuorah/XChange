@@ -1,6 +1,5 @@
 package org.knowm.xchange.koineks.dto.marketdata;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.Currency;
 
 /** Created by semihunaldi on 05/12/2017 */
@@ -12,21 +11,21 @@ public abstract class BaseKoineksTicker {
 
   private final Currency currency;
 
-  private final BigDecimal current;
+  private final Double current;
 
   private final String changeAmount;
 
-  private final BigDecimal changePercentage;
+  private final Double changePercentage;
 
-  private final BigDecimal high;
+  private final Double high;
 
-  private final BigDecimal low;
+  private final Double low;
 
-  private final BigDecimal volume;
+  private final Double volume;
 
-  private final BigDecimal ask;
+  private final Double ask;
 
-  private final BigDecimal bid;
+  private final Double bid;
 
   private final String timestamp;
 
@@ -34,14 +33,14 @@ public abstract class BaseKoineksTicker {
       Currency shortCode,
       String name,
       Currency currency,
-      BigDecimal current,
+      Double current,
       String changeAmount,
-      BigDecimal changePercentage,
-      BigDecimal high,
-      BigDecimal low,
-      BigDecimal volume,
-      BigDecimal ask,
-      BigDecimal bid,
+      Double changePercentage,
+      Double high,
+      Double low,
+      Double volume,
+      Double ask,
+      Double bid,
       String timestamp) {
     this.shortCode = shortCode;
     this.name = name;
@@ -69,7 +68,7 @@ public abstract class BaseKoineksTicker {
     return currency;
   }
 
-  public BigDecimal getCurrent() {
+  public Double getCurrent() {
     return current;
   }
 
@@ -77,27 +76,27 @@ public abstract class BaseKoineksTicker {
     return changeAmount;
   }
 
-  public BigDecimal getChangePercentage() {
+  public Double getChangePercentage() {
     return changePercentage;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 

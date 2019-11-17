@@ -1,13 +1,11 @@
 package org.knowm.xchange.anx.v2.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import org.knowm.xchange.Exchange;
-import org.knowm.xchange.anx.ANXUtils;
 import org.knowm.xchange.anx.v2.ANXAdapters;
 import org.knowm.xchange.anx.v2.dto.account.ANXWalletHistoryEntry;
 import org.knowm.xchange.anx.v2.dto.account.ANXWithdrawalResponse;
@@ -47,13 +45,7 @@ public class ANXAccountService extends ANXAccountServiceRaw implements AccountSe
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
-
-    if (amount.scale() > ANXUtils.VOLUME_AND_AMOUNT_MAX_SCALE) {
-      throw new IllegalArgumentException(
-          "Amount scale exceed " + ANXUtils.VOLUME_AND_AMOUNT_MAX_SCALE);
-    }
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
 
     if (address == null) {
       throw new IllegalArgumentException("Address cannot be null");
@@ -63,13 +55,8 @@ public class ANXAccountService extends ANXAccountServiceRaw implements AccountSe
     return handleWithdrawalResponse(wrapper);
   }
 
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address, String tag)
+  public String withdrawFunds(Currency currency, Double amount, String address, String tag)
       throws IOException {
-
-    if (amount.scale() > ANXUtils.VOLUME_AND_AMOUNT_MAX_SCALE) {
-      throw new IllegalArgumentException(
-          "Amount scale exceed " + ANXUtils.VOLUME_AND_AMOUNT_MAX_SCALE);
-    }
 
     if (address == null) {
       throw new IllegalArgumentException("Address cannot be null");

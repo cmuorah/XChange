@@ -1,37 +1,36 @@
 package org.knowm.xchange.dragonex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class Ticker {
 
-  public final BigDecimal closePrice;
-  public final BigDecimal currentVolume;
-  public final BigDecimal maxPrice;
-  public final BigDecimal minPrice;
-  public final BigDecimal openPrice;
-  public final BigDecimal priceBase;
-  public final BigDecimal priceChange;
-  public final BigDecimal priceChangeRate;
+  public final Double closePrice;
+  public final Double currentVolume;
+  public final Double maxPrice;
+  public final Double minPrice;
+  public final Double openPrice;
+  public final Double priceBase;
+  public final Double priceChange;
+  public final Double priceChangeRate;
   public final long timestamp;
-  public final BigDecimal totalAmount;
-  public final BigDecimal totalVolume;
-  public final BigDecimal usdtAmount;
+  public final Double totalAmount;
+  public final Double totalVolume;
+  public final Double usdtAmount;
   public final long symbolId;
 
   public Ticker(
-      @JsonProperty("close_price") BigDecimal closePrice,
-      @JsonProperty("current_volume") BigDecimal currentVolume,
-      @JsonProperty("max_price") BigDecimal maxPrice,
-      @JsonProperty("min_price") BigDecimal minPrice,
-      @JsonProperty("open_price") BigDecimal openPrice,
-      @JsonProperty("price_base") BigDecimal priceBase,
-      @JsonProperty("price_change") BigDecimal priceChange,
-      @JsonProperty("price_change_rate") BigDecimal priceChangeRate,
+      @JsonProperty("close_price") Double closePrice,
+      @JsonProperty("current_volume") Double currentVolume,
+      @JsonProperty("max_price") Double maxPrice,
+      @JsonProperty("min_price") Double minPrice,
+      @JsonProperty("open_price") Double openPrice,
+      @JsonProperty("price_base") Double priceBase,
+      @JsonProperty("price_change") Double priceChange,
+      @JsonProperty("price_change_rate") Double priceChangeRate,
       @JsonProperty("timestamp") long timestamp,
-      @JsonProperty("total_amount") BigDecimal totalAmount,
-      @JsonProperty("total_volume") BigDecimal totalVolume,
-      @JsonProperty("usdt_amount") BigDecimal usdtAmount,
+      @JsonProperty("total_amount") Double totalAmount,
+      @JsonProperty("total_volume") Double totalVolume,
+      @JsonProperty("usdt_amount") Double usdtAmount,
       @JsonProperty("symbol_id") long symbolId) {
     this.closePrice = closePrice;
     this.currentVolume = currentVolume;

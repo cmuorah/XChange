@@ -1,19 +1,18 @@
 package org.knowm.xchange.wex.v3.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Data object representing Ticker from Wex */
 public final class WexTicker {
 
-  private final BigDecimal last;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal avg;
-  private final BigDecimal buy;
-  private final BigDecimal sell;
-  private final BigDecimal vol;
-  private final BigDecimal volCur;
+  private final Double last;
+  private final Double high;
+  private final Double low;
+  private final Double avg;
+  private final Double buy;
+  private final Double sell;
+  private final Double vol;
+  private final Double volCur;
   private final long updated;
 
   /**
@@ -30,15 +29,15 @@ public final class WexTicker {
    * @param sell
    */
   public WexTicker(
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("vol") BigDecimal vol,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("avg") BigDecimal avg,
-      @JsonProperty("buy") BigDecimal buy,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("vol") Double vol,
+      @JsonProperty("last") Double last,
+      @JsonProperty("avg") Double avg,
+      @JsonProperty("buy") Double buy,
       @JsonProperty("updated") long updated,
-      @JsonProperty("vol_cur") BigDecimal volCur,
-      @JsonProperty("sell") BigDecimal sell) {
+      @JsonProperty("vol_cur") Double volCur,
+      @JsonProperty("sell") Double sell) {
 
     this.high = high;
     this.low = low;
@@ -51,32 +50,32 @@ public final class WexTicker {
     this.volCur = volCur;
   }
 
-  public BigDecimal getAvg() {
+  public Double getAvg() {
 
     return avg;
   }
 
-  public BigDecimal getBuy() {
+  public Double getBuy() {
 
     return buy;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
 
-  public BigDecimal getSell() {
+  public Double getSell() {
 
     return sell;
   }
@@ -86,12 +85,12 @@ public final class WexTicker {
     return updated;
   }
 
-  public BigDecimal getVol() {
+  public Double getVol() {
 
     return vol;
   }
 
-  public BigDecimal getVolCur() {
+  public Double getVolCur() {
 
     return volCur;
   }

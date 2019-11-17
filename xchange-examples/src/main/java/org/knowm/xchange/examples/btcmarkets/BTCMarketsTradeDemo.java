@@ -1,6 +1,5 @@
 package org.knowm.xchange.examples.btcmarkets;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.btcmarkets.service.BTCMarketsTradeService;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -26,11 +25,11 @@ public class BTCMarketsTradeDemo {
     LimitOrder sellOrder =
         new LimitOrder(
             (OrderType.ASK),
-            new BigDecimal("0.003"),
+            new Double("0.003"),
             CurrencyPair.BTC_AUD,
             null,
             null,
-            new BigDecimal("2000"));
+            new Double("2000"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(sellOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 
@@ -48,7 +47,7 @@ public class BTCMarketsTradeDemo {
 
     // An example of a sell market order
     MarketOrder sellMarketOrder =
-        new MarketOrder((OrderType.ASK), new BigDecimal("0.003"), CurrencyPair.BTC_AUD, null, null);
+        new MarketOrder((OrderType.ASK), new Double("0.003"), CurrencyPair.BTC_AUD, null, null);
     String marketSellOrderId = tradeService.placeMarketOrder(sellMarketOrder);
     System.out.println("Market Order return value: " + marketSellOrderId);
 
@@ -56,17 +55,17 @@ public class BTCMarketsTradeDemo {
     LimitOrder buyOrder =
         new LimitOrder(
             (OrderType.BID),
-            new BigDecimal("0.002"),
+            new Double("0.002"),
             CurrencyPair.BTC_AUD,
             null,
             null,
-            new BigDecimal("240"));
+            new Double("240"));
     String buyLimiOrderId = tradeService.placeLimitOrder(buyOrder);
     System.out.println("Limit Order return value: " + buyLimiOrderId);
 
     // An example of a buy market order
     MarketOrder buyMarketOrder =
-        new MarketOrder((OrderType.BID), new BigDecimal("0.004"), CurrencyPair.BTC_AUD, null, null);
+        new MarketOrder((OrderType.BID), new Double("0.004"), CurrencyPair.BTC_AUD, null, null);
     String buyMarketOrderId = tradeService.placeMarketOrder(buyMarketOrder);
     System.out.println("Market Order return value: " + buyMarketOrderId);
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitmex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.bitmex.AbstractHttpResponseAware;
 
 public class BitmexPosition extends AbstractHttpResponseAware {
@@ -21,262 +20,262 @@ public class BitmexPosition extends AbstractHttpResponseAware {
   private String quoteCurrency;
 
   @JsonProperty("commission")
-  private BigDecimal commission;
+  private Double commission;
 
   @JsonProperty("initMarginReq")
-  private BigDecimal initMarginReq;
+  private Double initMarginReq;
 
   @JsonProperty("maintMarginReq")
-  private BigDecimal maintMarginReq;
+  private Double maintMarginReq;
 
   @JsonProperty("riskLimit")
-  private BigDecimal riskLimit;
+  private Double riskLimit;
 
   @JsonProperty("leverage")
-  private BigDecimal leverage;
+  private Double leverage;
 
   @JsonProperty("crossMargin")
   private Boolean crossMargin;
 
   @JsonProperty("deleveragePercentile")
-  private BigDecimal deleveragePercentile;
+  private Double deleveragePercentile;
 
   @JsonProperty("rebalancedPnl")
-  private BigDecimal rebalancedPnl;
+  private Double rebalancedPnl;
 
   @JsonProperty("prevRealisedPnl")
-  private BigDecimal prevRealisedPnl;
+  private Double prevRealisedPnl;
 
   @JsonProperty("prevUnrealisedPnl")
-  private BigDecimal prevUnrealisedPnl;
+  private Double prevUnrealisedPnl;
 
   @JsonProperty("prevClosePrice")
-  private BigDecimal prevClosePrice;
+  private Double prevClosePrice;
 
   @JsonProperty("openingTimestamp")
   private String openingTimestamp;
 
   @JsonProperty("openingQty")
-  private BigDecimal openingQty;
+  private Double openingQty;
 
   @JsonProperty("openingCost")
-  private BigDecimal openingCost;
+  private Double openingCost;
 
   @JsonProperty("openingComm")
-  private BigDecimal openingComm;
+  private Double openingComm;
 
   @JsonProperty("openOrderBuyQty")
-  private BigDecimal openOrderBuyQty;
+  private Double openOrderBuyQty;
 
   @JsonProperty("openOrderBuyCost")
-  private BigDecimal openOrderBuyCost;
+  private Double openOrderBuyCost;
 
   @JsonProperty("openOrderBuyPremium")
-  private BigDecimal openOrderBuyPremium;
+  private Double openOrderBuyPremium;
 
   @JsonProperty("openOrderSellQty")
-  private BigDecimal openOrderSellQty;
+  private Double openOrderSellQty;
 
   @JsonProperty("openOrderSellCost")
-  private BigDecimal openOrderSellCost;
+  private Double openOrderSellCost;
 
   @JsonProperty("openOrderSellPremium")
-  private BigDecimal openOrderSellPremium;
+  private Double openOrderSellPremium;
 
   @JsonProperty("execBuyQty")
-  private BigDecimal execBuyQty;
+  private Double execBuyQty;
 
   @JsonProperty("execBuyCost")
-  private BigDecimal execBuyCost;
+  private Double execBuyCost;
 
   @JsonProperty("execSellQty")
-  private BigDecimal execSellQty;
+  private Double execSellQty;
 
   @JsonProperty("execSellCost")
-  private BigDecimal execSellCost;
+  private Double execSellCost;
 
   @JsonProperty("execQty")
-  private BigDecimal execQty;
+  private Double execQty;
 
   @JsonProperty("execCost")
-  private BigDecimal execCost;
+  private Double execCost;
 
   @JsonProperty("execComm")
-  private BigDecimal execComm;
+  private Double execComm;
 
   @JsonProperty("currentTimestamp")
   private String currentTimestamp;
 
   @JsonProperty("currentQty")
-  private BigDecimal currentQty;
+  private Double currentQty;
 
   @JsonProperty("currentCost")
-  private BigDecimal currentCost;
+  private Double currentCost;
 
   @JsonProperty("currentComm")
-  private BigDecimal currentComm;
+  private Double currentComm;
 
   @JsonProperty("realisedCost")
-  private BigDecimal realisedCost;
+  private Double realisedCost;
 
   @JsonProperty("unrealisedCost")
-  private BigDecimal unrealisedCost;
+  private Double unrealisedCost;
 
   @JsonProperty("grossOpenCost")
-  private BigDecimal grossOpenCost;
+  private Double grossOpenCost;
 
   @JsonProperty("grossOpenPremium")
-  private BigDecimal grossOpenPremium;
+  private Double grossOpenPremium;
 
   @JsonProperty("grossExecCost")
-  private BigDecimal grossExecCost;
+  private Double grossExecCost;
 
   @JsonProperty("isOpen")
   private Boolean isOpen;
 
   @JsonProperty("markPrice")
-  private BigDecimal markPrice;
+  private Double markPrice;
 
   @JsonProperty("markValue")
-  private BigDecimal markValue;
+  private Double markValue;
 
   @JsonProperty("riskValue")
-  private BigDecimal riskValue;
+  private Double riskValue;
 
   @JsonProperty("homeNotional")
-  private BigDecimal homeNotional;
+  private Double homeNotional;
 
   @JsonProperty("foreignNotional")
-  private BigDecimal foreignNotional;
+  private Double foreignNotional;
 
   @JsonProperty("posState")
   private String posState;
 
   @JsonProperty("posCost")
-  private BigDecimal posCost;
+  private Double posCost;
 
   @JsonProperty("posCost2")
-  private BigDecimal posCost2;
+  private Double posCost2;
 
   @JsonProperty("posCross")
-  private BigDecimal posCross;
+  private Double posCross;
 
   @JsonProperty("posInit")
-  private BigDecimal posInit;
+  private Double posInit;
 
   @JsonProperty("posComm")
-  private BigDecimal posComm;
+  private Double posComm;
 
   @JsonProperty("posLoss")
-  private BigDecimal posLoss;
+  private Double posLoss;
 
   @JsonProperty("posMargin")
-  private BigDecimal posMargin;
+  private Double posMargin;
 
   @JsonProperty("posMaint")
-  private BigDecimal posMaint;
+  private Double posMaint;
 
   @JsonProperty("posAllowance")
-  private BigDecimal posAllowance;
+  private Double posAllowance;
 
   @JsonProperty("taxableMargin")
-  private BigDecimal taxableMargin;
+  private Double taxableMargin;
 
   @JsonProperty("initMargin")
-  private BigDecimal initMargin;
+  private Double initMargin;
 
   @JsonProperty("maintMargin")
-  private BigDecimal maintMargin;
+  private Double maintMargin;
 
   @JsonProperty("sessionMargin")
-  private BigDecimal sessionMargin;
+  private Double sessionMargin;
 
   @JsonProperty("targetExcessMargin")
-  private BigDecimal targetExcessMargin;
+  private Double targetExcessMargin;
 
   @JsonProperty("varMargin")
-  private BigDecimal varMargin;
+  private Double varMargin;
 
   @JsonProperty("realisedGrossPnl")
-  private BigDecimal realisedGrossPnl;
+  private Double realisedGrossPnl;
 
   @JsonProperty("realisedTax")
-  private BigDecimal realisedTax;
+  private Double realisedTax;
 
   @JsonProperty("realisedPnl")
-  private BigDecimal realisedPnl;
+  private Double realisedPnl;
 
   @JsonProperty("unrealisedGrossPnl")
-  private BigDecimal unrealisedGrossPnl;
+  private Double unrealisedGrossPnl;
 
   @JsonProperty("longBankrupt")
-  private BigDecimal longBankrupt;
+  private Double longBankrupt;
 
   @JsonProperty("shortBankrupt")
-  private BigDecimal shortBankrupt;
+  private Double shortBankrupt;
 
   @JsonProperty("taxBase")
-  private BigDecimal taxBase;
+  private Double taxBase;
 
   @JsonProperty("indicativeTaxRate")
-  private BigDecimal indicativeTaxRate;
+  private Double indicativeTaxRate;
 
   @JsonProperty("indicativeTax")
-  private BigDecimal indicativeTax;
+  private Double indicativeTax;
 
   @JsonProperty("unrealisedTax")
-  private BigDecimal unrealisedTax;
+  private Double unrealisedTax;
 
   @JsonProperty("unrealisedPnl")
-  private BigDecimal unrealisedPnl;
+  private Double unrealisedPnl;
 
   @JsonProperty("unrealisedPnlPcnt")
-  private BigDecimal unrealisedPnlPcnt;
+  private Double unrealisedPnlPcnt;
 
   @JsonProperty("unrealisedRoePcnt")
-  private BigDecimal unrealisedRoePcnt;
+  private Double unrealisedRoePcnt;
 
   @JsonProperty("simpleQty")
-  private BigDecimal simpleQty;
+  private Double simpleQty;
 
   @JsonProperty("simpleCost")
-  private BigDecimal simpleCost;
+  private Double simpleCost;
 
   @JsonProperty("simpleValue")
-  private BigDecimal simpleValue;
+  private Double simpleValue;
 
   @JsonProperty("simplePnl")
-  private BigDecimal simplePnl;
+  private Double simplePnl;
 
   @JsonProperty("simplePnlPcnt")
-  private BigDecimal simplePnlPcnt;
+  private Double simplePnlPcnt;
 
   @JsonProperty("avgCostPrice")
-  private BigDecimal avgCostPrice;
+  private Double avgCostPrice;
 
   @JsonProperty("avgEntryPrice")
-  private BigDecimal avgEntryPrice;
+  private Double avgEntryPrice;
 
   @JsonProperty("breakEvenPrice")
-  private BigDecimal breakEvenPrice;
+  private Double breakEvenPrice;
 
   @JsonProperty("marginCallPrice")
-  private BigDecimal marginCallPrice;
+  private Double marginCallPrice;
 
   @JsonProperty("liquidationPrice")
-  private BigDecimal liquidationPrice;
+  private Double liquidationPrice;
 
   @JsonProperty("bankruptPrice")
-  private BigDecimal bankruptPrice;
+  private Double bankruptPrice;
 
   @JsonProperty("timestamp")
   private String timestamp;
 
   @JsonProperty("lastPrice")
-  private BigDecimal lastPrice;
+  private Double lastPrice;
 
   @JsonProperty("lastValue")
-  private BigDecimal lastValue;
+  private Double lastValue;
 
   public Integer getAccount() {
     return account;
@@ -298,23 +297,23 @@ public class BitmexPosition extends AbstractHttpResponseAware {
     return quoteCurrency;
   }
 
-  public BigDecimal getCommission() {
+  public Double getCommission() {
     return commission;
   }
 
-  public BigDecimal getInitMarginReq() {
+  public Double getInitMarginReq() {
     return initMarginReq;
   }
 
-  public BigDecimal getMaintMarginReq() {
+  public Double getMaintMarginReq() {
     return maintMarginReq;
   }
 
-  public BigDecimal getRiskLimit() {
+  public Double getRiskLimit() {
     return riskLimit;
   }
 
-  public BigDecimal getLeverage() {
+  public Double getLeverage() {
     return leverage;
   }
 
@@ -322,23 +321,23 @@ public class BitmexPosition extends AbstractHttpResponseAware {
     return crossMargin;
   }
 
-  public BigDecimal getDeleveragePercentile() {
+  public Double getDeleveragePercentile() {
     return deleveragePercentile;
   }
 
-  public BigDecimal getRebalancedPnl() {
+  public Double getRebalancedPnl() {
     return rebalancedPnl;
   }
 
-  public BigDecimal getPrevRealisedPnl() {
+  public Double getPrevRealisedPnl() {
     return prevRealisedPnl;
   }
 
-  public BigDecimal getPrevUnrealisedPnl() {
+  public Double getPrevUnrealisedPnl() {
     return prevUnrealisedPnl;
   }
 
-  public BigDecimal getPrevClosePrice() {
+  public Double getPrevClosePrice() {
     return prevClosePrice;
   }
 
@@ -346,67 +345,67 @@ public class BitmexPosition extends AbstractHttpResponseAware {
     return openingTimestamp;
   }
 
-  public BigDecimal getOpeningQty() {
+  public Double getOpeningQty() {
     return openingQty;
   }
 
-  public BigDecimal getOpeningCost() {
+  public Double getOpeningCost() {
     return openingCost;
   }
 
-  public BigDecimal getOpeningComm() {
+  public Double getOpeningComm() {
     return openingComm;
   }
 
-  public BigDecimal getOpenOrderBuyQty() {
+  public Double getOpenOrderBuyQty() {
     return openOrderBuyQty;
   }
 
-  public BigDecimal getOpenOrderBuyCost() {
+  public Double getOpenOrderBuyCost() {
     return openOrderBuyCost;
   }
 
-  public BigDecimal getOpenOrderBuyPremium() {
+  public Double getOpenOrderBuyPremium() {
     return openOrderBuyPremium;
   }
 
-  public BigDecimal getOpenOrderSellQty() {
+  public Double getOpenOrderSellQty() {
     return openOrderSellQty;
   }
 
-  public BigDecimal getOpenOrderSellCost() {
+  public Double getOpenOrderSellCost() {
     return openOrderSellCost;
   }
 
-  public BigDecimal getOpenOrderSellPremium() {
+  public Double getOpenOrderSellPremium() {
     return openOrderSellPremium;
   }
 
-  public BigDecimal getExecBuyQty() {
+  public Double getExecBuyQty() {
     return execBuyQty;
   }
 
-  public BigDecimal getExecBuyCost() {
+  public Double getExecBuyCost() {
     return execBuyCost;
   }
 
-  public BigDecimal getExecSellQty() {
+  public Double getExecSellQty() {
     return execSellQty;
   }
 
-  public BigDecimal getExecSellCost() {
+  public Double getExecSellCost() {
     return execSellCost;
   }
 
-  public BigDecimal getExecQty() {
+  public Double getExecQty() {
     return execQty;
   }
 
-  public BigDecimal getExecCost() {
+  public Double getExecCost() {
     return execCost;
   }
 
-  public BigDecimal getExecComm() {
+  public Double getExecComm() {
     return execComm;
   }
 
@@ -414,35 +413,35 @@ public class BitmexPosition extends AbstractHttpResponseAware {
     return currentTimestamp;
   }
 
-  public BigDecimal getCurrentQty() {
+  public Double getCurrentQty() {
     return currentQty;
   }
 
-  public BigDecimal getCurrentCost() {
+  public Double getCurrentCost() {
     return currentCost;
   }
 
-  public BigDecimal getCurrentComm() {
+  public Double getCurrentComm() {
     return currentComm;
   }
 
-  public BigDecimal getRealisedCost() {
+  public Double getRealisedCost() {
     return realisedCost;
   }
 
-  public BigDecimal getUnrealisedCost() {
+  public Double getUnrealisedCost() {
     return unrealisedCost;
   }
 
-  public BigDecimal getGrossOpenCost() {
+  public Double getGrossOpenCost() {
     return grossOpenCost;
   }
 
-  public BigDecimal getGrossOpenPremium() {
+  public Double getGrossOpenPremium() {
     return grossOpenPremium;
   }
 
-  public BigDecimal getGrossExecCost() {
+  public Double getGrossExecCost() {
     return grossExecCost;
   }
 
@@ -450,23 +449,23 @@ public class BitmexPosition extends AbstractHttpResponseAware {
     return isOpen;
   }
 
-  public BigDecimal getMarkPrice() {
+  public Double getMarkPrice() {
     return markPrice;
   }
 
-  public BigDecimal getMarkValue() {
+  public Double getMarkValue() {
     return markValue;
   }
 
-  public BigDecimal getRiskValue() {
+  public Double getRiskValue() {
     return riskValue;
   }
 
-  public BigDecimal getHomeNotional() {
+  public Double getHomeNotional() {
     return homeNotional;
   }
 
-  public BigDecimal getForeignNotional() {
+  public Double getForeignNotional() {
     return foreignNotional;
   }
 
@@ -474,159 +473,159 @@ public class BitmexPosition extends AbstractHttpResponseAware {
     return posState;
   }
 
-  public BigDecimal getPosCost() {
+  public Double getPosCost() {
     return posCost;
   }
 
-  public BigDecimal getPosCost2() {
+  public Double getPosCost2() {
     return posCost2;
   }
 
-  public BigDecimal getPosCross() {
+  public Double getPosCross() {
     return posCross;
   }
 
-  public BigDecimal getPosInit() {
+  public Double getPosInit() {
     return posInit;
   }
 
-  public BigDecimal getPosComm() {
+  public Double getPosComm() {
     return posComm;
   }
 
-  public BigDecimal getPosLoss() {
+  public Double getPosLoss() {
     return posLoss;
   }
 
-  public BigDecimal getPosMargin() {
+  public Double getPosMargin() {
     return posMargin;
   }
 
-  public BigDecimal getPosMaint() {
+  public Double getPosMaint() {
     return posMaint;
   }
 
-  public BigDecimal getPosAllowance() {
+  public Double getPosAllowance() {
     return posAllowance;
   }
 
-  public BigDecimal getTaxableMargin() {
+  public Double getTaxableMargin() {
     return taxableMargin;
   }
 
-  public BigDecimal getInitMargin() {
+  public Double getInitMargin() {
     return initMargin;
   }
 
-  public BigDecimal getMaintMargin() {
+  public Double getMaintMargin() {
     return maintMargin;
   }
 
-  public BigDecimal getSessionMargin() {
+  public Double getSessionMargin() {
     return sessionMargin;
   }
 
-  public BigDecimal getTargetExcessMargin() {
+  public Double getTargetExcessMargin() {
     return targetExcessMargin;
   }
 
-  public BigDecimal getVarMargin() {
+  public Double getVarMargin() {
     return varMargin;
   }
 
-  public BigDecimal getRealisedGrossPnl() {
+  public Double getRealisedGrossPnl() {
     return realisedGrossPnl;
   }
 
-  public BigDecimal getRealisedTax() {
+  public Double getRealisedTax() {
     return realisedTax;
   }
 
-  public BigDecimal getRealisedPnl() {
+  public Double getRealisedPnl() {
     return realisedPnl;
   }
 
-  public BigDecimal getUnrealisedGrossPnl() {
+  public Double getUnrealisedGrossPnl() {
     return unrealisedGrossPnl;
   }
 
-  public BigDecimal getLongBankrupt() {
+  public Double getLongBankrupt() {
     return longBankrupt;
   }
 
-  public BigDecimal getShortBankrupt() {
+  public Double getShortBankrupt() {
     return shortBankrupt;
   }
 
-  public BigDecimal getTaxBase() {
+  public Double getTaxBase() {
     return taxBase;
   }
 
-  public BigDecimal getIndicativeTaxRate() {
+  public Double getIndicativeTaxRate() {
     return indicativeTaxRate;
   }
 
-  public BigDecimal getIndicativeTax() {
+  public Double getIndicativeTax() {
     return indicativeTax;
   }
 
-  public BigDecimal getUnrealisedTax() {
+  public Double getUnrealisedTax() {
     return unrealisedTax;
   }
 
-  public BigDecimal getUnrealisedPnl() {
+  public Double getUnrealisedPnl() {
     return unrealisedPnl;
   }
 
-  public BigDecimal getUnrealisedPnlPcnt() {
+  public Double getUnrealisedPnlPcnt() {
     return unrealisedPnlPcnt;
   }
 
-  public BigDecimal getUnrealisedRoePcnt() {
+  public Double getUnrealisedRoePcnt() {
     return unrealisedRoePcnt;
   }
 
-  public BigDecimal getSimpleQty() {
+  public Double getSimpleQty() {
     return simpleQty;
   }
 
-  public BigDecimal getSimpleCost() {
+  public Double getSimpleCost() {
     return simpleCost;
   }
 
-  public BigDecimal getSimpleValue() {
+  public Double getSimpleValue() {
     return simpleValue;
   }
 
-  public BigDecimal getSimplePnl() {
+  public Double getSimplePnl() {
     return simplePnl;
   }
 
-  public BigDecimal getSimplePnlPcnt() {
+  public Double getSimplePnlPcnt() {
     return simplePnlPcnt;
   }
 
-  public BigDecimal getAvgCostPrice() {
+  public Double getAvgCostPrice() {
     return avgCostPrice;
   }
 
-  public BigDecimal getAvgEntryPrice() {
+  public Double getAvgEntryPrice() {
     return avgEntryPrice;
   }
 
-  public BigDecimal getBreakEvenPrice() {
+  public Double getBreakEvenPrice() {
     return breakEvenPrice;
   }
 
-  public BigDecimal getMarginCallPrice() {
+  public Double getMarginCallPrice() {
     return marginCallPrice;
   }
 
-  public BigDecimal getLiquidationPrice() {
+  public Double getLiquidationPrice() {
     return liquidationPrice;
   }
 
-  public BigDecimal getBankruptPrice() {
+  public Double getBankruptPrice() {
     return bankruptPrice;
   }
 
@@ -634,11 +633,11 @@ public class BitmexPosition extends AbstractHttpResponseAware {
     return timestamp;
   }
 
-  public BigDecimal getLastPrice() {
+  public Double getLastPrice() {
     return lastPrice;
   }
 
-  public BigDecimal getLastValue() {
+  public Double getLastValue() {
     return lastValue;
   }
 

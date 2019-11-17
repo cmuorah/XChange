@@ -1,7 +1,6 @@
 package org.knowm.xchange.kraken.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class KrakenTrade {
@@ -11,20 +10,20 @@ public class KrakenTrade {
   private final double unixTimestamp;
   private final KrakenType type;
   private final KrakenOrderType orderType;
-  private final BigDecimal price;
-  private final BigDecimal cost;
-  private final BigDecimal fee;
-  private final BigDecimal volume;
-  private final BigDecimal margin;
+  private final Double price;
+  private final Double cost;
+  private final Double fee;
+  private final Double volume;
+  private final Double margin;
   private final String miscellaneous;
   private final String closing;
   private final String positionStatus;
-  private final BigDecimal averageClosePrice;
-  private final BigDecimal closeCost;
-  private final BigDecimal closeFee;
-  private final BigDecimal closeVolume;
-  private final BigDecimal closeMargin;
-  private final BigDecimal netDifference;
+  private final Double averageClosePrice;
+  private final Double closeCost;
+  private final Double closeFee;
+  private final Double closeVolume;
+  private final Double closeMargin;
+  private final Double netDifference;
   private final List<String> tradeIds;
 
   /**
@@ -57,20 +56,20 @@ public class KrakenTrade {
       @JsonProperty("time") double unixTimestamp,
       @JsonProperty("type") KrakenType type,
       @JsonProperty("ordertype") KrakenOrderType orderType,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("cost") BigDecimal cost,
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("vol") BigDecimal volume,
-      @JsonProperty("margin") BigDecimal margin,
+      @JsonProperty("price") Double price,
+      @JsonProperty("cost") Double cost,
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("vol") Double volume,
+      @JsonProperty("margin") Double margin,
       @JsonProperty("misc") String miscellaneous,
       @JsonProperty("closing") String closing,
       @JsonProperty("posstatus") String positionStatus,
-      @JsonProperty("cprice") BigDecimal averageClosePrice,
-      @JsonProperty("ccost") BigDecimal closeCost,
-      @JsonProperty("cfee") BigDecimal closeFee,
-      @JsonProperty("cvol") BigDecimal closeVolume,
-      @JsonProperty("cmargin") BigDecimal closeMargin,
-      @JsonProperty("net") BigDecimal netDifference,
+      @JsonProperty("cprice") Double averageClosePrice,
+      @JsonProperty("ccost") Double closeCost,
+      @JsonProperty("cfee") Double closeFee,
+      @JsonProperty("cvol") Double closeVolume,
+      @JsonProperty("cmargin") Double closeMargin,
+      @JsonProperty("net") Double netDifference,
       @JsonProperty("trades") List<String> tradeIds) {
 
     this.orderTxId = orderTxId;
@@ -120,27 +119,27 @@ public class KrakenTrade {
     return orderType;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getCost() {
+  public Double getCost() {
 
     return cost;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getMargin() {
+  public Double getMargin() {
 
     return margin;
   }
@@ -160,32 +159,32 @@ public class KrakenTrade {
     return positionStatus;
   }
 
-  public BigDecimal getAverageClosePrice() {
+  public Double getAverageClosePrice() {
 
     return averageClosePrice;
   }
 
-  public BigDecimal getCloseCost() {
+  public Double getCloseCost() {
 
     return closeCost;
   }
 
-  public BigDecimal getCloseFee() {
+  public Double getCloseFee() {
 
     return closeFee;
   }
 
-  public BigDecimal getCloseVolume() {
+  public Double getCloseVolume() {
 
     return closeVolume;
   }
 
-  public BigDecimal getCloseMargin() {
+  public Double getCloseMargin() {
 
     return closeMargin;
   }
 
-  public BigDecimal getNetDifference() {
+  public Double getNetDifference() {
 
     return netDifference;
   }

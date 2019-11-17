@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbasepro.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 public class CoinbaseProProductBook {
@@ -39,8 +38,8 @@ public class CoinbaseProProductBook {
   private static CoinbaseProProductBookEntry convertToBookEntry(Object[] dataObject) {
 
     if (dataObject != null && dataObject.length == 3) {
-      BigDecimal price = new BigDecimal((String) dataObject[0]);
-      BigDecimal volume = new BigDecimal((String) dataObject[1]);
+      Double price = new Double((String) dataObject[0]);
+      Double volume = new Double((String) dataObject[1]);
 
       // level 3 order book?
       if (dataObject[2] instanceof String) {

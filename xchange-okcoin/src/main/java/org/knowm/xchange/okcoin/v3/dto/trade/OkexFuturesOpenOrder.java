@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.v3.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import lombok.Data;
@@ -17,13 +16,13 @@ public class OkexFuturesOpenOrder {
   /** String the order ID customised by yourself */
   private String clientOid;
   /** Quantity */
-  private BigDecimal size;
+  private Double size;
   /** Order creation date */
   private String timestamp;
 
   @JsonProperty("filled_qty")
   /** Filled quantity */
-  private BigDecimal filledQty;
+  private Double filledQty;
   /** Fees */
   private String fee;
 
@@ -31,24 +30,24 @@ public class OkexFuturesOpenOrder {
   /** order ID */
   private String orderId;
   /** Order Price */
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("price_avg")
   /** Average price */
-  private BigDecimal priceAvg;
+  private Double priceAvg;
   /** Type (1: open long 2: open short 3: close long 4: close short) */
   private FuturesSwapType type;
   /** Contract Value */
   @JsonProperty("contract_val")
-  private BigDecimal contractVal;
+  private Double contractVal;
   /** Leverage , 1-100x */
-  private BigDecimal leverage;
+  private Double leverage;
 
   @JsonProperty("order_type")
   /** 0: Normal limit order 1: Post only 2: Fill Or Kill 3: Immediatel Or Cancel */
   private OrderPlacementType orderType;
   /** profit */
-  private BigDecimal pnl;
+  private Double pnl;
   /**
    * Order Status("-2":Failed,"-1":Cancelled,"0":Open ,"1":Partially Filled, "2":Fully
    * Filled,"3":Submitting,"4":Cancelling,）

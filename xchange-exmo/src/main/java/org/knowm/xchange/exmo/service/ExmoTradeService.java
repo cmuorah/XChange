@@ -1,33 +1,17 @@
 package org.knowm.xchange.exmo.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.marketdata.Trades;
-import org.knowm.xchange.dto.trade.LimitOrder;
-import org.knowm.xchange.dto.trade.MarketOrder;
-import org.knowm.xchange.dto.trade.OpenOrders;
-import org.knowm.xchange.dto.trade.StopOrder;
-import org.knowm.xchange.dto.trade.UserTrade;
-import org.knowm.xchange.dto.trade.UserTrades;
+import org.knowm.xchange.dto.trade.*;
 import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.exmo.ExmoExchange;
 import org.knowm.xchange.exmo.dto.trade.ExmoTradeHistoryParams;
 import org.knowm.xchange.exmo.dto.trade.ExmoUserTrades;
 import org.knowm.xchange.service.trade.TradeService;
-import org.knowm.xchange.service.trade.params.CancelOrderByIdParams;
-import org.knowm.xchange.service.trade.params.CancelOrderParams;
-import org.knowm.xchange.service.trade.params.TradeHistoryParamCurrencyPair;
-import org.knowm.xchange.service.trade.params.TradeHistoryParamLimit;
-import org.knowm.xchange.service.trade.params.TradeHistoryParamOffset;
-import org.knowm.xchange.service.trade.params.TradeHistoryParams;
+import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 import org.knowm.xchange.service.trade.params.orders.OrderQueryParams;
 
@@ -50,8 +34,7 @@ public class ExmoTradeService extends ExmoTradeServiceRaw implements TradeServic
   public String placeMarketOrder(MarketOrder marketOrder) throws IOException {
     String type = marketOrder.getType().equals(Order.OrderType.BID) ? "market_buy" : "market_sell";
 
-    return placeOrder(
-        type, BigDecimal.ZERO, marketOrder.getCurrencyPair(), marketOrder.getOriginalAmount());
+    return placeOrder(type, 0d, marketOrder.getCurrencyPair(), marketOrder.getOriginalAmount());
   }
 
   @Override
@@ -125,15 +108,15 @@ public class ExmoTradeService extends ExmoTradeServiceRaw implements TradeServic
       CurrencyPair currencyPair = null;
       String id = null;
       Date timestamp = null;
-      BigDecimal totalValue = BigDecimal.ZERO;
-      BigDecimal cumulativeAmount = BigDecimal.ZERO;
-      BigDecimal fee = BigDecimal.ZERO;
+      Double totalValue = 0d;
+      Double cumulativeAmount = 0d;
+      Double fee = 0d;
       Order.OrderStatus status = Order.OrderStatus.UNKNOWN;
 
       ExmoUserTrades exmoUserTrades = userTrades(orderId);
       if (exmoUserTrades == null) continue;
 
-      BigDecimal originalAmount = exmoUserTrades.getOriginalAmount();
+      Double originalAmount = exmoUserTrades.getOriginalAmount();
 
       for (UserTrade userTrade : exmoUserTrades.getUserTrades()) {
         type = userTrade.getType();
@@ -148,15 +131,15 @@ public class ExmoTradeService extends ExmoTradeServiceRaw implements TradeServic
                 .getTime()) // arbitarily use the timestmap from the most recent trade
         timestamp = userTrade.getTimestamp();
 
-        BigDecimal amountForFill = userTrade.getOriginalAmount();
-        BigDecimal priceForFill = userTrade.getPrice();
-        BigDecimal value = amountForFill.multiply(priceForFill);
+        Double amountForFill = userTrade.getOriginalAmount();
+        Double priceForFill = userTrade.getPrice();
+        double value = amountForFill / (priceForFill);
 
-        cumulativeAmount = cumulativeAmount.add(amountForFill);
-        totalValue = totalValue.add(value);
+        cumulativeAmount = cumulativeAmount + (amountForFill);
+        totalValue = totalValue + (value);
       }
 
-      BigDecimal averagePrice = totalValue.divide(cumulativeAmount, 8, RoundingMode.HALF_UP);
+      Double averagePrice = totalValue / cumulativeAmount;
 
       Order order =
           new MarketOrder(

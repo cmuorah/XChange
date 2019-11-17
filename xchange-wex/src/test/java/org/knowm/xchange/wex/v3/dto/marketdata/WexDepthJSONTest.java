@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.wex.v3.WexAdapters;
@@ -31,7 +30,7 @@ public class WexDepthJSONTest {
                 .getDepth(WexAdapters.getPair(CurrencyPair.BTC_USD))
                 .getAsks()
                 .get(0)[0])
-        .isEqualTo(new BigDecimal("760.98"));
+        .isEqualTo(new Double("760.98"));
     assertThat(bTCEDepthWrapper.getDepth(WexAdapters.getPair(CurrencyPair.BTC_USD)).getAsks())
         .hasSize(30);
   }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -92,8 +91,8 @@ public class LunoAPIImpl implements LunoAPI {
   public LunoPostOrder postLimitOrder(
       String pair,
       OrderType type,
-      BigDecimal volume,
-      BigDecimal price,
+      Double volume,
+      Double price,
       String baseAccountId,
       String counterAccountId)
       throws IOException, LunoException {
@@ -107,8 +106,8 @@ public class LunoAPIImpl implements LunoAPI {
   public LunoPostOrder postMarketOrder(
       String pair,
       OrderType type,
-      BigDecimal counterVolume,
-      BigDecimal baseVolume,
+      Double counterVolume,
+      Double baseVolume,
       String baseAccountId,
       String counterAccountId)
       throws IOException, LunoException {
@@ -156,7 +155,7 @@ public class LunoAPIImpl implements LunoAPI {
   }
 
   @Override
-  public Withdrawal requestWithdrawal(String type, BigDecimal amount, String beneficiaryId)
+  public Withdrawal requestWithdrawal(String type, Double amount, String beneficiaryId)
       throws IOException, LunoException {
     assert VALID_TYPES.contains(type) : "Valid withdrawal types are: " + VALID_TYPES;
     return luno.requestWithdrawal(this.auth, type, amount, beneficiaryId);
@@ -174,13 +173,13 @@ public class LunoAPIImpl implements LunoAPI {
 
   @Override
   public LunoBoolean send(
-      BigDecimal amount, String currency, String address, String description, String message)
+      Double amount, String currency, String address, String description, String message)
       throws IOException, LunoException {
     return luno.send(this.auth, amount, currency, address, description, message);
   }
 
   @Override
-  public LunoQuote createQuote(OrderType type, BigDecimal baseAmount, String pair)
+  public LunoQuote createQuote(OrderType type, Double baseAmount, String pair)
       throws IOException, LunoException {
     assert type == OrderType.BUY || type == OrderType.SELL
         : "The type for quote must be SELL or BUY.";

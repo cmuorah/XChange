@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitflyer.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitflyerPosition {
   @JsonProperty("product_code")
@@ -11,28 +10,28 @@ public class BitflyerPosition {
   public String side;
 
   @JsonProperty("price")
-  public BigDecimal price;
+  public Double price;
 
   @JsonProperty("size")
-  public BigDecimal size;
+  public Double size;
 
   @JsonProperty("commission")
-  public BigDecimal commission;
+  public Double commission;
 
   @JsonProperty("swap_point_accumulate")
-  public BigDecimal swapPointAccumulate;
+  public Double swapPointAccumulate;
 
   @JsonProperty("require_collateral")
-  public BigDecimal requireCollateral;
+  public Double requireCollateral;
 
   @JsonProperty("open_date")
   public String openDate;
 
   @JsonProperty("leverage")
-  public BigDecimal leverage;
+  public Double leverage;
 
   @JsonProperty("pnl")
-  public BigDecimal pnl;
+  public Double pnl;
 
   public String getProductCode() {
     return productCode;
@@ -42,23 +41,23 @@ public class BitflyerPosition {
     return side;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
-  public BigDecimal getCommission() {
+  public Double getCommission() {
     return commission;
   }
 
-  public BigDecimal getSwapPointAccumulate() {
+  public Double getSwapPointAccumulate() {
     return swapPointAccumulate;
   }
 
-  public BigDecimal getRequireCollateral() {
+  public Double getRequireCollateral() {
     return requireCollateral;
   }
 
@@ -66,11 +65,11 @@ public class BitflyerPosition {
     return openDate;
   }
 
-  public BigDecimal getLeverage() {
+  public Double getLeverage() {
     return leverage;
   }
 
-  public BigDecimal getPnl() {
+  public Double getPnl() {
     return pnl;
   }
 

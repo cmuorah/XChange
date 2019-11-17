@@ -1,26 +1,25 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexCreditResponse {
 
   private final long id;
   private final String currency;
   private final String status;
-  private final BigDecimal rate;
+  private final Double rate;
   private final int period;
-  private final BigDecimal amount;
-  private final BigDecimal timestamp;
+  private final Double amount;
+  private final Double timestamp;
 
   public BitfinexCreditResponse(
       @JsonProperty("id") long id,
       @JsonProperty("currency") String currency,
       @JsonProperty("status") String status,
-      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("rate") Double rate,
       @JsonProperty("period") int period,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("timestamp") BigDecimal timestamp) {
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("timestamp") Double timestamp) {
 
     this.id = id;
     this.currency = currency;
@@ -46,7 +45,7 @@ public class BitfinexCreditResponse {
     return status;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
 
     return rate;
   }
@@ -56,12 +55,12 @@ public class BitfinexCreditResponse {
     return period;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getTimestamp() {
+  public Double getTimestamp() {
 
     return timestamp;
   }

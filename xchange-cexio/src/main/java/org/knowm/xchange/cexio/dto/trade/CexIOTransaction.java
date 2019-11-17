@@ -1,7 +1,6 @@
 package org.knowm.xchange.cexio.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
@@ -10,22 +9,22 @@ public class CexIOTransaction {
   private final String id;
   private final String d;
   private final String c;
-  private final BigDecimal a;
-  private final BigDecimal ds;
-  private final BigDecimal cs;
+  private final Double a;
+  private final Double ds;
+  private final Double cs;
   private final String user;
   private final String symbol;
   private final String symbol1;
   private final String symbol2;
-  private final BigDecimal amount;
+  private final Double amount;
   private final Long buy;
   private final Long order;
   private final Long sell;
-  private final BigDecimal price;
+  private final Double price;
   private final String type;
   private final Date time;
-  private final BigDecimal balance;
-  private final BigDecimal feeAmount;
+  private final Double balance;
+  private final Double feeAmount;
   private final String pair;
   private final String pos;
 
@@ -33,22 +32,22 @@ public class CexIOTransaction {
       @JsonProperty("id") String id,
       @JsonProperty("d") String d,
       @JsonProperty("c") String c,
-      @JsonProperty("a") BigDecimal a,
-      @JsonProperty("ds") BigDecimal ds,
-      @JsonProperty("cs") BigDecimal cs,
+      @JsonProperty("a") Double a,
+      @JsonProperty("ds") Double ds,
+      @JsonProperty("cs") Double cs,
       @JsonProperty("user") String user,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("symbol1") String symbol1,
       @JsonProperty("symbol2") String symbol2,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("order") Long order,
       @JsonProperty("buy") Long buy,
       @JsonProperty("sell") Long sell,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("type") String type,
       @JsonProperty("time") Date time,
-      @JsonProperty("balance") BigDecimal balance,
-      @JsonProperty("fee_amount") BigDecimal feeAmount,
+      @JsonProperty("balance") Double balance,
+      @JsonProperty("fee_amount") Double feeAmount,
       @JsonProperty("pair") String pair,
       @JsonProperty("pos") String pos) {
     this.id = id;
@@ -86,15 +85,15 @@ public class CexIOTransaction {
     return c;
   }
 
-  public BigDecimal getA() {
+  public Double getA() {
     return a;
   }
 
-  public BigDecimal getDs() {
+  public Double getDs() {
     return ds;
   }
 
-  public BigDecimal getCs() {
+  public Double getCs() {
     return cs;
   }
 
@@ -114,7 +113,7 @@ public class CexIOTransaction {
     return symbol2;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -130,7 +129,7 @@ public class CexIOTransaction {
     return sell;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -142,11 +141,11 @@ public class CexIOTransaction {
     return time;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
-  public BigDecimal getFeeAmount() {
+  public Double getFeeAmount() {
     return feeAmount;
   }
 

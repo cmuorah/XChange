@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,8 +35,8 @@ public class BitcointoyouOrderInfo {
   private final String id;
   private final String action;
   private final String status;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final String executedPriceAverage;
   private final String executedAmount;
   private final String dateCreated;
@@ -72,8 +71,8 @@ public class BitcointoyouOrderInfo {
       @JsonProperty("id") String id,
       @JsonProperty("action") String action,
       @JsonProperty("status") String status,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("executedPriceAverage") String executedPriceAverage,
       @JsonProperty("executedAmount") String executedAmount,
       @JsonProperty("dateCreated") String dateCreated) {
@@ -104,14 +103,14 @@ public class BitcointoyouOrderInfo {
 
     String priceAsString = map.get("price");
     if (priceAsString != null && !priceAsString.isEmpty()) {
-      this.price = new BigDecimal(priceAsString);
+      this.price = new Double(priceAsString);
     } else {
       this.price = null;
     }
 
     String amountAsString = map.get("amount");
     if (amountAsString != null && !amountAsString.isEmpty()) {
-      this.amount = new BigDecimal(amountAsString);
+      this.amount = new Double(amountAsString);
     } else {
       this.amount = null;
     }
@@ -163,13 +162,13 @@ public class BitcointoyouOrderInfo {
   }
 
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
   @JsonProperty("amount")
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

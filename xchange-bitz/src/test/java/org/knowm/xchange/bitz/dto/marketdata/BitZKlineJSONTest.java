@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.bitz.dto.marketdata.result.BitZTickerResult;
 
@@ -31,11 +30,11 @@ public class BitZKlineJSONTest {
 
     // Verify The Ticker Unmarshalls Correctly
     assertThat(bitzTicker.getTimestamp()).isEqualTo(1515076017L);
-    assertThat(bitzTicker.getLast()).isEqualTo(new BigDecimal("0.00098657"));
-    assertThat(bitzTicker.getBuy()).isEqualTo(new BigDecimal("0.00092992"));
-    assertThat(bitzTicker.getSell()).isEqualTo(new BigDecimal("0.00098657"));
-    assertThat(bitzTicker.getHigh()).isEqualTo(new BigDecimal("0.00100000"));
-    assertThat(bitzTicker.getLow()).isEqualTo(new BigDecimal("0.00089504"));
-    assertThat(bitzTicker.getVolume()).isEqualTo(new BigDecimal("15262.8785"));
+    assertThat(bitzTicker.getLast()).isEqualTo(new Double("0.00098657"));
+    assertThat(bitzTicker.getBuy()).isEqualTo(new Double("0.00092992"));
+    assertThat(bitzTicker.getSell()).isEqualTo(new Double("0.00098657"));
+    assertThat(bitzTicker.getHigh()).isEqualTo(new Double("0.00100000"));
+    assertThat(bitzTicker.getLow()).isEqualTo(new Double("0.00089504"));
+    assertThat(bitzTicker.getVolume()).isEqualTo(new Double("15262.8785"));
   }
 }

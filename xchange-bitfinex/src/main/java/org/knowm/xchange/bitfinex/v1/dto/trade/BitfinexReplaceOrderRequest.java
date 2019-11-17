@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexReplaceOrderRequest extends BitfinexNewOrderRequest {
 
@@ -15,8 +14,8 @@ public class BitfinexReplaceOrderRequest extends BitfinexNewOrderRequest {
       String nonce,
       long replaceOrderId,
       String symbol,
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       String exchange,
       String side,
       String type,

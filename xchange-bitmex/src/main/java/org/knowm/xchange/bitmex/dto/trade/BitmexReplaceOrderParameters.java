@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitmex.dto.trade;
 
-import java.math.BigDecimal;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import org.knowm.xchange.bitmex.Bitmex;
@@ -12,26 +11,26 @@ public class BitmexReplaceOrderParameters {
   @Nullable private final String orderId;
   @Nullable private final String origClOrdId;
   @Nullable private final String clOrdId;
-  @Nullable private final BigDecimal simpleOrderQuantity;
-  @Nullable private final BigDecimal orderQuantity;
-  @Nullable private final BigDecimal simpleLeavesQuantity;
-  @Nullable private final BigDecimal leavesQuantity;
-  @Nullable private final BigDecimal price;
-  @Nullable private final BigDecimal stopPrice;
-  @Nullable private final BigDecimal pegOffsetValue;
+  @Nullable private final Double simpleOrderQuantity;
+  @Nullable private final Double orderQuantity;
+  @Nullable private final Double simpleLeavesQuantity;
+  @Nullable private final Double leavesQuantity;
+  @Nullable private final Double price;
+  @Nullable private final Double stopPrice;
+  @Nullable private final Double pegOffsetValue;
   @Nullable private final String text;
 
   public BitmexReplaceOrderParameters(
       @Nullable String orderId,
       @Nullable String origClOrdId,
       @Nullable String clOrdId,
-      @Nullable BigDecimal simpleOrderQuantity,
-      @Nullable BigDecimal orderQuantity,
-      @Nullable BigDecimal simpleLeavesQuantity,
-      @Nullable BigDecimal leavesQuantity,
-      @Nullable BigDecimal price,
-      @Nullable BigDecimal stopPrice,
-      @Nullable BigDecimal pegOffsetValue,
+      @Nullable Double simpleOrderQuantity,
+      @Nullable Double orderQuantity,
+      @Nullable Double simpleLeavesQuantity,
+      @Nullable Double leavesQuantity,
+      @Nullable Double price,
+      @Nullable Double stopPrice,
+      @Nullable Double pegOffsetValue,
       @Nullable String text) {
     this.orderId = orderId;
     this.origClOrdId = origClOrdId;
@@ -62,37 +61,37 @@ public class BitmexReplaceOrderParameters {
   }
 
   @Nullable
-  public BigDecimal getSimpleOrderQuantity() {
+  public Double getSimpleOrderQuantity() {
     return simpleOrderQuantity;
   }
 
   @Nullable
-  public BigDecimal getOrderQuantity() {
+  public Double getOrderQuantity() {
     return orderQuantity;
   }
 
   @Nullable
-  public BigDecimal getSimpleLeavesQuantity() {
+  public Double getSimpleLeavesQuantity() {
     return simpleLeavesQuantity;
   }
 
   @Nullable
-  public BigDecimal getLeavesQuantity() {
+  public Double getLeavesQuantity() {
     return leavesQuantity;
   }
 
   @Nullable
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
   @Nullable
-  public BigDecimal getStopPrice() {
+  public Double getStopPrice() {
     return stopPrice;
   }
 
   @Nullable
-  public BigDecimal getPegOffsetValue() {
+  public Double getPegOffsetValue() {
     return pegOffsetValue;
   }
 
@@ -107,13 +106,13 @@ public class BitmexReplaceOrderParameters {
     @Nullable private String orderId;
     @Nullable private String origClOrdId;
     @Nullable private String clOrdId;
-    @Nullable private BigDecimal simpleOrderQuantity;
-    @Nullable private BigDecimal orderQuantity;
-    @Nullable private BigDecimal simpleLeavesQuantity;
-    @Nullable private BigDecimal leavesQuantity;
-    @Nullable private BigDecimal price;
-    @Nullable private BigDecimal stopPrice;
-    @Nullable private BigDecimal pegOffsetValue;
+    @Nullable private Double simpleOrderQuantity;
+    @Nullable private Double orderQuantity;
+    @Nullable private Double simpleLeavesQuantity;
+    @Nullable private Double leavesQuantity;
+    @Nullable private Double price;
+    @Nullable private Double stopPrice;
+    @Nullable private Double pegOffsetValue;
     @Nullable private String text;
 
     @Nonnull
@@ -151,43 +150,43 @@ public class BitmexReplaceOrderParameters {
     }
 
     @Nonnull
-    public Builder setSimpleOrderQuantity(@Nullable BigDecimal simpleOrderQuantity) {
+    public Builder setSimpleOrderQuantity(@Nullable Double simpleOrderQuantity) {
       this.simpleOrderQuantity = simpleOrderQuantity;
       return this;
     }
 
     @Nonnull
-    public Builder setOrderQuantity(@Nullable BigDecimal orderQuantity) {
+    public Builder setOrderQuantity(@Nullable Double orderQuantity) {
       this.orderQuantity = orderQuantity;
       return this;
     }
 
     @Nonnull
-    public Builder setSimpleLeavesQuantity(@Nullable BigDecimal simpleLeavesQuantity) {
+    public Builder setSimpleLeavesQuantity(@Nullable Double simpleLeavesQuantity) {
       this.simpleLeavesQuantity = simpleLeavesQuantity;
       return this;
     }
 
     @Nonnull
-    public Builder setLeavesQuantity(@Nullable BigDecimal leavesQuantity) {
+    public Builder setLeavesQuantity(@Nullable Double leavesQuantity) {
       this.leavesQuantity = leavesQuantity;
       return this;
     }
 
     @Nonnull
-    public Builder setPrice(@Nullable BigDecimal price) {
+    public Builder setPrice(@Nullable Double price) {
       this.price = price;
       return this;
     }
 
     @Nonnull
-    public Builder setStopPrice(@Nullable BigDecimal stopPrice) {
+    public Builder setStopPrice(@Nullable Double stopPrice) {
       this.stopPrice = stopPrice;
       return this;
     }
 
     @Nonnull
-    public Builder setPegOffsetValue(@Nullable BigDecimal pegOffsetValue) {
+    public Builder setPegOffsetValue(@Nullable Double pegOffsetValue) {
       this.pegOffsetValue = pegOffsetValue;
       return this;
     }

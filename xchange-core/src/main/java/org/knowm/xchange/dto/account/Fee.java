@@ -2,28 +2,27 @@ package org.knowm.xchange.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public final class Fee implements Serializable {
 
   private static final long serialVersionUID = -6235230375777573680L;
 
   @JsonProperty("maker_fee")
-  private final BigDecimal makerFee;
+  private final Double makerFee;
 
   @JsonProperty("taker_fee")
-  private final BigDecimal takerFee;
+  private final Double takerFee;
 
-  public Fee(BigDecimal makerFee, BigDecimal takerFee) {
+  public Fee(Double makerFee, Double takerFee) {
     this.makerFee = makerFee;
     this.takerFee = takerFee;
   }
 
-  public BigDecimal getMakerFee() {
+  public Double getMakerFee() {
     return makerFee;
   }
 
-  public BigDecimal getTakerFee() {
+  public Double getTakerFee() {
     return takerFee;
   }
 

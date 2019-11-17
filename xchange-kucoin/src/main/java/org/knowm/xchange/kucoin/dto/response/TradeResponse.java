@@ -3,7 +3,6 @@ package org.knowm.xchange.kucoin.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 import lombok.ToString;
@@ -35,15 +34,15 @@ public class TradeResponse {
 
   private boolean forceTaker;
 
-  private BigDecimal price;
+  private Double price;
 
-  private BigDecimal size;
+  private Double size;
 
-  private BigDecimal funds;
+  private Double funds;
 
-  private BigDecimal fee;
+  private Double fee;
 
-  private BigDecimal feeRate;
+  private Double feeRate;
 
   private String feeCurrency;
 

@@ -102,9 +102,7 @@ public class LgoTradeService extends LgoTradeServiceRaw implements TradeService 
     if (product.getQuote().getLimits().getMax().compareTo(limitOrder.getLimitPrice()) < 0) {
       throw new IllegalArgumentException("Order price to high");
     }
-    if (limitOrder.getLimitPrice().unscaledValue().longValue()
-            % product.getQuote().getIncrement().unscaledValue().intValue()
-        != 0) {
+    if (limitOrder.getLimitPrice() % product.getQuote().getIncrement() != 0) {
       throw new IllegalArgumentException("Invalid price increment");
     }
   }

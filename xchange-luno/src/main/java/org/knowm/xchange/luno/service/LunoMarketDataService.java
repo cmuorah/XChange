@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,9 +29,9 @@ public class LunoMarketDataService extends LunoBaseService implements MarketData
   }
 
   private static List<LimitOrder> convert(
-      Map<BigDecimal, BigDecimal> map, CurrencyPair currencyPair, OrderType type) {
+      Map<Double, Double> map, CurrencyPair currencyPair, OrderType type) {
     List<LimitOrder> result = new ArrayList<>();
-    for (Entry<BigDecimal, BigDecimal> e : map.entrySet()) {
+    for (Entry<Double, Double> e : map.entrySet()) {
       result.add(new LimitOrder(type, e.getValue(), currencyPair, null, null, e.getKey()));
     }
     return result;

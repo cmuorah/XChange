@@ -1,7 +1,6 @@
 package org.knowm.xchange.hitbtc.v2.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class HitbtcCurrency {
 
@@ -36,7 +35,7 @@ public class HitbtcCurrency {
   private final Boolean delisted;
 
   /** payoutFee */
-  private final BigDecimal payoutFee;
+  private final Double payoutFee;
 
   public HitbtcCurrency(
       @JsonProperty("id") String id,
@@ -49,7 +48,7 @@ public class HitbtcCurrency {
       @JsonProperty("payoutIsPaymentId") Boolean payoutIsPaymentId,
       @JsonProperty("transferEnabled") Boolean transferEnabled,
       @JsonProperty("delisted") Boolean delisted,
-      @JsonProperty("payoutFee") BigDecimal payoutFee) {
+      @JsonProperty("payoutFee") Double payoutFee) {
 
     this.id = id;
     this.fullName = fullName;
@@ -104,7 +103,7 @@ public class HitbtcCurrency {
     return delisted;
   }
 
-  public BigDecimal getPayoutFee() {
+  public Double getPayoutFee() {
     return payoutFee;
   }
 

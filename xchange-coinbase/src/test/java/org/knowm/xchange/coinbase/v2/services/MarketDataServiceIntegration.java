@@ -2,7 +2,6 @@ package org.knowm.xchange.coinbase.v2.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -42,8 +41,8 @@ public class MarketDataServiceIntegration {
   public void listExchageRates() throws Exception {
 
     CoinbaseMarketDataService coinbaseService = (CoinbaseMarketDataService) marketDataService;
-    Map<String, BigDecimal> exchangeRates = coinbaseService.getCoinbaseExchangeRates();
-    Assert.assertTrue(exchangeRates.get("EUR") instanceof BigDecimal);
+    Map<String, Double> exchangeRates = coinbaseService.getCoinbaseExchangeRates();
+    Assert.assertTrue(exchangeRates.get("EUR") instanceof Double);
   }
 
   @Test

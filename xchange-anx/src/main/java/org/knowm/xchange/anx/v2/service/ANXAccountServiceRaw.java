@@ -3,7 +3,7 @@ package org.knowm.xchange.anx.v2.service;
 import static org.knowm.xchange.utils.DateUtils.toMillisNullSafe;
 
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -66,7 +66,7 @@ public class ANXAccountServiceRaw extends ANXBaseService {
   }
 
   public ANXWithdrawalResponseWrapper anxWithdrawFunds(
-      String currency, BigDecimal amount, String address) throws IOException {
+      String currency, Double amount, String address) throws IOException {
 
     try {
       ANXWithdrawalResponseWrapper anxWithdrawalResponseWrapper =
@@ -76,9 +76,8 @@ public class ANXAccountServiceRaw extends ANXBaseService {
               exchange.getNonceFactory(),
               currency,
               address,
-              amount
-                  .multiply(new BigDecimal(ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR_2))
-                  .toBigIntegerExact(),
+              BigInteger.valueOf(
+                  Math.round(amount * ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR_2)),
               1,
               false,
               false);
@@ -91,8 +90,7 @@ public class ANXAccountServiceRaw extends ANXBaseService {
   }
 
   public ANXWithdrawalResponseWrapper anxWithdrawFunds(
-      String currency, BigDecimal amount, String address, String destinationTag)
-      throws IOException {
+      String currency, Double amount, String address, String destinationTag) throws IOException {
     try {
       ANXWithdrawalResponseWrapper anxWithdrawalResponseWrapper =
           anxV2.withdrawXrp(
@@ -101,9 +99,8 @@ public class ANXAccountServiceRaw extends ANXBaseService {
               exchange.getNonceFactory(),
               currency,
               address,
-              amount
-                  .multiply(new BigDecimal(ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR_2))
-                  .toBigIntegerExact(),
+              BigInteger.valueOf(
+                  Math.round(amount * ANXUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR_2)),
               1,
               false,
               false,

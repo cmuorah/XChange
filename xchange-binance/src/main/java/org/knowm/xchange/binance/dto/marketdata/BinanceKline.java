@@ -1,6 +1,5 @@
 package org.knowm.xchange.binance.dto.marketdata;
 
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import org.knowm.xchange.currency.CurrencyPair;
 
@@ -9,31 +8,31 @@ public final class BinanceKline {
   private final CurrencyPair pair;
   private final KlineInterval interval;
   private final long openTime;
-  private final BigDecimal open;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal close;
-  private final BigDecimal volume;
+  private final Double open;
+  private final Double high;
+  private final Double low;
+  private final Double close;
+  private final Double volume;
   private final long closeTime;
-  private final BigDecimal quoteAssetVolume;
+  private final Double quoteAssetVolume;
   private final long numberOfTrades;
-  private final BigDecimal takerBuyBaseAssetVolume;
-  private final BigDecimal takerBuyQuoteAssetVolume;
+  private final Double takerBuyBaseAssetVolume;
+  private final Double takerBuyQuoteAssetVolume;
 
   public BinanceKline(CurrencyPair pair, KlineInterval interval, Object[] obj) {
     this.pair = pair;
     this.interval = interval;
-    this.openTime = Long.valueOf(obj[0].toString());
-    this.open = new BigDecimal(obj[1].toString());
-    this.high = new BigDecimal(obj[2].toString());
-    this.low = new BigDecimal(obj[3].toString());
-    this.close = new BigDecimal(obj[4].toString());
-    this.volume = new BigDecimal(obj[5].toString());
-    this.closeTime = Long.valueOf(obj[6].toString());
-    this.quoteAssetVolume = new BigDecimal(obj[7].toString());
-    this.numberOfTrades = Long.valueOf(obj[8].toString());
-    this.takerBuyBaseAssetVolume = new BigDecimal(obj[9].toString());
-    this.takerBuyQuoteAssetVolume = new BigDecimal(obj[10].toString());
+    this.openTime = Long.parseLong(obj[0].toString());
+    this.open = new Double(obj[1].toString());
+    this.high = new Double(obj[2].toString());
+    this.low = new Double(obj[3].toString());
+    this.close = new Double(obj[4].toString());
+    this.volume = new Double(obj[5].toString());
+    this.closeTime = Long.parseLong(obj[6].toString());
+    this.quoteAssetVolume = new Double(obj[7].toString());
+    this.numberOfTrades = Long.parseLong(obj[8].toString());
+    this.takerBuyBaseAssetVolume = new Double(obj[9].toString());
+    this.takerBuyQuoteAssetVolume = new Double(obj[10].toString());
   }
 
   public CurrencyPair getCurrencyPair() {
@@ -48,27 +47,27 @@ public final class BinanceKline {
     return openTime;
   }
 
-  public BigDecimal getOpenPrice() {
+  public Double getOpenPrice() {
     return open;
   }
 
-  public BigDecimal getHighPrice() {
+  public Double getHighPrice() {
     return high;
   }
 
-  public BigDecimal getLowPrice() {
+  public Double getLowPrice() {
     return low;
   }
 
-  public BigDecimal getAveragePrice() {
-    return low.add(high).divide(new BigDecimal("2"));
+  public Double getAveragePrice() {
+    return (low + high) / 2d;
   }
 
-  public BigDecimal getClosePrice() {
+  public Double getClosePrice() {
     return close;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
@@ -76,7 +75,7 @@ public final class BinanceKline {
     return closeTime;
   }
 
-  public BigDecimal getQuoteAssetVolume() {
+  public Double getQuoteAssetVolume() {
     return quoteAssetVolume;
   }
 
@@ -84,11 +83,11 @@ public final class BinanceKline {
     return numberOfTrades;
   }
 
-  public BigDecimal getTakerBuyBaseAssetVolume() {
+  public Double getTakerBuyBaseAssetVolume() {
     return takerBuyBaseAssetVolume;
   }
 
-  public BigDecimal getTakerBuyQuoteAssetVolume() {
+  public Double getTakerBuyQuoteAssetVolume() {
     return takerBuyQuoteAssetVolume;
   }
 

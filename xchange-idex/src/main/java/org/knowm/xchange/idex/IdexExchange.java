@@ -1,11 +1,9 @@
 package org.knowm.xchange.idex;
 
-import static java.math.BigDecimal.ZERO;
 import static java.util.Arrays.asList;
 import static org.knowm.xchange.idex.IdexMarketDataService.Companion.allCurrenciesStatic;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -30,7 +28,7 @@ public class IdexExchange extends BaseExchange {
 
   private ReturnCurrenciesResponse allCurrenciesStatic;
 
-  CurrencyPairMetaData unavailableCPMeta = new CurrencyPairMetaData(ZERO, ZERO, ZERO, 0, null);
+  CurrencyPairMetaData unavailableCPMeta = new CurrencyPairMetaData(0d, 0d, 0d, 0, null);
 
   public final CurrencyPairMetaData getUnavailableCPMeta() {
     return unavailableCPMeta;
@@ -59,7 +57,7 @@ public class IdexExchange extends BaseExchange {
             linkedHashMap.put(
                 Currency.getInstance(key),
                 new IdexCurrencyMeta(
-                    0, ZERO, value.getAddress(), value.getName(), value.getDecimals())));
+                    0, 0d, value.getAddress(), value.getName(), value.getDecimals())));
     RateLimit[] publicRateLimits = {};
     return new ExchangeMetaData(
         currencyPairs, linkedHashMap, publicRateLimits, publicRateLimits, Boolean.FALSE);
@@ -126,10 +124,10 @@ public class IdexExchange extends BaseExchange {
   public enum Companion {
     ;
 
-    public static BigDecimal safeParse(String s) {
-      BigDecimal ret = null;
+    public static Double safeParse(String s) {
+      Double ret = null;
       try {
-        ret = new BigDecimal(s);
+        ret = new Double(s);
       } catch (Exception e) {
       }
       return ret;
@@ -154,7 +152,7 @@ public class IdexExchange extends BaseExchange {
       private final BigInteger decimals;
 
       public IdexCurrencyMeta(
-          int scale, BigDecimal withdrawalFee, String address, String name, BigInteger decimals) {
+          int scale, Double withdrawalFee, String address, String name, BigInteger decimals) {
         super(scale, withdrawalFee);
         this.address = address;
         this.name = name;

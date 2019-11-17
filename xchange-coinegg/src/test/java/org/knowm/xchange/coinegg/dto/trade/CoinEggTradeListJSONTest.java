@@ -6,7 +6,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.coinegg.dto.CoinEggResult;
 import org.knowm.xchange.coinegg.dto.marketdata.CoinEggTrade.Type;
@@ -38,8 +37,8 @@ public class CoinEggTradeListJSONTest {
     assertThat(coinEggTradeList.getID()).isEqualTo(28);
     // assertThat(coinEggTradeList.getDateTime().toString()).isEqualTo("2016-10-26 14:47:54");
     assertThat(coinEggTradeList.getType()).isEqualTo(Type.SELL);
-    assertThat(coinEggTradeList.getPrice()).isEqualTo(new BigDecimal("0.000123"));
-    assertThat(coinEggTradeList.getAmountOriginal()).isEqualTo(new BigDecimal("1213"));
-    assertThat(coinEggTradeList.getAmountOutstanding()).isEqualTo(new BigDecimal("1213"));
+    assertThat(coinEggTradeList.getPrice()).isEqualTo(new Double("0.000123"));
+    assertThat(coinEggTradeList.getAmountOriginal()).isEqualTo(new Double("1213"));
+    assertThat(coinEggTradeList.getAmountOutstanding()).isEqualTo(new Double("1213"));
   }
 }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.poloniex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -46,8 +45,7 @@ public class PoloniexAccountService extends PoloniexAccountServiceRaw implements
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     // does not support XRP withdrawals, use RippleWithdrawFundsParams instead
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }

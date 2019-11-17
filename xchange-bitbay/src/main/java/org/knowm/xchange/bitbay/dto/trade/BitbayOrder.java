@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitbay.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Z. Dolezal */
 public class BitbayOrder {
@@ -12,10 +11,10 @@ public class BitbayOrder {
   private final String paymentCurrency;
   private final String type;
   private final String status;
-  private final BigDecimal amount;
-  private final BigDecimal startAmount;
-  private final BigDecimal currentPrice;
-  private final BigDecimal startPrice;
+  private final Double amount;
+  private final Double startAmount;
+  private final Double currentPrice;
+  private final Double startPrice;
 
   /**
    * order_id : id of offer order_currency : main currency (e.g. “LTC”) order_date : time, when
@@ -32,10 +31,10 @@ public class BitbayOrder {
       @JsonProperty("payment_currency") String paymentCurrency,
       @JsonProperty("type") String type,
       @JsonProperty("status") String status,
-      @JsonProperty("units") BigDecimal amount,
-      @JsonProperty("start_units") BigDecimal startAmount,
-      @JsonProperty("current_price") BigDecimal currentPrice,
-      @JsonProperty("start_price") BigDecimal startPrice) {
+      @JsonProperty("units") Double amount,
+      @JsonProperty("start_units") Double startAmount,
+      @JsonProperty("current_price") Double currentPrice,
+      @JsonProperty("start_price") Double startPrice) {
 
     this.id = id;
     this.currency = currency;
@@ -74,19 +73,19 @@ public class BitbayOrder {
     return status;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getStartAmount() {
+  public Double getStartAmount() {
     return startAmount;
   }
 
-  public BigDecimal getCurrentPrice() {
+  public Double getCurrentPrice() {
     return currentPrice;
   }
 
-  public BigDecimal getStartPrice() {
+  public Double getStartPrice() {
     return startPrice;
   }
 }

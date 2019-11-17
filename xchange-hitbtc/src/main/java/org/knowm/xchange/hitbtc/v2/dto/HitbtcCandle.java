@@ -2,33 +2,32 @@ package org.knowm.xchange.hitbtc.v2.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class HitbtcCandle {
 
   private String timestamp;
 
-  private BigDecimal open;
+  private Double open;
 
-  private BigDecimal close;
+  private Double close;
 
-  private BigDecimal min;
+  private Double min;
 
-  private BigDecimal max;
+  private Double max;
 
-  private BigDecimal volume;
+  private Double volume;
 
-  private BigDecimal volumeQuote;
+  private Double volumeQuote;
 
   @JsonCreator
   public HitbtcCandle(
       @JsonProperty("timestamp") String timestamp,
-      @JsonProperty("open") BigDecimal open,
-      @JsonProperty("close") BigDecimal close,
-      @JsonProperty("min") BigDecimal min,
-      @JsonProperty("max") BigDecimal max,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("volumeQuote") BigDecimal volumeQuote) {
+      @JsonProperty("open") Double open,
+      @JsonProperty("close") Double close,
+      @JsonProperty("min") Double min,
+      @JsonProperty("max") Double max,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("volumeQuote") Double volumeQuote) {
     this.timestamp = timestamp;
     this.open = open;
     this.close = close;
@@ -61,27 +60,27 @@ public class HitbtcCandle {
     return timestamp;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
     return close;
   }
 
-  public BigDecimal getMin() {
+  public Double getMin() {
     return min;
   }
 
-  public BigDecimal getMax() {
+  public Double getMax() {
     return max;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getVolumeQuote() {
+  public Double getVolumeQuote() {
     return volumeQuote;
   }
 }

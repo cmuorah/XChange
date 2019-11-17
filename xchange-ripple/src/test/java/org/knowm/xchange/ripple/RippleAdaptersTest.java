@@ -7,8 +7,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.ParseException;
 import org.junit.Test;
 import org.knowm.xchange.currency.Currency;
@@ -25,12 +23,7 @@ import org.knowm.xchange.ripple.dto.account.ITransferFeeSource;
 import org.knowm.xchange.ripple.dto.account.RippleAccountBalances;
 import org.knowm.xchange.ripple.dto.account.RippleAccountSettings;
 import org.knowm.xchange.ripple.dto.marketdata.RippleOrderBook;
-import org.knowm.xchange.ripple.dto.trade.IRippleTradeTransaction;
-import org.knowm.xchange.ripple.dto.trade.RippleAccountOrders;
-import org.knowm.xchange.ripple.dto.trade.RippleLimitOrder;
-import org.knowm.xchange.ripple.dto.trade.RippleOrderTransaction;
-import org.knowm.xchange.ripple.dto.trade.RipplePaymentTransaction;
-import org.knowm.xchange.ripple.dto.trade.RippleUserTrade;
+import org.knowm.xchange.ripple.dto.trade.*;
 import org.knowm.xchange.ripple.service.params.RippleMarketDataParams;
 import org.knowm.xchange.ripple.service.params.RippleTradeHistoryParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
@@ -53,7 +46,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
     final AccountInfo account = RippleAdapters.adaptAccountInfo(rippleAccount, "username");
     assertThat(account.getWallets()).hasSize(2);
     assertThat(account.getUsername()).isEqualTo("username");
-    assertThat(account.getTradingFee()).isEqualTo(BigDecimal.ZERO);
+    assertThat(account.getTradingFee()).isEqualTo(0d);
 
     final Wallet counterWallet = account.getWallet("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
     assertThat(counterWallet.getId()).isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
@@ -161,7 +154,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
   }
 
   @Override
-  public BigDecimal getTransferFeeRate(final String address) throws IOException {
+  public Double getTransferFeeRate(final String address) throws IOException {
     final InputStream is =
         getClass()
             .getResourceAsStream(
@@ -197,11 +190,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
         .isEqualTo("0000000000000000000000000000000000000000000000000000000000000000");
     assertThat(trade.getOrderId()).isEqualTo("1010");
     // Price = 0.000029309526038 * 0.998
-    assertThat(trade.getPrice())
-        .isEqualTo(
-            new BigDecimal("0.000029250906985924")
-                .setScale(roundingScale, RoundingMode.HALF_UP)
-                .stripTrailingZeros());
+    assertThat(trade.getPrice()).isEqualTo(new Double("0.000029250906985924"));
     assertThat(trade.getTimestamp()).isEqualTo(RippleExchange.ToDate("2000-00-00T00:00:00.000Z"));
     assertThat(trade.getOriginalAmount()).isEqualTo("1");
     assertThat(trade.getType()).isEqualTo(OrderType.BID);
@@ -247,9 +236,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
     assertThat(trade.getOrderId()).isEqualTo("1010");
     // Price = 1.0 / (0.000029309526038 * 0.998)
     assertThat(trade.getPrice())
-        .isEqualTo(
-            new BigDecimal("34186.97411609205306550363511634115030681332485583111528")
-                .setScale(roundingScale, RoundingMode.HALF_UP));
+        .isEqualTo(new Double("34186.97411609205306550363511634115030681332485583111528"));
     assertThat(trade.getTimestamp()).isEqualTo(RippleExchange.ToDate("2000-00-00T00:00:00.000Z"));
     // Quantity = 0.000029309526038 * 0.998
     assertThat(trade.getOriginalAmount()).isEqualTo("0.000029250906985924");
@@ -294,11 +281,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
     assertThat(trade.getId())
         .isEqualTo("1111111111111111111111111111111111111111111111111111111111111111");
     assertThat(trade.getOrderId()).isEqualTo("1111");
-    assertThat(trade.getPrice())
-        .isEqualTo(
-            new BigDecimal("0.000028572057152")
-                .setScale(roundingScale, RoundingMode.HALF_UP)
-                .stripTrailingZeros());
+    assertThat(trade.getPrice()).isEqualTo(new Double("0.000028572057152"));
     assertThat(trade.getTimestamp()).isEqualTo(RippleExchange.ToDate("2011-11-11T11:11:11.111Z"));
     assertThat(trade.getOriginalAmount()).isEqualTo("1");
     assertThat(trade.getType()).isEqualTo(OrderType.ASK);
@@ -355,10 +338,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
     assertThat(trade.getOrderId()).isEqualTo("1111");
     // Price = 1.0 / 0.000028572057152
     assertThat(trade.getPrice())
-        .isEqualTo(
-            new BigDecimal("34999.23000574012011552062010939099496310569328655387396")
-                .setScale(roundingScale, RoundingMode.HALF_UP)
-                .stripTrailingZeros());
+        .isEqualTo(new Double("34999.23000574012011552062010939099496310569328655387396"));
     assertThat(trade.getTimestamp()).isEqualTo(RippleExchange.ToDate("2011-11-11T11:11:11.111Z"));
     assertThat(trade.getOriginalAmount()).isEqualTo("0.000028572057152");
     assertThat(trade.getType()).isEqualTo(OrderType.BID);
@@ -404,9 +384,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
 
     // Price = 0.501 * 0.998 / 0.50150835545121407952
     assertThat(trade.getPrice())
-        .isEqualTo(
-            new BigDecimal("0.99698837430165008596385145696065600512973847422746")
-                .setScale(roundingScale, RoundingMode.HALF_UP));
+        .isEqualTo(new Double("0.99698837430165008596385145696065600512973847422746"));
     assertThat(trade.getTimestamp()).isEqualTo(RippleExchange.ToDate("2022-22-22T22:22:22.222Z"));
     assertThat(trade.getOriginalAmount()).isEqualTo("0.50150835545121407952");
     assertThat(trade.getType()).isEqualTo(OrderType.BID);
@@ -453,9 +431,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
 
     // Price = 0.009941478580724 / (349.559725 - 0.012)
     assertThat(trade.getPrice())
-        .isEqualTo(
-            new BigDecimal("0.00002844097635229638527900589254299967193321026478")
-                .setScale(roundingScale, RoundingMode.HALF_UP));
+        .isEqualTo(new Double("0.00002844097635229638527900589254299967193321026478"));
     assertThat(trade.getTimestamp()).isEqualTo(RippleExchange.ToDate("2015-08-07T03:58:10.000Z"));
     assertThat(trade.getOriginalAmount()).isEqualTo("349.547725");
     assertThat(trade.getType()).isEqualTo(OrderType.ASK);

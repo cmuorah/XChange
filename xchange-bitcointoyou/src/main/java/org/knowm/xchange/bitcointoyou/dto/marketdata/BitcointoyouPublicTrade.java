@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -24,8 +23,8 @@ import javax.annotation.Generated;
 public class BitcointoyouPublicTrade {
 
   private final Integer date;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final Integer tid;
   private final String type;
   private final String currency;
@@ -33,8 +32,8 @@ public class BitcointoyouPublicTrade {
 
   public BitcointoyouPublicTrade(
       @JsonProperty("date") Integer date,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("tid") Integer tid,
       @JsonProperty("type") String type,
       @JsonProperty("currency") String currency) {
@@ -100,12 +99,12 @@ public class BitcointoyouPublicTrade {
     return date;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

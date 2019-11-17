@@ -1,16 +1,14 @@
 package org.knowm.xchange.ripple.dto.trade;
 
-import java.math.BigDecimal;
-
 public class RippleTransactionFee {
-  private BigDecimal fee;
+  private Double fee;
   private boolean success;
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public void setFee(final BigDecimal fee) {
+  public void setFee(final Double fee) {
     this.fee = fee;
   }
 

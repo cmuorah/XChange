@@ -1,8 +1,5 @@
 package org.knowm.xchange.coinbene.dto;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.knowm.xchange.coinbene.dto.account.CoinbeneCoinBalances;
@@ -157,12 +154,8 @@ public class CoinbeneAdapters {
               ticker.getMinQuantity(),
               null,
               ticker.getTickSize(),
-              new FeeTier[] {
-                new FeeTier(BigDecimal.ZERO, new Fee(ticker.getMakerFee(), ticker.getTakerFee()))
-              },
-              new BigDecimal(
-                  Math.pow(10.0, -ticker.getLotStepSize()),
-                  new MathContext(Math.max(0, ticker.getLotStepSize()), RoundingMode.HALF_UP))));
+              new FeeTier[] {new FeeTier(0d, new Fee(ticker.getMakerFee(), ticker.getTakerFee()))},
+              Math.pow(10.0, -ticker.getLotStepSize())));
     }
     return new ExchangeMetaData(pairMeta, null, null, null, null);
   }

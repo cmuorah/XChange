@@ -1,24 +1,23 @@
 package org.knowm.xchange.btctrade.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BTCTradeTicker {
 
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal buy;
-  private final BigDecimal sell;
-  private final BigDecimal last;
-  private final BigDecimal vol;
+  private final Double high;
+  private final Double low;
+  private final Double buy;
+  private final Double sell;
+  private final Double last;
+  private final Double vol;
 
   public BTCTradeTicker(
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("buy") BigDecimal buy,
-      @JsonProperty("sell") BigDecimal sell,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("vol") BigDecimal vol) {
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("buy") Double buy,
+      @JsonProperty("sell") Double sell,
+      @JsonProperty("last") Double last,
+      @JsonProperty("vol") Double vol) {
 
     this.high = high;
     this.low = low;
@@ -28,32 +27,32 @@ public class BTCTradeTicker {
     this.vol = vol;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
 
-  public BigDecimal getBuy() {
+  public Double getBuy() {
 
     return buy;
   }
 
-  public BigDecimal getSell() {
+  public Double getSell() {
 
     return sell;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
 
-  public BigDecimal getVol() {
+  public Double getVol() {
 
     return vol;
   }

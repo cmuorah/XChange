@@ -1,7 +1,6 @@
 package org.knowm.xchange.bittrex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class BittrexOpenOrder extends BittrexOrderBase {
@@ -13,12 +12,12 @@ public class BittrexOpenOrder extends BittrexOrderBase {
       @JsonProperty("OrderUuid") String orderUuid,
       @JsonProperty("Exchange") String exchange,
       @JsonProperty("OrderType") String orderType,
-      @JsonProperty("Quantity") BigDecimal quantity,
-      @JsonProperty("QuantityRemaining") BigDecimal quantityRemaining,
-      @JsonProperty("Limit") BigDecimal limit,
-      @JsonProperty("CommissionPaid") BigDecimal commissionPaid,
-      @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("PricePerUnit") BigDecimal pricePerUnit,
+      @JsonProperty("Quantity") Double quantity,
+      @JsonProperty("QuantityRemaining") Double quantityRemaining,
+      @JsonProperty("Limit") Double limit,
+      @JsonProperty("CommissionPaid") Double commissionPaid,
+      @JsonProperty("Price") Double price,
+      @JsonProperty("PricePerUnit") Double pricePerUnit,
       @JsonProperty("Opened") Date opened,
       @JsonProperty("Closed") Date closed,
       @JsonProperty("CancelInitiated") Boolean cancelInitiated,

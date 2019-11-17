@@ -3,7 +3,6 @@ package org.knowm.xchange.okcoin.v3.dto.account;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,7 +14,7 @@ public class OkexWithdrawalRequest {
   /** token */
   private String currency;
   /** withdrawal amount */
-  private BigDecimal amount;
+  private Double amount;
   /** withdrawal address(2:OKCoin International 3:OKEx 4:others) */
   private String destination;
   /**
@@ -31,5 +30,5 @@ public class OkexWithdrawalRequest {
    * Network transaction fee≥0. Withdrawals to OKCoin or OKEx are fee-free, please set as 0.
    * Withdrawal to external digital asset address requires network transaction fee.
    */
-  private BigDecimal fee;
+  private Double fee;
 }

@@ -2,7 +2,6 @@ package org.knowm.xchange.campbx.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import si.mazi.rescu.serialization.jackson.serializers.SqlTimeDeserializer;
 import si.mazi.rescu.serialization.jackson.serializers.YesNoBooleanDeserializerImpl;
@@ -25,10 +24,10 @@ public class CampBXOrder extends CampBXResponse {
   private String marginPercent;
 
   @JsonProperty("Quantity")
-  private BigDecimal quantity;
+  private Double quantity;
 
   @JsonProperty("Price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("Stop-loss")
   @JsonDeserialize(using = YesNoBooleanDeserializerImpl.class)
@@ -93,25 +92,25 @@ public class CampBXOrder extends CampBXResponse {
   }
 
   @JsonProperty("Quantity")
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
 
     return quantity;
   }
 
   @JsonProperty("Quantity")
-  public void setQuantity(BigDecimal quantity) {
+  public void setQuantity(Double quantity) {
 
     this.quantity = quantity;
   }
 
   @JsonProperty("Price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
   @JsonProperty("Price")
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
 
     this.price = price;
   }

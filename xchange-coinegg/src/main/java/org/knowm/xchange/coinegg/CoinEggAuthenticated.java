@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinegg;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -65,8 +64,8 @@ public interface CoinEggAuthenticated {
       @FormParam("key") String apiKey,
       @FormParam("signature") ParamsDigest signer,
       @FormParam("nonce") long nonce,
-      @FormParam("amount") BigDecimal amount,
-      @FormParam("price") BigDecimal price,
+      @FormParam("amount") Double amount,
+      @FormParam("price") Double price,
       @FormParam("type") String type,
       @FormParam("coin") String coin)
       throws IOException;

@@ -1,6 +1,5 @@
 package org.knowm.xchange.ccex;
 
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -118,7 +117,7 @@ public class CCEXAdapters {
     Map<Currency, CurrencyMetaData> currencies = new HashMap<>();
 
     for (CCEXMarket product : products) {
-      BigDecimal minSize = product.getMinTradeSize();
+      Double minSize = product.getMinTradeSize();
       CurrencyPair pair = adaptCurrencyPair(product);
       CurrencyPairMetaData existingMetaForPair = existingCurrencyPairMetadata.get(pair);
       FeeTier[] existingFeeTiers = null;
@@ -162,10 +161,10 @@ public class CCEXAdapters {
               Currency.getInstance(balance.getCurrency().toUpperCase()),
               balance.getBalance(),
               balance.getAvailable(),
-              balance.getBalance().subtract(balance.getAvailable()).subtract(balance.getPending()),
-              BigDecimal.ZERO,
-              BigDecimal.ZERO,
-              BigDecimal.ZERO,
+              balance.getBalance() - (balance.getAvailable()) - (balance.getPending()),
+              0d,
+              0d,
+              0d,
               balance.getPending()));
     }
 
@@ -216,11 +215,11 @@ public class CCEXAdapters {
 
     OrderType orderType =
         trade.getOrderType().equalsIgnoreCase("LIMIT_BUY") ? OrderType.BID : OrderType.ASK;
-    BigDecimal amount = trade.getQuantity().subtract(trade.getQuantityRemaining());
+    Double amount = trade.getQuantity() - (trade.getQuantityRemaining());
     Date date = CCEXUtils.toDate(trade.getTimeStamp());
     String orderId = String.valueOf(trade.getOrderUuid());
 
-    BigDecimal price = trade.getPricePerUnit();
+    Double price = trade.getPricePerUnit();
 
     if (price == null) {
       price = trade.getLimit();
@@ -240,12 +239,12 @@ public class CCEXAdapters {
 
   public static Ticker adaptTicker(CCEXPriceResponse cCEXTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = cCEXTicker.getLastbuy();
-    BigDecimal bid = cCEXTicker.getBuy();
-    BigDecimal ask = cCEXTicker.getSell();
-    BigDecimal high = cCEXTicker.getHigh();
-    BigDecimal low = cCEXTicker.getLow();
-    BigDecimal volume = cCEXTicker.getBuysupport();
+    Double last = cCEXTicker.getLastbuy();
+    Double bid = cCEXTicker.getBuy();
+    Double ask = cCEXTicker.getSell();
+    Double high = cCEXTicker.getHigh();
+    Double low = cCEXTicker.getLow();
+    Double volume = cCEXTicker.getBuysupport();
 
     Date timestamp = new Date(cCEXTicker.getUpdated());
 

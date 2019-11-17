@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
@@ -32,8 +31,8 @@ public class KrakenDepthJSONTest {
     List<KrakenPublicOrder> krakenAsks = krakenDepths.get("XXBTZEUR").getAsks();
     KrakenPublicOrder krakenPublicOrder = krakenAsks.get(0);
 
-    assertThat(krakenPublicOrder.getPrice()).isEqualTo(new BigDecimal("530.75513"));
-    assertThat(krakenPublicOrder.getVolume()).isEqualTo(new BigDecimal("0.248"));
+    assertThat(krakenPublicOrder.getPrice()).isEqualTo(new Double("530.75513"));
+    assertThat(krakenPublicOrder.getVolume()).isEqualTo(new Double("0.248"));
     assertThat(krakenPublicOrder.getTimestamp()).isEqualTo(1391825343L);
   }
 }

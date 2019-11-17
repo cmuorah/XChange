@@ -1,20 +1,19 @@
 package org.knowm.xchange.bitz.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitZTrades {
 
-  private final BigDecimal min;
-  private final BigDecimal max;
-  private final BigDecimal sum;
+  private final Double min;
+  private final Double max;
+  private final Double sum;
 
   private final BitZPublicTrade[] trades;
 
   public BitZTrades(
-      @JsonProperty("min") BigDecimal min,
-      @JsonProperty("max") BigDecimal max,
-      @JsonProperty("sum") BigDecimal sum,
+      @JsonProperty("min") Double min,
+      @JsonProperty("max") Double max,
+      @JsonProperty("sum") Double sum,
       @JsonProperty("d") BitZPublicTrade[] trades) {
 
     this.min = min;
@@ -23,15 +22,15 @@ public class BitZTrades {
     this.trades = trades;
   }
 
-  public BigDecimal getMin() {
+  public Double getMin() {
     return min;
   }
 
-  public BigDecimal getMax() {
+  public Double getMax() {
     return max;
   }
 
-  public BigDecimal getSum() {
+  public Double getSum() {
     return sum;
   }
 

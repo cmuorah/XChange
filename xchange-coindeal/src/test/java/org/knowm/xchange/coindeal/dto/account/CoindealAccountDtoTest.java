@@ -6,7 +6,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 
@@ -26,7 +25,7 @@ public class CoindealAccountDtoTest {
 
     // verify that the example data was unmarshalled correctly
     assertThat(coindealBalances.get(0).getCurrency()).isEqualTo("Bitcoin");
-    assertThat(coindealBalances.get(0).getAvailable()).isEqualTo(new BigDecimal("10.00"));
-    assertThat(coindealBalances.get(0).getReserved()).isEqualTo(new BigDecimal("11.00"));
+    assertThat(coindealBalances.get(0).getAvailable()).isEqualTo(new Double("10.00"));
+    assertThat(coindealBalances.get(0).getReserved()).isEqualTo(new Double("11.00"));
   }
 }

@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitso;
 
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,10 +77,10 @@ public final class BitsoAdapters {
   }
 
   public static List<LimitOrder> createOrders(
-      CurrencyPair currencyPair, Order.OrderType orderType, List<List<BigDecimal>> orders) {
+      CurrencyPair currencyPair, Order.OrderType orderType, List<List<Double>> orders) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (List<BigDecimal> ask : orders) {
+    for (List<Double> ask : orders) {
       checkArgument(
           ask.size() == 2, "Expected a pair (price, amount) but got {0} elements.", ask.size());
       limitOrders.add(createOrder(currencyPair, ask, orderType));
@@ -90,7 +89,7 @@ public final class BitsoAdapters {
   }
 
   public static LimitOrder createOrder(
-      CurrencyPair currencyPair, List<BigDecimal> priceAndAmount, Order.OrderType orderType) {
+      CurrencyPair currencyPair, List<Double> priceAndAmount, Order.OrderType orderType) {
 
     return new LimitOrder(
         orderType, priceAndAmount.get(1), currencyPair, "", null, priceAndAmount.get(0));
@@ -153,10 +152,10 @@ public final class BitsoAdapters {
           .equals(
               BitsoUserTransaction.TransactionType
                   .trade)) { // skip account deposits and withdrawals.
-        boolean sell = bitsoUserTransaction.getMxn().doubleValue() > 0.0;
+        boolean sell = bitsoUserTransaction.getMxn() > 0.0;
         Order.OrderType orderType = sell ? Order.OrderType.ASK : Order.OrderType.BID;
-        BigDecimal originalAmount = bitsoUserTransaction.getBtc();
-        BigDecimal price = bitsoUserTransaction.getPrice().abs();
+        Double originalAmount = bitsoUserTransaction.getBtc();
+        Double price = Math.abs(bitsoUserTransaction.getPrice());
         Date timestamp = BitsoUtils.parseDate(bitsoUserTransaction.getDatetime());
         long transactionId = bitsoUserTransaction.getId();
         if (transactionId > lastTradeId) {
@@ -164,7 +163,7 @@ public final class BitsoAdapters {
         }
         final String tradeId = String.valueOf(transactionId);
         final String orderId = String.valueOf(bitsoUserTransaction.getOrderId());
-        final BigDecimal feeAmount = bitsoUserTransaction.getFee();
+        final Double feeAmount = bitsoUserTransaction.getFee();
         final CurrencyPair currencyPair = new CurrencyPair(Currency.BTC, Currency.MXN);
 
         String feeCurrency =

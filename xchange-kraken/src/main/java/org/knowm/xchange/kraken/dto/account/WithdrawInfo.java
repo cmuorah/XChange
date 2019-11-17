@@ -1,7 +1,6 @@
 package org.knowm.xchange.kraken.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class WithdrawInfo {
   /*
@@ -10,12 +9,12 @@ public class WithdrawInfo {
    */
 
   private final String method;
-  private final BigDecimal limit;
+  private final Double limit;
   private final String fee;
 
   public WithdrawInfo(
       @JsonProperty("method") String method,
-      @JsonProperty("limit") BigDecimal limit,
+      @JsonProperty("limit") Double limit,
       @JsonProperty("fee") String fee) {
     super();
     this.method = method;
@@ -27,7 +26,7 @@ public class WithdrawInfo {
     return method;
   }
 
-  public BigDecimal getLimit() {
+  public Double getLimit() {
     return limit;
   }
 

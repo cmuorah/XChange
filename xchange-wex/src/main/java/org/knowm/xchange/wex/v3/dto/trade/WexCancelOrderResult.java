@@ -1,7 +1,6 @@
 package org.knowm.xchange.wex.v3.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.Map;
 
@@ -9,7 +8,7 @@ import java.util.Map;
 public class WexCancelOrderResult {
 
   private final long orderId;
-  private final Map<String, BigDecimal> funds;
+  private final Map<String, Double> funds;
 
   /**
    * Constructor
@@ -18,8 +17,7 @@ public class WexCancelOrderResult {
    * @param funds
    */
   public WexCancelOrderResult(
-      @JsonProperty("order_id") long orderId,
-      @JsonProperty("funds") Map<String, BigDecimal> funds) {
+      @JsonProperty("order_id") long orderId, @JsonProperty("funds") Map<String, Double> funds) {
 
     this.orderId = orderId;
     this.funds = funds;
@@ -30,7 +28,7 @@ public class WexCancelOrderResult {
     return orderId;
   }
 
-  public Map<String, BigDecimal> getFunds() {
+  public Map<String, Double> getFunds() {
 
     return funds;
   }

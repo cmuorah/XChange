@@ -1,6 +1,5 @@
 package org.knowm.xchange.gateio;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -54,14 +53,14 @@ public final class GateioAdapters {
 
   public static Ticker adaptTicker(CurrencyPair currencyPair, GateioTicker gateioTicker) {
 
-    BigDecimal ask = gateioTicker.getLowestAsk();
-    BigDecimal bid = gateioTicker.getHighestBid();
-    BigDecimal last = gateioTicker.getLast();
-    BigDecimal low = gateioTicker.getLow24hr();
-    BigDecimal high = gateioTicker.getHigh24hr();
+    Double ask = gateioTicker.getLowestAsk();
+    Double bid = gateioTicker.getHighestBid();
+    Double last = gateioTicker.getLast();
+    Double low = gateioTicker.getLow24hr();
+    Double high = gateioTicker.getHigh24hr();
     // Looks like gate.io vocabulary is inverted...
-    BigDecimal baseVolume = gateioTicker.getQuoteVolume();
-    BigDecimal quoteVolume = gateioTicker.getBaseVolume();
+    Double baseVolume = gateioTicker.getQuoteVolume();
+    Double quoteVolume = gateioTicker.getBaseVolume();
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
@@ -171,18 +170,18 @@ public final class GateioAdapters {
   public static Wallet adaptWallet(GateioFunds bterAccountInfo) {
 
     List<Balance> balances = new ArrayList<>();
-    for (Entry<String, BigDecimal> funds : bterAccountInfo.getAvailableFunds().entrySet()) {
+    for (Entry<String, Double> funds : bterAccountInfo.getAvailableFunds().entrySet()) {
       Currency currency = Currency.getInstance(funds.getKey().toUpperCase());
-      BigDecimal amount = funds.getValue();
-      BigDecimal locked = bterAccountInfo.getLockedFunds().get(currency.toString());
+      Double amount = funds.getValue();
+      Double locked = bterAccountInfo.getLockedFunds().get(currency.toString());
 
-      balances.add(new Balance(currency, null, amount, locked == null ? BigDecimal.ZERO : locked));
+      balances.add(new Balance(currency, null, amount, locked == null ? 0d : locked));
     }
-    for (Entry<String, BigDecimal> funds : bterAccountInfo.getLockedFunds().entrySet()) {
+    for (Entry<String, Double> funds : bterAccountInfo.getLockedFunds().entrySet()) {
       Currency currency = Currency.getInstance(funds.getKey().toUpperCase());
       if (balances.stream().noneMatch(balance -> balance.getCurrency().equals(currency))) {
-        BigDecimal amount = funds.getValue();
-        balances.add(new Balance(currency, null, BigDecimal.ZERO, amount));
+        Double amount = funds.getValue();
+        balances.add(new Balance(currency, null, 0d, amount));
       }
     }
 

@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -100,8 +99,8 @@ public class GateioMarketDataJsonTest {
 
     GateioTradeHistory.GateioPublicTrade trade = trades.get(0);
     assertThat(trade.getDate()).isEqualTo(1393908191);
-    assertThat(trade.getPrice()).isEqualTo(new BigDecimal("3942"));
-    assertThat(trade.getAmount()).isEqualTo(new BigDecimal("0.0129"));
+    assertThat(trade.getPrice()).isEqualTo(new Double("3942"));
+    assertThat(trade.getAmount()).isEqualTo(new Double("0.0129"));
     assertThat(trade.getTradeId()).isEqualTo("5600118");
     Assertions.assertThat(trade.getType()).isEqualTo(GateioOrderType.SELL);
   }

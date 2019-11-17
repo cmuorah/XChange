@@ -1,20 +1,19 @@
 package org.knowm.xchange.paymium.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class PaymiumMarketOrder {
 
   private final String currency;
   private final long timestamp;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
 
   public PaymiumMarketOrder(
       @JsonProperty("currency") String currency,
       @JsonProperty("timestamp") long timestamp,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount) {
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount) {
 
     this.currency = currency;
     this.timestamp = timestamp;
@@ -32,12 +31,12 @@ public class PaymiumMarketOrder {
     return timestamp;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

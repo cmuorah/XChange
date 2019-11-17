@@ -1,6 +1,5 @@
 package org.knowm.xchange.campbx;
 
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +29,10 @@ public final class CampBXAdapters {
   }
 
   public static List<LimitOrder> createOrders(
-      CurrencyPair currencyPair, Order.OrderType orderType, List<List<BigDecimal>> orders) {
+      CurrencyPair currencyPair, Order.OrderType orderType, List<List<Double>> orders) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (List<BigDecimal> ask : orders) {
+    for (List<Double> ask : orders) {
       checkArgument(
           ask.size() == 2, "Expected a pair (price, amount) but got {0} elements.", ask.size());
       limitOrders.add(createOrder(currencyPair, ask, orderType));
@@ -42,7 +41,7 @@ public final class CampBXAdapters {
   }
 
   public static LimitOrder createOrder(
-      CurrencyPair currencyPair, List<BigDecimal> priceAndAmount, Order.OrderType orderType) {
+      CurrencyPair currencyPair, List<Double> priceAndAmount, Order.OrderType orderType) {
 
     return new LimitOrder(
         orderType, priceAndAmount.get(1), currencyPair, "", null, priceAndAmount.get(0));
@@ -64,9 +63,9 @@ public final class CampBXAdapters {
    */
   public static Ticker adaptTicker(CampBXTicker campbxTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = campbxTicker.getLast();
-    BigDecimal bid = campbxTicker.getBid();
-    BigDecimal ask = campbxTicker.getAsk();
+    Double last = campbxTicker.getLast();
+    Double bid = campbxTicker.getBid();
+    Double ask = campbxTicker.getAsk();
 
     return new Ticker.Builder().currencyPair(currencyPair).last(last).bid(bid).ask(ask).build();
   }

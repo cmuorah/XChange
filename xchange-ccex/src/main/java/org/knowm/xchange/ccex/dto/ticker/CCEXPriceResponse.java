@@ -1,31 +1,30 @@
 package org.knowm.xchange.ccex.dto.ticker;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CCEXPriceResponse {
 
-  private BigDecimal high;
-  private BigDecimal low;
-  private BigDecimal avg;
-  private BigDecimal lastbuy;
-  private BigDecimal lastsell;
-  private BigDecimal buy;
-  private BigDecimal sell;
-  private BigDecimal lastprice;
-  private BigDecimal buysupport;
+  private Double high;
+  private Double low;
+  private Double avg;
+  private Double lastbuy;
+  private Double lastsell;
+  private Double buy;
+  private Double sell;
+  private Double lastprice;
+  private Double buysupport;
   private int updated;
 
   public CCEXPriceResponse(
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("avg") BigDecimal avg,
-      @JsonProperty("lastbuy") BigDecimal lastbuy,
-      @JsonProperty("lastsell") BigDecimal lastsell,
-      @JsonProperty("buy") BigDecimal buy,
-      @JsonProperty("sell") BigDecimal sell,
-      @JsonProperty("lastprice") BigDecimal lastprice,
-      @JsonProperty("buysupport") BigDecimal buysupport,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("avg") Double avg,
+      @JsonProperty("lastbuy") Double lastbuy,
+      @JsonProperty("lastsell") Double lastsell,
+      @JsonProperty("buy") Double buy,
+      @JsonProperty("sell") Double sell,
+      @JsonProperty("lastprice") Double lastprice,
+      @JsonProperty("buysupport") Double buysupport,
       @JsonProperty("updated") int updated) {
     super();
     this.high = high;
@@ -40,75 +39,75 @@ public class CCEXPriceResponse {
     this.updated = updated;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public void setHigh(BigDecimal high) {
+  public void setHigh(Double high) {
     this.high = high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public void setLow(BigDecimal low) {
+  public void setLow(Double low) {
     this.low = low;
   }
 
-  public BigDecimal getAvg() {
+  public Double getAvg() {
     return avg;
   }
 
-  public void setAvg(BigDecimal avg) {
+  public void setAvg(Double avg) {
     this.avg = avg;
   }
 
-  public BigDecimal getLastbuy() {
+  public Double getLastbuy() {
     return lastbuy;
   }
 
-  public void setLastbuy(BigDecimal lastbuy) {
+  public void setLastbuy(Double lastbuy) {
     this.lastbuy = lastbuy;
   }
 
-  public BigDecimal getLastsell() {
+  public Double getLastsell() {
     return lastsell;
   }
 
-  public void setLastsell(BigDecimal lastsell) {
+  public void setLastsell(Double lastsell) {
     this.lastsell = lastsell;
   }
 
-  public BigDecimal getBuy() {
+  public Double getBuy() {
     return buy;
   }
 
-  public void setBuy(BigDecimal buy) {
+  public void setBuy(Double buy) {
     this.buy = buy;
   }
 
-  public BigDecimal getSell() {
+  public Double getSell() {
     return sell;
   }
 
-  public void setSell(BigDecimal sell) {
+  public void setSell(Double sell) {
     this.sell = sell;
   }
 
-  public BigDecimal getLastprice() {
+  public Double getLastprice() {
     return lastprice;
   }
 
-  public void setLastprice(BigDecimal lastprice) {
+  public void setLastprice(Double lastprice) {
     this.lastprice = lastprice;
   }
 
-  public BigDecimal getBuysupport() {
+  public Double getBuysupport() {
     return buysupport;
   }
 
-  public void setBuysupport(BigDecimal buysupport) {
+  public void setBuysupport(Double buysupport) {
     this.buysupport = buysupport;
   }
 

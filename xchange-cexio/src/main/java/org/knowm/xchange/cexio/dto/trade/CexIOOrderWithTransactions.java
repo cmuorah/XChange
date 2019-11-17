@@ -1,7 +1,6 @@
 package org.knowm.xchange.cexio.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,19 +8,19 @@ public class CexIOOrderWithTransactions {
   private final String id;
   private final Long time;
   private final String type;
-  private final BigDecimal price;
-  private final BigDecimal amount;
-  private final BigDecimal pending;
+  private final Double price;
+  private final Double amount;
+  private final Double pending;
   private final String symbol1;
   private final String symbol2;
   private final String symbol1Amount;
   private final String symbol2Amount;
   private final String lastTxTime;
   private final String tradingFeeUserVolumeAmount;
-  private final BigDecimal tradingFeeMaker;
-  private final BigDecimal tradingFeeTaker;
+  private final Double tradingFeeMaker;
+  private final Double tradingFeeTaker;
   private final String tradingFeeStrategy;
-  private final BigDecimal remains;
+  private final Double remains;
   private final String orderId;
   private final String pos;
   private final String status;
@@ -33,19 +32,19 @@ public class CexIOOrderWithTransactions {
       @JsonProperty("id") String id,
       @JsonProperty("time") Long time,
       @JsonProperty("type") String type,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("pending") BigDecimal pending,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("pending") Double pending,
       @JsonProperty("symbol1") String symbol1,
       @JsonProperty("symbol2") String symbol2,
       @JsonProperty("symbol1Amount") String symbol1Amount,
       @JsonProperty("symbol2Amount") String symbol2Amount,
       @JsonProperty("lastTxTime") String lastTxTime,
       @JsonProperty("tradingFeeUserVolumeAmount") String tradingFeeUserVolumeAmount,
-      @JsonProperty("tradingFeeMaker") BigDecimal tradingFeeMaker,
-      @JsonProperty("tradingFeeTaker") BigDecimal tradingFeeTaker,
+      @JsonProperty("tradingFeeMaker") Double tradingFeeMaker,
+      @JsonProperty("tradingFeeTaker") Double tradingFeeTaker,
       @JsonProperty("tradingFeeStrategy") String tradingFeeStrategy,
-      @JsonProperty("remains") BigDecimal remains,
+      @JsonProperty("remains") Double remains,
       @JsonProperty("orderId") String orderId,
       @JsonProperty("pos") String pos,
       @JsonProperty("status") String status,
@@ -88,15 +87,15 @@ public class CexIOOrderWithTransactions {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getPending() {
+  public Double getPending() {
     return pending;
   }
 
@@ -124,11 +123,11 @@ public class CexIOOrderWithTransactions {
     return tradingFeeUserVolumeAmount;
   }
 
-  public BigDecimal getTradingFeeMaker() {
+  public Double getTradingFeeMaker() {
     return tradingFeeMaker;
   }
 
-  public BigDecimal getTradingFeeTaker() {
+  public Double getTradingFeeTaker() {
     return tradingFeeTaker;
   }
 
@@ -136,7 +135,7 @@ public class CexIOOrderWithTransactions {
     return tradingFeeStrategy;
   }
 
-  public BigDecimal getRemains() {
+  public Double getRemains() {
     return remains;
   }
 

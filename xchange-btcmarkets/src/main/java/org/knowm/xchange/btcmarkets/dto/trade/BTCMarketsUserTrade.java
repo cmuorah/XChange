@@ -1,12 +1,8 @@
 package org.knowm.xchange.btcmarkets.dto.trade;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.math.BigDecimal;
 import java.util.Date;
-import org.knowm.xchange.utils.jackson.BtcToSatoshi;
 import org.knowm.xchange.utils.jackson.MillisecTimestampDeserializer;
-import org.knowm.xchange.utils.jackson.SatoshiToBtc;
 
 public class BTCMarketsUserTrade {
 
@@ -16,17 +12,11 @@ public class BTCMarketsUserTrade {
 
   private String description;
 
-  @JsonSerialize(using = BtcToSatoshi.class)
-  @JsonDeserialize(using = SatoshiToBtc.class)
-  private BigDecimal price;
+  private Double price;
 
-  @JsonSerialize(using = BtcToSatoshi.class)
-  @JsonDeserialize(using = SatoshiToBtc.class)
-  private BigDecimal volume;
+  private Double volume;
 
-  @JsonSerialize(using = BtcToSatoshi.class)
-  @JsonDeserialize(using = SatoshiToBtc.class)
-  private BigDecimal fee;
+  private Double fee;
 
   private BTCMarketsOrder.Side side;
 
@@ -41,15 +31,15 @@ public class BTCMarketsUserTrade {
     return description;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

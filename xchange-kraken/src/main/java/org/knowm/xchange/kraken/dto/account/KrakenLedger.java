@@ -1,7 +1,6 @@
 package org.knowm.xchange.kraken.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class KrakenLedger {
 
@@ -10,9 +9,9 @@ public class KrakenLedger {
   private final LedgerType ledgerType;
   private final String assetClass;
   private final String asset;
-  private final BigDecimal transactionAmount;
-  private final BigDecimal fee;
-  private final BigDecimal balance;
+  private final Double transactionAmount;
+  private final Double fee;
+  private final Double balance;
 
   /**
    * Constructor
@@ -32,9 +31,9 @@ public class KrakenLedger {
       @JsonProperty("type") LedgerType ledgerType,
       @JsonProperty("aclass") String assetClass,
       @JsonProperty("asset") String asset,
-      @JsonProperty("amount") BigDecimal transactionAmount,
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("balance") BigDecimal balance) {
+      @JsonProperty("amount") Double transactionAmount,
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("balance") Double balance) {
 
     this.refId = refId;
     this.unixTime = unixTime;
@@ -71,17 +70,17 @@ public class KrakenLedger {
     return asset;
   }
 
-  public BigDecimal getTransactionAmount() {
+  public Double getTransactionAmount() {
 
     return transactionAmount;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
 
     return balance;
   }

@@ -1,17 +1,7 @@
 package org.knowm.xchange.ripple;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -30,11 +20,7 @@ import org.knowm.xchange.ripple.dto.account.RippleAccountBalances;
 import org.knowm.xchange.ripple.dto.account.RippleBalance;
 import org.knowm.xchange.ripple.dto.marketdata.RippleOrder;
 import org.knowm.xchange.ripple.dto.marketdata.RippleOrderBook;
-import org.knowm.xchange.ripple.dto.trade.IRippleTradeTransaction;
-import org.knowm.xchange.ripple.dto.trade.RippleAccountOrders;
-import org.knowm.xchange.ripple.dto.trade.RippleAccountOrdersBody;
-import org.knowm.xchange.ripple.dto.trade.RippleLimitOrder;
-import org.knowm.xchange.ripple.dto.trade.RippleUserTrade;
+import org.knowm.xchange.ripple.dto.trade.*;
 import org.knowm.xchange.ripple.service.RippleAccountService;
 import org.knowm.xchange.ripple.service.RippleTradeServiceRaw;
 import org.knowm.xchange.ripple.service.params.RippleMarketDataParams;
@@ -69,7 +55,7 @@ public abstract class RippleAdapters {
         walletId = balance.getCounterparty();
       }
       if (!balances.containsKey(walletId)) {
-        balances.put(walletId, new LinkedList<Balance>());
+        balances.put(walletId, new LinkedList<>());
       }
       balances
           .get(walletId)
@@ -81,7 +67,7 @@ public abstract class RippleAdapters {
       accountInfo.add(Wallet.Builder.from(wallet.getValue()).id(wallet.getKey()).build());
     }
 
-    return new AccountInfo(username, BigDecimal.ZERO, accountInfo);
+    return new AccountInfo(username, 0d, accountInfo);
   }
 
   /**
@@ -99,7 +85,7 @@ public abstract class RippleAdapters {
 
     final String[] baseSplit = splitPair[0].split("\\+");
     final String baseSymbol = baseSplit[0];
-    if (baseSymbol.equals(currencyPair.base.getCurrencyCode()) == false) {
+    if (!baseSymbol.equals(currencyPair.base.getCurrencyCode())) {
       throw new IllegalStateException(
           String.format(
               "base symbol in Ripple order book %s does not match requested base %s",
@@ -111,7 +97,7 @@ public abstract class RippleAdapters {
     } else {
       baseCounterparty = baseSplit[1];
     }
-    if (baseCounterparty.equals(params.getBaseCounterparty()) == false) {
+    if (!baseCounterparty.equals(params.getBaseCounterparty())) {
       throw new IllegalStateException(
           String.format(
               "base counterparty in Ripple order book %s does not match requested counterparty %s",
@@ -120,7 +106,7 @@ public abstract class RippleAdapters {
 
     final String[] counterSplit = splitPair[1].split("\\+");
     final String counterSymbol = counterSplit[0];
-    if (counterSymbol.equals(currencyPair.counter.getCurrencyCode()) == false) {
+    if (!counterSymbol.equals(currencyPair.counter.getCurrencyCode())) {
       throw new IllegalStateException(
           String.format(
               "counter symbol in Ripple order book %s does not match requested base %s",
@@ -132,7 +118,7 @@ public abstract class RippleAdapters {
     } else {
       counterCounterparty = counterSplit[1];
     }
-    if (counterCounterparty.equals(params.getCounterCounterparty()) == false) {
+    if (!counterCounterparty.equals(params.getCounterCounterparty())) {
       throw new IllegalStateException(
           String.format(
               "counter counterparty in Ripple order book %s does not match requested counterparty %s",
@@ -171,7 +157,7 @@ public abstract class RippleAdapters {
       // Funded vs Unfunded https://wiki.ripple.com/Unfunded_offers
 
       // amount of base currency
-      final BigDecimal originalAmount;
+      final Double originalAmount;
       if (orderType == OrderType.BID) {
         originalAmount = rippleOrder.getTakerPaysFunded().getValue();
       } else {
@@ -179,7 +165,7 @@ public abstract class RippleAdapters {
       }
 
       // price in counter currency
-      final BigDecimal price = rippleOrder.getPrice().getValue();
+      final Double price = rippleOrder.getPrice().getValue();
 
       final RippleLimitOrder order =
           new RippleLimitOrder(
@@ -225,11 +211,7 @@ public abstract class RippleAdapters {
       final String counterSymbol = counterAmount.getCurrency();
 
       // need to provide rounding scale to prevent ArithmeticException
-      final BigDecimal price =
-          counterAmount
-              .getValue()
-              .divide(baseAmount.getValue(), scale, RoundingMode.HALF_UP)
-              .stripTrailingZeros();
+      final Double price = counterAmount.getValue() / baseAmount.getValue();
       final CurrencyPair pair = new CurrencyPair(baseSymbol, counterSymbol);
 
       final RippleLimitOrder xchangeOrder =
@@ -264,15 +246,10 @@ public abstract class RippleAdapters {
     // account, i.e. the Ripple account address used in the URI.
 
     final List<RippleAmount> balanceChanges = trade.getBalanceChanges();
-    final Iterator<RippleAmount> iterator = balanceChanges.iterator();
-    while (iterator.hasNext()) {
-      final RippleAmount amount = iterator.next();
-      if (amount.getCurrency().equals("XRP") && trade.getFee().equals(amount.getValue().negate())) {
-        // XRP balance change is just the fee - it should not be part of the currency pair
-        // considerations
-        iterator.remove();
-      }
-    }
+    // XRP balance change is just the fee - it should not be part of the currency pair
+    // considerations
+    balanceChanges.removeIf(
+        amount -> amount.getCurrency().equals("XRP") && trade.getFee().equals(-amount.getValue()));
 
     if (balanceChanges.size() != 2) {
       logger.warn(
@@ -340,7 +317,7 @@ public abstract class RippleAdapters {
     }
 
     final OrderType type;
-    if (base.getValue().signum() == 1) {
+    if (base.getValue() > 0) {
       type = OrderType.BID;
     } else {
       type = OrderType.ASK;
@@ -363,10 +340,10 @@ public abstract class RippleAdapters {
     // Ripple supplies XRP with net quantity and price, must apply these to the
     // trade as gross amounts to ensure the same as the other XChange connections.
 
-    final BigDecimal baseTransferFee =
+    final Double baseTransferFee =
         RippleTradeServiceRaw.getExpectedTransferFee(
             transferFeeSource, base.getCounterparty(), base.getCurrency(), base.getValue(), type);
-    final BigDecimal baseValue = base.getValue().abs().subtract(baseTransferFee);
+    final Double baseValue = Math.abs(base.getValue()) - (baseTransferFee);
 
     final OrderType counterDirection;
     if (type == OrderType.BID) {
@@ -374,41 +351,41 @@ public abstract class RippleAdapters {
     } else {
       counterDirection = OrderType.BID;
     }
-    final BigDecimal counterTransferFee =
+    final Double counterTransferFee =
         RippleTradeServiceRaw.getExpectedTransferFee(
             transferFeeSource,
             counter.getCounterparty(),
             counter.getCurrency(),
             counter.getValue(),
             counterDirection);
-    final BigDecimal counterValue = counter.getValue().abs().subtract(counterTransferFee);
+    final Double counterValue = Math.abs(counter.getValue()) - (counterTransferFee);
 
     // Account for transaction fee in quantities.
-    final BigDecimal transactionFee = trade.getFee();
-    final BigDecimal quantity;
+    final Double transactionFee = trade.getFee();
+    final Double quantity;
     if (base.getCurrency().equals("XRP")) {
       if (type == OrderType.BID) {
-        quantity = baseValue.add(transactionFee);
+        quantity = baseValue + (transactionFee);
       } else { // OrderType.ASK
-        quantity = baseValue.subtract(transactionFee);
+        quantity = baseValue - (transactionFee);
       }
     } else {
       quantity = baseValue;
     }
 
-    final BigDecimal counterAmount;
+    final Double counterAmount;
     if (counter.getCurrency().equals("XRP")) {
       if (type == OrderType.ASK) {
-        counterAmount = counterValue.add(transactionFee);
+        counterAmount = counterValue + (transactionFee);
       } else { // OrderType.BID
-        counterAmount = counterValue.subtract(transactionFee);
+        counterAmount = counterValue - (transactionFee);
       }
     } else {
       counterAmount = counterValue;
     }
 
     // need to provide rounding scale to prevent ArithmeticException
-    final BigDecimal price = counterAmount.divide(quantity, scale, RoundingMode.HALF_UP);
+    final Double price = counterAmount / quantity;
 
     final String orderId = Long.toString(trade.getOrderId());
 
@@ -420,12 +397,12 @@ public abstract class RippleAdapters {
                 .feeCurrency(Currency.XRP)
                 .id(trade.getHash())
                 .orderId(orderId)
-                .price(price.stripTrailingZeros())
+                .price(price)
                 .timestamp(trade.getTimestamp())
-                .originalAmount(quantity.stripTrailingZeros())
+                .originalAmount(quantity)
                 .type(type);
-    builder.baseTransferFee(baseTransferFee.abs());
-    builder.counterTransferFee(counterTransferFee.abs());
+    builder.baseTransferFee(Math.abs(baseTransferFee));
+    builder.counterTransferFee(Math.abs(counterTransferFee));
     if (base.getCounterparty().length() > 0) {
       builder.baseCounterparty(base.getCounterparty());
     }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.mercadobitcoin.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Felipe Micaroni Lalli */
 public class MercadoBitcoinTicker {
@@ -26,21 +25,21 @@ public class MercadoBitcoinTicker {
 
   public static class Ticker {
 
-    private final BigDecimal last;
-    private final BigDecimal high;
-    private final BigDecimal low;
-    private final BigDecimal vol;
-    private final BigDecimal buy;
-    private final BigDecimal sell;
+    private final Double last;
+    private final Double high;
+    private final Double low;
+    private final Double vol;
+    private final Double buy;
+    private final Double sell;
     private final long date;
 
     public Ticker(
-        @JsonProperty("last") BigDecimal last,
-        @JsonProperty("high") BigDecimal high,
-        @JsonProperty("low") BigDecimal low,
-        @JsonProperty("vol") BigDecimal vol,
-        @JsonProperty("buy") BigDecimal buy,
-        @JsonProperty("sell") BigDecimal sell,
+        @JsonProperty("last") Double last,
+        @JsonProperty("high") Double high,
+        @JsonProperty("low") Double low,
+        @JsonProperty("vol") Double vol,
+        @JsonProperty("buy") Double buy,
+        @JsonProperty("sell") Double sell,
         @JsonProperty("date") long date) {
 
       this.last = last;
@@ -52,32 +51,32 @@ public class MercadoBitcoinTicker {
       this.date = date;
     }
 
-    public BigDecimal getLast() {
+    public Double getLast() {
 
       return last;
     }
 
-    public BigDecimal getHigh() {
+    public Double getHigh() {
 
       return high;
     }
 
-    public BigDecimal getLow() {
+    public Double getLow() {
 
       return low;
     }
 
-    public BigDecimal getVol() {
+    public Double getVol() {
 
       return vol;
     }
 
-    public BigDecimal getBuy() {
+    public Double getBuy() {
 
       return buy;
     }
 
-    public BigDecimal getSell() {
+    public Double getSell() {
 
       return sell;
     }

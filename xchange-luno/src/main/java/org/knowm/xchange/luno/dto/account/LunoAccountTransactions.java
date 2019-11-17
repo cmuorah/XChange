@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -42,20 +41,20 @@ public class LunoAccountTransactions {
   public static class Transaction {
     public final int rowIndex;
     public final long timestamp;
-    public final BigDecimal balance;
-    public final BigDecimal available;
-    public final BigDecimal balanceDelta;
-    public final BigDecimal availableDelta;
+    public final Double balance;
+    public final Double available;
+    public final Double balanceDelta;
+    public final Double availableDelta;
     public final String currency;
     public final String description;
 
     public Transaction(
         @JsonProperty(value = "row_index", required = true) int rowIndex,
         @JsonProperty(value = "timestamp", required = true) long timestamp,
-        @JsonProperty(value = "balance", required = true) BigDecimal balance,
-        @JsonProperty(value = "available", required = true) BigDecimal available,
-        @JsonProperty(value = "balance_delta", required = true) BigDecimal balanceDelta,
-        @JsonProperty(value = "available_delta", required = true) BigDecimal availableDelta,
+        @JsonProperty(value = "balance", required = true) Double balance,
+        @JsonProperty(value = "available", required = true) Double available,
+        @JsonProperty(value = "balance_delta", required = true) Double balanceDelta,
+        @JsonProperty(value = "available_delta", required = true) Double availableDelta,
         @JsonProperty(value = "currency", required = true) String currency,
         @JsonProperty(value = "description", required = true) String description) {
       this.rowIndex = rowIndex;

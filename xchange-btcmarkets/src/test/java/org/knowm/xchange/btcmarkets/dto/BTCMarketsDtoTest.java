@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.junit.Test;
@@ -32,8 +31,8 @@ public class BTCMarketsDtoTest extends BTCMarketsTestSupport {
 
     assertThat(response).hasSize(3);
     assertThat(response[2].getCurrency()).isEqualTo("LTC");
-    assertThat(response[2].getBalance()).isEqualTo(new BigDecimal("10.00000000"));
-    assertThat(response[2].getPendingFunds()).isEqualTo(new BigDecimal("0E-8"));
+    assertThat(response[2].getBalance()).isEqualTo(new Double("10.00000000"));
+    assertThat(response[2].getPendingFunds()).isEqualTo(new Double("0E-8"));
     assertThat(response[2].toString())
         .isEqualTo("BTCMarketsBalance{pendingFunds=0E-8, balance=10.00000000, currency='LTC'}");
   }
@@ -161,7 +160,7 @@ public class BTCMarketsDtoTest extends BTCMarketsTestSupport {
     assertThat(response.getInstrument()).isEqualTo("BTC");
     assertThat(response.getTimestamp().getTime()).isEqualTo(1442997827000L);
 
-    List<BigDecimal[]> asks = response.getAsks();
+    List<Double[]> asks = response.getAsks();
     assertThat(asks).hasSize(3);
 
     for (int i = 0; i < asks.size(); i++) {
@@ -169,7 +168,7 @@ public class BTCMarketsDtoTest extends BTCMarketsTestSupport {
           expectedAsks[i], Order.OrderType.ASK, CurrencyPair.BTC_AUD, asks.get(i));
     }
 
-    List<BigDecimal[]> bids = response.getBids();
+    List<Double[]> bids = response.getBids();
     assertThat(bids).hasSize(2);
     for (int i = 0; i < bids.size(); i++) {
       BtcMarketsAssert.assertEquals(

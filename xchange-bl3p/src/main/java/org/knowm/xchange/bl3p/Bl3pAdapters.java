@@ -1,6 +1,5 @@
 package org.knowm.xchange.bl3p;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -43,10 +42,10 @@ public class Bl3pAdapters {
 
     for (Bl3pOpenOrders.Bl3pOpenOrder bl3pOrder : bl3pOrders) {
       Order.OrderType orderType = Bl3pUtils.fromBl3pOrderType(bl3pOrder.getStatus());
-      BigDecimal limitPrice = bl3pOrder.getPrice().value;
-      BigDecimal originalAmount = bl3pOrder.getAmountFunds().value;
-      BigDecimal executedAmount = bl3pOrder.getAmountExecuted().value;
-      BigDecimal remainingAmount = originalAmount.subtract(executedAmount);
+      Double limitPrice = bl3pOrder.getPrice().value;
+      Double originalAmount = bl3pOrder.getAmountFunds().value;
+      Double executedAmount = bl3pOrder.getAmountExecuted().value;
+      Double remainingAmount = originalAmount - (executedAmount);
 
       result.add(
           new LimitOrder.Builder(orderType, currencyPair)
@@ -65,10 +64,10 @@ public class Bl3pAdapters {
   public static Order adaptGetOrder(
       CurrencyPair currencyPair, Bl3pGetOrder.Bl3pGetOrderData bl3pOrder) {
     Order.OrderType orderType = Bl3pUtils.fromBl3pOrderType(bl3pOrder.getStatus());
-    BigDecimal limitPrice = bl3pOrder.getPrice().value;
-    BigDecimal originalAmount = bl3pOrder.getTotalAmount().value;
-    BigDecimal executedAmount = bl3pOrder.getTotalSpent().value;
-    BigDecimal remainingAmount = originalAmount.subtract(executedAmount);
+    Double limitPrice = bl3pOrder.getPrice().value;
+    Double originalAmount = bl3pOrder.getTotalAmount().value;
+    Double executedAmount = bl3pOrder.getTotalSpent().value;
+    Double remainingAmount = originalAmount - (executedAmount);
 
     return new LimitOrder.Builder(orderType, currencyPair)
         .cumulativeAmount(executedAmount)

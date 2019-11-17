@@ -1,7 +1,6 @@
 package org.knowm.xchange.coindeal.dto.trade;
 
 import com.fasterxml.jackson.annotation.*;
-import java.math.BigDecimal;
 
 public class CoindealTradeHistory {
 
@@ -21,13 +20,13 @@ public class CoindealTradeHistory {
   private final String side;
 
   @JsonProperty("quantity")
-  private final BigDecimal quantity;
+  private final Double quantity;
 
   @JsonProperty("fee")
-  private final BigDecimal fee;
+  private final Double fee;
 
   @JsonProperty("price")
-  private final BigDecimal price;
+  private final Double price;
 
   @JsonProperty("timestamp")
   private final String timestamp;
@@ -38,9 +37,9 @@ public class CoindealTradeHistory {
       @JsonProperty("orderId") String orderId,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("side") String side,
-      @JsonProperty("quantity") BigDecimal quantity,
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("quantity") Double quantity,
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("price") Double price,
       @JsonProperty("timestamp") String timestamp) {
     this.id = id;
     this.clientOrderId = clientOrderId;
@@ -73,15 +72,15 @@ public class CoindealTradeHistory {
     return side;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

@@ -6,7 +6,6 @@ import static org.knowm.xchange.utils.jackson.CurrencyPairDeserializer.getCurren
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.marketdata.Trade;
@@ -27,6 +26,6 @@ public class EnigmaAdaptersTest {
     assertThat(trade.getId()).isEqualTo("195");
     assertThat(trade.getCurrencyPair()).isEqualTo(getCurrencyPairFromString("BTC-USD"));
     assertThat(trade.getType()).isEqualTo(Order.OrderType.ASK);
-    assertThat(trade.getPrice()).isEqualTo(new BigDecimal("10200.5865"));
+    assertThat(trade.getPrice()).isEqualTo(new Double("10200.5865"));
   }
 }

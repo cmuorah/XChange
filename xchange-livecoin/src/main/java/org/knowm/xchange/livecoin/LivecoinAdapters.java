@@ -2,17 +2,7 @@ package org.knowm.xchange.livecoin;
 
 import static org.knowm.xchange.currency.Currency.getInstance;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -34,13 +24,7 @@ import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.UserTrade;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.livecoin.dto.account.LivecoinBalance;
-import org.knowm.xchange.livecoin.dto.marketdata.LivecoinAllOrderBooks;
-import org.knowm.xchange.livecoin.dto.marketdata.LivecoinOrder;
-import org.knowm.xchange.livecoin.dto.marketdata.LivecoinOrderBook;
-import org.knowm.xchange.livecoin.dto.marketdata.LivecoinRestriction;
-import org.knowm.xchange.livecoin.dto.marketdata.LivecoinTicker;
-import org.knowm.xchange.livecoin.dto.marketdata.LivecoinTrade;
-import org.knowm.xchange.livecoin.dto.marketdata.LivecoinUserOrder;
+import org.knowm.xchange.livecoin.dto.marketdata.*;
 import org.knowm.xchange.utils.DateUtils;
 
 public class LivecoinAdapters {
@@ -51,7 +35,7 @@ public class LivecoinAdapters {
   private static final int LIVECOIN_BASE_SCALE = 8;
 
   public static CurrencyPair adaptCurrencyPair(LivecoinRestriction product) {
-    String[] data = product.getCurrencyPair().split("\\/");
+    String[] data = product.getCurrencyPair().split("/");
     return new CurrencyPair(data[0], data[1]);
   }
 
@@ -155,12 +139,12 @@ public class LivecoinAdapters {
   }
 
   public static Ticker adaptTicker(LivecoinTicker ticker, CurrencyPair currencyPair) {
-    BigDecimal last = ticker.getLast();
-    BigDecimal bid = ticker.getBestBid();
-    BigDecimal ask = ticker.getBestAsk();
-    BigDecimal high = ticker.getHigh();
-    BigDecimal low = ticker.getLow();
-    BigDecimal volume = ticker.getVolume();
+    Double last = ticker.getLast();
+    Double bid = ticker.getBestBid();
+    Double ask = ticker.getBestAsk();
+    Double high = ticker.getHigh();
+    Double low = ticker.getLow();
+    Double volume = ticker.getVolume();
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
@@ -203,7 +187,7 @@ public class LivecoinAdapters {
     }
     CurrencyPair pair = new CurrencyPair(order.getCurrencyPair());
     Order.OrderStatus status;
-    if (order.getRemainingQuantity().compareTo(BigDecimal.ZERO) == 0) {
+    if (order.getRemainingQuantity().compareTo(0d) == 0) {
       status = Order.OrderStatus.FILLED;
     } else {
       status =
@@ -236,10 +220,10 @@ public class LivecoinAdapters {
     Currency ccyA = Currency.getInstance(map.get("fixedCurrency").toString());
     Currency ccyB = Currency.getInstance(map.get("variableCurrency").toString());
 
-    BigDecimal amountA = new BigDecimal(map.get("amount").toString());
-    BigDecimal amountB = new BigDecimal(map.get("variableAmount").toString());
-    int scale = Math.max(amountA.scale(), amountB.scale());
-    BigDecimal price = amountB.divide(amountA, scale, RoundingMode.HALF_UP);
+    Double amountA = new Double(map.get("amount").toString());
+    Double amountB = new Double(map.get("variableAmount").toString());
+    int scale = 8;
+    Double price = amountB / amountA;
 
     String id = map.get("id").toString();
 
@@ -248,10 +232,10 @@ public class LivecoinAdapters {
         amountA,
         new CurrencyPair(ccyA, ccyB),
         price,
-        DateUtils.fromMillisUtc(Long.valueOf(map.get("date").toString())),
+        DateUtils.fromMillisUtc(Long.parseLong(map.get("date").toString())),
         id,
         Optional.ofNullable(map.get("externalKey")).map(Object::toString).orElse(null),
-        new BigDecimal(map.get("fee").toString()),
+        new Double(map.get("fee").toString()),
         getInstance(map.get("taxCurrency").toString()));
   }
 
@@ -261,15 +245,15 @@ public class LivecoinAdapters {
 
     return new FundingRecord(
         Optional.ofNullable(map.get("externalKey")).map(Object::toString).orElse(null),
-        DateUtils.fromMillisUtc(Long.valueOf(map.get("date").toString())),
+        DateUtils.fromMillisUtc(Long.parseLong(map.get("date").toString())),
         getInstance(map.get("fixedCurrency").toString()),
-        new BigDecimal(map.get("amount").toString()),
+        new Double(map.get("amount").toString()),
         map.get("id").toString(),
         null,
         type,
         FundingRecord.Status.COMPLETE,
         null,
-        new BigDecimal(map.get("fee").toString()),
+        new Double(map.get("fee").toString()),
         null);
   }
 
@@ -294,7 +278,7 @@ public class LivecoinAdapters {
         builder = new Balance.Builder().currency(currency);
         balanceBuildersByCurrency.put(currency, builder);
       }
-      BigDecimal value = livecoinBalance.getValue();
+      Double value = livecoinBalance.getValue();
       switch (livecoinBalance.getType()) {
         case "total":
           builder.total(value);

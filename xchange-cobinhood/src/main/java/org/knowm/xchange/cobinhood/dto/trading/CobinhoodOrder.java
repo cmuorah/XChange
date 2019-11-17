@@ -1,7 +1,6 @@
 package org.knowm.xchange.cobinhood.dto.trading;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.cobinhood.dto.CobinhoodOrderSide;
 import org.knowm.xchange.cobinhood.dto.CobinhoodOrderType;
 import org.knowm.xchange.dto.Order;
@@ -12,9 +11,9 @@ public class CobinhoodOrder {
   private final State state;
   private final CobinhoodOrderSide side;
   private final CobinhoodOrderType type;
-  private final BigDecimal price;
-  private final BigDecimal size;
-  private final BigDecimal filled;
+  private final Double price;
+  private final Double size;
+  private final Double filled;
   private final Long timestamp;
 
   public CobinhoodOrder(
@@ -23,9 +22,9 @@ public class CobinhoodOrder {
       @JsonProperty("state") State state,
       @JsonProperty("side") CobinhoodOrderSide side,
       @JsonProperty("type") CobinhoodOrderType type,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("size") BigDecimal size,
-      @JsonProperty("filled") BigDecimal filled,
+      @JsonProperty("price") Double price,
+      @JsonProperty("size") Double size,
+      @JsonProperty("filled") Double filled,
       @JsonProperty("timestamp") Long timestamp) {
     this.id = id;
     this.tradingPair = tradingPair;
@@ -58,15 +57,15 @@ public class CobinhoodOrder {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getFilled() {
+  public Double getFilled() {
     return filled;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 

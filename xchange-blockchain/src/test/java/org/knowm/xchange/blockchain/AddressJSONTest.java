@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.blockchain.dto.BitcoinAddress;
 
@@ -27,7 +26,7 @@ public class AddressJSONTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(address.getNumTransactions()).isEqualTo(59);
     assertThat(address.getFinalBalance()).isEqualTo(78399012);
-    assertThat(address.getFinalBalanceDecimal()).isEqualTo(new BigDecimal(".78399012"));
+    assertThat(address.getFinalBalanceDecimal()).isEqualTo(new Double(".78399012"));
     assertThat(address.getAddress()).isEqualTo("17dQktcAmU4urXz7tGk2sbuiCqykm3WLs6");
   }
 }

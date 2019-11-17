@@ -1,7 +1,6 @@
 package org.knowm.xchange.wex.v3.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -47,7 +46,7 @@ public class WexAccountServiceRaw extends WexBaseService {
    * @param address Withdrawall address
    * @return Transactoin ID
    */
-  public String withdraw(String currency, BigDecimal amount, String address) {
+  public String withdraw(String currency, Double amount, String address) {
     WexWithDrawInfoReturn info =
         btce.WithdrawCoin(
             apiKey, signatureCreator, exchange.getNonceFactory(), currency, amount, address);

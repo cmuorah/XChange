@@ -1,7 +1,6 @@
 package org.knowm.xchange.therock.service.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -24,8 +23,8 @@ public abstract class TheRockTradeServiceIntegration
   @Test
   public void testPlaceLimitOrder() throws IOException {
     TheRockTradeService unit = createUnit();
-    BigDecimal amount = new BigDecimal("0.01");
-    BigDecimal price = new BigDecimal("50.0");
+    Double amount = new Double("0.01");
+    Double price = new Double("50.0");
     LimitOrder limitOrder =
         new LimitOrder(OrderType.BID, amount, CurrencyPair.BTC_EUR, null, null, price);
     String id = unit.placeLimitOrder(limitOrder);

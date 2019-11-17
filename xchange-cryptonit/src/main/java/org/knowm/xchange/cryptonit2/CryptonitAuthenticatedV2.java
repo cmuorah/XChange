@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptonit2;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import org.knowm.xchange.cryptonit2.dto.CryptonitException;
@@ -33,7 +32,7 @@ public interface CryptonitAuthenticatedV2 {
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @PathParam("side") Side side,
       @PathParam("pair") CryptonitV2.Pair pair,
-      @FormParam("amount") BigDecimal amount)
+      @FormParam("amount") Double amount)
       throws CryptonitException, IOException;
 
   @POST
@@ -44,8 +43,8 @@ public interface CryptonitAuthenticatedV2 {
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @PathParam("side") Side side,
       @PathParam("pair") CryptonitV2.Pair pair,
-      @FormParam("amount") BigDecimal amount,
-      @FormParam("price") BigDecimal price)
+      @FormParam("amount") Double amount,
+      @FormParam("price") Double price)
       throws CryptonitException, IOException;
 
   @POST

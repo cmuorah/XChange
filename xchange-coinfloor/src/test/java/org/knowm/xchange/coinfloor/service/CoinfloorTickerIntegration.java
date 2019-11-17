@@ -3,7 +3,6 @@ package org.knowm.xchange.coinfloor.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
@@ -21,12 +20,12 @@ public class CoinfloorTickerIntegration {
 
     Ticker ticker = service.getTicker(CurrencyPair.BTC_GBP);
     assertThat(ticker.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_GBP);
-    assertThat(ticker.getLast()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getHigh()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getLow()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getVwap()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getVolume()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getBid()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getAsk()).isGreaterThan(BigDecimal.ZERO);
+    assertThat(ticker.getLast()).isGreaterThan(0d);
+    assertThat(ticker.getHigh()).isGreaterThan(0d);
+    assertThat(ticker.getLow()).isGreaterThan(0d);
+    assertThat(ticker.getVwap()).isGreaterThan(0d);
+    assertThat(ticker.getVolume()).isGreaterThan(0d);
+    assertThat(ticker.getBid()).isGreaterThan(0d);
+    assertThat(ticker.getAsk()).isGreaterThan(0d);
   }
 }

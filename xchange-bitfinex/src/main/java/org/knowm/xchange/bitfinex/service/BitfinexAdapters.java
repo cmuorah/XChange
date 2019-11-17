@@ -1,16 +1,7 @@
 package org.knowm.xchange.bitfinex.service;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -21,12 +12,7 @@ import org.knowm.xchange.bitfinex.v1.dto.account.BitfinexAccountFeesResponse;
 import org.knowm.xchange.bitfinex.v1.dto.account.BitfinexBalancesResponse;
 import org.knowm.xchange.bitfinex.v1.dto.account.BitfinexDepositWithdrawalHistoryResponse;
 import org.knowm.xchange.bitfinex.v1.dto.account.BitfinexTradingFeeResponse;
-import org.knowm.xchange.bitfinex.v1.dto.marketdata.BitfinexDepth;
-import org.knowm.xchange.bitfinex.v1.dto.marketdata.BitfinexLendLevel;
-import org.knowm.xchange.bitfinex.v1.dto.marketdata.BitfinexLevel;
-import org.knowm.xchange.bitfinex.v1.dto.marketdata.BitfinexSymbolDetail;
-import org.knowm.xchange.bitfinex.v1.dto.marketdata.BitfinexTicker;
-import org.knowm.xchange.bitfinex.v1.dto.marketdata.BitfinexTrade;
+import org.knowm.xchange.bitfinex.v1.dto.marketdata.*;
 import org.knowm.xchange.bitfinex.v1.dto.trade.BitfinexAccountInfosResponse;
 import org.knowm.xchange.bitfinex.v1.dto.trade.BitfinexOrderFlags;
 import org.knowm.xchange.bitfinex.v1.dto.trade.BitfinexOrderStatusResponse;
@@ -49,13 +35,7 @@ import org.knowm.xchange.dto.marketdata.Trades.TradeSortType;
 import org.knowm.xchange.dto.meta.CurrencyMetaData;
 import org.knowm.xchange.dto.meta.CurrencyPairMetaData;
 import org.knowm.xchange.dto.meta.ExchangeMetaData;
-import org.knowm.xchange.dto.trade.FixedRateLoanOrder;
-import org.knowm.xchange.dto.trade.FloatingRateLoanOrder;
-import org.knowm.xchange.dto.trade.LimitOrder;
-import org.knowm.xchange.dto.trade.OpenOrders;
-import org.knowm.xchange.dto.trade.StopOrder;
-import org.knowm.xchange.dto.trade.UserTrade;
-import org.knowm.xchange.dto.trade.UserTrades;
+import org.knowm.xchange.dto.trade.*;
 import org.knowm.xchange.utils.DateUtils;
 import org.knowm.xchange.utils.jackson.CurrencyPairDeserializer;
 import org.slf4j.Logger;
@@ -82,11 +62,11 @@ public final class BitfinexAdapters {
           response.getTradingFees();
       for (BitfinexTradingFeeResponse.BitfinexTradingFeeResponseRow responseRow : responseRows) {
         Currency currency = Currency.getInstance(responseRow.getCurrency());
-        BigDecimal percentToFraction = BigDecimal.ONE.divide(BigDecimal.ONE.scaleByPowerOfTen(2));
+        double percentToFraction = 1d / 100;
         Fee fee =
             new Fee(
-                responseRow.getMakerFee().multiply(percentToFraction),
-                responseRow.getTakerFee().multiply(percentToFraction));
+                responseRow.getMakerFee() * (percentToFraction),
+                responseRow.getTakerFee() * (percentToFraction));
         for (CurrencyPair pair : currencyPairs) {
           // Fee to trade for a currency is the fee to trade currency pairs with this base.
           // Fee is typically assessed in units counter.
@@ -164,7 +144,7 @@ public final class BitfinexAdapters {
   public static OrderStatus adaptOrderStatus(BitfinexOrderStatusResponse order) {
 
     if (order.isCancelled()) return OrderStatus.CANCELED;
-    else if (order.getExecutedAmount().compareTo(BigDecimal.ZERO) == 0) return OrderStatus.NEW;
+    else if (order.getExecutedAmount().compareTo(0d) == 0) return OrderStatus.NEW;
     else if (order.getExecutedAmount().compareTo(order.getOriginalAmount()) < 0)
       return OrderStatus.PARTIALLY_FILLED;
     else if (order.getExecutedAmount().compareTo(order.getOriginalAmount()) == 0)
@@ -192,7 +172,7 @@ public final class BitfinexAdapters {
   public static OrdersContainer adaptOrders(
       BitfinexLevel[] bitfinexLevels, CurrencyPair currencyPair, OrderType orderType) {
 
-    BigDecimal maxTimestamp = new BigDecimal(Long.MIN_VALUE);
+    Double maxTimestamp = (double) Long.MIN_VALUE;
     List<LimitOrder> limitOrders = new ArrayList<>(bitfinexLevels.length);
 
     for (BitfinexLevel bitfinexLevel : bitfinexLevels) {
@@ -200,7 +180,7 @@ public final class BitfinexAdapters {
         maxTimestamp = bitfinexLevel.getTimestamp();
       }
 
-      Date timestamp = convertBigDecimalTimestampToDate(bitfinexLevel.getTimestamp());
+      Date timestamp = convertDoubleTimestampToDate(bitfinexLevel.getTimestamp());
       limitOrders.add(
           adaptOrder(
               bitfinexLevel.getAmount(),
@@ -210,13 +190,13 @@ public final class BitfinexAdapters {
               timestamp));
     }
 
-    long maxTimestampInMillis = maxTimestamp.multiply(new BigDecimal(1000L)).longValue();
+    long maxTimestampInMillis = Double.doubleToLongBits(maxTimestamp * 1000L);
     return new OrdersContainer(maxTimestampInMillis, limitOrders);
   }
 
   public static LimitOrder adaptOrder(
-      BigDecimal originalAmount,
-      BigDecimal price,
+      Double originalAmount,
+      Double price,
       CurrencyPair currencyPair,
       OrderType orderType,
       Date timestamp) {
@@ -251,12 +231,7 @@ public final class BitfinexAdapters {
   }
 
   public static FixedRateLoanOrder adaptFixedRateLoanOrder(
-      String currency,
-      BigDecimal amount,
-      int dayPeriod,
-      String direction,
-      String id,
-      BigDecimal rate) {
+      String currency, Double amount, int dayPeriod, String direction, String id, Double rate) {
 
     OrderType orderType = direction.equalsIgnoreCase("loan") ? OrderType.BID : OrderType.ASK;
 
@@ -290,12 +265,7 @@ public final class BitfinexAdapters {
   }
 
   public static FloatingRateLoanOrder adaptFloatingRateLoanOrder(
-      String currency,
-      BigDecimal amount,
-      int dayPeriod,
-      String direction,
-      String id,
-      BigDecimal rate) {
+      String currency, Double amount, int dayPeriod, String direction, String id, Double rate) {
 
     OrderType orderType = direction.equalsIgnoreCase("loan") ? OrderType.BID : OrderType.ASK;
 
@@ -305,8 +275,8 @@ public final class BitfinexAdapters {
   public static Trade adaptTrade(BitfinexTrade trade, CurrencyPair currencyPair) {
 
     OrderType orderType = trade.getType().equals("buy") ? OrderType.BID : OrderType.ASK;
-    BigDecimal amount = trade.getAmount();
-    BigDecimal price = trade.getPrice();
+    Double amount = trade.getAmount();
+    Double price = trade.getPrice();
     Date date =
         DateUtils.fromMillisUtc(trade.getTimestamp() * 1000L); // Bitfinex uses Unix timestamps
     final String tradeId = String.valueOf(trade.getTradeId());
@@ -329,12 +299,12 @@ public final class BitfinexAdapters {
 
   public static Ticker adaptTicker(BitfinexTicker bitfinexTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = bitfinexTicker.getLast_price();
-    BigDecimal bid = bitfinexTicker.getBid();
-    BigDecimal ask = bitfinexTicker.getAsk();
-    BigDecimal high = bitfinexTicker.getHigh();
-    BigDecimal low = bitfinexTicker.getLow();
-    BigDecimal volume = bitfinexTicker.getVolume();
+    Double last = bitfinexTicker.getLast_price();
+    Double bid = bitfinexTicker.getBid();
+    Double ask = bitfinexTicker.getAsk();
+    Double high = bitfinexTicker.getHigh();
+    Double low = bitfinexTicker.getLow();
+    Double volume = bitfinexTicker.getVolume();
 
     Date timestamp = DateUtils.fromMillisUtc((long) (bitfinexTicker.getTimestamp() * 1000L));
 
@@ -352,7 +322,7 @@ public final class BitfinexAdapters {
 
   public static List<Wallet> adaptWallets(BitfinexBalancesResponse[] response) {
 
-    Map<String, Map<String, BigDecimal[]>> walletsBalancesMap = new HashMap<>();
+    Map<String, Map<String, Double[]>> walletsBalancesMap = new HashMap<>();
 
     // for each currency we have multiple balances types: exchange, trading, deposit.
     // each of those may be partially frozen/available
@@ -362,30 +332,30 @@ public final class BitfinexAdapters {
       if (!walletsBalancesMap.containsKey(walletId)) {
         walletsBalancesMap.put(walletId, new HashMap<>());
       }
-      Map<String, BigDecimal[]> balancesByCurrency =
+      Map<String, Double[]> balancesByCurrency =
           walletsBalancesMap.get(walletId); // {total, available}
 
       String currencyName = adaptBitfinexCurrency(balance.getCurrency());
-      BigDecimal[] balanceDetail = balancesByCurrency.get(currencyName);
+      Double[] balanceDetail = balancesByCurrency.get(currencyName);
       if (balanceDetail == null) {
-        balanceDetail = new BigDecimal[] {balance.getAmount(), balance.getAvailable()};
+        balanceDetail = new Double[] {balance.getAmount(), balance.getAvailable()};
       } else {
-        balanceDetail[0] = balanceDetail[0].add(balance.getAmount());
-        balanceDetail[1] = balanceDetail[1].add(balance.getAvailable());
+        balanceDetail[0] = balanceDetail[0] + (balance.getAmount());
+        balanceDetail[1] = balanceDetail[1] + (balance.getAvailable());
       }
       balancesByCurrency.put(currencyName, balanceDetail);
     }
 
     List<Wallet> wallets = new ArrayList<>();
-    for (Entry<String, Map<String, BigDecimal[]>> walletData : walletsBalancesMap.entrySet()) {
-      Map<String, BigDecimal[]> balancesByCurrency = walletData.getValue();
+    for (Entry<String, Map<String, Double[]>> walletData : walletsBalancesMap.entrySet()) {
+      Map<String, Double[]> balancesByCurrency = walletData.getValue();
 
       List<Balance> balances = new ArrayList<>(balancesByCurrency.size());
-      for (Entry<String, BigDecimal[]> entry : balancesByCurrency.entrySet()) {
+      for (Entry<String, Double[]> entry : balancesByCurrency.entrySet()) {
         String currencyName = entry.getKey();
-        BigDecimal[] balanceDetail = entry.getValue();
-        BigDecimal balanceTotal = balanceDetail[0];
-        BigDecimal balanceAvailable = balanceDetail[1];
+        Double[] balanceDetail = entry.getValue();
+        Double balanceTotal = balanceDetail[0];
+        Double balanceAvailable = balanceDetail[1];
         balances.add(
             new Balance(Currency.getInstance(currencyName), balanceTotal, balanceAvailable));
       }
@@ -405,7 +375,7 @@ public final class BitfinexAdapters {
       OrderType orderType = order.getSide().equalsIgnoreCase("buy") ? OrderType.BID : OrderType.ASK;
       OrderStatus status = adaptOrderStatus(order);
       CurrencyPair currencyPair = adaptCurrencyPair(order.getSymbol());
-      Date timestamp = convertBigDecimalTimestampToDate(order.getTimestamp());
+      Date timestamp = convertDoubleTimestampToDate(order.getTimestamp());
 
       Supplier<LimitOrder> limitOrderCreator =
           () ->
@@ -532,8 +502,8 @@ public final class BitfinexAdapters {
 
     for (BitfinexTradeResponse trade : trades) {
       OrderType orderType = trade.getType().equalsIgnoreCase("buy") ? OrderType.BID : OrderType.ASK;
-      Date timestamp = convertBigDecimalTimestampToDate(trade.getTimestamp());
-      final BigDecimal fee = trade.getFeeAmount() == null ? null : trade.getFeeAmount().negate();
+      Date timestamp = convertDoubleTimestampToDate(trade.getTimestamp());
+      final Double fee = trade.getFeeAmount() == null ? null : -trade.getFeeAmount();
       pastTrades.add(
           new UserTrade(
               orderType,
@@ -550,10 +520,9 @@ public final class BitfinexAdapters {
     return new UserTrades(pastTrades, TradeSortType.SortByTimestamp);
   }
 
-  private static Date convertBigDecimalTimestampToDate(BigDecimal timestamp) {
-
-    BigDecimal timestampInMillis = timestamp.multiply(new BigDecimal("1000"));
-    return new Date(timestampInMillis.longValue());
+  private static Date convertDoubleTimestampToDate(Double timestamp) {
+    double timestampInMillis = timestamp * 1000d;
+    return new Date(Double.doubleToLongBits(timestampInMillis));
   }
 
   public static ExchangeMetaData adaptMetaData(
@@ -605,7 +574,7 @@ public final class BitfinexAdapters {
   public static ExchangeMetaData adaptMetaData(
       ExchangeMetaData exchangeMetaData,
       List<BitfinexSymbolDetail> symbolDetails,
-      Map<CurrencyPair, BigDecimal> lastPrices) {
+      Map<CurrencyPair, Double> lastPrices) {
 
     final Map<CurrencyPair, CurrencyPairMetaData> currencyPairs =
         exchangeMetaData.getCurrencyPairs();
@@ -616,11 +585,11 @@ public final class BitfinexAdapters {
               final CurrencyPair currencyPair = adaptCurrencyPair(bitfinexSymbolDetail.getPair());
 
               // Infer price-scale from last and price-precision
-              BigDecimal last = lastPrices.get(currencyPair);
+              Double last = lastPrices.get(currencyPair);
 
               if (last != null) {
                 int pricePercision = bitfinexSymbolDetail.getPrice_precision();
-                int priceScale = last.scale() + (pricePercision - last.precision());
+                // int priceScale = last.scale() + (pricePercision - last.precision());
 
                 CurrencyPairMetaData newMetaData =
                     new CurrencyPairMetaData(
@@ -631,7 +600,7 @@ public final class BitfinexAdapters {
                                 .getTradingFee(), // Take tradingFee from static metaData if exists
                         bitfinexSymbolDetail.getMinimum_order_size(),
                         bitfinexSymbolDetail.getMaximum_order_size(),
-                        priceScale,
+                        6,
                         null);
                 currencyPairs.put(currencyPair, newMetaData);
               }
@@ -642,15 +611,15 @@ public final class BitfinexAdapters {
   public static ExchangeMetaData adaptMetaData(
       BitfinexAccountFeesResponse accountFeesResponse, ExchangeMetaData metaData) {
     Map<Currency, CurrencyMetaData> currencies = metaData.getCurrencies();
-    final Map<Currency, BigDecimal> withdrawFees = accountFeesResponse.getWithdraw();
+    final Map<Currency, Double> withdrawFees = accountFeesResponse.getWithdraw();
     withdrawFees.forEach(
         (currency, withdrawalFee) -> {
           CurrencyMetaData newMetaData =
               new CurrencyMetaData(
                   // Currency should have at least the scale of the withdrawalFee
                   currencies.get(currency) == null
-                      ? withdrawalFee.scale()
-                      : Math.max(withdrawalFee.scale(), currencies.get(currency).getScale()),
+                      ? 6
+                      : Math.max(6, currencies.get(currency).getScale()),
                   withdrawalFee);
           currencies.put(currency, newMetaData);
         });
@@ -667,7 +636,7 @@ public final class BitfinexAdapters {
     // also setting the taker_fee as the trading_fee for now.
     final CurrencyPairMetaData metaData =
         new CurrencyPairMetaData(
-            bitfinexAccountInfos[0].getTakerFees().movePointLeft(2), null, null, null, null);
+            bitfinexAccountInfos[0].getTakerFees() / 100d, null, null, null, null);
     currencyPairs
         .keySet()
         .parallelStream()
@@ -749,6 +718,69 @@ public final class BitfinexAdapters {
     return fundingRecords;
   }
 
+  public static String adaptCurrencyPairsToTickersParam(Collection<CurrencyPair> currencyPairs) {
+    return currencyPairs == null || currencyPairs.isEmpty()
+        ? "ALL"
+        : currencyPairs.stream()
+            .map(currencyPair -> "t" + currencyPair.base + currencyPair.counter)
+            .collect(Collectors.joining(","));
+  }
+
+  ////// v2
+
+  public static Ticker adaptTicker(
+      org.knowm.xchange.bitfinex.v2.dto.marketdata.BitfinexTicker bitfinexTicker) {
+
+    Double last = bitfinexTicker.getLastPrice();
+    Double bid = bitfinexTicker.getBid();
+    Double bidSize = bitfinexTicker.getBidSize();
+    Double ask = bitfinexTicker.getAsk();
+    Double askSize = bitfinexTicker.getAskSize();
+    Double high = bitfinexTicker.getHigh();
+    Double low = bitfinexTicker.getLow();
+    Double volume = bitfinexTicker.getVolume();
+
+    CurrencyPair currencyPair =
+        CurrencyPairDeserializer.getCurrencyPairFromString(bitfinexTicker.getSymbol().substring(1));
+
+    return new Ticker.Builder()
+        .currencyPair(currencyPair)
+        .last(last)
+        .bid(bid)
+        .ask(ask)
+        .high(high)
+        .low(low)
+        .volume(volume)
+        .bidSize(bidSize)
+        .askSize(askSize)
+        .build();
+  }
+
+  public static Trade adaptPublicTrade(BitfinexPublicTrade trade, CurrencyPair currencyPair) {
+
+    OrderType orderType = trade.getType();
+    Double amount = trade.getAmount();
+    Double price = trade.getPrice();
+    Date date = DateUtils.fromMillisUtc(trade.getTimestamp());
+    final String tradeId = String.valueOf(trade.getTradeId());
+    return new Trade(
+        orderType, amount == null ? null : Math.abs(amount), currencyPair, price, date, tradeId);
+  }
+
+  public static Trades adaptPublicTrades(BitfinexPublicTrade[] trades, CurrencyPair currencyPair) {
+
+    List<Trade> tradesList = new ArrayList<>(trades.length);
+    long lastTradeId = 0;
+    for (BitfinexPublicTrade trade : trades) {
+      long tradeId = trade.getTradeId();
+      if (tradeId > lastTradeId) {
+        lastTradeId = tradeId;
+      }
+      tradesList.add(adaptPublicTrade(trade, currencyPair));
+    }
+    return new Trades(tradesList, lastTradeId, TradeSortType.SortByID);
+  }
+
   public static class OrdersContainer {
 
     private final long timestamp;
@@ -775,68 +807,5 @@ public final class BitfinexAdapters {
 
       return limitOrders;
     }
-  }
-
-  ////// v2
-
-  public static String adaptCurrencyPairsToTickersParam(Collection<CurrencyPair> currencyPairs) {
-    return currencyPairs == null || currencyPairs.isEmpty()
-        ? "ALL"
-        : currencyPairs.stream()
-            .map(currencyPair -> "t" + currencyPair.base + currencyPair.counter)
-            .collect(Collectors.joining(","));
-  }
-
-  public static Ticker adaptTicker(
-      org.knowm.xchange.bitfinex.v2.dto.marketdata.BitfinexTicker bitfinexTicker) {
-
-    BigDecimal last = bitfinexTicker.getLastPrice();
-    BigDecimal bid = bitfinexTicker.getBid();
-    BigDecimal bidSize = bitfinexTicker.getBidSize();
-    BigDecimal ask = bitfinexTicker.getAsk();
-    BigDecimal askSize = bitfinexTicker.getAskSize();
-    BigDecimal high = bitfinexTicker.getHigh();
-    BigDecimal low = bitfinexTicker.getLow();
-    BigDecimal volume = bitfinexTicker.getVolume();
-
-    CurrencyPair currencyPair =
-        CurrencyPairDeserializer.getCurrencyPairFromString(bitfinexTicker.getSymbol().substring(1));
-
-    return new Ticker.Builder()
-        .currencyPair(currencyPair)
-        .last(last)
-        .bid(bid)
-        .ask(ask)
-        .high(high)
-        .low(low)
-        .volume(volume)
-        .bidSize(bidSize)
-        .askSize(askSize)
-        .build();
-  }
-
-  public static Trade adaptPublicTrade(BitfinexPublicTrade trade, CurrencyPair currencyPair) {
-
-    OrderType orderType = trade.getType();
-    BigDecimal amount = trade.getAmount();
-    BigDecimal price = trade.getPrice();
-    Date date = DateUtils.fromMillisUtc(trade.getTimestamp());
-    final String tradeId = String.valueOf(trade.getTradeId());
-    return new Trade(
-        orderType, amount == null ? null : amount.abs(), currencyPair, price, date, tradeId);
-  }
-
-  public static Trades adaptPublicTrades(BitfinexPublicTrade[] trades, CurrencyPair currencyPair) {
-
-    List<Trade> tradesList = new ArrayList<>(trades.length);
-    long lastTradeId = 0;
-    for (BitfinexPublicTrade trade : trades) {
-      long tradeId = trade.getTradeId();
-      if (tradeId > lastTradeId) {
-        lastTradeId = tradeId;
-      }
-      tradesList.add(adaptPublicTrade(trade, currencyPair));
-    }
-    return new Trades(tradesList, lastTradeId, TradeSortType.SortByID);
   }
 }

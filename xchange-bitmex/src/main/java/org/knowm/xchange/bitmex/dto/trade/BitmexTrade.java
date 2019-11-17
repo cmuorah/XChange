@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,10 +33,10 @@ public final class BitmexTrade {
   public BitmexSide side;
 
   @JsonProperty("size")
-  public BigDecimal size;
+  public Double size;
 
   @JsonProperty("price")
-  public BigDecimal price;
+  public Double price;
 
   @JsonProperty("tickDirection")
   public BitmexTickDirection tickDirection;
@@ -46,13 +45,13 @@ public final class BitmexTrade {
   public String trdMatchID;
 
   @JsonProperty("grossValue")
-  public BigDecimal grossValue;
+  public Double grossValue;
 
   @JsonProperty("homeNotional")
-  public BigDecimal homeNotional;
+  public Double homeNotional;
 
   @JsonProperty("foreignNotional")
-  public BigDecimal foreignNotional;
+  public Double foreignNotional;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<>();
 
@@ -66,12 +65,12 @@ public final class BitmexTrade {
     return side;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
 
     return size;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
@@ -86,17 +85,17 @@ public final class BitmexTrade {
     return trdMatchID;
   }
 
-  public BigDecimal getGrossValue() {
+  public Double getGrossValue() {
 
     return grossValue;
   }
 
-  public BigDecimal getHomeNotional() {
+  public Double getHomeNotional() {
 
     return homeNotional;
   }
 
-  public BigDecimal getForeignNotional() {
+  public Double getForeignNotional() {
 
     return foreignNotional;
   }

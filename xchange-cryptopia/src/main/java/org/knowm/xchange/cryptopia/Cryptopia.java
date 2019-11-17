@@ -2,7 +2,6 @@ package org.knowm.xchange.cryptopia;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
@@ -151,9 +150,9 @@ public interface Cryptopia {
   class SubmitTransferRequest {
     public final @JsonProperty("Currency") String currency;
     public final @JsonProperty("Username") String username;
-    public final @JsonProperty("Amount") BigDecimal amount;
+    public final @JsonProperty("Amount") Double amount;
 
-    public SubmitTransferRequest(String currency, String username, BigDecimal amount) {
+    public SubmitTransferRequest(String currency, String username, Double amount) {
       this.currency = currency;
       this.username = username;
       this.amount = amount;
@@ -187,10 +186,10 @@ public interface Cryptopia {
   class SubmitTradeRequest {
     public final @JsonProperty("Market") String market;
     public final @JsonProperty("Type") String type;
-    public final @JsonProperty("Rate") BigDecimal rate;
-    public final @JsonProperty("Amount") BigDecimal amount;
+    public final @JsonProperty("Rate") Double rate;
+    public final @JsonProperty("Amount") Double amount;
 
-    public SubmitTradeRequest(String market, String type, BigDecimal rate, BigDecimal amount) {
+    public SubmitTradeRequest(String market, String type, Double rate, Double amount) {
       this.market = market;
       this.type = type;
       this.rate = rate;
@@ -234,10 +233,9 @@ public interface Cryptopia {
     public final @JsonProperty("Currency") String currency;
     public final @JsonProperty("Address") String address;
     public final @JsonProperty("PaymentId") String paymentId;
-    public final @JsonProperty("Amount") BigDecimal amount;
+    public final @JsonProperty("Amount") Double amount;
 
-    public SubmitWithdrawRequest(
-        String currency, String address, String paymentId, BigDecimal amount) {
+    public SubmitWithdrawRequest(String currency, String address, String paymentId, Double amount) {
       this.currency = currency;
       this.address = address;
       this.paymentId = paymentId;

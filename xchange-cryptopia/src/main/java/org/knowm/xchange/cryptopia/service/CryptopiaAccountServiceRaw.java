@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptopia.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.*;
 import org.knowm.xchange.cryptopia.Cryptopia;
 import org.knowm.xchange.cryptopia.CryptopiaAdapters;
@@ -26,21 +25,14 @@ public class CryptopiaAccountServiceRaw extends CryptopiaBaseService {
     List<Balance> balances = new ArrayList<>();
     for (Map datum : response.getData()) {
       Currency symbol = Currency.getInstance(datum.get("Symbol").toString());
-      BigDecimal total = new BigDecimal(datum.get("Total").toString());
-      BigDecimal available = new BigDecimal(datum.get("Available").toString());
-      BigDecimal heldForTrades = new BigDecimal(datum.get("HeldForTrades").toString());
-      BigDecimal pendingWithdraw = new BigDecimal(datum.get("PendingWithdraw").toString());
-      BigDecimal unconfirmed = new BigDecimal(datum.get("Unconfirmed").toString());
+      Double total = new Double(datum.get("Total").toString());
+      Double available = new Double(datum.get("Available").toString());
+      Double heldForTrades = new Double(datum.get("HeldForTrades").toString());
+      Double pendingWithdraw = new Double(datum.get("PendingWithdraw").toString());
+      Double unconfirmed = new Double(datum.get("Unconfirmed").toString());
       Balance balance =
           new Balance(
-              symbol,
-              total,
-              available,
-              heldForTrades,
-              BigDecimal.ZERO,
-              BigDecimal.ZERO,
-              pendingWithdraw,
-              unconfirmed);
+              symbol, total, available, heldForTrades, 0d, 0d, pendingWithdraw, unconfirmed);
 
       balances.add(balance);
     }
@@ -48,8 +40,8 @@ public class CryptopiaAccountServiceRaw extends CryptopiaBaseService {
     return balances;
   }
 
-  public String submitWithdraw(
-      Currency currency, BigDecimal amount, String address, String paymentId) throws IOException {
+  public String submitWithdraw(Currency currency, Double amount, String address, String paymentId)
+      throws IOException {
     CryptopiaBaseResponse<Long> response =
         cryptopia.submitWithdraw(
             signatureCreator,
@@ -109,13 +101,13 @@ public class CryptopiaAccountServiceRaw extends CryptopiaBaseService {
               address,
               timeStamp,
               currency,
-              new BigDecimal(map.get("Amount").toString()),
+              new Double(map.get("Amount").toString()),
               map.get("Id").toString(),
               map.get("TxId").toString(),
               fundingType,
               status,
               null,
-              new BigDecimal(map.get("Fee").toString()),
+              new Double(map.get("Fee").toString()),
               null);
 
       results.add(fundingRecord);

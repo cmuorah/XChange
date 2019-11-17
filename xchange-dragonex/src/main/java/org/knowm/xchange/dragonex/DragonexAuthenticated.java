@@ -1,7 +1,6 @@
 package org.knowm.xchange.dragonex;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.HeaderParam;
@@ -162,7 +161,7 @@ public interface DragonexAuthenticated {
       @HeaderParam("auth") ParamsDigest auth,
       @HeaderParam("Content-Sha1") ParamsDigest contentSHA1,
       @QueryParam("coin_id") long coinId,
-      @QueryParam("volume") BigDecimal volume,
+      @QueryParam("volume") Double volume,
       @QueryParam("addr_id") long addressId)
       throws DragonexException, IOException;
 

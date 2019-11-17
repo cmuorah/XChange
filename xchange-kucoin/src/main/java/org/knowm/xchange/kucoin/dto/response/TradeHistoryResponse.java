@@ -2,7 +2,6 @@
 package org.knowm.xchange.kucoin.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.math.BigDecimal;
 import lombok.Data;
 
 /** Created by chenshiwei on 2019/1/18. */
@@ -12,9 +11,9 @@ public class TradeHistoryResponse {
 
   private String sequence;
 
-  private BigDecimal price;
+  private Double price;
 
-  private BigDecimal size;
+  private Double size;
 
   private String side;
 

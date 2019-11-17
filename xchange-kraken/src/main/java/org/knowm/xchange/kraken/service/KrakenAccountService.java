@@ -1,8 +1,6 @@
 package org.knowm.xchange.kraken.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.*;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
@@ -44,13 +42,12 @@ public class KrakenAccountService extends KrakenAccountServiceRaw implements Acc
         Wallet.Builder.from(tradingWallet.getBalances().values())
             .id("margin")
             .features(EnumSet.of(Wallet.WalletFeature.FUNDING, Wallet.WalletFeature.MARGIN_TRADING))
-            .maxLeverage(BigDecimal.valueOf(5))
+            .maxLeverage(5d)
             .currentLeverage(
-                (krakenTradeBalanceInfo.getTradeBalance().equals(BigDecimal.ZERO))
-                    ? BigDecimal.ZERO
-                    : krakenTradeBalanceInfo
-                        .getCostBasis()
-                        .divide(krakenTradeBalanceInfo.getTradeBalance(), MathContext.DECIMAL32))
+                (krakenTradeBalanceInfo.getTradeBalance().equals(0d))
+                    ? 0d
+                    : krakenTradeBalanceInfo.getCostBasis()
+                        / krakenTradeBalanceInfo.getTradeBalance())
             .build();
 
     return new AccountInfo(
@@ -58,8 +55,7 @@ public class KrakenAccountService extends KrakenAccountServiceRaw implements Acc
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return withdraw(null, currency.toString(), address, amount).getRefid();
   }
 

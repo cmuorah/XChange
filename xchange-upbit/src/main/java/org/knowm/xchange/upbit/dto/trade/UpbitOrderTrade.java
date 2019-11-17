@@ -1,7 +1,6 @@
 package org.knowm.xchange.upbit.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class UpbitOrderTrade {
 
@@ -9,20 +8,20 @@ public class UpbitOrderTrade {
 
   private final String uuid;
 
-  private final BigDecimal volume;
+  private final Double volume;
 
-  private final BigDecimal price;
+  private final Double price;
 
-  private final BigDecimal funds;
+  private final Double funds;
 
   private final String side;
 
   public UpbitOrderTrade(
       @JsonProperty("market") String marketId,
       @JsonProperty("uuid") String uuid,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("funds") BigDecimal funds,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("price") Double price,
+      @JsonProperty("funds") Double funds,
       @JsonProperty("side") String side) {
     this.marketId = marketId;
     this.side = side;
@@ -40,15 +39,15 @@ public class UpbitOrderTrade {
     return uuid;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getFunds() {
+  public Double getFunds() {
     return funds;
   }
 

@@ -1,29 +1,27 @@
 package org.knowm.xchange.huobi.dto.account;
 
-import java.math.BigDecimal;
-
 public class HuobiBalanceSum {
 
-  private BigDecimal available;
-  private BigDecimal frozen;
+  private Double available;
+  private Double frozen;
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 
-  public BigDecimal getFrozen() {
+  public Double getFrozen() {
     return frozen;
   }
 
-  public BigDecimal getTotal() {
-    return available.add(frozen);
+  public Double getTotal() {
+    return available + (frozen);
   }
 
-  public void setAvailable(BigDecimal available) {
+  public void setAvailable(Double available) {
     this.available = available;
   }
 
-  public void setFrozen(BigDecimal frozen) {
+  public void setFrozen(Double frozen) {
     this.frozen = frozen;
   }
 }

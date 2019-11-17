@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +14,7 @@ public class BitflyerMarginAccount {
   private String currencyCode;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -27,11 +26,11 @@ public class BitflyerMarginAccount {
     this.currencyCode = currencyCode;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 

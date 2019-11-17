@@ -1,7 +1,6 @@
 package org.knowm.xchange.binance.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.binance.BinanceAdapters;
@@ -42,11 +41,11 @@ public class BinanceTradeServiceRaw extends BinanceBaseService {
       OrderSide side,
       OrderType type,
       TimeInForce timeInForce,
-      BigDecimal quantity,
-      BigDecimal price,
+      Double quantity,
+      Double price,
       String newClientOrderId,
-      BigDecimal stopPrice,
-      BigDecimal icebergQty,
+      Double stopPrice,
+      Double icebergQty,
       Long recvWindow,
       long timestamp)
       throws IOException, BinanceException {
@@ -71,11 +70,11 @@ public class BinanceTradeServiceRaw extends BinanceBaseService {
       OrderSide side,
       OrderType type,
       TimeInForce timeInForce,
-      BigDecimal quantity,
-      BigDecimal price,
+      Double quantity,
+      Double price,
       String newClientOrderId,
-      BigDecimal stopPrice,
-      BigDecimal icebergQty,
+      Double stopPrice,
+      Double icebergQty,
       Long recvWindow,
       long timestamp)
       throws IOException, BinanceException {

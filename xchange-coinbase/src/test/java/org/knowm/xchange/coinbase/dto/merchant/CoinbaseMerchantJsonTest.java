@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.coinbase.dto.account.CoinbaseToken;
@@ -43,7 +42,7 @@ public class CoinbaseMerchantJsonTest {
     assertThat(button.getInfoUrl()).isNull();
     assertThat(button.isAutoReDirect()).isFalse();
     assertThat(button.getPrice())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal(".00100000")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double(".00100000")));
     assertThat(button.isVariablePrice()).isTrue();
     assertThat(button.isChoosePrice()).isFalse();
     assertThat(button.isIncludeAddress()).isFalse();
@@ -71,9 +70,9 @@ public class CoinbaseMerchantJsonTest {
         .isEqualTo(DateUtils.fromISO8601DateString("2014-02-19T13:30:50-08:00"));
     assertThat(order.getStatus()).isEqualTo(CoinbaseOrderStatus.COMPLETED);
     assertThat(order.getTotalBTC())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new BigDecimal(".00157800")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("BTC", new Double(".00157800")));
     assertThat(order.getTotalNative())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new BigDecimal("1.00")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new Double("1.00")));
     assertThat(order.getCustom()).isEmpty();
     assertThat(order.getReceiveAddress()).isEqualTo("1DkHhHANFeZmJL4p6HXzGDHbvxHT8DzQgW");
 

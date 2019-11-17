@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /** Test WexDepth JSON parsing */
@@ -25,6 +24,6 @@ public class WexWalletJSONTest {
 
     // Verify that the example data was unmarshalled correctly
     assertThat(ai.getReturnValue().getRights().isInfo()).isTrue();
-    assertThat(ai.getReturnValue().getFunds().get("btc")).isEqualTo(new BigDecimal("0.1"));
+    assertThat(ai.getReturnValue().getFunds().get("btc")).isEqualTo(new Double("0.1"));
   }
 }

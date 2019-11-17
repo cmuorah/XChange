@@ -24,7 +24,6 @@
 package org.knowm.xchange.coinmate.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinmate.CoinmateAdapters;
@@ -57,8 +56,7 @@ public class CoinmateAccountService extends CoinmateAccountServiceRaw implements
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     CoinmateTradeResponse response;
 
     if (currency.equals(Currency.BTC)) {

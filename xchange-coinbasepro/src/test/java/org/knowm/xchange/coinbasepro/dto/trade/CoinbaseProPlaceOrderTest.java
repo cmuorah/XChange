@@ -2,7 +2,6 @@ package org.knowm.xchange.coinbasepro.dto.trade;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.coinbasepro.CoinbaseProAdapters;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -14,9 +13,7 @@ public class CoinbaseProPlaceOrderTest {
   @Test
   public void nullflagsTest() {
     LimitOrder limitOrder =
-        new LimitOrder.Builder(OrderType.BID, CurrencyPair.BTC_USD)
-            .limitPrice(BigDecimal.ZERO)
-            .build();
+        new LimitOrder.Builder(OrderType.BID, CurrencyPair.BTC_USD).limitPrice(0d).build();
 
     CoinbaseProPlaceLimitOrder orderFlagsNull =
         CoinbaseProAdapters.adaptCoinbaseProPlaceLimitOrder(limitOrder);
@@ -28,7 +25,7 @@ public class CoinbaseProPlaceOrderTest {
   public void fillOrKillflagTest() {
     LimitOrder order =
         new LimitOrder.Builder(OrderType.BID, CurrencyPair.BTC_USD)
-            .limitPrice(BigDecimal.ZERO)
+            .limitPrice(0d)
             .flag(CoinbaseProOrderFlags.FILL_OR_KILL)
             .build();
 
@@ -43,7 +40,7 @@ public class CoinbaseProPlaceOrderTest {
   public void postOnlyflagTest() {
     LimitOrder order =
         new LimitOrder.Builder(OrderType.BID, CurrencyPair.BTC_USD)
-            .limitPrice(BigDecimal.ZERO)
+            .limitPrice(0d)
             .flag(CoinbaseProOrderFlags.POST_ONLY)
             .build();
 
@@ -58,7 +55,7 @@ public class CoinbaseProPlaceOrderTest {
   public void immediateOrCancelflagTest() {
     LimitOrder order =
         new LimitOrder.Builder(OrderType.BID, CurrencyPair.BTC_USD)
-            .limitPrice(BigDecimal.ZERO)
+            .limitPrice(0d)
             .flag(CoinbaseProOrderFlags.IMMEDIATE_OR_CANCEL)
             .build();
 

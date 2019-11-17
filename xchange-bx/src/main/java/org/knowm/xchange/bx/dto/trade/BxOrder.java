@@ -1,23 +1,22 @@
 package org.knowm.xchange.bx.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BxOrder {
 
   private final String pairingId;
   private final String orderId;
   private final String orderType;
-  private final BigDecimal amount;
-  private final BigDecimal rate;
+  private final Double amount;
+  private final Double rate;
   private final String date;
 
   public BxOrder(
       @JsonProperty("pairing_id") String pairingId,
       @JsonProperty("order_id") String orderId,
       @JsonProperty("order_type") String orderType,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("rate") Double rate,
       @JsonProperty("date") String date) {
     this.pairingId = pairingId;
     this.orderId = orderId;
@@ -39,11 +38,11 @@ public class BxOrder {
     return orderType;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 

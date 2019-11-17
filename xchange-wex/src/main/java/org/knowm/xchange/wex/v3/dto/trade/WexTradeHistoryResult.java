@@ -1,7 +1,6 @@
 package org.knowm.xchange.wex.v3.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 
 /** @author Raphael Voellmy */
@@ -9,8 +8,8 @@ public class WexTradeHistoryResult {
 
   private final String pair;
   private final Type type;
-  private final BigDecimal amount;
-  private final BigDecimal rate;
+  private final Double amount;
+  private final Double rate;
   private final Long orderId;
   /**
    * reflects who created original order. True means that you opened the order and then someone
@@ -34,8 +33,8 @@ public class WexTradeHistoryResult {
   public WexTradeHistoryResult(
       @JsonProperty("timestamp") Long timestamp,
       @JsonProperty("is_your_order") int isYourOrder,
-      @JsonProperty("rate") BigDecimal rate,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("rate") Double rate,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("order_id") Long orderId,
       @JsonProperty("type") Type type,
       @JsonProperty("pair") String pair) {
@@ -59,12 +58,12 @@ public class WexTradeHistoryResult {
     return type;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
 
     return rate;
   }

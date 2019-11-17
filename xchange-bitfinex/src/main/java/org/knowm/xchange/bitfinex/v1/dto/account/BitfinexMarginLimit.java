@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -20,13 +19,13 @@ public class BitfinexMarginLimit {
   private String onPair;
 
   @JsonProperty("initial_margin")
-  private BigDecimal initialMargin;
+  private Double initialMargin;
 
   @JsonProperty("margin_requirement")
-  private BigDecimal marginRequirement;
+  private Double marginRequirement;
 
   @JsonProperty("tradable_balance")
-  private BigDecimal tradableBalance;
+  private Double tradableBalance;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -43,37 +42,37 @@ public class BitfinexMarginLimit {
   }
 
   @JsonProperty("initial_margin")
-  public BigDecimal getInitialMargin() {
+  public Double getInitialMargin() {
 
     return initialMargin;
   }
 
   @JsonProperty("initial_margin")
-  public void setInitialMargin(BigDecimal initialMargin) {
+  public void setInitialMargin(Double initialMargin) {
 
     this.initialMargin = initialMargin;
   }
 
   @JsonProperty("margin_requirement")
-  public BigDecimal getMarginRequirement() {
+  public Double getMarginRequirement() {
 
     return marginRequirement;
   }
 
   @JsonProperty("margin_requirement")
-  public void setMarginRequirement(BigDecimal marginRequirement) {
+  public void setMarginRequirement(Double marginRequirement) {
 
     this.marginRequirement = marginRequirement;
   }
 
   @JsonProperty("tradable_balance")
-  public BigDecimal getTradableBalance() {
+  public Double getTradableBalance() {
 
     return tradableBalance;
   }
 
   @JsonProperty("tradable_balance")
-  public void setTradableBalance(BigDecimal tradableBalance) {
+  public void setTradableBalance(Double tradableBalance) {
 
     this.tradableBalance = tradableBalance;
   }

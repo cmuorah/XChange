@@ -1,12 +1,11 @@
 package org.knowm.xchange.binance.dto.meta;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.dto.meta.CurrencyPairMetaData;
 import org.knowm.xchange.dto.meta.FeeTier;
 
 /** @author ujjwal on 26/02/18. */
 public class BinanceCurrencyPairMetaData extends CurrencyPairMetaData {
-  private final BigDecimal minNotional;
+  private final Double minNotional;
 
   /**
    * Constructor
@@ -17,17 +16,17 @@ public class BinanceCurrencyPairMetaData extends CurrencyPairMetaData {
    * @param priceScale Price scale
    */
   public BinanceCurrencyPairMetaData(
-      BigDecimal tradingFee,
-      BigDecimal minimumAmount,
-      BigDecimal maximumAmount,
+      Double tradingFee,
+      Double minimumAmount,
+      Double maximumAmount,
       Integer priceScale,
-      BigDecimal minNotional,
+      Double minNotional,
       FeeTier[] feeTiers) {
     super(tradingFee, minimumAmount, maximumAmount, priceScale, feeTiers);
     this.minNotional = minNotional;
   }
 
-  public BigDecimal getMinNotional() {
+  public Double getMinNotional() {
     return minNotional;
   }
 

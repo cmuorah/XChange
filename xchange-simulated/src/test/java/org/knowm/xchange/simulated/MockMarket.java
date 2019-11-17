@@ -5,30 +5,29 @@ import static org.knowm.xchange.dto.Order.OrderType.ASK;
 import static org.knowm.xchange.dto.Order.OrderType.BID;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.dto.Order.OrderType;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
 class MockMarket {
 
   static void mockMarket(SimulatedExchange exchange) throws IOException {
-    placeMMOrder(exchange, ASK, new BigDecimal(10000), new BigDecimal("200"));
-    placeMMOrder(exchange, ASK, new BigDecimal(100), new BigDecimal("0.1"));
-    placeMMOrder(exchange, ASK, new BigDecimal(99), new BigDecimal("0.05"));
-    placeMMOrder(exchange, ASK, new BigDecimal(99), new BigDecimal("0.25"));
-    placeMMOrder(exchange, ASK, new BigDecimal(98), new BigDecimal("0.3"));
+    placeMMOrder(exchange, ASK, new Double(10000), new Double("200"));
+    placeMMOrder(exchange, ASK, new Double(100), new Double("0.1"));
+    placeMMOrder(exchange, ASK, new Double(99), new Double("0.05"));
+    placeMMOrder(exchange, ASK, new Double(99), new Double("0.25"));
+    placeMMOrder(exchange, ASK, new Double(98), new Double("0.3"));
     // ----
-    placeMMOrder(exchange, BID, new BigDecimal(97), new BigDecimal("0.4"));
-    placeMMOrder(exchange, BID, new BigDecimal(96), new BigDecimal("0.25"));
-    placeMMOrder(exchange, BID, new BigDecimal(96), new BigDecimal("0.25"));
-    placeMMOrder(exchange, BID, new BigDecimal(95), new BigDecimal("0.6"));
-    placeMMOrder(exchange, BID, new BigDecimal(94), new BigDecimal("0.7"));
-    placeMMOrder(exchange, BID, new BigDecimal(93), new BigDecimal("0.8"));
-    placeMMOrder(exchange, BID, new BigDecimal(1), new BigDecimal("1002"));
+    placeMMOrder(exchange, BID, new Double(97), new Double("0.4"));
+    placeMMOrder(exchange, BID, new Double(96), new Double("0.25"));
+    placeMMOrder(exchange, BID, new Double(96), new Double("0.25"));
+    placeMMOrder(exchange, BID, new Double(95), new Double("0.6"));
+    placeMMOrder(exchange, BID, new Double(94), new Double("0.7"));
+    placeMMOrder(exchange, BID, new Double(93), new Double("0.8"));
+    placeMMOrder(exchange, BID, new Double(1), new Double("1002"));
   }
 
   static void placeMMOrder(
-      SimulatedExchange exchange, OrderType orderType, BigDecimal price, BigDecimal amount)
+      SimulatedExchange exchange, OrderType orderType, Double price, Double amount)
       throws IOException {
     exchange
         .getTradeService()

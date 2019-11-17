@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.liqui.dto.trade.result.LiquiCancelOrderResult;
 import org.knowm.xchange.liqui.marketdata.LiquiTickerJSONTest;
@@ -22,9 +21,7 @@ public class LiquiCancelOrderJSONTest {
     assertThat(cancelOrderResult.isSuccess()).isTrue();
 
     assertThat(cancelOrderResult.getResult().getOrderId()).isEqualTo(108998425L);
-    assertThat(cancelOrderResult.getResult().getFunds().get("trx"))
-        .isEqualTo(new BigDecimal("500.0"));
-    assertThat(cancelOrderResult.getResult().getFunds().get("btc"))
-        .isEqualTo(new BigDecimal("0.0"));
+    assertThat(cancelOrderResult.getResult().getFunds().get("trx")).isEqualTo(new Double("500.0"));
+    assertThat(cancelOrderResult.getResult().getFunds().get("btc")).isEqualTo(new Double("0.0"));
   }
 }

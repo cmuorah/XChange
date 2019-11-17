@@ -4,13 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import org.knowm.xchange.utils.jackson.BtcToSatoshi;
 import org.knowm.xchange.utils.jackson.MillisecTimestampDeserializer;
-import org.knowm.xchange.utils.jackson.SatoshiToBtc;
 
 @JsonPropertyOrder({
   "currency",
@@ -24,13 +20,9 @@ import org.knowm.xchange.utils.jackson.SatoshiToBtc;
 // @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BTCMarketsOrder {
 
-  @JsonSerialize(using = BtcToSatoshi.class)
-  @JsonDeserialize(using = SatoshiToBtc.class)
-  private BigDecimal volume;
+  private Double volume;
 
-  @JsonSerialize(using = BtcToSatoshi.class)
-  @JsonDeserialize(using = SatoshiToBtc.class)
-  private BigDecimal price;
+  private Double price;
 
   private String currency;
 
@@ -51,16 +43,15 @@ public class BTCMarketsOrder {
 
   private String errorMessage;
 
-  @JsonDeserialize(using = SatoshiToBtc.class)
-  private BigDecimal openVolume;
+  private Double openVolume;
 
   private List<BTCMarketsUserTrade> trades;
 
   protected BTCMarketsOrder() {}
 
   public BTCMarketsOrder(
-      BigDecimal volume,
-      BigDecimal price,
+      Double volume,
+      Double price,
       String currency,
       String instrument,
       Side orderSide,
@@ -75,11 +66,11 @@ public class BTCMarketsOrder {
     this.clientRequestId = clientRequestId;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -148,13 +139,13 @@ public class BTCMarketsOrder {
   }
 
   @JsonIgnore(true)
-  public BigDecimal getOpenVolume() {
+  public Double getOpenVolume() {
     return openVolume;
   }
 
   @JsonProperty
   @JsonIgnore(false)
-  protected void setOpenVolume(BigDecimal openVolume) {
+  protected void setOpenVolume(Double openVolume) {
     this.openVolume = openVolume;
   }
 

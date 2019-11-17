@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -37,7 +36,7 @@ public class BleutradeMarket {
   private String BaseCurrencyLong;
 
   @JsonProperty("MinTradeSize")
-  private BigDecimal MinTradeSize;
+  private Double MinTradeSize;
 
   @JsonProperty("MarketName")
   private String MarketName;
@@ -105,14 +104,14 @@ public class BleutradeMarket {
 
   /** @return The MinTradeSize */
   @JsonProperty("MinTradeSize")
-  public BigDecimal getMinTradeSize() {
+  public Double getMinTradeSize() {
 
     return MinTradeSize;
   }
 
   /** @param MinTradeSize The MinTradeSize */
   @JsonProperty("MinTradeSize")
-  public void setMinTradeSize(BigDecimal MinTradeSize) {
+  public void setMinTradeSize(Double MinTradeSize) {
 
     this.MinTradeSize = MinTradeSize;
   }

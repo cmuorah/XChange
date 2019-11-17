@@ -1,45 +1,44 @@
 package org.knowm.xchange.quoine.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public final class QuoineTradingAccountInfo {
   private final String id;
   private final int leverageLevel;
   private final int currentLeverageLevel;
-  private final BigDecimal equity;
-  private final BigDecimal margin;
-  private final BigDecimal freeMargin;
+  private final Double equity;
+  private final Double margin;
+  private final Double freeMargin;
   private final long traderId;
   private final String status;
   private final String productCode;
   private final String currencyPairCode;
-  private final BigDecimal pnl;
-  private final BigDecimal position;
-  private final BigDecimal balance;
+  private final Double pnl;
+  private final Double position;
+  private final Double balance;
   private final Date updatedAt;
   private final String pusher_channel;
-  private final BigDecimal marginPercent;
+  private final Double marginPercent;
   private final String fundingCurrency;
 
   public QuoineTradingAccountInfo(
       @JsonProperty("id") String id,
       @JsonProperty("leverage_level") int leverageLevel,
       @JsonProperty("current_leverage_level") int currentLeverageLevel,
-      @JsonProperty("equity") BigDecimal equity,
-      @JsonProperty("margin") BigDecimal margin,
-      @JsonProperty("free_margin") BigDecimal freeMargin,
+      @JsonProperty("equity") Double equity,
+      @JsonProperty("margin") Double margin,
+      @JsonProperty("free_margin") Double freeMargin,
       @JsonProperty("trader_id") long traderId,
       @JsonProperty("status") String status,
       @JsonProperty("product_code") String productCode,
       @JsonProperty("currency_pair_code") String currencyPairCode,
-      @JsonProperty("pnl") BigDecimal pnl,
-      @JsonProperty("position") BigDecimal position,
-      @JsonProperty("balance") BigDecimal balance,
+      @JsonProperty("pnl") Double pnl,
+      @JsonProperty("position") Double position,
+      @JsonProperty("balance") Double balance,
       @JsonProperty("updated_at") Date updatedAt,
       @JsonProperty("pusher_channel") String pusher_channel,
-      @JsonProperty("margin_percent") BigDecimal marginPercent,
+      @JsonProperty("margin_percent") Double marginPercent,
       @JsonProperty("funding_currency") String fundingCurrency) {
     super();
     this.id = id;
@@ -73,15 +72,15 @@ public final class QuoineTradingAccountInfo {
     return currentLeverageLevel;
   }
 
-  public BigDecimal getEquity() {
+  public Double getEquity() {
     return equity;
   }
 
-  public BigDecimal getMargin() {
+  public Double getMargin() {
     return margin;
   }
 
-  public BigDecimal getFreeMargin() {
+  public Double getFreeMargin() {
     return freeMargin;
   }
 
@@ -101,15 +100,15 @@ public final class QuoineTradingAccountInfo {
     return currencyPairCode;
   }
 
-  public BigDecimal getPnl() {
+  public Double getPnl() {
     return pnl;
   }
 
-  public BigDecimal getPosition() {
+  public Double getPosition() {
     return position;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
@@ -121,7 +120,7 @@ public final class QuoineTradingAccountInfo {
     return pusher_channel;
   }
 
-  public BigDecimal getMarginPercent() {
+  public Double getMarginPercent() {
     return marginPercent;
   }
 

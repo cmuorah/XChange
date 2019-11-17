@@ -1,46 +1,45 @@
 package org.knowm.xchange.gemini.v1.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 
 public class GeminiTrailingVolumeResponse {
   @JsonProperty("web_maker_fee_bps")
-  public BigDecimal webMakerFeeBps;
+  public Double webMakerFeeBps;
 
   @JsonProperty("web_taker_fee_bps")
-  public BigDecimal webTakerFeeBps;
+  public Double webTakerFeeBps;
 
   @JsonProperty("web_auction_fee_bps")
-  public BigDecimal webAuctionFeeBps;
+  public Double webAuctionFeeBps;
 
   @JsonProperty("api_maker_fee_bps")
-  public BigDecimal apiMakerFeeBPS;
+  public Double apiMakerFeeBPS;
 
   @JsonProperty("api_taker_fee_bps")
-  public BigDecimal apiTakerFeeBPS;
+  public Double apiTakerFeeBPS;
 
   @JsonProperty("api_auction_fee_bps")
-  public BigDecimal apiAuctionFeeBPS;
+  public Double apiAuctionFeeBPS;
 
   @JsonProperty("fix_maker_fee_bps")
-  public BigDecimal fixMakerFeeBps;
+  public Double fixMakerFeeBps;
 
   @JsonProperty("fix_taker_fee_bps")
-  public BigDecimal fixTakerFeeBps;
+  public Double fixTakerFeeBps;
 
   @JsonProperty("fix_auction_fee_bps")
-  public BigDecimal fixAuctionFeeBps;
+  public Double fixAuctionFeeBps;
 
   @JsonProperty("block_maker_fee_bps")
-  public BigDecimal blockMakerFeeBps;
+  public Double blockMakerFeeBps;
 
   @JsonProperty("block_taker_fee_bps")
-  public BigDecimal blockTakerFeeBps;
+  public Double blockTakerFeeBps;
 
   @JsonProperty("notional_30d_volume")
-  public BigDecimal Notional30DayVolume;
+  public Double Notional30DayVolume;
 
   @JsonProperty("last_updated_ms")
   public BigInteger LastUpdatedMS;
@@ -56,7 +55,7 @@ public class GeminiTrailingVolumeResponse {
     public Date Date;
 
     @JsonProperty("notional_volume")
-    public BigDecimal NotionalVolume;
+    public Double NotionalVolume;
   }
 
   @JsonProperty("notional_1d_volume")

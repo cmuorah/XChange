@@ -2,13 +2,12 @@ package org.knowm.xchange.ripple.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 
 @JsonPropertyOrder({"value", "currency", "counterparty"})
 public final class RippleBalance {
 
   @JsonProperty("value")
-  private BigDecimal value;
+  private Double value;
 
   @JsonProperty("currency")
   private String currency;
@@ -16,11 +15,11 @@ public final class RippleBalance {
   @JsonProperty("counterparty")
   private String counterparty;
 
-  public BigDecimal getValue() {
+  public Double getValue() {
     return value;
   }
 
-  public void setValue(final BigDecimal value) {
+  public void setValue(final Double value) {
     this.value = value;
   }
 

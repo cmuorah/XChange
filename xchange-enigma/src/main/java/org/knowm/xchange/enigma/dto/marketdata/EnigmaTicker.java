@@ -1,7 +1,6 @@
 package org.knowm.xchange.enigma.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,20 +14,20 @@ public class EnigmaTicker {
   private String productName;
 
   @JsonProperty("last")
-  private BigDecimal last;
+  private Double last;
 
   @JsonProperty("open")
-  private BigDecimal open;
+  private Double open;
 
   @JsonProperty("bid")
-  private BigDecimal bid;
+  private Double bid;
 
   @JsonProperty("ask")
-  private BigDecimal ask;
+  private Double ask;
 
   @JsonProperty("bid_qty")
-  private BigDecimal bidQty;
+  private Double bidQty;
 
   @JsonProperty("ask_qty")
-  private BigDecimal askQty;
+  private Double askQty;
 }

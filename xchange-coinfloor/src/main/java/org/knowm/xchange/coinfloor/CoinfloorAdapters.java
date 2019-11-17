@@ -1,6 +1,5 @@
 package org.knowm.xchange.coinfloor;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -52,12 +51,12 @@ public class CoinfloorAdapters {
   }
 
   private static List<LimitOrder> createOrders(
-      CurrencyPair pair, Order.OrderType orderType, List<List<BigDecimal>> orders) {
+      CurrencyPair pair, Order.OrderType orderType, List<List<Double>> orders) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
     if (orders == null) return limitOrders;
 
-    for (List<BigDecimal> priceAndAmount : orders) {
+    for (List<Double> priceAndAmount : orders) {
 
       if (priceAndAmount.size() != 2) {
         throw new IllegalArgumentException(
@@ -114,7 +113,7 @@ public class CoinfloorAdapters {
     List<UserTrade> trades = new ArrayList<>();
     long lastTradeId = 0;
     for (CoinfloorUserTransaction transaction : transactions) {
-      if (transaction.isTrade() == false) {
+      if (!transaction.isTrade()) {
         continue; // skip deposits and withdrawals.
       }
 
@@ -126,12 +125,12 @@ public class CoinfloorAdapters {
       }
       final String tradeId = String.valueOf(transactionId);
       final String orderId = String.valueOf(transaction.getOrderId());
-      final BigDecimal feeAmount = transaction.getFee();
+      final Double feeAmount = transaction.getFee();
 
       UserTrade trade =
           new UserTrade(
               transaction.getSide(),
-              transaction.getAmount().abs(),
+              Math.abs(transaction.getAmount()),
               transaction.getCurrencyPair(),
               transaction.getPrice(),
               timestamp,

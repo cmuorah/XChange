@@ -1,6 +1,5 @@
 package org.knowm.xchange.coinegg;
 
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,12 +30,12 @@ import org.knowm.xchange.dto.trade.UserTrades;
 public class CoinEggAdapters {
 
   public static Ticker adaptTicker(CoinEggTicker coinEggTicker, CurrencyPair currencyPair) {
-    BigDecimal last = coinEggTicker.getLast();
-    BigDecimal bid = coinEggTicker.getSell();
-    BigDecimal ask = coinEggTicker.getBuy();
-    BigDecimal high = coinEggTicker.getHigh();
-    BigDecimal low = coinEggTicker.getLow();
-    BigDecimal volume = coinEggTicker.getVolume();
+    Double last = coinEggTicker.getLast();
+    Double bid = coinEggTicker.getSell();
+    Double ask = coinEggTicker.getBuy();
+    Double high = coinEggTicker.getHigh();
+    Double low = coinEggTicker.getLow();
+    Double volume = coinEggTicker.getVolume();
 
     Ticker ticker =
         new Ticker.Builder()
@@ -54,8 +53,8 @@ public class CoinEggAdapters {
 
   public static LimitOrder adaptOrder(
       CoinEggOrder order, OrderType type, CurrencyPair currencyPair) {
-    BigDecimal quantity = order.getQuantity();
-    BigDecimal price = order.getPrice();
+    Double quantity = order.getQuantity();
+    Double price = order.getPrice();
 
     LimitOrder limitOrder =
         new LimitOrder.Builder(type, currencyPair)

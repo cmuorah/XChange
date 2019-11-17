@@ -3,7 +3,6 @@ package org.knowm.xchange.coinbase.v2.service;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.core.MediaType;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinbase.v2.Coinbase;
@@ -26,12 +25,12 @@ class CoinbaseTradeServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://developers.coinbase.com/api/v2#place-buy-order">developers.coinbase.com/api/v2#place-buy-order</a>
    */
-  public CoinbaseBuy buy(String accountId, BigDecimal total, Currency currency, boolean commit)
+  public CoinbaseBuy buy(String accountId, Double total, Currency currency, boolean commit)
       throws IOException {
 
     String path = "/v2/accounts/" + accountId + "/buys";
     String apiKey = exchange.getExchangeSpecification().getApiKey();
-    BigDecimal timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
+    Double timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
     BuyPayload payload = new BuyPayload(total, currency.getCurrencyCode(), commit, false);
     String body = new ObjectMapper().writeValueAsString(payload);
     String signature = getSignature(timestamp, HttpMethod.POST, path, body);
@@ -58,7 +57,7 @@ class CoinbaseTradeServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://developers.coinbase.com/api/v2#place-sell-order">developers.coinbase.com/api/v2#place-sell-order</a>
    */
-  public CoinbaseSell sell(String accountId, BigDecimal total, Currency currency, boolean commit)
+  public CoinbaseSell sell(String accountId, Double total, Currency currency, boolean commit)
       throws IOException {
 
     return sellInternal(
@@ -73,8 +72,7 @@ class CoinbaseTradeServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://developers.coinbase.com/api/v2#place-sell-order">developers.coinbase.com/api/v2#place-sell-order</a>
    */
-  public CoinbaseSell quote(String accountId, BigDecimal total, Currency currency)
-      throws IOException {
+  public CoinbaseSell quote(String accountId, Double total, Currency currency) throws IOException {
 
     return sellInternal(accountId, new SellPayload(total, currency.getCurrencyCode(), false, true));
   }
@@ -83,7 +81,7 @@ class CoinbaseTradeServiceRaw extends CoinbaseBaseService {
 
     String path = "/v2/accounts/" + accountId + "/sells";
     String apiKey = exchange.getExchangeSpecification().getApiKey();
-    BigDecimal timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
+    Double timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
     String body = new ObjectMapper().writeValueAsString(payload);
     String signature = getSignature(timestamp, HttpMethod.POST, path, body);
 
@@ -104,7 +102,7 @@ class CoinbaseTradeServiceRaw extends CoinbaseBaseService {
   class BuyPayload extends AbstractPayload {
     @JsonProperty String total;
 
-    BuyPayload(BigDecimal total, String currency, boolean commit, boolean quote) {
+    BuyPayload(Double total, String currency, boolean commit, boolean quote) {
       super(currency, commit, quote);
       this.total = total.toString();
     }
@@ -113,7 +111,7 @@ class CoinbaseTradeServiceRaw extends CoinbaseBaseService {
   class SellPayload extends AbstractPayload {
     @JsonProperty String amount;
 
-    SellPayload(BigDecimal amount, String currency, boolean commit, boolean quote) {
+    SellPayload(Double amount, String currency, boolean commit, boolean quote) {
       super(currency, commit, quote);
       this.amount = amount.toString();
     }

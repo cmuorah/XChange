@@ -1,16 +1,15 @@
 package org.knowm.xchange.bittrex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class BittrexOrder extends BittrexOrderBase {
 
   private final String accountId;
-  private final BigDecimal reserved;
-  private final BigDecimal reserveRemaining;
-  private final BigDecimal commissionReserved;
-  private final BigDecimal commissionReserveRemaining;
+  private final Double reserved;
+  private final Double reserveRemaining;
+  private final Double commissionReserved;
+  private final Double commissionReserveRemaining;
   private final Boolean isOpen;
   private final String sentinel;
 
@@ -19,16 +18,16 @@ public class BittrexOrder extends BittrexOrderBase {
       @JsonProperty("OrderUuid") String orderUuid,
       @JsonProperty("Exchange") String exchange,
       @JsonProperty("Type") String type,
-      @JsonProperty("Quantity") BigDecimal quantity,
-      @JsonProperty("QuantityRemaining") BigDecimal quantityRemaining,
-      @JsonProperty("Limit") BigDecimal limit,
-      @JsonProperty("Reserved") BigDecimal reserved,
-      @JsonProperty("ReserveRemaining") BigDecimal reserveRemaining,
-      @JsonProperty("CommissionReserved") BigDecimal commissionReserved,
-      @JsonProperty("CommissionReserveRemaining") BigDecimal commissionReserveRemaining,
-      @JsonProperty("CommissionPaid") BigDecimal commissionPaid,
-      @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("PricePerUnit") BigDecimal pricePerUnit,
+      @JsonProperty("Quantity") Double quantity,
+      @JsonProperty("QuantityRemaining") Double quantityRemaining,
+      @JsonProperty("Limit") Double limit,
+      @JsonProperty("Reserved") Double reserved,
+      @JsonProperty("ReserveRemaining") Double reserveRemaining,
+      @JsonProperty("CommissionReserved") Double commissionReserved,
+      @JsonProperty("CommissionReserveRemaining") Double commissionReserveRemaining,
+      @JsonProperty("CommissionPaid") Double commissionPaid,
+      @JsonProperty("Price") Double price,
+      @JsonProperty("PricePerUnit") Double pricePerUnit,
       @JsonProperty("Opened") Date opened,
       @JsonProperty("Closed") Date closed,
       @JsonProperty("IsOpen") Boolean isOpen,
@@ -68,19 +67,19 @@ public class BittrexOrder extends BittrexOrderBase {
     return accountId;
   }
 
-  public BigDecimal getReserved() {
+  public Double getReserved() {
     return reserved;
   }
 
-  public BigDecimal getReserveRemaining() {
+  public Double getReserveRemaining() {
     return reserveRemaining;
   }
 
-  public BigDecimal getCommissionReserved() {
+  public Double getCommissionReserved() {
     return commissionReserved;
   }
 
-  public BigDecimal getCommissionReserveRemaining() {
+  public Double getCommissionReserveRemaining() {
     return commissionReserveRemaining;
   }
 

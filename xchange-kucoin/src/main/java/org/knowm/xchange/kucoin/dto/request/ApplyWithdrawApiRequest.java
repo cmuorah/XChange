@@ -2,7 +2,6 @@ package org.knowm.xchange.kucoin.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -21,7 +20,7 @@ public class ApplyWithdrawApiRequest {
    * Withdrawal amount, a positive number which is a multiple of the amount precision (fees
    * excluded)
    */
-  private final BigDecimal amount;
+  private final Double amount;
   /**
    * [optional] The note that is left on the withdrawal address. When you withdraw from KuCoin to
    * other platforms, you need to fill in memo(tag). If you don't fill in memo(tag), your withdrawal

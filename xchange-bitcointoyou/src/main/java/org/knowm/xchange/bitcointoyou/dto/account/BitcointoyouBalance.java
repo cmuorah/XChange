@@ -3,7 +3,6 @@ package org.knowm.xchange.bitcointoyou.dto.account;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -21,7 +20,7 @@ public class BitcointoyouBalance {
   private String success;
 
   @JsonProperty("oReturn")
-  private List<Map<String, BigDecimal>> oReturn;
+  private List<Map<String, Double>> oReturn;
 
   @JsonProperty("error")
   private String error;
@@ -45,13 +44,13 @@ public class BitcointoyouBalance {
   }
 
   @JsonProperty("oReturn")
-  public List<Map<String, BigDecimal>> getoReturn() {
+  public List<Map<String, Double>> getoReturn() {
 
     return oReturn;
   }
 
   @JsonProperty("oReturn")
-  public void setoReturn(List<Map<String, BigDecimal>> oReturn) {
+  public void setoReturn(List<Map<String, Double>> oReturn) {
 
     this.oReturn = oReturn;
   }

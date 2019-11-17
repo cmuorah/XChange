@@ -1,10 +1,8 @@
 package org.knowm.xchange.simulated;
 
-import static java.math.BigDecimal.ZERO;
 import static java.util.UUID.randomUUID;
 import static org.knowm.xchange.dto.Order.OrderType.ASK;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +21,16 @@ import org.knowm.xchange.dto.trade.LimitOrder;
 @Builder
 final class BookOrder {
 
-  private static final BigDecimal INF = BigDecimal.valueOf(Long.MAX_VALUE);
+  private static final Double INF = Double.MAX_VALUE;
+  private final String apiKey;
+  private final Double originalAmount;
+  private final String id;
+  private final Date timestamp;
+  private final Double limitPrice;
+  private final OrderType type;
+  @Builder.Default private volatile Double cumulativeAmount;
+  private volatile Double averagePrice;
+  @Builder.Default private volatile Double fee;
 
   static BookOrder fromOrder(Order original, String apiKey) {
     return BookOrder.builder()
@@ -32,25 +39,15 @@ final class BookOrder {
         .limitPrice(
             original instanceof LimitOrder
                 ? ((LimitOrder) original).getLimitPrice()
-                : original.getType() == ASK ? ZERO : INF)
+                : original.getType() == ASK ? 0d : INF)
         .originalAmount(original.getOriginalAmount())
         .timestamp(new Date())
         .type(original.getType())
         .build();
   }
 
-  private final String apiKey;
-  private final BigDecimal originalAmount;
-  private final String id;
-  private final Date timestamp;
-  private final BigDecimal limitPrice;
-  private final OrderType type;
-  @Builder.Default private volatile BigDecimal cumulativeAmount = ZERO;
-  private volatile BigDecimal averagePrice;
-  @Builder.Default private volatile BigDecimal fee = ZERO;
-
-  BigDecimal getRemainingAmount() {
-    return originalAmount.subtract(cumulativeAmount);
+  Double getRemainingAmount() {
+    return originalAmount - (cumulativeAmount);
   }
 
   boolean isDone() {
@@ -71,7 +68,7 @@ final class BookOrder {
         .fee(fee)
         .limitPrice(limitPrice)
         .orderStatus(
-            cumulativeAmount.compareTo(ZERO) == 0
+            cumulativeAmount.compareTo(0d) == 0
                 ? OrderStatus.NEW
                 : cumulativeAmount.compareTo(originalAmount) == 0
                     ? OrderStatus.FILLED

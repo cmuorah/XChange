@@ -2,7 +2,6 @@ package org.knowm.xchange.bithumb.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -16,29 +15,29 @@ public class BithumbBalance {
   private static final String PREFIX_FROZEN = "in_use_";
   private static final String PREFIX_AVAILABLE = "available_";
 
-  private final BigDecimal totalKrw;
-  private final BigDecimal inUseKrw;
-  private final BigDecimal availableKrw;
+  private final Double totalKrw;
+  private final Double inUseKrw;
+  private final Double availableKrw;
   private final Map<String, String> additionalProperties = new HashMap<>();
 
   public BithumbBalance(
-      @JsonProperty("total_krw") BigDecimal totalKrw,
-      @JsonProperty("in_use_krw") BigDecimal inUseKrw,
-      @JsonProperty("available_krw") BigDecimal availableKrw) {
+      @JsonProperty("total_krw") Double totalKrw,
+      @JsonProperty("in_use_krw") Double inUseKrw,
+      @JsonProperty("available_krw") Double availableKrw) {
     this.totalKrw = totalKrw;
     this.inUseKrw = inUseKrw;
     this.availableKrw = availableKrw;
   }
 
-  public BigDecimal getTotalKrw() {
+  public Double getTotalKrw() {
     return totalKrw;
   }
 
-  public BigDecimal getInUseKrw() {
+  public Double getInUseKrw() {
     return inUseKrw;
   }
 
-  public BigDecimal getAvailableKrw() {
+  public Double getAvailableKrw() {
     return availableKrw;
   }
 
@@ -53,22 +52,22 @@ public class BithumbBalance {
         .collect(Collectors.toSet());
   }
 
-  public BigDecimal getAvailable(String currency) {
+  public Double getAvailable(String currency) {
     return Optional.ofNullable(additionalProperties.get(PREFIX_AVAILABLE + currency))
-        .map(BigDecimal::new)
-        .orElse(BigDecimal.ZERO);
+        .map(Double::new)
+        .orElse(0d);
   }
 
-  public BigDecimal getFrozen(String currency) {
+  public Double getFrozen(String currency) {
     return Optional.ofNullable(additionalProperties.get(PREFIX_FROZEN + currency))
-        .map(BigDecimal::new)
-        .orElse(BigDecimal.ZERO);
+        .map(Double::new)
+        .orElse(0d);
   }
 
-  public BigDecimal getTotal(String currency) {
+  public Double getTotal(String currency) {
     return Optional.ofNullable(additionalProperties.get(PREFIX_TOTAL + currency))
-        .map(BigDecimal::new)
-        .orElse(BigDecimal.ZERO);
+        .map(Double::new)
+        .orElse(0d);
   }
 
   @JsonAnySetter

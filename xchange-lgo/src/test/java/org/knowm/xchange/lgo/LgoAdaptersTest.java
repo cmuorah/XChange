@@ -6,7 +6,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -91,19 +90,14 @@ public class LgoAdaptersTest {
     Date now = new Date();
     LimitOrder limitOrder =
         new LimitOrder(
-            OrderType.BID,
-            new BigDecimal("1"),
-            CurrencyPair.BTC_USD,
-            null,
-            now,
-            new BigDecimal("6000"));
+            OrderType.BID, new Double("1"), CurrencyPair.BTC_USD, null, now, new Double("6000"));
 
     LgoPlaceOrder bidOrder = LgoAdapters.adaptLimitOrder(limitOrder);
 
     assertThat(bidOrder)
         .isEqualToComparingFieldByField(
             new LgoPlaceLimitOrder(
-                0, "B", "BTC-USD", new BigDecimal("1"), new BigDecimal("6000"), now.toInstant()));
+                0, "B", "BTC-USD", new Double("1"), new Double("6000"), now.toInstant()));
   }
 
   @Test
@@ -112,49 +106,44 @@ public class LgoAdaptersTest {
     LimitOrder limitOrder =
         new LimitOrder(
             OrderType.ASK,
-            new BigDecimal("1"),
+            new Double("1"),
             CurrencyPair.BTC_USD,
             null,
             timestamp,
-            new BigDecimal("6000"));
+            new Double("6000"));
 
     LgoPlaceOrder bidOrder = LgoAdapters.adaptLimitOrder(limitOrder);
 
     assertThat(bidOrder)
         .isEqualToComparingFieldByField(
             new LgoPlaceLimitOrder(
-                0,
-                "S",
-                "BTC-USD",
-                new BigDecimal("1"),
-                new BigDecimal("6000"),
-                timestamp.toInstant()));
+                0, "S", "BTC-USD", new Double("1"), new Double("6000"), timestamp.toInstant()));
   }
 
   @Test
   public void adaptsBidMarketOrder() {
     Date now = new Date();
     MarketOrder marketOrder =
-        new MarketOrder(OrderType.BID, new BigDecimal("1"), CurrencyPair.BTC_USD, null, now);
+        new MarketOrder(OrderType.BID, new Double("1"), CurrencyPair.BTC_USD, null, now);
 
     LgoPlaceOrder bidOrder = LgoAdapters.adaptMarketOrder(marketOrder);
 
     assertThat(bidOrder)
         .isEqualToComparingFieldByField(
-            new LgoPlaceMarketOrder(0, "B", "BTC-USD", new BigDecimal("1"), now.toInstant()));
+            new LgoPlaceMarketOrder(0, "B", "BTC-USD", new Double("1"), now.toInstant()));
   }
 
   @Test
   public void adaptsAskMarketOrder() {
     Date timestamp = new Date();
     MarketOrder marketOrder =
-        new MarketOrder(OrderType.ASK, new BigDecimal("1"), CurrencyPair.BTC_USD, null, timestamp);
+        new MarketOrder(OrderType.ASK, new Double("1"), CurrencyPair.BTC_USD, null, timestamp);
 
     LgoPlaceOrder bidOrder = LgoAdapters.adaptMarketOrder(marketOrder);
 
     assertThat(bidOrder)
         .isEqualToComparingFieldByField(
-            new LgoPlaceMarketOrder(0, "S", "BTC-USD", new BigDecimal("1"), timestamp.toInstant()));
+            new LgoPlaceMarketOrder(0, "S", "BTC-USD", new Double("1"), timestamp.toInstant()));
   }
 
   @Test
@@ -187,25 +176,25 @@ public class LgoAdaptersTest {
         .isEqualToComparingFieldByField(
             new UserTrade(
                 OrderType.ASK,
-                new BigDecimal("0.00500000"),
+                new Double("0.00500000"),
                 CurrencyPair.BTC_USD,
-                new BigDecimal("3854.0000"),
+                new Double("3854.0000"),
                 dateFormat.parse("2019-03-05T16:37:17.220Z"),
                 "2",
                 "155180383648300001",
-                new BigDecimal("0.0096"),
+                new Double("0.0096"),
                 Currency.USD));
     assertThat(userTrades.getUserTrades().get(1))
         .isEqualToComparingFieldByField(
             new UserTrade(
                 OrderType.BID,
-                new BigDecimal("0.00829566"),
+                new Double("0.00829566"),
                 CurrencyPair.BTC_USD,
-                new BigDecimal("2410.9000"),
+                new Double("2410.9000"),
                 dateFormat.parse("2019-06-20T15:37:21.855Z"),
                 "2477363",
                 "156104504046400001",
-                new BigDecimal("0.0100"),
+                new Double("0.0100"),
                 Currency.USD));
   }
 
@@ -214,10 +203,10 @@ public class LgoAdaptersTest {
         "1",
         "2",
         "BTC-USD",
-        new BigDecimal("1"),
-        new BigDecimal("1"),
+        new Double("1"),
+        new Double("1"),
         null,
-        new BigDecimal("1"),
+        new Double("1"),
         side,
         liquidity);
   }
@@ -240,10 +229,10 @@ public class LgoAdaptersTest {
                 "BTC-USD",
                 new LgoProductTotal(limit("10", "50000000")),
                 new LgoProductCurrency("BTC", null, limit("0.001", "1000")),
-                new LgoProductCurrency("USD", new BigDecimal("0.10"), limit("10", "1000000")))));
+                new LgoProductCurrency("USD", new Double("0.10"), limit("10", "1000000")))));
   }
 
   private LgoLimit limit(String min, String max) {
-    return new LgoLimit(new BigDecimal(min), new BigDecimal(max));
+    return new LgoLimit(new Double(min), new Double(max));
   }
 }

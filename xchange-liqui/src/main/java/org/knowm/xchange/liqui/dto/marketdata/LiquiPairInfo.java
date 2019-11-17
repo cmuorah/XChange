@@ -1,28 +1,27 @@
 package org.knowm.xchange.liqui.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class LiquiPairInfo {
 
   private final int decimalPlaces;
-  private final BigDecimal minPrice;
-  private final BigDecimal maxPrice;
-  private final BigDecimal minAmount;
-  private final BigDecimal maxAmount;
-  private final BigDecimal minTotal;
+  private final Double minPrice;
+  private final Double maxPrice;
+  private final Double minAmount;
+  private final Double maxAmount;
+  private final Double minTotal;
   private final boolean hidden;
-  private final BigDecimal fee;
+  private final Double fee;
 
   public LiquiPairInfo(
       @JsonProperty("decimal_places") int decimalPlaces,
-      @JsonProperty("min_price") BigDecimal minPrice,
-      @JsonProperty("max_price") BigDecimal maxPrice,
-      @JsonProperty("min_amount") BigDecimal minAmount,
-      @JsonProperty("max_amount") BigDecimal maxAmount,
-      @JsonProperty("min_total") BigDecimal minTotal,
+      @JsonProperty("min_price") Double minPrice,
+      @JsonProperty("max_price") Double maxPrice,
+      @JsonProperty("min_amount") Double minAmount,
+      @JsonProperty("max_amount") Double maxAmount,
+      @JsonProperty("min_total") Double minTotal,
       @JsonProperty("hidden") boolean hidden,
-      @JsonProperty("fee") BigDecimal fee) {
+      @JsonProperty("fee") Double fee) {
     this.decimalPlaces = decimalPlaces;
     this.minPrice = minPrice;
     this.maxPrice = maxPrice;
@@ -37,23 +36,23 @@ public class LiquiPairInfo {
     return this.decimalPlaces;
   }
 
-  public BigDecimal getMinPrice() {
+  public Double getMinPrice() {
     return this.minPrice;
   }
 
-  public BigDecimal getMaxPrice() {
+  public Double getMaxPrice() {
     return this.maxPrice;
   }
 
-  public BigDecimal getMinAmount() {
+  public Double getMinAmount() {
     return this.minAmount;
   }
 
-  public BigDecimal getMaxAmount() {
+  public Double getMaxAmount() {
     return this.maxAmount;
   }
 
-  public BigDecimal getMinTotal() {
+  public Double getMinTotal() {
     return this.minTotal;
   }
 
@@ -61,7 +60,7 @@ public class LiquiPairInfo {
     return this.hidden;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return this.fee;
   }
 

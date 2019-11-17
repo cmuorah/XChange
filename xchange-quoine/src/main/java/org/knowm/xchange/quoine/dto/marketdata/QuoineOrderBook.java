@@ -1,15 +1,14 @@
 package org.knowm.xchange.quoine.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 /** @author timmolter */
 public final class QuoineOrderBook {
 
-  private final List<BigDecimal[]> buyPriceLevels;
+  private final List<Double[]> buyPriceLevels;
 
-  private final List<BigDecimal[]> sellPriceLevels;
+  private final List<Double[]> sellPriceLevels;
 
   /**
    * Constructor
@@ -18,18 +17,18 @@ public final class QuoineOrderBook {
    * @param sellPriceLevels
    */
   public QuoineOrderBook(
-      @JsonProperty("buy_price_levels") List<BigDecimal[]> buyPriceLevels,
-      @JsonProperty("sell_price_levels") List<BigDecimal[]> sellPriceLevels) {
+      @JsonProperty("buy_price_levels") List<Double[]> buyPriceLevels,
+      @JsonProperty("sell_price_levels") List<Double[]> sellPriceLevels) {
 
     this.buyPriceLevels = buyPriceLevels;
     this.sellPriceLevels = sellPriceLevels;
   }
 
-  public List<BigDecimal[]> getBuyPriceLevels() {
+  public List<Double[]> getBuyPriceLevels() {
     return buyPriceLevels;
   }
 
-  public List<BigDecimal[]> getSellPriceLevels() {
+  public List<Double[]> getSellPriceLevels() {
     return sellPriceLevels;
   }
 

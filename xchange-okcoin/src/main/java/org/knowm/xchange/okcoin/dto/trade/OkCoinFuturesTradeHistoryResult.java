@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class OkCoinFuturesTradeHistoryResult extends OkCoinErrorResult {
 
@@ -10,7 +9,7 @@ public class OkCoinFuturesTradeHistoryResult extends OkCoinErrorResult {
   private final long timestamp;
   private final TransactionType type;
   /** USD amount, negative -> BID, positive -> ASK */
-  private final BigDecimal price;
+  private final Double price;
 
   /**
    * Constructor
@@ -26,7 +25,7 @@ public class OkCoinFuturesTradeHistoryResult extends OkCoinErrorResult {
       @JsonProperty("amount") long amount,
       @JsonProperty("tid") long tid,
       @JsonProperty("type") TransactionType type,
-      @JsonProperty("price") BigDecimal price) {
+      @JsonProperty("price") Double price) {
 
     super(true, errorCode);
     this.tid = tid;
@@ -51,7 +50,7 @@ public class OkCoinFuturesTradeHistoryResult extends OkCoinErrorResult {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

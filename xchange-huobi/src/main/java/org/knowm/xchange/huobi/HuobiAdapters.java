@@ -1,7 +1,5 @@
 package org.knowm.xchange.huobi;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,11 +19,7 @@ import org.knowm.xchange.dto.meta.CurrencyMetaData;
 import org.knowm.xchange.dto.meta.CurrencyPairMetaData;
 import org.knowm.xchange.dto.meta.ExchangeMetaData;
 import org.knowm.xchange.dto.meta.FeeTier;
-import org.knowm.xchange.dto.trade.LimitOrder;
-import org.knowm.xchange.dto.trade.MarketOrder;
-import org.knowm.xchange.dto.trade.OpenOrders;
-import org.knowm.xchange.dto.trade.UserTrade;
-import org.knowm.xchange.dto.trade.UserTrades;
+import org.knowm.xchange.dto.trade.*;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.huobi.dto.account.HuobiBalanceRecord;
 import org.knowm.xchange.huobi.dto.account.HuobiBalanceSum;
@@ -37,7 +31,7 @@ import org.knowm.xchange.huobi.dto.trade.HuobiOrder;
 
 public class HuobiAdapters {
 
-  private static BigDecimal fee = new BigDecimal("0.002"); // Trading fee at Huobi is 0.2 %
+  private static Double fee = new Double("0.002"); // Trading fee at Huobi is 0.2 %
 
   public static Ticker adaptTicker(HuobiTicker huobiTicker, CurrencyPair currencyPair) {
     Ticker.Builder builder = new Ticker.Builder();
@@ -71,7 +65,7 @@ public class HuobiAdapters {
     for (HuobiAsset asset : assets) {
       Currency currency = adaptCurrency(asset.getAsset());
       CurrencyMetaData metadata = currenciesMetaData.getOrDefault(currency, null);
-      BigDecimal withdrawalFee = metadata == null ? null : metadata.getWithdrawalFee();
+      Double withdrawalFee = metadata == null ? null : metadata.getWithdrawalFee();
       int scale = metadata == null ? 8 : metadata.getScale();
       currencies.put(currency, new CurrencyMetaData(scale, withdrawalFee));
     }
@@ -85,12 +79,7 @@ public class HuobiAdapters {
 
   private static CurrencyPairMetaData adaptPair(
       HuobiAssetPair pair, CurrencyPairMetaData metadata) {
-    BigDecimal minQty =
-        metadata == null
-            ? null
-            : metadata
-                .getMinimumAmount()
-                .setScale(Integer.parseInt(pair.getAmountPrecision()), RoundingMode.DOWN);
+    Double minQty = metadata == null ? null : metadata.getMinimumAmount();
     FeeTier[] feeTiers = metadata == null ? null : metadata.getFeeTiers();
     return new CurrencyPairMetaData(
         fee,
@@ -167,9 +156,7 @@ public class HuobiAdapters {
               currencyPair,
               String.valueOf(openOrder.getId()),
               openOrder.getCreatedAt(),
-              openOrder
-                  .getFieldCashAmount()
-                  .divide(openOrder.getFieldAmount(), 8, BigDecimal.ROUND_DOWN),
+              openOrder.getFieldCashAmount() / (openOrder.getFieldAmount()),
               openOrder.getFieldAmount(),
               openOrder.getFieldFees(),
               null);
@@ -184,13 +171,10 @@ public class HuobiAdapters {
               String.valueOf(openOrder.getId()),
               openOrder.getCreatedAt(),
               openOrder.getPrice());
-      if (openOrder.getFieldAmount().compareTo(BigDecimal.ZERO) == 0) {
-        order.setAveragePrice(BigDecimal.ZERO);
+      if (openOrder.getFieldAmount().compareTo(0d) == 0) {
+        order.setAveragePrice(0d);
       } else {
-        order.setAveragePrice(
-            openOrder
-                .getFieldCashAmount()
-                .divide(openOrder.getFieldAmount(), 8, BigDecimal.ROUND_DOWN));
+        order.setAveragePrice(openOrder.getFieldCashAmount() / openOrder.getFieldAmount());
       }
     }
     if (order != null) {
@@ -206,12 +190,7 @@ public class HuobiAdapters {
    * @return
    */
   private static UserTrade adaptTrade(LimitOrder order) {
-    BigDecimal feeAmount =
-        order
-            .getCumulativeAmount()
-            .multiply(order.getLimitPrice())
-            .multiply(fee)
-            .setScale(8, RoundingMode.DOWN);
+    Double feeAmount = order.getCumulativeAmount() * (order.getLimitPrice()) * (fee);
     return new UserTrade(
         order.getType(),
         order.getCumulativeAmount(),

@@ -1,11 +1,10 @@
 package org.knowm.xchange.ripple.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class RippleSettings {
 
-  private static final BigDecimal TRANSFER_RATE_DENOMINATOR = BigDecimal.valueOf(1000000000);
+  private static final Double TRANSFER_RATE_DENOMINATOR = 1000000000d;
 
   private String account;
 
@@ -72,13 +71,11 @@ public class RippleSettings {
    *
    * @return percentage transfer rate charge
    */
-  public BigDecimal getTransferFeeRate() {
+  public Double getTransferFeeRate() {
     if (transferRate == 0) {
-      return BigDecimal.ZERO;
+      return 0d;
     } else {
-      return BigDecimal.valueOf(transferRate)
-          .divide(TRANSFER_RATE_DENOMINATOR)
-          .subtract(BigDecimal.ONE);
+      return (double) transferRate / (TRANSFER_RATE_DENOMINATOR) - (10d);
     }
   }
 

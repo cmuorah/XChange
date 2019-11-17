@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinfloor.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinfloor.dto.trade.CoinfloorMarketOrderResponse;
@@ -58,7 +57,7 @@ public class CoinfloorTradeServiceRaw extends CoinfloorAuthenticatedService {
   }
 
   public CoinfloorOrder placeLimitOrder(
-      CurrencyPair pair, OrderType side, BigDecimal amount, BigDecimal price) throws IOException {
+      CurrencyPair pair, OrderType side, Double amount, Double price) throws IOException {
     Currency base = normalise(pair.base);
     Currency counter = normalise(pair.counter);
 
@@ -80,7 +79,7 @@ public class CoinfloorTradeServiceRaw extends CoinfloorAuthenticatedService {
   }
 
   public CoinfloorMarketOrderResponse placeMarketOrder(
-      CurrencyPair pair, OrderType side, BigDecimal amount) throws IOException {
+      CurrencyPair pair, OrderType side, Double amount) throws IOException {
     Currency base = normalise(pair.base);
     Currency counter = normalise(pair.counter);
     try {

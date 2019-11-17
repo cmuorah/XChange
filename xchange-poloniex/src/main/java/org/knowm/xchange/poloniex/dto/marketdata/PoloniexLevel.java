@@ -1,26 +1,24 @@
 package org.knowm.xchange.poloniex.dto.marketdata;
 
-import java.math.BigDecimal;
-
 /** @author Zach Holmes */
 public class PoloniexLevel {
 
-  private BigDecimal amount;
-  private BigDecimal limit;
+  private Double amount;
+  private Double limit;
 
-  public PoloniexLevel(BigDecimal amount, BigDecimal limit) {
+  public PoloniexLevel(Double amount, Double limit) {
 
     super();
     this.amount = amount;
     this.limit = limit;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getLimit() {
+  public Double getLimit() {
 
     return limit;
   }

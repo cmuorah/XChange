@@ -1,19 +1,18 @@
 package org.knowm.xchange.itbit.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class ItBitTrade {
 
-  private final BigDecimal amount;
+  private final Double amount;
   private final String timestamp;
-  private final BigDecimal price;
+  private final Double price;
   private final long matchNumber;
 
   public ItBitTrade(
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("timestamp") String timestamp,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("matchNumber") long matchNumber) {
 
     this.amount = amount;
@@ -22,7 +21,7 @@ public class ItBitTrade {
     this.matchNumber = matchNumber;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
@@ -32,7 +31,7 @@ public class ItBitTrade {
     return timestamp;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }

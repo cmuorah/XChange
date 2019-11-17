@@ -26,7 +26,7 @@ public class OkexAdaptersV3 {
     return new Balance.Builder()
         .currency(Currency.getInstance(rec.getCurrency()))
         .available(rec.getAvailable())
-        .frozen(rec.getBalance().subtract(rec.getAvailable()))
+        .frozen(rec.getBalance() - (rec.getAvailable()))
         .total(rec.getBalance())
         .build();
   }
@@ -35,7 +35,7 @@ public class OkexAdaptersV3 {
     return new Balance.Builder()
         .currency(Currency.getInstance(rec.getCurrency()))
         .available(rec.getAvailable())
-        .frozen(rec.getBalance().subtract(rec.getAvailable()))
+        .frozen(rec.getBalance() - (rec.getAvailable()))
         .total(rec.getBalance())
         .build();
   }

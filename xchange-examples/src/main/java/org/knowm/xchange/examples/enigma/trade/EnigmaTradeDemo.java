@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.enigma.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import lombok.extern.slf4j.Slf4j;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.enigma.dto.trade.*;
@@ -32,7 +31,7 @@ public class EnigmaTradeDemo {
         new EnigmaNewOrderRequest(
             2,
             Side.SELL.getValue(),
-            new BigDecimal("0.002"),
+            new Double("0.002"),
             null,
             Infrastructure.DEVELOPMENT.getValue());
     EnigmaOrderSubmission orderSubmission = tradeService.submitOrder(enigmaNewOrderRequest);
@@ -40,10 +39,7 @@ public class EnigmaTradeDemo {
 
     EnigmaQuoteRequest enigmaQuoteRequest =
         new EnigmaQuoteRequest(
-            2,
-            Side.SELL.getValue(),
-            new BigDecimal("0.002"),
-            Infrastructure.DEVELOPMENT.getValue());
+            2, Side.SELL.getValue(), new Double("0.002"), Infrastructure.DEVELOPMENT.getValue());
     EnigmaQuote enigmaQuote = tradeService.askForQuote(enigmaQuoteRequest);
     log.info("Ask for Request for quote: {}", enigmaQuote.toString());
 

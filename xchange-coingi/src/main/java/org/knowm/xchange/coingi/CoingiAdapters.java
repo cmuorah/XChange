@@ -1,6 +1,5 @@
 package org.knowm.xchange.coingi;
 
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.*;
 import org.knowm.xchange.coingi.dto.account.CoingiBalance;
@@ -45,20 +44,19 @@ public final class CoingiAdapters {
   public static AccountInfo adaptAccountInfo(CoingiBalances coingiBalances, String userName) {
     List<Balance> balances = new ArrayList<>();
     for (CoingiBalance coingiBalance : coingiBalances.getList()) {
-      BigDecimal total =
-          coingiBalance
-              .getAvailable()
-              .add(coingiBalance.getBlocked())
-              .add(coingiBalance.getWithdrawing())
-              .add(coingiBalance.getDeposited());
+      Double total =
+          coingiBalance.getAvailable()
+              + (coingiBalance.getBlocked())
+              + (coingiBalance.getWithdrawing())
+              + (coingiBalance.getDeposited());
       Balance xchangeBalance =
           new Balance(
               Currency.getInstance(coingiBalance.getCurrency().getName().toUpperCase()),
               total, // total = available + frozen - borrowed + loaned + withdrawing + depositing
               coingiBalance.getAvailable(), // available
               coingiBalance.getBlocked(),
-              BigDecimal.ZERO, // borrowed is always 0
-              BigDecimal.ZERO, // loaned is always 0
+              0d, // borrowed is always 0
+              0d, // loaned is always 0
               coingiBalance.getWithdrawing(),
               coingiBalance.getDeposited());
 
@@ -73,7 +71,7 @@ public final class CoingiAdapters {
     List<LimitOrder> bids = new ArrayList<>();
 
     for (CoingiOrderGroup ask : coingiOrderBook.getAsks()) {
-      List<BigDecimal> priceAndAmount = Arrays.asList(ask.getPrice(), ask.getBaseAmount());
+      List<Double> priceAndAmount = Arrays.asList(ask.getPrice(), ask.getBaseAmount());
       LimitOrder askLimit =
           createOrder(
               adaptCurrency(ask.getCurrencyPair()), priceAndAmount, adaptOrderType(ask.getType()));
@@ -82,7 +80,7 @@ public final class CoingiAdapters {
     }
 
     for (CoingiOrderGroup bid : coingiOrderBook.getBids()) {
-      List<BigDecimal> priceAndAmount = Arrays.asList(bid.getPrice(), bid.getBaseAmount());
+      List<Double> priceAndAmount = Arrays.asList(bid.getPrice(), bid.getBaseAmount());
       LimitOrder bidLimit =
           createOrder(
               adaptCurrency(bid.getCurrencyPair()), priceAndAmount, adaptOrderType(bid.getType()));
@@ -108,9 +106,9 @@ public final class CoingiAdapters {
   }
 
   public static List<LimitOrder> createOrders(
-      CurrencyPair currencyPair, OrderType orderType, List<List<BigDecimal>> orders) {
+      CurrencyPair currencyPair, OrderType orderType, List<List<Double>> orders) {
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (List<BigDecimal> ask : orders) {
+    for (List<Double> ask : orders) {
       checkArgument(
           ask.size() == 2, "Expected a pair (price, amount) but got {0} elements.", ask.size());
       limitOrders.add(createOrder(currencyPair, ask, orderType));
@@ -120,7 +118,7 @@ public final class CoingiAdapters {
   }
 
   public static LimitOrder createOrder(
-      CurrencyPair currencyPair, List<BigDecimal> priceAndAmount, OrderType orderType) {
+      CurrencyPair currencyPair, List<Double> priceAndAmount, OrderType orderType) {
     return new LimitOrder(
         orderType, priceAndAmount.get(1), currencyPair, "", null, priceAndAmount.get(0));
   }
@@ -198,7 +196,7 @@ public final class CoingiAdapters {
               new Date(o.getTimestamp()),
               o.getId(),
               o.getId(),
-              BigDecimal.valueOf(0),
+              (double) 0,
               null);
 
       trades.add(trade);
@@ -213,8 +211,7 @@ public final class CoingiAdapters {
     List<Trade> trades = new ArrayList<>();
     long lastTradeId = System.currentTimeMillis() / 1000;
 
-    for (int i = 0; i < coingiTransactions.size(); ++i) {
-      org.knowm.xchange.coingi.dto.marketdata.CoingiTransaction tx = coingiTransactions.get(i);
+    for (org.knowm.xchange.coingi.dto.marketdata.CoingiTransaction tx : coingiTransactions) {
       trades.add(adaptTrade(tx, currencyPair, 1000));
     }
 
@@ -263,19 +260,17 @@ public final class CoingiAdapters {
     return new Date(tickers.get(0).getTimestamp() * 1000);
   }
 
-  private static BigDecimal getAsk(OrderBook orderBook) {
+  private static Double getAsk(OrderBook orderBook) {
     return orderBook.getAsks().stream()
         .map(LimitOrder::getLimitPrice)
-        .sorted(Comparator.naturalOrder())
-        .findFirst()
+        .min(Comparator.naturalOrder())
         .orElse(null);
   }
 
-  private static BigDecimal getBid(OrderBook orderBook) {
+  private static Double getBid(OrderBook orderBook) {
     return orderBook.getBids().stream()
         .map(LimitOrder::getLimitPrice)
-        .sorted(Comparator.reverseOrder())
-        .findFirst()
+        .max(Comparator.naturalOrder())
         .orElse(null);
   }
 }

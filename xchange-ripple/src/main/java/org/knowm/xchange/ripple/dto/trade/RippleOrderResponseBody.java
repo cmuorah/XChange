@@ -1,14 +1,13 @@
 package org.knowm.xchange.ripple.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class RippleOrderResponseBody extends RippleOrderEntryRequestBody {
   @JsonProperty("account")
   private String account;
 
   @JsonProperty("fee")
-  private BigDecimal fee;
+  private Double fee;
 
   @JsonProperty("status")
   private String status;
@@ -44,11 +43,11 @@ public class RippleOrderResponseBody extends RippleOrderEntryRequestBody {
     status = value;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public void setFee(final BigDecimal value) {
+  public void setFee(final Double value) {
     fee = value;
   }
 

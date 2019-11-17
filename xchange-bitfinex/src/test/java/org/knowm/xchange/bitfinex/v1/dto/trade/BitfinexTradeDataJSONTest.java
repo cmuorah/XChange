@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 public class BitfinexTradeDataJSONTest {
@@ -29,17 +28,17 @@ public class BitfinexTradeDataJSONTest {
 
     assertEquals(4003264, response.getId());
     assertEquals("btcusd", response.getSymbol());
-    assertEquals(new BigDecimal("900.0"), response.getPrice());
-    assertEquals(new BigDecimal("0.0"), response.getAvgExecutionPrice());
+    assertEquals(new Double("900.0"), response.getPrice());
+    assertEquals(new Double("0.0"), response.getAvgExecutionPrice());
     assertEquals("sell", response.getSide());
     assertEquals("exchange limit", response.getType());
-    assertEquals(new BigDecimal("1387061558.610016778"), response.getTimestamp());
+    assertEquals(new Double("1387061558.610016778"), response.getTimestamp());
     assertTrue(response.isLive());
     assertFalse(response.isCancelled());
     assertFalse(response.getWasForced());
-    assertEquals(new BigDecimal("0.01"), response.getOriginalAmount());
-    assertEquals(new BigDecimal("0.01"), response.getRemainingAmount());
-    assertEquals(new BigDecimal("0.0"), response.getExecutedAmount());
+    assertEquals(new Double("0.01"), response.getOriginalAmount());
+    assertEquals(new Double("0.01"), response.getRemainingAmount());
+    assertEquals(new Double("0.0"), response.getExecutedAmount());
   }
 
   @Test
@@ -53,17 +52,17 @@ public class BitfinexTradeDataJSONTest {
 
     assertEquals(4003242, response.getId());
     assertEquals("btcusd", response.getSymbol());
-    assertEquals(new BigDecimal("900.0"), response.getPrice());
-    assertEquals(new BigDecimal("0.0"), response.getAvgExecutionPrice());
+    assertEquals(new Double("900.0"), response.getPrice());
+    assertEquals(new Double("0.0"), response.getAvgExecutionPrice());
     assertEquals("sell", response.getSide());
     assertEquals("exchange limit", response.getType());
-    assertEquals(new BigDecimal("1387061342.0"), response.getTimestamp());
+    assertEquals(new Double("1387061342.0"), response.getTimestamp());
     assertFalse(response.isLive());
     assertTrue(response.isCancelled());
     assertFalse(response.getWasForced());
-    assertEquals(new BigDecimal("0.01"), response.getOriginalAmount());
-    assertEquals(new BigDecimal("0.01"), response.getRemainingAmount());
-    assertEquals(new BigDecimal("0.0"), response.getExecutedAmount());
+    assertEquals(new Double("0.01"), response.getOriginalAmount());
+    assertEquals(new Double("0.01"), response.getRemainingAmount());
+    assertEquals(new Double("0.0"), response.getExecutedAmount());
   }
 
   @Test
@@ -77,17 +76,17 @@ public class BitfinexTradeDataJSONTest {
 
     assertEquals(4003242, response.getId());
     assertEquals("btcusd", response.getSymbol());
-    assertEquals(new BigDecimal("900.0"), response.getPrice());
-    assertEquals(new BigDecimal("0.0"), response.getAvgExecutionPrice());
+    assertEquals(new Double("900.0"), response.getPrice());
+    assertEquals(new Double("0.0"), response.getAvgExecutionPrice());
     assertEquals("sell", response.getSide());
     assertEquals("exchange limit", response.getType());
-    assertEquals(new BigDecimal("1387061342.0"), response.getTimestamp());
+    assertEquals(new Double("1387061342.0"), response.getTimestamp());
     assertTrue(response.isLive());
     assertFalse(response.isCancelled());
     assertFalse(response.getWasForced());
-    assertEquals(new BigDecimal("0.08"), response.getOriginalAmount());
-    assertEquals(new BigDecimal("0.06"), response.getRemainingAmount());
-    assertEquals(new BigDecimal("0.02"), response.getExecutedAmount());
+    assertEquals(new Double("0.08"), response.getOriginalAmount());
+    assertEquals(new Double("0.06"), response.getRemainingAmount());
+    assertEquals(new Double("0.02"), response.getExecutedAmount());
   }
 
   @Test
@@ -99,14 +98,14 @@ public class BitfinexTradeDataJSONTest {
     BitfinexTradeResponse[] responses =
         new ObjectMapper().readValue(resourceAsStream, BitfinexTradeResponse[].class);
 
-    assertEquals(new BigDecimal("854.01"), responses[0].getPrice());
-    assertEquals(new BigDecimal("0.0072077"), responses[0].getAmount());
-    assertEquals(new BigDecimal("1387057315.0"), responses[0].getTimestamp());
+    assertEquals(new Double("854.01"), responses[0].getPrice());
+    assertEquals(new Double("0.0072077"), responses[0].getAmount());
+    assertEquals(new Double("1387057315.0"), responses[0].getTimestamp());
     assertEquals("Sell", responses[0].getType());
 
-    assertEquals(new BigDecimal("857.92"), responses[1].getPrice());
-    assertEquals(new BigDecimal("0.0027923"), responses[1].getAmount());
-    assertEquals(new BigDecimal("1387057259.0"), responses[1].getTimestamp());
+    assertEquals(new Double("857.92"), responses[1].getPrice());
+    assertEquals(new Double("0.0027923"), responses[1].getAmount());
+    assertEquals(new Double("1387057259.0"), responses[1].getTimestamp());
     assertEquals("Sell", responses[1].getType());
   }
 }

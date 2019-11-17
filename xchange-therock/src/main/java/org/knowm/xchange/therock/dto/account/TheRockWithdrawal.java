@@ -2,7 +2,6 @@ package org.knowm.xchange.therock.dto.account;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import java.math.BigDecimal;
 
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class TheRockWithdrawal {
@@ -16,15 +15,15 @@ public class TheRockWithdrawal {
 
   private Long destinationTag = null;
 
-  private BigDecimal amount;
+  private Double amount;
 
-  private TheRockWithdrawal(String currency, BigDecimal amount, String destinationAddress) {
+  private TheRockWithdrawal(String currency, Double amount, String destinationAddress) {
     this(currency, amount, destinationAddress, null, null);
   }
 
   private TheRockWithdrawal(
       String currency,
-      BigDecimal amount,
+      Double amount,
       String destinationAddress,
       Method withdrawMethod,
       Long destinationTag) {
@@ -36,13 +35,13 @@ public class TheRockWithdrawal {
   }
 
   public static TheRockWithdrawal createRippleWithdrawal(
-      String currency, BigDecimal amount, String destinationAddress, Long destinationTag) {
+      String currency, Double amount, String destinationAddress, Long destinationTag) {
     return new TheRockWithdrawal(
         currency, amount, destinationAddress, Method.RIPPLE, destinationTag);
   }
 
   public static TheRockWithdrawal createDefaultWithdrawal(
-      String currency, BigDecimal amount, String destinationAddress) {
+      String currency, Double amount, String destinationAddress) {
     return new TheRockWithdrawal(currency, amount, destinationAddress);
   }
 
@@ -62,7 +61,7 @@ public class TheRockWithdrawal {
     return destinationTag;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

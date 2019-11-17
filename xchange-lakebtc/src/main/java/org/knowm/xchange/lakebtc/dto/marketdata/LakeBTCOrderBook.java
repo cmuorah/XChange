@@ -1,14 +1,13 @@
 package org.knowm.xchange.lakebtc.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 /** @author kpysniak */
 public class LakeBTCOrderBook {
 
-  private final BigDecimal[][] asks;
-  private final BigDecimal[][] bids;
+  private final Double[][] asks;
+  private final Double[][] bids;
 
   /**
    * Constructor
@@ -17,18 +16,18 @@ public class LakeBTCOrderBook {
    * @param bids
    */
   public LakeBTCOrderBook(
-      @JsonProperty("asks") BigDecimal[][] asks, @JsonProperty("bids") BigDecimal[][] bids) {
+      @JsonProperty("asks") Double[][] asks, @JsonProperty("bids") Double[][] bids) {
 
     this.asks = asks;
     this.bids = bids;
   }
 
-  public BigDecimal[][] getAsks() {
+  public Double[][] getAsks() {
 
     return asks;
   }
 
-  public BigDecimal[][] getBids() {
+  public Double[][] getBids() {
 
     return bids;
   }
@@ -39,11 +38,11 @@ public class LakeBTCOrderBook {
     StringBuilder asksBuilder = new StringBuilder();
     StringBuilder bidsBuilder = new StringBuilder();
 
-    for (BigDecimal[] ask : getAsks()) {
+    for (Double[] ask : getAsks()) {
       asksBuilder.append(Arrays.toString(ask) + ";");
     }
 
-    for (BigDecimal[] bid : getBids()) {
+    for (Double[] bid : getBids()) {
       bidsBuilder.append(Arrays.toString(bid) + ";");
     }
 

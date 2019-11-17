@@ -1,7 +1,6 @@
 package org.knowm.xchange.dragonex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.dragonex.DragonexUtils;
 
@@ -12,25 +11,25 @@ public class UserOrder {
   public final int orderType;
 
   public final long symbolId;
-  public final BigDecimal price;
+  public final Double price;
   /** order status: 1-pending trade, 2-successful trade, 3-canceled, 4-failed */
   public final int status;
   /** timestamp is provided in nano seconds */
   private final String timestamp;
   /** volume of successful trade */
-  public final BigDecimal tradeVolume;
+  public final Double tradeVolume;
   /** volume of order */
-  public final BigDecimal volume;
+  public final Double volume;
 
   public UserOrder(
       @JsonProperty("order_id") long orderId,
       @JsonProperty("order_type") int orderType,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("status") int status,
       @JsonProperty("symbol_id") long symbolId,
       @JsonProperty("timestamp") String timestamp,
-      @JsonProperty("trade_volume") BigDecimal tradeVolume,
-      @JsonProperty("volume") BigDecimal volume) {
+      @JsonProperty("trade_volume") Double tradeVolume,
+      @JsonProperty("volume") Double volume) {
     this.orderId = orderId;
     this.orderType = orderType;
     this.price = price;

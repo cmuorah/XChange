@@ -1,7 +1,6 @@
 package org.knowm.xchange.bittrex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BittrexUserTrade {
 
@@ -9,12 +8,12 @@ public class BittrexUserTrade {
   private final String exchange;
   private final String timeStamp;
   private final String orderType;
-  private final BigDecimal limit;
-  private final BigDecimal quantity;
-  private final BigDecimal quantityRemaining;
-  private final BigDecimal commission;
-  private final BigDecimal price;
-  private final BigDecimal pricePerUnit;
+  private final Double limit;
+  private final Double quantity;
+  private final Double quantityRemaining;
+  private final Double commission;
+  private final Double price;
+  private final Double pricePerUnit;
   private final Boolean isConditional;
   private final String condition;
   private final Object conditionTarget;
@@ -26,12 +25,12 @@ public class BittrexUserTrade {
       @JsonProperty("Exchange") String exchange,
       @JsonProperty("TimeStamp") String timeStamp,
       @JsonProperty("OrderType") String orderType,
-      @JsonProperty("Limit") BigDecimal limit,
-      @JsonProperty("Quantity") BigDecimal quantity,
-      @JsonProperty("QuantityRemaining") BigDecimal quantityRemaining,
-      @JsonProperty("Commission") BigDecimal commission,
-      @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("PricePerUnit") BigDecimal pricePerUnit,
+      @JsonProperty("Limit") Double limit,
+      @JsonProperty("Quantity") Double quantity,
+      @JsonProperty("QuantityRemaining") Double quantityRemaining,
+      @JsonProperty("Commission") Double commission,
+      @JsonProperty("Price") Double price,
+      @JsonProperty("PricePerUnit") Double pricePerUnit,
       @JsonProperty("IsConditional") Boolean isConditional,
       @JsonProperty("Condition") String condition,
       @JsonProperty("ConditionTarget") Object conditionTarget,
@@ -70,27 +69,27 @@ public class BittrexUserTrade {
     return orderType;
   }
 
-  public BigDecimal getLimit() {
+  public Double getLimit() {
     return limit;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getQuantityRemaining() {
+  public Double getQuantityRemaining() {
     return quantityRemaining;
   }
 
-  public BigDecimal getCommission() {
+  public Double getCommission() {
     return commission;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getPricePerUnit() {
+  public Double getPricePerUnit() {
     return pricePerUnit;
   }
 

@@ -2,7 +2,6 @@ package org.knowm.xchange.coinbasepro.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /**
  * LIMIT ORDER PARAMETERS
@@ -20,10 +19,10 @@ import java.math.BigDecimal;
  */
 public class CoinbaseProPlaceLimitOrder extends CoinbaseProPlaceOrder {
   @JsonProperty("price")
-  BigDecimal price;
+  Double price;
 
   @JsonProperty("size")
-  BigDecimal size;
+  Double size;
 
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
   @JsonProperty("time_in_force")
@@ -44,9 +43,9 @@ public class CoinbaseProPlaceLimitOrder extends CoinbaseProPlaceOrder {
       String productId,
       SelfTradePrevention stp,
       Stop stop,
-      BigDecimal stopPrice,
-      BigDecimal price,
-      BigDecimal size,
+      Double stopPrice,
+      Double price,
+      Double size,
       TimeInForce timeInForce,
       CancelAfter cancelAfter,
       Boolean postOnly) {
@@ -63,11 +62,11 @@ public class CoinbaseProPlaceLimitOrder extends CoinbaseProPlaceOrder {
       throw new IllegalArgumentException("post_only Invalid when time_in_force is IOC or FOK");
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
@@ -114,18 +113,18 @@ public class CoinbaseProPlaceLimitOrder extends CoinbaseProPlaceOrder {
 
   public static class Builder
       extends CoinbaseProPlaceOrder.Builder<CoinbaseProPlaceLimitOrder, Builder> {
-    BigDecimal price;
-    BigDecimal size;
+    Double price;
+    Double size;
     TimeInForce timeInForce;
     CancelAfter cancelAfter;
     Boolean postOnly;
 
-    public Builder price(BigDecimal price) {
+    public Builder price(Double price) {
       this.price = price;
       return this;
     }
 
-    public Builder size(BigDecimal size) {
+    public Builder size(Double size) {
       this.size = size;
       return this;
     }

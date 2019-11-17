@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitso.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitso.BitsoAuthenticated;
 import org.knowm.xchange.bitso.dto.account.BitsoBalance;
@@ -43,7 +42,7 @@ public class BitsoAccountServiceRaw extends BitsoBaseService {
     return bitsoBalance;
   }
 
-  public String withdrawBitsoFunds(BigDecimal amount, final String address) throws IOException {
+  public String withdrawBitsoFunds(Double amount, final String address) throws IOException {
 
     final String response =
         bitsoAuthenticated.withdrawBitcoin(
@@ -79,7 +78,7 @@ public class BitsoAccountServiceRaw extends BitsoBaseService {
    *
    * @return true if withdrawal was successful.
    */
-  public boolean withdrawToRipple(BigDecimal amount, Currency currency, String rippleAddress)
+  public boolean withdrawToRipple(Double amount, Currency currency, String rippleAddress)
       throws IOException {
 
     final String result =

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,13 +14,13 @@ import java.util.Map;
 public class BitcoindeBalance {
 
   @JsonProperty("available_amount")
-  private BigDecimal availableAmount;
+  private Double availableAmount;
 
   @JsonProperty("reserved_amount")
-  private BigDecimal reservedAmount;
+  private Double reservedAmount;
 
   @JsonProperty("total_amount")
-  private BigDecimal totalAmount;
+  private Double totalAmount;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -33,8 +32,7 @@ public class BitcoindeBalance {
    * @param reservedAmount
    * @param totalAmount
    */
-  public BitcoindeBalance(
-      BigDecimal availableAmount, BigDecimal reservedAmount, BigDecimal totalAmount) {
+  public BitcoindeBalance(Double availableAmount, Double reservedAmount, Double totalAmount) {
     super();
     this.availableAmount = availableAmount;
     this.reservedAmount = reservedAmount;
@@ -42,32 +40,32 @@ public class BitcoindeBalance {
   }
 
   @JsonProperty("available_amount")
-  public BigDecimal getAvailableAmount() {
+  public Double getAvailableAmount() {
     return availableAmount;
   }
 
   @JsonProperty("available_amount")
-  public void setAvailableAmount(BigDecimal availableAmount) {
+  public void setAvailableAmount(Double availableAmount) {
     this.availableAmount = availableAmount;
   }
 
   @JsonProperty("reserved_amount")
-  public BigDecimal getReservedAmount() {
+  public Double getReservedAmount() {
     return reservedAmount;
   }
 
   @JsonProperty("reserved_amount")
-  public void setReservedAmount(BigDecimal reservedAmount) {
+  public void setReservedAmount(Double reservedAmount) {
     this.reservedAmount = reservedAmount;
   }
 
   @JsonProperty("total_amount")
-  public BigDecimal getTotalAmount() {
+  public Double getTotalAmount() {
     return totalAmount;
   }
 
   @JsonProperty("total_amount")
-  public void setTotalAmount(BigDecimal totalAmount) {
+  public void setTotalAmount(Double totalAmount) {
     this.totalAmount = totalAmount;
   }
 

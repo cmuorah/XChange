@@ -3,7 +3,6 @@ package org.knowm.xchange.bitso.service;
 import static org.knowm.xchange.dto.Order.OrderType.BID;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -53,7 +52,7 @@ public class BitsoTradeService extends BitsoTradeServiceRaw implements TradeServ
     for (BitsoOrder bitsoOrder : openOrders) {
       OrderType orderType = bitsoOrder.getType() == 0 ? OrderType.BID : OrderType.ASK;
       String id = bitsoOrder.getId();
-      BigDecimal price = bitsoOrder.getPrice();
+      Double price = bitsoOrder.getPrice();
       limitOrders.add(
           new LimitOrder(
               orderType,

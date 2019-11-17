@@ -28,7 +28,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.coinmate.dto.marketdata.OrderBookJSONTest;
 import org.knowm.xchange.coinmate.dto.trade.CoinmateOpenOrders;
@@ -51,7 +50,7 @@ public class OpenOrdersJSONTest {
     assertThat(coinmateOrders.getData().get(0).getId()).isEqualTo(32780L);
     assertThat(coinmateOrders.getData().get(0).getTimestamp()).isEqualTo(1404383652640L);
     assertThat(coinmateOrders.getData().get(0).getType()).isEqualTo("BUY");
-    assertThat(coinmateOrders.getData().get(0).getPrice()).isEqualTo(new BigDecimal("1"));
-    assertThat(coinmateOrders.getData().get(0).getAmount()).isEqualTo(new BigDecimal("1"));
+    assertThat(coinmateOrders.getData().get(0).getPrice()).isEqualTo(new Double("1"));
+    assertThat(coinmateOrders.getData().get(0).getAmount()).isEqualTo(new Double("1"));
   }
 }

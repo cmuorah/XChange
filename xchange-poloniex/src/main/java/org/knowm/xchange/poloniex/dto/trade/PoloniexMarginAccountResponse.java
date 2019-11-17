@@ -2,25 +2,24 @@ package org.knowm.xchange.poloniex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class PoloniexMarginAccountResponse {
 
-  private BigDecimal totalValue;
-  private BigDecimal pl;
-  private BigDecimal lendingFees;
-  private BigDecimal netValue;
-  private BigDecimal totalBorrowedValue;
-  private BigDecimal currentMargin;
+  private Double totalValue;
+  private Double pl;
+  private Double lendingFees;
+  private Double netValue;
+  private Double totalBorrowedValue;
+  private Double currentMargin;
 
   @JsonCreator
   public PoloniexMarginAccountResponse(
-      @JsonProperty("totalValue") BigDecimal totalValue,
-      @JsonProperty("pl") BigDecimal pl,
-      @JsonProperty("lendingFees") BigDecimal lendingFees,
-      @JsonProperty("netValue") BigDecimal netValue,
-      @JsonProperty("totalBorrowedValue") BigDecimal totalBorrowedValue,
-      @JsonProperty("currentMargin") BigDecimal currentMargin) {
+      @JsonProperty("totalValue") Double totalValue,
+      @JsonProperty("pl") Double pl,
+      @JsonProperty("lendingFees") Double lendingFees,
+      @JsonProperty("netValue") Double netValue,
+      @JsonProperty("totalBorrowedValue") Double totalBorrowedValue,
+      @JsonProperty("currentMargin") Double currentMargin) {
     this.totalValue = totalValue;
     this.pl = pl;
     this.lendingFees = lendingFees;
@@ -29,51 +28,51 @@ public class PoloniexMarginAccountResponse {
     this.currentMargin = currentMargin;
   }
 
-  public BigDecimal getTotalValue() {
+  public Double getTotalValue() {
     return totalValue;
   }
 
-  public void setTotalValue(BigDecimal totalValue) {
+  public void setTotalValue(Double totalValue) {
     this.totalValue = totalValue;
   }
 
-  public BigDecimal getPl() {
+  public Double getPl() {
     return pl;
   }
 
-  public void setPl(BigDecimal pl) {
+  public void setPl(Double pl) {
     this.pl = pl;
   }
 
-  public BigDecimal getLendingFees() {
+  public Double getLendingFees() {
     return lendingFees;
   }
 
-  public void setLendingFees(BigDecimal lendingFees) {
+  public void setLendingFees(Double lendingFees) {
     this.lendingFees = lendingFees;
   }
 
-  public BigDecimal getNetValue() {
+  public Double getNetValue() {
     return netValue;
   }
 
-  public void setNetValue(BigDecimal netValue) {
+  public void setNetValue(Double netValue) {
     this.netValue = netValue;
   }
 
-  public BigDecimal getTotalBorrowedValue() {
+  public Double getTotalBorrowedValue() {
     return totalBorrowedValue;
   }
 
-  public void setTotalBorrowedValue(BigDecimal totalBorrowedValue) {
+  public void setTotalBorrowedValue(Double totalBorrowedValue) {
     this.totalBorrowedValue = totalBorrowedValue;
   }
 
-  public BigDecimal getCurrentMargin() {
+  public Double getCurrentMargin() {
     return currentMargin;
   }
 
-  public void setCurrentMargin(BigDecimal currentMargin) {
+  public void setCurrentMargin(Double currentMargin) {
     this.currentMargin = currentMargin;
   }
 

@@ -1,6 +1,5 @@
 package org.knowm.xchange.bl3p.service.params;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.bl3p.Bl3pUtils;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
@@ -27,7 +26,7 @@ public abstract class Bl3pWithdrawFundsParams implements WithdrawFundsParams {
     private String accountId;
     private String accountName;
 
-    public Euros(String accountId, String accountName, BigDecimal amount) {
+    public Euros(String accountId, String accountName, Double amount) {
       super("EUR", Bl3pUtils.toEuroshi(amount));
 
       this.accountId = accountId;
@@ -48,11 +47,11 @@ public abstract class Bl3pWithdrawFundsParams implements WithdrawFundsParams {
     private String address;
     private boolean extraFee;
 
-    public Coins(String currency, String address, BigDecimal amount) {
+    public Coins(String currency, String address, Double amount) {
       this(currency, address, amount, false);
     }
 
-    public Coins(String currency, String address, BigDecimal amount, boolean extraFee) {
+    public Coins(String currency, String address, Double amount, boolean extraFee) {
       super(currency, Bl3pUtils.toSatoshi(amount));
 
       this.address = address;

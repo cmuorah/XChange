@@ -3,7 +3,6 @@ package org.knowm.xchange.okcoin.v3.dto.trade;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Data;
 
@@ -27,10 +26,10 @@ public class FuturesOrderPlacementRequest {
   private FuturesSwapType type;
 
   /** required, Price of each contract */
-  private BigDecimal price;
+  private Double price;
 
   /** required, The buying or selling quantityd */
-  private BigDecimal size;
+  private Double size;
 
   /**
    * optional, Order at best counter party price? (0:no 1:yes) the parameter is defaulted as 0. If
@@ -41,7 +40,7 @@ public class FuturesOrderPlacementRequest {
   private FuturesSwapMatchPrice matchPrice;
 
   /** required, Leverage , 1-100x */
-  private BigDecimal leverage;
+  private Double leverage;
 
   /**
    * optional, Fill in String for parameter，0: Normal limit order (Unfilled and 0 represent normal

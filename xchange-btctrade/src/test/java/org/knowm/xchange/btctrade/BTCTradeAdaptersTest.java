@@ -6,7 +6,6 @@ import static org.junit.Assert.fail;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.junit.Test;
@@ -39,12 +38,12 @@ public class BTCTradeAdaptersTest {
         mapper.readValue(
             getClass().getResource("dto/marketdata/ticker.json"), BTCTradeTicker.class);
     Ticker ticker = BTCTradeAdapters.adaptTicker(btcTradeTicker, CurrencyPair.BTC_CNY);
-    assertEquals(new BigDecimal("3760"), ticker.getHigh());
-    assertEquals(new BigDecimal("3658"), ticker.getLow());
-    assertEquals(new BigDecimal("3752"), ticker.getBid());
-    assertEquals(new BigDecimal("3758"), ticker.getAsk());
-    assertEquals(new BigDecimal("3757"), ticker.getLast());
-    assertEquals(new BigDecimal("11009.76"), ticker.getVolume());
+    assertEquals(new Double("3760"), ticker.getHigh());
+    assertEquals(new Double("3658"), ticker.getLow());
+    assertEquals(new Double("3752"), ticker.getBid());
+    assertEquals(new Double("3758"), ticker.getAsk());
+    assertEquals(new Double("3757"), ticker.getLast());
+    assertEquals(new Double("11009.76"), ticker.getVolume());
   }
 
   @Test
@@ -58,25 +57,25 @@ public class BTCTradeAdaptersTest {
 
     assertEquals(OrderType.ASK, orderBook.getAsks().get(0).getType());
     assertEquals(CurrencyPair.BTC_CNY, orderBook.getAsks().get(0).getCurrencyPair());
-    assertEquals(new BigDecimal("3756.00000"), orderBook.getAsks().get(0).getLimitPrice());
-    assertEquals(new BigDecimal("0.685"), orderBook.getAsks().get(0).getOriginalAmount());
+    assertEquals(new Double("3756.00000"), orderBook.getAsks().get(0).getLimitPrice());
+    assertEquals(new Double("0.685"), orderBook.getAsks().get(0).getOriginalAmount());
 
-    assertEquals(new BigDecimal("3758.00000"), orderBook.getAsks().get(1).getLimitPrice());
-    assertEquals(new BigDecimal("0.083"), orderBook.getAsks().get(1).getOriginalAmount());
+    assertEquals(new Double("3758.00000"), orderBook.getAsks().get(1).getLimitPrice());
+    assertEquals(new Double("0.083"), orderBook.getAsks().get(1).getOriginalAmount());
 
-    assertEquals(new BigDecimal("4045.00000"), orderBook.getAsks().get(49).getLimitPrice());
-    assertEquals(new BigDecimal("1.402"), orderBook.getAsks().get(49).getOriginalAmount());
+    assertEquals(new Double("4045.00000"), orderBook.getAsks().get(49).getLimitPrice());
+    assertEquals(new Double("1.402"), orderBook.getAsks().get(49).getOriginalAmount());
 
     assertEquals(OrderType.BID, orderBook.getBids().get(0).getType());
     assertEquals(CurrencyPair.BTC_CNY, orderBook.getBids().get(0).getCurrencyPair());
-    assertEquals(new BigDecimal("3730.00000"), orderBook.getBids().get(0).getLimitPrice());
-    assertEquals(new BigDecimal("1.066"), orderBook.getBids().get(0).getOriginalAmount());
+    assertEquals(new Double("3730.00000"), orderBook.getBids().get(0).getLimitPrice());
+    assertEquals(new Double("1.066"), orderBook.getBids().get(0).getOriginalAmount());
 
-    assertEquals(new BigDecimal("3728.01000"), orderBook.getBids().get(1).getLimitPrice());
-    assertEquals(new BigDecimal("3.000"), orderBook.getBids().get(1).getOriginalAmount());
+    assertEquals(new Double("3728.01000"), orderBook.getBids().get(1).getLimitPrice());
+    assertEquals(new Double("3.000"), orderBook.getBids().get(1).getOriginalAmount());
 
-    assertEquals(new BigDecimal("2951.00000"), orderBook.getBids().get(49).getLimitPrice());
-    assertEquals(new BigDecimal("4.000"), orderBook.getBids().get(49).getOriginalAmount());
+    assertEquals(new Double("2951.00000"), orderBook.getBids().get(49).getLimitPrice());
+    assertEquals(new Double("4.000"), orderBook.getBids().get(49).getOriginalAmount());
   }
 
   @Test
@@ -90,28 +89,28 @@ public class BTCTradeAdaptersTest {
     List<Trade> tradeList = trades.getTrades();
 
     assertEquals(new Date(1403397140L * 1000L), tradeList.get(0).getTimestamp());
-    assertEquals(new BigDecimal("3703"), tradeList.get(0).getPrice());
-    assertEquals(new BigDecimal("3.50000000000"), tradeList.get(0).getOriginalAmount());
+    assertEquals(new Double("3703"), tradeList.get(0).getPrice());
+    assertEquals(new Double("3.50000000000"), tradeList.get(0).getOriginalAmount());
     assertEquals("2895575", tradeList.get(0).getId());
     assertEquals(OrderType.BID, tradeList.get(0).getType());
 
     assertEquals(new Date(1403397191L * 1000L), tradeList.get(1).getTimestamp());
-    assertEquals(new BigDecimal("3704"), tradeList.get(1).getPrice());
-    assertEquals(new BigDecimal("0.00200000000"), tradeList.get(1).getOriginalAmount());
+    assertEquals(new Double("3704"), tradeList.get(1).getPrice());
+    assertEquals(new Double("0.00200000000"), tradeList.get(1).getOriginalAmount());
     assertEquals("2895576", tradeList.get(1).getId());
     assertEquals(OrderType.BID, tradeList.get(1).getType());
 
     assertEquals(new Date(1403428819L * 1000L), tradeList.get(tradeList.size() - 2).getTimestamp());
-    assertEquals(new BigDecimal("3740.01"), tradeList.get(tradeList.size() - 2).getPrice());
+    assertEquals(new Double("3740.01"), tradeList.get(tradeList.size() - 2).getPrice());
     assertEquals(
-        new BigDecimal("0.01000000000"), tradeList.get(tradeList.size() - 2).getOriginalAmount());
+        new Double("0.01000000000"), tradeList.get(tradeList.size() - 2).getOriginalAmount());
     assertEquals("2896235", tradeList.get(tradeList.size() - 2).getId());
     assertEquals(OrderType.ASK, tradeList.get(tradeList.size() - 2).getType());
 
     assertEquals(new Date(1403428797L * 1000L), tradeList.get(tradeList.size() - 1).getTimestamp());
-    assertEquals(new BigDecimal("3752"), tradeList.get(tradeList.size() - 1).getPrice());
+    assertEquals(new Double("3752"), tradeList.get(tradeList.size() - 1).getPrice());
     assertEquals(
-        new BigDecimal("16.70000000000"), tradeList.get(tradeList.size() - 1).getOriginalAmount());
+        new Double("16.70000000000"), tradeList.get(tradeList.size() - 1).getOriginalAmount());
     assertEquals("2896239", tradeList.get(tradeList.size() - 1).getId());
     assertEquals(OrderType.BID, tradeList.get(tradeList.size() - 1).getType());
   }
@@ -124,16 +123,16 @@ public class BTCTradeAdaptersTest {
 
     Wallet wallet = BTCTradeAdapters.adaptWallet(balance);
     assertNull(wallet.getId());
-    assertEquals(new BigDecimal(3), wallet.getBalance(Currency.BTC).getTotal());
-    assertEquals(new BigDecimal(2), wallet.getBalance(Currency.BTC).getFrozen());
-    assertEquals(new BigDecimal("7"), wallet.getBalance(Currency.LTC).getTotal());
-    assertEquals(new BigDecimal(4), wallet.getBalance(Currency.LTC).getFrozen());
-    assertEquals(new BigDecimal("11"), wallet.getBalance(Currency.DOGE).getTotal());
-    assertEquals(new BigDecimal(6), wallet.getBalance(Currency.DOGE).getFrozen());
-    assertEquals(new BigDecimal("15"), wallet.getBalance(Currency.YBC).getTotal());
-    assertEquals(new BigDecimal(8), wallet.getBalance(Currency.YBC).getFrozen());
-    assertEquals(new BigDecimal("19"), wallet.getBalance(Currency.CNY).getTotal());
-    assertEquals(new BigDecimal(10), wallet.getBalance(Currency.CNY).getFrozen());
+    assertEquals(new Double(3), wallet.getBalance(Currency.BTC).getTotal());
+    assertEquals(new Double(2), wallet.getBalance(Currency.BTC).getFrozen());
+    assertEquals(new Double("7"), wallet.getBalance(Currency.LTC).getTotal());
+    assertEquals(new Double(4), wallet.getBalance(Currency.LTC).getFrozen());
+    assertEquals(new Double("11"), wallet.getBalance(Currency.DOGE).getTotal());
+    assertEquals(new Double(6), wallet.getBalance(Currency.DOGE).getFrozen());
+    assertEquals(new Double("15"), wallet.getBalance(Currency.YBC).getTotal());
+    assertEquals(new Double(8), wallet.getBalance(Currency.YBC).getFrozen());
+    assertEquals(new Double("19"), wallet.getBalance(Currency.CNY).getTotal());
+    assertEquals(new Double(10), wallet.getBalance(Currency.CNY).getFrozen());
   }
 
   @Test
@@ -176,32 +175,31 @@ public class BTCTradeAdaptersTest {
     LimitOrder order = openOrderList.get(0);
     assertEquals(CurrencyPair.LTC_CNY, order.getCurrencyPair());
     assertEquals("16636810", order.getId());
-    assertEquals(new BigDecimal("1.01"), order.getLimitPrice());
+    assertEquals(new Double("1.01"), order.getLimitPrice());
     // 2014-09-14 12:48:53 Asia/Shanghai
     assertEquals(1410670133000L, order.getTimestamp().getTime());
-    assertEquals(new BigDecimal("0.1"), order.getOriginalAmount());
+    assertEquals(new Double("0.1"), order.getOriginalAmount());
     assertEquals(OrderType.BID, order.getType());
 
     order = openOrderList.get(1);
     assertEquals(CurrencyPair.BTC_CNY, order.getCurrencyPair());
     assertEquals("16634460", order.getId());
-    assertEquals(new BigDecimal("10.01"), order.getLimitPrice());
+    assertEquals(new Double("10.01"), order.getLimitPrice());
     // 2014-09-14 12:31:46 Asia/Shanghai
     assertEquals(1410669106000L, order.getTimestamp().getTime());
-    assertEquals(new BigDecimal("0.01"), order.getOriginalAmount());
+    assertEquals(new Double("0.01"), order.getOriginalAmount());
     assertEquals(OrderType.BID, order.getType());
   }
 
   @Test
   public void testNullSafeSum() throws Exception {
-    assertEquals(BTCTradeAdapters.zeroIfNull(new BigDecimal(3)), new BigDecimal(3));
-    assertEquals(BTCTradeAdapters.zeroIfNull(new BigDecimal(0)), BigDecimal.ZERO);
-    assertEquals(BTCTradeAdapters.zeroIfNull(null), BigDecimal.ZERO);
+    assertEquals(BTCTradeAdapters.zeroIfNull(new Double(3)), new Double(3));
+    assertEquals(BTCTradeAdapters.zeroIfNull(new Double(0)), 0d);
+    assertEquals(BTCTradeAdapters.zeroIfNull(null), 0d);
 
-    assertEquals(
-        BTCTradeAdapters.nullSafeSum(BigDecimal.ONE, new BigDecimal(2)), new BigDecimal(3));
-    assertEquals(BTCTradeAdapters.nullSafeSum(BigDecimal.ONE, null), BigDecimal.ONE);
-    assertEquals(BTCTradeAdapters.nullSafeSum(null, new BigDecimal(2)), new BigDecimal(2));
-    assertEquals(BTCTradeAdapters.nullSafeSum(null, null), BigDecimal.ZERO);
+    assertEquals(BTCTradeAdapters.nullSafeSum(10d, new Double(2)), new Double(3));
+    assertEquals(BTCTradeAdapters.nullSafeSum(10d, null), 10d);
+    assertEquals(BTCTradeAdapters.nullSafeSum(null, new Double(2)), new Double(2));
+    assertEquals(BTCTradeAdapters.nullSafeSum(null, null), 0d);
   }
 }

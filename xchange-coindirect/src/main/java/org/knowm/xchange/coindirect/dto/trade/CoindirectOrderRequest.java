@@ -2,7 +2,6 @@ package org.knowm.xchange.coindirect.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CoindirectOrderRequest {
@@ -10,10 +9,10 @@ public class CoindirectOrderRequest {
   public String symbol;
 
   @JsonProperty("amount")
-  public BigDecimal amount;
+  public Double amount;
 
   @JsonProperty("price")
-  public BigDecimal price;
+  public Double price;
 
   @JsonProperty("type")
   public CoindirectOrder.Type type;
@@ -23,8 +22,8 @@ public class CoindirectOrderRequest {
 
   public CoindirectOrderRequest(
       String symbol,
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       CoindirectOrder.Type type,
       CoindirectOrder.Side side) {
     this.symbol = symbol;
@@ -42,19 +41,19 @@ public class CoindirectOrderRequest {
     this.symbol = symbol;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 

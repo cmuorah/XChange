@@ -1,7 +1,6 @@
 package org.knowm.xchange.fcoin.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.fcoin.dto.trade.FCoinOrder;
@@ -15,7 +14,7 @@ public class FCoinTradeServiceRaw extends FCoinBaseService {
     super(exchange);
   }
 
-  public String placeLimitOrder(String symbol, BigDecimal amount, BigDecimal price, FCoinSide side)
+  public String placeLimitOrder(String symbol, Double amount, Double price, FCoinSide side)
       throws IOException {
     FCoinOrder order = new FCoinOrder(symbol, side, FCoinType.limit, price, amount);
     FCoinOrderResult result =

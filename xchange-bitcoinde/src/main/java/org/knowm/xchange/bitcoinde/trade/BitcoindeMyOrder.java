@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,13 +38,13 @@ public class BitcoindeMyOrder {
   private String type;
 
   @JsonProperty("max_amount")
-  private BigDecimal maxAmount;
+  private Double maxAmount;
 
   @JsonProperty("min_amount")
-  private BigDecimal minAmount;
+  private Double minAmount;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("max_volume")
   private Integer maxVolume;
@@ -92,9 +91,9 @@ public class BitcoindeMyOrder {
       String orderId,
       String tradingPair,
       String type,
-      BigDecimal maxAmount,
-      BigDecimal minAmount,
-      BigDecimal price,
+      Double maxAmount,
+      Double minAmount,
+      Double price,
       Integer maxVolume,
       Integer minVolume,
       BitcoindeOrderRequirements orderRequirements,
@@ -149,32 +148,32 @@ public class BitcoindeMyOrder {
   }
 
   @JsonProperty("max_amount")
-  public BigDecimal getMaxAmount() {
+  public Double getMaxAmount() {
     return maxAmount;
   }
 
   @JsonProperty("max_amount")
-  public void setMaxAmount(BigDecimal maxAmount) {
+  public void setMaxAmount(Double maxAmount) {
     this.maxAmount = maxAmount;
   }
 
   @JsonProperty("min_amount")
-  public BigDecimal getMinAmount() {
+  public Double getMinAmount() {
     return minAmount;
   }
 
   @JsonProperty("min_amount")
-  public void setMinAmount(BigDecimal minAmount) {
+  public void setMinAmount(Double minAmount) {
     this.minAmount = minAmount;
   }
 
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
   @JsonProperty("price")
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 

@@ -1,6 +1,5 @@
 package org.knowm.xchange.exmo.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,9 +16,9 @@ import org.knowm.xchange.utils.DateUtils;
 public class ExmoAdapters {
   public static UserTrade adaptTrade(Map<String, String> tradeDatum, CurrencyPair currencyPair) {
     Order.OrderType type = adaptOrderType(tradeDatum);
-    BigDecimal amount = new BigDecimal(tradeDatum.get("quantity"));
-    BigDecimal price = new BigDecimal(tradeDatum.get("price"));
-    Date date = DateUtils.fromUnixTime(Long.valueOf(tradeDatum.get("date")));
+    Double amount = new Double(tradeDatum.get("quantity"));
+    Double price = new Double(tradeDatum.get("price"));
+    Date date = DateUtils.fromUnixTime(Long.parseLong(tradeDatum.get("date")));
     String tradeId = tradeDatum.get("trade_id");
     String orderId = tradeDatum.get("order_id");
 
@@ -33,10 +32,10 @@ public class ExmoAdapters {
   public static Balance adaptBalance(
       Map<String, String> balances, Map<String, String> reserved, String ccy) {
     Currency currency = Currency.getInstance(ccy);
-    BigDecimal available = new BigDecimal(balances.get(ccy));
-    BigDecimal frozen = new BigDecimal(reserved.get(ccy));
+    Double available = new Double(balances.get(ccy));
+    Double frozen = new Double(reserved.get(ccy));
 
-    return new Balance(currency, available.add(frozen), available, frozen);
+    return new Balance(currency, available + (frozen), available, frozen);
   }
 
   public static List<LimitOrder> adaptOrders(
@@ -44,8 +43,8 @@ public class ExmoAdapters {
     List<LimitOrder> orders = new ArrayList<>();
     for (List<String> orderData :
         (List<List<String>>) orderBookData.get(type.equals(Order.OrderType.ASK) ? "ask" : "bid")) {
-      BigDecimal price = new BigDecimal(orderData.get(0));
-      BigDecimal quantity = new BigDecimal(orderData.get(1));
+      Double price = new Double(orderData.get(0));
+      Double quantity = new Double(orderData.get(1));
       orders.add(new LimitOrder(type, quantity, currencyPair, null, null, price));
     }
     return orders;
@@ -54,13 +53,13 @@ public class ExmoAdapters {
   public static Ticker adaptTicker(CurrencyPair currencyPair, Map<String, String> data) {
     return new Ticker.Builder()
         .currencyPair(currencyPair)
-        .ask(new BigDecimal(data.get("sell_price")))
-        .bid(new BigDecimal(data.get("buy_price")))
-        .high(new BigDecimal(data.get("high")))
-        .last(new BigDecimal(data.get("last_trade")))
-        .low(new BigDecimal(data.get("low")))
-        .volume(new BigDecimal(data.get("vol")))
-        .timestamp(DateUtils.fromMillisUtc(Long.valueOf(data.get("updated"))))
+        .ask(new Double(data.get("sell_price")))
+        .bid(new Double(data.get("buy_price")))
+        .high(new Double(data.get("high")))
+        .last(new Double(data.get("last_trade")))
+        .low(new Double(data.get("low")))
+        .volume(new Double(data.get("vol")))
+        .timestamp(DateUtils.fromMillisUtc(Long.parseLong(data.get("updated"))))
         .build();
   }
 

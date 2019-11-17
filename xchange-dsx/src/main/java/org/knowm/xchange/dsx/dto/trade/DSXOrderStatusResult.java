@@ -1,7 +1,6 @@
 package org.knowm.xchange.dsx.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 /** @author Mikhail Wall */
@@ -9,9 +8,9 @@ public class DSXOrderStatusResult {
 
   private final String pair;
   private final String type;
-  private final BigDecimal remainingVolume;
-  private final BigDecimal volume;
-  private final BigDecimal rate;
+  private final Double remainingVolume;
+  private final Double volume;
+  private final Double rate;
   private final Long timestampCreated;
   private final Integer status;
   private final String orderType;
@@ -20,9 +19,9 @@ public class DSXOrderStatusResult {
   public DSXOrderStatusResult(
       @JsonProperty("pair") String pair,
       @JsonProperty("type") String type,
-      @JsonProperty("remainingVolume") BigDecimal remainingVolume,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("remainingVolume") Double remainingVolume,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("rate") Double rate,
       @JsonProperty("timestampCreated") Long timestampCreated,
       @JsonProperty("status") Integer status,
       @JsonProperty("orderType") String orderType,
@@ -46,15 +45,15 @@ public class DSXOrderStatusResult {
     return type;
   }
 
-  public BigDecimal getRemainingVolume() {
+  public Double getRemainingVolume() {
     return remainingVolume;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 

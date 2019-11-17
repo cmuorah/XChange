@@ -1,14 +1,13 @@
 package org.knowm.xchange.liqui.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.knowm.xchange.currency.Currency;
 
 public class LiquiAccountFunds {
 
-  private final Map<Currency, BigDecimal> funds = new HashMap<>();
+  private final Map<Currency, Double> funds = new HashMap<>();
 
   @JsonCreator
   public LiquiAccountFunds(final Map<String, String> funds) {
@@ -16,11 +15,10 @@ public class LiquiAccountFunds {
         .entrySet()
         .forEach(
             entry ->
-                this.funds.put(
-                    Currency.getInstance(entry.getKey()), new BigDecimal(entry.getValue())));
+                this.funds.put(Currency.getInstance(entry.getKey()), new Double(entry.getValue())));
   }
 
-  public Map<Currency, BigDecimal> getFunds() {
+  public Map<Currency, Double> getFunds() {
     return funds;
   }
 

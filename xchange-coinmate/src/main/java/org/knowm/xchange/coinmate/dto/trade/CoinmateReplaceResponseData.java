@@ -1,18 +1,17 @@
 package org.knowm.xchange.coinmate.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinmateReplaceResponseData {
   private final boolean replacedOrderCancellationFinished;
   private final String replacedOrderCancellationResult;
-  private final BigDecimal replacedOrderRemainingAmount;
+  private final Double replacedOrderRemainingAmount;
   private final long createdOrderId;
 
   public CoinmateReplaceResponseData(
       @JsonProperty("replacedOrderCancellationFinished") boolean replacedOrderCancellationFinished,
       @JsonProperty("replacedOrderCancellationResult") String replacedOrderCancellationResult,
-      @JsonProperty("replacedOrderRemainingAmount") BigDecimal replacedOrderRemainingAmount,
+      @JsonProperty("replacedOrderRemainingAmount") Double replacedOrderRemainingAmount,
       @JsonProperty("createdOrderId") long createdOrderId) {
     this.replacedOrderCancellationFinished = replacedOrderCancellationFinished;
     this.replacedOrderCancellationResult = replacedOrderCancellationResult;
@@ -28,7 +27,7 @@ public class CoinmateReplaceResponseData {
     return replacedOrderCancellationResult;
   }
 
-  public BigDecimal getReplacedOrderRemainingAmount() {
+  public Double getReplacedOrderRemainingAmount() {
     return replacedOrderRemainingAmount;
   }
 

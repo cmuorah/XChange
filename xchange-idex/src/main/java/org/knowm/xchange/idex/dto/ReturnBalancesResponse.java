@@ -1,9 +1,8 @@
 package org.knowm.xchange.idex.dto;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
-public class ReturnBalancesResponse extends java.util.HashMap<String, BigDecimal> {
+public class ReturnBalancesResponse extends java.util.HashMap<String, Double> {
 
   @Override
   public boolean equals(java.lang.Object o) {

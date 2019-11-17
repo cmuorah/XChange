@@ -1,6 +1,5 @@
 package org.knowm.xchange.cryptonit2.dto.account;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.service.trade.params.DefaultWithdrawFundsParams;
 
@@ -10,7 +9,7 @@ public class SepaWithdrawParams extends DefaultWithdrawFundsParams {
   public final SepaParams params;
 
   public SepaWithdrawParams(
-      Currency currency, BigDecimal amount, String firstname, String lastname, String iban) {
+      Currency currency, Double amount, String firstname, String lastname, String iban) {
     super((String) null, currency, amount);
     this.params = new SepaParams(firstname, lastname, iban);
   }

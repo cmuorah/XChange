@@ -1,7 +1,6 @@
 package org.knowm.xchange.anx;
 
 import java.io.UnsupportedEncodingException;
-import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.util.List;
 import org.knowm.xchange.currency.Currency;
@@ -60,8 +59,7 @@ public final class ANXUtils {
     }
   }
 
-  public static BigDecimal percentToFactor(BigDecimal percent) {
-    int PERCENT_DECIMAL_SHIFT = 2;
-    return percent.movePointLeft(PERCENT_DECIMAL_SHIFT);
+  public static Double percentToFactor(Double percent) {
+    return percent / 100.0;
   }
 }

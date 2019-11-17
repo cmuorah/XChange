@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
-import java.math.BigDecimal;
 import java.math.RoundingMode;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,14 +23,14 @@ public class OrderValuesHelperTest {
   @Test
   public void shouldAdjustAmountToStepSize() {
     // given
-    given(pairMetaData.getAmountStepSize()).willReturn(new BigDecimal("0.001"));
+    given(pairMetaData.getAmountStepSize()).willReturn(new Double("0.001"));
     given(pairMetaData.getBaseScale()).willReturn(null);
 
     // when
-    BigDecimal result = adjuster.adjustAmount(new BigDecimal("0.93851732"));
+    Double result = adjuster.adjustAmount(new Double("0.93851732"));
 
     // then
-    assertThat(result).isEqualByComparingTo("0.938");
+    assertThat(result).isEqualByComparingTo(new Double("0.938"));
   }
 
   @Test
@@ -41,21 +40,21 @@ public class OrderValuesHelperTest {
     given(pairMetaData.getBaseScale()).willReturn(5);
 
     // when
-    BigDecimal result = adjuster.adjustAmount(new BigDecimal("10.123456789"));
+    Double result = adjuster.adjustAmount(new Double("10.123456789"));
 
     // then
-    assertThat(result).isEqualByComparingTo("10.12345");
+    assertThat(result).isEqualByComparingTo(new Double("10.12345"));
   }
 
   @Test
   public void shouldAdjustAmountToMaximal() {
     // given
-    BigDecimal minimal = new BigDecimal("100");
+    Double minimal = new Double("100");
     given(pairMetaData.getMaximumAmount()).willReturn(minimal);
     given(pairMetaData.getBaseScale()).willReturn(null);
 
     // when
-    BigDecimal result = adjuster.adjustAmount(new BigDecimal("128.32432"));
+    Double result = adjuster.adjustAmount(new Double("128.32432"));
 
     // then
     assertThat(result).isEqualByComparingTo(minimal);
@@ -67,9 +66,9 @@ public class OrderValuesHelperTest {
     given(pairMetaData.getPriceScale()).willReturn(2);
 
     // when
-    BigDecimal result = adjuster.adjustPrice(new BigDecimal("36010.123456789"), RoundingMode.FLOOR);
+    Double result = adjuster.adjustPrice(new Double("36010.123456789"), RoundingMode.FLOOR);
 
     // then
-    assertThat(result).isEqualByComparingTo("36010.12");
+    assertThat(result).isEqualByComparingTo(new Double("36010.12"));
   }
 }

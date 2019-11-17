@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -60,11 +59,11 @@ public class WalletHistoryJSONTest {
             .getValue()
             .getCurrency());
 
-    // Assert.assertEquals(new BigDecimal(0),
+    // Assert.assertEquals(new Double(0),
     // anxWalletHistoryWrapper.getANXWalletHistory().getANXWalletHistoryEntries()[0].getValue().getValue());
 
     Assert.assertEquals(
-        new BigDecimal("103168.75400000"),
+        new Double("103168.75400000"),
         anxWalletHistoryWrapper
             .getANXWalletHistory()
             .getANXWalletHistoryEntries()[0]
@@ -88,7 +87,7 @@ public class WalletHistoryJSONTest {
             .getTid());
 
     Assert.assertEquals(
-        new BigDecimal("10.00000000"),
+        new Double("10.00000000"),
         anxWalletHistoryWrapper
             .getANXWalletHistory()
             .getANXWalletHistoryEntries()[0]

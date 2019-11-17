@@ -2,7 +2,6 @@ package org.knowm.xchange.enigma;
 
 import static org.knowm.xchange.utils.jackson.CurrencyPairDeserializer.getCurrencyPairFromString;
 
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -96,12 +95,12 @@ public final class EnigmaAdapters {
 
   public static Ticker adaptTicker(EnigmaTicker enigmaTicker, CurrencyPair currencyPair) {
 
-    BigDecimal open = enigmaTicker.getOpen();
-    BigDecimal last = enigmaTicker.getLast();
-    BigDecimal bid = enigmaTicker.getBid();
-    BigDecimal ask = enigmaTicker.getAsk();
-    BigDecimal bidSize = enigmaTicker.getBidQty();
-    BigDecimal askSize = enigmaTicker.getAskQty();
+    Double open = enigmaTicker.getOpen();
+    Double last = enigmaTicker.getLast();
+    Double bid = enigmaTicker.getBid();
+    Double ask = enigmaTicker.getAsk();
+    Double bidSize = enigmaTicker.getBidQty();
+    Double askSize = enigmaTicker.getAskQty();
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
@@ -124,10 +123,10 @@ public final class EnigmaAdapters {
   }
 
   public static List<LimitOrder> createOrders(
-      CurrencyPair currencyPair, Order.OrderType orderType, List<List<BigDecimal>> orders) {
+      CurrencyPair currencyPair, Order.OrderType orderType, List<List<Double>> orders) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (List<BigDecimal> ask : orders) {
+    for (List<Double> ask : orders) {
       checkArgument(
           ask.size() == 2, "Expected a pair (price, amount) but got {0} elements.", ask.size());
       limitOrders.add(createOrder(currencyPair, ask, orderType));
@@ -136,7 +135,7 @@ public final class EnigmaAdapters {
   }
 
   public static LimitOrder createOrder(
-      CurrencyPair currencyPair, List<BigDecimal> priceAndAmount, Order.OrderType orderType) {
+      CurrencyPair currencyPair, List<Double> priceAndAmount, Order.OrderType orderType) {
 
     return new LimitOrder(
         orderType, priceAndAmount.get(1), currencyPair, "", null, priceAndAmount.get(0));

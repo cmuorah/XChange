@@ -2,7 +2,6 @@
 package org.knowm.xchange.kucoin.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.math.BigDecimal;
 import lombok.Data;
 
 /** Created by devin@kucoin.com on 2018-12-27. */
@@ -20,19 +19,19 @@ public class SymbolResponse {
 
   private String quoteCurrency;
 
-  private BigDecimal baseMinSize;
+  private Double baseMinSize;
 
-  private BigDecimal quoteMinSize;
+  private Double quoteMinSize;
 
-  private BigDecimal baseMaxSize;
+  private Double baseMaxSize;
 
-  private BigDecimal quoteMaxSize;
+  private Double quoteMaxSize;
 
-  private BigDecimal baseIncrement;
+  private Double baseIncrement;
 
-  private BigDecimal quoteIncrement;
+  private Double quoteIncrement;
 
-  private BigDecimal priceIncrement;
+  private Double priceIncrement;
 
   private boolean enableTrading;
 }

@@ -1,6 +1,5 @@
 package org.knowm.xchange.coinmarketcap.pro.v1;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,8 +15,8 @@ public class CmcAdapter {
 
     Date timestamp = ticker.getLastUpdated();
     CmcQuote cmcQuote = ticker.getQuote().get(currencyPair.counter.getCurrencyCode());
-    BigDecimal price = cmcQuote.getPrice();
-    BigDecimal volume24h = cmcQuote.getVolume24h();
+    Double price = cmcQuote.getPrice();
+    Double volume24h = cmcQuote.getVolume24h();
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)

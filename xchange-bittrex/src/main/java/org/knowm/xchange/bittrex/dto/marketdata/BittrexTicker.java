@@ -1,33 +1,32 @@
 package org.knowm.xchange.bittrex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BittrexTicker {
 
-  private BigDecimal bid;
-  private BigDecimal ask;
-  private BigDecimal last;
+  private Double bid;
+  private Double ask;
+  private Double last;
 
   public BittrexTicker(
-      @JsonProperty("Bid") BigDecimal bid,
-      @JsonProperty("Ask") BigDecimal ask,
-      @JsonProperty("Last") BigDecimal last) {
+      @JsonProperty("Bid") Double bid,
+      @JsonProperty("Ask") Double ask,
+      @JsonProperty("Last") Double last) {
 
     this.bid = bid;
     this.ask = ask;
     this.last = last;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 

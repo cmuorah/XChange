@@ -3,7 +3,6 @@ package org.knowm.xchange.coinbase.v2.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.utils.Assert;
 
@@ -11,16 +10,16 @@ import org.knowm.xchange.utils.Assert;
 public class CoinbasePrice {
 
   private final Currency currency;
-  private final BigDecimal amount;
+  private final Double amount;
   private final String toString;
 
   @JsonCreator
   public CoinbasePrice(
-      @JsonProperty("amount") BigDecimal amount, @JsonProperty("currency") String currency) {
+      @JsonProperty("amount") Double amount, @JsonProperty("currency") String currency) {
     this(amount, Currency.getInstance(currency));
   }
 
-  public CoinbasePrice(BigDecimal amount, Currency currency) {
+  public CoinbasePrice(Double amount, Currency currency) {
     Assert.notNull(currency, "Null currency");
     Assert.notNull(amount, "Null amount");
     this.currency = currency;
@@ -33,7 +32,7 @@ public class CoinbasePrice {
     return currency;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

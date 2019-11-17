@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbene.dto.trading;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.coinbene.dto.CoinbeneResponse;
 
 public class CoinbeneLimitOrder {
@@ -9,12 +8,12 @@ public class CoinbeneLimitOrder {
   private final CoinbeneOrderStatus orderStatus;
   private final String symbol;
   private final String type;
-  private final BigDecimal price;
-  private final BigDecimal orderQuantity;
-  private final BigDecimal filledQuantity;
-  private final BigDecimal filledAmount;
-  private final BigDecimal averagePrice;
-  private final BigDecimal fees;
+  private final Double price;
+  private final Double orderQuantity;
+  private final Double filledQuantity;
+  private final Double filledAmount;
+  private final Double averagePrice;
+  private final Double fees;
   private final Long createTime;
   private final Long lastModified;
 
@@ -23,12 +22,12 @@ public class CoinbeneLimitOrder {
       @JsonProperty("orderstatus") CoinbeneOrderStatus orderStatus,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("type") String type,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("orderquantity") BigDecimal orderQuantity,
-      @JsonProperty("filledquantity") BigDecimal filledQuantity,
-      @JsonProperty("filledamount") BigDecimal filledAmount,
-      @JsonProperty("averageprice") BigDecimal averagePrice,
-      @JsonProperty("fees") BigDecimal fees,
+      @JsonProperty("price") Double price,
+      @JsonProperty("orderquantity") Double orderQuantity,
+      @JsonProperty("filledquantity") Double filledQuantity,
+      @JsonProperty("filledamount") Double filledAmount,
+      @JsonProperty("averageprice") Double averagePrice,
+      @JsonProperty("fees") Double fees,
       @JsonProperty("createtime") Long createTime,
       @JsonProperty("lastmodified") Long lastModified) {
     this.orderId = orderId;
@@ -61,27 +60,27 @@ public class CoinbeneLimitOrder {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getOrderQuantity() {
+  public Double getOrderQuantity() {
     return orderQuantity;
   }
 
-  public BigDecimal getFilledQuantity() {
+  public Double getFilledQuantity() {
     return filledQuantity;
   }
 
-  public BigDecimal getFilledAmount() {
+  public Double getFilledAmount() {
     return filledAmount;
   }
 
-  public BigDecimal getAveragePrice() {
+  public Double getAveragePrice() {
     return averagePrice;
   }
 
-  public BigDecimal getFees() {
+  public Double getFees() {
     return fees;
   }
 

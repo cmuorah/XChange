@@ -1,24 +1,23 @@
 package org.knowm.xchange.coinegg.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinEggTicker {
 
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal buy;
-  private final BigDecimal sell;
-  private final BigDecimal last;
-  private final BigDecimal volume;
+  private final Double high;
+  private final Double low;
+  private final Double buy;
+  private final Double sell;
+  private final Double last;
+  private final Double volume;
 
   public CoinEggTicker(
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("buy") BigDecimal buy,
-      @JsonProperty("sell") BigDecimal sell,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("vol") BigDecimal volume) {
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("buy") Double buy,
+      @JsonProperty("sell") Double sell,
+      @JsonProperty("last") Double last,
+      @JsonProperty("vol") Double volume) {
 
     this.high = high;
     this.low = low;
@@ -28,27 +27,27 @@ public class CoinEggTicker {
     this.volume = volume;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getBuy() {
+  public Double getBuy() {
     return buy;
   }
 
-  public BigDecimal getSell() {
+  public Double getSell() {
     return sell;
   }
 

@@ -1,28 +1,27 @@
 package org.knowm.xchange.coingi.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoingiBalance {
   private CoingiCurrency currency;
 
-  private BigDecimal available;
+  private Double available;
 
-  private BigDecimal inOrders;
+  private Double inOrders;
 
-  private BigDecimal deposited;
+  private Double deposited;
 
-  private BigDecimal withdrawing;
+  private Double withdrawing;
 
-  private BigDecimal blocked;
+  private Double blocked;
 
   public CoingiBalance(
       @JsonProperty("currency") CoingiCurrency currency,
-      @JsonProperty("available") BigDecimal available,
-      @JsonProperty("inOrders") BigDecimal inOrders,
-      @JsonProperty("deposited") BigDecimal deposited,
-      @JsonProperty("withdrawing") BigDecimal withdrawing,
-      @JsonProperty("blocked") BigDecimal blocked) {
+      @JsonProperty("available") Double available,
+      @JsonProperty("inOrders") Double inOrders,
+      @JsonProperty("deposited") Double deposited,
+      @JsonProperty("withdrawing") Double withdrawing,
+      @JsonProperty("blocked") Double blocked) {
 
     this.currency = currency;
     this.available = available;
@@ -36,23 +35,23 @@ public class CoingiBalance {
     return currency;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 
-  public BigDecimal getInOrders() {
+  public Double getInOrders() {
     return inOrders;
   }
 
-  public BigDecimal getDeposited() {
+  public Double getDeposited() {
     return deposited;
   }
 
-  public BigDecimal getWithdrawing() {
+  public Double getWithdrawing() {
     return withdrawing;
   }
 
-  public BigDecimal getBlocked() {
+  public Double getBlocked() {
     return blocked;
   }
 }

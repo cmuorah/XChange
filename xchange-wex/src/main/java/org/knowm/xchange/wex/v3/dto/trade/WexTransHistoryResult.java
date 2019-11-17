@@ -1,14 +1,13 @@
 package org.knowm.xchange.wex.v3.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 
 /** @author Peter N. Steinmetz Date: 3/30/15 Time: 3:19 PM */
 public class WexTransHistoryResult {
 
   private final Type type; // Transaction type. 1/2 - deposit/withdrawal, 4/5 - credit/debit
-  private final BigDecimal amount;
+  private final Double amount;
   private final String currency;
   private final String description;
   private final Status
@@ -27,7 +26,7 @@ public class WexTransHistoryResult {
    */
   public WexTransHistoryResult(
       @JsonProperty("type") Type type,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("currency") String currency,
       @JsonProperty("desc") String description,
       @JsonProperty("status") Status status,
@@ -45,7 +44,7 @@ public class WexTransHistoryResult {
     return type;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

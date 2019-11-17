@@ -1,20 +1,19 @@
 package org.knowm.xchange.mercadobitcoin.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Felipe Micaroni Lalli */
 public final class OperationEntry {
 
-  private final BigDecimal volume;
-  private final BigDecimal price;
-  private final BigDecimal rate;
+  private final Double volume;
+  private final Double price;
+  private final Double rate;
   private final Long created;
 
   public OperationEntry(
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("price") Double price,
+      @JsonProperty("rate") Double rate,
       @JsonProperty("created") Long created) {
 
     this.volume = volume;
@@ -23,17 +22,17 @@ public final class OperationEntry {
     this.created = created;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
 
     return rate;
   }

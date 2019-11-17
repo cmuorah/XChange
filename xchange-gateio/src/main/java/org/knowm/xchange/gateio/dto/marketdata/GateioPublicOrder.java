@@ -8,27 +8,26 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.gateio.dto.marketdata.GateioPublicOrder.GateioPublicOrderDeserializer;
 
 @JsonDeserialize(using = GateioPublicOrderDeserializer.class)
 public class GateioPublicOrder {
 
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
 
-  private GateioPublicOrder(BigDecimal price, final BigDecimal amount) {
+  private GateioPublicOrder(Double price, final Double amount) {
 
     this.price = price;
     this.amount = amount;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
@@ -48,8 +47,8 @@ public class GateioPublicOrder {
       final ObjectCodec oc = jp.getCodec();
       final JsonNode tickerNode = oc.readTree(jp);
 
-      final BigDecimal price = new BigDecimal(tickerNode.path(0).asText());
-      final BigDecimal amount = new BigDecimal(tickerNode.path(1).asText());
+      final Double price = new Double(tickerNode.path(0).asText());
+      final Double amount = new Double(tickerNode.path(1).asText());
 
       return new GateioPublicOrder(price, amount);
     }

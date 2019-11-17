@@ -3,7 +3,6 @@ package org.knowm.xchange.kucoin.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 
@@ -29,17 +28,17 @@ public class OrderResponse {
     return this.side == null ? null : this.side.toLowerCase();
   }
 
-  private BigDecimal price;
+  private Double price;
 
-  private BigDecimal size;
+  private Double size;
 
-  private BigDecimal funds;
+  private Double funds;
 
-  private BigDecimal dealFunds;
+  private Double dealFunds;
 
-  private BigDecimal dealSize;
+  private Double dealSize;
 
-  private BigDecimal fee;
+  private Double fee;
 
   private String feeCurrency;
 
@@ -53,7 +52,7 @@ public class OrderResponse {
 
   private Boolean stopTriggered;
 
-  private BigDecimal stopPrice;
+  private Double stopPrice;
 
   private String timeInForce;
 
@@ -63,7 +62,7 @@ public class OrderResponse {
 
   private boolean iceberg;
 
-  private BigDecimal visibleSize;
+  private Double visibleSize;
 
   private Long cancelAfter;
 

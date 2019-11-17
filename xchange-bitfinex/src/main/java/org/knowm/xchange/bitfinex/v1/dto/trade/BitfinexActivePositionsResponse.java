@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.dto.Order.OrderType;
 
 public class BitfinexActivePositionsResponse {
@@ -9,22 +8,22 @@ public class BitfinexActivePositionsResponse {
   private final long id;
   private final String symbol;
   private final String status;
-  private final BigDecimal base;
-  private final BigDecimal amount;
-  private final BigDecimal timestamp;
-  private final BigDecimal swap;
-  private final BigDecimal pnl;
+  private final Double base;
+  private final Double amount;
+  private final Double timestamp;
+  private final Double swap;
+  private final Double pnl;
   private final OrderType orderType;
 
   public BitfinexActivePositionsResponse(
       @JsonProperty("id") long id,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("status") String status,
-      @JsonProperty("base") BigDecimal base,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("timestamp") BigDecimal timestamp,
-      @JsonProperty("swap") BigDecimal swap,
-      @JsonProperty("pl") BigDecimal pnl) {
+      @JsonProperty("base") Double base,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("timestamp") Double timestamp,
+      @JsonProperty("swap") Double swap,
+      @JsonProperty("pl") Double pnl) {
 
     this.id = id;
     this.symbol = symbol;
@@ -34,17 +33,14 @@ public class BitfinexActivePositionsResponse {
     this.timestamp = timestamp;
     this.swap = swap;
     this.pnl = pnl;
-
-    this.orderType = amount.signum() < 0 ? OrderType.ASK : OrderType.BID;
+    this.orderType = Math.signum(amount) < 0 ? OrderType.ASK : OrderType.BID;
   }
 
   public long getId() {
-
     return id;
   }
 
   public String getSymbol() {
-
     return symbol;
   }
 
@@ -53,27 +49,27 @@ public class BitfinexActivePositionsResponse {
     return status;
   }
 
-  public BigDecimal getBase() {
+  public Double getBase() {
 
     return base;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getTimestamp() {
+  public Double getTimestamp() {
 
     return timestamp;
   }
 
-  public BigDecimal getSwap() {
+  public Double getSwap() {
 
     return swap;
   }
 
-  public BigDecimal getPnl() {
+  public Double getPnl() {
 
     return pnl;
   }
@@ -86,26 +82,24 @@ public class BitfinexActivePositionsResponse {
   @Override
   public String toString() {
 
-    StringBuilder builder = new StringBuilder();
-    builder.append("BitfinexActivePositionsResponse [id=");
-    builder.append(id);
-    builder.append(", symbol=");
-    builder.append(symbol);
-    builder.append(", status=");
-    builder.append(status);
-    builder.append(", base=");
-    builder.append(base);
-    builder.append(", amount=");
-    builder.append(amount);
-    builder.append(", timestamp=");
-    builder.append(timestamp);
-    builder.append(", swap=");
-    builder.append(swap);
-    builder.append(", pnl=");
-    builder.append(pnl);
-    builder.append(", orderType=");
-    builder.append(orderType);
-    builder.append("]");
-    return builder.toString();
+    return "BitfinexActivePositionsResponse [id="
+        + id
+        + ", symbol="
+        + symbol
+        + ", status="
+        + status
+        + ", base="
+        + base
+        + ", amount="
+        + amount
+        + ", timestamp="
+        + timestamp
+        + ", swap="
+        + swap
+        + ", pnl="
+        + pnl
+        + ", orderType="
+        + orderType
+        + "]";
   }
 }

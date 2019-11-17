@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.campbx.dto.trade.MyOpenOrders;
@@ -30,9 +29,9 @@ public class MyOrdersJSONTest {
 
     List<CampBXOrder> sell = orderBook.getSell();
     CampBXOrder order = sell.get(0);
-    assertThat(order.getPrice()).isEqualTo(new BigDecimal("110.00"));
+    assertThat(order.getPrice()).isEqualTo(new Double("110.00"));
     assertThat(order.getOrderID()).isEqualTo("599254");
-    assertThat(order.getQuantity()).isEqualTo(new BigDecimal("0.10000000"));
+    assertThat(order.getQuantity()).isEqualTo(new Double("0.10000000"));
     assertThat(order.getDarkPool()).isFalse();
     assertThat(order.getOrderType()).isEqualTo("Quick Sell");
     assertThat(order.getOrderExpiry().toString()).contains("2013");

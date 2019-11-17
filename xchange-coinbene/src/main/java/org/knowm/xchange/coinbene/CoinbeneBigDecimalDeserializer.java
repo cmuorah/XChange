@@ -5,21 +5,19 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import java.io.IOException;
-import java.math.BigDecimal;
 
-public class CoinbeneBigDecimalDeserializer extends JsonDeserializer<BigDecimal> {
+public class CoinbeneBigDecimalDeserializer extends JsonDeserializer<Double> {
 
   @Override
-  public BigDecimal deserialize(
-      JsonParser jsonParser, DeserializationContext deserializationContext)
+  public Double deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
       throws IOException, JsonProcessingException {
 
     String value = jsonParser.getValueAsString();
 
     if ("--".equals(value)) {
-      return BigDecimal.ZERO;
+      return 0d;
     } else {
-      return new BigDecimal(value);
+      return new Double(value);
     }
   }
 }

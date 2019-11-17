@@ -1,28 +1,27 @@
 package org.knowm.xchange.dsx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Mikhail Wall */
 public final class DSXPairInfo {
 
   private final int decimalsPrice;
-  private final BigDecimal minPrice;
-  private final BigDecimal maxPrice;
-  private final BigDecimal minAmount;
+  private final Double minPrice;
+  private final Double maxPrice;
+  private final Double minAmount;
   private final int hidden;
-  private final BigDecimal fee;
+  private final Double fee;
   private final int decimalVolume;
   public final String quotedCurrency;
   public final String baseCurrency;
 
   public DSXPairInfo(
       @JsonProperty("decimal_places") int decimalsPrice,
-      @JsonProperty("min_price") BigDecimal minPrice,
-      @JsonProperty("max_price") BigDecimal maxPrice,
-      @JsonProperty("min_amount") BigDecimal minAmount,
+      @JsonProperty("min_price") Double minPrice,
+      @JsonProperty("max_price") Double maxPrice,
+      @JsonProperty("min_amount") Double minAmount,
       @JsonProperty("hidden") int hidden,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("amount_decimal_places") int decimalVolume,
       @JsonProperty("quoted_currency") String quotedCurrency,
       @JsonProperty("base_currency") String baseCurrency) {
@@ -43,12 +42,12 @@ public final class DSXPairInfo {
     return decimalsPrice;
   }
 
-  public BigDecimal getMinPrice() {
+  public Double getMinPrice() {
 
     return minPrice;
   }
 
-  public BigDecimal getMaxPrice() {
+  public Double getMaxPrice() {
 
     return maxPrice;
   }
@@ -58,12 +57,12 @@ public final class DSXPairInfo {
     return hidden;
   }
 
-  public BigDecimal getMinAmount() {
+  public Double getMinAmount() {
 
     return minAmount;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }

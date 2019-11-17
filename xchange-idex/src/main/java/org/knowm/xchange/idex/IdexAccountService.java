@@ -2,7 +2,6 @@ package org.knowm.xchange.idex;
 
 import static org.knowm.xchange.idex.IdexExchange.Companion.safeParse;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
@@ -128,8 +127,8 @@ public class IdexAccountService extends BaseExchangeService implements AccountSe
                             fundingLedger.getDepositNumber(),
                             Type.WITHDRAWAL,
                             Status.resolveStatus(fundingLedger.getStatus()),
-                            BigDecimal.ZERO,
-                            BigDecimal.ZERO,
+                            0d,
+                            0d,
                             ""))
                 .collect(Collectors.toList()),
             returnDepositsWithdrawalsPost.getDeposits().stream()
@@ -144,8 +143,8 @@ public class IdexAccountService extends BaseExchangeService implements AccountSe
                             fundingLedger1.getDepositNumber(),
                             Type.DEPOSIT,
                             Status.resolveStatus(fundingLedger1.getStatus()),
-                            BigDecimal.ZERO,
-                            BigDecimal.ZERO,
+                            0d,
+                            0d,
                             ""))
                 .collect(Collectors.toList()))
         .stream()
@@ -177,7 +176,7 @@ public class IdexAccountService extends BaseExchangeService implements AccountSe
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) {
+  public String withdrawFunds(Currency currency, Double amount, String address) {
     throw new org.knowm.xchange.exceptions.NotAvailableFromExchangeException();
   }
 }

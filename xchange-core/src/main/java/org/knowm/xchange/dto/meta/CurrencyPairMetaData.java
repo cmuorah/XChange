@@ -2,7 +2,6 @@ package org.knowm.xchange.dto.meta;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import org.knowm.xchange.currency.Currency;
 
@@ -12,7 +11,7 @@ public class CurrencyPairMetaData implements Serializable {
 
   /** Trading fee (fraction) */
   @JsonProperty("trading_fee")
-  private final BigDecimal tradingFee;
+  private final Double tradingFee;
 
   /** Trading fee tiers by volume (fraction). Sorted in ascending order by quantity */
   @JsonProperty("fee_tiers")
@@ -20,19 +19,19 @@ public class CurrencyPairMetaData implements Serializable {
 
   /** Minimum trade amount */
   @JsonProperty("min_amount")
-  private final BigDecimal minimumAmount;
+  private final Double minimumAmount;
 
   /** Maximum trade amount */
   @JsonProperty("max_amount")
-  private final BigDecimal maximumAmount;
+  private final Double maximumAmount;
 
   /** Minimum trade amount */
   @JsonProperty("counter_min_amount")
-  private final BigDecimal counterMinimumAmount;
+  private final Double counterMinimumAmount;
 
   /** Maximum trade amount */
   @JsonProperty("counter_max_amount")
-  private final BigDecimal counterMaximumAmount;
+  private final Double counterMaximumAmount;
 
   /** Decimal places for base amount */
   @JsonProperty("base_scale")
@@ -44,7 +43,7 @@ public class CurrencyPairMetaData implements Serializable {
 
   /** Amount step size. If set, any amounts must be a multiple of this */
   @JsonProperty("amount_step_size")
-  private final BigDecimal amountStepSize;
+  private final Double amountStepSize;
 
   /** Currency that will be used to change for this trade. */
   private final Currency tradingFeeCurrency;
@@ -61,9 +60,9 @@ public class CurrencyPairMetaData implements Serializable {
    * @param priceScale Price scale
    */
   public CurrencyPairMetaData(
-      BigDecimal tradingFee,
-      BigDecimal minimumAmount,
-      BigDecimal maximumAmount,
+      Double tradingFee,
+      Double minimumAmount,
+      Double maximumAmount,
       Integer priceScale,
       FeeTier[] feeTiers) {
     this(
@@ -90,12 +89,12 @@ public class CurrencyPairMetaData implements Serializable {
    * @param amountStepSize Amounts must be a multiple of this amount if set.
    */
   public CurrencyPairMetaData(
-      BigDecimal tradingFee,
-      BigDecimal minimumAmount,
-      BigDecimal maximumAmount,
+      Double tradingFee,
+      Double minimumAmount,
+      Double maximumAmount,
       Integer priceScale,
       FeeTier[] feeTiers,
-      BigDecimal amountStepSize) {
+      Double amountStepSize) {
     this(
         tradingFee,
         minimumAmount,
@@ -120,15 +119,15 @@ public class CurrencyPairMetaData implements Serializable {
    * @param amountStepSize Amounts must be a multiple of this amount if set.
    */
   public CurrencyPairMetaData(
-      @JsonProperty("trading_fee") BigDecimal tradingFee,
-      @JsonProperty("min_amount") BigDecimal minimumAmount,
-      @JsonProperty("max_amount") BigDecimal maximumAmount,
-      @JsonProperty("counter_min_amount") BigDecimal counterMinimumAmount,
-      @JsonProperty("counter_max_amount") BigDecimal counterMaximumAmount,
+      @JsonProperty("trading_fee") Double tradingFee,
+      @JsonProperty("min_amount") Double minimumAmount,
+      @JsonProperty("max_amount") Double maximumAmount,
+      @JsonProperty("counter_min_amount") Double counterMinimumAmount,
+      @JsonProperty("counter_max_amount") Double counterMaximumAmount,
       @JsonProperty("base_scale") Integer baseScale,
       @JsonProperty("price_scale") Integer priceScale,
       @JsonProperty("fee_tiers") FeeTier[] feeTiers,
-      @JsonProperty("amount_step_size") BigDecimal amountStepSize,
+      @JsonProperty("amount_step_size") Double amountStepSize,
       @JsonProperty("trading_fee_currency") Currency tradingFeeCurrency,
       @JsonProperty("market_order_enabled") boolean marketOrderEnabled) {
 
@@ -148,17 +147,17 @@ public class CurrencyPairMetaData implements Serializable {
     this.marketOrderEnabled = marketOrderEnabled;
   }
 
-  public BigDecimal getTradingFee() {
+  public Double getTradingFee() {
 
     return tradingFee;
   }
 
-  public BigDecimal getMinimumAmount() {
+  public Double getMinimumAmount() {
 
     return minimumAmount;
   }
 
-  public BigDecimal getMaximumAmount() {
+  public Double getMaximumAmount() {
 
     return maximumAmount;
   }
@@ -177,7 +176,7 @@ public class CurrencyPairMetaData implements Serializable {
     return feeTiers;
   }
 
-  public BigDecimal getAmountStepSize() {
+  public Double getAmountStepSize() {
 
     return amountStepSize;
   }
@@ -186,11 +185,11 @@ public class CurrencyPairMetaData implements Serializable {
     return tradingFeeCurrency;
   }
 
-  public BigDecimal getCounterMinimumAmount() {
+  public Double getCounterMinimumAmount() {
     return counterMinimumAmount;
   }
 
-  public BigDecimal getCounterMaximumAmount() {
+  public Double getCounterMaximumAmount() {
     return counterMaximumAmount;
   }
 
@@ -200,15 +199,15 @@ public class CurrencyPairMetaData implements Serializable {
 
   public static class Builder {
 
-    private BigDecimal tradingFee;
+    private Double tradingFee;
     private FeeTier[] feeTiers;
-    private BigDecimal minimumAmount;
-    private BigDecimal maximumAmount;
-    private BigDecimal counterMinimumAmount;
-    private BigDecimal counterMaximumAmount;
+    private Double minimumAmount;
+    private Double maximumAmount;
+    private Double counterMinimumAmount;
+    private Double counterMaximumAmount;
     private Integer baseScale;
     private Integer priceScale;
-    private BigDecimal amountStepSize;
+    private Double amountStepSize;
     private Currency tradingFeeCurrency;
     private boolean marketOrderEnabled;
 
@@ -227,7 +226,7 @@ public class CurrencyPairMetaData implements Serializable {
           .tradingFeeCurrency(metaData.getTradingFeeCurrency());
     }
 
-    public Builder tradingFee(BigDecimal tradingFee) {
+    public Builder tradingFee(Double tradingFee) {
       this.tradingFee = tradingFee;
       return this;
     }
@@ -237,22 +236,22 @@ public class CurrencyPairMetaData implements Serializable {
       return this;
     }
 
-    public Builder minimumAmount(BigDecimal minimumAmount) {
+    public Builder minimumAmount(Double minimumAmount) {
       this.minimumAmount = minimumAmount;
       return this;
     }
 
-    public Builder maximumAmount(BigDecimal maximumAmount) {
+    public Builder maximumAmount(Double maximumAmount) {
       this.maximumAmount = maximumAmount;
       return this;
     }
 
-    public Builder counterMinimumAmount(BigDecimal counterMinimumAmount) {
+    public Builder counterMinimumAmount(Double counterMinimumAmount) {
       this.counterMinimumAmount = counterMinimumAmount;
       return this;
     }
 
-    public Builder counterMaximumAmount(BigDecimal counterMaximumAmount) {
+    public Builder counterMaximumAmount(Double counterMaximumAmount) {
       this.counterMaximumAmount = counterMaximumAmount;
       return this;
     }
@@ -267,7 +266,7 @@ public class CurrencyPairMetaData implements Serializable {
       return this;
     }
 
-    public Builder amountStepSize(BigDecimal amountStepSize) {
+    public Builder amountStepSize(Double amountStepSize) {
       this.amountStepSize = amountStepSize;
       return this;
     }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto.marketdata;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.utils.Assert;
@@ -18,20 +17,20 @@ public final class Ticker implements Serializable {
   private static final long serialVersionUID = -3247730106987193154L;
 
   private final CurrencyPair currencyPair;
-  private final BigDecimal open;
-  private final BigDecimal last;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal vwap;
-  private final BigDecimal volume;
-  private final BigDecimal quoteVolume;
+  private final Double open;
+  private final Double last;
+  private final Double bid;
+  private final Double ask;
+  private final Double high;
+  private final Double low;
+  private final Double vwap;
+  private final Double volume;
+  private final Double quoteVolume;
   /** the timestamp of the ticker according to the exchange's server, null if not provided */
   private final Date timestamp;
 
-  private final BigDecimal bidSize;
-  private final BigDecimal askSize;
+  private final Double bidSize;
+  private final Double askSize;
 
   /**
    * Constructor
@@ -52,18 +51,18 @@ public final class Ticker implements Serializable {
    */
   private Ticker(
       CurrencyPair currencyPair,
-      BigDecimal open,
-      BigDecimal last,
-      BigDecimal bid,
-      BigDecimal ask,
-      BigDecimal high,
-      BigDecimal low,
-      BigDecimal vwap,
-      BigDecimal volume,
-      BigDecimal quoteVolume,
+      Double open,
+      Double last,
+      Double bid,
+      Double ask,
+      Double high,
+      Double low,
+      Double vwap,
+      Double volume,
+      Double quoteVolume,
       Date timestamp,
-      BigDecimal bidSize,
-      BigDecimal askSize) {
+      Double bidSize,
+      Double askSize) {
     this.open = open;
     this.currencyPair = currencyPair;
     this.last = last;
@@ -84,49 +83,49 @@ public final class Ticker implements Serializable {
     return currencyPair;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
 
     return open;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return ask;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
 
-  public BigDecimal getVwap() {
+  public Double getVwap() {
 
     return vwap;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getQuoteVolume() {
+  public Double getQuoteVolume() {
     if (quoteVolume == null && volume != null && last != null) {
-      return volume.multiply(last);
+      return volume * last;
     }
     return quoteVolume;
   }
@@ -136,11 +135,11 @@ public final class Ticker implements Serializable {
     return timestamp;
   }
 
-  public BigDecimal getBidSize() {
+  public Double getBidSize() {
     return bidSize;
   }
 
-  public BigDecimal getAskSize() {
+  public Double getAskSize() {
     return askSize;
   }
 
@@ -186,18 +185,18 @@ public final class Ticker implements Serializable {
   public static class Builder {
 
     private CurrencyPair currencyPair;
-    private BigDecimal open;
-    private BigDecimal last;
-    private BigDecimal bid;
-    private BigDecimal ask;
-    private BigDecimal high;
-    private BigDecimal low;
-    private BigDecimal vwap;
-    private BigDecimal volume;
-    private BigDecimal quoteVolume;
+    private Double open;
+    private Double last;
+    private Double bid;
+    private Double ask;
+    private Double high;
+    private Double low;
+    private Double vwap;
+    private Double volume;
+    private Double quoteVolume;
     private Date timestamp;
-    private BigDecimal bidSize;
-    private BigDecimal askSize;
+    private Double bidSize;
+    private Double askSize;
 
     // Prevent repeat builds
     private boolean isBuilt = false;
@@ -240,55 +239,55 @@ public final class Ticker implements Serializable {
       return this;
     }
 
-    public Builder open(BigDecimal open) {
+    public Builder open(Double open) {
 
       this.open = open;
       return this;
     }
 
-    public Builder last(BigDecimal last) {
+    public Builder last(Double last) {
 
       this.last = last;
       return this;
     }
 
-    public Builder bid(BigDecimal bid) {
+    public Builder bid(Double bid) {
 
       this.bid = bid;
       return this;
     }
 
-    public Builder ask(BigDecimal ask) {
+    public Builder ask(Double ask) {
 
       this.ask = ask;
       return this;
     }
 
-    public Builder high(BigDecimal high) {
+    public Builder high(Double high) {
 
       this.high = high;
       return this;
     }
 
-    public Builder low(BigDecimal low) {
+    public Builder low(Double low) {
 
       this.low = low;
       return this;
     }
 
-    public Builder vwap(BigDecimal vwap) {
+    public Builder vwap(Double vwap) {
 
       this.vwap = vwap;
       return this;
     }
 
-    public Builder volume(BigDecimal volume) {
+    public Builder volume(Double volume) {
 
       this.volume = volume;
       return this;
     }
 
-    public Builder quoteVolume(BigDecimal quoteVolume) {
+    public Builder quoteVolume(Double quoteVolume) {
 
       this.quoteVolume = quoteVolume;
       return this;
@@ -300,12 +299,12 @@ public final class Ticker implements Serializable {
       return this;
     }
 
-    public Builder bidSize(BigDecimal bidSize) {
+    public Builder bidSize(Double bidSize) {
       this.bidSize = bidSize;
       return this;
     }
 
-    public Builder askSize(BigDecimal askSize) {
+    public Builder askSize(Double askSize) {
       this.askSize = askSize;
       return this;
     }

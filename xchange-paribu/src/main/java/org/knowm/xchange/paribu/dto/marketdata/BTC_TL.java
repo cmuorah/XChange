@@ -1,27 +1,26 @@
 package org.knowm.xchange.paribu.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author semihunaldi */
 public final class BTC_TL {
 
-  private final BigDecimal last;
-  private final BigDecimal lowestAsk;
-  private final BigDecimal highestBid;
-  private final BigDecimal percentChange;
-  private final BigDecimal volume;
-  private final BigDecimal high24hr;
-  private final BigDecimal low24hr;
+  private final Double last;
+  private final Double lowestAsk;
+  private final Double highestBid;
+  private final Double percentChange;
+  private final Double volume;
+  private final Double high24hr;
+  private final Double low24hr;
 
   public BTC_TL(
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("lowestAsk") BigDecimal lowestAsk,
-      @JsonProperty("highestBid") BigDecimal highestBid,
-      @JsonProperty("percentChange") BigDecimal percentChange,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("high24hr") BigDecimal high24hr,
-      @JsonProperty("low24hr") BigDecimal low24hr) {
+      @JsonProperty("last") Double last,
+      @JsonProperty("lowestAsk") Double lowestAsk,
+      @JsonProperty("highestBid") Double highestBid,
+      @JsonProperty("percentChange") Double percentChange,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("high24hr") Double high24hr,
+      @JsonProperty("low24hr") Double low24hr) {
     this.last = last;
     this.lowestAsk = lowestAsk;
     this.highestBid = highestBid;
@@ -31,31 +30,31 @@ public final class BTC_TL {
     this.low24hr = low24hr;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getLowestAsk() {
+  public Double getLowestAsk() {
     return lowestAsk;
   }
 
-  public BigDecimal getHighestBid() {
+  public Double getHighestBid() {
     return highestBid;
   }
 
-  public BigDecimal getPercentChange() {
+  public Double getPercentChange() {
     return percentChange;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getHigh24hr() {
+  public Double getHigh24hr() {
     return high24hr;
   }
 
-  public BigDecimal getLow24hr() {
+  public Double getLow24hr() {
     return low24hr;
   }
 

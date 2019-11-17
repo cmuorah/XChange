@@ -1,7 +1,6 @@
 package org.knowm.xchange.ripple.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -61,25 +60,25 @@ public class RippleTradeServiceRaw extends RippleBaseService {
    *
    * @return transfer fee of the supplied currency
    */
-  public static BigDecimal getExpectedTransferFee(
+  public static Double getExpectedTransferFee(
       final ITransferFeeSource transferFeeSource,
       final String counterparty,
       final String currency,
-      final BigDecimal quantity,
+      final Double quantity,
       final OrderType type)
       throws IOException {
     if (currency.equals("XRP")) {
-      return BigDecimal.ZERO;
+      return 0d;
     }
     if (counterparty.isEmpty()) {
-      return BigDecimal.ZERO;
+      return 0d;
     }
-    final BigDecimal transferFeeRate = transferFeeSource.getTransferFeeRate(counterparty);
-    if ((transferFeeRate.compareTo(BigDecimal.ZERO) > 0) && (type == OrderType.ASK)) {
+    final Double transferFeeRate = transferFeeSource.getTransferFeeRate(counterparty);
+    if ((transferFeeRate.compareTo(0d) > 0) && (type == OrderType.ASK)) {
       // selling/sending the base currency so will incur a transaction fee on it
-      return quantity.multiply(transferFeeRate).abs();
+      return quantity * Math.abs(transferFeeRate);
     } else {
-      return BigDecimal.ZERO;
+      return 0d;
     }
   }
 
@@ -118,7 +117,7 @@ public class RippleTradeServiceRaw extends RippleBaseService {
     }
 
     counterAmount.setCurrency(order.getCurrencyPair().counter.getCurrencyCode());
-    counterAmount.setValue(order.getOriginalAmount().multiply(order.getLimitPrice()));
+    counterAmount.setValue(order.getOriginalAmount() * (order.getLimitPrice()));
     if (counterAmount.getCurrency().equals("XRP") == false) {
       // not XRP - need a counterparty for this currency
       final String counterparty = order.getCounterCounterparty();
@@ -373,26 +372,26 @@ public class RippleTradeServiceRaw extends RippleBaseService {
    *
    * @return current network transaction fee in units of XRP
    */
-  public BigDecimal getTransactionFee() {
-    return ripplePublic.getTransactionFee().getFee().stripTrailingZeros();
+  public Double getTransactionFee() {
+    return ripplePublic.getTransactionFee().getFee();
   }
 
   /** @return transfer fee for the base leg of the order in the base currency */
-  public BigDecimal getExpectedBaseTransferFee(final RippleLimitOrder order) throws IOException {
+  public Double getExpectedBaseTransferFee(final RippleLimitOrder order) throws IOException {
     final ITransferFeeSource transferFeeSource = (ITransferFeeSource) exchange.getAccountService();
     final String counterparty = order.getBaseCounterparty();
     final String currency = order.getCurrencyPair().base.getCurrencyCode();
-    final BigDecimal quantity = order.getOriginalAmount();
+    final Double quantity = order.getOriginalAmount();
     final OrderType type = order.getType();
     return getExpectedTransferFee(transferFeeSource, counterparty, currency, quantity, type);
   }
 
   /** @return transfer fee for the counter leg of the order in the counter currency */
-  public BigDecimal getExpectedCounterTransferFee(final RippleLimitOrder order) throws IOException {
+  public Double getExpectedCounterTransferFee(final RippleLimitOrder order) throws IOException {
     final ITransferFeeSource transferFeeSource = (ITransferFeeSource) exchange.getAccountService();
     final String counterparty = order.getCounterCounterparty();
     final String currency = order.getCurrencyPair().counter.getCurrencyCode();
-    final BigDecimal quantity = order.getOriginalAmount().multiply(order.getLimitPrice());
+    final Double quantity = order.getOriginalAmount() * (order.getLimitPrice());
     final OrderType type;
     if (order.getType() == OrderType.BID) {
       type = OrderType.ASK;

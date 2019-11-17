@@ -3,7 +3,6 @@ package org.knowm.xchange.btcturk.service.trade;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,10 +55,7 @@ public class TradeDataFetchIntegration {
         Thread.sleep(1000);
         BTCTurkExchangeResult exchangeResult =
             btcTurkTradeService.placeLimitOrder(
-                new BigDecimal("0.01"),
-                new BigDecimal(713),
-                CurrencyPair.ETH_TRY,
-                BTCTurkOrderTypes.Sell);
+                new Double("0.01"), new Double(713), CurrencyPair.ETH_TRY, BTCTurkOrderTypes.Sell);
         Thread.sleep(1000);
         result = btcTurkTradeService.cancelOrder(exchangeResult.getId());
       } else {

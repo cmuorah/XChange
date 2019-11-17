@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.junit.Test;
 import org.knowm.xchange.okcoin.v3.dto.MarginMode;
@@ -23,7 +22,7 @@ public class LeverageJsonTest {
         readJson("example-leverage-crossed.json", FuturesLeverageResponse.class);
     assertThat(res.getMarginMode()).isEqualTo(MarginMode.crossed);
     assertThat(res.getCurrency()).isEqualTo("BTC");
-    assertThat(res.getLeverage()).isEqualTo(BigDecimal.TEN);
+    assertThat(res.getLeverage()).isEqualTo(10d);
     assertThat(res.getFixedLeverages()).isEmpty();
   }
 
@@ -37,8 +36,7 @@ public class LeverageJsonTest {
     assertThat(res.getLeverage()).isNull();
     Map<String, FixedLeverage> fixedLeverages = res.getFixedLeverages();
     assertThat(fixedLeverages).hasSize(3);
-    assertThat(fixedLeverages.get("BTC-USD-190329").getLongLeverage())
-        .isEqualTo(new BigDecimal(100));
+    assertThat(fixedLeverages.get("BTC-USD-190329").getLongLeverage()).isEqualTo(new Double(100));
   }
 
   private static <R> R readJson(String file, Class<R> clz)

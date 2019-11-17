@@ -1,12 +1,11 @@
 package org.knowm.xchange.quoine.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class QuoineExecution {
   public final String id;
-  public final BigDecimal quantity;
-  public final BigDecimal price;
+  public final Double quantity;
+  public final Double price;
   public final String takerSide;
   public final String mySide;
   public final long createdAt;
@@ -16,8 +15,8 @@ public class QuoineExecution {
 
   public QuoineExecution(
       @JsonProperty("id") String id,
-      @JsonProperty("quantity") BigDecimal quantity,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("quantity") Double quantity,
+      @JsonProperty("price") Double price,
       @JsonProperty("taker_side") String takerSide,
       @JsonProperty("my_side") String mySide,
       @JsonProperty("created_at") long createdAt,

@@ -1,6 +1,5 @@
 package org.knowm.xchange.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -18,12 +17,13 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
   private static final long serialVersionUID = -7341286101341375106L;
 
   /** The stop price */
-  protected final BigDecimal stopPrice;
+  protected final Double stopPrice;
   /**
    * The limit price this should be null if the stop order should be treated as a market order once
    * the stop price is hit
    */
-  protected BigDecimal limitPrice = null;
+  protected Double limitPrice = null;
+
   /**
    * @param type Either BID (buying) or ASK (selling)
    * @param originalAmount The amount to trade
@@ -36,11 +36,11 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
    */
   public StopOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal stopPrice) {
+      Double stopPrice) {
 
     super(type, originalAmount, currencyPair, id, timestamp);
     this.stopPrice = stopPrice;
@@ -59,12 +59,12 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
    */
   public StopOrder(
       OrderType type,
-      BigDecimal originalAmount,
-      BigDecimal cumulativeAmount,
+      Double originalAmount,
+      Double cumulativeAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal stopPrice) {
+      Double stopPrice) {
 
     super(
         type,
@@ -72,9 +72,9 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
         currencyPair,
         id,
         timestamp,
-        BigDecimal.ZERO,
+        0d,
         cumulativeAmount,
-        BigDecimal.ZERO,
+        0d,
         OrderStatus.PENDING_NEW);
     this.stopPrice = stopPrice;
   }
@@ -94,13 +94,13 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
    */
   public StopOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal stopPrice,
-      BigDecimal averagePrice,
-      BigDecimal cumulativeAmount,
+      Double stopPrice,
+      Double averagePrice,
+      Double cumulativeAmount,
       OrderStatus status) {
 
     super(
@@ -111,7 +111,7 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
         timestamp,
         averagePrice,
         cumulativeAmount,
-        BigDecimal.ZERO,
+        0d,
         status);
     this.stopPrice = stopPrice;
   }
@@ -133,14 +133,14 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
    */
   public StopOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal stopPrice,
-      BigDecimal limitPrice,
-      BigDecimal averagePrice,
-      BigDecimal cumulativeAmount,
+      Double stopPrice,
+      Double limitPrice,
+      Double averagePrice,
+      Double cumulativeAmount,
       OrderStatus status) {
 
     this(
@@ -153,7 +153,7 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
         limitPrice,
         averagePrice,
         cumulativeAmount,
-        BigDecimal.ZERO,
+        0d,
         status);
   }
 
@@ -175,15 +175,15 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
    */
   public StopOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal stopPrice,
-      BigDecimal limitPrice,
-      BigDecimal averagePrice,
-      BigDecimal cumulativeAmount,
-      BigDecimal fee,
+      Double stopPrice,
+      Double limitPrice,
+      Double averagePrice,
+      Double cumulativeAmount,
+      Double fee,
       OrderStatus status) {
 
     super(
@@ -201,13 +201,13 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
   }
 
   /** @return The stop price */
-  public BigDecimal getStopPrice() {
+  public Double getStopPrice() {
 
     return stopPrice;
   }
 
   /** @return The limit price */
-  public BigDecimal getLimitPrice() {
+  public Double getLimitPrice() {
 
     return limitPrice;
   }
@@ -270,9 +270,9 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
 
   public static class Builder extends Order.Builder {
 
-    protected BigDecimal stopPrice;
+    protected Double stopPrice;
 
-    protected BigDecimal limitPrice;
+    protected Double limitPrice;
 
     public Builder(OrderType orderType, CurrencyPair currencyPair) {
 
@@ -306,25 +306,25 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
     }
 
     @Override
-    public Builder originalAmount(BigDecimal originalAmount) {
+    public Builder originalAmount(Double originalAmount) {
 
       return (Builder) super.originalAmount(originalAmount);
     }
 
     @Override
-    public Builder cumulativeAmount(BigDecimal originalAmount) {
+    public Builder cumulativeAmount(Double originalAmount) {
 
       return (Builder) super.cumulativeAmount(originalAmount);
     }
 
     @Override
-    public Builder fee(BigDecimal fee) {
+    public Builder fee(Double fee) {
 
       return (Builder) super.fee(fee);
     }
 
     @Override
-    public Builder remainingAmount(BigDecimal remainingAmount) {
+    public Builder remainingAmount(Double remainingAmount) {
 
       return (Builder) super.remainingAmount(remainingAmount);
     }
@@ -354,7 +354,7 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
     }
 
     @Override
-    public Builder averagePrice(BigDecimal averagePrice) {
+    public Builder averagePrice(Double averagePrice) {
 
       return (Builder) super.averagePrice(averagePrice);
     }
@@ -371,13 +371,13 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
       return (Builder) super.flags(flags);
     }
 
-    public Builder stopPrice(BigDecimal stopPrice) {
+    public Builder stopPrice(Double stopPrice) {
 
       this.stopPrice = stopPrice;
       return this;
     }
 
-    public Builder limitPrice(BigDecimal limitPrice) {
+    public Builder limitPrice(Double limitPrice) {
 
       this.limitPrice = limitPrice;
       return this;
@@ -397,7 +397,7 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
               averagePrice,
               originalAmount == null || remainingAmount == null
                   ? cumulativeAmount
-                  : originalAmount.subtract(remainingAmount),
+                  : originalAmount - remainingAmount,
               fee,
               status);
 

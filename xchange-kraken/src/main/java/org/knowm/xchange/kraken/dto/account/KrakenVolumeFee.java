@@ -1,16 +1,15 @@
 package org.knowm.xchange.kraken.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class KrakenVolumeFee {
 
-  private final BigDecimal fee;
-  private final BigDecimal minFee;
-  private final BigDecimal maxFee;
-  private final BigDecimal nextFee;
-  private final BigDecimal nextVolume;
-  private final BigDecimal tierVolume;
+  private final Double fee;
+  private final Double minFee;
+  private final Double maxFee;
+  private final Double nextFee;
+  private final Double nextVolume;
+  private final Double tierVolume;
 
   /**
    * Constructor
@@ -23,12 +22,12 @@ public class KrakenVolumeFee {
    * @param tierVolume
    */
   public KrakenVolumeFee(
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("minfee") BigDecimal minFee,
-      @JsonProperty("maxfee") BigDecimal maxFee,
-      @JsonProperty("nextfee") BigDecimal nextFee,
-      @JsonProperty("nextvolume") BigDecimal nextVolume,
-      @JsonProperty("tiervolume") BigDecimal tierVolume) {
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("minfee") Double minFee,
+      @JsonProperty("maxfee") Double maxFee,
+      @JsonProperty("nextfee") Double nextFee,
+      @JsonProperty("nextvolume") Double nextVolume,
+      @JsonProperty("tiervolume") Double tierVolume) {
 
     this.fee = fee;
     this.minFee = minFee;
@@ -38,32 +37,32 @@ public class KrakenVolumeFee {
     this.tierVolume = tierVolume;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }
 
-  public BigDecimal getMinFee() {
+  public Double getMinFee() {
 
     return minFee;
   }
 
-  public BigDecimal getMaxFee() {
+  public Double getMaxFee() {
 
     return maxFee;
   }
 
-  public BigDecimal getNextFee() {
+  public Double getNextFee() {
 
     return nextFee;
   }
 
-  public BigDecimal getNextVolume() {
+  public Double getNextVolume() {
 
     return nextVolume;
   }
 
-  public BigDecimal getTierVolume() {
+  public Double getTierVolume() {
 
     return tierVolume;
   }

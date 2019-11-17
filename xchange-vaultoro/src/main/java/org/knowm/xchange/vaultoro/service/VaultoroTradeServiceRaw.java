@@ -1,9 +1,6 @@
 package org.knowm.xchange.vaultoro.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -53,24 +50,20 @@ public class VaultoroTradeServiceRaw extends VaultoroBaseService {
   }
 
   public VaultoroNewOrderResponse placeLimitOrder(
-      CurrencyPair currencyPair, OrderType orderType, BigDecimal amount, BigDecimal price)
+      CurrencyPair currencyPair, OrderType orderType, Double amount, Double price)
       throws IOException {
 
     return placeOrder("limit", currencyPair, orderType, amount, price);
   }
 
   public VaultoroNewOrderResponse placeMarketOrder(
-      CurrencyPair currencyPair, OrderType orderType, BigDecimal amount) throws IOException {
+      CurrencyPair currencyPair, OrderType orderType, Double amount) throws IOException {
 
     return placeOrder("market", currencyPair, orderType, amount, null);
   }
 
   private VaultoroNewOrderResponse placeOrder(
-      String type,
-      CurrencyPair currencyPair,
-      OrderType orderType,
-      BigDecimal amount,
-      BigDecimal price)
+      String type, CurrencyPair currencyPair, OrderType orderType, Double amount, Double price)
       throws IOException {
 
     String baseSymbol = currencyPair.base.getCurrencyCode().toLowerCase();
@@ -90,7 +83,7 @@ public class VaultoroTradeServiceRaw extends VaultoroBaseService {
           price = ds.getLast(currencyPair);
         }
       } else {
-        amount = price.multiply(amount, new MathContext(8, RoundingMode.HALF_DOWN));
+        amount = price * amount; // , new MathContext(8, RoundingMode.HALF_DOWN));
       }
       try {
         return vaultoro.buy(

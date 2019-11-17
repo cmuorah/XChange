@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitz.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitZSymbol {
 
@@ -10,8 +9,8 @@ public class BitZSymbol {
   private final String currencyCoin;
   private final Integer numberPrecision;
   private final Integer pricePrecision;
-  private final BigDecimal minTrade;
-  private final BigDecimal maxTrade;
+  private final Double minTrade;
+  private final Double maxTrade;
   private final String orderBy;
 
   public BitZSymbol(
@@ -20,8 +19,8 @@ public class BitZSymbol {
       @JsonProperty("currencyCoin") String currencyCoin,
       @JsonProperty("numberPrecision") Integer numberPrecision,
       @JsonProperty("pricePrecision") Integer pricePrecision,
-      @JsonProperty("minTrade") BigDecimal minTrade,
-      @JsonProperty("maxTrade") BigDecimal maxTrade,
+      @JsonProperty("minTrade") Double minTrade,
+      @JsonProperty("maxTrade") Double maxTrade,
       @JsonProperty("orderBy") String orderBy) {
     this.symbol = symbol;
     this.coin = coin;
@@ -53,11 +52,11 @@ public class BitZSymbol {
     return pricePrecision;
   }
 
-  public BigDecimal getMinTrade() {
+  public Double getMinTrade() {
     return minTrade;
   }
 
-  public BigDecimal getMaxTrade() {
+  public Double getMaxTrade() {
     return maxTrade;
   }
 

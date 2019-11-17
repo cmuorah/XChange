@@ -1,38 +1,37 @@
 package org.knowm.xchange.okcoin.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class OkCoinFuturesOrder {
 
-  private final BigDecimal amount;
+  private final Double amount;
   private final String contractName;
   private final Date createdDate;
-  private final BigDecimal dealAmount;
-  private final BigDecimal fee;
+  private final Double dealAmount;
+  private final Double fee;
   private final String orderId;
-  private final BigDecimal price;
-  private final BigDecimal avgPrice;
+  private final Double price;
+  private final Double avgPrice;
   private final int status;
   private final String symbol;
   private final String type;
-  private final BigDecimal unitAmount;
+  private final Double unitAmount;
   private final int leverRate;
 
   public OkCoinFuturesOrder(
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("contract_name") String contractName,
       @JsonProperty("create_date") Date createdDate,
-      @JsonProperty("deal_amount") BigDecimal dealAmount,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("deal_amount") Double dealAmount,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("order_id") String orderId,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("price_avg") BigDecimal avgPrice,
+      @JsonProperty("price") Double price,
+      @JsonProperty("price_avg") Double avgPrice,
       @JsonProperty("status") int status,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("type") String type,
-      @JsonProperty("unit_amount") BigDecimal unitAmount,
+      @JsonProperty("unit_amount") Double unitAmount,
       @JsonProperty("lever_rate") int leverRate) {
 
     this.amount = amount;
@@ -50,7 +49,7 @@ public class OkCoinFuturesOrder {
     this.leverRate = leverRate;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
@@ -65,12 +64,12 @@ public class OkCoinFuturesOrder {
     return createdDate;
   }
 
-  public BigDecimal getDealAmount() {
+  public Double getDealAmount() {
 
     return dealAmount;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }
@@ -80,12 +79,12 @@ public class OkCoinFuturesOrder {
     return orderId;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAvgPrice() {
+  public Double getAvgPrice() {
 
     return avgPrice;
   }
@@ -105,7 +104,7 @@ public class OkCoinFuturesOrder {
     return type;
   }
 
-  public BigDecimal getUnitAmount() {
+  public Double getUnitAmount() {
 
     return unitAmount;
   }

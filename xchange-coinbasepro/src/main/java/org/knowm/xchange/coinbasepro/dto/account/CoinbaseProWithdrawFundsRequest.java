@@ -1,10 +1,9 @@
 package org.knowm.xchange.coinbasepro.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseProWithdrawFundsRequest {
-  public final @JsonProperty("amount") BigDecimal amount;
+  public final @JsonProperty("amount") Double amount;
   public final @JsonProperty("currency") String currency;
   public final @JsonProperty("crypto_address") String address;
   public final @JsonProperty("destination_tag") String destinationTag;
@@ -15,7 +14,7 @@ public class CoinbaseProWithdrawFundsRequest {
   public final @JsonProperty("no_destination_tag") boolean noDestinationTag;
 
   public CoinbaseProWithdrawFundsRequest(
-      BigDecimal amount,
+      Double amount,
       String currency,
       String address,
       String destinationTag,

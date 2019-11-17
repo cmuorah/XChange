@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.kraken.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -28,7 +27,7 @@ public class KrakenMarketOrderDemo {
 
     // place a marketOrder with volume 0.01
     OrderType orderType = (OrderType.BID);
-    BigDecimal tradeableAmount = new BigDecimal("0.01");
+    Double tradeableAmount = new Double("0.01");
 
     MarketOrder marketOrder = new MarketOrder(orderType, tradeableAmount, CurrencyPair.BTC_EUR);
 
@@ -43,7 +42,7 @@ public class KrakenMarketOrderDemo {
 
     // place a marketOrder with volume 0.01
     OrderType orderType = (OrderType.BID);
-    BigDecimal tradeableAmount = new BigDecimal("0.01");
+    Double tradeableAmount = new Double("0.01");
 
     MarketOrder marketOrder = new MarketOrder(orderType, tradeableAmount, CurrencyPair.BTC_EUR);
 

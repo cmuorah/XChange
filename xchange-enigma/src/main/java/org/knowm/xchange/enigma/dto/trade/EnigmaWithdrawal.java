@@ -2,7 +2,6 @@ package org.knowm.xchange.enigma.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +17,7 @@ public class EnigmaWithdrawal extends BaseResponse {
   private String withdrawalType;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("currency")
   private String currency;

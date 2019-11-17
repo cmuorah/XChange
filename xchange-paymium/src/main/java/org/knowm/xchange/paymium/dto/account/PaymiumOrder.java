@@ -1,7 +1,6 @@
 package org.knowm.xchange.paymium.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -11,13 +10,13 @@ public class PaymiumOrder {
   private List<PaymiumAccountOperations> accountOperations;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("bitcoin_address")
   private String bitcoinAddress;
 
   @JsonProperty("btc_fee")
-  private BigDecimal btcFee;
+  private Double btcFee;
 
   @JsonProperty("comment")
   private String comment;
@@ -29,25 +28,25 @@ public class PaymiumOrder {
   private String currency;
 
   @JsonProperty("currency_amount")
-  private BigDecimal currencyAmount;
+  private Double currencyAmount;
 
   @JsonProperty("currency_fee")
-  private BigDecimal currencyFee;
+  private Double currencyFee;
 
   @JsonProperty("direction")
   private String direction;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("state")
   private String state;
 
   @JsonProperty("traded_btc")
-  private BigDecimal tradedBtc;
+  private Double tradedBtc;
 
   @JsonProperty("traded_currency")
-  private BigDecimal tradedCurrency;
+  private Double tradedCurrency;
 
   @JsonProperty("tx_id")
   private String txid;
@@ -108,11 +107,11 @@ public class PaymiumOrder {
     this.accountOperations = accountOperations;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
@@ -124,11 +123,11 @@ public class PaymiumOrder {
     this.bitcoinAddress = bitcoinAddress;
   }
 
-  public BigDecimal getBtcFee() {
+  public Double getBtcFee() {
     return btcFee;
   }
 
-  public void setBtcFee(BigDecimal btcFee) {
+  public void setBtcFee(Double btcFee) {
     this.btcFee = btcFee;
   }
 
@@ -156,19 +155,19 @@ public class PaymiumOrder {
     this.currency = currency;
   }
 
-  public BigDecimal getCurrencyAmount() {
+  public Double getCurrencyAmount() {
     return currencyAmount;
   }
 
-  public void setCurrencyAmount(BigDecimal currencyAmount) {
+  public void setCurrencyAmount(Double currencyAmount) {
     this.currencyAmount = currencyAmount;
   }
 
-  public BigDecimal getCurrencyFee() {
+  public Double getCurrencyFee() {
     return currencyFee;
   }
 
-  public void setCurrencyFee(BigDecimal currencyFee) {
+  public void setCurrencyFee(Double currencyFee) {
     this.currencyFee = currencyFee;
   }
 
@@ -180,11 +179,11 @@ public class PaymiumOrder {
     this.direction = direction;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
@@ -196,19 +195,19 @@ public class PaymiumOrder {
     this.state = state;
   }
 
-  public BigDecimal getTradedBtc() {
+  public Double getTradedBtc() {
     return tradedBtc;
   }
 
-  public void setTradedBtc(BigDecimal tradedBtc) {
+  public void setTradedBtc(Double tradedBtc) {
     this.tradedBtc = tradedBtc;
   }
 
-  public BigDecimal getTradedCurrency() {
+  public Double getTradedCurrency() {
     return tradedCurrency;
   }
 
-  public void setTradedCurrency(BigDecimal tradedCurrency) {
+  public void setTradedCurrency(Double tradedCurrency) {
     this.tradedCurrency = tradedCurrency;
   }
 

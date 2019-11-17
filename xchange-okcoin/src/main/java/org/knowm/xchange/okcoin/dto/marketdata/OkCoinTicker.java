@@ -1,28 +1,27 @@
 package org.knowm.xchange.okcoin.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class OkCoinTicker {
 
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal buy;
-  private final BigDecimal sell;
-  private final BigDecimal last;
-  private final BigDecimal vol;
+  private final Double high;
+  private final Double low;
+  private final Double buy;
+  private final Double sell;
+  private final Double last;
+  private final Double vol;
   private final Long contractId;
-  private final BigDecimal unitAmount;
+  private final Double unitAmount;
 
   public OkCoinTicker(
-      @JsonProperty("high") final BigDecimal high,
-      @JsonProperty("low") final BigDecimal low,
-      @JsonProperty("buy") final BigDecimal buy,
-      @JsonProperty("sell") final BigDecimal sell,
-      @JsonProperty("last") final BigDecimal last,
-      @JsonProperty("vol") final BigDecimal vol,
+      @JsonProperty("high") final Double high,
+      @JsonProperty("low") final Double low,
+      @JsonProperty("buy") final Double buy,
+      @JsonProperty("sell") final Double sell,
+      @JsonProperty("last") final Double last,
+      @JsonProperty("vol") final Double vol,
       @JsonProperty("contract_id") final Long contractId,
-      @JsonProperty("unit_amount") final BigDecimal unitAmount) {
+      @JsonProperty("unit_amount") final Double unitAmount) {
 
     this.high = high;
     this.low = low;
@@ -35,37 +34,37 @@ public class OkCoinTicker {
   }
 
   /** @return the high */
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
 
   /** @return the low */
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
 
   /** @return the buy */
-  public BigDecimal getBuy() {
+  public Double getBuy() {
 
     return buy;
   }
 
   /** @return the sell */
-  public BigDecimal getSell() {
+  public Double getSell() {
 
     return sell;
   }
 
   /** @return the last */
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
 
   /** @return the vol */
-  public BigDecimal getVol() {
+  public Double getVol() {
 
     return vol;
   }
@@ -74,7 +73,7 @@ public class OkCoinTicker {
     return contractId;
   }
 
-  public BigDecimal getUnitAmount() {
+  public Double getUnitAmount() {
     return unitAmount;
   }
 

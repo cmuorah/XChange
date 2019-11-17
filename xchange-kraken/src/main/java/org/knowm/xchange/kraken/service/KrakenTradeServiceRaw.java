@@ -201,7 +201,7 @@ public class KrakenTradeServiceRaw extends KrakenBaseService {
         KrakenStandardOrder.getLimitOrderBuilder(
                 limitOrder.getCurrencyPair(),
                 type,
-                limitOrder.getLimitPrice().toPlainString(),
+                limitOrder.getLimitPrice().toString(),
                 limitOrder.getOriginalAmount())
             .withOrderFlags(limitOrder.getOrderFlags())
             .withLeverage(limitOrder.getLeverage());
@@ -221,7 +221,7 @@ public class KrakenTradeServiceRaw extends KrakenBaseService {
               krakenStandardOrder.getOrderType().toApiFormat(),
               krakenStandardOrder.getPrice(),
               krakenStandardOrder.getSecondaryPrice(),
-              krakenStandardOrder.getVolume().toPlainString(),
+              krakenStandardOrder.getVolume().toString(),
               krakenStandardOrder.getLeverage(),
               krakenStandardOrder.getPositionTxId(),
               delimitSet(krakenStandardOrder.getOrderFlags()),
@@ -240,7 +240,7 @@ public class KrakenTradeServiceRaw extends KrakenBaseService {
               krakenStandardOrder.getOrderType().toApiFormat(),
               krakenStandardOrder.getPrice(),
               krakenStandardOrder.getSecondaryPrice(),
-              krakenStandardOrder.getVolume().toPlainString(),
+              krakenStandardOrder.getVolume().toString(),
               krakenStandardOrder.getLeverage(),
               krakenStandardOrder.getPositionTxId(),
               delimitSet(krakenStandardOrder.getOrderFlags()),

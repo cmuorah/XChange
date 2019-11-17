@@ -1,7 +1,6 @@
 package org.knowm.xchange.ripple.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.knowm.xchange.Exchange;
@@ -41,9 +40,9 @@ public class RippleAccountServiceRaw extends RippleBaseService implements ITrans
   }
 
   @Override
-  public BigDecimal getTransferFeeRate(final String address) throws RippleException, IOException {
+  public Double getTransferFeeRate(final String address) throws RippleException, IOException {
     final RippleAccountSettings accountSettings = getRippleAccountSettings(address);
-    return accountSettings.getSettings().getTransferFeeRate().stripTrailingZeros();
+    return accountSettings.getSettings().getTransferFeeRate();
   }
 
   /**

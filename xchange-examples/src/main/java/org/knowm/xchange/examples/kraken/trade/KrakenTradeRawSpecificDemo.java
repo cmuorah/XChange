@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.kraken.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Set;
 import org.knowm.xchange.Exchange;
@@ -27,7 +26,7 @@ public class KrakenTradeRawSpecificDemo {
 
     KrakenStandardOrder order = // stop at -5% loss, take profit at +$10 price increase.
         KrakenStandardOrder.getLimitOrderBuilder(
-                CurrencyPair.BTC_USD, KrakenType.BUY, "100.00", new BigDecimal("2.12345678"))
+                CurrencyPair.BTC_USD, KrakenType.BUY, "100.00", new Double("2.12345678"))
             .withCloseOrder(KrakenOrderType.STOP_LOSS_PROFIT, "#5%", "#10")
             .withValidateOnly(true) // validate only for demo purposes
             .buildOrder();

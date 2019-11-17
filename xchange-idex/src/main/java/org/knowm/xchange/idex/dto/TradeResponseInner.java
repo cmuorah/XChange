@@ -1,13 +1,12 @@
 package org.knowm.xchange.idex.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Objects;
 import org.knowm.xchange.idex.annotations.ApiModelProperty;
 
 public class TradeResponseInner {
 
-  private BigDecimal amount;
+  private Double amount;
   private String date = "";
   private String total = "";
   private String market = "";
@@ -17,18 +16,18 @@ public class TradeResponseInner {
   private String uuid = "";
 
   /** */
-  public TradeResponseInner amount(BigDecimal amount) {
+  public TradeResponseInner amount(Double amount) {
     this.amount = amount;
     return this;
   }
 
   @ApiModelProperty("")
   @JsonProperty("amount")
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 

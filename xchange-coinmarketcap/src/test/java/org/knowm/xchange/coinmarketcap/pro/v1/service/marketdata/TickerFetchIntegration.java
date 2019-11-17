@@ -2,7 +2,6 @@ package org.knowm.xchange.coinmarketcap.pro.v1.service.marketdata;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,8 +35,8 @@ public class TickerFetchIntegration {
 
     assertThat(ticker).isNotNull();
     assertThat(ticker.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
-    assertThat(ticker.getVolume()).isGreaterThan(new BigDecimal("0"));
-    assertThat(ticker.getLast()).isGreaterThan(new BigDecimal("0"));
+    assertThat(ticker.getVolume()).isGreaterThan(new Double("0"));
+    assertThat(ticker.getLast()).isGreaterThan(new Double("0"));
   }
 
   @Test

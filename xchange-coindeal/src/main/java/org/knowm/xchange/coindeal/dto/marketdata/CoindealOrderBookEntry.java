@@ -1,27 +1,26 @@
 package org.knowm.xchange.coindeal.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoindealOrderBookEntry {
 
   @JsonProperty("price")
-  private final BigDecimal price;
+  private final Double price;
 
   @JsonProperty("amount")
-  private final BigDecimal amount;
+  private final Double amount;
 
   public CoindealOrderBookEntry(
-      @JsonProperty("price") BigDecimal price, @JsonProperty("amount") BigDecimal amount) {
+      @JsonProperty("price") Double price, @JsonProperty("amount") Double amount) {
     this.price = price;
     this.amount = amount;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 }

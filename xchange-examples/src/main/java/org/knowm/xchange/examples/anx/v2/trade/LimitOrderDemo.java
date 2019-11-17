@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.anx.v2.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -22,8 +21,8 @@ public class LimitOrderDemo {
 
     // place a limit order for a random amount of BTC at USD 1.25
     OrderType orderType = (OrderType.ASK);
-    BigDecimal tradeableAmount = new BigDecimal("2");
-    BigDecimal limitPrice = new BigDecimal("921");
+    Double tradeableAmount = new Double("2");
+    Double limitPrice = new Double("921");
 
     LimitOrder limitOrder =
         new LimitOrder(orderType, tradeableAmount, CurrencyPair.BTC_USD, "", null, limitPrice);

@@ -1,7 +1,6 @@
 package org.knowm.xchange.anx.v2.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 /** Data object representing depth from ANX */
@@ -66,7 +65,7 @@ public final class ANXDepth {
 
   public static class FilterPrice {
 
-    private final BigDecimal value;
+    private final Double value;
     private final long valueInt;
     private final String currency;
 
@@ -78,7 +77,7 @@ public final class ANXDepth {
      * @param currency
      */
     public FilterPrice(
-        @JsonProperty("value") BigDecimal value,
+        @JsonProperty("value") Double value,
         @JsonProperty("value_int") long valueInt,
         @JsonProperty("currency") String currency) {
 
@@ -87,7 +86,7 @@ public final class ANXDepth {
       this.currency = currency;
     }
 
-    public BigDecimal getValue() {
+    public Double getValue() {
 
       return value;
     }

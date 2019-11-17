@@ -1,7 +1,6 @@
 package org.knowm.xchange.enigma.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -15,7 +14,7 @@ public class EnigmaAccountServiceRaw extends EnigmaBaseService {
     super(exchange);
   }
 
-  public Map<String, BigDecimal> getRiskLimits() throws IOException {
+  public Map<String, Double> getRiskLimits() throws IOException {
     return this.enigmaAuthenticated.getAccountRiskLimits(accessToken());
   }
 

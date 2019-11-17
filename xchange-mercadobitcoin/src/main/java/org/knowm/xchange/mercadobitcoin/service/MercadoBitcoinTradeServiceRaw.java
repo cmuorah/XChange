@@ -1,7 +1,6 @@
 package org.knowm.xchange.mercadobitcoin.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import org.knowm.xchange.Exchange;
@@ -80,10 +79,7 @@ public class MercadoBitcoinTradeServiceRaw extends MercadoBitcoinBaseService {
 
   public MercadoBitcoinBaseTradeApiResult<MercadoBitcoinPlaceLimitOrderResult>
       mercadoBitcoinPlaceLimitOrder(
-          @Nonnull String pair,
-          @Nonnull String type,
-          @Nonnull BigDecimal volume,
-          @Nonnull BigDecimal price)
+          @Nonnull String pair, @Nonnull String type, @Nonnull Double volume, @Nonnull Double price)
           throws IOException {
 
     String method = TRADE;

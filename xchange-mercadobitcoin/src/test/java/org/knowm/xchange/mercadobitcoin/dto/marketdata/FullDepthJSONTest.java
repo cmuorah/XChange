@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /**
@@ -28,9 +27,9 @@ public class FullDepthJSONTest {
     MercadoBitcoinOrderBook orderBook = mapper.readValue(is, MercadoBitcoinOrderBook.class);
 
     // Verify that the example data was unmarshalled correctly
-    assertThat(orderBook.getBids().get(0).get(0)).isEqualTo(new BigDecimal("1004.16826"));
-    assertThat(orderBook.getBids().get(0).get(1)).isEqualTo(new BigDecimal("0.16614"));
-    assertThat(orderBook.getAsks().get(0).get(0)).isEqualTo(new BigDecimal("1019.99999"));
-    assertThat(orderBook.getAsks().get(0).get(1)).isEqualTo(new BigDecimal("0.7"));
+    assertThat(orderBook.getBids().get(0).get(0)).isEqualTo(new Double("1004.16826"));
+    assertThat(orderBook.getBids().get(0).get(1)).isEqualTo(new Double("0.16614"));
+    assertThat(orderBook.getAsks().get(0).get(0)).isEqualTo(new Double("1019.99999"));
+    assertThat(orderBook.getAsks().get(0).get(1)).isEqualTo(new Double("0.7"));
   }
 }

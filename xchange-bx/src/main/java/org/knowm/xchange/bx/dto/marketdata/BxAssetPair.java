@@ -1,23 +1,22 @@
 package org.knowm.xchange.bx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BxAssetPair {
 
   private final String pairingId;
   private final String primaryCurrency;
   private final String secondaryCurrency;
-  private final BigDecimal primaryMin;
-  private final BigDecimal secondaryMin;
+  private final Double primaryMin;
+  private final Double secondaryMin;
   private final boolean active;
 
   public BxAssetPair(
       @JsonProperty("pairing_id") String pairingId,
       @JsonProperty("primary_currency") String primaryCurrency,
       @JsonProperty("secondary_currency") String secondaryCurrency,
-      @JsonProperty("primary_min") BigDecimal primaryMin,
-      @JsonProperty("secondary_min") BigDecimal secondaryMin,
+      @JsonProperty("primary_min") Double primaryMin,
+      @JsonProperty("secondary_min") Double secondaryMin,
       @JsonProperty("active") boolean active) {
     this.pairingId = pairingId;
     this.primaryCurrency = primaryCurrency;
@@ -35,7 +34,7 @@ public class BxAssetPair {
     return secondaryCurrency;
   }
 
-  public BigDecimal getPrimaryMin() {
+  public Double getPrimaryMin() {
     return primaryMin;
   }
 

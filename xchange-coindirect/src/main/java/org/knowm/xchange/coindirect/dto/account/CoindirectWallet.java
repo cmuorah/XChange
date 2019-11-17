@@ -2,7 +2,6 @@ package org.knowm.xchange.coindirect.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.coindirect.dto.meta.CoindirectCurrency;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -14,7 +13,7 @@ public class CoindirectWallet {
   public final boolean supportsDeposits;
   public final String address;
   public final String lookup;
-  public final BigDecimal balance;
+  public final Double balance;
 
   public CoindirectWallet(
       @JsonProperty("id") long id,
@@ -24,7 +23,7 @@ public class CoindirectWallet {
       @JsonProperty("supportsDeposits") boolean supportsDeposits,
       @JsonProperty("address") String address,
       @JsonProperty("lookup") String lookup,
-      @JsonProperty("balance") BigDecimal balance) {
+      @JsonProperty("balance") Double balance) {
     this.id = id;
     this.description = description;
     this.currency = currency;

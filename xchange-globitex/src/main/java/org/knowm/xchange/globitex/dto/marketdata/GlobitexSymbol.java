@@ -2,7 +2,6 @@ package org.knowm.xchange.globitex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class GlobitexSymbol implements Serializable {
 
@@ -10,13 +9,13 @@ public class GlobitexSymbol implements Serializable {
   private final String symbol;
 
   @JsonProperty("priceIncrement")
-  private final BigDecimal priceIncrement;
+  private final Double priceIncrement;
 
   @JsonProperty("sizeIncrement")
-  private final BigDecimal sizeIncrement;
+  private final Double sizeIncrement;
 
   @JsonProperty("sizeMin")
-  private final BigDecimal sizeMin;
+  private final Double sizeMin;
 
   @JsonProperty("currency")
   private final String currency;
@@ -26,9 +25,9 @@ public class GlobitexSymbol implements Serializable {
 
   public GlobitexSymbol(
       @JsonProperty("symbol") String symbol,
-      @JsonProperty("priceIncrement") BigDecimal priceIncrement,
-      @JsonProperty("sizeIncrement") BigDecimal sizeIncrement,
-      @JsonProperty("sizeMin") BigDecimal sizeMin,
+      @JsonProperty("priceIncrement") Double priceIncrement,
+      @JsonProperty("sizeIncrement") Double sizeIncrement,
+      @JsonProperty("sizeMin") Double sizeMin,
       @JsonProperty("currency") String currency,
       @JsonProperty("commodity") String commodity) {
     this.symbol = symbol;
@@ -43,15 +42,15 @@ public class GlobitexSymbol implements Serializable {
     return symbol;
   }
 
-  public BigDecimal getPriceIncrement() {
+  public Double getPriceIncrement() {
     return priceIncrement;
   }
 
-  public BigDecimal getSizeIncrement() {
+  public Double getSizeIncrement() {
     return sizeIncrement;
   }
 
-  public BigDecimal getSizeMin() {
+  public Double getSizeMin() {
     return sizeMin;
   }
 

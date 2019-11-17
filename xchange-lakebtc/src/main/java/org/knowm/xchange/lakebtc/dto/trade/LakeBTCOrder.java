@@ -1,27 +1,26 @@
 package org.knowm.xchange.lakebtc.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Created by cristian.lucaci on 12/19/2014. */
 public class LakeBTCOrder {
 
-  private final BigDecimal trades;
+  private final Double trades;
 
-  private final BigDecimal totalTradedBtc;
+  private final Double totalTradedBtc;
 
-  private final BigDecimal totalTradedCurrency;
+  private final Double totalTradedCurrency;
 
   private final String currency;
 
-  private final BigDecimal ppc;
+  private final Double ppc;
 
   public LakeBTCOrder(
-      @JsonProperty("trades") BigDecimal trades,
-      @JsonProperty("total_traded_btc") BigDecimal totalTradedBtc,
-      @JsonProperty("total_traded_currency") BigDecimal totalTradedCurrency,
+      @JsonProperty("trades") Double trades,
+      @JsonProperty("total_traded_btc") Double totalTradedBtc,
+      @JsonProperty("total_traded_currency") Double totalTradedCurrency,
       @JsonProperty("currency") String currency,
-      @JsonProperty("ppc") BigDecimal ppc) {
+      @JsonProperty("ppc") Double ppc) {
     this.trades = trades;
     this.totalTradedBtc = totalTradedBtc;
     this.totalTradedCurrency = totalTradedCurrency;
@@ -29,15 +28,15 @@ public class LakeBTCOrder {
     this.ppc = ppc;
   }
 
-  public BigDecimal getTrades() {
+  public Double getTrades() {
     return trades;
   }
 
-  public BigDecimal getTotalTradedBtc() {
+  public Double getTotalTradedBtc() {
     return totalTradedBtc;
   }
 
-  public BigDecimal getTotalTradedCurrency() {
+  public Double getTotalTradedCurrency() {
     return totalTradedCurrency;
   }
 
@@ -45,7 +44,7 @@ public class LakeBTCOrder {
     return currency;
   }
 
-  public BigDecimal getPpc() {
+  public Double getPpc() {
     return ppc;
   }
 }

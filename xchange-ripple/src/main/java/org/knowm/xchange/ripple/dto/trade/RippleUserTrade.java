@@ -1,6 +1,5 @@
 package org.knowm.xchange.ripple.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -12,23 +11,23 @@ public class RippleUserTrade extends UserTrade {
   private final String baseCounterparty;
   private final String counterCounterparty;
 
-  private final BigDecimal baseTransferFee;
-  private final BigDecimal counterTransferFee;
+  private final Double baseTransferFee;
+  private final Double counterTransferFee;
 
   public RippleUserTrade(
       final OrderType type,
-      final BigDecimal originalAmount,
+      final Double originalAmount,
       final CurrencyPair currencyPair,
-      final BigDecimal price,
+      final Double price,
       final Date timestamp,
       final String id,
       final String orderId,
-      final BigDecimal feeAmount,
+      final Double feeAmount,
       final Currency feeCurrency,
       final String baseCounterparty,
       final String counterCounterparty,
-      final BigDecimal baseTransferFee,
-      final BigDecimal counterTransferFee) {
+      final Double baseTransferFee,
+      final Double counterTransferFee) {
     super(
         type, originalAmount, currencyPair, price, timestamp, id, orderId, feeAmount, feeCurrency);
     this.baseCounterparty = baseCounterparty;
@@ -46,7 +45,7 @@ public class RippleUserTrade extends UserTrade {
     return counterCounterparty;
   }
 
-  public BigDecimal getBaseTransferFee() {
+  public Double getBaseTransferFee() {
     return baseTransferFee;
   }
 
@@ -54,7 +53,7 @@ public class RippleUserTrade extends UserTrade {
     return currencyPair.base;
   }
 
-  public BigDecimal getCounterTransferFee() {
+  public Double getCounterTransferFee() {
     return counterTransferFee;
   }
 
@@ -67,8 +66,8 @@ public class RippleUserTrade extends UserTrade {
     private String baseCounterparty = "";
     private String counterCounterparty = "";
 
-    private BigDecimal baseTransferFee = BigDecimal.ZERO;
-    private BigDecimal counterTransferFee = BigDecimal.ZERO;
+    private Double baseTransferFee = 0d;
+    private Double counterTransferFee = 0d;
 
     public static Builder from(final RippleUserTrade trade) {
       final Builder builder =
@@ -99,12 +98,12 @@ public class RippleUserTrade extends UserTrade {
       return this;
     }
 
-    public Builder baseTransferFee(final BigDecimal value) {
+    public Builder baseTransferFee(final Double value) {
       baseTransferFee = value;
       return this;
     }
 
-    public Builder counterTransferFee(final BigDecimal value) {
+    public Builder counterTransferFee(final Double value) {
       counterTransferFee = value;
       return this;
     }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.bitstamp.account;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitstamp.BitstampAuthenticatedV2.BankCurrency;
 import org.knowm.xchange.bitstamp.BitstampAuthenticatedV2.Country;
@@ -31,7 +30,7 @@ public class BitstampFiatWithdrawal {
     System.out.println("BitstampDepositAddress address: " + depositAddress);
 
     accountService.withdrawSepa(
-        new BigDecimal("150"),
+        new Double("150"),
         "Test User",
         "BY13NBRB3600900000002Z00AB00",
         "DABAIE2D",
@@ -41,7 +40,7 @@ public class BitstampFiatWithdrawal {
         Country.Belarus.alpha2);
 
     accountService.withdrawInternational(
-        new BigDecimal("150"),
+        new Double("150"),
         "Test User",
         "BY13NBRB3600900000002Z00AB00",
         "DABAIE2D",

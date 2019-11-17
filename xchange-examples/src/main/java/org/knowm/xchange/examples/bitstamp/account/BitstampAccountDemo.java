@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.bitstamp.account;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitstamp.dto.account.BitstampBalance;
@@ -48,7 +47,7 @@ public class BitstampAccountDemo {
     System.out.println("Deposit address: " + depositAddress);
 
     String withdrawResult =
-        accountService.withdrawFunds(Currency.BTC, new BigDecimal(1).movePointLeft(4), "XXX");
+        accountService.withdrawFunds(Currency.BTC, new Double(1) / 10000.0, "XXX");
     System.out.println("withdrawResult = " + withdrawResult);
   }
 
@@ -75,7 +74,7 @@ public class BitstampAccountDemo {
     }
 
     BitstampWithdrawal withdrawResult =
-        accountService.withdrawBtcFunds(new BigDecimal(1).movePointLeft(4), "XXX");
+        accountService.withdrawBtcFunds(new Double(1) / 10000.0, "XXX");
     System.out.println("BitstampBooleanResponse = " + withdrawResult);
   }
 }

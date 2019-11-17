@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitstamp.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -86,7 +85,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
   }
 
   public BitstampWithdrawal withdrawBitstampFunds(
-      Currency currency, BigDecimal amount, final String address) throws IOException {
+      Currency currency, Double amount, final String address) throws IOException {
     BitstampWithdrawal response = null;
 
     if (currency.equals(Currency.XRP)) {
@@ -119,7 +118,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
     return response;
   }
 
-  public BitstampWithdrawal withdrawBtcFunds(BigDecimal amount, String address) throws IOException {
+  public BitstampWithdrawal withdrawBtcFunds(Double amount, String address) throws IOException {
 
     try {
       BitstampWithdrawal response =
@@ -136,7 +135,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
     }
   }
 
-  public BitstampWithdrawal withdrawLtcFunds(BigDecimal amount, String address) throws IOException {
+  public BitstampWithdrawal withdrawLtcFunds(Double amount, String address) throws IOException {
 
     try {
       BitstampWithdrawal response =
@@ -153,7 +152,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
     }
   }
 
-  public BitstampWithdrawal withdrawEthFunds(BigDecimal amount, String address) throws IOException {
+  public BitstampWithdrawal withdrawEthFunds(Double amount, String address) throws IOException {
 
     try {
       BitstampWithdrawal response =
@@ -171,7 +170,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
   }
 
   public BitstampWithdrawal withdrawRippleFunds(
-      BigDecimal amount, String address, String destinationTag) throws IOException {
+      Double amount, String address, String destinationTag) throws IOException {
 
     try {
       BitstampWithdrawal response =
@@ -189,7 +188,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
     }
   }
 
-  public BitstampWithdrawal withdrawBchFunds(BigDecimal amount, String address) throws IOException {
+  public BitstampWithdrawal withdrawBchFunds(Double amount, String address) throws IOException {
 
     try {
       BitstampWithdrawal response =
@@ -308,7 +307,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
    * @return true if withdrawal was successful. Note that due to a bug on Bitstamp's side,
    *     withdrawal always fails if two-factor authentication is enabled for the account.
    */
-  public boolean withdrawToRipple(BigDecimal amount, Currency currency, String rippleAddress)
+  public boolean withdrawToRipple(Double amount, Currency currency, String rippleAddress)
       throws IOException {
 
     try {
@@ -392,7 +391,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
   }
 
   public BitstampTransferBalanceResponse transferSubAccountBalanceToMain(
-      BigDecimal amount, String currency, String subAccount) throws IOException {
+      Double amount, String currency, String subAccount) throws IOException {
     try {
       return bitstampAuthenticatedV2.transferSubAccountBalanceToMain(
           apiKey, signatureCreator, nonceFactory, amount, currency, subAccount);
@@ -402,7 +401,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
   }
 
   public BitstampWithdrawal withdrawSepa(
-      BigDecimal amount,
+      Double amount,
       String name,
       String IBAN,
       String BIK,
@@ -416,7 +415,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
   }
 
   public BitstampWithdrawal withdrawSepa(
-      BigDecimal amount,
+      Double amount,
       String name,
       String IBAN,
       String BIK,
@@ -458,7 +457,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
   }
 
   public BitstampWithdrawal withdrawInternational(
-      BigDecimal amount,
+      Double amount,
       String name,
       String IBAN,
       String BIK,
@@ -493,7 +492,7 @@ public class BitstampAccountServiceRaw extends BitstampBaseService {
   }
 
   public BitstampWithdrawal withdrawInternational(
-      BigDecimal amount,
+      Double amount,
       String name,
       String IBAN,
       String BIK,

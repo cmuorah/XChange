@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptonit2.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.cryptonit2.CryptonitAuthenticated;
 import org.knowm.xchange.cryptonit2.CryptonitAuthenticatedV2;
@@ -55,7 +54,7 @@ public class CryptonitTradeServiceRaw extends CryptonitBaseService {
   }
 
   public CryptonitOrder placeCryptonitMarketOrder(
-      CurrencyPair pair, CryptonitAuthenticatedV2.Side side, BigDecimal originalAmount)
+      CurrencyPair pair, CryptonitAuthenticatedV2.Side side, Double originalAmount)
       throws IOException {
 
     try {
@@ -67,10 +66,7 @@ public class CryptonitTradeServiceRaw extends CryptonitBaseService {
   }
 
   public CryptonitOrder placeCryptonitOrder(
-      CurrencyPair pair,
-      CryptonitAuthenticatedV2.Side side,
-      BigDecimal originalAmount,
-      BigDecimal price)
+      CurrencyPair pair, CryptonitAuthenticatedV2.Side side, Double originalAmount, Double price)
       throws IOException {
 
     try {

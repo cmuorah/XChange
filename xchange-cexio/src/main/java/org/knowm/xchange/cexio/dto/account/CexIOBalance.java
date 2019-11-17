@@ -1,15 +1,14 @@
 package org.knowm.xchange.cexio.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 
 /** Author: brox Since: 2/7/14 */
 public class CexIOBalance {
 
-  private final BigDecimal available;
-  private final BigDecimal orders;
-  private final BigDecimal bonus;
+  private final Double available;
+  private final Double orders;
+  private final Double bonus;
 
   /**
    * Constructor
@@ -19,26 +18,26 @@ public class CexIOBalance {
    * @param bonus Referral program bonus
    */
   public CexIOBalance(
-      @JsonProperty("available") BigDecimal available,
-      @JsonProperty("orders") BigDecimal orders,
-      @JsonProperty("bonus") BigDecimal bonus) {
+      @JsonProperty("available") Double available,
+      @JsonProperty("orders") Double orders,
+      @JsonProperty("bonus") Double bonus) {
 
     this.available = available;
     this.orders = orders;
     this.bonus = bonus;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
 
     return available;
   }
 
-  public BigDecimal getOrders() {
+  public Double getOrders() {
 
     return orders;
   }
 
-  public BigDecimal getBonus() {
+  public Double getBonus() {
 
     return bonus;
   }

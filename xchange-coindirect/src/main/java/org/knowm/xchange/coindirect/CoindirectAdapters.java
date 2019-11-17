@@ -1,6 +1,5 @@
 package org.knowm.xchange.coindirect;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.knowm.xchange.coindirect.dto.marketdata.CoindirectOrderbook;
@@ -92,9 +91,9 @@ public class CoindirectAdapters {
     CurrencyPair currencyPair = toCurrencyPair(order.symbol);
 
     Order.OrderStatus orderStatus = adaptOrderStatus(order.status);
-    final BigDecimal averagePrice;
-    if (order.executedAmount.signum() == 0) {
-      averagePrice = BigDecimal.ZERO;
+    final Double averagePrice;
+    if (Math.signum(order.executedAmount) == 0) {
+      averagePrice = 0d;
     } else {
       averagePrice = order.executedPrice;
     }

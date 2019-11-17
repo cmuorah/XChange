@@ -1,20 +1,19 @@
 package org.knowm.xchange.cobinhood.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.cobinhood.dto.CobinhoodOrderSide;
 
 public class CobinhoodTrade {
   private final String id;
-  private final BigDecimal price;
-  private final BigDecimal size;
+  private final Double price;
+  private final Double size;
   private final CobinhoodOrderSide makerSide;
   private final Long timestamp;
 
   public CobinhoodTrade(
       @JsonProperty("id") String id,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("price") Double price,
+      @JsonProperty("size") Double size,
       @JsonProperty("maker_side") CobinhoodOrderSide makerSide,
       @JsonProperty("timestamp") Long timestamp) {
     this.id = id;
@@ -28,11 +27,11 @@ public class CobinhoodTrade {
     return id;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 

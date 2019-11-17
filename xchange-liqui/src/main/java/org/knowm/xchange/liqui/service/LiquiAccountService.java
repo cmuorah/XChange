@@ -1,7 +1,6 @@
 package org.knowm.xchange.liqui.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
@@ -25,8 +24,8 @@ public class LiquiAccountService extends LiquiAccountServiceRaw implements Accou
   }
 
   @Override
-  public String withdrawFunds(
-      final Currency currency, final BigDecimal amount, final String address) throws IOException {
+  public String withdrawFunds(final Currency currency, final Double amount, final String address)
+      throws IOException {
     throw new NotAvailableFromExchangeException();
   }
 

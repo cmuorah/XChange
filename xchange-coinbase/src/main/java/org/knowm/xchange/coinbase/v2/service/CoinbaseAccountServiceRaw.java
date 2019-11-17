@@ -3,7 +3,6 @@ package org.knowm.xchange.coinbase.v2.service;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.MediaType;
@@ -21,7 +20,7 @@ class CoinbaseAccountServiceRaw extends CoinbaseBaseService {
 
   public Map getTransactions(String accountId) throws IOException {
     String apiKey = exchange.getExchangeSpecification().getApiKey();
-    BigDecimal timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
+    Double timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
 
     return coinbase.getTransactions(
         Coinbase.CB_VERSION_VALUE, apiKey, signatureCreator2, timestamp, accountId);
@@ -29,7 +28,7 @@ class CoinbaseAccountServiceRaw extends CoinbaseBaseService {
 
   public Map getDeposits(String accountId) throws IOException {
     String apiKey = exchange.getExchangeSpecification().getApiKey();
-    BigDecimal timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
+    Double timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
 
     return coinbase.getDeposits(
         Coinbase.CB_VERSION_VALUE, apiKey, signatureCreator2, timestamp, accountId);
@@ -37,7 +36,7 @@ class CoinbaseAccountServiceRaw extends CoinbaseBaseService {
 
   public Map getWithdrawals(String accountId) throws IOException {
     String apiKey = exchange.getExchangeSpecification().getApiKey();
-    BigDecimal timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
+    Double timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
 
     return coinbase.getWithdrawals(
         Coinbase.CB_VERSION_VALUE, apiKey, signatureCreator2, timestamp, accountId);
@@ -51,7 +50,7 @@ class CoinbaseAccountServiceRaw extends CoinbaseBaseService {
    */
   public List<CoinbaseAccount> getCoinbaseAccounts() throws IOException {
     String apiKey = exchange.getExchangeSpecification().getApiKey();
-    BigDecimal timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
+    Double timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
 
     return coinbase
         .getAccounts(Coinbase.CB_VERSION_VALUE, apiKey, signatureCreator2, timestamp)
@@ -66,7 +65,7 @@ class CoinbaseAccountServiceRaw extends CoinbaseBaseService {
    */
   public CoinbaseAccount getCoinbaseAccount(Currency currency) throws IOException {
     String apiKey = exchange.getExchangeSpecification().getApiKey();
-    BigDecimal timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
+    Double timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
 
     return coinbase
         .getAccount(
@@ -90,7 +89,7 @@ class CoinbaseAccountServiceRaw extends CoinbaseBaseService {
 
     String path = "/v2/accounts";
     String apiKey = exchange.getExchangeSpecification().getApiKey();
-    BigDecimal timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
+    Double timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
     String body = new ObjectMapper().writeValueAsString(payload);
     String signature = getSignature(timestamp, HttpMethod.POST, path, body);
     showCurl(HttpMethod.POST, apiKey, timestamp, signature, path, body);
@@ -114,7 +113,7 @@ class CoinbaseAccountServiceRaw extends CoinbaseBaseService {
    */
   public List<CoinbasePaymentMethod> getCoinbasePaymentMethods() throws IOException {
     String apiKey = exchange.getExchangeSpecification().getApiKey();
-    BigDecimal timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
+    Double timestamp = coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData().getEpoch();
 
     return coinbase
         .getPaymentMethods(Coinbase.CB_VERSION_VALUE, apiKey, signatureCreator2, timestamp)

@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -36,7 +35,7 @@ public class GateioTradeJsonTest {
     assertThat(openOrder.getId()).isEqualTo("3");
     assertThat(openOrder.getCurrencyPair().split("_")[0]).isEqualTo("eth");
     assertThat(openOrder.getCurrencyPair().split("_")[1]).isEqualTo("btc");
-    assertThat(openOrder.getAmount()).isEqualTo(new BigDecimal("100000"));
+    assertThat(openOrder.getAmount()).isEqualTo(new Double("100000"));
   }
 
   @Test

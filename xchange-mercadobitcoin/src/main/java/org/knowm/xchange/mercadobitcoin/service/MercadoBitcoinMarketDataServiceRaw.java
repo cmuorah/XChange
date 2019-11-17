@@ -1,7 +1,6 @@
 package org.knowm.xchange.mercadobitcoin.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.exceptions.ExchangeException;
@@ -58,13 +57,13 @@ public class MercadoBitcoinMarketDataServiceRaw extends MercadoBitcoinBaseServic
       transactions = mercadoBitcoin.getTransactions(currencyPair.base.getSymbol());
 
     } else if (args.length == 1) {
-      BigDecimal time = new BigDecimal((Long) args[0]);
+      Double time = new Double((Long) args[0]);
       transactions =
           mercadoBitcoin.getTransactions(currencyPair.base.getSymbol(), time.longValue() / 1000L);
 
     } else if (args.length == 2) {
-      BigDecimal timeStart = new BigDecimal((Long) args[0]);
-      BigDecimal timeEnd = new BigDecimal((Long) args[1]);
+      Double timeStart = new Double((Long) args[0]);
+      Double timeEnd = new Double((Long) args[1]);
 
       transactions =
           mercadoBitcoin.getTransactions(

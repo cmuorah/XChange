@@ -7,7 +7,6 @@ import static org.junit.Assert.assertEquals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -63,8 +62,8 @@ public class ExchangeMetaDataTest {
         .isEqualTo(Currency.USD);
     assertThat(metaData.getCurrencyPairs().get(CurrencyPair.BTC_USD).getPriceScale()).isEqualTo(2);
     assertThat(metaData.getCurrencyPairs().get(CurrencyPair.BTC_USD).getMinimumAmount())
-        .isEqualTo(new BigDecimal("0.0001"));
+        .isEqualTo(new Double("0.0001"));
     assertThat(metaData.getCurrencyPairs().get(CurrencyPair.BTC_USD).getMaximumAmount())
-        .isEqualTo(new BigDecimal("100"));
+        .isEqualTo(new Double("100"));
   }
 }

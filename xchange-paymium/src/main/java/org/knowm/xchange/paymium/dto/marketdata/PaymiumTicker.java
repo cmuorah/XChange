@@ -1,20 +1,19 @@
 package org.knowm.xchange.paymium.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public final class PaymiumTicker {
 
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal volume;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
-  private final BigDecimal midpoint;
+  private final Double high;
+  private final Double low;
+  private final Double volume;
+  private final Double bid;
+  private final Double ask;
+  private final Double midpoint;
   private final long at;
-  private final BigDecimal price;
-  private final BigDecimal vwap;
-  private final BigDecimal variation;
+  private final Double price;
+  private final Double vwap;
+  private final Double variation;
   private final String currency;
 
   /**
@@ -33,16 +32,16 @@ public final class PaymiumTicker {
    * @param currency
    */
   public PaymiumTicker(
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("midpoint") BigDecimal midpoint,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("midpoint") Double midpoint,
       @JsonProperty("at") long at,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("vwap") BigDecimal vwap,
-      @JsonProperty("variation") BigDecimal variation,
+      @JsonProperty("price") Double price,
+      @JsonProperty("vwap") Double vwap,
+      @JsonProperty("variation") Double variation,
       @JsonProperty("currency") String currency) {
 
     this.high = high;
@@ -58,32 +57,32 @@ public final class PaymiumTicker {
     this.currency = currency;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return ask;
   }
 
-  public BigDecimal getMidpoint() {
+  public Double getMidpoint() {
 
     return midpoint;
   }
@@ -93,17 +92,17 @@ public final class PaymiumTicker {
     return at;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getVwap() {
+  public Double getVwap() {
 
     return vwap;
   }
 
-  public BigDecimal getVariation() {
+  public Double getVariation() {
 
     return variation;
   }

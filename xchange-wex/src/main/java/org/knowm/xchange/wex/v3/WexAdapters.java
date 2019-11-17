@@ -1,14 +1,9 @@
 package org.knowm.xchange.wex.v3;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
+import net.openhft.chronicle.core.Maths;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderStatus;
@@ -24,11 +19,7 @@ import org.knowm.xchange.dto.meta.CurrencyMetaData;
 import org.knowm.xchange.dto.meta.CurrencyPairMetaData;
 import org.knowm.xchange.dto.meta.ExchangeMetaData;
 import org.knowm.xchange.dto.meta.RateLimit;
-import org.knowm.xchange.dto.trade.LimitOrder;
-import org.knowm.xchange.dto.trade.MarketOrder;
-import org.knowm.xchange.dto.trade.OpenOrders;
-import org.knowm.xchange.dto.trade.UserTrade;
-import org.knowm.xchange.dto.trade.UserTrades;
+import org.knowm.xchange.dto.trade.*;
 import org.knowm.xchange.utils.DateUtils;
 import org.knowm.xchange.wex.v3.dto.account.WexAccountInfo;
 import org.knowm.xchange.wex.v3.dto.marketdata.WexExchangeInfo;
@@ -51,44 +42,21 @@ public final class WexAdapters {
   /** private Constructor */
   private WexAdapters() {}
 
-  /**
-   * Adapts a List of BTCEOrders to a List of LimitOrders
-   *
-   * @param bTCEOrders
-   * @param currencyPair
-   * @param orderTypeString
-   * @param id
-   * @return
-   */
   public static List<LimitOrder> adaptOrders(
-      List<BigDecimal[]> bTCEOrders, CurrencyPair currencyPair, String orderTypeString, String id) {
+      List<Double[]> bTCEOrders, CurrencyPair currencyPair, String orderTypeString, String id) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
     OrderType orderType = orderTypeString.equalsIgnoreCase("bid") ? OrderType.BID : OrderType.ASK;
 
-    for (BigDecimal[] btceOrder : bTCEOrders) {
+    for (Double[] btceOrder : bTCEOrders) {
       limitOrders.add(adaptOrder(btceOrder[1], btceOrder[0], currencyPair, orderType, id));
     }
 
     return limitOrders;
   }
 
-  /**
-   * Adapts a WexOrder to a LimitOrder
-   *
-   * @param amount
-   * @param price
-   * @param currencyPair
-   * @param orderType
-   * @param id
-   * @return
-   */
   public static LimitOrder adaptOrder(
-      BigDecimal amount,
-      BigDecimal price,
-      CurrencyPair currencyPair,
-      OrderType orderType,
-      String id) {
+      Double amount, Double price, CurrencyPair currencyPair, OrderType orderType, String id) {
 
     return new LimitOrder(orderType, amount, currencyPair, id, null, price);
   }
@@ -104,8 +72,8 @@ public final class WexAdapters {
 
     OrderType orderType =
         bTCETrade.getTradeType().equalsIgnoreCase("bid") ? OrderType.BID : OrderType.ASK;
-    BigDecimal amount = bTCETrade.getAmount();
-    BigDecimal price = bTCETrade.getPrice();
+    Double amount = bTCETrade.getAmount();
+    Double price = bTCETrade.getPrice();
     Date date = DateUtils.fromMillisUtc(bTCETrade.getDate() * 1000L);
 
     final String tradeId = String.valueOf(bTCETrade.getTid());
@@ -142,13 +110,13 @@ public final class WexAdapters {
    */
   public static Ticker adaptTicker(WexTicker bTCETicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = bTCETicker.getLast();
-    BigDecimal bid = bTCETicker.getSell();
-    BigDecimal ask = bTCETicker.getBuy();
-    BigDecimal high = bTCETicker.getHigh();
-    BigDecimal low = bTCETicker.getLow();
-    BigDecimal avg = bTCETicker.getAvg();
-    BigDecimal volume = bTCETicker.getVolCur();
+    Double last = bTCETicker.getLast();
+    Double bid = bTCETicker.getSell();
+    Double ask = bTCETicker.getBuy();
+    Double high = bTCETicker.getHigh();
+    Double low = bTCETicker.getLow();
+    Double avg = bTCETicker.getAvg();
+    Double volume = bTCETicker.getVolCur();
     Date timestamp = DateUtils.fromMillisUtc(bTCETicker.getUpdated() * 1000L);
 
     return new Ticker.Builder()
@@ -167,11 +135,11 @@ public final class WexAdapters {
   public static Wallet adaptWallet(WexAccountInfo wexAccountInfo) {
 
     List<Balance> balances = new ArrayList<>();
-    Map<String, BigDecimal> funds = wexAccountInfo.getFunds();
+    Map<String, Double> funds = wexAccountInfo.getFunds();
 
     for (String lcCurrency : funds.keySet()) {
       /* BTC-E signals DASH as DSH. This is a different coin. Translate in correct DASH name */
-      BigDecimal fund = funds.get(lcCurrency);
+      Double fund = funds.get(lcCurrency);
 
       Currency currency = adaptCurrencyIn(lcCurrency);
       balances.add(new Balance(currency, fund));
@@ -186,7 +154,7 @@ public final class WexAdapters {
       WexOrder bTCEOrder = btceOrderMap.get(id);
       OrderType orderType =
           bTCEOrder.getType() == WexOrder.Type.buy ? OrderType.BID : OrderType.ASK;
-      BigDecimal price = bTCEOrder.getRate();
+      Double price = bTCEOrder.getRate();
       Date timestamp = DateUtils.fromMillisUtc(bTCEOrder.getTimestampCreated() * 1000L);
       CurrencyPair currencyPair = adaptCurrencyPair(bTCEOrder.getPair());
 
@@ -204,8 +172,8 @@ public final class WexAdapters {
       WexTradeHistoryResult result = entry.getValue();
       OrderType type =
           result.getType() == WexTradeHistoryResult.Type.buy ? OrderType.BID : OrderType.ASK;
-      BigDecimal price = result.getRate();
-      BigDecimal originalAmount = result.getAmount();
+      Double price = result.getRate();
+      Double originalAmount = result.getAmount();
       Date timeStamp = DateUtils.fromMillisUtc(result.getTimestamp() * 1000L);
       String orderId = String.valueOf(result.getOrderId());
       String tradeId = String.valueOf(entry.getKey());
@@ -236,7 +204,7 @@ public final class WexAdapters {
 
     OrderType orderType =
         orderInfo.getType() == WexOrderInfoResult.Type.buy ? OrderType.BID : OrderType.ASK;
-    BigDecimal price = orderInfo.getRate();
+    Double price = orderInfo.getRate();
     Date timestamp = DateUtils.fromMillisUtc(orderInfo.getTimestampCreated() * 1000L);
     CurrencyPair currencyPair = adaptCurrencyPair(orderInfo.getPair());
     OrderStatus orderStatus = null;
@@ -265,7 +233,7 @@ public final class WexAdapters {
         timestamp,
         price,
         price,
-        orderInfo.getStartAmount().subtract(orderInfo.getAmount()),
+        orderInfo.getStartAmount() - (orderInfo.getAmount()),
         null,
         orderStatus);
   }
@@ -314,7 +282,7 @@ public final class WexAdapters {
   private static void addCurrencyMetaData(
       Currency symbol, Map<Currency, CurrencyMetaData> currencies, WexMetaData wexMetaData) {
     if (!currencies.containsKey(symbol)) {
-      BigDecimal withdrawalFee =
+      Double withdrawalFee =
           wexMetaData.getCurrencies().get(symbol) == null
               ? null
               : wexMetaData.getCurrencies().get(symbol).getWithdrawalFee();
@@ -324,21 +292,21 @@ public final class WexAdapters {
 
   public static CurrencyPairMetaData toMarketMetaData(WexPairInfo info, WexMetaData wexMetaData) {
     int priceScale = info.getDecimals();
-    BigDecimal minimumAmount = withScale(info.getMinAmount(), wexMetaData.amountScale);
-    BigDecimal feeFraction = info.getFee().movePointLeft(2);
+    Double minimumAmount = withScale(info.getMinAmount(), wexMetaData.amountScale);
+    Double feeFraction = info.getFee() / 100;
 
     return new CurrencyPairMetaData(feeFraction, minimumAmount, null, priceScale, null);
   }
 
-  private static BigDecimal withScale(BigDecimal value, int priceScale) {
+  private static Double withScale(Double value, int priceScale) {
     /*
      * Last time I checked BTC-e returned an erroneous JSON result, where the minimum price for LTC/EUR was .0001 and the price scale was 3
      */
     try {
-      return value.setScale(priceScale, RoundingMode.UNNECESSARY);
+      return Maths.roundN(value, priceScale);
     } catch (ArithmeticException e) {
       log.debug("Could not round {} to {} decimal places: {}", value, priceScale, e.getMessage());
-      return value.setScale(priceScale, RoundingMode.CEILING);
+      return Maths.roundN(value, priceScale);
     }
   }
 
@@ -353,7 +321,7 @@ public final class WexAdapters {
       MarketOrder marketOrder, WexExchangeInfo wexExchangeInfo) {
     WexPairInfo wexPairInfo =
         wexExchangeInfo.getPairs().get(getPair(marketOrder.getCurrencyPair()));
-    BigDecimal limitPrice =
+    Double limitPrice =
         marketOrder.getType() == OrderType.BID
             ? wexPairInfo.getMaxPrice()
             : wexPairInfo.getMinPrice();

@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.node.NumericNode;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class CoinbaseProCandleDeserializer extends StdDeserializer<CoinbaseProCandle> {
@@ -39,10 +38,10 @@ public class CoinbaseProCandleDeserializer extends StdDeserializer<CoinbaseProCa
     }
     return new CoinbaseProCandle(
         new Date(((NumericNode) jo.get(0)).asLong() * 1000),
-        new BigDecimal(((NumericNode) jo.get(3)).asText()),
-        new BigDecimal(((NumericNode) jo.get(2)).asText()),
-        new BigDecimal(((NumericNode) jo.get(1)).asText()),
-        new BigDecimal(((NumericNode) jo.get(4)).asText()),
-        new BigDecimal(((NumericNode) jo.get(5)).asText()));
+        new Double(((NumericNode) jo.get(3)).asText()),
+        new Double(((NumericNode) jo.get(2)).asText()),
+        new Double(((NumericNode) jo.get(1)).asText()),
+        new Double(((NumericNode) jo.get(4)).asText()),
+        new Double(((NumericNode) jo.get(5)).asText()));
   }
 }

@@ -1,46 +1,14 @@
 package org.knowm.xchange.anx.v2.bootstrap;
 
 import static java.lang.System.out;
-import static java.math.BigDecimal.ONE;
-import static org.knowm.xchange.currency.Currency.AUD;
-import static org.knowm.xchange.currency.Currency.BGC;
-import static org.knowm.xchange.currency.Currency.BTC;
-import static org.knowm.xchange.currency.Currency.CAD;
-import static org.knowm.xchange.currency.Currency.CHF;
-import static org.knowm.xchange.currency.Currency.CNY;
-import static org.knowm.xchange.currency.Currency.DOGE;
-import static org.knowm.xchange.currency.Currency.EGD;
-import static org.knowm.xchange.currency.Currency.EUR;
-import static org.knowm.xchange.currency.Currency.GBP;
-import static org.knowm.xchange.currency.Currency.HKD;
-import static org.knowm.xchange.currency.Currency.JPY;
-import static org.knowm.xchange.currency.Currency.LTC;
-import static org.knowm.xchange.currency.Currency.NMC;
-import static org.knowm.xchange.currency.Currency.NZD;
-import static org.knowm.xchange.currency.Currency.PPC;
-import static org.knowm.xchange.currency.Currency.SGD;
-import static org.knowm.xchange.currency.Currency.START;
-import static org.knowm.xchange.currency.Currency.STR;
-import static org.knowm.xchange.currency.Currency.USD;
-import static org.knowm.xchange.currency.Currency.XRP;
-import static org.knowm.xchange.currency.CurrencyPair.DOGE_BTC;
-import static org.knowm.xchange.currency.CurrencyPair.LTC_BTC;
-import static org.knowm.xchange.currency.CurrencyPair.STR_BTC;
-import static org.knowm.xchange.currency.CurrencyPair.XRP_BTC;
+import static org.knowm.xchange.currency.Currency.*;
+import static org.knowm.xchange.currency.CurrencyPair.*;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 import org.knowm.xchange.anx.v2.dto.meta.ANXMarketMetaData;
 import org.knowm.xchange.anx.v2.dto.meta.ANXMetaData;
 import org.knowm.xchange.currency.Currency;
@@ -67,56 +35,43 @@ public class ANXGenerator {
   static Map<CurrencyPair, FeeTier[]> currencyPairFeeTiers = new HashMap<>();
 
   // base currency -> min order size
-  static Map<Currency, BigDecimal> minAmount = new HashMap<>();
-  static Map<Currency, BigDecimal> maxAmount = new HashMap<>();
+  static Map<Currency, Double> minAmount = new HashMap<>();
+  static Map<Currency, Double> maxAmount = new HashMap<>();
   static Map<Currency, CurrencyMetaData> currencyMap = new TreeMap<>();
 
   static Set<CurrencyPair> pairs = new HashSet<>();
-  static BigDecimal fee = new BigDecimal(".006");
+  static Double fee = new Double(".006");
 
   static {
-    minAmount.put(BTC, ONE.movePointLeft(2));
-    minAmount.put(LTC, ONE.movePointLeft(1));
-    minAmount.put(DOGE, ONE.movePointRight(4));
-    minAmount.put(XRP, ONE.movePointLeft(2));
-    minAmount.put(STR, ONE.movePointLeft(2));
+    minAmount.put(BTC, 1.0d / 100.0);
+    minAmount.put(LTC, 1.0d / 10.0);
+    minAmount.put(DOGE, 1.0d * 10000.0d);
+    minAmount.put(XRP, 1.0d / 100.0);
+    minAmount.put(STR, 1.0d / 100.0);
     minAmount.put(START, null);
     minAmount.put(EGD, null);
 
-    maxAmount.put(BTC, ONE.movePointRight(5));
-    maxAmount.put(LTC, ONE.movePointRight(7));
-    maxAmount.put(DOGE, ONE.movePointRight(10));
-    maxAmount.put(XRP, ONE.movePointRight(5));
-    maxAmount.put(STR, ONE.movePointRight(5));
+    maxAmount.put(BTC, 1.0d * 100000.0d);
+    maxAmount.put(LTC, 1.0d * 10000000.0d);
+    maxAmount.put(DOGE, 1.0d * 10000000000.0d);
+    maxAmount.put(XRP, 1.0d * 100000.0d);
+    maxAmount.put(STR, 1.0d * 100000.0d);
     maxAmount.put(START, null);
     maxAmount.put(EGD, null);
 
     currencyPairFeeTiers.put(
         LTC_BTC,
         new FeeTier[] {
-          new FeeTier(
-              BigDecimal.ZERO,
-              new Fee(BigDecimal.ONE.movePointLeft(2), BigDecimal.ONE.movePointLeft((1)))),
-          new FeeTier(
-              BigDecimal.TEN,
-              new Fee(BigDecimal.ONE.movePointLeft(4), BigDecimal.ONE.movePointLeft((3))))
+          new FeeTier(0d, new Fee(1d / 100.0, 1d / 10d)),
+          new FeeTier(10d, new Fee(1d / 10000.0, 1d / 1000d))
         });
     currencyPairFeeTiers.put(
         DOGE_BTC,
         new FeeTier[] {
-          new FeeTier(
-              BigDecimal.ZERO,
-              new Fee(BigDecimal.ONE.movePointLeft(5), BigDecimal.ONE.movePointLeft((1)))),
-          new FeeTier(
-              BigDecimal.TEN,
-              new Fee(BigDecimal.ONE.movePointLeft(6), BigDecimal.ONE.movePointLeft((4))))
+          new FeeTier(0d, new Fee(1d / 100000d, 1d / 10d)),
+          new FeeTier(10d, new Fee(1d / 1000000d, 1d / 10000d))
         });
-    FeeTier[] constantFeeTier =
-        new FeeTier[] {
-          new FeeTier(
-              BigDecimal.ZERO,
-              new Fee(BigDecimal.ONE.movePointLeft(2), BigDecimal.ONE.movePointLeft(1)))
-        };
+    FeeTier[] constantFeeTier = new FeeTier[] {new FeeTier(0d, new Fee(1d / 100.0, 1d / 10.0))};
     currencyPairFeeTiers.put(STR_BTC, constantFeeTier);
     currencyPairFeeTiers.put(XRP_BTC, constantFeeTier);
 
@@ -172,10 +127,8 @@ public class ANXGenerator {
   private void handleCurrencyPair(
       Map<CurrencyPair, CurrencyPairMetaData> map, CurrencyPair currencyPair) {
     int amountScale = amountScale(currencyPair);
-    BigDecimal minimumAmount =
-        scaled(minAmount.get(currencyPair.base.getCurrencyCode()), amountScale);
-    BigDecimal maximumAmount =
-        scaled(maxAmount.get(currencyPair.base.getCurrencyCode()), amountScale);
+    Double minimumAmount = scaled(minAmount.get(currencyPair.base), amountScale);
+    Double maximumAmount = scaled(maxAmount.get(currencyPair.base), amountScale);
     ANXMarketMetaData mmd =
         new ANXMarketMetaData(
             fee,
@@ -186,8 +139,8 @@ public class ANXGenerator {
     map.put(currencyPair, mmd);
   }
 
-  BigDecimal scaled(BigDecimal value, int scale) {
-    return value == null ? null : value.setScale(scale, RoundingMode.UNNECESSARY);
+  Double scaled(Double value, int scale) {
+    return value;
   }
 
   private int amountScale(CurrencyPair currencyPair) {
@@ -196,8 +149,8 @@ public class ANXGenerator {
 
   int priceScale(CurrencyPair pair) {
     if (LTC_BTC.equals(pair)
-        || (BTC.equals(pair.base.getCurrencyCode())
-            && !cryptos.contains(pair.counter.getCurrencyCode()))) {
+        || (BTC.getCurrencyCode().equals(pair.base.getCurrencyCode())
+            && !cryptos.contains(pair.counter))) {
       return 5;
     } else {
       return 8;

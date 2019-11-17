@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.time.Instant;
 import org.junit.Test;
 import org.knowm.xchange.dvchain.dto.trade.DVChainNewMarketOrder;
@@ -29,8 +28,8 @@ public class DVChainTradesJSONTest {
     assertEquals(readValue.getData().get(0).getId(), "5bbd1c6709ac22627841ad32");
     assertEquals(
         readValue.getData().get(0).getCreatedAt(), Instant.parse("2018-10-09T21:23:51.757Z"));
-    assertEquals(readValue.getData().get(0).getPrice(), new BigDecimal(("513.3")));
-    assertEquals(readValue.getData().get(0).getQuantity(), new BigDecimal(".1"));
+    assertEquals(readValue.getData().get(0).getPrice(), new Double(("513.3")));
+    assertEquals(readValue.getData().get(0).getQuantity(), new Double(".1"));
     assertEquals(readValue.getData().get(0).getSide(), "Buy");
     assertEquals(readValue.getData().get(0).getAsset(), "BCH");
     assertEquals(readValue.getData().get(0).getStatus(), "Complete");
@@ -44,7 +43,7 @@ public class DVChainTradesJSONTest {
     ObjectMapper mapper = new ObjectMapper();
 
     DVChainNewMarketOrder newTrade =
-        new DVChainNewMarketOrder("Buy", new BigDecimal("527.51"), new BigDecimal(".1"), "BCH");
+        new DVChainNewMarketOrder("Buy", new Double("527.51"), new Double(".1"), "BCH");
 
     // Read in the JSON from the example resources
     InputStream is =

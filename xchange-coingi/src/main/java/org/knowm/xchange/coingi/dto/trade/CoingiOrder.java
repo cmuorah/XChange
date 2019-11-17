@@ -1,7 +1,6 @@
 package org.knowm.xchange.coingi.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Map;
 
 public class CoingiOrder {
@@ -26,11 +25,11 @@ public class CoingiOrder {
   private int type;
   private Long timestamp;
   private Map<String, String> currencyPair;
-  private BigDecimal price;
-  private BigDecimal baseAmount;
-  private BigDecimal counterAmount;
-  private BigDecimal originalBaseAmount;
-  private BigDecimal originalCounterAmount;
+  private Double price;
+  private Double baseAmount;
+  private Double counterAmount;
+  private Double originalBaseAmount;
+  private Double originalCounterAmount;
   private int status;
 
   public CoingiOrder(
@@ -38,11 +37,11 @@ public class CoingiOrder {
       @JsonProperty("type") int type,
       @JsonProperty("timestamp") Long timestamp,
       @JsonProperty("currencyPair") Map<String, String> currencyPair,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("baseAmount") BigDecimal baseAmount,
-      @JsonProperty("counterAmount") BigDecimal counterAmount,
-      @JsonProperty("originalBaseAmount") BigDecimal originalBaseAmount,
-      @JsonProperty("originalCounterAmount") BigDecimal originalCounterAmount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("baseAmount") Double baseAmount,
+      @JsonProperty("counterAmount") Double counterAmount,
+      @JsonProperty("originalBaseAmount") Double originalBaseAmount,
+      @JsonProperty("originalCounterAmount") Double originalCounterAmount,
       @JsonProperty("status") int status) {
 
     this.id = id;
@@ -73,23 +72,23 @@ public class CoingiOrder {
     return currencyPair;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getBaseAmount() {
+  public Double getBaseAmount() {
     return baseAmount;
   }
 
-  public BigDecimal getCounterAmount() {
+  public Double getCounterAmount() {
     return counterAmount;
   }
 
-  public BigDecimal getOriginalBaseAmount() {
+  public Double getOriginalBaseAmount() {
     return originalBaseAmount;
   }
 
-  public BigDecimal getOriginalCounterAmount() {
+  public Double getOriginalCounterAmount() {
     return originalCounterAmount;
   }
 

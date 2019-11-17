@@ -1,7 +1,6 @@
 package org.knowm.xchange.coingi.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Objects;
 
@@ -10,9 +9,9 @@ public class CoingiUserTransaction {
   private String id;
   private long timestamp;
   private Map<String, String> currencyPair;
-  private BigDecimal price;
-  private BigDecimal baseAmount;
-  private BigDecimal counterAmount;
+  private Double price;
+  private Double baseAmount;
+  private Double counterAmount;
   private float fee;
   private short type;
   private short orderType;
@@ -22,9 +21,9 @@ public class CoingiUserTransaction {
       @JsonProperty("id") String id,
       @JsonProperty("timestamp") long timestamp,
       @JsonProperty("currencyPair") Map<String, String> currencyPair,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("baseAmount") BigDecimal baseAmount,
-      @JsonProperty("counterAmount") BigDecimal counterAmount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("baseAmount") Double baseAmount,
+      @JsonProperty("counterAmount") Double counterAmount,
       @JsonProperty("fee") float fee,
       @JsonProperty("type") short type,
       @JsonProperty("orderType") short orderType,
@@ -52,19 +51,19 @@ public class CoingiUserTransaction {
     return currencyPair;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
-  public BigDecimal getBaseAmount() {
+  public Double getBaseAmount() {
     return baseAmount;
   }
 
-  public BigDecimal getCounterAmount() {
+  public Double getCounterAmount() {
     return counterAmount;
   }
 

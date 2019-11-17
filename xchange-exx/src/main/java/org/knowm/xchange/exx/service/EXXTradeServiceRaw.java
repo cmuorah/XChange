@@ -1,7 +1,6 @@
 package org.knowm.xchange.exx.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.exx.EXXAuthenticated;
@@ -36,8 +35,8 @@ public class EXXTradeServiceRaw extends EXXBaseService {
    * @return
    * @throws IOException
    */
-  public EXXPlaceOrder placeExxOrder(
-      BigDecimal amount, String currency, BigDecimal price, String type) throws IOException {
+  public EXXPlaceOrder placeExxOrder(Double amount, String currency, Double price, String type)
+      throws IOException {
 
     Long nonce = System.currentTimeMillis();
     String params =

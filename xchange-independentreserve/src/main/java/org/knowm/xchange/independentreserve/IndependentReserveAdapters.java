@@ -1,6 +1,5 @@
 package org.knowm.xchange.independentreserve;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -98,13 +97,13 @@ public class IndependentReserveAdapters {
   public static Ticker adaptTicker(
       IndependentReserveTicker independentReserveTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = independentReserveTicker.getLast();
-    BigDecimal bid = independentReserveTicker.getBid();
-    BigDecimal ask = independentReserveTicker.getAsk();
-    BigDecimal high = independentReserveTicker.getHigh();
-    BigDecimal low = independentReserveTicker.getLow();
-    BigDecimal vwap = independentReserveTicker.getVwap();
-    BigDecimal volume = independentReserveTicker.getVolume();
+    Double last = independentReserveTicker.getLast();
+    Double bid = independentReserveTicker.getBid();
+    Double ask = independentReserveTicker.getAsk();
+    Double high = independentReserveTicker.getHigh();
+    Double low = independentReserveTicker.getLow();
+    Double vwap = independentReserveTicker.getVwap();
+    Double volume = independentReserveTicker.getVolume();
     Date timestamp = independentReserveTicker.getTimestamp();
 
     return new Ticker.Builder()
@@ -268,7 +267,7 @@ public class IndependentReserveAdapters {
   }
 
   public static FundingRecord adaptTransaction(IndependentReserveTransaction transaction) {
-    BigDecimal amount = null;
+    Double amount = null;
     if (transaction.getDebit() != null) {
       amount = transaction.getDebit();
     } else if (transaction.getCredit() != null) {

@@ -1,27 +1,25 @@
 package org.knowm.xchange.yobit.dto.marketdata;
 
-import java.math.BigDecimal;
-
 public class YoBitAsksBidsData {
-  private final BigDecimal quantity;
-  private final BigDecimal rate;
+  private final Double quantity;
+  private final Double rate;
 
   /**
    * @param rate
    * @param quantity
    */
-  public YoBitAsksBidsData(BigDecimal quantity, BigDecimal rate) {
+  public YoBitAsksBidsData(Double quantity, Double rate) {
     this.quantity = quantity;
     this.rate = rate;
   }
 
   /** @return The quantity */
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
   /** @return The rate */
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 }

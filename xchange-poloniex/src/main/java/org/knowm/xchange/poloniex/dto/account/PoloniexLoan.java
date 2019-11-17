@@ -1,7 +1,6 @@
 package org.knowm.xchange.poloniex.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author anw */
 public class PoloniexLoan {
@@ -10,9 +9,9 @@ public class PoloniexLoan {
 
   private String currency;
 
-  private BigDecimal rate;
+  private Double rate;
 
-  private BigDecimal amount;
+  private Double amount;
 
   private int range;
 
@@ -20,17 +19,17 @@ public class PoloniexLoan {
 
   private String date;
 
-  private BigDecimal fees;
+  private Double fees;
 
   public PoloniexLoan(
       @JsonProperty("id") String id,
       @JsonProperty("currency") String currency,
-      @JsonProperty("rate") BigDecimal rate,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("rate") Double rate,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("range") int range,
       @JsonProperty("autoRenew") boolean autoRenew,
       @JsonProperty("date") String date,
-      @JsonProperty("fees") BigDecimal fees) {
+      @JsonProperty("fees") Double fees) {
     this.id = id;
     this.currency = currency;
     this.rate = rate;
@@ -49,11 +48,11 @@ public class PoloniexLoan {
     return currency;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -69,7 +68,7 @@ public class PoloniexLoan {
     return date;
   }
 
-  public BigDecimal getFees() {
+  public Double getFees() {
     return fees;
   }
 }

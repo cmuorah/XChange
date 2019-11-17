@@ -1,7 +1,6 @@
 package org.knowm.xchange.acx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class AcxOrder {
@@ -11,9 +10,9 @@ public class AcxOrder {
   public final String side;
 
   public final String ordType;
-  public final BigDecimal price;
+  public final Double price;
   /** Average execution price */
-  public final BigDecimal avgPrice;
+  public final Double avgPrice;
   /**
    * wait, done or cancel. - ‘wait’ represents the order is active, it may be a new order or partial
    * complete order; - ‘done’ means the order has been fulfilled completely; - ‘cancel’ means the
@@ -23,11 +22,11 @@ public class AcxOrder {
   /** Order created time */
   public final Date createdAt;
   /** Volume to buy/sell */
-  public final BigDecimal volume;
+  public final Double volume;
   /** remaining_volume is always less or equal than volume */
-  public final BigDecimal remainingVolume;
+  public final Double remainingVolume;
   /** volume = remaining_volume + executed_volume */
-  public final BigDecimal executedVolume;
+  public final Double executedVolume;
 
   public final int tradesCount;
   /** the market the order belongs to, like ‘btcaud’ */
@@ -37,14 +36,14 @@ public class AcxOrder {
       @JsonProperty("id") String id,
       @JsonProperty("side") String side,
       @JsonProperty("ord_type") String ordType,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("avg_price") BigDecimal avgPrice,
+      @JsonProperty("price") Double price,
+      @JsonProperty("avg_price") Double avgPrice,
       @JsonProperty("state") String state,
       @JsonProperty("market") String market,
       @JsonProperty("created_at") Date createdAt,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("remaining_volume") BigDecimal remainingVolume,
-      @JsonProperty("executed_volume") BigDecimal executedVolume,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("remaining_volume") Double remainingVolume,
+      @JsonProperty("executed_volume") Double executedVolume,
       @JsonProperty("trades_count") int tradesCount) {
     this.id = id;
     this.side = side;

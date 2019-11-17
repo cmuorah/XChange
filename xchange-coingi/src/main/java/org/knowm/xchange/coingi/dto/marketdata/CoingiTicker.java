@@ -1,24 +1,23 @@
 package org.knowm.xchange.coingi.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoingiTicker {
-  private BigDecimal open;
-  private BigDecimal close;
-  private BigDecimal high;
-  private BigDecimal low;
-  private BigDecimal vwap;
-  private BigDecimal volume;
+  private Double open;
+  private Double close;
+  private Double high;
+  private Double low;
+  private Double vwap;
+  private Double volume;
   private Long timestamp;
 
   public CoingiTicker(
-      @JsonProperty("open") BigDecimal open,
-      @JsonProperty("close") BigDecimal close,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("vwap") BigDecimal vwap,
-      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("open") Double open,
+      @JsonProperty("close") Double close,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("vwap") Double vwap,
+      @JsonProperty("volume") Double volume,
       @JsonProperty("timestamp") Long timestamp) {
     this.open = open;
     this.close = close;
@@ -29,27 +28,27 @@ public class CoingiTicker {
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
     return close;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getVwap() {
+  public Double getVwap() {
     return vwap;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 

@@ -2,7 +2,6 @@ package org.knowm.xchange.enigma.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,13 +18,13 @@ public class EnigmaTransaction extends BaseResponse {
   private int productId;
 
   @JsonProperty("quantity")
-  private BigDecimal quantity;
+  private Double quantity;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("nominal")
-  private BigDecimal nominal;
+  private Double nominal;
 
   @JsonProperty("sent_at")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")

@@ -1,7 +1,6 @@
 package org.knowm.xchange.quoine.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 /** @author timmolter */
@@ -9,17 +8,17 @@ public final class QuoineOrderDetailsResponse {
 
   private final String id;
   private final String orderType;
-  private final BigDecimal quantity;
+  private final Double quantity;
   private final String currencyPairCode;
   private final String side;
   private final Integer leverageLevel;
   private final String productCode;
-  private final BigDecimal filledQuantity;
-  private final BigDecimal price;
-  private final BigDecimal createdAt;
-  private final BigDecimal updatedAt;
+  private final Double filledQuantity;
+  private final Double price;
+  private final Double createdAt;
+  private final Double updatedAt;
   private final String status;
-  private final BigDecimal orderFee;
+  private final Double orderFee;
   private final Object settings;
   private final Execution[] executions;
 
@@ -45,17 +44,17 @@ public final class QuoineOrderDetailsResponse {
   public QuoineOrderDetailsResponse(
       @JsonProperty("id") String id,
       @JsonProperty("order_type") String orderType,
-      @JsonProperty("quantity") BigDecimal quantity,
+      @JsonProperty("quantity") Double quantity,
       @JsonProperty("currency_pair_code") String currencyPairCode,
       @JsonProperty("side") String side,
       @JsonProperty("leverage_level") Integer leverageLevel,
       @JsonProperty("product_code") String productCode,
-      @JsonProperty("filled_quantity") BigDecimal filledQuantity,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("created_at") BigDecimal createdAt,
-      @JsonProperty("updated_at") BigDecimal updatedAt,
+      @JsonProperty("filled_quantity") Double filledQuantity,
+      @JsonProperty("price") Double price,
+      @JsonProperty("created_at") Double createdAt,
+      @JsonProperty("updated_at") Double updatedAt,
       @JsonProperty("status") String status,
-      @JsonProperty("order_fee") BigDecimal orderFee,
+      @JsonProperty("order_fee") Double orderFee,
       @JsonProperty("settings") Object settings,
       @JsonProperty("executions") Execution[] executions) {
     this.id = id;
@@ -83,7 +82,7 @@ public final class QuoineOrderDetailsResponse {
     return orderType;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
@@ -103,19 +102,19 @@ public final class QuoineOrderDetailsResponse {
     return productCode;
   }
 
-  public BigDecimal getFilledQuantity() {
+  public Double getFilledQuantity() {
     return filledQuantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getCreatedAt() {
+  public Double getCreatedAt() {
     return createdAt;
   }
 
-  public BigDecimal getUpdatedAt() {
+  public Double getUpdatedAt() {
     return updatedAt;
   }
 
@@ -123,7 +122,7 @@ public final class QuoineOrderDetailsResponse {
     return status;
   }
 
-  public BigDecimal getOrderFee() {
+  public Double getOrderFee() {
     return orderFee;
   }
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitso.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitso.BitsoAdapters;
 import org.knowm.xchange.bitso.dto.account.BitsoDepositAddress;
@@ -30,8 +29,7 @@ public class BitsoAccountService extends BitsoAccountServiceRaw implements Accou
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
 
     return withdrawBitsoFunds(amount, address);
   }

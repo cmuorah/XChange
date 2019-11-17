@@ -3,7 +3,6 @@ package org.knowm.xchange.cexio.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import java.math.BigDecimal;
 import org.knowm.xchange.cexio.dto.trade.CexioPositionType;
 
 /** Author: Andrea Fossi Since: 22/06/18 */
@@ -13,7 +12,7 @@ public class CexIOOpenPositionRequest extends CexIORequest {
 
   @JsonProperty("amount")
   @JsonSerialize(using = ToStringSerializer.class)
-  public final BigDecimal
+  public final Double
       amount; // total amount of product to buy using borrowed funds and user's funds
 
   @JsonProperty("msymbol")
@@ -37,23 +36,23 @@ public class CexIOOpenPositionRequest extends CexIORequest {
 
   @JsonProperty("eoprice")
   @JsonSerialize(using = ToStringSerializer.class)
-  public final BigDecimal eoprice; // estimated price at which your position will be opened
+  public final Double eoprice; // estimated price at which your position will be opened
 
   @JsonProperty("stopLossPrice")
   @JsonSerialize(using = ToStringSerializer.class)
-  public final BigDecimal
+  public final Double
       stopLossPrice; // price near which your position will be closed automatically in case of
   // unfavorable market conditions
 
   public CexIOOpenPositionRequest(
       String symbol,
-      BigDecimal amount,
+      Double amount,
       String msymbol,
       Integer leverage,
       CexioPositionType ptype,
       Boolean anySlippage,
-      BigDecimal eoprice,
-      BigDecimal stopLossPrice) {
+      Double eoprice,
+      Double stopLossPrice) {
     this.symbol = symbol;
     this.amount = amount;
     this.msymbol = msymbol;

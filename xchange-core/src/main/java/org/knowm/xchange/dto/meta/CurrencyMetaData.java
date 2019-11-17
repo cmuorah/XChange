@@ -2,7 +2,6 @@ package org.knowm.xchange.dto.meta;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class CurrencyMetaData implements Serializable {
 
@@ -13,7 +12,7 @@ public class CurrencyMetaData implements Serializable {
 
   /** Withdrawal fee */
   @JsonProperty("withdrawal_fee")
-  private BigDecimal withdrawalFee;
+  private Double withdrawalFee;
 
   /**
    * Constructor
@@ -21,8 +20,7 @@ public class CurrencyMetaData implements Serializable {
    * @param scale
    */
   public CurrencyMetaData(
-      @JsonProperty("scale") Integer scale,
-      @JsonProperty("withdrawal_fee") BigDecimal withdrawalFee) {
+      @JsonProperty("scale") Integer scale, @JsonProperty("withdrawal_fee") Double withdrawalFee) {
     this.scale = scale;
     this.withdrawalFee = withdrawalFee;
   }
@@ -31,7 +29,7 @@ public class CurrencyMetaData implements Serializable {
     return scale;
   }
 
-  public BigDecimal getWithdrawalFee() {
+  public Double getWithdrawalFee() {
     return withdrawalFee;
   }
 

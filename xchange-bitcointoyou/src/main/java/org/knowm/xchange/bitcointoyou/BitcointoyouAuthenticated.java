@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitcointoyou;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -75,8 +74,8 @@ public interface BitcointoyouAuthenticated {
       @HeaderParam("signature") ParamsDigest signature,
       @QueryParam("asset") String currency,
       @QueryParam("action") String action,
-      @QueryParam("amount") BigDecimal amount,
-      @QueryParam("price") BigDecimal price)
+      @QueryParam("amount") Double amount,
+      @QueryParam("price") Double price)
       throws BitcointoyouException, IOException;
 
   @POST

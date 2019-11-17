@@ -1,21 +1,20 @@
 package org.knowm.xchange.huobi.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class HuobiOrder {
 
   private final long accountID;
-  private final BigDecimal amount;
+  private final Double amount;
   private final Date canceledAt;
   private final Date createdAt;
-  private final BigDecimal fieldAmount;
-  private final BigDecimal fieldCashAmount;
-  private final BigDecimal fieldFees;
+  private final Double fieldAmount;
+  private final Double fieldCashAmount;
+  private final Double fieldFees;
   private final Date finishedAt;
   private final long id;
-  private final BigDecimal price;
+  private final Double price;
   private final String source;
   private final String state;
   private final String symbol;
@@ -23,15 +22,15 @@ public class HuobiOrder {
 
   public HuobiOrder(
       @JsonProperty("account-id") long accountID,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("canceled-at") Date canceledAt,
       @JsonProperty("created-at") Date createdAt,
-      @JsonProperty("field-amount") BigDecimal fieldAmount,
-      @JsonProperty("field-cash-amount") BigDecimal fieldCashAmount,
-      @JsonProperty("field-fees") BigDecimal fieldFees,
+      @JsonProperty("field-amount") Double fieldAmount,
+      @JsonProperty("field-cash-amount") Double fieldCashAmount,
+      @JsonProperty("field-fees") Double fieldFees,
       @JsonProperty("finished-at") Date finishedAt,
       @JsonProperty("id") long id,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("source") String source,
       @JsonProperty("state") String state,
       @JsonProperty("symbol") String symbol,
@@ -56,7 +55,7 @@ public class HuobiOrder {
     return accountID;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -68,15 +67,15 @@ public class HuobiOrder {
     return createdAt;
   }
 
-  public BigDecimal getFieldAmount() {
+  public Double getFieldAmount() {
     return fieldAmount;
   }
 
-  public BigDecimal getFieldCashAmount() {
+  public Double getFieldCashAmount() {
     return fieldCashAmount;
   }
 
-  public BigDecimal getFieldFees() {
+  public Double getFieldFees() {
     return fieldFees;
   }
 
@@ -88,7 +87,7 @@ public class HuobiOrder {
     return id;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

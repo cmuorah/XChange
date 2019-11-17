@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.bitcoinaverage.dto.marketdata.BitcoinAverageTicker;
 import org.knowm.xchange.bitcoinaverage.dto.marketdata.BitcoinAverageTickerJSONTest;
@@ -34,6 +33,6 @@ public class BitcoinAverageAdapterTest {
     assertThat(ticker.getLast().toString()).isEqualTo("629.45");
     assertThat(ticker.getBid().toString()).isEqualTo("628.2");
     assertThat(ticker.getAsk().toString()).isEqualTo("631.21");
-    assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("118046.63"));
+    assertThat(ticker.getVolume()).isEqualTo(new Double("118046.63"));
   }
 }

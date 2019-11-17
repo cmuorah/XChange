@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -45,8 +44,7 @@ public class OkCoinAccountService extends OkCoinAccountServiceRaw implements Acc
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     boolean useIntl =
         this.exchange
             .getExchangeSpecification()
@@ -57,7 +55,7 @@ public class OkCoinAccountService extends OkCoinAccountServiceRaw implements Acc
         OkCoinAdapters.adaptSymbol(
             new CurrencyPair(currency, useIntl ? Currency.USD : Currency.CNY));
 
-    BigDecimal staticFee =
+    Double staticFee =
         this.exchange.getExchangeMetaData().getCurrencies().get(currency).getWithdrawalFee();
 
     if (staticFee == null) {

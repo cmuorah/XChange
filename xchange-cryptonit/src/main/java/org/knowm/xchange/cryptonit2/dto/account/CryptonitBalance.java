@@ -2,7 +2,6 @@ package org.knowm.xchange.cryptonit2.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,27 +9,26 @@ import java.util.Map;
 /** @author Matija Mazi */
 public final class CryptonitBalance {
 
-  private final BigDecimal fee;
+  private final Double fee;
   private final String error;
 
   /** map with currency -> Balance */
   private final Map<String, Balance> balances = new HashMap<>();
   /** map with pair -> fee */
-  private final Map<String, BigDecimal> fees = new HashMap<>();
+  private final Map<String, Double> fees = new HashMap<>();
 
   /**
    * Constructor
    *
    * @param fee
    */
-  public CryptonitBalance(
-      @JsonProperty("fee") BigDecimal fee, @JsonProperty("error") String error) {
+  public CryptonitBalance(@JsonProperty("fee") Double fee, @JsonProperty("error") String error) {
     this.fee = fee;
     this.error = error;
   }
 
   @JsonAnySetter
-  public void setDynamicProperty(String name, BigDecimal value) {
+  public void setDynamicProperty(String name, Double value) {
     int idx = name.indexOf('_');
     if (idx < 0) {
       // ignore it, we expect s.th. like xxx_xxx
@@ -64,11 +62,11 @@ public final class CryptonitBalance {
     return b;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public BigDecimal getFee(String pair) {
+  public Double getFee(String pair) {
     return fees.get(pair);
   }
 
@@ -82,9 +80,9 @@ public final class CryptonitBalance {
 
   public static final class Balance {
     private final String currency;
-    private BigDecimal balance;
-    private BigDecimal reserved;
-    private BigDecimal available;
+    private Double balance;
+    private Double reserved;
+    private Double available;
 
     public Balance(String currency) {
       this.currency = currency;
@@ -94,15 +92,15 @@ public final class CryptonitBalance {
       return currency;
     }
 
-    public BigDecimal getBalance() {
+    public Double getBalance() {
       return balance;
     }
 
-    public BigDecimal getReserved() {
+    public Double getReserved() {
       return reserved;
     }
 
-    public BigDecimal getAvailable() {
+    public Double getAvailable() {
       return available;
     }
   }

@@ -2,7 +2,6 @@ package org.knowm.xchange.cryptonit2.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.cryptonit2.CryptonitUtils;
 
@@ -11,7 +10,7 @@ public class WithdrawalRequest {
   private final Date datetime;
   private Long id;
   private Type type;
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("status")
   private String statusOriginal; // keep the original status, if it comes to "unknown"
@@ -39,7 +38,7 @@ public class WithdrawalRequest {
     return type;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

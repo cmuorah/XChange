@@ -1,8 +1,6 @@
 package org.knowm.xchange.okcoin.v3.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,22 +17,9 @@ import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.okcoin.OkexAdaptersV3;
 import org.knowm.xchange.okcoin.OkexExchangeV3;
-import org.knowm.xchange.okcoin.v3.dto.trade.OkexOpenOrder;
-import org.knowm.xchange.okcoin.v3.dto.trade.OkexOrderFlags;
-import org.knowm.xchange.okcoin.v3.dto.trade.OkexTradeHistoryParams;
-import org.knowm.xchange.okcoin.v3.dto.trade.OkexTransaction;
-import org.knowm.xchange.okcoin.v3.dto.trade.OrderCancellationRequest;
-import org.knowm.xchange.okcoin.v3.dto.trade.OrderCancellationResponse;
-import org.knowm.xchange.okcoin.v3.dto.trade.OrderPlacementResponse;
-import org.knowm.xchange.okcoin.v3.dto.trade.OrderPlacementType;
-import org.knowm.xchange.okcoin.v3.dto.trade.Side;
-import org.knowm.xchange.okcoin.v3.dto.trade.SpotOrderPlacementRequest;
+import org.knowm.xchange.okcoin.v3.dto.trade.*;
 import org.knowm.xchange.service.trade.TradeService;
-import org.knowm.xchange.service.trade.params.CancelOrderByCurrencyPair;
-import org.knowm.xchange.service.trade.params.CancelOrderByIdParams;
-import org.knowm.xchange.service.trade.params.CancelOrderParams;
-import org.knowm.xchange.service.trade.params.TradeHistoryParamCurrencyPair;
-import org.knowm.xchange.service.trade.params.TradeHistoryParams;
+import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.DefaultOpenOrdersParamCurrencyPair;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParamCurrencyPair;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
@@ -71,7 +56,7 @@ public class OkexTradeService extends OkexTradeServiceRaw implements TradeServic
   }
 
   @Override
-  public boolean cancelOrder(String orderId) throws IOException {
+  public boolean cancelOrder(String orderId) {
     throw new NotAvailableFromExchangeException();
   }
 
@@ -95,7 +80,7 @@ public class OkexTradeService extends OkexTradeServiceRaw implements TradeServic
   }
 
   @Override
-  public OpenOrders getOpenOrders() throws IOException {
+  public OpenOrders getOpenOrders() {
     throw new NotAvailableFromExchangeException();
   }
 
@@ -180,16 +165,14 @@ public class OkexTradeService extends OkexTradeServiceRaw implements TradeServic
                     t -> {
                       CurrencyPair p = OkexAdaptersV3.toPair(t.getInstrumentId());
 
-                      BigDecimal amount = null;
+                      Double amount = null;
                       Currency feeCurrency = null;
 
                       if (o.getSide() == Side.buy) { // the same side as the order!
                         amount = t.getSize();
                         feeCurrency = p.base;
                       } else { // order and trade (transaction) have different sides!
-                        amount =
-                            stripTrailingZeros(
-                                t.getSize().divide(t.getPrice(), 16, RoundingMode.HALF_UP));
+                        amount = t.getSize() / t.getPrice();
                         feeCurrency = p.counter;
                       }
 
@@ -214,12 +197,6 @@ public class OkexTradeService extends OkexTradeServiceRaw implements TradeServic
         });
     Collections.sort(userTrades, (t1, t2) -> t1.getTimestamp().compareTo(t2.getTimestamp()));
     return new UserTrades(userTrades, TradeSortType.SortByTimestamp);
-  }
-
-  private static BigDecimal stripTrailingZeros(BigDecimal bd) {
-    bd = bd.stripTrailingZeros();
-    bd = bd.setScale(Math.max(bd.scale(), 0));
-    return bd;
   }
 
   private List<OkexTransaction> fetchTradesForOrder(OkexOpenOrder o) throws IOException {

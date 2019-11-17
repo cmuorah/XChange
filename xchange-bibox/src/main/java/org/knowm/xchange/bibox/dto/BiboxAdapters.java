@@ -11,11 +11,7 @@ import org.knowm.xchange.bibox.dto.account.BiboxDeposit;
 import org.knowm.xchange.bibox.dto.account.BiboxWithdrawal;
 import org.knowm.xchange.bibox.dto.marketdata.BiboxMarket;
 import org.knowm.xchange.bibox.dto.marketdata.BiboxTicker;
-import org.knowm.xchange.bibox.dto.trade.BiboxDeals;
-import org.knowm.xchange.bibox.dto.trade.BiboxOrder;
-import org.knowm.xchange.bibox.dto.trade.BiboxOrderBook;
-import org.knowm.xchange.bibox.dto.trade.BiboxOrderBookEntry;
-import org.knowm.xchange.bibox.dto.trade.BiboxOrders;
+import org.knowm.xchange.bibox.dto.trade.*;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -80,7 +76,7 @@ public class BiboxAdapters {
         .currency(asset.getCoin_symbol())
         .available(asset.getBalance())
         .frozen(asset.getFreeze())
-        .total(asset.getBalance().add(asset.getFreeze()))
+        .total(asset.getBalance() + (asset.getFreeze()))
         .build();
   }
 
@@ -228,6 +224,7 @@ public class BiboxAdapters {
             .collect(Collectors.toList());
     return new Trades(trades, TradeSortType.SortByTimestamp);
   }
+
   /**
    * transaction side，1-bid，2-ask
    *

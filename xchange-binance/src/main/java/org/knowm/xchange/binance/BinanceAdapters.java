@@ -1,7 +1,7 @@
 package org.knowm.xchange.binance;
 
-import java.math.MathContext;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import org.knowm.xchange.binance.dto.marketdata.BinancePriceQuantity;
 import org.knowm.xchange.binance.dto.trade.BinanceOrder;
@@ -70,7 +70,7 @@ public class BinanceAdapters {
 
   public static long id(String id) {
     try {
-      return Long.valueOf(id);
+      return Long.parseLong(id);
     } catch (Throwable e) {
       throw new IllegalArgumentException("Binance id must be a valid long number.", e);
     }
@@ -135,9 +135,8 @@ public class BinanceAdapters {
         .id(Long.toString(order.orderId))
         .timestamp(order.getTime())
         .cumulativeAmount(order.executedQty);
-    if (order.executedQty.signum() != 0 && order.cummulativeQuoteQty.signum() != 0) {
-      builder.averagePrice(
-          order.cummulativeQuoteQty.divide(order.executedQty, MathContext.DECIMAL32));
+    if (Math.signum(order.executedQty) != 0 && Math.signum(order.cummulativeQuoteQty) != 0) {
+      builder.averagePrice(order.cummulativeQuoteQty / order.executedQty);
     }
     if (order.clientOrderId != null) {
       builder.flag((BinanceOrderFlags) () -> order.clientOrderId);

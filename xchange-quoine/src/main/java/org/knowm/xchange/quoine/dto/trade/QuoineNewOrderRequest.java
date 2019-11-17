@@ -1,7 +1,6 @@
 package org.knowm.xchange.quoine.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class QuoineNewOrderRequest {
 
@@ -15,16 +14,16 @@ public class QuoineNewOrderRequest {
   private final String side; // buy or sell
 
   @JsonProperty("quantity")
-  private final BigDecimal quantity; //  Amount of BTC you want to trade.
+  private final Double quantity; //  Amount of BTC you want to trade.
 
   @JsonProperty("price")
-  private final BigDecimal price; //  Price of BTC you want to trade.
+  private final Double price; //  Price of BTC you want to trade.
 
   //  @JsonProperty("price_range")
   //  private final boolean priceRange;
 
   public QuoineNewOrderRequest(
-      String orderType, int productId, String side, BigDecimal quantity, BigDecimal price) {
+      String orderType, int productId, String side, Double quantity, Double price) {
     this.orderType = orderType;
     this.productId = productId;
     this.side = side;
@@ -44,11 +43,11 @@ public class QuoineNewOrderRequest {
     return side;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

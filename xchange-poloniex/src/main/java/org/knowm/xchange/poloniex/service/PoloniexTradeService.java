@@ -1,7 +1,6 @@
 package org.knowm.xchange.poloniex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -174,19 +173,19 @@ public class PoloniexTradeService extends PoloniexTradeServiceRaw implements Tra
     }
   }
 
-  public BigDecimal getMakerFee() throws IOException {
+  public Double getMakerFee() throws IOException {
     try {
       String value = getFeeInfo().get("makerFee");
-      return new BigDecimal(value);
+      return new Double(value);
     } catch (PoloniexException e) {
       throw PoloniexErrorAdapter.adapt(e);
     }
   }
 
-  public BigDecimal getTakerFee() throws IOException {
+  public Double getTakerFee() throws IOException {
     try {
       String value = getFeeInfo().get("takerFee");
-      return new BigDecimal(value);
+      return new Double(value);
     } catch (PoloniexException e) {
       throw PoloniexErrorAdapter.adapt(e);
     }

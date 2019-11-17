@@ -1,31 +1,30 @@
 package org.knowm.xchange.btcturk.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /** Created by semihunaldi on 26/11/2017 */
 public final class BTCTurkOHLC {
   private final Date time;
-  private final BigDecimal open;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal close;
-  private final BigDecimal volume;
-  private final BigDecimal average;
-  private final BigDecimal dailyChangeAmount;
-  private final BigDecimal dailyChangePercentage;
+  private final Double open;
+  private final Double high;
+  private final Double low;
+  private final Double close;
+  private final Double volume;
+  private final Double average;
+  private final Double dailyChangeAmount;
+  private final Double dailyChangePercentage;
 
   public BTCTurkOHLC(
       @JsonProperty("Time") Date time,
-      @JsonProperty("Open") BigDecimal open,
-      @JsonProperty("High") BigDecimal high,
-      @JsonProperty("Low") BigDecimal low,
-      @JsonProperty("Close") BigDecimal close,
-      @JsonProperty("Volume") BigDecimal volume,
-      @JsonProperty("Average") BigDecimal average,
-      @JsonProperty("DailyChangeAmount") BigDecimal dailyChangeAmount,
-      @JsonProperty("DailyChangePercentage") BigDecimal dailyChangePercentage) {
+      @JsonProperty("Open") Double open,
+      @JsonProperty("High") Double high,
+      @JsonProperty("Low") Double low,
+      @JsonProperty("Close") Double close,
+      @JsonProperty("Volume") Double volume,
+      @JsonProperty("Average") Double average,
+      @JsonProperty("DailyChangeAmount") Double dailyChangeAmount,
+      @JsonProperty("DailyChangePercentage") Double dailyChangePercentage) {
     this.time = time;
     this.open = open;
     this.high = high;
@@ -41,35 +40,35 @@ public final class BTCTurkOHLC {
     return time;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
     return close;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getAverage() {
+  public Double getAverage() {
     return average;
   }
 
-  public BigDecimal getDailyChangeAmount() {
+  public Double getDailyChangeAmount() {
     return dailyChangeAmount;
   }
 
-  public BigDecimal getDailyChangePercentage() {
+  public Double getDailyChangePercentage() {
     return dailyChangePercentage;
   }
 

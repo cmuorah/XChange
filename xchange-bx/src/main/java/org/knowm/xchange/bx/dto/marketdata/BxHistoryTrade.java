@@ -1,24 +1,23 @@
 package org.knowm.xchange.bx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BxHistoryTrade {
 
-  private final BigDecimal avg;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal volume;
-  private final BigDecimal open;
-  private final BigDecimal close;
+  private final Double avg;
+  private final Double high;
+  private final Double low;
+  private final Double volume;
+  private final Double open;
+  private final Double close;
 
   public BxHistoryTrade(
-      @JsonProperty("avg") BigDecimal avg,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("open") BigDecimal open,
-      @JsonProperty("close") BigDecimal close) {
+      @JsonProperty("avg") Double avg,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("open") Double open,
+      @JsonProperty("close") Double close) {
     this.avg = avg;
     this.high = high;
     this.low = low;
@@ -27,23 +26,23 @@ public class BxHistoryTrade {
     this.close = close;
   }
 
-  public BigDecimal getAvg() {
+  public Double getAvg() {
     return avg;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 

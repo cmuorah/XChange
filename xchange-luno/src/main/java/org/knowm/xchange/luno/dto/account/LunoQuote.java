@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class LunoQuote {
@@ -9,8 +8,8 @@ public class LunoQuote {
   public final String id;
   public final String type;
   public final String pair;
-  public final BigDecimal baseAmount;
-  public final BigDecimal counterAmount;
+  public final Double baseAmount;
+  public final Double counterAmount;
   public final long createdAt;
   public final long expiresAt;
   public final boolean discarded;
@@ -20,8 +19,8 @@ public class LunoQuote {
       @JsonProperty(value = "id", required = true) String id,
       @JsonProperty(value = "type", required = true) String type,
       @JsonProperty(value = "pair", required = true) String pair,
-      @JsonProperty(value = "base_amount", required = true) BigDecimal baseAmount,
-      @JsonProperty(value = "counter_amount", required = true) BigDecimal counterAmount,
+      @JsonProperty(value = "base_amount", required = true) Double baseAmount,
+      @JsonProperty(value = "counter_amount", required = true) Double counterAmount,
       @JsonProperty(value = "created_at", required = true) long createdAt,
       @JsonProperty(value = "expires_at", required = true) long expiresAt,
       @JsonProperty(value = "discarded", required = true) boolean discarded,

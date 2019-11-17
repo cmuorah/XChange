@@ -1,33 +1,32 @@
 package org.knowm.xchange.independentreserve.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /** Author: Kamil Zbikowski Date: 4/15/15 */
 public class IndependentReservePlaceLimitOrderResponse {
   private final Date createdTimestampUtc;
   private final String orderGuid;
-  private final BigDecimal price;
+  private final Double price;
   private final String primaryCurrencyCode;
-  private final BigDecimal reservedAmount;
+  private final Double reservedAmount;
   private final String secondaryCurrencyCode;
   private final String status;
   private final String type;
-  private final BigDecimal volumeFilled;
-  private final BigDecimal volumeOrdered;
+  private final Double volumeFilled;
+  private final Double volumeOrdered;
 
   public IndependentReservePlaceLimitOrderResponse(
       @JsonProperty("CreatedTimestampUtc") Date createdTimestampUtc,
       @JsonProperty("OrderGuid") String orderGuid,
-      @JsonProperty("Price") BigDecimal price,
+      @JsonProperty("Price") Double price,
       @JsonProperty("PrimaryCurrencyCode") String primaryCurrencyCode,
-      @JsonProperty("ReservedAmount") BigDecimal reservedAmount,
+      @JsonProperty("ReservedAmount") Double reservedAmount,
       @JsonProperty("SecondaryCurrencyCode") String secondaryCurrencyCode,
       @JsonProperty("Status") String status,
       @JsonProperty("Type") String type,
-      @JsonProperty("VolumeFilled") BigDecimal volumeFilled,
-      @JsonProperty("VolumeOrdered") BigDecimal volumeOrdered) {
+      @JsonProperty("VolumeFilled") Double volumeFilled,
+      @JsonProperty("VolumeOrdered") Double volumeOrdered) {
 
     this.createdTimestampUtc = createdTimestampUtc;
     this.orderGuid = orderGuid;
@@ -49,7 +48,7 @@ public class IndependentReservePlaceLimitOrderResponse {
     return orderGuid;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -57,7 +56,7 @@ public class IndependentReservePlaceLimitOrderResponse {
     return primaryCurrencyCode;
   }
 
-  public BigDecimal getReservedAmount() {
+  public Double getReservedAmount() {
     return reservedAmount;
   }
 
@@ -73,11 +72,11 @@ public class IndependentReservePlaceLimitOrderResponse {
     return type;
   }
 
-  public BigDecimal getVolumeFilled() {
+  public Double getVolumeFilled() {
     return volumeFilled;
   }
 
-  public BigDecimal getVolumeOrdered() {
+  public Double getVolumeOrdered() {
     return volumeOrdered;
   }
 }

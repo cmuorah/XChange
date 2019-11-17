@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.powermock.api.mockito.PowerMockito.mock;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,12 +60,12 @@ public class BTCMarketsTradeServiceTest extends BTCMarketsTestSupport {
   public void shouldPlaceMarketOrder() throws IOException {
     // given
     MarketOrder marketOrder =
-        new MarketOrder(Order.OrderType.BID, new BigDecimal("10.00000000"), CurrencyPair.BTC_AUD);
+        new MarketOrder(Order.OrderType.BID, new Double("10.00000000"), CurrencyPair.BTC_AUD);
 
     BTCMarketsOrder btcMarketsOrder =
         new BTCMarketsOrder(
-            new BigDecimal("10.00000000"),
-            BigDecimal.ZERO,
+            new Double("10.00000000"),
+            0d,
             "AUD",
             "BTC",
             BTCMarketsOrder.Side.Bid,
@@ -100,16 +99,16 @@ public class BTCMarketsTradeServiceTest extends BTCMarketsTestSupport {
     LimitOrder limitOrder =
         new LimitOrder(
             Order.OrderType.ASK,
-            new BigDecimal("10.00000000"),
+            new Double("10.00000000"),
             CurrencyPair.BTC_AUD,
             "11111",
             new Date(1234567890L),
-            new BigDecimal("20.00000000"));
+            new Double("20.00000000"));
 
     BTCMarketsOrder btcMarketsOrder =
         new BTCMarketsOrder(
-            new BigDecimal("10.00000000"),
-            new BigDecimal("20.00000000"),
+            new Double("10.00000000"),
+            new Double("20.00000000"),
             "AUD",
             "BTC",
             BTCMarketsOrder.Side.Ask,

@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbasepro.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseProAccount {
 
@@ -9,7 +8,7 @@ public class CoinbaseProAccount {
   private final boolean primaryAccount;
   private final String currency;
   private final boolean active;
-  private final BigDecimal balance;
+  private final Double balance;
   private final String type;
   private final String id;
 
@@ -18,7 +17,7 @@ public class CoinbaseProAccount {
       @JsonProperty("primary") boolean primaryAccount,
       @JsonProperty("currency") String currency,
       @JsonProperty("active") boolean active,
-      @JsonProperty("balance") BigDecimal balance,
+      @JsonProperty("balance") Double balance,
       @JsonProperty("type") String type,
       @JsonProperty("id") String id) {
     this.name = name;
@@ -46,7 +45,7 @@ public class CoinbaseProAccount {
     return active;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 

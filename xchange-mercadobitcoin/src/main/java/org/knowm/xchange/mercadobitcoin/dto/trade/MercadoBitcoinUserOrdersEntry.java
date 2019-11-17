@@ -1,7 +1,6 @@
 package org.knowm.xchange.mercadobitcoin.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,8 +9,8 @@ public class MercadoBitcoinUserOrdersEntry {
 
   private final String status;
   private final Long created;
-  private final BigDecimal price;
-  private final BigDecimal volume;
+  private final Double price;
+  private final Double volume;
   private final String pair;
   private final String type;
   private final Operations operations;
@@ -19,8 +18,8 @@ public class MercadoBitcoinUserOrdersEntry {
   public MercadoBitcoinUserOrdersEntry(
       @JsonProperty("status") String status,
       @JsonProperty("created") Long created,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("price") Double price,
+      @JsonProperty("volume") Double volume,
       @JsonProperty("pair") String pair,
       @JsonProperty("type") String type,
       @JsonProperty("operations") Operations operations) {
@@ -44,12 +43,12 @@ public class MercadoBitcoinUserOrdersEntry {
     return created;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }

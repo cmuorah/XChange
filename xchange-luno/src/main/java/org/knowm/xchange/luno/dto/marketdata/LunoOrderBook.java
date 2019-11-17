@@ -1,9 +1,7 @@
 package org.knowm.xchange.luno.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
@@ -11,15 +9,8 @@ import java.util.TreeMap;
 public class LunoOrderBook {
 
   public final long timestamp;
-  private final TreeMap<BigDecimal, BigDecimal> bids =
-      new TreeMap<BigDecimal, BigDecimal>(
-          new Comparator<BigDecimal>() {
-            @Override
-            public int compare(BigDecimal k1, BigDecimal k2) {
-              return -k1.compareTo(k2);
-            }
-          });
-  private final TreeMap<BigDecimal, BigDecimal> asks = new TreeMap<BigDecimal, BigDecimal>();
+  private final TreeMap<Double, Double> bids = new TreeMap<>((k1, k2) -> -k1.compareTo(k2));
+  private final TreeMap<Double, Double> asks = new TreeMap<>();
 
   public LunoOrderBook(
       @JsonProperty(value = "timestamp", required = true) long timestamp,
@@ -30,19 +21,19 @@ public class LunoOrderBook {
 
     // java8 style:
     // this.asks = Stream.of(asks).collect(Collectors.toMap(o -> o.price, o -> o.volume, (v1, v2) ->
-    // v1.add(v2), () -> new TreeMap<BigDecimal, BigDecimal>()));
+    // v1.add(v2), () -> new TreeMap<Double, Double>()));
     // this.bids = Stream.of(bids).collect(Collectors.toMap(o -> o.price, o -> o.volume, (v1, v2) ->
-    // v1.add(v2), () -> new TreeMap<BigDecimal, BigDecimal>((k1, k2) -> -k1.compareTo(k2))));
+    // v1.add(v2), () -> new TreeMap<Double, Double>((k1, k2) -> -k1.compareTo(k2))));
 
     // without java8:
     addOrdersToMap(asks, this.asks);
     addOrdersToMap(bids, this.bids);
   }
 
-  private static void addOrdersToMap(Order[] orders, Map<BigDecimal, BigDecimal> map) {
+  private static void addOrdersToMap(Order[] orders, Map<Double, Double> map) {
     for (Order o : orders) {
-      BigDecimal v = map.get(o.price);
-      map.put(o.price, v == null ? o.volume : o.volume.add(v));
+      Double v = map.get(o.price);
+      map.put(o.price, v == null ? o.volume : o.volume + (v));
     }
   }
 
@@ -50,11 +41,11 @@ public class LunoOrderBook {
     return new Date(timestamp);
   }
 
-  public Map<BigDecimal, BigDecimal> getBids() {
+  public Map<Double, Double> getBids() {
     return Collections.unmodifiableMap(bids);
   }
 
-  public Map<BigDecimal, BigDecimal> getAsks() {
+  public Map<Double, Double> getAsks() {
     return Collections.unmodifiableMap(asks);
   }
 
@@ -64,12 +55,12 @@ public class LunoOrderBook {
   }
 
   public static class Order {
-    public final BigDecimal price;
-    public final BigDecimal volume;
+    public final Double price;
+    public final Double volume;
 
     public Order(
-        @JsonProperty(value = "price", required = true) BigDecimal price,
-        @JsonProperty(value = "volume", required = true) BigDecimal volume) {
+        @JsonProperty(value = "price", required = true) Double price,
+        @JsonProperty(value = "volume", required = true) Double volume) {
       this.price = price;
       this.volume = volume;
     }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bleutrade.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,8 +39,7 @@ public class BleutradeAccountService extends BleutradeAccountServiceRaw implemen
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return withdraw(currency, amount, address);
   }
 
@@ -76,15 +74,15 @@ public class BleutradeAccountService extends BleutradeAccountServiceRaw implemen
       for (WithdrawRecord record : withdrawalHistory()) {
         String label = record.label;
 
-        BigDecimal amount = record.amount;
-        BigDecimal fee = null;
+        Double amount = record.amount;
+        Double fee = null;
 
         String[] parts = label.split(";");
         String address = null;
         if (parts.length == 3) {
-          amount = new BigDecimal(parts[0]);
+          amount = new Double(parts[0]);
           address = parts[1];
-          fee = new BigDecimal(parts[2]);
+          fee = new Double(parts[2]);
         }
 
         fundingRecords.add(

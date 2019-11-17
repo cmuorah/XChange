@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 public class CoindirectOrderBookTest {
@@ -24,6 +23,6 @@ public class CoindirectOrderBookTest {
     assertThat(coindirectOrderbook.bids.size()).isEqualTo(1);
     assertThat(coindirectOrderbook.asks.size()).isEqualTo(3);
 
-    assertThat(coindirectOrderbook.bids.get(0).price).isEqualTo(new BigDecimal("0.06779200"));
+    assertThat(coindirectOrderbook.bids.get(0).price).isEqualTo(new Double("0.06779200"));
   }
 }

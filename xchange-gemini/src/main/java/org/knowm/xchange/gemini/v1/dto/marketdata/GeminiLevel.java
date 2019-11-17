@@ -1,13 +1,12 @@
 package org.knowm.xchange.gemini.v1.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class GeminiLevel {
 
-  private final BigDecimal price;
-  private final BigDecimal amount;
-  private final BigDecimal timestamp;
+  private final Double price;
+  private final Double amount;
+  private final Double timestamp;
 
   /**
    * Constructor
@@ -17,26 +16,26 @@ public class GeminiLevel {
    * @param timestamp
    */
   public GeminiLevel(
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("timestamp") BigDecimal timestamp) {
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("timestamp") Double timestamp) {
 
     this.price = price;
     this.amount = amount;
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getTimestamp() {
+  public Double getTimestamp() {
 
     return timestamp;
   }

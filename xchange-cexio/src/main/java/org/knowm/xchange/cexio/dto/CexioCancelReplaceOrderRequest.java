@@ -1,7 +1,6 @@
 package org.knowm.xchange.cexio.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CexioCancelReplaceOrderRequest extends CexIORequest {
 
@@ -12,13 +11,12 @@ public class CexioCancelReplaceOrderRequest extends CexIORequest {
   public final String type;
 
   @JsonProperty("amount")
-  public final BigDecimal amount;
+  public final Double amount;
 
   @JsonProperty("price")
-  public final BigDecimal price;
+  public final Double price;
 
-  public CexioCancelReplaceOrderRequest(
-      String orderId, String type, BigDecimal amount, BigDecimal price) {
+  public CexioCancelReplaceOrderRequest(String orderId, String type, Double amount, Double price) {
     this.orderId = orderId;
     this.type = type;
     this.amount = amount;

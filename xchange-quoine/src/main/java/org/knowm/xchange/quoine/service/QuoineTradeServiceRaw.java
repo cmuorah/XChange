@@ -1,7 +1,6 @@
 package org.knowm.xchange.quoine.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
@@ -45,7 +44,7 @@ public class QuoineTradeServiceRaw extends QuoineBaseService {
   }
 
   public QuoineOrderResponse placeLimitOrder(
-      CurrencyPair currencyPair, String type, BigDecimal originalAmount, BigDecimal price)
+      CurrencyPair currencyPair, String type, Double originalAmount, Double price)
       throws IOException {
 
     int productId = productId(currencyPair);
@@ -73,7 +72,7 @@ public class QuoineTradeServiceRaw extends QuoineBaseService {
   }
 
   public QuoineOrderResponse placeMarketOrder(
-      CurrencyPair currencyPair, String type, BigDecimal originalAmount) throws IOException {
+      CurrencyPair currencyPair, String type, Double originalAmount) throws IOException {
 
     int productId = productId(currencyPair);
 

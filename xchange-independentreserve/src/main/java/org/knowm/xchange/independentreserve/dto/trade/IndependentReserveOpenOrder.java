@@ -1,37 +1,36 @@
 package org.knowm.xchange.independentreserve.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /** Author: Kamil Zbikowski Date: 4/15/15 */
 public class IndependentReserveOpenOrder {
-  private final BigDecimal avgPrice;
+  private final Double avgPrice;
   private final Date createdTimestamp;
-  private final BigDecimal feePercent;
+  private final Double feePercent;
   private final String orderGuid;
   private final String orderType;
-  private final BigDecimal outstanding;
-  private final BigDecimal price;
+  private final Double outstanding;
+  private final Double price;
   private final String primaryCurrencyCode;
   private final String secondaryCurrencyCode;
   private final String status;
-  private final BigDecimal value;
-  private final BigDecimal volume;
+  private final Double value;
+  private final Double volume;
 
   public IndependentReserveOpenOrder(
-      @JsonProperty("AvgPrice") BigDecimal avgPrice,
+      @JsonProperty("AvgPrice") Double avgPrice,
       @JsonProperty("CreatedTimestampUtc") String createdTimestampUtc,
-      @JsonProperty("FeePercent") BigDecimal feePercent,
+      @JsonProperty("FeePercent") Double feePercent,
       @JsonProperty("OrderGuid") String orderGuid,
       @JsonProperty("OrderType") String orderType,
-      @JsonProperty("Outstanding") BigDecimal outstanding,
-      @JsonProperty("Price") BigDecimal price,
+      @JsonProperty("Outstanding") Double outstanding,
+      @JsonProperty("Price") Double price,
       @JsonProperty("PrimaryCurrencyCode") String primaryCurrencyCode,
       @JsonProperty("SecondaryCurrencyCode") String secondaryCurrencyCode,
       @JsonProperty("Status") String status,
-      @JsonProperty("Value") BigDecimal value,
-      @JsonProperty("Volume") BigDecimal volume)
+      @JsonProperty("Value") Double value,
+      @JsonProperty("Volume") Double volume)
       throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
     this.avgPrice = avgPrice;
     this.createdTimestamp =
@@ -48,7 +47,7 @@ public class IndependentReserveOpenOrder {
     this.volume = volume;
   }
 
-  public BigDecimal getAvgPrice() {
+  public Double getAvgPrice() {
     return avgPrice;
   }
 
@@ -56,7 +55,7 @@ public class IndependentReserveOpenOrder {
     return createdTimestamp;
   }
 
-  public BigDecimal getFeePercent() {
+  public Double getFeePercent() {
     return feePercent;
   }
 
@@ -68,11 +67,11 @@ public class IndependentReserveOpenOrder {
     return orderType;
   }
 
-  public BigDecimal getOutstanding() {
+  public Double getOutstanding() {
     return outstanding;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -88,11 +87,11 @@ public class IndependentReserveOpenOrder {
     return status;
   }
 
-  public BigDecimal getValue() {
+  public Double getValue() {
     return value;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 

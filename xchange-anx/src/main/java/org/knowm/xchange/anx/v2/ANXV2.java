@@ -1,7 +1,6 @@
 package org.knowm.xchange.anx.v2;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -217,8 +216,8 @@ public interface ANXV2 {
       @PathParam("baseCurrency") String baseCurrency,
       @PathParam("counterCurrency") String counterCurrency,
       @FormParam("type") String type,
-      @FormParam("amount") BigDecimal amount,
-      @FormParam("price") BigDecimal price)
+      @FormParam("amount") Double amount,
+      @FormParam("price") Double price)
       throws ANXException, IOException;
 
   /**

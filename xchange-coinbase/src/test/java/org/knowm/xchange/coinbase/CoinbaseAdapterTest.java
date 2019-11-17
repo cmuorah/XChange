@@ -5,8 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -34,7 +32,7 @@ public class CoinbaseAdapterTest {
   @Test
   public void testAdaptAccountInfo() throws IOException {
 
-    Balance balance = new Balance(Currency.BTC, new BigDecimal("7.10770000"));
+    Balance balance = new Balance(Currency.BTC, new Double("7.10770000"));
     List<Balance> balances = new ArrayList<>();
     balances.add(balance);
     AccountInfo expectedAccountInfo =
@@ -62,8 +60,8 @@ public class CoinbaseAdapterTest {
   @Test
   public void testAdaptTrades() throws IOException {
 
-    BigDecimal originalAmount = new BigDecimal("1.20000000");
-    BigDecimal price = new BigDecimal("905.10").divide(originalAmount, RoundingMode.HALF_EVEN);
+    Double originalAmount = new Double("1.20000000");
+    Double price = new Double("905.10") / originalAmount;
 
     UserTrade expectedTrade =
         new UserTrade(
@@ -74,7 +72,7 @@ public class CoinbaseAdapterTest {
             DateUtils.fromISO8601DateString("2014-02-06T18:12:38-08:00"),
             "52f4411767c71baf9000003f",
             "52f4411667c71baf9000003c",
-            new BigDecimal("9.05"),
+            new Double("9.05"),
             Currency.getInstance("USD"));
 
     // Read in the JSON from the example resources
@@ -100,11 +98,11 @@ public class CoinbaseAdapterTest {
     Ticker expectedTicker =
         new Ticker.Builder()
             .currencyPair(CurrencyPair.BTC_USD)
-            .ask(new BigDecimal("723.09"))
-            .bid(new BigDecimal("723.09"))
-            .last(new BigDecimal("719.79"))
-            .low(new BigDecimal("718.2"))
-            .high(new BigDecimal("723.11"))
+            .ask(new Double("723.09"))
+            .bid(new Double("723.09"))
+            .last(new Double("719.79"))
+            .low(new Double("718.2"))
+            .high(new Double("723.11"))
             .build();
 
     InputStream is =
@@ -113,7 +111,7 @@ public class CoinbaseAdapterTest {
     ObjectMapper mapper = new ObjectMapper();
     CoinbasePrice price = mapper.readValue(is, CoinbasePrice.class);
 
-    CoinbaseMoney spotPrice = new CoinbaseMoney("USD", new BigDecimal("719.79"));
+    CoinbaseMoney spotPrice = new CoinbaseMoney("USD", new Double("719.79"));
 
     is =
         CoinbaseAdapterTest.class.getResourceAsStream(

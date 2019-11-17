@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.v3.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.Data;
 import org.knowm.xchange.okcoin.v3.dto.trade.FutureSide;
 
@@ -10,40 +9,40 @@ public class SwapPosition {
 
   /** Positions available to be closed, ie 1 */
   @JsonProperty("avail_position")
-  private BigDecimal availPosition;
+  private Double availPosition;
 
   /** Avg. position price, ie 11444.4 */
   @JsonProperty("avg_cost")
-  private BigDecimal avgCost;
+  private Double avgCost;
 
   /** Contract ID, ie BTC-USD-SWAP */
   @JsonProperty("instrument_id")
   private String instrumentId;
 
   /** Leverage level, ie 3 */
-  private BigDecimal leverage;
+  private Double leverage;
 
   /** Estimated liquidation price, ie 0.1 */
   @JsonProperty("liquidation_price")
-  private BigDecimal liquidationPrice;
+  private Double liquidationPrice;
 
   /** Maintenance Margin Ratio, ie 0.0050 */
   @JsonProperty("maint_margin_ratio")
-  private BigDecimal maintMarginRatio;
+  private Double maintMarginRatio;
 
   /** Margin, ie 0.0029 */
-  private BigDecimal margin;
+  private Double margin;
 
   /** Positions open, ie 1 */
-  private BigDecimal position;
+  private Double position;
 
   /** Settlement price, ie 11444.4 */
   @JsonProperty("settlement_price")
-  private BigDecimal settlementPrice;
+  private Double settlementPrice;
 
   /** Realized PnL, ie -0.0001 */
   @JsonProperty("realized_pnl")
-  private BigDecimal realizedPnl;
+  private Double realizedPnl;
 
   /** Side, short or long */
   private FutureSide side;

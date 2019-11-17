@@ -1,6 +1,5 @@
 package org.knowm.xchange.exx;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -114,11 +113,11 @@ public class EXXAdapters {
     List<LimitOrder> asks = new ArrayList<LimitOrder>();
     List<LimitOrder> bids = new ArrayList<LimitOrder>();
 
-    for (BigDecimal[] exxAsk : exxOrderbook.getAsks()) {
+    for (Double[] exxAsk : exxOrderbook.getAsks()) {
       asks.add(new LimitOrder(OrderType.ASK, exxAsk[1], currencyPair, null, null, exxAsk[0]));
     }
 
-    for (BigDecimal[] exxBid : exxOrderbook.getBids()) {
+    for (Double[] exxBid : exxOrderbook.getBids()) {
       bids.add(new LimitOrder(OrderType.BID, exxBid[1], currencyPair, null, null, exxBid[0]));
     }
 
@@ -210,11 +209,11 @@ public class EXXAdapters {
   //   * @return
   //   */
   //  public static CoinsuperGenericOrder adaptOrder(String orderId, OrderList orderList) {
-  //    BigDecimal averagePrice = new BigDecimal(orderList.getPriceLimit());
-  //    BigDecimal cumulativeAmount = new BigDecimal(orderList.getQuantity());
-  //    BigDecimal totalFee = new BigDecimal(orderList.getFee());
+  //    Double averagePrice = new Double(orderList.getPriceLimit());
+  //    Double cumulativeAmount = new Double(orderList.getQuantity());
+  //    Double totalFee = new Double(orderList.getFee());
   //
-  //    BigDecimal amount = new BigDecimal(orderList.getQuantity());
+  //    Double amount = new Double(orderList.getQuantity());
   //    OrderType action = OrderType.ASK;
   //    if (orderList.getAction().equals("Buy")) {
   //      action = OrderType.BID;

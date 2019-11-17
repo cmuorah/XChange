@@ -1,6 +1,5 @@
 package org.knowm.xchange.fcoin;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.stream.Stream;
@@ -23,17 +22,13 @@ public final class FCoinAdapters {
   }
 
   private static Stream<LimitOrder> adaptLimitOrders(
-      Order.OrderType type, BigDecimal[][] list, Date timestamp, CurrencyPair currencyPair) {
+      Order.OrderType type, Double[][] list, Date timestamp, CurrencyPair currencyPair) {
     return Arrays.stream(list)
         .map(data -> adaptLimitOrder(type, data, currencyPair, null, timestamp));
   }
 
   private static LimitOrder adaptLimitOrder(
-      Order.OrderType type,
-      BigDecimal[] data,
-      CurrencyPair currencyPair,
-      String id,
-      Date timestamp) {
+      Order.OrderType type, Double[] data, CurrencyPair currencyPair, String id, Date timestamp) {
 
     return new LimitOrder(type, data[1], currencyPair, id, timestamp, data[0]);
   }

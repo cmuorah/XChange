@@ -1,29 +1,28 @@
 package org.knowm.xchange.bl3p;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 
 public class Bl3pUtils {
+  private static final Double SATOSHI = 1e8;
+  private static final Double EUROSHI = 1e5;
+
   private Bl3pUtils() {}
 
-  private static final BigDecimal SATOSHI = new BigDecimal(1e8);
-  private static final BigDecimal EUROSHI = new BigDecimal(1e5);
-
-  public static final BigDecimal fromSatoshi(BigDecimal bd) {
-    return bd.divide(SATOSHI);
+  public static Double fromSatoshi(Double bd) {
+    return bd / SATOSHI;
   }
 
-  public static final long toSatoshi(BigDecimal bd) {
-    return bd.multiply(SATOSHI).longValue();
+  public static long toSatoshi(Double bd) {
+    return Math.round(bd * (SATOSHI));
   }
 
-  public static final BigDecimal fromEuroshi(BigDecimal bd) {
-    return bd.divide(EUROSHI);
+  public static Double fromEuroshi(Double bd) {
+    return bd / (EUROSHI);
   }
 
-  public static final long toEuroshi(BigDecimal bd) {
-    return bd.multiply(EUROSHI).longValue();
+  public static long toEuroshi(Double bd) {
+    return Math.round(bd * (EUROSHI));
   }
 
   public static String toPairString(CurrencyPair currencyPair) {

@@ -1,7 +1,6 @@
 package org.knowm.xchange.btcturk.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -11,9 +10,9 @@ import java.util.Date;
 public final class BTCTurkTrades {
 
   private final Date date;
-  private final BigDecimal tid;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double tid;
+  private final Double price;
+  private final Double amount;
 
   /**
    * Constructor
@@ -25,9 +24,9 @@ public final class BTCTurkTrades {
    */
   public BTCTurkTrades(
       @JsonProperty("date") Date date,
-      @JsonProperty("tid") BigDecimal tid,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount) {
+      @JsonProperty("tid") Double tid,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount) {
     this.date = date;
     this.tid = tid;
     this.price = price;
@@ -38,15 +37,15 @@ public final class BTCTurkTrades {
     return date;
   }
 
-  public BigDecimal getTid() {
+  public Double getTid() {
     return tid;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

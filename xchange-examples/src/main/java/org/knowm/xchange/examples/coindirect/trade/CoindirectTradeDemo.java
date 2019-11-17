@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.coindirect.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coindirect.CoindirectExchange;
 import org.knowm.xchange.coindirect.service.CoindirectTradeService;
@@ -37,8 +36,8 @@ public class CoindirectTradeDemo {
 
     LimitOrder limitOrder =
         new LimitOrder.Builder(Order.OrderType.BID, new CurrencyPair("BTC", "ZAR"))
-            .limitPrice(new BigDecimal("80000.01"))
-            .originalAmount(new BigDecimal("0.001"))
+            .limitPrice(new Double("80000.01"))
+            .originalAmount(new Double("0.001"))
             .build();
 
     String orderId = tradeService.placeLimitOrder(limitOrder);
@@ -51,7 +50,7 @@ public class CoindirectTradeDemo {
 
     MarketOrder marketOrder =
         new MarketOrder.Builder(Order.OrderType.BID, new CurrencyPair("BTC", "ZAR"))
-            .originalAmount(new BigDecimal("0.001"))
+            .originalAmount(new Double("0.001"))
             .build();
 
     orderId = tradeService.placeMarketOrder(marketOrder);

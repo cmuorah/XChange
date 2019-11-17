@@ -1,7 +1,6 @@
 package org.knowm.xchange.coingi.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coingi.CoingiAdapters;
@@ -39,8 +38,7 @@ public class CoingiAccountService extends CoingiAccountServiceRaw implements Acc
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     try {
       return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
     } catch (CoingiException e) {

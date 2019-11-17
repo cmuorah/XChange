@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptofacilities.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
 import org.knowm.xchange.cryptofacilities.Util;
@@ -14,9 +13,9 @@ public class CryptoFacilitiesInstrument extends CryptoFacilitiesResult {
   private final Date lastTradingTime;
   private final String symbol;
   private final String underlying;
-  private final BigDecimal contractSize;
+  private final Double contractSize;
   private final String type;
-  private final BigDecimal tickSize;
+  private final Double tickSize;
 
   public CryptoFacilitiesInstrument(
       @JsonProperty("result") String result,
@@ -25,9 +24,9 @@ public class CryptoFacilitiesInstrument extends CryptoFacilitiesResult {
       @JsonProperty("lastTradingTime") String strLastTradingTime,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("underlying") String underlying,
-      @JsonProperty("contractSize") BigDecimal contractSize,
+      @JsonProperty("contractSize") Double contractSize,
       @JsonProperty("type") String type,
-      @JsonProperty("tickSize") BigDecimal tickSize)
+      @JsonProperty("tickSize") Double tickSize)
       throws ParseException {
 
     super(result, error);
@@ -57,7 +56,7 @@ public class CryptoFacilitiesInstrument extends CryptoFacilitiesResult {
     return underlying;
   }
 
-  public BigDecimal getContractSize() {
+  public Double getContractSize() {
     return contractSize;
   }
 
@@ -65,7 +64,7 @@ public class CryptoFacilitiesInstrument extends CryptoFacilitiesResult {
     return type;
   }
 
-  public BigDecimal getTickSize() {
+  public Double getTickSize() {
     return tickSize;
   }
 

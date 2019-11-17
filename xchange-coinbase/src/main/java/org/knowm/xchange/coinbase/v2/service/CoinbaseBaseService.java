@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbase.v2.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import javax.ws.rs.core.MediaType;
 import org.knowm.xchange.Exchange;
@@ -57,7 +56,7 @@ public class CoinbaseBaseService extends BaseExchangeService implements BaseServ
     return coinbase.getTime(Coinbase.CB_VERSION_VALUE).getData();
   }
 
-  protected String getSignature(BigDecimal timestamp, HttpMethod method, String path, String body) {
+  protected String getSignature(Double timestamp, HttpMethod method, String path, String body) {
     String secretKey = exchange.getExchangeSpecification().getSecretKey();
     String message = timestamp + method.toString() + path + (body != null ? body : "");
     return new HmacDigest("HmacSHA256", secretKey).hexDigest(message);
@@ -66,7 +65,7 @@ public class CoinbaseBaseService extends BaseExchangeService implements BaseServ
   protected void showCurl(
       HttpMethod method,
       String apiKey,
-      BigDecimal timestamp,
+      Double timestamp,
       String signature,
       String path,
       String json) {

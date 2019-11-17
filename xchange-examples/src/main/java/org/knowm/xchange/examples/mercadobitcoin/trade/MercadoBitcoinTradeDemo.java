@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.mercadobitcoin.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -46,11 +45,11 @@ public class MercadoBitcoinTradeDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (Order.OrderType.ASK),
-            new BigDecimal("0.01"),
+            new Double("0.01"),
             CurrencyPair.BTC_BRL,
             "",
             null,
-            new BigDecimal("9000.00"));
+            new Double("9000.00"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 
@@ -78,7 +77,7 @@ public class MercadoBitcoinTradeDemo {
     // place a limit buy order
     MercadoBitcoinBaseTradeApiResult<MercadoBitcoinPlaceLimitOrderResult> order =
         tradeService.mercadoBitcoinPlaceLimitOrder(
-            "ltc_brl", "buy", new BigDecimal("0.01"), new BigDecimal("1"));
+            "ltc_brl", "buy", new Double("0.01"), new Double("1"));
     System.out.println(
         "MercadoBitcoinBaseTradeApiResult<MercadoBitcoinPlaceLimitOrderResult> return value: "
             + order);

@@ -1,7 +1,6 @@
 package org.knowm.xchange.dsx;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
@@ -186,8 +185,7 @@ public interface DSXAuthenticated extends DSX {
    * @param pair pair, eg. btcusd
    * @throws IOException
    * @deprecated Use {@link DSXAuthenticatedV2#trade(String, ParamsDigest, SynchronizedValueFactory,
-   *     DSXOrder.Type, BigDecimal, BigDecimal, String, DSXOrder.OrderType)} DSXOrder.OrderType,
-   *     String)}
+   *     DSXOrder.Type, Double, Double, String, DSXOrder.OrderType)} DSXOrder.OrderType, String)}
    */
   @Deprecated
   @POST
@@ -198,8 +196,8 @@ public interface DSXAuthenticated extends DSX {
       @HeaderParam("Sign") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("type") DSXOrder.Type type,
-      @FormParam("rate") BigDecimal rate,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("rate") Double rate,
+      @FormParam("amount") Double amount,
       @FormParam("pair") String pair)
       throws IOException;
 
@@ -243,8 +241,8 @@ public interface DSXAuthenticated extends DSX {
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("currency") String currency,
       @FormParam("address") String address,
-      @FormParam("amount") BigDecimal amount,
-      @FormParam("commission") BigDecimal commission)
+      @FormParam("amount") Double amount,
+      @FormParam("commission") Double commission)
       throws IOException;
 
   @Deprecated
@@ -256,7 +254,7 @@ public interface DSXAuthenticated extends DSX {
       @HeaderParam("Sign") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount)
+      @FormParam("amount") Double amount)
       throws IOException;
 
   @Deprecated

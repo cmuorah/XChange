@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbase.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinbase.CoinbaseAdapters;
 import org.knowm.xchange.coinbase.dto.marketdata.CoinbaseMoney;
@@ -39,8 +38,8 @@ public class CoinbaseMarketDataService extends CoinbaseMarketDataServiceRaw
   public Ticker getTicker(CurrencyPair currencyPair, final Object... args) throws IOException {
 
     final String currency = currencyPair.counter.getCurrencyCode();
-    final CoinbasePrice buyPrice = super.getCoinbaseBuyPrice(BigDecimal.ONE, currency);
-    final CoinbasePrice sellPrice = super.getCoinbaseSellPrice(BigDecimal.ONE, currency);
+    final CoinbasePrice buyPrice = super.getCoinbaseBuyPrice(1d, currency);
+    final CoinbasePrice sellPrice = super.getCoinbaseSellPrice(1d, currency);
     final CoinbaseMoney spotRate = super.getCoinbaseSpotRate(currency);
 
     final CoinbaseSpotPriceHistory coinbaseSpotPriceHistory =

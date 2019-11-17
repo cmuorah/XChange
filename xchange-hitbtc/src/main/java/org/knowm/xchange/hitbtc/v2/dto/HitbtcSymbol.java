@@ -1,27 +1,26 @@
 package org.knowm.xchange.hitbtc.v2.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class HitbtcSymbol {
 
   private final String id;
   private final String baseCurrency;
   private final String quoteCurrency;
-  private final BigDecimal quantityIncrement;
-  private final BigDecimal tickSize;
-  private final BigDecimal takeLiquidityRate;
-  private final BigDecimal provideLiquidityRate;
+  private final Double quantityIncrement;
+  private final Double tickSize;
+  private final Double takeLiquidityRate;
+  private final Double provideLiquidityRate;
   private final String feeCurrency;
 
   public HitbtcSymbol(
       @JsonProperty("id") String id,
       @JsonProperty("baseCurrency") String baseCurrency,
       @JsonProperty("quoteCurrency") String quoteCurrency,
-      @JsonProperty("quantityIncrement") BigDecimal quantityIncrement,
-      @JsonProperty("tickSize") BigDecimal tickSize,
-      @JsonProperty("takeLiquidityRate") BigDecimal takeLiquidityRate,
-      @JsonProperty("provideLiquidityRate") BigDecimal provideLiquidityRate,
+      @JsonProperty("quantityIncrement") Double quantityIncrement,
+      @JsonProperty("tickSize") Double tickSize,
+      @JsonProperty("takeLiquidityRate") Double takeLiquidityRate,
+      @JsonProperty("provideLiquidityRate") Double provideLiquidityRate,
       @JsonProperty("feeCurrency") String feeCurrency) {
 
     this.id = id;
@@ -46,19 +45,19 @@ public class HitbtcSymbol {
     return quoteCurrency;
   }
 
-  public BigDecimal getQuantityIncrement() {
+  public Double getQuantityIncrement() {
     return quantityIncrement;
   }
 
-  public BigDecimal getTickSize() {
+  public Double getTickSize() {
     return tickSize;
   }
 
-  public BigDecimal getTakeLiquidityRate() {
+  public Double getTakeLiquidityRate() {
     return takeLiquidityRate;
   }
 
-  public BigDecimal getProvideLiquidityRate() {
+  public Double getProvideLiquidityRate() {
     return provideLiquidityRate;
   }
 

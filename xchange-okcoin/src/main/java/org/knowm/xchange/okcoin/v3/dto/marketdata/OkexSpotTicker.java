@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.v3.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import lombok.Data;
@@ -10,10 +9,10 @@ import lombok.Data;
 public class OkexSpotTicker {
 
   @JsonProperty("best_ask")
-  private BigDecimal bestAsk;
+  private Double bestAsk;
 
   @JsonProperty("best_bid")
-  private BigDecimal bestBid;
+  private Double bestBid;
 
   @JsonProperty("instrument_id")
   private String instrumentId;
@@ -21,26 +20,26 @@ public class OkexSpotTicker {
   @JsonProperty("product_id")
   private String productId;
 
-  private BigDecimal last;
-  private BigDecimal ask;
-  private BigDecimal bid;
+  private Double last;
+  private Double ask;
+  private Double bid;
 
   @JsonProperty("open_24h")
-  private BigDecimal open24h;
+  private Double open24h;
 
   @JsonProperty("high_24h")
-  private BigDecimal high24h;
+  private Double high24h;
 
   @JsonProperty("low_24h")
-  private BigDecimal low24h;
+  private Double low24h;
 
   @JsonProperty("base_volume_24h")
-  private BigDecimal baseVolume24h;
+  private Double baseVolume24h;
 
   private String timestamp;
 
   @JsonProperty("quote_volume_24h")
-  private BigDecimal quoteVolume24h;
+  private Double quoteVolume24h;
 
   public Date getTimestamp() {
     return Date.from(Instant.parse(timestamp));

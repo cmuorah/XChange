@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.bibox.BiboxTestUtils;
@@ -32,8 +31,8 @@ public class BiboxAccountUnmarshalTest {
     BiboxCoin etc = coinList.get(2);
     assertThat(etc.getSymbol()).isEqualTo("ETC");
     assertThat(etc.getId()).isEqualTo(45);
-    assertThat(etc.getTotalBalance()).isEqualTo(new BigDecimal("0.40652300"));
-    assertThat(etc.getBalance()).isEqualTo(new BigDecimal("0.40652300"));
-    assertThat(etc.getFreeze()).isEqualTo(new BigDecimal("0.00000000"));
+    assertThat(etc.getTotalBalance()).isEqualTo(new Double("0.40652300"));
+    assertThat(etc.getBalance()).isEqualTo(new Double("0.40652300"));
+    assertThat(etc.getFreeze()).isEqualTo(new Double("0.00000000"));
   }
 }

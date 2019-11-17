@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -26,14 +25,14 @@ public class LunoTrades {
 
   public static class Trade {
     public final long timestamp;
-    public final BigDecimal price;
-    public final BigDecimal volume;
+    public final Double price;
+    public final Double volume;
     public final boolean buy;
 
     public Trade(
         @JsonProperty(value = "timestamp", required = true) long timestamp,
-        @JsonProperty(value = "price", required = true) BigDecimal price,
-        @JsonProperty(value = "volume", required = true) BigDecimal volume,
+        @JsonProperty(value = "price", required = true) Double price,
+        @JsonProperty(value = "volume", required = true) Double volume,
         @JsonProperty(value = "is_buy", required = true) boolean buy) {
       this.timestamp = timestamp;
       this.price = price;

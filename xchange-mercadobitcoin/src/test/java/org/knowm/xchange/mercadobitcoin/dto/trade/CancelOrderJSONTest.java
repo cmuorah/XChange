@@ -6,7 +6,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.mercadobitcoin.dto.MercadoBitcoinBaseTradeApiResult;
 
@@ -37,8 +36,8 @@ public class CancelOrderJSONTest {
 
     assertThat(limitOrder.get("27176").getStatus()).isEqualTo("canceled");
     assertThat(limitOrder.get("27176").getCreated()).isEqualTo(1381414719L);
-    assertThat(limitOrder.get("27176").getPrice()).isEqualTo(new BigDecimal("400.00000"));
-    assertThat(limitOrder.get("27176").getVolume()).isEqualTo(new BigDecimal("0.50000000"));
+    assertThat(limitOrder.get("27176").getPrice()).isEqualTo(new Double("400.00000"));
+    assertThat(limitOrder.get("27176").getVolume()).isEqualTo(new Double("0.50000000"));
     assertThat(limitOrder.get("27176").getPair()).isEqualTo("btc_brl");
     assertThat(limitOrder.get("27176").getType()).isEqualTo("sell");
     assertThat(limitOrder.get("27176").getOperations().size()).isEqualTo(0);

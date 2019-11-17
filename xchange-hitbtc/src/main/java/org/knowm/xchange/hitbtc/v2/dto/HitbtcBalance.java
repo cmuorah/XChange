@@ -1,19 +1,18 @@
 package org.knowm.xchange.hitbtc.v2.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 public class HitbtcBalance {
 
   private final String currency;
-  private final BigDecimal available;
-  private final BigDecimal reserved;
+  private final Double available;
+  private final Double reserved;
 
   public HitbtcBalance(
       @JsonProperty("currency") String currency,
-      @JsonProperty("available") BigDecimal available,
-      @JsonProperty("reserved") BigDecimal reserved) {
+      @JsonProperty("available") Double available,
+      @JsonProperty("reserved") Double reserved) {
 
     this.currency = currency;
     this.available = available;
@@ -53,11 +52,11 @@ public class HitbtcBalance {
     return currency;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 
-  public BigDecimal getReserved() {
+  public Double getReserved() {
 
     return reserved;
   }

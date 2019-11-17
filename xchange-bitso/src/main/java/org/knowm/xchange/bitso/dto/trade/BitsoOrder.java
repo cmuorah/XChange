@@ -3,7 +3,6 @@ package org.knowm.xchange.bitso.dto.trade;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.bitso.BitsoUtils;
 
@@ -15,8 +14,8 @@ public final class BitsoOrder {
   /** 0 - buy (bid); 1 - sell (ask) */
   private final int type;
 
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final String errorMessage;
 
   /**
@@ -32,8 +31,8 @@ public final class BitsoOrder {
       @JsonProperty("id") String id,
       @JsonProperty("datetime") String datetime,
       @JsonProperty("type") int type,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("error") @JsonDeserialize(using = BitsoErrorDeserializer.class)
           String errorMessage) {
 
@@ -60,12 +59,12 @@ public final class BitsoOrder {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

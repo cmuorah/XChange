@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexNewOrderRequest {
 
@@ -47,21 +46,21 @@ public class BitfinexNewOrderRequest {
   public BitfinexNewOrderRequest(
       String nonce,
       String symbol,
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       String exchange,
       String side,
       String type,
-      BigDecimal ocoAmount) {
+      Double ocoAmount) {
 
     this.request = "/v1/order/new";
     this.nonce = nonce;
     this.symbol = symbol;
     if (amount != null) {
-      this.amount = amount.toPlainString();
+      this.amount = amount.toString();
     }
     if (price != null) {
-      this.price = price.toPlainString();
+      this.price = price.toString();
     }
     this.exchange = exchange;
     this.side = side;
@@ -69,9 +68,9 @@ public class BitfinexNewOrderRequest {
     if (ocoAmount != null) {
       ocoorder = true;
       if (side.equals("sell")) {
-        sell_price_oco = ocoAmount.toPlainString();
+        sell_price_oco = ocoAmount.toString();
       } else {
-        buy_price_oco = ocoAmount.toPlainString();
+        buy_price_oco = ocoAmount.toString();
       }
     }
   }
@@ -79,14 +78,14 @@ public class BitfinexNewOrderRequest {
   public BitfinexNewOrderRequest(
       String nonce,
       String symbol,
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       String exchange,
       String side,
       String type,
       boolean isHidden,
       boolean isPostOnly,
-      BigDecimal ocoAmount) {
+      Double ocoAmount) {
 
     this(nonce, symbol, amount, price, exchange, side, type, ocoAmount);
     this.is_hidden = isHidden;

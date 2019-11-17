@@ -1,19 +1,18 @@
 package org.knowm.xchange.bitcoincore.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.math.BigDecimal;
 import si.mazi.rescu.ExceptionalReturnContentException;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BitcoinCoreBalanceResponse {
 
-  private BigDecimal amount = BigDecimal.ZERO;
+  private Double amount = 0d;
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setResult(BigDecimal value) {
+  public void setResult(Double value) {
     amount = value;
   }
 

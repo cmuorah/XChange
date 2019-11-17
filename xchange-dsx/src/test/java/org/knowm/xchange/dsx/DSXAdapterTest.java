@@ -6,7 +6,6 @@ import static org.junit.Assert.assertEquals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +56,7 @@ public class DSXAdapterTest {
     assertThat(asks.get(0).getType()).isEqualTo(Order.OrderType.ASK);
     assertThat(asks.get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
     assertThat(asks.get(0).getTimestamp()).isNull();
-    assertEquals(new BigDecimal("103.426"), asks.get(0).getLimitPrice());
+    assertEquals(new Double("103.426"), asks.get(0).getLimitPrice());
 
     List<LimitOrder> bids =
         DSXAdapters.adaptOrders(orderbookRaw.getBids(), CurrencyPair.BTC_USD, "bid", "");
@@ -66,7 +65,7 @@ public class DSXAdapterTest {
     assertThat(bid1.getType()).isEqualTo(Order.OrderType.BID);
     assertThat(bid1.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
     assertThat(bid1.getTimestamp()).isNull();
-    assertEquals(new BigDecimal("103.2"), bid1.getLimitPrice());
+    assertEquals(new Double("103.2"), bid1.getLimitPrice());
   }
 
   @Test
@@ -111,7 +110,7 @@ public class DSXAdapterTest {
             dsxTickerWrapper
                 .getTicker(DSXAdapters.currencyPairToMarketName(CurrencyPair.BTC_USD))
                 .getLast())
-        .isEqualTo(new BigDecimal("101.773"));
+        .isEqualTo(new Double("101.773"));
     Ticker ticker =
         DSXAdapters.adaptTicker(
             dsxTickerWrapper.getTicker(DSXAdapters.currencyPairToMarketName(CurrencyPair.BTC_USD)),
@@ -120,7 +119,7 @@ public class DSXAdapterTest {
     assertThat(ticker.getLast().toString()).isEqualTo("101.773");
     assertThat(ticker.getLow().toString()).isEqualTo("91.14");
     assertThat(ticker.getHigh().toString()).isEqualTo("109.88");
-    assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("1632898.2249"));
+    assertThat(ticker.getVolume()).isEqualTo(new Double("1632898.2249"));
     assertThat(DateUtils.toUTCString(ticker.getTimestamp())).isEqualTo("2013-06-09 22:18:28 GMT");
   }
 
@@ -141,11 +140,11 @@ public class DSXAdapterTest {
         "btcusd",
         new DSXPairInfo(
             5,
-            new BigDecimal(5000),
-            new BigDecimal(15000),
-            new BigDecimal(0.0001),
+            new Double(5000),
+            new Double(15000),
+            new Double(0.0001),
             0,
-            new BigDecimal(0),
+            new Double(0),
             5,
             "USD",
             "BTC"));

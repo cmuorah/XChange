@@ -1,19 +1,18 @@
 package org.knowm.xchange.coinbasepro.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseProProduct {
 
   private final String id;
   private final String baseCurrency;
   private final String targetCurrency;
-  private final BigDecimal baseMinSize;
-  private final BigDecimal baseMaxSize;
-  private final BigDecimal minMarketFunds;
-  private final BigDecimal maxMarketFunds;
-  private final BigDecimal baseIncrement;
-  private final BigDecimal quoteIncrement;
+  private final Double baseMinSize;
+  private final Double baseMaxSize;
+  private final Double minMarketFunds;
+  private final Double maxMarketFunds;
+  private final Double baseIncrement;
+  private final Double quoteIncrement;
   private final boolean limitOnly;
   private final String status;
 
@@ -21,12 +20,12 @@ public class CoinbaseProProduct {
       @JsonProperty("id") String id,
       @JsonProperty("base_currency") String baseCurrency,
       @JsonProperty("quote_currency") String targetCurrency,
-      @JsonProperty("base_min_size") BigDecimal baseMinSize,
-      @JsonProperty("base_max_size") BigDecimal baseMaxSize,
-      @JsonProperty("min_market_funds") BigDecimal minMarketFunds,
-      @JsonProperty("max_market_funds") BigDecimal maxMarketFunds,
-      @JsonProperty("base_increment") BigDecimal baseIncrement,
-      @JsonProperty("quote_increment") BigDecimal quoteIncrement,
+      @JsonProperty("base_min_size") Double baseMinSize,
+      @JsonProperty("base_max_size") Double baseMaxSize,
+      @JsonProperty("min_market_funds") Double minMarketFunds,
+      @JsonProperty("max_market_funds") Double maxMarketFunds,
+      @JsonProperty("base_increment") Double baseIncrement,
+      @JsonProperty("quote_increment") Double quoteIncrement,
       @JsonProperty("limit_only") boolean limitOnly,
       @JsonProperty("status") String status) {
 
@@ -58,30 +57,30 @@ public class CoinbaseProProduct {
     return targetCurrency;
   }
 
-  public BigDecimal getBaseMinSize() {
+  public Double getBaseMinSize() {
 
     return baseMinSize;
   }
 
-  public BigDecimal getBaseMaxSize() {
+  public Double getBaseMaxSize() {
 
     return baseMaxSize;
   }
 
-  public BigDecimal getBaseIncrement() {
+  public Double getBaseIncrement() {
     return baseIncrement;
   }
 
-  public BigDecimal getQuoteIncrement() {
+  public Double getQuoteIncrement() {
 
     return quoteIncrement;
   }
 
-  public BigDecimal getMinMarketFunds() {
+  public Double getMinMarketFunds() {
     return minMarketFunds;
   }
 
-  public BigDecimal getMaxMarketFunds() {
+  public Double getMaxMarketFunds() {
     return maxMarketFunds;
   }
 

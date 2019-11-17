@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.campbx.dto.account.MyFunds;
 
@@ -22,7 +21,7 @@ public class MyFundsJSONTest {
                 MyFunds.class);
 
     // Verify that the example data was unmarshalled correctly
-    assertThat(myFunds.getLiquidUSD()).isEqualTo(new BigDecimal("0.00"));
-    assertThat(myFunds.getTotalBTC()).isEqualTo(new BigDecimal("0.10000000"));
+    assertThat(myFunds.getLiquidUSD()).isEqualTo(new Double("0.00"));
+    assertThat(myFunds.getTotalBTC()).isEqualTo(new Double("0.10000000"));
   }
 }

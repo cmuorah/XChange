@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,9 +20,9 @@ public class KrakenAssetPairsJSONTest {
   public void before() {
 
     List<KrakenFee> fees = new ArrayList<>();
-    fees.add(new KrakenFee(new BigDecimal("0"), new BigDecimal("0.26")));
+    fees.add(new KrakenFee(new Double("0"), new Double("0.26")));
     List<KrakenFee> fees_maker = new ArrayList<>();
-    fees.add(new KrakenFee(new BigDecimal("0"), new BigDecimal("0.1")));
+    fees.add(new KrakenFee(new Double("0"), new Double("0.1")));
     List<String> leverage_buy = Arrays.asList("2", "3", "4", "5");
     List<String> leverage_sell = Arrays.asList("2", "3", "4", "5");
     expectedAssetPairInfo =
@@ -37,12 +36,12 @@ public class KrakenAssetPairsJSONTest {
             "unit",
             1,
             8,
-            new BigDecimal(1),
+            new Double(1),
             fees,
             fees_maker,
             "ZUSD",
-            new BigDecimal(80),
-            new BigDecimal(40),
+            new Double(80),
+            new Double(40),
             leverage_buy,
             leverage_sell);
   }

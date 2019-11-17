@@ -10,7 +10,6 @@ import static org.powermock.api.mockito.PowerMockito.when;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.junit.Before;
@@ -45,8 +44,8 @@ public class AcxMarketDataServiceTest {
 
     Ticker ticker = service.getTicker(CurrencyPair.ETH_AUD);
 
-    assertEquals(new BigDecimal("576.3302"), ticker.getVolume());
-    assertEquals(new BigDecimal("1119.33"), ticker.getBid());
+    assertEquals(new Double("576.3302"), ticker.getVolume());
+    assertEquals(new Double("1119.33"), ticker.getBid());
     assertEquals(new Date(1513687641000L), ticker.getTimestamp());
   }
 
@@ -59,9 +58,9 @@ public class AcxMarketDataServiceTest {
 
     assertFalse(orderBook.getAsks().isEmpty());
     assertFalse(orderBook.getBids().isEmpty());
-    assertEquals(new BigDecimal("1144.94"), orderBook.getAsks().get(0).getLimitPrice());
+    assertEquals(new Double("1144.94"), orderBook.getAsks().get(0).getLimitPrice());
     assertEquals(ASK, orderBook.getAsks().get(0).getType());
-    assertEquals(new BigDecimal("1128.88"), orderBook.getBids().get(0).getLimitPrice());
+    assertEquals(new Double("1128.88"), orderBook.getBids().get(0).getLimitPrice());
     assertEquals(BID, orderBook.getBids().get(0).getType());
   }
 
@@ -84,7 +83,7 @@ public class AcxMarketDataServiceTest {
     Trades trades = service.getTrades(CurrencyPair.ETH_AUD);
 
     assertFalse(trades.getTrades().isEmpty());
-    assertEquals(new BigDecimal("0.0085"), trades.getTrades().get(0).getOriginalAmount());
+    assertEquals(new Double("0.0085"), trades.getTrades().get(0).getOriginalAmount());
   }
 
   private <T> T read(String path, Class<T> clz) throws IOException {

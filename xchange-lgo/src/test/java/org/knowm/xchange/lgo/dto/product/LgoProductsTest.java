@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 public class LgoProductsTest {
@@ -26,17 +25,14 @@ public class LgoProductsTest {
         .usingRecursiveComparison()
         .isEqualTo(
             new LgoProductCurrency(
-                "BTC", null, new LgoLimit(new BigDecimal("0.001"), new BigDecimal("1000"))));
+                "BTC", null, new LgoLimit(new Double("0.001"), new Double("1000"))));
     assertThat(product.getQuote())
         .usingRecursiveComparison()
         .isEqualTo(
             new LgoProductCurrency(
-                "USD",
-                new BigDecimal("0.10"),
-                new LgoLimit(new BigDecimal("10"), new BigDecimal("1000000"))));
+                "USD", new Double("0.10"), new LgoLimit(new Double("10"), new Double("1000000"))));
     assertThat(product.getTotal())
         .usingRecursiveComparison()
-        .isEqualTo(
-            new LgoProductTotal(new LgoLimit(new BigDecimal("10"), new BigDecimal("50000000"))));
+        .isEqualTo(new LgoProductTotal(new LgoLimit(new Double("10"), new Double("50000000"))));
   }
 }

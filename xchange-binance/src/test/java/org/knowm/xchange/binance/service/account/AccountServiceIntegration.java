@@ -1,6 +1,5 @@
 package org.knowm.xchange.binance.service.account;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -98,7 +97,7 @@ public class AccountServiceIntegration {
     Assert.assertNotNull(fundingHistory);
 
     for (FundingRecord record : fundingHistory) {
-      Assert.assertTrue(record.getAmount().compareTo(BigDecimal.ZERO) > 0);
+      Assert.assertTrue(record.getAmount().compareTo(0d) > 0);
     }
   }
 }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.anx.v2.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.anx.ANXUtils;
 import org.knowm.xchange.anx.v2.ANXV2;
@@ -99,8 +98,7 @@ public class ANXTradeServiceRaw extends ANXBaseService {
   }
 
   public ANXGenericResponse placeANXLimitOrder(
-      CurrencyPair currencyPair, String type, BigDecimal amount, BigDecimal price)
-      throws IOException {
+      CurrencyPair currencyPair, String type, Double amount, Double price) throws IOException {
 
     try {
 

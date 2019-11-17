@@ -2,7 +2,6 @@ package org.knowm.xchange.quadrigacx.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,15 +10,15 @@ import org.knowm.xchange.currency.Currency;
 
 public final class QuadrigaCxBalance {
 
-  private final BigDecimal fee;
+  private final Double fee;
   private final String error;
-  private Map<Currency, BigDecimal> currencyReserved = new HashMap<>();
-  private Map<Currency, BigDecimal> currencyAvailable = new HashMap<>();
-  private Map<Currency, BigDecimal> currencyBalance = new HashMap<>();
+  private Map<Currency, Double> currencyReserved = new HashMap<>();
+  private Map<Currency, Double> currencyAvailable = new HashMap<>();
+  private Map<Currency, Double> currencyBalance = new HashMap<>();
   private List<Currency> currencies = new ArrayList<>();
 
   public QuadrigaCxBalance(
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("error") String error,
       @JsonProperty("fees") Object fees) {
 
@@ -28,7 +27,7 @@ public final class QuadrigaCxBalance {
   }
 
   @JsonAnySetter
-  public void setCurrencyAmount(String currencyBalance, BigDecimal amount) {
+  public void setCurrencyAmount(String currencyBalance, Double amount) {
 
     String[] parts = currencyBalance.split("_");
     Currency currency = Currency.getInstance(parts[0].toUpperCase());
@@ -50,15 +49,15 @@ public final class QuadrigaCxBalance {
     }
   }
 
-  public BigDecimal getCurrencyBalance(Currency currency) {
+  public Double getCurrencyBalance(Currency currency) {
     return this.currencyBalance.get(currency);
   }
 
-  public BigDecimal getCurrencyReserved(Currency currency) {
+  public Double getCurrencyReserved(Currency currency) {
     return this.currencyReserved.get(currency);
   }
 
-  public BigDecimal getCurrencyAvailable(Currency currency) {
+  public Double getCurrencyAvailable(Currency currency) {
     return this.currencyAvailable.get(currency);
   }
 
@@ -66,7 +65,7 @@ public final class QuadrigaCxBalance {
     return this.currencies;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }

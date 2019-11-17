@@ -1,7 +1,6 @@
 package org.knowm.xchange.binance.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.utils.Assert;
 import org.knowm.xchange.utils.jackson.CurrencyPairDeserializer;
@@ -9,14 +8,13 @@ import org.knowm.xchange.utils.jackson.CurrencyPairDeserializer;
 public final class BinancePrice implements Comparable<BinancePrice> {
 
   private final CurrencyPair pair;
-  private final BigDecimal price;
+  private final Double price;
 
-  public BinancePrice(
-      @JsonProperty("symbol") String symbol, @JsonProperty("price") BigDecimal price) {
+  public BinancePrice(@JsonProperty("symbol") String symbol, @JsonProperty("price") Double price) {
     this(CurrencyPairDeserializer.getCurrencyPairFromString(symbol), price);
   }
 
-  public BinancePrice(CurrencyPair pair, BigDecimal price) {
+  public BinancePrice(CurrencyPair pair, Double price) {
     Assert.notNull(price, "Null price");
     Assert.notNull(pair, "Null pair");
     this.pair = pair;
@@ -27,7 +25,7 @@ public final class BinancePrice implements Comparable<BinancePrice> {
     return pair;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

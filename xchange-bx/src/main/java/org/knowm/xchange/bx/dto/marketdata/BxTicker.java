@@ -1,25 +1,24 @@
 package org.knowm.xchange.bx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BxTicker {
 
   private final String pairingId;
   private final String primaryCurrency;
   private final String secondaryCurrency;
-  private final BigDecimal change;
-  private final BigDecimal lastPrice;
-  private final BigDecimal volume24hours;
+  private final Double change;
+  private final Double lastPrice;
+  private final Double volume24hours;
   private final BxOrderBook orderBook;
 
   public BxTicker(
       @JsonProperty("pairing_id") String pairingId,
       @JsonProperty("primary_currency") String primaryCurrency,
       @JsonProperty("secondary_currency") String secondaryCurrency,
-      @JsonProperty("change") BigDecimal change,
-      @JsonProperty("last_price") BigDecimal lastPrice,
-      @JsonProperty("volume_24hours") BigDecimal volume24hours,
+      @JsonProperty("change") Double change,
+      @JsonProperty("last_price") Double lastPrice,
+      @JsonProperty("volume_24hours") Double volume24hours,
       @JsonProperty("orderbook") BxOrderBook orderBook) {
     this.pairingId = pairingId;
     this.primaryCurrency = primaryCurrency;
@@ -42,15 +41,15 @@ public class BxTicker {
     return secondaryCurrency;
   }
 
-  public BigDecimal getChange() {
+  public Double getChange() {
     return change;
   }
 
-  public BigDecimal getLastPrice() {
+  public Double getLastPrice() {
     return lastPrice;
   }
 
-  public BigDecimal getVolume24hours() {
+  public Double getVolume24hours() {
     return volume24hours;
   }
 

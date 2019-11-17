@@ -2,7 +2,6 @@ package org.knowm.xchange.deribit.v2.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import lombok.Data;
 
@@ -39,11 +38,11 @@ public class DeribitCurrency {
 
   /** The minimum transaction fee paid for withdrawals */
   @JsonProperty("min_withdrawal_fee")
-  private BigDecimal minWithdrawalFee;
+  private Double minWithdrawalFee;
 
   /** The total transaction fee paid for withdrawals */
   @JsonProperty("withdrawal_fee")
-  private BigDecimal withdrawalFee;
+  private Double withdrawalFee;
 
   @JsonProperty("withdrawal_priorities")
   private List<DeribitWithdrawalPriority> withdrawalPriorities = null;

@@ -1,24 +1,23 @@
 package org.knowm.xchange.coinone.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinoneBalance {
 
-  private final BigDecimal avail;
-  private final BigDecimal balance;
+  private final Double avail;
+  private final Double balance;
 
   public CoinoneBalance(
       @JsonProperty("avail") String avail, @JsonProperty("balance") String balance) {
-    this.avail = new BigDecimal(avail);
-    this.balance = new BigDecimal(balance);
+    this.avail = new Double(avail);
+    this.balance = new Double(balance);
   }
 
-  public BigDecimal getAvail() {
+  public Double getAvail() {
     return avail;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 }

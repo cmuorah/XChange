@@ -3,7 +3,6 @@ package org.knowm.xchange.bitmex.service.marketdata;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 import org.knowm.xchange.ExchangeFactory;
@@ -34,10 +33,10 @@ public class BitmexOrderBookFetchIntegration {
     assertThat(orderBook.getAsks()).isNotEmpty();
     assertThat(orderBook.getBids()).isNotEmpty();
 
-    assertThat(orderBook.getAsks().get(0).getLimitPrice()).isGreaterThan(BigDecimal.ZERO);
+    assertThat(orderBook.getAsks().get(0).getLimitPrice()).isGreaterThan(0d);
     assertThat(orderBook.getAsks().get(0).getCurrencyPair()).isEqualTo(pair);
 
-    assertThat(orderBook.getBids().get(0).getLimitPrice()).isGreaterThan(BigDecimal.ZERO);
+    assertThat(orderBook.getBids().get(0).getLimitPrice()).isGreaterThan(0d);
     assertThat(orderBook.getAsks().get(0).getCurrencyPair()).isEqualTo(pair);
   }
 }

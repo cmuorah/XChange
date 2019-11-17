@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitmex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import org.knowm.xchange.bitmex.Bitmex;
@@ -22,31 +21,31 @@ public class ReplaceOrderCommand {
 
   @Nullable
   @JsonProperty("simpleOrderQty")
-  public final BigDecimal simpleOrderQty;
+  public final Double simpleOrderQty;
 
   @Nullable
   @JsonProperty("orderQty")
-  public final BigDecimal orderQuantity;
+  public final Double orderQuantity;
 
   @Nullable
   @JsonProperty("simpleLeavesQty")
-  public final BigDecimal simpleLeavesQty;
+  public final Double simpleLeavesQty;
 
   @Nullable
   @JsonProperty("leavesQty")
-  public final BigDecimal leavesQty;
+  public final Double leavesQty;
 
   @Nullable
   @JsonProperty("price")
-  public final BigDecimal price;
+  public final Double price;
 
   @Nullable
   @JsonProperty("stopPx")
-  public final BigDecimal stopPrice;
+  public final Double stopPrice;
 
   @Nullable
   @JsonProperty("pegOffsetValue")
-  public final BigDecimal pegOffsetValue;
+  public final Double pegOffsetValue;
 
   @Nullable
   @JsonProperty("text")

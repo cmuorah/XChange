@@ -1,24 +1,23 @@
 package org.knowm.xchange.ccex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CCEXTrade {
 
   private final String id;
   private final String timestamp;
-  private final BigDecimal quantity;
-  private final BigDecimal price;
-  private final BigDecimal total;
+  private final Double quantity;
+  private final Double price;
+  private final Double total;
   private final String fillType;
   private final String orderType;
 
   public CCEXTrade(
       @JsonProperty("Id") String id,
       @JsonProperty("TimeStamp") String timestamp,
-      @JsonProperty("Quantity") BigDecimal quantity,
-      @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("Total") BigDecimal total,
+      @JsonProperty("Quantity") Double quantity,
+      @JsonProperty("Price") Double price,
+      @JsonProperty("Total") Double total,
       @JsonProperty("FillType") String fillType,
       @JsonProperty("OrderType") String orderType) {
     super();
@@ -39,15 +38,15 @@ public class CCEXTrade {
     return timestamp;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 

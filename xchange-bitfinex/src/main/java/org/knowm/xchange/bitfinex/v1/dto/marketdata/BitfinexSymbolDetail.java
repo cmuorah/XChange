@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.v1.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /**
  * <code>[
@@ -33,20 +32,20 @@ import java.math.BigDecimal;
 public class BitfinexSymbolDetail {
   private final String pair;
   private final int price_precision;
-  private final BigDecimal initial_margin;
-  private final BigDecimal minimum_margin;
-  private final BigDecimal maximum_order_size;
-  private final BigDecimal minimum_order_size;
+  private final Double initial_margin;
+  private final Double minimum_margin;
+  private final Double maximum_order_size;
+  private final Double minimum_order_size;
   private final String expiration;
   private final boolean margin;
 
   public BitfinexSymbolDetail(
       @JsonProperty("pair") String pair,
       @JsonProperty("price_precision") int price_precision,
-      @JsonProperty("initial_margin") BigDecimal initial_margin,
-      @JsonProperty("minimum_margin") BigDecimal minimum_margin,
-      @JsonProperty("maximum_order_size") BigDecimal maximum_order_size,
-      @JsonProperty("minimum_order_size") BigDecimal minimum_order_size,
+      @JsonProperty("initial_margin") Double initial_margin,
+      @JsonProperty("minimum_margin") Double minimum_margin,
+      @JsonProperty("maximum_order_size") Double maximum_order_size,
+      @JsonProperty("minimum_order_size") Double minimum_order_size,
       @JsonProperty("expiration") String expiration,
       @JsonProperty("margin") boolean margin) {
     this.pair = pair;
@@ -67,19 +66,19 @@ public class BitfinexSymbolDetail {
     return price_precision;
   }
 
-  public BigDecimal getInitial_margin() {
+  public Double getInitial_margin() {
     return initial_margin;
   }
 
-  public BigDecimal getMinimum_margin() {
+  public Double getMinimum_margin() {
     return minimum_margin;
   }
 
-  public BigDecimal getMaximum_order_size() {
+  public Double getMaximum_order_size() {
     return maximum_order_size;
   }
 
-  public BigDecimal getMinimum_order_size() {
+  public Double getMinimum_order_size() {
     return minimum_order_size;
   }
 

@@ -23,7 +23,7 @@ public class CoinbaseTradeDemo {
 
   public static void generic(TradeService tradeService) throws IOException {
 
-    // MarketOrder marketOrder = new MarketOrder(OrderType.BID, new BigDecimal(".01"), Currency.BTC,
+    // MarketOrder marketOrder = new MarketOrder(OrderType.BID, new Double(".01"), Currency.BTC,
     // Currency.USD);
     // String orderId = tradeService.placeMarketOrder(marketOrder);
     // System.out.println("Order Id: " + orderId);
@@ -36,7 +36,7 @@ public class CoinbaseTradeDemo {
 
   public static void raw(CoinbaseTradeService tradeService) throws IOException {
 
-    // CoinbaseTransfer buyTransfer = tradeService.buy(new BigDecimal(".01"));
+    // CoinbaseTransfer buyTransfer = tradeService.buy(new Double(".01"));
     // System.out.println(buyTransfer);
 
     CoinbaseTransfers transfers = tradeService.getCoinbaseTransfers();

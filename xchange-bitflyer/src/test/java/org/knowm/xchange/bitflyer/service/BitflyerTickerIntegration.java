@@ -3,7 +3,6 @@ package org.knowm.xchange.bitflyer.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
@@ -23,9 +22,9 @@ public class BitflyerTickerIntegration {
     assertThat(ticker.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_JPY);
     assertThat(ticker.getHigh()).isNull();
     assertThat(ticker.getLow()).isNull();
-    assertThat(ticker.getLast()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getVolume()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getBid()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getAsk()).isGreaterThan(BigDecimal.ZERO);
+    assertThat(ticker.getLast()).isGreaterThan(0d);
+    assertThat(ticker.getVolume()).isGreaterThan(0d);
+    assertThat(ticker.getBid()).isGreaterThan(0d);
+    assertThat(ticker.getAsk()).isGreaterThan(0d);
   }
 }

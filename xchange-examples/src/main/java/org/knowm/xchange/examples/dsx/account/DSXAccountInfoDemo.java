@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.dsx.account;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.dsx.DSXExchange;
@@ -42,8 +41,7 @@ public class DSXAccountInfoDemo {
 
     AccountService accountService = exchange.getAccountService();
 
-    String transaction =
-        accountService.withdrawFunds(Currency.BTC, new BigDecimal("0.00001"), "XXX");
+    String transaction = accountService.withdrawFunds(Currency.BTC, new Double("0.00001"), "XXX");
     System.out.println(transaction);
   }
 }

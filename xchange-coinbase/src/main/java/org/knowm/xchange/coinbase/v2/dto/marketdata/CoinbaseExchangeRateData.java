@@ -1,6 +1,5 @@
 package org.knowm.xchange.coinbase.v2.dto.marketdata;
 
-import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Map;
 
@@ -19,13 +18,13 @@ public class CoinbaseExchangeRateData {
   public static class CoinbaseExchangeRates {
 
     private String currency;
-    private Map<String, BigDecimal> rates;
+    private Map<String, Double> rates;
 
     public String getCurrency() {
       return currency;
     }
 
-    public Map<String, BigDecimal> getRates() {
+    public Map<String, Double> getRates() {
       return Collections.unmodifiableMap(rates);
     }
   }

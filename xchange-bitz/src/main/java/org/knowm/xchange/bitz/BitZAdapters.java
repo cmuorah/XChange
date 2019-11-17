@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitz;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,12 +25,12 @@ public class BitZAdapters {
 
   public static Ticker adaptTicker(BitZTicker bitzTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = bitzTicker.getLast();
-    BigDecimal bid = bitzTicker.getSell();
-    BigDecimal ask = bitzTicker.getBuy();
-    BigDecimal high = bitzTicker.getHigh();
-    BigDecimal low = bitzTicker.getLow();
-    BigDecimal volume = bitzTicker.getVolume();
+    Double last = bitzTicker.getLast();
+    Double bid = bitzTicker.getSell();
+    Double ask = bitzTicker.getBuy();
+    Double high = bitzTicker.getHigh();
+    Double low = bitzTicker.getLow();
+    Double volume = bitzTicker.getVolume();
     Date timestamp = DateUtils.fromMillisUtc(bitzTicker.getTimestamp());
 
     Ticker ticker =

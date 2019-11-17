@@ -2,7 +2,6 @@ package org.knowm.xchange.gemini.v1.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GeminiOrderStatusResponse {
@@ -10,8 +9,8 @@ public class GeminiOrderStatusResponse {
   private final long id;
   private final String exchange;
   private final String symbol;
-  private final BigDecimal price;
-  private final BigDecimal avgExecutionPrice;
+  private final Double price;
+  private final Double avgExecutionPrice;
   private final String side;
   private final String type;
   private final String timestamp;
@@ -19,9 +18,9 @@ public class GeminiOrderStatusResponse {
   private final boolean isLive;
   private final boolean isCancelled;
   private final boolean wasForced;
-  private final BigDecimal originalAmount;
-  private final BigDecimal remainingAmount;
-  private final BigDecimal executedAmount;
+  private final Double originalAmount;
+  private final Double remainingAmount;
+  private final Double executedAmount;
 
   /**
    * Constructor
@@ -44,8 +43,8 @@ public class GeminiOrderStatusResponse {
       @JsonProperty("order_id") long id,
       @JsonProperty("exchange") String exchange,
       @JsonProperty("symbol") String symbol,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("avg_execution_price") BigDecimal avgExecutionPrice,
+      @JsonProperty("price") Double price,
+      @JsonProperty("avg_execution_price") Double avgExecutionPrice,
       @JsonProperty("side") String side,
       @JsonProperty("type") String type,
       @JsonProperty("timestamp") String timestamp,
@@ -53,9 +52,9 @@ public class GeminiOrderStatusResponse {
       @JsonProperty("is_live") boolean isLive,
       @JsonProperty("is_cancelled") boolean isCancelled,
       @JsonProperty("was_forced") boolean wasForced,
-      @JsonProperty("original_amount") BigDecimal originalAmount,
-      @JsonProperty("remaining_amount") BigDecimal remainingAmount,
-      @JsonProperty("executed_amount") BigDecimal executedAmount) {
+      @JsonProperty("original_amount") Double originalAmount,
+      @JsonProperty("remaining_amount") Double remainingAmount,
+      @JsonProperty("executed_amount") Double executedAmount) {
 
     this.id = id;
     this.exchange = exchange;
@@ -74,17 +73,17 @@ public class GeminiOrderStatusResponse {
     this.executedAmount = executedAmount;
   }
 
-  public BigDecimal getExecutedAmount() {
+  public Double getExecutedAmount() {
 
     return executedAmount;
   }
 
-  public BigDecimal getRemainingAmount() {
+  public Double getRemainingAmount() {
 
     return remainingAmount;
   }
 
-  public BigDecimal getOriginalAmount() {
+  public Double getOriginalAmount() {
 
     return originalAmount;
   }
@@ -109,7 +108,7 @@ public class GeminiOrderStatusResponse {
     return isCancelled;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
@@ -134,7 +133,7 @@ public class GeminiOrderStatusResponse {
     return isLive;
   }
 
-  public BigDecimal getAvgExecutionPrice() {
+  public Double getAvgExecutionPrice() {
 
     return avgExecutionPrice;
   }

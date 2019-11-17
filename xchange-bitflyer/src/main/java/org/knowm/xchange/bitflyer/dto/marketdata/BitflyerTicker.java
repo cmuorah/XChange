@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,31 +33,31 @@ public class BitflyerTicker {
   private Integer tickId;
 
   @JsonProperty("best_bid")
-  private BigDecimal bestBid;
+  private Double bestBid;
 
   @JsonProperty("best_ask")
-  private BigDecimal bestAsk;
+  private Double bestAsk;
 
   @JsonProperty("best_bid_size")
-  private BigDecimal bestBidSize;
+  private Double bestBidSize;
 
   @JsonProperty("best_ask_size")
-  private BigDecimal bestAskSize;
+  private Double bestAskSize;
 
   @JsonProperty("total_bid_depth")
-  private BigDecimal totalBidDepth;
+  private Double totalBidDepth;
 
   @JsonProperty("total_ask_depth")
-  private BigDecimal totalAskDepth;
+  private Double totalAskDepth;
 
   @JsonProperty("ltp")
-  private BigDecimal ltp;
+  private Double ltp;
 
   @JsonProperty("volume")
-  private BigDecimal volume;
+  private Double volume;
 
   @JsonProperty("volume_by_product")
-  private BigDecimal volumeByProduct;
+  private Double volumeByProduct;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<>();
 
@@ -86,75 +85,75 @@ public class BitflyerTicker {
     this.tickId = tickId;
   }
 
-  public BigDecimal getBestBid() {
+  public Double getBestBid() {
     return bestBid;
   }
 
-  public void setBestBid(BigDecimal bestBid) {
+  public void setBestBid(Double bestBid) {
     this.bestBid = bestBid;
   }
 
-  public BigDecimal getBestAsk() {
+  public Double getBestAsk() {
     return bestAsk;
   }
 
-  public void setBestAsk(BigDecimal bestAsk) {
+  public void setBestAsk(Double bestAsk) {
     this.bestAsk = bestAsk;
   }
 
-  public BigDecimal getBestBidSize() {
+  public Double getBestBidSize() {
     return bestBidSize;
   }
 
-  public void setBestBidSize(BigDecimal bestBidSize) {
+  public void setBestBidSize(Double bestBidSize) {
     this.bestBidSize = bestBidSize;
   }
 
-  public BigDecimal getBestAskSize() {
+  public Double getBestAskSize() {
     return bestAskSize;
   }
 
-  public void setBestAskSize(BigDecimal bestAskSize) {
+  public void setBestAskSize(Double bestAskSize) {
     this.bestAskSize = bestAskSize;
   }
 
-  public BigDecimal getTotalBidDepth() {
+  public Double getTotalBidDepth() {
     return totalBidDepth;
   }
 
-  public void setTotalBidDepth(BigDecimal totalBidDepth) {
+  public void setTotalBidDepth(Double totalBidDepth) {
     this.totalBidDepth = totalBidDepth;
   }
 
-  public BigDecimal getTotalAskDepth() {
+  public Double getTotalAskDepth() {
     return totalAskDepth;
   }
 
-  public void setTotalAskDepth(BigDecimal totalAskDepth) {
+  public void setTotalAskDepth(Double totalAskDepth) {
     this.totalAskDepth = totalAskDepth;
   }
 
-  public BigDecimal getLtp() {
+  public Double getLtp() {
     return ltp;
   }
 
-  public void setLtp(BigDecimal ltp) {
+  public void setLtp(Double ltp) {
     this.ltp = ltp;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public void setVolume(BigDecimal volume) {
+  public void setVolume(Double volume) {
     this.volume = volume;
   }
 
-  public BigDecimal getVolumeByProduct() {
+  public Double getVolumeByProduct() {
     return volumeByProduct;
   }
 
-  public void setVolumeByProduct(BigDecimal volumeByProduct) {
+  public void setVolumeByProduct(Double volumeByProduct) {
     this.volumeByProduct = volumeByProduct;
   }
 

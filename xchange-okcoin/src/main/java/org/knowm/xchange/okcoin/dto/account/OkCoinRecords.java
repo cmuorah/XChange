@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,15 +10,15 @@ public class OkCoinRecords {
 
   private final String account;
 
-  private final BigDecimal amount;
+  private final Double amount;
 
   private final String bank;
 
   private final String benificiaryAddress;
 
-  private final BigDecimal transactionValue;
+  private final Double transactionValue;
 
-  private final BigDecimal fee;
+  private final Double fee;
 
   private final Long date;
 
@@ -28,11 +27,11 @@ public class OkCoinRecords {
   public OkCoinRecords(
       @JsonProperty("addr") final String address,
       @JsonProperty("account") final String account,
-      @JsonProperty("amount") final BigDecimal amount,
+      @JsonProperty("amount") final Double amount,
       @JsonProperty("bank") final String bank,
       @JsonProperty("benificiary_addr") final String benificiaryAddress,
-      @JsonProperty("transaction_value") final BigDecimal transactionValue,
-      @JsonProperty("fee") final BigDecimal fee,
+      @JsonProperty("transaction_value") final Double transactionValue,
+      @JsonProperty("fee") final Double fee,
       @JsonProperty("date") final Long date,
       @JsonProperty("status") final Integer status) {
 
@@ -57,7 +56,7 @@ public class OkCoinRecords {
     return account;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
@@ -72,12 +71,12 @@ public class OkCoinRecords {
     return benificiaryAddress;
   }
 
-  public BigDecimal getTransactionValue() {
+  public Double getTransactionValue() {
 
     return transactionValue;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }

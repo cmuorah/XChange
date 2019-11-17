@@ -1,25 +1,24 @@
 package org.knowm.xchange.coinone.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author interwater */
 public class CoinoneTicker {
 
   private final String result;
   private final String errorCode;
-  private final BigDecimal volume;
-  private final BigDecimal last;
-  private final BigDecimal yesterday_last;
+  private final Double volume;
+  private final Double last;
+  private final Double yesterday_last;
   private final String timestamp;
-  private final BigDecimal yesterday_low;
-  private final BigDecimal high;
+  private final Double yesterday_low;
+  private final Double high;
   private final String currency;
-  private final BigDecimal low;
-  private final BigDecimal yesterday_first;
-  private final BigDecimal yesterday_volume;
-  private final BigDecimal yesterday_high;
-  private final BigDecimal first;
+  private final Double low;
+  private final Double yesterday_first;
+  private final Double yesterday_volume;
+  private final Double yesterday_high;
+  private final Double first;
 
   public CoinoneTicker(
       @JsonProperty("result") String result,
@@ -38,18 +37,18 @@ public class CoinoneTicker {
       @JsonProperty("first") String first) {
     this.result = result;
     this.errorCode = errorCode;
-    this.volume = new BigDecimal(volume);
-    this.last = new BigDecimal(last);
-    this.yesterday_last = new BigDecimal(yesterday_last);
+    this.volume = new Double(volume);
+    this.last = new Double(last);
+    this.yesterday_last = new Double(yesterday_last);
     this.timestamp = timestamp;
-    this.yesterday_low = new BigDecimal(yesterday_low);
-    this.high = new BigDecimal(high);
+    this.yesterday_low = new Double(yesterday_low);
+    this.high = new Double(high);
     this.currency = currency;
-    this.low = new BigDecimal(low);
-    this.yesterday_first = new BigDecimal(yesterday_first);
-    this.yesterday_volume = new BigDecimal(yesterday_volume);
-    this.yesterday_high = new BigDecimal(yesterday_high);
-    this.first = new BigDecimal(first);
+    this.low = new Double(low);
+    this.yesterday_first = new Double(yesterday_first);
+    this.yesterday_volume = new Double(yesterday_volume);
+    this.yesterday_high = new Double(yesterday_high);
+    this.first = new Double(first);
   }
 
   public String getResult() {
@@ -60,15 +59,15 @@ public class CoinoneTicker {
     return errorCode;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getYesterday_last() {
+  public Double getYesterday_last() {
     return yesterday_last;
   }
 
@@ -76,11 +75,11 @@ public class CoinoneTicker {
     return timestamp;
   }
 
-  public BigDecimal getYesterday_low() {
+  public Double getYesterday_low() {
     return yesterday_low;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
@@ -88,23 +87,23 @@ public class CoinoneTicker {
     return currency;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getYesterday_first() {
+  public Double getYesterday_first() {
     return yesterday_first;
   }
 
-  public BigDecimal getYesterday_volume() {
+  public Double getYesterday_volume() {
     return yesterday_volume;
   }
 
-  public BigDecimal getYesterday_high() {
+  public Double getYesterday_high() {
     return yesterday_high;
   }
 
-  public BigDecimal getFirst() {
+  public Double getFirst() {
     return first;
   }
 }

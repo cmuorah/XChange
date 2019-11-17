@@ -1,6 +1,5 @@
 package org.knowm.xchange.bittrex.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public abstract class BittrexOrderBase {
@@ -8,12 +7,12 @@ public abstract class BittrexOrderBase {
   private final String orderUuid;
   private final String exchange;
   private final String orderType;
-  private final BigDecimal quantity;
-  private final BigDecimal quantityRemaining;
-  private final BigDecimal limit;
-  private final BigDecimal commissionPaid;
-  private final BigDecimal price;
-  private final BigDecimal pricePerUnit;
+  private final Double quantity;
+  private final Double quantityRemaining;
+  private final Double limit;
+  private final Double commissionPaid;
+  private final Double price;
+  private final Double pricePerUnit;
   private final Date opened;
   private final Date closed;
   private final Boolean cancelInitiated;
@@ -26,12 +25,12 @@ public abstract class BittrexOrderBase {
       String orderUuid,
       String exchange,
       String orderType,
-      BigDecimal quantity,
-      BigDecimal quantityRemaining,
-      BigDecimal limit,
-      BigDecimal commissionPaid,
-      BigDecimal price,
-      BigDecimal pricePerUnit,
+      Double quantity,
+      Double quantityRemaining,
+      Double limit,
+      Double commissionPaid,
+      Double price,
+      Double pricePerUnit,
       Date opened,
       Date closed,
       Boolean cancelInitiated,
@@ -69,27 +68,27 @@ public abstract class BittrexOrderBase {
     return orderType;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getQuantityRemaining() {
+  public Double getQuantityRemaining() {
     return quantityRemaining;
   }
 
-  public BigDecimal getLimit() {
+  public Double getLimit() {
     return limit;
   }
 
-  public BigDecimal getCommissionPaid() {
+  public Double getCommissionPaid() {
     return commissionPaid;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getPricePerUnit() {
+  public Double getPricePerUnit() {
     return pricePerUnit;
   }
 

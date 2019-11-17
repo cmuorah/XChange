@@ -1,44 +1,43 @@
 package org.knowm.xchange.idex.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Objects;
 import org.knowm.xchange.idex.annotations.ApiModelProperty;
 
 public class CompleteBalance {
 
-  private BigDecimal available;
-  private BigDecimal onOrders;
+  private Double available;
+  private Double onOrders;
 
   /** */
-  public CompleteBalance available(BigDecimal available) {
+  public CompleteBalance available(Double available) {
     this.available = available;
     return this;
   }
 
   @ApiModelProperty("")
   @JsonProperty("available")
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 
-  public void setAvailable(BigDecimal available) {
+  public void setAvailable(Double available) {
     this.available = available;
   }
 
   /** */
-  public CompleteBalance onOrders(BigDecimal onOrders) {
+  public CompleteBalance onOrders(Double onOrders) {
     this.onOrders = onOrders;
     return this;
   }
 
   @ApiModelProperty("")
   @JsonProperty("onOrders")
-  public BigDecimal getOnOrders() {
+  public Double getOnOrders() {
     return onOrders;
   }
 
-  public void setOnOrders(BigDecimal onOrders) {
+  public void setOnOrders(Double onOrders) {
     this.onOrders = onOrders;
   }
 

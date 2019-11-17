@@ -2,7 +2,6 @@ package org.knowm.xchange.bitfinex.v1.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRawValue;
-import java.math.BigDecimal;
 
 public class BitfinexWithdrawalRequest {
 
@@ -44,7 +43,7 @@ public class BitfinexWithdrawalRequest {
       String nonce,
       String withdrawType,
       String walletSelected,
-      BigDecimal amount,
+      Double amount,
       String address,
       String paymentId) {
 

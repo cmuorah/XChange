@@ -1,26 +1,25 @@
 package org.knowm.xchange.okcoin.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class OkcoinFuturesFunds {
 
-  private final BigDecimal available;
-  private final BigDecimal balance;
-  private final BigDecimal bond;
+  private final Double available;
+  private final Double balance;
+  private final Double bond;
   private final Long contractId;
   private final String contratctType;
-  private final BigDecimal freeze;
+  private final Double freeze;
   private final Integer profit;
   private final Integer unprofit;
 
   public OkcoinFuturesFunds(
-      @JsonProperty("available") BigDecimal available,
-      @JsonProperty("balance") BigDecimal balance,
-      @JsonProperty("bond") BigDecimal bond,
+      @JsonProperty("available") Double available,
+      @JsonProperty("balance") Double balance,
+      @JsonProperty("bond") Double bond,
       @JsonProperty("contract_id") Long contractId,
       @JsonProperty("contratct_type") String contratctType,
-      @JsonProperty("freeze") BigDecimal freeze,
+      @JsonProperty("freeze") Double freeze,
       @JsonProperty("profit") Integer profit,
       @JsonProperty("unprofit") Integer unprofit) {
     this.available = available;
@@ -33,15 +32,15 @@ public class OkcoinFuturesFunds {
     this.unprofit = unprofit;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
-  public BigDecimal getBond() {
+  public Double getBond() {
     return bond;
   }
 
@@ -53,7 +52,7 @@ public class OkcoinFuturesFunds {
     return contratctType;
   }
 
-  public BigDecimal getFreeze() {
+  public Double getFreeze() {
     return freeze;
   }
 

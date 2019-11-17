@@ -1,8 +1,6 @@
 package org.knowm.xchange.binance.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.knowm.xchange.Exchange;
@@ -17,13 +15,7 @@ import org.knowm.xchange.dto.account.*;
 import org.knowm.xchange.dto.account.FundingRecord.Status;
 import org.knowm.xchange.dto.account.FundingRecord.Type;
 import org.knowm.xchange.service.account.AccountService;
-import org.knowm.xchange.service.trade.params.DefaultWithdrawFundsParams;
-import org.knowm.xchange.service.trade.params.HistoryParamsFundingType;
-import org.knowm.xchange.service.trade.params.RippleWithdrawFundsParams;
-import org.knowm.xchange.service.trade.params.TradeHistoryParamCurrency;
-import org.knowm.xchange.service.trade.params.TradeHistoryParams;
-import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
-import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
+import org.knowm.xchange.service.trade.params.*;
 
 public class BinanceAccountService extends BinanceAccountServiceRaw implements AccountService {
 
@@ -85,10 +77,10 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
   @Override
   public Map<CurrencyPair, Fee> getDynamicTradingFees() throws IOException {
     BinanceAccountInformation acc = getBinanceAccountInformation();
-    BigDecimal makerFee =
-        acc.makerCommission.divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
-    BigDecimal takerFee =
-        acc.takerCommission.divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
+    Double makerFee =
+        acc.makerCommission / 10000d; // new Double("10000"), 4, RoundingMode.UNNECESSARY);
+    Double takerFee =
+        acc.takerCommission / 10000d; // .divide(new Double("10000"), 4, RoundingMode.UNNECESSARY);
 
     Map<CurrencyPair, Fee> tradingFees = new HashMap<>();
     List<CurrencyPair> pairs = exchange.getExchangeSymbols();
@@ -99,8 +91,7 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     try {
       return super.withdraw(currency.getCurrencyCode(), address, amount);
     } catch (BinanceException e) {
@@ -109,7 +100,7 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, AddressWithTag address)
+  public String withdrawFunds(Currency currency, Double amount, AddressWithTag address)
       throws IOException {
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }
@@ -120,9 +111,9 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
       if (!(params instanceof DefaultWithdrawFundsParams)) {
         throw new IllegalArgumentException("DefaultWithdrawFundsParams must be provided.");
       }
-      String id = null;
+      String id;
       if (params instanceof RippleWithdrawFundsParams) {
-        RippleWithdrawFundsParams rippleParams = null;
+        RippleWithdrawFundsParams rippleParams;
         rippleParams = (RippleWithdrawFundsParams) params;
         id =
             super.withdraw(
@@ -215,42 +206,40 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
       if (withdrawals) {
         super.withdrawHistory(asset, startTime, endTime, recvWindow, getTimestamp())
             .forEach(
-                w -> {
-                  result.add(
-                      new FundingRecord(
-                          w.address,
-                          w.destinationTag,
-                          new Date(w.applyTime),
-                          Currency.getInstance(w.asset),
-                          w.amount,
-                          w.id,
-                          w.txId,
-                          Type.WITHDRAWAL,
-                          withdrawStatus(w.status),
-                          null,
-                          null,
-                          null));
-                });
+                w ->
+                    result.add(
+                        new FundingRecord(
+                            w.address,
+                            w.destinationTag,
+                            new Date(w.applyTime),
+                            Currency.getInstance(w.asset),
+                            w.amount,
+                            w.id,
+                            w.txId,
+                            Type.WITHDRAWAL,
+                            withdrawStatus(w.status),
+                            null,
+                            null,
+                            null)));
       }
 
       if (deposits) {
         super.depositHistory(asset, startTime, endTime, recvWindow, getTimestamp())
             .forEach(
-                d -> {
-                  result.add(
-                      new FundingRecord(
-                          d.address,
-                          new Date(d.insertTime),
-                          Currency.getInstance(d.asset),
-                          d.amount,
-                          null,
-                          d.txId,
-                          Type.DEPOSIT,
-                          depositStatus(d.status),
-                          null,
-                          null,
-                          null));
-                });
+                d ->
+                    result.add(
+                        new FundingRecord(
+                            d.address,
+                            new Date(d.insertTime),
+                            Currency.getInstance(d.asset),
+                            d.amount,
+                            null,
+                            d.txId,
+                            Type.DEPOSIT,
+                            depositStatus(d.status),
+                            null,
+                            null,
+                            null)));
       }
 
       return result;

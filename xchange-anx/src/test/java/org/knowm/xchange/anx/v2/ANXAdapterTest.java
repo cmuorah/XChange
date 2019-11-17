@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -60,11 +59,11 @@ public class ANXAdapterTest {
     assertThat(accountInfo.getUsername()).isEqualTo("test@anxpro.com");
 
     assertThat(accountInfo.getWallet().getBalance(Currency.DOGE).getTotal())
-        .isEqualTo(new BigDecimal("9999781.09457936"));
+        .isEqualTo(new Double("9999781.09457936"));
     assertThat(accountInfo.getWallet().getBalance(Currency.DOGE).getAvailable())
-        .isEqualTo(new BigDecimal("9914833.52608521"));
+        .isEqualTo(new Double("9914833.52608521"));
     assertThat(accountInfo.getWallet().getBalance(Currency.DOGE).getFrozen())
-        .isEqualTo(new BigDecimal("84947.56849415"));
+        .isEqualTo(new Double("84947.56849415"));
   }
 
   @Test
@@ -85,10 +84,10 @@ public class ANXAdapterTest {
 
     // verify all fields filled
     System.out.println(openorders.get(0).getLimitPrice().toString());
-    Assert.assertEquals(new BigDecimal("412.34567"), openorders.get(0).getLimitPrice());
+    Assert.assertEquals(new Double("412.34567"), openorders.get(0).getLimitPrice());
     Assert.assertEquals(OrderType.ASK, openorders.get(0).getType());
-    Assert.assertEquals(new BigDecimal("412.34567"), openorders.get(0).getLimitPrice());
-    Assert.assertEquals(new BigDecimal("10.00000000"), openorders.get(0).getOriginalAmount());
+    Assert.assertEquals(new Double("412.34567"), openorders.get(0).getLimitPrice());
+    Assert.assertEquals(new Double("10.00000000"), openorders.get(0).getOriginalAmount());
 
     Assert.assertEquals("BTC", openorders.get(0).getCurrencyPair().base.getCurrencyCode());
     Assert.assertEquals("HKD", openorders.get(0).getCurrencyPair().counter.getCurrencyCode());
@@ -115,8 +114,8 @@ public class ANXAdapterTest {
     // Verify all fields filled
     assertThat(asks.get(0).getType()).isEqualTo(OrderType.ASK);
 
-    Assert.assertEquals(new BigDecimal("16.00000000"), asks.get(0).getOriginalAmount());
-    Assert.assertEquals(new BigDecimal("3260.40000"), asks.get(0).getLimitPrice());
+    Assert.assertEquals(new Double("16.00000000"), asks.get(0).getOriginalAmount());
+    Assert.assertEquals(new Double("3260.40000"), asks.get(0).getLimitPrice());
 
     Assert.assertEquals("BTC", asks.get(0).getCurrencyPair().base.getCurrencyCode());
     Assert.assertEquals("USD", asks.get(0).getCurrencyPair().counter.getCurrencyCode());
@@ -169,20 +168,15 @@ public class ANXAdapterTest {
 
     Assert.assertTrue(
         balances.contains(
-            new Balance(
-                Currency.CAD, new BigDecimal("100000.00000"), new BigDecimal("100000.00000"))));
+            new Balance(Currency.CAD, new Double("100000.00000"), new Double("100000.00000"))));
     Assert.assertTrue(
         balances.contains(
             new Balance(
-                Currency.BTC,
-                new BigDecimal("100000.01988000"),
-                new BigDecimal("100000.01988000"))));
+                Currency.BTC, new Double("100000.01988000"), new Double("100000.01988000"))));
     Assert.assertTrue(
         balances.contains(
             new Balance(
-                Currency.DOGE,
-                new BigDecimal("9999781.09457936"),
-                new BigDecimal("9914833.52608521"))));
+                Currency.DOGE, new Double("9999781.09457936"), new Double("9914833.52608521"))));
   }
 
   @Test
@@ -199,13 +193,13 @@ public class ANXAdapterTest {
 
     Ticker ticker = ANXAdapters.adaptTicker(anxTicker);
 
-    Assert.assertEquals(new BigDecimal("725.38123"), ticker.getLast());
-    Assert.assertEquals(new BigDecimal("725.38123"), ticker.getHigh());
-    Assert.assertEquals(new BigDecimal("380.00000"), ticker.getLow());
-    Assert.assertEquals(new BigDecimal("7.00000000"), ticker.getVolume());
-    Assert.assertEquals(new BigDecimal("725.38123"), ticker.getLast());
-    Assert.assertEquals(new BigDecimal("38.85148"), ticker.getBid());
-    Assert.assertEquals(new BigDecimal("897.25596"), ticker.getAsk());
+    Assert.assertEquals(new Double("725.38123"), ticker.getLast());
+    Assert.assertEquals(new Double("725.38123"), ticker.getHigh());
+    Assert.assertEquals(new Double("380.00000"), ticker.getLow());
+    Assert.assertEquals(new Double("7.00000000"), ticker.getVolume());
+    Assert.assertEquals(new Double("725.38123"), ticker.getLast());
+    Assert.assertEquals(new Double("38.85148"), ticker.getBid());
+    Assert.assertEquals(new Double("897.25596"), ticker.getAsk());
 
     Assert.assertEquals(new Date(1393388594814L), ticker.getTimestamp());
   }

@@ -3,7 +3,6 @@ package org.knowm.xchange.enigma.dto.trade;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,11 +22,11 @@ public final class EnigmaNewOrderRequest {
 
   @JsonInclude(Include.NON_NULL)
   @JsonProperty("quantity")
-  private BigDecimal quantity;
+  private Double quantity;
 
   @JsonInclude(Include.NON_NULL)
   @JsonProperty("nominal")
-  private BigDecimal nominal;
+  private Double nominal;
 
   @JsonProperty("infra")
   private String infrastructure;

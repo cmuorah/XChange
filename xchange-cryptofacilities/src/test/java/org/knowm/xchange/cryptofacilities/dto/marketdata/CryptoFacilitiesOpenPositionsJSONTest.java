@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 import org.junit.Test;
@@ -39,7 +38,7 @@ public class CryptoFacilitiesOpenPositionsJSONTest {
 
     assertThat(openPosition.getSymbol()).isEqualTo("f-xbt:usd-sep16");
     assertThat(openPosition.getSide()).isEqualTo("long");
-    assertThat(openPosition.getSize()).isEqualTo(new BigDecimal("1"));
-    assertThat(openPosition.getPrice()).isEqualTo(new BigDecimal("425.5"));
+    assertThat(openPosition.getSize()).isEqualTo(new Double("1"));
+    assertThat(openPosition.getPrice()).isEqualTo(new Double("425.5"));
   }
 }

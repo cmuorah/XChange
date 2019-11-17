@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.lakebtc.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -32,18 +31,17 @@ public class LakeBTCBuyOrderDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (Order.OrderType.BID),
-            new BigDecimal(".01"),
+            new Double(".01"),
             CurrencyPair.BTC_LTC,
             "",
             null,
-            new BigDecimal("51.25"));
+            new Double("51.25"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 
     // place a market buy order
     MarketOrder marketOrder =
-        new MarketOrder(
-            (Order.OrderType.BID), new BigDecimal(".01"), CurrencyPair.BTC_LTC, "", null);
+        new MarketOrder((Order.OrderType.BID), new Double(".01"), CurrencyPair.BTC_LTC, "", null);
     String marketOrderReturnValue = tradeService.placeMarketOrder(marketOrder);
     System.out.println("Limit Order return value: " + marketOrderReturnValue);
 
@@ -60,18 +58,17 @@ public class LakeBTCBuyOrderDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (Order.OrderType.BID),
-            new BigDecimal(".01"),
+            new Double(".01"),
             CurrencyPair.BTC_LTC,
             "",
             null,
-            new BigDecimal("51.25"));
+            new Double("51.25"));
     LakeBTCOrderResponse limitOrderReturnValue = tradeService.placeLakeBTCLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 
     // place a market buy order
     MarketOrder marketOrder =
-        new MarketOrder(
-            (Order.OrderType.BID), new BigDecimal(".01"), CurrencyPair.BTC_LTC, "", null);
+        new MarketOrder((Order.OrderType.BID), new Double(".01"), CurrencyPair.BTC_LTC, "", null);
     LakeBTCOrderResponse marketOrderReturnValue = tradeService.placeLakeBTCMarketOrder(marketOrder);
     System.out.println("Market Order return value: " + marketOrderReturnValue);
 

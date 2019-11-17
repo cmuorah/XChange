@@ -3,7 +3,6 @@ package org.knowm.xchange.upbit.dto.trade;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -12,38 +11,38 @@ public class UpbitOrderResponse {
   private final String uuid;
   private final String side;
   private final String orderType;
-  private final BigDecimal price;
-  private final BigDecimal avgPrice;
+  private final Double price;
+  private final Double avgPrice;
   private final String state;
   private final String market;
   private final String createdAt;
-  private final BigDecimal volume;
-  private final BigDecimal remainingVolume;
-  private final BigDecimal reservedFee;
-  private final BigDecimal remainingFee;
-  private final BigDecimal paidFee;
-  private final BigDecimal locked;
-  private final BigDecimal executedVolume;
-  private final BigDecimal tradeCount;
+  private final Double volume;
+  private final Double remainingVolume;
+  private final Double reservedFee;
+  private final Double remainingFee;
+  private final Double paidFee;
+  private final Double locked;
+  private final Double executedVolume;
+  private final Double tradeCount;
   private final UpbitOrderTrade[] trades;
 
   public UpbitOrderResponse(
       @JsonProperty("uuid") String uuid,
       @JsonProperty("side") String side,
       @JsonProperty("ord_type") String orderType,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("avg_price") BigDecimal avgPrice,
+      @JsonProperty("price") Double price,
+      @JsonProperty("avg_price") Double avgPrice,
       @JsonProperty("state") String state,
       @JsonProperty("market") String market,
       @JsonProperty("created_at") String createdAt,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("remaining_volume") BigDecimal remainingVolume,
-      @JsonProperty("reserved_fee") BigDecimal reservedFee,
-      @JsonProperty("remaining_fee") BigDecimal remainingFee,
-      @JsonProperty("paid_fee") BigDecimal paidFee,
-      @JsonProperty("locked") BigDecimal locked,
-      @JsonProperty("executed_volume") BigDecimal executedVolume,
-      @JsonProperty("trade_count") BigDecimal tradeCount,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("remaining_volume") Double remainingVolume,
+      @JsonProperty("reserved_fee") Double reservedFee,
+      @JsonProperty("remaining_fee") Double remainingFee,
+      @JsonProperty("paid_fee") Double paidFee,
+      @JsonProperty("locked") Double locked,
+      @JsonProperty("executed_volume") Double executedVolume,
+      @JsonProperty("trade_count") Double tradeCount,
       @JsonProperty("trades") UpbitOrderTrade[] trades) {
     this.uuid = uuid;
     this.side = side;
@@ -76,11 +75,11 @@ public class UpbitOrderResponse {
     return orderType;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAvgPrice() {
+  public Double getAvgPrice() {
     return avgPrice;
   }
 
@@ -96,35 +95,35 @@ public class UpbitOrderResponse {
     return createdAt;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getRemainingVolume() {
+  public Double getRemainingVolume() {
     return remainingVolume;
   }
 
-  public BigDecimal getReservedFee() {
+  public Double getReservedFee() {
     return reservedFee;
   }
 
-  public BigDecimal getRemainingFee() {
+  public Double getRemainingFee() {
     return remainingFee;
   }
 
-  public BigDecimal getPaidFee() {
+  public Double getPaidFee() {
     return paidFee;
   }
 
-  public BigDecimal getLocked() {
+  public Double getLocked() {
     return locked;
   }
 
-  public BigDecimal getExecutedVolume() {
+  public Double getExecutedVolume() {
     return executedVolume;
   }
 
-  public BigDecimal getTradeCount() {
+  public Double getTradeCount() {
     return tradeCount;
   }
 

@@ -1,15 +1,8 @@
 package org.knowm.xchange.btctrade;
 
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
+import java.util.*;
 import org.knowm.xchange.btctrade.dto.BTCTradeResult;
 import org.knowm.xchange.btctrade.dto.account.BTCTradeBalance;
 import org.knowm.xchange.btctrade.dto.account.BTCTradeWallet;
@@ -93,17 +86,17 @@ public final class BTCTradeAdapters {
   }
 
   private static List<LimitOrder> adaptLimitOrders(
-      BigDecimal[][] orders, CurrencyPair currencyPair, OrderType type) {
+      Double[][] orders, CurrencyPair currencyPair, OrderType type) {
 
     List<LimitOrder> limitOrders = new ArrayList<>(orders.length);
-    for (BigDecimal[] order : orders) {
+    for (Double[] order : orders) {
       limitOrders.add(adaptLimitOrder(order, currencyPair, type));
     }
     return limitOrders;
   }
 
   private static LimitOrder adaptLimitOrder(
-      BigDecimal[] order, CurrencyPair currencyPair, OrderType type) {
+      Double[] order, CurrencyPair currencyPair, OrderType type) {
 
     return new LimitOrder(type, order[1], currencyPair, null, null, order[0]);
   }
@@ -187,12 +180,12 @@ public final class BTCTradeAdapters {
     return Wallet.Builder.from(balances).build();
   }
 
-  static BigDecimal nullSafeSum(BigDecimal a, BigDecimal b) {
-    return zeroIfNull(a).add(zeroIfNull(b));
+  static Double nullSafeSum(Double a, Double b) {
+    return zeroIfNull(a) + (zeroIfNull(b));
   }
 
-  static BigDecimal zeroIfNull(BigDecimal a) {
-    return a == null ? BigDecimal.ZERO : a;
+  static Double zeroIfNull(Double a) {
+    return a == null ? 0d : a;
   }
 
   public static String adaptDepositAddress(BTCTradeWallet wallet) {
@@ -277,6 +270,6 @@ public final class BTCTradeAdapters {
         trade.getTradeId(),
         order.getId(),
         null,
-        (Currency) null);
+        null);
   }
 }

@@ -9,25 +9,24 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @JsonDeserialize(using = GlobitexOrder.GlobitexOrderDeserializer.class)
 public class GlobitexOrder implements Serializable {
 
-  private final BigDecimal price;
+  private final Double price;
 
-  private final BigDecimal volume;
+  private final Double volume;
 
-  public GlobitexOrder(BigDecimal price, BigDecimal volume) {
+  public GlobitexOrder(Double price, Double volume) {
     this.price = price;
     this.volume = volume;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
@@ -45,8 +44,8 @@ public class GlobitexOrder implements Serializable {
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);
       if (node.isArray()) {
-        BigDecimal price = new BigDecimal(node.path(0).asText());
-        BigDecimal volume = new BigDecimal(node.path(1).asText());
+        Double price = new Double(node.path(0).asText());
+        Double volume = new Double(node.path(1).asText());
 
         return new GlobitexOrder(price, volume);
       }

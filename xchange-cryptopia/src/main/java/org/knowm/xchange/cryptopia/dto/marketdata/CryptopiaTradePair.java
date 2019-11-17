@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptopia.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public final class CryptopiaTradePair {
 
@@ -13,13 +12,13 @@ public final class CryptopiaTradePair {
   private final String baseSymbol;
   private final String status;
   private final String statusMessage;
-  private final BigDecimal tradeFee;
-  private final BigDecimal minimumTrade;
-  private final BigDecimal maximumTrade;
-  private final BigDecimal minimumBaseTrade;
-  private final BigDecimal maximumBaseTrade;
-  private final BigDecimal minimumPrice;
-  private final BigDecimal maximumPrice;
+  private final Double tradeFee;
+  private final Double minimumTrade;
+  private final Double maximumTrade;
+  private final Double minimumBaseTrade;
+  private final Double maximumBaseTrade;
+  private final Double minimumPrice;
+  private final Double maximumPrice;
 
   public CryptopiaTradePair(
       @JsonProperty("Id") long id,
@@ -30,13 +29,13 @@ public final class CryptopiaTradePair {
       @JsonProperty("BaseSymbol") String baseSymbol,
       @JsonProperty("Status") String status,
       @JsonProperty("StatusMessage") String statusMessage,
-      @JsonProperty("TradeFee") BigDecimal tradeFee,
-      @JsonProperty("MinimumTrade") BigDecimal minimumTrade,
-      @JsonProperty("MaximumTrade") BigDecimal maximumTrade,
-      @JsonProperty("MinimumBaseTrade") BigDecimal minimumBaseTrade,
-      @JsonProperty("MaximumBaseTrade") BigDecimal maximumBaseTrade,
-      @JsonProperty("MinimumPrice") BigDecimal minimumPrice,
-      @JsonProperty("MaximumPrice") BigDecimal maximumPrice) {
+      @JsonProperty("TradeFee") Double tradeFee,
+      @JsonProperty("MinimumTrade") Double minimumTrade,
+      @JsonProperty("MaximumTrade") Double maximumTrade,
+      @JsonProperty("MinimumBaseTrade") Double minimumBaseTrade,
+      @JsonProperty("MaximumBaseTrade") Double maximumBaseTrade,
+      @JsonProperty("MinimumPrice") Double minimumPrice,
+      @JsonProperty("MaximumPrice") Double maximumPrice) {
     this.id = id;
     this.label = label;
     this.currency = currency;
@@ -86,31 +85,31 @@ public final class CryptopiaTradePair {
     return statusMessage;
   }
 
-  public BigDecimal getTradeFee() {
+  public Double getTradeFee() {
     return tradeFee;
   }
 
-  public BigDecimal getMinimumTrade() {
+  public Double getMinimumTrade() {
     return minimumTrade;
   }
 
-  public BigDecimal getMaximumTrade() {
+  public Double getMaximumTrade() {
     return maximumTrade;
   }
 
-  public BigDecimal getMinimumBaseTrade() {
+  public Double getMinimumBaseTrade() {
     return minimumBaseTrade;
   }
 
-  public BigDecimal getMaximumBaseTrade() {
+  public Double getMaximumBaseTrade() {
     return maximumBaseTrade;
   }
 
-  public BigDecimal getMinimumPrice() {
+  public Double getMinimumPrice() {
     return minimumPrice;
   }
 
-  public BigDecimal getMaximumPrice() {
+  public Double getMaximumPrice() {
     return maximumPrice;
   }
 

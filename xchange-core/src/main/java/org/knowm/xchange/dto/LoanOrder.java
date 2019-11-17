@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.dto.Order.OrderType;
 
@@ -17,7 +16,7 @@ public class LoanOrder implements Serializable {
   private final String currency;
 
   /** Amount to be ordered / amount that was ordered */
-  private final BigDecimal originalAmount;
+  private final Double originalAmount;
 
   /** Duration of loan in days */
   private final int dayPeriod;
@@ -42,7 +41,7 @@ public class LoanOrder implements Serializable {
   public LoanOrder(
       OrderType type,
       String currency,
-      BigDecimal originalAmount,
+      Double originalAmount,
       int dayPeriod,
       String id,
       Date timestamp) {
@@ -65,7 +64,7 @@ public class LoanOrder implements Serializable {
     return currency;
   }
 
-  public BigDecimal getOriginalAmount() {
+  public Double getOriginalAmount() {
 
     return originalAmount;
   }

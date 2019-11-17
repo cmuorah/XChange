@@ -1,6 +1,5 @@
 package org.knowm.xchange.examples.kucoin.trade;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 import org.knowm.xchange.Exchange;
@@ -25,11 +24,11 @@ public class KucoinTradeDemo {
   private static final CurrencyPair PAIR = new CurrencyPair("DRGN", "BTC");
   private static final String SYMBOL = "DRGN-BTC";
   private static final OrderType ORDER_TYPE = OrderType.ASK;
-  private static final BigDecimal AMOUNT = new BigDecimal("100");
-  private static final BigDecimal PRICE = new BigDecimal("0.1");
+  private static final Double AMOUNT = new Double("100");
+  private static final Double PRICE = new Double("0.1");
 
-  private static final BigDecimal STOP_PRICE = new BigDecimal("0.000002");
-  private static final BigDecimal STOP_LIMIT = new BigDecimal("0.0000019");
+  private static final Double STOP_PRICE = new Double("0.000002");
+  private static final Double STOP_LIMIT = new Double("0.0000019");
 
   public static void main(String[] args) throws Exception {
 

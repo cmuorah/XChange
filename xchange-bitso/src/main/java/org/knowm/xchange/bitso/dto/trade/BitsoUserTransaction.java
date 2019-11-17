@@ -2,7 +2,6 @@ package org.knowm.xchange.bitso.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import org.knowm.xchange.bitso.util.BitsoTransactionTypeDeserializer;
 
 /** @author Piotr Ładyżyński */
@@ -13,13 +12,13 @@ public final class BitsoUserTransaction {
   private final String order_id;
   private final TransactionType type;
   /** MXN amount, negative -> BID, positive -> ASK */
-  private final BigDecimal mxn;
+  private final Double mxn;
 
-  private final BigDecimal btc;
+  private final Double btc;
   /** price, has the reciprocal sign compared to 'mxn' value */
-  private final BigDecimal rate;
+  private final Double rate;
 
-  private final BigDecimal fee;
+  private final Double fee;
 
   /**
    * Constructor
@@ -39,10 +38,10 @@ public final class BitsoUserTransaction {
       @JsonProperty("order_id") String order_id,
       @JsonProperty("type") @JsonDeserialize(using = BitsoTransactionTypeDeserializer.class)
           TransactionType type,
-      @JsonProperty("mxn") BigDecimal mxn,
-      @JsonProperty("btc") BigDecimal btc,
-      @JsonProperty("rate") BigDecimal rate,
-      @JsonProperty("fee") BigDecimal fee) {
+      @JsonProperty("mxn") Double mxn,
+      @JsonProperty("btc") Double btc,
+      @JsonProperty("rate") Double rate,
+      @JsonProperty("fee") Double fee) {
 
     this.datetime = datetime;
     this.id = id;
@@ -89,22 +88,22 @@ public final class BitsoUserTransaction {
     return type == TransactionType.trade;
   }
 
-  public BigDecimal getMxn() {
+  public Double getMxn() {
 
     return mxn;
   }
 
-  public BigDecimal getBtc() {
+  public Double getBtc() {
 
     return btc;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return rate;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }

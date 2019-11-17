@@ -2,7 +2,6 @@ package org.knowm.xchange.okcoin.v3.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.Data;
@@ -21,7 +20,7 @@ public class FuturesLeverageResponse extends OkexResponse {
   /** ******************************** crossed margin mode ********************************* */
 
   /** Leverage , 1-100x, eg 10 */
-  private BigDecimal leverage;
+  private Double leverage;
 
   /** Token, e.g. BTC */
   private String currency;
@@ -35,9 +34,9 @@ public class FuturesLeverageResponse extends OkexResponse {
   public static class FixedLeverage {
     /** Leverage for long positions , 1-100x */
     @JsonProperty("long_leverage")
-    private BigDecimal longLeverage;
+    private Double longLeverage;
     /** Leverage for short positions , 1-100x */
     @JsonProperty("short_leverage")
-    private BigDecimal shortLeverage;
+    private Double shortLeverage;
   }
 }

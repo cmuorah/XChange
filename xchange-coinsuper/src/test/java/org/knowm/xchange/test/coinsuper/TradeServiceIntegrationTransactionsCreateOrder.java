@@ -1,7 +1,6 @@
 package org.knowm.xchange.test.coinsuper;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Collection;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
@@ -46,11 +45,11 @@ public class TradeServiceIntegrationTransactionsCreateOrder {
       LimitOrder limitOrder =
           new LimitOrder(
               (OrderType.ASK),
-              new BigDecimal("1.5"), // qty
+              new Double("1.5"), // qty
               CurrencyPair.ETH_BTC,
               null,
               null,
-              new BigDecimal("0.08000000"));
+              new Double("0.08000000"));
 
       String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
       System.out.println("======createLimitOrder======");
@@ -78,7 +77,7 @@ public class TradeServiceIntegrationTransactionsCreateOrder {
       MarketOrder marketOrder =
           new MarketOrder(
               (OrderType.BID),
-              new BigDecimal("30513299.8408"),
+              new Double("30513299.8408"),
               CurrencyPair.XRP_BTC,
               null,
               null,

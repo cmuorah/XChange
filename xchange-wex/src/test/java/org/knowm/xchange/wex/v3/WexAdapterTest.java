@@ -6,7 +6,6 @@ import static org.junit.Assert.assertEquals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +55,7 @@ public class WexAdapterTest {
     assertThat(asks.get(0).getType()).isEqualTo(OrderType.ASK);
     assertThat(asks.get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
     assertThat(asks.get(0).getTimestamp()).isNull();
-    assertEquals(new BigDecimal("760.98"), asks.get(0).getLimitPrice());
+    assertEquals(new Double("760.98"), asks.get(0).getLimitPrice());
 
     List<LimitOrder> bids =
         WexAdapters.adaptOrders(depthRaw.getBids(), CurrencyPair.BTC_USD, "bid", "");
@@ -66,7 +65,7 @@ public class WexAdapterTest {
     assertThat(bid1.getType()).isEqualTo(OrderType.BID);
     assertThat(bid1.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
     assertThat(bid1.getTimestamp()).isNull();
-    assertEquals(new BigDecimal("758.99"), bid1.getLimitPrice());
+    assertEquals(new Double("758.99"), bid1.getLimitPrice());
   }
 
   @Test
@@ -114,7 +113,7 @@ public class WexAdapterTest {
 
     // Verify that the example data was unmarshalled correctly
     assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getLast())
-        .isEqualTo(new BigDecimal("757"));
+        .isEqualTo(new Double("757"));
     Ticker ticker =
         WexAdapters.adaptTicker(
             bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)),
@@ -123,7 +122,7 @@ public class WexAdapterTest {
     assertThat(ticker.getLast().toString()).isEqualTo("757");
     assertThat(ticker.getLow().toString()).isEqualTo("655");
     assertThat(ticker.getHigh().toString()).isEqualTo("770");
-    assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("24620.6561"));
+    assertThat(ticker.getVolume()).isEqualTo(new Double("24620.6561"));
     assertThat(DateUtils.toUTCString(ticker.getTimestamp())).isEqualTo("2013-11-23 11:13:39 GMT");
   }
 
@@ -172,9 +171,9 @@ public class WexAdapterTest {
     // verify all fields filled
     assertThat(order.getType()).isEqualTo(OrderType.ASK);
     assertThat(order.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
-    assertEquals(new BigDecimal("3.00000000"), order.getLimitPrice());
-    assertEquals(new BigDecimal("2.00000000"), order.getOriginalAmount());
-    assertEquals(new BigDecimal("1.00000000"), order.getCumulativeAmount());
+    assertEquals(new Double("3.00000000"), order.getLimitPrice());
+    assertEquals(new Double("2.00000000"), order.getOriginalAmount());
+    assertEquals(new Double("1.00000000"), order.getCumulativeAmount());
     assertEquals(OrderStatus.PARTIALLY_FILLED, order.getStatus());
     assertThat(order.getTimestamp().getTime()).isEqualTo(1342448420000L);
   }

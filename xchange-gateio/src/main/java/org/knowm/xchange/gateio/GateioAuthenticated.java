@@ -1,7 +1,6 @@
 package org.knowm.xchange.gateio;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.HeaderParam;
@@ -43,7 +42,7 @@ public interface GateioAuthenticated extends Gateio {
       @HeaderParam("KEY") String apiKey,
       @HeaderParam("SIGN") ParamsDigest signer,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws IOException;
 
@@ -69,8 +68,8 @@ public interface GateioAuthenticated extends Gateio {
   @Path("private/buy")
   GateioPlaceOrderReturn buy(
       @FormParam("currencyPair") String currencyPair,
-      @FormParam("rate") BigDecimal rate,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("rate") Double rate,
+      @FormParam("amount") Double amount,
       @HeaderParam("KEY") String apiKey,
       @HeaderParam("SIGN") ParamsDigest signer)
       throws IOException;
@@ -79,8 +78,8 @@ public interface GateioAuthenticated extends Gateio {
   @Path("private/sell")
   GateioPlaceOrderReturn sell(
       @FormParam("currencyPair") String currencyPair,
-      @FormParam("rate") BigDecimal rate,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("rate") Double rate,
+      @FormParam("amount") Double amount,
       @HeaderParam("KEY") String apiKey,
       @HeaderParam("SIGN") ParamsDigest signer)
       throws IOException;

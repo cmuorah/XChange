@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.Map;
@@ -123,10 +122,10 @@ public class HitbtcExchange extends BaseExchange implements org.knowm.xchange.Ex
                             new Currency(hitbtcSymbol.getQuoteCurrency())),
                     hitbtcSymbol ->
                         new CurrencyPairMetaData(
-                            (BigDecimal) null,
+                            (Double) null,
                             hitbtcSymbol.getQuantityIncrement(),
-                            (BigDecimal) null,
-                            hitbtcSymbol.getTickSize().scale(),
+                            (Double) null,
+                            8,
                             (FeeTier[]) null)));
     exchangeMetaData =
         HitbtcAdapters.adaptToExchangeMetaData(hitbtcSymbols, currencies, currencyPairs);

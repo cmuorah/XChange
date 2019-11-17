@@ -1,33 +1,32 @@
 package org.knowm.xchange.hitbtc.v2.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class HitbtcTicker {
 
-  private final BigDecimal ask;
-  private final BigDecimal bid;
-  private final BigDecimal last;
-  private final BigDecimal low;
-  private final BigDecimal high;
-  private final BigDecimal open;
+  private final Double ask;
+  private final Double bid;
+  private final Double last;
+  private final Double low;
+  private final Double high;
+  private final Double open;
   private final String symbol;
   private final Date timestamp;
-  private final BigDecimal volume;
-  private final BigDecimal volumeQuote;
+  private final Double volume;
+  private final Double volumeQuote;
 
   public HitbtcTicker(
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("open") BigDecimal open,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("last") Double last,
+      @JsonProperty("low") Double low,
+      @JsonProperty("high") Double high,
+      @JsonProperty("open") Double open,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("timestamp") Date timestamp,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("volumeQuote") BigDecimal volumeQuote) {
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("volumeQuote") Double volumeQuote) {
 
     this.ask = ask;
     this.bid = bid;
@@ -41,27 +40,27 @@ public class HitbtcTicker {
     this.symbol = symbol;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
@@ -73,11 +72,11 @@ public class HitbtcTicker {
     return timestamp;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getVolumeQuote() {
+  public Double getVolumeQuote() {
     return volumeQuote;
   }
 

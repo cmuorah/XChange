@@ -7,23 +7,22 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 public class CoinMarketCapQuote {
-  private final BigDecimal price;
-  private final BigDecimal volume24h;
-  private final BigDecimal marketCap;
-  private final BigDecimal pctChange1h;
-  private final BigDecimal pctChange24h;
-  private final BigDecimal pctChange7d;
+  private final Double price;
+  private final Double volume24h;
+  private final Double marketCap;
+  private final Double pctChange1h;
+  private final Double pctChange24h;
+  private final Double pctChange7d;
 
   private CoinMarketCapQuote(
-      final BigDecimal price,
-      final BigDecimal volume24h,
-      final BigDecimal marketCap,
-      final BigDecimal pctChange1h,
-      final BigDecimal pctChange24h,
-      final BigDecimal pctChange7d) {
+      final Double price,
+      final Double volume24h,
+      final Double marketCap,
+      final Double pctChange1h,
+      final Double pctChange24h,
+      final Double pctChange7d) {
 
     this.price = price;
     this.volume24h = volume24h;
@@ -33,27 +32,27 @@ public class CoinMarketCapQuote {
     this.pctChange7d = pctChange7d;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getVolume24h() {
+  public Double getVolume24h() {
     return volume24h;
   }
 
-  public BigDecimal getMarketCap() {
+  public Double getMarketCap() {
     return marketCap;
   }
 
-  public BigDecimal getPctChange1h() {
+  public Double getPctChange1h() {
     return pctChange1h;
   }
 
-  public BigDecimal getPctChange24h() {
+  public Double getPctChange24h() {
     return pctChange24h;
   }
 
-  public BigDecimal getPctChange7d() {
+  public Double getPctChange7d() {
     return pctChange7d;
   }
 
@@ -79,14 +78,14 @@ public class CoinMarketCapQuote {
       JsonNode node = oc.readTree(jp);
 
       if (node.isObject()) {
-        BigDecimal price = new BigDecimal(node.get("price").asDouble());
-        BigDecimal volume24h = new BigDecimal(node.get("volume_24h").asDouble());
-        BigDecimal marketCap = new BigDecimal(node.get("market_cap").asDouble());
+        Double price = new Double(node.get("price").asDouble());
+        Double volume24h = new Double(node.get("volume_24h").asDouble());
+        Double marketCap = new Double(node.get("market_cap").asDouble());
 
         // TODO use these to create CoinMarketCapHistoricalSpotPrice instances
-        BigDecimal pctChange1h = new BigDecimal(node.get("percent_change_1h").asDouble());
-        BigDecimal pctChange24h = new BigDecimal(node.get("percent_change_24h").asDouble());
-        BigDecimal pctChange7d = new BigDecimal(node.get("percent_change_7d").asDouble());
+        Double pctChange1h = new Double(node.get("percent_change_1h").asDouble());
+        Double pctChange24h = new Double(node.get("percent_change_24h").asDouble());
+        Double pctChange7d = new Double(node.get("percent_change_7d").asDouble());
 
         return new CoinMarketCapQuote(
             price, volume24h, marketCap, pctChange1h, pctChange24h, pctChange7d);

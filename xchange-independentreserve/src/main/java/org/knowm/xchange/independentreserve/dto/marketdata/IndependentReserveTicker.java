@@ -1,20 +1,19 @@
 package org.knowm.xchange.independentreserve.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /** @author Stuart Low */
 public final class IndependentReserveTicker {
-  private final BigDecimal last;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal vwap;
-  private final BigDecimal volume;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
+  private final Double last;
+  private final Double high;
+  private final Double low;
+  private final Double vwap;
+  private final Double volume;
+  private final Double bid;
+  private final Double ask;
   private Date timestamp;
 
   /**
@@ -29,13 +28,13 @@ public final class IndependentReserveTicker {
    * @param ask
    */
   public IndependentReserveTicker(
-      @JsonProperty("LastPrice") BigDecimal last,
-      @JsonProperty("DayHighestPrice") BigDecimal high,
-      @JsonProperty("DayLowestPrice") BigDecimal low,
-      @JsonProperty("DayAvgPrice") BigDecimal vwap,
-      @JsonProperty("DayVolumeXbt") BigDecimal volume,
-      @JsonProperty("CurrentHighestBidPrice") BigDecimal bid,
-      @JsonProperty("CurrentLowestOfferPrice") BigDecimal ask,
+      @JsonProperty("LastPrice") Double last,
+      @JsonProperty("DayHighestPrice") Double high,
+      @JsonProperty("DayLowestPrice") Double low,
+      @JsonProperty("DayAvgPrice") Double vwap,
+      @JsonProperty("DayVolumeXbt") Double volume,
+      @JsonProperty("CurrentHighestBidPrice") Double bid,
+      @JsonProperty("CurrentLowestOfferPrice") Double ask,
       @JsonProperty("CreatedTimestampUtc") String timestamp) {
 
     // @JsonFormat(pattern="") @JsonDeserialize(using =
@@ -57,37 +56,37 @@ public final class IndependentReserveTicker {
     }
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
 
-  public BigDecimal getVwap() {
+  public Double getVwap() {
 
     return vwap;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return ask;
   }

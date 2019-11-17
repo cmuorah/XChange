@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -64,8 +63,8 @@ public class KrakenPublicTrades {
           last = value.asLong();
         } else if (value.isArray()) {
           for (JsonNode tradeJsonNode : value) {
-            BigDecimal price = new BigDecimal(tradeJsonNode.path(0).asText());
-            BigDecimal volume = new BigDecimal(tradeJsonNode.path(1).asText());
+            Double price = new Double(tradeJsonNode.path(0).asText());
+            Double volume = new Double(tradeJsonNode.path(1).asText());
             double time = tradeJsonNode.path(2).asDouble();
             KrakenType type = KrakenType.fromString(tradeJsonNode.path(3).asText());
             KrakenOrderType orderType = KrakenOrderType.fromString(tradeJsonNode.path(4).asText());

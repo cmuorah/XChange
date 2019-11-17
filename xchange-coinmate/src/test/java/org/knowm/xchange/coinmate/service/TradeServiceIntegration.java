@@ -2,7 +2,6 @@ package org.knowm.xchange.coinmate.service;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinmate.ExchangeUtils;
@@ -83,7 +82,7 @@ public class TradeServiceIntegration {
   /*
    * @Test public void marketBuyTest() throws Exception { Exchange exchange = ExchangeUtils.createExchangeFromJsonConfiguration(); if (exchange ==
    * null) { return; // forces pass if not configuration is available } assertNotNull(exchange); TradeService service = exchange.getTradeService();
-   * assertNotNull(service); String id = service.placeMarketOrder(new MarketOrder(Order.OrderType.BID, new BigDecimal("0.1"), CurrencyPair.BTC_EUR));
+   * assertNotNull(service); String id = service.placeMarketOrder(new MarketOrder(Order.OrderType.BID, new Double("0.1"), CurrencyPair.BTC_EUR));
    * System.out.println("Market buy order id = " + id); }
    */
 
@@ -97,21 +96,21 @@ public class TradeServiceIntegration {
     TradeService service = exchange.getTradeService();
     assertNotNull(service);
     service.placeMarketOrder(
-        new MarketOrder(Order.OrderType.ASK, new BigDecimal("0.001"), CurrencyPair.BTC_EUR));
+        new MarketOrder(Order.OrderType.ASK, new Double("0.001"), CurrencyPair.BTC_EUR));
   }
 
   /*
    * @Test public void limitBuyTest() throws Exception { Exchange exchange = ExchangeUtils.createExchangeFromJsonConfiguration(); if (exchange ==
    * null) { return; // forces pass if not configuration is available } assertNotNull(exchange); TradeService service = exchange.getTradeService();
-   * assertNotNull(service); String id = service.placeLimitOrder(new LimitOrder(Order.OrderType.BID, new BigDecimal("1.0"), CurrencyPair.BTC_EUR,
-   * null, null, new BigDecimal("1.0"))); System.out.println("Limit buy order id = " + id); }
+   * assertNotNull(service); String id = service.placeLimitOrder(new LimitOrder(Order.OrderType.BID, new Double("1.0"), CurrencyPair.BTC_EUR,
+   * null, null, new Double("1.0"))); System.out.println("Limit buy order id = " + id); }
    */
 
   /*
    * @Test public void limitSellTest() throws Exception { Exchange exchange = ExchangeUtils.createExchangeFromJsonConfiguration(); if (exchange ==
    * null) { return; // forces pass if not configuration is available } assertNotNull(exchange); TradeService service = exchange.getTradeService();
-   * assertNotNull(service); String id = service.placeLimitOrder(new LimitOrder(Order.OrderType.ASK, new BigDecimal("0.0"), CurrencyPair.BTC_EUR,
-   * null, null, new BigDecimal("10000.0"))); System.out.println("Limit sell order id = " + id); }
+   * assertNotNull(service); String id = service.placeLimitOrder(new LimitOrder(Order.OrderType.ASK, new Double("0.0"), CurrencyPair.BTC_EUR,
+   * null, null, new Double("10000.0"))); System.out.println("Limit sell order id = " + id); }
    */
 
   /*

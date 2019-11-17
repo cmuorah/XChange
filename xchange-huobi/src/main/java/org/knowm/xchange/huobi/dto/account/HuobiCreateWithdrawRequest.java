@@ -2,7 +2,6 @@ package org.knowm.xchange.huobi.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class HuobiCreateWithdrawRequest {
 
@@ -10,21 +9,21 @@ public class HuobiCreateWithdrawRequest {
   private String address;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("currency")
   private String currency;
 
   @JsonProperty("fee")
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
-  private BigDecimal fee;
+  private Double fee;
 
   @JsonProperty("addr-tag")
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
   private String addressTag;
 
   public HuobiCreateWithdrawRequest(
-      String address, BigDecimal amount, String currency, BigDecimal fee, String addressTag) {
+      String address, Double amount, String currency, Double fee, String addressTag) {
     this.address = address;
     this.amount = amount;
     this.currency = currency;
@@ -36,7 +35,7 @@ public class HuobiCreateWithdrawRequest {
     return address;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -44,7 +43,7 @@ public class HuobiCreateWithdrawRequest {
     return currency;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

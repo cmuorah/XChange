@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.utils.DateUtils;
 
@@ -26,8 +25,8 @@ public class BTCTurkTradesTest {
 
     // Verify that the example data was unmarshalled correctly
     assertThat(DateUtils.toUTCString(trades[0].getDate())).isEqualTo("1970-01-18 21:51:16 GMT");
-    assertThat(trades[0].getTid()).isEqualTo(new BigDecimal("636830731788787572"));
-    assertThat(trades[0].getPrice()).isEqualTo(new BigDecimal("19800"));
-    assertThat(trades[0].getAmount()).isEqualTo(new BigDecimal("0.14187336"));
+    assertThat(trades[0].getTid()).isEqualTo(new Double("636830731788787572"));
+    assertThat(trades[0].getPrice()).isEqualTo(new Double("19800"));
+    assertThat(trades[0].getAmount()).isEqualTo(new Double("0.14187336"));
   }
 }

@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.entry;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.BeforeClass;
@@ -56,7 +55,7 @@ public class BitcointoyouBalanceTest {
     softly.assertThat(bitcointoyouBalance.getSuccess()).isEqualTo("1");
 
     // That's always only one Map on the List
-    Map<String, BigDecimal> balances = bitcointoyouBalance.getoReturn().get(0);
+    Map<String, Double> balances = bitcointoyouBalance.getoReturn().get(0);
 
     softly.assertThat(balances).size().isEqualTo(5);
     softly.assertThat(balances).containsOnlyKeys("BRL", "BTC", "LTC", "DOGE", "DRK");
@@ -64,11 +63,11 @@ public class BitcointoyouBalanceTest {
     softly
         .assertThat(balances)
         .containsExactly(
-            entry("BRL", new BigDecimal("8657.531311027634275")),
-            entry("BTC", new BigDecimal("35.460074025529646")),
-            entry("LTC", new BigDecimal("9.840918628667236")),
-            entry("DOGE", new BigDecimal("5419.490003406479187")),
-            entry("DRK", new BigDecimal("0.121461143982142")));
+            entry("BRL", new Double("8657.531311027634275")),
+            entry("BTC", new Double("35.460074025529646")),
+            entry("LTC", new Double("9.840918628667236")),
+            entry("DOGE", new Double("5419.490003406479187")),
+            entry("DRK", new Double("0.121461143982142")));
 
     softly.assertThat(bitcointoyouBalance.getDate()).isEqualTo("2015-08-06 17:28:58.382");
     softly.assertThat(bitcointoyouBalance.getTimestamp()).isEqualTo("1438882138");

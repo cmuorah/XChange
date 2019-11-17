@@ -1,7 +1,6 @@
 package org.knowm.xchange.gateio.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -72,7 +71,7 @@ public class GateioTradeServiceRaw extends GateioBaseService {
    * @throws IOException
    */
   public String placeGateioLimitOrder(
-      CurrencyPair currencyPair, GateioOrderType orderType, BigDecimal rate, BigDecimal amount)
+      CurrencyPair currencyPair, GateioOrderType orderType, Double rate, Double amount)
       throws IOException {
 
     String pair = formatCurrencyPair(currencyPair);

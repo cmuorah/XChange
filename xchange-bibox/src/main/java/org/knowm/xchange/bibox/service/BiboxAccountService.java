@@ -1,7 +1,6 @@
 package org.knowm.xchange.bibox.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -32,8 +31,7 @@ public class BiboxAccountService extends BiboxAccountServiceRaw implements Accou
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     throw new NotYetImplementedForExchangeException(
         "This operation is not yet implemented for this exchange");
   }

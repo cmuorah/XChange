@@ -1,7 +1,6 @@
 package org.knowm.xchange.hitbtc.v2.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -18,15 +17,14 @@ public class HitbtcAccountServiceRaw extends HitbtcBaseService {
     super(exchange);
   }
 
-  public String withdrawFundsRaw(
-      Currency currency, BigDecimal amount, String address, String paymentId)
+  public String withdrawFundsRaw(Currency currency, Double amount, String address, String paymentId)
       throws HttpStatusIOException {
 
     return withdrawFundsRaw(currency, amount, address, paymentId, false);
   }
 
   public String withdrawFundsRaw(
-      Currency currency, BigDecimal amount, String address, String paymentId, Boolean includeFee)
+      Currency currency, Double amount, String address, String paymentId, Boolean includeFee)
       throws HttpStatusIOException {
     Map response =
         hitbtc.payout(amount, currency.getCurrencyCode(), address, paymentId, includeFee);
@@ -35,13 +33,12 @@ public class HitbtcAccountServiceRaw extends HitbtcBaseService {
   }
 
   public HitbtcInternalTransferResponse transferFunds(
-      Currency currency, BigDecimal amount, HitbtcTransferType hitbtcTransferType)
-      throws IOException {
+      Currency currency, Double amount, HitbtcTransferType hitbtcTransferType) throws IOException {
     return hitbtc.transferToTrading(
         amount, currency.getCurrencyCode(), hitbtcTransferType.getType());
   }
 
-  public String transferToTrading(Currency currency, BigDecimal amount) throws IOException {
+  public String transferToTrading(Currency currency, Double amount) throws IOException {
 
     HitbtcInternalTransferResponse response =
         transferFunds(currency, amount, HitbtcTransferType.BANK_TO_EXCHANGE);
@@ -52,7 +49,7 @@ public class HitbtcAccountServiceRaw extends HitbtcBaseService {
     return response.id;
   }
 
-  public String transferToMain(Currency currency, BigDecimal amount) throws IOException {
+  public String transferToMain(Currency currency, Double amount) throws IOException {
     HitbtcInternalTransferResponse response =
         transferFunds(currency, amount, HitbtcTransferType.EXCHANGE_TO_BANK);
 

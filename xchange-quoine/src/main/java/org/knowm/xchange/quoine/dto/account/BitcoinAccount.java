@@ -1,21 +1,20 @@
 package org.knowm.xchange.quoine.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author timmolter */
 public final class BitcoinAccount {
 
   private final Integer id;
-  private final BigDecimal balance;
+  private final Double balance;
   private final String address;
   private final String currency;
   private final String currencySymbol;
   private final String pusherChannel;
-  private final BigDecimal btcMinimumWithdraw;
-  private final BigDecimal lowestOfferInterestRate;
-  private final BigDecimal highestOfferInterestRate;
-  private final BigDecimal freeBalance;
+  private final Double btcMinimumWithdraw;
+  private final Double lowestOfferInterestRate;
+  private final Double highestOfferInterestRate;
+  private final Double freeBalance;
 
   /**
    * Constructor
@@ -33,15 +32,15 @@ public final class BitcoinAccount {
    */
   public BitcoinAccount(
       @JsonProperty("id") Integer id,
-      @JsonProperty("balance") BigDecimal balance,
+      @JsonProperty("balance") Double balance,
       @JsonProperty("address") String address,
       @JsonProperty("currency") String currency,
       @JsonProperty("currency_symbol") String currencySymbol,
       @JsonProperty("pusher_channel") String pusherChannel,
-      @JsonProperty("btc_minimum_withdraw") BigDecimal btcMinimumWithdraw,
-      @JsonProperty("lowest_offer_interest_rate") BigDecimal lowestOfferInterestRate,
-      @JsonProperty("highest_offer_interest_rate") BigDecimal highestOfferInterestRate,
-      @JsonProperty("free_balance") BigDecimal freeBalance) {
+      @JsonProperty("btc_minimum_withdraw") Double btcMinimumWithdraw,
+      @JsonProperty("lowest_offer_interest_rate") Double lowestOfferInterestRate,
+      @JsonProperty("highest_offer_interest_rate") Double highestOfferInterestRate,
+      @JsonProperty("free_balance") Double freeBalance) {
     this.id = id;
     this.balance = balance;
     this.address = address;
@@ -58,7 +57,7 @@ public final class BitcoinAccount {
     return id;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
@@ -78,19 +77,19 @@ public final class BitcoinAccount {
     return pusherChannel;
   }
 
-  public BigDecimal getBtcMinimumWithdraw() {
+  public Double getBtcMinimumWithdraw() {
     return btcMinimumWithdraw;
   }
 
-  public BigDecimal getLowestOfferInterestRate() {
+  public Double getLowestOfferInterestRate() {
     return lowestOfferInterestRate;
   }
 
-  public BigDecimal getHighestOfferInterestRate() {
+  public Double getHighestOfferInterestRate() {
     return highestOfferInterestRate;
   }
 
-  public BigDecimal getFreeBalance() {
+  public Double getFreeBalance() {
     return freeBalance;
   }
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.anx.v2.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.anx.v2.dto.ANXValue;
@@ -18,7 +17,7 @@ public final class ANXAccountInfo {
   private final String lastLogin;
   private final Map<String, ANXWallet> wallets;
   private final ANXValue monthlyVolume;
-  private final BigDecimal tradeFee;
+  private final Double tradeFee;
 
   /**
    * Constructor
@@ -44,7 +43,7 @@ public final class ANXAccountInfo {
       @JsonProperty("Last_Login") String lastLogin,
       @JsonProperty("Wallets") Map<String, ANXWallet> wallets,
       @JsonProperty("Monthly_Volume") ANXValue monthlyVolume,
-      @JsonProperty("Trade_Fee") BigDecimal tradeFee) {
+      @JsonProperty("Trade_Fee") Double tradeFee) {
 
     this.login = login;
     this.index = index;
@@ -103,7 +102,7 @@ public final class ANXAccountInfo {
     return monthlyVolume;
   }
 
-  public BigDecimal getTradeFee() {
+  public Double getTradeFee() {
 
     return tradeFee;
   }

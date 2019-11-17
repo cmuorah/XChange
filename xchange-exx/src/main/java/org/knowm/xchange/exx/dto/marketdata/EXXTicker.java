@@ -1,38 +1,37 @@
 package org.knowm.xchange.exx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 // -------------------------
 public class EXXTicker extends EXXTickerResponse {
 
   @JsonProperty("vol")
-  private BigDecimal vol;
+  private Double vol;
 
   @JsonProperty("last")
-  private BigDecimal last;
+  private Double last;
 
   @JsonProperty("sell")
-  private BigDecimal sell;
+  private Double sell;
 
   @JsonProperty("buy")
-  private BigDecimal buy;
+  private Double buy;
 
   @JsonProperty("weekRiseRate")
-  private BigDecimal weekRiseRate;
+  private Double weekRiseRate;
 
   @JsonProperty("riseRate")
-  private BigDecimal riseRate;
+  private Double riseRate;
 
   @JsonProperty("high")
-  private BigDecimal high;
+  private Double high;
 
   @JsonProperty("low")
-  private BigDecimal low;
+  private Double low;
 
   @JsonProperty("monthRiseRate")
-  private BigDecimal monthRiseRate;
+  private Double monthRiseRate;
 
   /** No args constructor for use in serialization */
   public EXXTicker() {}
@@ -49,15 +48,15 @@ public class EXXTicker extends EXXTickerResponse {
    * @param monthRiseRate
    */
   public EXXTicker(
-      BigDecimal vol,
-      BigDecimal last,
-      BigDecimal sell,
-      BigDecimal buy,
-      BigDecimal weekRiseRate,
-      BigDecimal riseRate,
-      BigDecimal high,
-      BigDecimal low,
-      BigDecimal monthRiseRate) {
+      Double vol,
+      Double last,
+      Double sell,
+      Double buy,
+      Double weekRiseRate,
+      Double riseRate,
+      Double high,
+      Double low,
+      Double monthRiseRate) {
     super();
     this.vol = vol;
     this.last = last;
@@ -71,92 +70,92 @@ public class EXXTicker extends EXXTickerResponse {
   }
 
   @JsonProperty("vol")
-  public BigDecimal getVol() {
+  public Double getVol() {
     return vol;
   }
 
   @JsonProperty("vol")
-  public void setVol(BigDecimal vol) {
+  public void setVol(Double vol) {
     this.vol = vol;
   }
 
   @JsonProperty("last")
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
   @JsonProperty("last")
-  public void setLast(BigDecimal last) {
+  public void setLast(Double last) {
     this.last = last;
   }
 
   @JsonProperty("sell")
-  public BigDecimal getSell() {
+  public Double getSell() {
     return sell;
   }
 
   @JsonProperty("sell")
-  public void setSell(BigDecimal sell) {
+  public void setSell(Double sell) {
     this.sell = sell;
   }
 
   @JsonProperty("buy")
-  public BigDecimal getBuy() {
+  public Double getBuy() {
     return buy;
   }
 
   @JsonProperty("buy")
-  public void setBuy(BigDecimal buy) {
+  public void setBuy(Double buy) {
     this.buy = buy;
   }
 
   @JsonProperty("weekRiseRate")
-  public BigDecimal getWeekRiseRate() {
+  public Double getWeekRiseRate() {
     return weekRiseRate;
   }
 
   @JsonProperty("weekRiseRate")
-  public void setWeekRiseRate(BigDecimal weekRiseRate) {
+  public void setWeekRiseRate(Double weekRiseRate) {
     this.weekRiseRate = weekRiseRate;
   }
 
   @JsonProperty("riseRate")
-  public BigDecimal getRiseRate() {
+  public Double getRiseRate() {
     return riseRate;
   }
 
   @JsonProperty("riseRate")
-  public void setRiseRate(BigDecimal riseRate) {
+  public void setRiseRate(Double riseRate) {
     this.riseRate = riseRate;
   }
 
   @JsonProperty("high")
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
   @JsonProperty("high")
-  public void setHigh(BigDecimal high) {
+  public void setHigh(Double high) {
     this.high = high;
   }
 
   @JsonProperty("low")
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
   @JsonProperty("low")
-  public void setLow(BigDecimal low) {
+  public void setLow(Double low) {
     this.low = low;
   }
 
   @JsonProperty("monthRiseRate")
-  public BigDecimal getMonthRiseRate() {
+  public Double getMonthRiseRate() {
     return monthRiseRate;
   }
 
   @JsonProperty("monthRiseRate")
-  public void setMonthRiseRate(BigDecimal monthRiseRate) {
+  public void setMonthRiseRate(Double monthRiseRate) {
     this.monthRiseRate = monthRiseRate;
   }
 

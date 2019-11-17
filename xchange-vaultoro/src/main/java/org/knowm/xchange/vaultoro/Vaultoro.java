@@ -1,7 +1,6 @@
 package org.knowm.xchange.vaultoro;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,7 +15,7 @@ public interface Vaultoro {
 
   @GET
   @Path("latest")
-  BigDecimal getLatest() throws IOException, VaultoroException;
+  Double getLatest() throws IOException, VaultoroException;
 
   @GET
   @Path("orderbook")

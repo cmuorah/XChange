@@ -1,6 +1,5 @@
 package org.knowm.xchange.coinmarketcap.deprecated.v2.dto.marketdata;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /** @author allenday */
@@ -8,9 +7,9 @@ public class CoinMarketCapHistoricalSpotPrice
     implements Comparable<CoinMarketCapHistoricalSpotPrice> {
 
   private final Date timestamp;
-  private final BigDecimal spotRate;
+  private final Double spotRate;
 
-  CoinMarketCapHistoricalSpotPrice(Date timestamp, final BigDecimal spotRate) {
+  CoinMarketCapHistoricalSpotPrice(Date timestamp, final Double spotRate) {
     this.timestamp = timestamp;
     this.spotRate = spotRate;
   }
@@ -19,7 +18,7 @@ public class CoinMarketCapHistoricalSpotPrice
     return timestamp;
   }
 
-  public BigDecimal getSpotRate() {
+  public Double getSpotRate() {
     return spotRate;
   }
 

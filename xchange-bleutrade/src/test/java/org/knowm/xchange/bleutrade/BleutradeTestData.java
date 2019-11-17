@@ -2,7 +2,6 @@ package org.knowm.xchange.bleutrade;
 
 import static org.knowm.xchange.bleutrade.BleutradeUtils.toDate;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -21,31 +20,27 @@ public class BleutradeTestData {
     return new Balance[] {
       new Balance(
           Currency.AUD,
-          new BigDecimal("40.00000000"),
-          new BigDecimal("10.00000000"),
-          new BigDecimal("30.00000000")),
+          new Double("40.00000000"),
+          new Double("10.00000000"),
+          new Double("30.00000000")),
       new Balance(
           Currency.BTC,
-          new BigDecimal("100.00000000"),
-          new BigDecimal("40.00000000"),
-          new BigDecimal("60.00000000")),
+          new Double("100.00000000"),
+          new Double("40.00000000"),
+          new Double("60.00000000")),
       new Balance(
           Currency.getInstance("BLEU"),
-          new BigDecimal("160.00000000"),
-          new BigDecimal("70.00000000"),
-          new BigDecimal("90.00000000")),
+          new Double("160.00000000"),
+          new Double("70.00000000"),
+          new Double("90.00000000")),
     };
   }
 
   protected static Balance[] expectedBalances() {
     return new Balance[] {
+      new Balance(Currency.DOGE, new Double("0E-8"), new Double("0E-8"), new Double("0E-8")),
       new Balance(
-          Currency.DOGE, new BigDecimal("0E-8"), new BigDecimal("0E-8"), new BigDecimal("0E-8")),
-      new Balance(
-          Currency.BTC,
-          new BigDecimal("15.49843675"),
-          new BigDecimal("13.98901996"),
-          new BigDecimal("0E-8")),
+          Currency.BTC, new Double("15.49843675"), new Double("13.98901996"), new Double("0E-8")),
     };
   }
 
@@ -53,16 +48,16 @@ public class BleutradeTestData {
     return new Trade[] {
       new Trade(
           Order.OrderType.BID,
-          new BigDecimal("654971.69417461"),
+          new Double("654971.69417461"),
           CurrencyPair.BTC_AUD,
-          new BigDecimal("0.00000055"),
+          new Double("0.00000055"),
           new Date(1406657280000L),
           null),
       new Trade(
           Order.OrderType.ASK,
-          new BigDecimal("120.00000000"),
+          new Double("120.00000000"),
           CurrencyPair.BTC_AUD,
-          new BigDecimal("0.00006600"),
+          new Double("0.00006600"),
           new Date(1406657555000L),
           null),
     };
@@ -72,18 +67,18 @@ public class BleutradeTestData {
     return new LimitOrder[] {
       new LimitOrder(
           Order.OrderType.BID,
-          new BigDecimal("10.00000000"),
+          new Double("10.00000000"),
           CurrencyPair.BTC_AUD,
           "",
           null,
-          new BigDecimal("1.1")),
+          new Double("1.1")),
       new LimitOrder(
           Order.OrderType.ASK,
-          new BigDecimal("20.00000000"),
+          new Double("20.00000000"),
           CurrencyPair.BTC_AUD,
           "",
           null,
-          new BigDecimal("2.2"))
+          new Double("2.2"))
     };
   }
 
@@ -91,20 +86,20 @@ public class BleutradeTestData {
     return new LimitOrder[] {
       new LimitOrder(
           Order.OrderType.BID,
-          new BigDecimal("20.00000000"),
-          new BigDecimal("15.00000000"),
+          new Double("20.00000000"),
+          new Double("15.00000000"),
           CurrencyPair.LTC_BTC,
           "65489",
           toDate("2014-08-03 13:55:20"),
-          new BigDecimal("0.01268311")),
+          new Double("0.01268311")),
       new LimitOrder(
           Order.OrderType.ASK,
-          new BigDecimal("150491.98700000"),
-          (new BigDecimal("150491.98700000")).subtract(new BigDecimal("795.00000000")),
+          new Double("150491.98700000"),
+          (new Double("150491.98700000")) - (new Double("795.00000000")),
           CurrencyPair.DOGE_BTC,
           "65724",
           toDate("2014-07-29 18:45:17"),
-          new BigDecimal("0.00000055")),
+          new Double("0.00000055")),
     };
   }
 
@@ -112,18 +107,18 @@ public class BleutradeTestData {
     return new LimitOrder[] {
       new LimitOrder(
           Order.OrderType.BID,
-          new BigDecimal("4.99400000"),
+          new Double("4.99400000"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("3.00650900")),
+          new Double("3.00650900")),
       new LimitOrder(
           Order.OrderType.BID,
-          new BigDecimal("50.00000000"),
+          new Double("50.00000000"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("3.50000000"))
+          new Double("3.50000000"))
     };
   }
 
@@ -131,55 +126,53 @@ public class BleutradeTestData {
     return new LimitOrder[] {
       new LimitOrder(
           Order.OrderType.ASK,
-          new BigDecimal("12.44147454"),
+          new Double("12.44147454"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("5.13540000")),
+          new Double("5.13540000")),
       new LimitOrder(
           Order.OrderType.ASK,
-          new BigDecimal("100.00000000"),
+          new Double("100.00000000"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("6.25500000")),
+          new Double("6.25500000")),
       new LimitOrder(
           Order.OrderType.ASK,
-          new BigDecimal("30.00000000"),
+          new Double("30.00000000"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("6.75500001")),
+          new Double("6.75500001")),
       new LimitOrder(
           Order.OrderType.ASK,
-          new BigDecimal("13.49989999"),
+          new Double("13.49989999"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("6.76260099"))
+          new Double("6.76260099"))
     };
   }
 
   protected static Ticker expectedTicker() {
     return new Ticker.Builder()
         .currencyPair(BLEU_BTC_CP)
-        .last(new BigDecimal("0.00101977"))
-        .bid(new BigDecimal("0.00100000"))
-        .ask(new BigDecimal("0.00101977"))
-        .high(new BigDecimal("0.00105000"))
-        .low(new BigDecimal("0.00086000"))
-        .vwap(new BigDecimal("0.00103455"))
-        .volume(new BigDecimal("2450.97496015"))
+        .last(new Double("0.00101977"))
+        .bid(new Double("0.00100000"))
+        .ask(new Double("0.00101977"))
+        .high(new Double("0.00105000"))
+        .low(new Double("0.00086000"))
+        .vwap(new Double("0.00103455"))
+        .volume(new Double("2450.97496015"))
         .timestamp(new Date(1406632770000L))
         .build();
   }
 
   protected static CurrencyPairMetaData[] expectedMetaDataList() {
     return new CurrencyPairMetaData[] {
-      new CurrencyPairMetaData(
-          new BigDecimal("0.0025"), new BigDecimal("0.10000000"), null, 8, null),
-      new CurrencyPairMetaData(
-          new BigDecimal("0.0025"), new BigDecimal("0.00000001"), null, 8, null)
+      new CurrencyPairMetaData(new Double("0.0025"), new Double("0.10000000"), null, 8, null),
+      new CurrencyPairMetaData(new Double("0.0025"), new Double("0.00000001"), null, 8, null)
     };
   }
 

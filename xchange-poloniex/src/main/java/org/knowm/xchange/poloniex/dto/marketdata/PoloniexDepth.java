@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +18,10 @@ import javax.annotation.Generated;
 public class PoloniexDepth {
 
   @JsonProperty("asks")
-  private List<List<BigDecimal>> asks = new ArrayList<List<BigDecimal>>();
+  private List<List<Double>> asks = new ArrayList<List<Double>>();
 
   @JsonProperty("bids")
-  private List<List<BigDecimal>> bids = new ArrayList<List<BigDecimal>>();
+  private List<List<Double>> bids = new ArrayList<List<Double>>();
 
   @JsonProperty("isFrozen")
   private String isFrozen;
@@ -30,25 +29,25 @@ public class PoloniexDepth {
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("asks")
-  public List<List<BigDecimal>> getAsks() {
+  public List<List<Double>> getAsks() {
 
     return asks;
   }
 
   @JsonProperty("asks")
-  public void setAsks(List<List<BigDecimal>> asks) {
+  public void setAsks(List<List<Double>> asks) {
 
     this.asks = asks;
   }
 
   @JsonProperty("bids")
-  public List<List<BigDecimal>> getBids() {
+  public List<List<Double>> getBids() {
 
     return bids;
   }
 
   @JsonProperty("bids")
-  public void setBids(List<List<BigDecimal>> bids) {
+  public void setBids(List<List<Double>> bids) {
 
     this.bids = bids;
   }

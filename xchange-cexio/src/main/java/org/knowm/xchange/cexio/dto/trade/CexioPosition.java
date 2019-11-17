@@ -1,7 +1,6 @@
 package org.knowm.xchange.cexio.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /**
  * Object contains position data
@@ -19,33 +18,32 @@ public class CexioPosition {
   private final String
       lsymbol; //	currency of borrowed funds, can be one of the currencies, presented in the pair
   private final String pair; // 	trading pair as a string like "XXX:XXX"
-  private final BigDecimal pamount; // total position amount, presented in "psymbol"
-  private final BigDecimal
+  private final Double pamount; // total position amount, presented in "psymbol"
+  private final Double
       omamount; //	string	("open money amount') user's amount used in the position, presented in
   // 'msymbol"
-  private final BigDecimal
-      lamount; //	amount of borrowed funds in the position, presented in "lsymbol"
-  private final BigDecimal
+  private final Double lamount; // 	amount of borrowed funds in the position, presented in "lsymbol"
+  private final Double
       openPrice; //	price the position was opened at, calculated as average of underlying executed
   // orders
   private final CexioPositionType
       type; //	position type. long - buying product, profitable if product price grows; short -
   // selling product, profitable if product price falls;
-  private final BigDecimal
+  private final Double
       stopLossPrice; //	price, near which your position will be closed automatically in case of
   // unfavorable market conditions
-  private final BigDecimal
+  private final Double
       pfee; //	estimated fee (in %) from user's amount, that will be charged for position rollover
   // for the next 4 hours
-  private final BigDecimal
+  private final Double
       cfee; //	fee (in %) from user's amount, that will be charged for position closing
-  private final BigDecimal
+  private final Double
       tfeeAmount; //	total fees paid by user, it is equal to opening fee amount, when position has
   // been just opened
   private final String user; // 	User ID
-  private final BigDecimal amount; // 	total amount of "product" in the position
+  private final Double amount; // 	total amount of "product" in the position
   private final String symbol; // 	total amount of product in the position
-  private final BigDecimal
+  private final Double
       slamount; //	(stop-loss amount) amount that will be returned, including user`s and borrowed
   // funds
   private final Integer leverage; // 	leverage, with which the position was opened
@@ -70,19 +68,19 @@ public class CexioPosition {
       @JsonProperty("msymbol") String msymbol,
       @JsonProperty("lsymbol") String lsymbol,
       @JsonProperty("pair") String pair,
-      @JsonProperty("pamount") BigDecimal pamount,
-      @JsonProperty("omamount") BigDecimal omamount,
-      @JsonProperty("lamount") BigDecimal lamount,
-      @JsonProperty("oprice") BigDecimal openPrice,
+      @JsonProperty("pamount") Double pamount,
+      @JsonProperty("omamount") Double omamount,
+      @JsonProperty("lamount") Double lamount,
+      @JsonProperty("oprice") Double openPrice,
       @JsonProperty("ptype") CexioPositionType type,
-      @JsonProperty("stopLossPrice") BigDecimal stopLossPrice,
-      @JsonProperty("pfee") BigDecimal pfee,
-      @JsonProperty("cfee") BigDecimal cfee,
-      @JsonProperty("tfeeAmount") BigDecimal tfeeAmount,
+      @JsonProperty("stopLossPrice") Double stopLossPrice,
+      @JsonProperty("pfee") Double pfee,
+      @JsonProperty("cfee") Double cfee,
+      @JsonProperty("tfeeAmount") Double tfeeAmount,
       @JsonProperty("user") String user,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("symbol") String symbol,
-      @JsonProperty("slamount") BigDecimal slamount,
+      @JsonProperty("slamount") Double slamount,
       @JsonProperty("leverage") Integer leverage,
       @JsonProperty("dfl") String dfl,
       @JsonProperty("flPrice") String flPrice,
@@ -148,19 +146,19 @@ public class CexioPosition {
     return pair;
   }
 
-  public BigDecimal getPamount() {
+  public Double getPamount() {
     return pamount;
   }
 
-  public BigDecimal getOmamount() {
+  public Double getOmamount() {
     return omamount;
   }
 
-  public BigDecimal getLamount() {
+  public Double getLamount() {
     return lamount;
   }
 
-  public BigDecimal getOpenPrice() {
+  public Double getOpenPrice() {
     return openPrice;
   }
 
@@ -168,19 +166,19 @@ public class CexioPosition {
     return type;
   }
 
-  public BigDecimal getStopLossPrice() {
+  public Double getStopLossPrice() {
     return stopLossPrice;
   }
 
-  public BigDecimal getPfee() {
+  public Double getPfee() {
     return pfee;
   }
 
-  public BigDecimal getCfee() {
+  public Double getCfee() {
     return cfee;
   }
 
-  public BigDecimal getTfeeAmount() {
+  public Double getTfeeAmount() {
     return tfeeAmount;
   }
 
@@ -188,7 +186,7 @@ public class CexioPosition {
     return user;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -196,7 +194,7 @@ public class CexioPosition {
     return symbol;
   }
 
-  public BigDecimal getSlamount() {
+  public Double getSlamount() {
     return slamount;
   }
 

@@ -2,7 +2,6 @@ package org.knowm.xchange.coindirect.dto.meta;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -14,8 +13,8 @@ public class CoindirectCurrency {
   public final String name;
   public final List<Object> withdrawalParameters;
   public final Object options;
-  public final BigDecimal withdrawalFee;
-  public final BigDecimal depositFee;
+  public final Double withdrawalFee;
+  public final Double depositFee;
 
   public CoindirectCurrency(
       @JsonProperty("id") long id,
@@ -25,8 +24,8 @@ public class CoindirectCurrency {
       @JsonProperty("name") String name,
       @JsonProperty("withdrawalParameters") List<Object> withdrawalParameters,
       @JsonProperty("options") Object options,
-      @JsonProperty("withdrawalFee") BigDecimal withdrawalFee,
-      @JsonProperty("depositFee") BigDecimal depositFee) {
+      @JsonProperty("withdrawalFee") Double withdrawalFee,
+      @JsonProperty("depositFee") Double depositFee) {
     this.id = id;
     this.code = code;
     this.fiat = fiat;

@@ -2,7 +2,6 @@ package org.knowm.xchange.deribit.v2.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 import org.knowm.xchange.deribit.v2.dto.Direction;
@@ -32,7 +31,7 @@ public class DeribitTrade {
 
   /** Price in base currency */
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   /**
    * Optional field (only for trades caused by liquidation): "M" when maker side of trade was under
@@ -44,7 +43,7 @@ public class DeribitTrade {
 
   /** Option implied volatility for the price (Option only) */
   @JsonProperty("iv")
-  private BigDecimal iv;
+  private Double iv;
 
   /** Unique instrument identifier */
   @JsonProperty("instrument_name")
@@ -52,7 +51,7 @@ public class DeribitTrade {
 
   /** Index Price at the moment of trade */
   @JsonProperty("index_price")
-  private BigDecimal indexPrice;
+  private Double indexPrice;
 
   /** direction, buy or sell */
   @JsonProperty("direction")
@@ -63,7 +62,7 @@ public class DeribitTrade {
    * corresponding cryptocurrency contracts, e.g., BTC or ETH.
    */
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   public Date getTimestamp() {
     return new Date(timestamp);

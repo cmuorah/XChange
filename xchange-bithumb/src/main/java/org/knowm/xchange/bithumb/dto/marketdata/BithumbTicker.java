@@ -1,37 +1,36 @@
 package org.knowm.xchange.bithumb.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BithumbTicker {
 
-  private final BigDecimal openingPrice;
-  private final BigDecimal closingPrice;
-  private final BigDecimal minPrice;
-  private final BigDecimal maxPrice;
-  private final BigDecimal averagePrice;
-  private final BigDecimal unitsTraded;
-  private final BigDecimal volume1day;
-  private final BigDecimal volume7day;
-  private final BigDecimal buyPrice;
-  private final BigDecimal sellPrice;
-  private final BigDecimal _24HFluctate;
-  private final BigDecimal _24HFluctateRate;
+  private final Double openingPrice;
+  private final Double closingPrice;
+  private final Double minPrice;
+  private final Double maxPrice;
+  private final Double averagePrice;
+  private final Double unitsTraded;
+  private final Double volume1day;
+  private final Double volume7day;
+  private final Double buyPrice;
+  private final Double sellPrice;
+  private final Double _24HFluctate;
+  private final Double _24HFluctateRate;
   private long date;
 
   public BithumbTicker(
-      @JsonProperty("opening_price") BigDecimal openingPrice,
-      @JsonProperty("closing_price") BigDecimal closingPrice,
-      @JsonProperty("min_price") BigDecimal minPrice,
-      @JsonProperty("max_price") BigDecimal maxPrice,
-      @JsonProperty("average_price") BigDecimal averagePrice,
-      @JsonProperty("units_traded") BigDecimal unitsTraded,
-      @JsonProperty("volume_1day") BigDecimal volume1day,
-      @JsonProperty("volume_7day") BigDecimal volume7day,
-      @JsonProperty("buy_price") BigDecimal buyPrice,
-      @JsonProperty("sell_price") BigDecimal sellPrice,
-      @JsonProperty("24H_fluctate") BigDecimal hFluctate,
-      @JsonProperty("24H_fluctate_rate") BigDecimal hFluctateRate,
+      @JsonProperty("opening_price") Double openingPrice,
+      @JsonProperty("closing_price") Double closingPrice,
+      @JsonProperty("min_price") Double minPrice,
+      @JsonProperty("max_price") Double maxPrice,
+      @JsonProperty("average_price") Double averagePrice,
+      @JsonProperty("units_traded") Double unitsTraded,
+      @JsonProperty("volume_1day") Double volume1day,
+      @JsonProperty("volume_7day") Double volume7day,
+      @JsonProperty("buy_price") Double buyPrice,
+      @JsonProperty("sell_price") Double sellPrice,
+      @JsonProperty("24H_fluctate") Double hFluctate,
+      @JsonProperty("24H_fluctate_rate") Double hFluctateRate,
       @JsonProperty("date") long date) {
     this.openingPrice = openingPrice;
     this.closingPrice = closingPrice;
@@ -48,51 +47,51 @@ public class BithumbTicker {
     this.date = date;
   }
 
-  public BigDecimal getOpeningPrice() {
+  public Double getOpeningPrice() {
     return openingPrice;
   }
 
-  public BigDecimal getClosingPrice() {
+  public Double getClosingPrice() {
     return closingPrice;
   }
 
-  public BigDecimal getMinPrice() {
+  public Double getMinPrice() {
     return minPrice;
   }
 
-  public BigDecimal getMaxPrice() {
+  public Double getMaxPrice() {
     return maxPrice;
   }
 
-  public BigDecimal getAveragePrice() {
+  public Double getAveragePrice() {
     return averagePrice;
   }
 
-  public BigDecimal getUnitsTraded() {
+  public Double getUnitsTraded() {
     return unitsTraded;
   }
 
-  public BigDecimal getVolume1day() {
+  public Double getVolume1day() {
     return volume1day;
   }
 
-  public BigDecimal getVolume7day() {
+  public Double getVolume7day() {
     return volume7day;
   }
 
-  public BigDecimal getBuyPrice() {
+  public Double getBuyPrice() {
     return buyPrice;
   }
 
-  public BigDecimal getSellPrice() {
+  public Double getSellPrice() {
     return sellPrice;
   }
 
-  public BigDecimal get_24HFluctate() {
+  public Double get_24HFluctate() {
     return _24HFluctate;
   }
 
-  public BigDecimal get_24HFluctateRate() {
+  public Double get_24HFluctateRate() {
     return _24HFluctateRate;
   }
 

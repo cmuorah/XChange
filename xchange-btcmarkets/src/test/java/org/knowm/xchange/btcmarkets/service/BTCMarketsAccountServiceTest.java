@@ -8,7 +8,6 @@ import static org.mockito.BDDMockito.given;
 import static org.powermock.api.mockito.PowerMockito.mock;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -92,7 +91,7 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
     String status = "the-status"; // maybe the id would be more useful?
     BTCMarketsWithdrawCryptoResponse response =
         new BTCMarketsWithdrawCryptoResponse(
-            true, null, null, status, "id", "desc", "ccy", BigDecimal.ONE, BigDecimal.ONE, 0L);
+            true, null, null, status, "id", "desc", "ccy", 1d, 1d, 0L);
 
     PowerMockito.when(
             btcm.withdrawCrypto(
@@ -103,7 +102,7 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
         .thenReturn(response);
 
     // when
-    String result = accountService.withdrawFunds(Currency.BTC, BigDecimal.TEN, "any address");
+    String result = accountService.withdrawFunds(Currency.BTC, 10d, "any address");
 
     assertThat(result).isNull();
   }
@@ -114,7 +113,7 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
     String status = "the-status"; // maybe the id would be more useful?
     BTCMarketsWithdrawCryptoResponse response =
         new BTCMarketsWithdrawCryptoResponse(
-            true, null, null, status, "id", "desc", "ccy", BigDecimal.ONE, BigDecimal.ONE, 0L);
+            true, null, null, status, "id", "desc", "ccy", 1d, 1d, 0L);
     ArgumentCaptor<BTCMarketsWithdrawCryptoRequest> captor =
         ArgumentCaptor.forClass(BTCMarketsWithdrawCryptoRequest.class);
 
@@ -128,7 +127,7 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
 
     // when
     RippleWithdrawFundsParams params =
-        new RippleWithdrawFundsParams("any address", Currency.BTC, BigDecimal.TEN, "12345");
+        new RippleWithdrawFundsParams("any address", Currency.BTC, 10d, "12345");
     String result = accountService.withdrawFunds(params);
     assertThat(captor.getValue().address).isEqualTo("any address?dt=12345");
     assertThat(result).isNull();
@@ -152,14 +151,14 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
         new BTCMarketsFundtransfer(
             "Complete",
             lastUpdate,
-            BigDecimal.ONE,
+            1d,
             "desc",
             null,
             creationTime,
             12345L,
             new BTCMarketsFundtransfer.CryptoPaymentDetail("tx1", "address"),
             "BTC",
-            BigDecimal.valueOf(123.45),
+            Double.valueOf(123.45),
             "DEPOSIT");
 
     BTCMarketsFundtransferHistoryResponse response =
@@ -185,12 +184,12 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
     assertThat(result.get(0).getStatus()).isEqualTo(FundingRecord.Status.COMPLETE);
     assertThat(result.get(0).getCurrency()).isEqualTo(Currency.BTC);
     assertThat(result.get(0).getInternalId()).isEqualTo("12345");
-    assertThat(result.get(0).getFee()).isEqualTo(BigDecimal.ONE);
+    assertThat(result.get(0).getFee()).isEqualTo(1d);
     assertThat(result.get(0).getDescription()).isEqualTo("desc");
     assertThat(result.get(0).getDate()).isEqualTo(creationTime);
     assertThat(result.get(0).getBlockchainTransactionHash()).isEqualTo("tx1");
     assertThat(result.get(0).getBalance()).isNull();
-    assertThat(result.get(0).getAmount()).isEqualTo(BigDecimal.valueOf(123.45));
+    assertThat(result.get(0).getAmount()).isEqualTo(Double.valueOf(123.45));
     assertThat(result.get(0).getAddress()).isEqualTo("address");
   }
 }

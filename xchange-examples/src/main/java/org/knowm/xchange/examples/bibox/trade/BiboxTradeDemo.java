@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.bibox.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bibox.service.BiboxTradeServiceRaw;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -14,8 +13,8 @@ public class BiboxTradeDemo {
 
   private static final LimitOrder LIMIT_ORDER =
       new LimitOrder.Builder(OrderType.ASK, CurrencyPair.ETC_ETH)
-          .limitPrice(new BigDecimal("100.0"))
-          .originalAmount(new BigDecimal(".1"))
+          .limitPrice(new Double("100.0"))
+          .originalAmount(new Double(".1"))
           .build();
 
   public static void main(String[] args) throws IOException {

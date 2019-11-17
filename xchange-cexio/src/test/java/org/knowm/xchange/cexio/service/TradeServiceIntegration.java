@@ -1,7 +1,6 @@
 package org.knowm.xchange.cexio.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Assume;
@@ -44,10 +43,7 @@ public class TradeServiceIntegration {
 
     order =
         buildOrder(
-            Order.OrderType.BID,
-            CurrencyPair.BCH_USD,
-            BigDecimal.valueOf(300),
-            BigDecimal.valueOf(0.02));
+            Order.OrderType.BID, CurrencyPair.BCH_USD, Double.valueOf(300), Double.valueOf(0.02));
   }
 
   @Test
@@ -112,8 +108,8 @@ public class TradeServiceIntegration {
 
   @Test
   public void changeOrder() throws IOException {
-    BigDecimal modifyPrice = new BigDecimal(302);
-    BigDecimal endPrice = new BigDecimal(304);
+    Double modifyPrice = new Double(302);
+    Double endPrice = new Double(304);
 
     String orderId = tradeService.placeLimitOrder(order);
 
@@ -155,7 +151,7 @@ public class TradeServiceIntegration {
   }
 
   private LimitOrder buildOrder(
-      Order.OrderType orderType, CurrencyPair pair, BigDecimal price, BigDecimal amount) {
+      Order.OrderType orderType, CurrencyPair pair, Double price, Double amount) {
     return new LimitOrder.Builder(orderType, pair).limitPrice(price).originalAmount(amount).build();
   }
 }

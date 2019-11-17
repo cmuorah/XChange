@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -23,10 +22,10 @@ public class BiboxDeals {
   private String pair;
   /** transaction price */
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
   /** transaction amount */
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
   /** transaction time */
   @JsonProperty("time")
   private long time;
@@ -57,22 +56,22 @@ public class BiboxDeals {
   }
 
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
   @JsonProperty("price")
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
   @JsonProperty("amount")
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
   @JsonProperty("amount")
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 

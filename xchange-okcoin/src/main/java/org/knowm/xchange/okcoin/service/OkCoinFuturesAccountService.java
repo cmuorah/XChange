@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
@@ -33,8 +32,7 @@ public class OkCoinFuturesAccountService extends OkCoinAccountServiceRaw impleme
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
 
     throw new NotAvailableFromExchangeException();
   }

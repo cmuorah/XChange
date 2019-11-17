@@ -2,35 +2,34 @@ package org.knowm.xchange.coindirect.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CoindirectOrder {
   public final String symbol;
   public final String uuid;
-  public final BigDecimal amount;
-  public final BigDecimal executedAmount;
-  public final BigDecimal executedPrice;
-  public final BigDecimal price;
+  public final Double amount;
+  public final Double executedAmount;
+  public final Double executedPrice;
+  public final Double price;
   public final Status status;
   public final Side side;
   public final Date dateCreated;
   public final Type type;
-  public final BigDecimal executedFees;
+  public final Double executedFees;
 
   public CoindirectOrder(
       @JsonProperty("symbol") String symbol,
       @JsonProperty("uuid") String uuid,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("executedAmount") BigDecimal executedAmount,
-      @JsonProperty("executedPrice") BigDecimal executedPrice,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("executedAmount") Double executedAmount,
+      @JsonProperty("executedPrice") Double executedPrice,
+      @JsonProperty("price") Double price,
       @JsonProperty("status") Status status,
       @JsonProperty("side") Side side,
       @JsonProperty("dateCreated") Date dateCreated,
       @JsonProperty("type") Type type,
-      @JsonProperty("executedFees") BigDecimal executedFees) {
+      @JsonProperty("executedFees") Double executedFees) {
     this.symbol = symbol;
     this.uuid = uuid;
     this.amount = amount;

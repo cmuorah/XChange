@@ -1,7 +1,6 @@
 package org.knowm.xchange.kraken.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +51,7 @@ public class KrakenAccountServiceRaw extends KrakenBaseService {
    * @return Map of Kraken Assets to account balance
    * @throws IOException
    */
-  public Map<String, BigDecimal> getKrakenBalance() throws IOException {
+  public Map<String, Double> getKrakenBalance() throws IOException {
 
     KrakenBalanceResult balanceResult =
         kraken.balance(
@@ -87,8 +86,8 @@ public class KrakenAccountServiceRaw extends KrakenBaseService {
     return checkResult(depositMethods);
   }
 
-  public WithdrawInfo getWithdrawInfo(
-      String assetPairs, String assets, String key, BigDecimal amount) throws IOException {
+  public WithdrawInfo getWithdrawInfo(String assetPairs, String assets, String key, Double amount)
+      throws IOException {
     WithdrawInfoResult withdrawInfoResult =
         kraken.getWithdrawInfo(
             assetPairs,
@@ -101,7 +100,7 @@ public class KrakenAccountServiceRaw extends KrakenBaseService {
     return checkResult(withdrawInfoResult);
   }
 
-  public Withdraw withdraw(String assetPairs, String assets, String key, BigDecimal amount)
+  public Withdraw withdraw(String assetPairs, String assets, String key, Double amount)
       throws IOException {
     WithdrawResult withdrawResult =
         kraken.withdraw(

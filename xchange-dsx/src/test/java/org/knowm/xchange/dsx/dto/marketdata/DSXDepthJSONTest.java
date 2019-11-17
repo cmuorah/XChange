@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dsx.DSXAdapters;
@@ -32,7 +31,7 @@ public class DSXDepthJSONTest {
                 .getOrderbook(DSXAdapters.currencyPairToMarketName(CurrencyPair.BTC_USD))
                 .getAsks()
                 .get(0)[0])
-        .isEqualTo(new BigDecimal("103.426"));
+        .isEqualTo(new Double("103.426"));
     assertThat(
             dsxOrderbookWrapper
                 .getOrderbook(DSXAdapters.currencyPairToMarketName(CurrencyPair.BTC_RUB))

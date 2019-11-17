@@ -1,9 +1,9 @@
 package org.knowm.xchange.dto;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import org.knowm.xchange.currency.CurrencyPair;
 
@@ -15,7 +15,7 @@ public abstract class Order implements Serializable {
   /** Order type i.e. bid or ask */
   private final OrderType type;
   /** Amount to be ordered / amount that was ordered */
-  private final BigDecimal originalAmount;
+  private final Double originalAmount;
   /** The currency pair */
   private final CurrencyPair currencyPair;
   /** An identifier that uniquely identifies the order */
@@ -27,11 +27,11 @@ public abstract class Order implements Serializable {
   /** Status of order during it lifecycle */
   private OrderStatus status;
   /** Amount to be ordered / amount that has been matched against order on the order book/filled */
-  private BigDecimal cumulativeAmount;
+  private Double cumulativeAmount;
   /** Weighted Average price of the fills in the order */
-  private BigDecimal averagePrice;
+  private Double averagePrice;
   /** The total of the fees incurred for all transactions related to this order */
-  private BigDecimal fee;
+  private Double fee;
   /** The leverage to use for margin related to this order */
   private String leverage = null;
 
@@ -44,11 +44,7 @@ public abstract class Order implements Serializable {
    *     not provided
    */
   public Order(
-      OrderType type,
-      BigDecimal originalAmount,
-      CurrencyPair currencyPair,
-      String id,
-      Date timestamp) {
+      OrderType type, Double originalAmount, CurrencyPair currencyPair, String id, Date timestamp) {
     this(type, originalAmount, currencyPair, id, timestamp, null, null, null, null);
   }
 
@@ -66,13 +62,13 @@ public abstract class Order implements Serializable {
    */
   public Order(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal averagePrice,
-      BigDecimal cumulativeAmount,
-      BigDecimal fee,
+      Double averagePrice,
+      Double cumulativeAmount,
+      Double fee,
       OrderStatus status) {
 
     this.type = type;
@@ -86,8 +82,8 @@ public abstract class Order implements Serializable {
     this.status = status;
   }
 
-  private static String print(BigDecimal value) {
-    return value == null ? null : value.toPlainString();
+  private static String print(Double value) {
+    return value == null ? null : value.toString();
   }
 
   /**
@@ -96,11 +92,11 @@ public abstract class Order implements Serializable {
    * @return null if this information is not available on the order level on the given exchange in
    *     which case you will have to navigate trades which filled this order to calculate it
    */
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public void setFee(BigDecimal fee) {
+  public void setFee(Double fee) {
     this.fee = fee;
   }
 
@@ -120,33 +116,33 @@ public abstract class Order implements Serializable {
   }
 
   /** The amount to trade */
-  public BigDecimal getOriginalAmount() {
+  public Double getOriginalAmount() {
 
     return originalAmount;
   }
 
   /** The amount that has been filled */
-  public BigDecimal getCumulativeAmount() {
+  public Double getCumulativeAmount() {
 
     return cumulativeAmount;
   }
 
-  public void setCumulativeAmount(BigDecimal cumulativeAmount) {
+  public void setCumulativeAmount(Double cumulativeAmount) {
 
     this.cumulativeAmount = cumulativeAmount;
   }
 
-  public BigDecimal getCumulativeCounterAmount() {
-    if (cumulativeAmount != null && averagePrice != null && averagePrice.compareTo(BigDecimal.ZERO) > 0) {
-      return cumulativeAmount.multiply(averagePrice);
+  public Double getCumulativeCounterAmount() {
+    if (cumulativeAmount != null && averagePrice != null && averagePrice > 0) {
+      return cumulativeAmount * averagePrice;
     }
     return null;
   }
 
   /** @return The remaining order amount */
-  public BigDecimal getRemainingAmount() {
+  public Double getRemainingAmount() {
     if (cumulativeAmount != null && originalAmount != null) {
-      return originalAmount.subtract(cumulativeAmount);
+      return originalAmount - cumulativeAmount;
     }
     return originalAmount;
   }
@@ -157,12 +153,12 @@ public abstract class Order implements Serializable {
    * @return null if this information is not available on the order level on the given exchange in
    *     which case you will have to navigate trades which filled this order to calculate it
    */
-  public BigDecimal getAveragePrice() {
+  public Double getAveragePrice() {
 
     return averagePrice;
   }
 
-  public void setAveragePrice(BigDecimal averagePrice) {
+  public void setAveragePrice(Double averagePrice) {
 
     this.averagePrice = averagePrice;
   }
@@ -275,19 +271,13 @@ public abstract class Order implements Serializable {
         : this.originalAmount.compareTo(other.originalAmount) != 0) {
       return false;
     }
-    if ((this.currencyPair == null)
-        ? (other.currencyPair != null)
-        : !this.currencyPair.equals(other.currencyPair)) {
+    if (!Objects.equals(this.currencyPair, other.currencyPair)) {
       return false;
     }
-    if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
+    if (!Objects.equals(this.id, other.id)) {
       return false;
     }
-    if (this.timestamp != other.timestamp
-        && (this.timestamp == null || !this.timestamp.equals(other.timestamp))) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.timestamp, other.timestamp);
   }
 
   public enum OrderType {
@@ -390,15 +380,15 @@ public abstract class Order implements Serializable {
 
     protected final Set<IOrderFlags> flags = new HashSet<>();
     protected OrderType orderType;
-    protected BigDecimal originalAmount;
-    protected BigDecimal cumulativeAmount;
-    protected BigDecimal remainingAmount;
+    protected Double originalAmount;
+    protected Double cumulativeAmount;
+    protected Double remainingAmount;
     protected CurrencyPair currencyPair;
     protected String id;
     protected Date timestamp;
-    protected BigDecimal averagePrice;
+    protected Double averagePrice;
     protected OrderStatus status;
-    protected BigDecimal fee;
+    protected Double fee;
 
     protected Builder(OrderType orderType, CurrencyPair currencyPair) {
 
@@ -418,31 +408,31 @@ public abstract class Order implements Serializable {
       return this;
     }
 
-    public Builder originalAmount(BigDecimal originalAmount) {
+    public Builder originalAmount(Double originalAmount) {
 
       this.originalAmount = originalAmount;
       return this;
     }
 
-    public Builder cumulativeAmount(BigDecimal cumulativeAmount) {
+    public Builder cumulativeAmount(Double cumulativeAmount) {
 
       this.cumulativeAmount = cumulativeAmount;
       return this;
     }
 
-    public Builder fee(BigDecimal fee) {
+    public Builder fee(Double fee) {
 
       this.fee = fee;
       return this;
     }
 
-    public Builder remainingAmount(BigDecimal remainingAmount) {
+    public Builder remainingAmount(Double remainingAmount) {
 
       this.remainingAmount = remainingAmount;
       return this;
     }
 
-    public Builder averagePrice(BigDecimal averagePrice) {
+    public Builder averagePrice(Double averagePrice) {
 
       this.averagePrice = averagePrice;
       return this;

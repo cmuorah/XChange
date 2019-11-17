@@ -1,7 +1,6 @@
 package org.knowm.xchange.bleutrade.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class WithdrawRecord extends DepositRecord {
   public final String transactionId;
@@ -9,7 +8,7 @@ public class WithdrawRecord extends DepositRecord {
   public WithdrawRecord(
       @JsonProperty("Id") String id,
       @JsonProperty("TimeStamp") String timestamp,
-      @JsonProperty("Amount") BigDecimal amount,
+      @JsonProperty("Amount") Double amount,
       @JsonProperty("Label") String label,
       @JsonProperty("Coin") String coin,
       @JsonProperty("TransactionId") String transactionId) {

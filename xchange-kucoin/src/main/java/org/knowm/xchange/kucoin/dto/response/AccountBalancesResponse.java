@@ -2,7 +2,6 @@
 package org.knowm.xchange.kucoin.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.math.BigDecimal;
 import lombok.Data;
 
 /** Created by tao.mao on 2018/11/15. */
@@ -16,9 +15,9 @@ public class AccountBalancesResponse {
 
   private String type;
 
-  private BigDecimal balance;
+  private Double balance;
 
-  private BigDecimal available;
+  private Double available;
 
-  private BigDecimal holds;
+  private Double holds;
 }

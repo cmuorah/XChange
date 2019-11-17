@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /** @author kaiserfr */
@@ -30,20 +29,20 @@ public class BitcoindeAccountTest {
 
     // Make sure trade values are correct
 
-    BigDecimal btcBalance =
+    Double btcBalance =
         bitcoindeTradesWrapper.getData().getBalances().getBtc().getAvailableAmount();
-    BigDecimal ethBalance =
+    Double ethBalance =
         bitcoindeTradesWrapper.getData().getBalances().getEth().getAvailableAmount();
 
-    BigDecimal reservedAmount =
+    Double reservedAmount =
         bitcoindeTradesWrapper.getData().getFidorReservation().getAvailableAmount();
 
     System.out.println(btcBalance);
     System.out.println(ethBalance);
     System.out.println(reservedAmount);
 
-    assertEquals(btcBalance, new BigDecimal("0.009"));
-    assertEquals(ethBalance, new BigDecimal("0.06463044"));
-    assertEquals(reservedAmount, new BigDecimal("2000"));
+    assertEquals(btcBalance, new Double("0.009"));
+    assertEquals(ethBalance, new Double("0.06463044"));
+    assertEquals(reservedAmount, new Double("2000"));
   }
 }

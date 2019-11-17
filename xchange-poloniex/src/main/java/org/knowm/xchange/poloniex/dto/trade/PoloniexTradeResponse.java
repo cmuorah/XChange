@@ -2,7 +2,6 @@ package org.knowm.xchange.poloniex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.poloniex.dto.marketdata.PoloniexPublicTrade;
 import si.mazi.rescu.ExceptionalReturnContentException;
@@ -13,13 +12,13 @@ public class PoloniexTradeResponse {
   private final List<PoloniexPublicTrade> resultingTrades;
 
   /** Returned on FOK and IOC orders to indicate how much has been executed. */
-  private final BigDecimal amountUnfilled;
+  private final Double amountUnfilled;
 
   @JsonCreator
   public PoloniexTradeResponse(
       @JsonProperty("orderNumber") Long orderNumber,
       @JsonProperty("resultingTrades") List<PoloniexPublicTrade> resultingTrades,
-      @JsonProperty("amountUnfilled") BigDecimal amountUnfilled) {
+      @JsonProperty("amountUnfilled") Double amountUnfilled) {
 
     if (orderNumber == null) {
       throw new ExceptionalReturnContentException("No trade data in response");
@@ -37,7 +36,7 @@ public class PoloniexTradeResponse {
     return resultingTrades;
   }
 
-  public BigDecimal getAmountUnfilled() {
+  public Double getAmountUnfilled() {
     return amountUnfilled;
   }
 }

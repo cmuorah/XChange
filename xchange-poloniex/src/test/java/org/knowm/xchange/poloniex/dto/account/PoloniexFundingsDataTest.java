@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.assertj.core.data.Offset;
 import org.junit.Test;
@@ -39,8 +38,7 @@ public class PoloniexFundingsDataTest {
 
     final PoloniexAdjustment adjustment = response.getAdjustments().get(0);
     assertThat(adjustment.getCurrency()).isEqualTo(Currency.USDT.getCurrencyCode());
-    assertThat(adjustment.getAmount())
-        .isCloseTo(new BigDecimal("0.01752476"), Offset.offset(BigDecimal.ZERO));
+    assertThat(adjustment.getAmount()).isCloseTo(new Double("0.01752476"), Offset.offset(0d));
     assertThat(adjustment.getTimestamp()).isEqualTo(new Date(1564782686000L));
     assertThat(adjustment.getStatus()).isEqualTo("COMPLETE");
     assertThat(adjustment.getCategory()).isEqualTo("adjustment");
@@ -58,8 +56,7 @@ public class PoloniexFundingsDataTest {
     final PoloniexDeposit deposit = response.getDeposits().get(0);
     assertThat(deposit.getCurrency()).isEqualTo(Currency.ETH.getCurrencyCode());
     assertThat(deposit.getAddress()).isEqualTo("0xf015a632ac1d13aeca3513c8c76c96334c5861a3");
-    assertThat(deposit.getAmount())
-        .isCloseTo(new BigDecimal("8.995"), Offset.offset(BigDecimal.ZERO));
+    assertThat(deposit.getAmount()).isCloseTo(new Double("8.995"), Offset.offset(0d));
     assertThat(deposit.getConfirmations()).isEqualTo(38);
     assertThat(deposit.getTxid())
         .isEqualTo("0xa7bc2c38e97c1ed9cee7436da5912ba8c7d721dce9884ca8f6ab3e35da31dd44");
@@ -74,10 +71,8 @@ public class PoloniexFundingsDataTest {
     assertThat(withdrawal.getWithdrawalNumber()).isEqualTo(19322067L);
     assertThat(withdrawal.getCurrency()).isEqualTo(Currency.ETH.getCurrencyCode());
     assertThat(withdrawal.getAddress()).isEqualTo("0x4120F5b5A6adA3B543da0535e7a9844689f5016C");
-    assertThat(withdrawal.getAmount())
-        .isCloseTo(new BigDecimal("2.0"), Offset.offset(BigDecimal.ZERO));
-    assertThat(withdrawal.getFee())
-        .isCloseTo(new BigDecimal("0.01"), Offset.offset(BigDecimal.ZERO));
+    assertThat(withdrawal.getAmount()).isCloseTo(new Double("2.0"), Offset.offset(0d));
+    assertThat(withdrawal.getFee()).isCloseTo(new Double("0.01"), Offset.offset(0d));
     assertThat(withdrawal.getTimestamp()).isEqualTo(new Date(1556435569000L));
     assertThat(withdrawal.getStatus())
         .isEqualTo("COMPLETE: 0xf85d3870a4c9a077cd333f59ad49db7f2b21e4a67326961c09d629f6a7bb2e9d");

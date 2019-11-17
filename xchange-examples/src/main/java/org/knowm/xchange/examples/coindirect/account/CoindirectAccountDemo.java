@@ -27,7 +27,7 @@ public class CoindirectAccountDemo {
     //        String depositAddress = accountService.requestDepositAddress(Currency.BTC);
     //        System.out.println("Deposit Address: " + depositAddress);
 
-    // String transactionHash = accountService.withdrawFunds(new BigDecimal(".01"), "XXX");
+    // String transactionHash = accountService.withdrawFunds(new Double(".01"), "XXX");
     // System.out.println("Bitcoin blockchain transaction hash: " + transactionHash);
   }
 

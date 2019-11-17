@@ -3,7 +3,6 @@ package org.knowm.xchange.coinsuper.dto.marketdata;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
@@ -11,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class CoinsuperTicker {
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("timestamp")
   private long timestamp;
@@ -20,7 +19,7 @@ public class CoinsuperTicker {
   private String tradeType;
 
   @JsonProperty("volume")
-  private BigDecimal volume;
+  private Double volume;
 
   /** No args constructor for use in serialization */
   public CoinsuperTicker() {}
@@ -31,7 +30,7 @@ public class CoinsuperTicker {
    * @param price
    * @param volume
    */
-  public CoinsuperTicker(BigDecimal price, long timestamp, String tradeType, BigDecimal volume) {
+  public CoinsuperTicker(Double price, long timestamp, String tradeType, Double volume) {
     super();
     this.price = price;
     this.timestamp = timestamp;
@@ -40,12 +39,12 @@ public class CoinsuperTicker {
   }
 
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
   @JsonProperty("price")
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
@@ -75,12 +74,12 @@ public class CoinsuperTicker {
   }
 
   @JsonProperty("volume")
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
   @JsonProperty("volume")
-  public void setVolume(BigDecimal volume) {
+  public void setVolume(Double volume) {
     this.volume = volume;
   }
 

@@ -1,35 +1,34 @@
 package org.knowm.xchange.bitmex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.bitmex.dto.trade.BitmexSide;
 import org.knowm.xchange.bitmex.dto.trade.BitmexTickDirection;
 
 public class BitmexPublicTrade {
 
-  private final BigDecimal price;
-  private final BigDecimal size;
+  private final Double price;
+  private final Double size;
   private final Date timestamp;
   private final BitmexSide side;
   private final BitmexTickDirection tickDirection;
   private final String symbol;
   private final String trdMatchID;
-  private final BigDecimal grossValue;
-  private final BigDecimal homeNotional;
-  private final BigDecimal foreignNotional;
+  private final Double grossValue;
+  private final Double homeNotional;
+  private final Double foreignNotional;
 
   public BitmexPublicTrade(
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("price") Double price,
+      @JsonProperty("size") Double size,
       @JsonProperty("timestamp") Date timestamp,
       @JsonProperty("side") BitmexSide side,
       @JsonProperty("tickDirection") BitmexTickDirection tickDirection,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("trdMatchID") String trdMatchID,
-      @JsonProperty("grossValue") BigDecimal grossValue,
-      @JsonProperty("homeNotional") BigDecimal homeNotional,
-      @JsonProperty("foreignNotional") BigDecimal foreignNotional) {
+      @JsonProperty("grossValue") Double grossValue,
+      @JsonProperty("homeNotional") Double homeNotional,
+      @JsonProperty("foreignNotional") Double foreignNotional) {
 
     this.price = price;
     this.size = size;
@@ -43,12 +42,12 @@ public class BitmexPublicTrade {
     this.grossValue = grossValue;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
 
     return size;
   }

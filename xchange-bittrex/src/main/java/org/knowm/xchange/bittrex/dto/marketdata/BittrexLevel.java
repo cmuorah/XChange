@@ -1,12 +1,11 @@
 package org.knowm.xchange.bittrex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BittrexLevel {
 
-  private final BigDecimal rate;
-  private final BigDecimal quantity;
+  private final Double rate;
+  private final Double quantity;
 
   /**
    * Constructor
@@ -15,18 +14,18 @@ public class BittrexLevel {
    * @param quantity
    */
   public BittrexLevel(
-      @JsonProperty("Rate") BigDecimal rate, @JsonProperty("Quantity") BigDecimal quantity) {
+      @JsonProperty("Rate") Double rate, @JsonProperty("Quantity") Double quantity) {
 
     this.rate = rate;
     this.quantity = quantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return rate;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return quantity;
   }

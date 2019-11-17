@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -20,10 +19,10 @@ public class VaultoroBalance {
   private String currencyCode;
 
   @JsonProperty("cash")
-  private BigDecimal cash;
+  private Double cash;
 
   @JsonProperty("reserved")
-  private BigDecimal reserved;
+  private Double reserved;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -43,28 +42,28 @@ public class VaultoroBalance {
 
   /** @return The cash */
   @JsonProperty("cash")
-  public BigDecimal getCash() {
+  public Double getCash() {
 
     return cash;
   }
 
   /** @param cash The cash */
   @JsonProperty("cash")
-  public void setCash(BigDecimal cash) {
+  public void setCash(Double cash) {
 
     this.cash = cash;
   }
 
   /** @return The reserved */
   @JsonProperty("reserved")
-  public BigDecimal getReserved() {
+  public Double getReserved() {
 
     return reserved;
   }
 
   /** @param reserved The reserved */
   @JsonProperty("reserved")
-  public void setReserved(BigDecimal reserved) {
+  public void setReserved(Double reserved) {
 
     this.reserved = reserved;
   }

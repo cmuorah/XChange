@@ -1,7 +1,6 @@
 package org.knowm.xchange.btcturk.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.btcturk.dto.BTCTurkPair;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -13,33 +12,33 @@ import org.knowm.xchange.currency.CurrencyPair;
 public final class BTCTurkTicker {
 
   private BTCTurkPair pair;
-  private final BigDecimal high;
-  private final BigDecimal last;
+  private final Double high;
+  private final Double last;
   private final long timestamp;
-  private final BigDecimal bid;
-  private final BigDecimal volume;
-  private final BigDecimal low;
-  private final BigDecimal ask;
-  private final BigDecimal open;
-  private final BigDecimal average;
-  private final BigDecimal daily;
-  private final BigDecimal dailyPercent;
+  private final Double bid;
+  private final Double volume;
+  private final Double low;
+  private final Double ask;
+  private final Double open;
+  private final Double average;
+  private final Double daily;
+  private final Double dailyPercent;
   private final Currency denominatorsymbol;
   private final Currency numeratorsymbol;
 
   public BTCTurkTicker(
       @JsonProperty("pair") BTCTurkPair pair,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("last") BigDecimal last,
+      @JsonProperty("high") Double high,
+      @JsonProperty("last") Double last,
       @JsonProperty("timestamp") long timestamp,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("open") BigDecimal open,
-      @JsonProperty("average") BigDecimal average,
-      @JsonProperty("daily") BigDecimal daily,
-      @JsonProperty("dailyPercent") BigDecimal dailyPercent,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("low") Double low,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("open") Double open,
+      @JsonProperty("average") Double average,
+      @JsonProperty("daily") Double daily,
+      @JsonProperty("dailyPercent") Double dailyPercent,
       @JsonProperty("denominatorsymbol") Currency denominatorsymbol,
       @JsonProperty("numeratorsymbol") Currency numeratorsymbol) {
     this.pair = pair;
@@ -62,11 +61,11 @@ public final class BTCTurkTicker {
     return pair.pair;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
@@ -74,35 +73,35 @@ public final class BTCTurkTicker {
     return timestamp;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getAverage() {
+  public Double getAverage() {
     return average;
   }
 
-  public BigDecimal getDaily() {
+  public Double getDaily() {
     return daily;
   }
 
-  public BigDecimal getDailyPercent() {
+  public Double getDailyPercent() {
     return dailyPercent;
   }
 

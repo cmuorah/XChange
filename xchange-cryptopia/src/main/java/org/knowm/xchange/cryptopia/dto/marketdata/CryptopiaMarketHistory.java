@@ -1,25 +1,24 @@
 package org.knowm.xchange.cryptopia.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public final class CryptopiaMarketHistory {
 
   private final long tradePairId;
   private final String label;
   private final String type;
-  private final BigDecimal price;
-  private final BigDecimal amount;
-  private final BigDecimal total;
+  private final Double price;
+  private final Double amount;
+  private final Double total;
   private final long timestamp;
 
   public CryptopiaMarketHistory(
       @JsonProperty("TradePairId") long tradePairId,
       @JsonProperty("Label") String label,
       @JsonProperty("Type") String type,
-      @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("Amount") BigDecimal amount,
-      @JsonProperty("Total") BigDecimal total,
+      @JsonProperty("Price") Double price,
+      @JsonProperty("Amount") Double amount,
+      @JsonProperty("Total") Double total,
       @JsonProperty("Timestamp") long timestamp) {
     this.tradePairId = tradePairId;
     this.label = label;
@@ -42,15 +41,15 @@ public final class CryptopiaMarketHistory {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 

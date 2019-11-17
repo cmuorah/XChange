@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.cryptopia.dto.CryptopiaBaseResponse;
@@ -51,8 +50,7 @@ public class CryptopiaAdaptersTest {
     // Verify all fields filled
     assertThat(orderBook.getBids().get(0).getLimitPrice().toString()).isEqualTo("0.07849890");
     assertThat(orderBook.getBids().get(0).getType()).isEqualTo(Order.OrderType.BID);
-    assertThat(orderBook.getBids().get(0).getOriginalAmount())
-        .isEqualTo(new BigDecimal("1.27390320"));
+    assertThat(orderBook.getBids().get(0).getOriginalAmount()).isEqualTo(new Double("1.27390320"));
     assertThat(orderBook.getBids().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.ETH_BTC);
   }
 
@@ -75,7 +73,7 @@ public class CryptopiaAdaptersTest {
     assertThat(ticker.getLast().toString()).isEqualTo("0.07963205");
     assertThat(ticker.getBid().toString()).isEqualTo("0.07963206");
     assertThat(ticker.getAsk().toString()).isEqualTo("0.08003570");
-    assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("361.93509400"));
+    assertThat(ticker.getVolume()).isEqualTo(new Double("361.93509400"));
   }
 
   @Test

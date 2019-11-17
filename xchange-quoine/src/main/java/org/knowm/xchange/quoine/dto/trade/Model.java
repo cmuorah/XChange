@@ -1,21 +1,20 @@
 package org.knowm.xchange.quoine.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author timmolter */
 public final class Model {
 
   private final String id;
   private final String orderType;
-  private final BigDecimal quantity;
+  private final Double quantity;
   private final String currencyPairCode;
   private final String side;
   private final String productCode;
-  private final BigDecimal filledQuantity;
-  private final BigDecimal price;
-  private final BigDecimal createdAt;
-  private final BigDecimal updatedAt;
+  private final Double filledQuantity;
+  private final Double price;
+  private final Double createdAt;
+  private final Double updatedAt;
   private final String status;
   private final String bitcoinAccountId;
   private final Integer leverageLevel;
@@ -41,14 +40,14 @@ public final class Model {
   public Model(
       @JsonProperty("id") String id,
       @JsonProperty("order_type") String orderType,
-      @JsonProperty("quantity") BigDecimal quantity,
+      @JsonProperty("quantity") Double quantity,
       @JsonProperty("currency_pair_code") String currencyPairCode,
       @JsonProperty("side") String side,
       @JsonProperty("product_code") String productCode,
-      @JsonProperty("filled_quantity") BigDecimal filledQuantity,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("created_at") BigDecimal createdAt,
-      @JsonProperty("updated_at") BigDecimal updatedAt,
+      @JsonProperty("filled_quantity") Double filledQuantity,
+      @JsonProperty("price") Double price,
+      @JsonProperty("created_at") Double createdAt,
+      @JsonProperty("updated_at") Double updatedAt,
       @JsonProperty("status") String status,
       @JsonProperty("bitcoin_account_id") String bitcoinAccountId,
       @JsonProperty("leverage_level") Integer leverageLevel,
@@ -77,7 +76,7 @@ public final class Model {
     return orderType;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
@@ -93,19 +92,19 @@ public final class Model {
     return productCode;
   }
 
-  public BigDecimal getFilledQuantity() {
+  public Double getFilledQuantity() {
     return filledQuantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getCreatedAt() {
+  public Double getCreatedAt() {
     return createdAt;
   }
 
-  public BigDecimal getUpdatedAt() {
+  public Double getUpdatedAt() {
     return updatedAt;
   }
 

@@ -3,7 +3,6 @@ package org.knowm.xchange.bitcointoyou;
 import static org.knowm.xchange.utils.DateUtils.fromUnixTime;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -52,12 +51,12 @@ public final class BitcointoyouAdapters {
   static Ticker adaptBitcointoyouTicker(
       BitcointoyouMarketData bitcointoyouMarketData, CurrencyPair currencyPair) {
 
-    BigDecimal last = bitcointoyouMarketData.getLast();
-    BigDecimal bid = bitcointoyouMarketData.getBuy();
-    BigDecimal ask = bitcointoyouMarketData.getSell();
-    BigDecimal high = bitcointoyouMarketData.getHigh();
-    BigDecimal low = bitcointoyouMarketData.getLow();
-    BigDecimal volume = bitcointoyouMarketData.getVolume();
+    Double last = bitcointoyouMarketData.getLast();
+    Double bid = bitcointoyouMarketData.getBuy();
+    Double ask = bitcointoyouMarketData.getSell();
+    Double high = bitcointoyouMarketData.getHigh();
+    Double low = bitcointoyouMarketData.getLow();
+    Double volume = bitcointoyouMarketData.getVolume();
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
@@ -83,11 +82,11 @@ public final class BitcointoyouAdapters {
   }
 
   static List<LimitOrder> adaptBitcointoyouPublicOrders(
-      List<List<BigDecimal>> list, OrderType orderType, CurrencyPair currencyPair) {
+      List<List<Double>> list, OrderType orderType, CurrencyPair currencyPair) {
 
     List<BitcointoyouLevel> levels = new ArrayList<>();
 
-    for (List<BigDecimal> rawLevel : list) {
+    for (List<Double> rawLevel : list) {
       levels.add(adaptRawBitcointoyouLevel(rawLevel));
     }
 
@@ -104,7 +103,7 @@ public final class BitcointoyouAdapters {
     return orders;
   }
 
-  static BitcointoyouLevel adaptRawBitcointoyouLevel(List<BigDecimal> rawLevel) {
+  static BitcointoyouLevel adaptRawBitcointoyouLevel(List<Double> rawLevel) {
 
     return new BitcointoyouLevel(rawLevel.get(0), rawLevel.get(1));
   }
@@ -144,8 +143,8 @@ public final class BitcointoyouAdapters {
     if (bitcointoyouBalances != null
         && bitcointoyouBalances.getoReturn() != null
         && bitcointoyouBalances.getoReturn().size() > 0) {
-      Map<String, BigDecimal> balancesMap = bitcointoyouBalances.getoReturn().get(0);
-      for (Map.Entry<String, BigDecimal> balance : balancesMap.entrySet()) {
+      Map<String, Double> balancesMap = bitcointoyouBalances.getoReturn().get(0);
+      for (Map.Entry<String, Double> balance : balancesMap.entrySet()) {
 
         Currency currency = Currency.getInstance(balance.getKey());
         balances.add(new Balance(currency, balance.getValue()));

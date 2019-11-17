@@ -1,14 +1,13 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexFundingTradeResponse {
 
-  private final BigDecimal rate;
-  private final BigDecimal period;
-  private final BigDecimal amount;
-  private final BigDecimal timestamp;
+  private final Double rate;
+  private final Double period;
+  private final Double amount;
+  private final Double timestamp;
   private final String type;
   private final String tradeId;
   private final String offerId;
@@ -25,10 +24,10 @@ public class BitfinexFundingTradeResponse {
    * @param offerId
    */
   public BitfinexFundingTradeResponse(
-      @JsonProperty("rate") final BigDecimal rate,
-      @JsonProperty("period") final BigDecimal period,
-      @JsonProperty("amount") final BigDecimal amount,
-      @JsonProperty("timestamp") final BigDecimal timestamp,
+      @JsonProperty("rate") final Double rate,
+      @JsonProperty("period") final Double period,
+      @JsonProperty("amount") final Double amount,
+      @JsonProperty("timestamp") final Double timestamp,
       @JsonProperty("type") final String type,
       @JsonProperty("tid") final String tradeId,
       @JsonProperty("offer_id") final String offerId) {
@@ -42,19 +41,19 @@ public class BitfinexFundingTradeResponse {
     this.offerId = offerId;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 
-  public BigDecimal getPeriod() {
+  public Double getPeriod() {
     return period;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getTimestamp() {
+  public Double getTimestamp() {
     return timestamp;
   }
 

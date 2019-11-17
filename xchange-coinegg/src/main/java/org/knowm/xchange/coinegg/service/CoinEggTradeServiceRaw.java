@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinegg.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.coinegg.CoinEggAuthenticated;
@@ -35,8 +34,8 @@ public class CoinEggTradeServiceRaw extends CoinEggBaseService {
   }
 
   // TODO: Sort Out Method Grammar
-  public CoinEggTradeAdd getCoinEggTradeAdd(
-      BigDecimal amount, BigDecimal price, String type, String coin) throws IOException {
+  public CoinEggTradeAdd getCoinEggTradeAdd(Double amount, Double price, String type, String coin)
+      throws IOException {
     return coinEggAuthenticated.getTradeAdd(
         apiKey, signer, nonceFactory.createValue(), amount, price, type, coin);
   }

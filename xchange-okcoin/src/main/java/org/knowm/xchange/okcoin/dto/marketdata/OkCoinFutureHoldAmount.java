@@ -1,20 +1,18 @@
 package org.knowm.xchange.okcoin.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class OkCoinFutureHoldAmount {
-  private final BigDecimal amount;
+  private final Double amount;
   private final String contractName;
 
   public OkCoinFutureHoldAmount(
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("contract_name") String contractName) {
+      @JsonProperty("amount") Double amount, @JsonProperty("contract_name") String contractName) {
     this.amount = amount;
     this.contractName = contractName;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

@@ -2,7 +2,6 @@ package org.knowm.xchange.globitex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class GlobitexUserTrade implements Serializable {
 
@@ -22,16 +21,16 @@ public class GlobitexUserTrade implements Serializable {
   private final String clientOrderId;
 
   @JsonProperty("execQuantity")
-  private final BigDecimal quantity;
+  private final Double quantity;
 
   @JsonProperty("execPrice")
-  private final BigDecimal price;
+  private final Double price;
 
   @JsonProperty("timestamp")
   private final long timestamp;
 
   @JsonProperty("fee")
-  private final BigDecimal fee;
+  private final Double fee;
 
   @JsonProperty("isLiqProvided")
   private final boolean isLiqProvided;
@@ -48,10 +47,10 @@ public class GlobitexUserTrade implements Serializable {
       @JsonProperty("side") String side,
       @JsonProperty("originalOrderId") String originalOrderId,
       @JsonProperty("clientOrderId") String clientOrderId,
-      @JsonProperty("execQuantity") BigDecimal quantity,
-      @JsonProperty("execPrice") BigDecimal price,
+      @JsonProperty("execQuantity") Double quantity,
+      @JsonProperty("execPrice") Double price,
       @JsonProperty("timestamp") long timestamp,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("isLiqProvided") boolean isLiqProvided,
       @JsonProperty("feeCurrency") String feeCurrency,
       @JsonProperty("amount") String account) {
@@ -89,11 +88,11 @@ public class GlobitexUserTrade implements Serializable {
     return clientOrderId;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -101,7 +100,7 @@ public class GlobitexUserTrade implements Serializable {
     return timestamp;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

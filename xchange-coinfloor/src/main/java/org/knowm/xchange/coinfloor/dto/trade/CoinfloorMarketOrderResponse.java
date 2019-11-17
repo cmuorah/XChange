@@ -1,16 +1,15 @@
 package org.knowm.xchange.coinfloor.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinfloorMarketOrderResponse {
-  private final BigDecimal remaining;
+  private final Double remaining;
 
-  public CoinfloorMarketOrderResponse(@JsonProperty("remaining") BigDecimal remaining) {
+  public CoinfloorMarketOrderResponse(@JsonProperty("remaining") Double remaining) {
     this.remaining = remaining;
   }
 
-  public BigDecimal getRemaining() {
+  public Double getRemaining() {
     return remaining;
   }
 

@@ -2,24 +2,23 @@ package org.knowm.xchange.coindirect.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CoindirectTickerData {
   public final long time;
-  public final BigDecimal open;
-  public final BigDecimal high;
-  public final BigDecimal low;
-  public final BigDecimal close;
-  public final BigDecimal volume;
+  public final Double open;
+  public final Double high;
+  public final Double low;
+  public final Double close;
+  public final Double volume;
 
   public CoindirectTickerData(
       @JsonProperty("time") long time,
-      @JsonProperty("open") BigDecimal open,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("close") BigDecimal close,
-      @JsonProperty("volume") BigDecimal volume) {
+      @JsonProperty("open") Double open,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("close") Double close,
+      @JsonProperty("volume") Double volume) {
     this.time = time;
     this.open = open;
     this.high = high;

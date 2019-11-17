@@ -1,13 +1,12 @@
 package org.knowm.xchange.bx.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BxTradeHistory {
 
   private final long transactionId;
   private final String currency;
-  private final BigDecimal amount;
+  private final Double amount;
   private final String date;
   private final String type;
   private final long refId;
@@ -15,7 +14,7 @@ public class BxTradeHistory {
   public BxTradeHistory(
       @JsonProperty("transaction_id") long transactionId,
       @JsonProperty("currency") String currency,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("date") String date,
       @JsonProperty("type") String type,
       @JsonProperty("ref_id") long refId) {
@@ -35,7 +34,7 @@ public class BxTradeHistory {
     return currency;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

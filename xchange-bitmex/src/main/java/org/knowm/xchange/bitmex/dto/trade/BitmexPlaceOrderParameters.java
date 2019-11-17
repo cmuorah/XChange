@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitmex.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nonnull;
@@ -13,36 +12,36 @@ import org.knowm.xchange.bitmex.Bitmex;
 public class BitmexPlaceOrderParameters {
 
   private final String symbol;
-  @Nullable private final BigDecimal orderQuantity;
-  @Nullable private final BigDecimal simpleOrderQuantity;
-  @Nullable private final BigDecimal displayQuantity;
-  @Nullable private final BigDecimal price;
-  @Nullable private final BigDecimal stopPrice;
+  @Nullable private final Double orderQuantity;
+  @Nullable private final Double simpleOrderQuantity;
+  @Nullable private final Double displayQuantity;
+  @Nullable private final Double price;
+  @Nullable private final Double stopPrice;
   @Nullable private final BitmexSide side;
   @Nullable private final BitmexOrderType orderType;
   @Nullable private final String clOrdId;
   @Nullable private final List<BitmexExecutionInstruction> executionInstructions;
   @Nullable private final String clOrdLinkId;
   @Nullable private final BitmexContingencyType contingencyType;
-  @Nullable private final BigDecimal pegOffsetValue;
+  @Nullable private final Double pegOffsetValue;
   @Nullable private final BitmexPegPriceType pegPriceType;
   @Nullable private final BitmexTimeInForce timeInForce;
   @Nullable private final String text;
 
   public BitmexPlaceOrderParameters(
       @Nonnull String symbol,
-      @Nullable BigDecimal orderQuantity,
-      @Nullable BigDecimal simpleOrderQuantity,
-      @Nullable BigDecimal displayQuantity,
-      @Nullable BigDecimal price,
-      @Nullable BigDecimal stopPrice,
+      @Nullable Double orderQuantity,
+      @Nullable Double simpleOrderQuantity,
+      @Nullable Double displayQuantity,
+      @Nullable Double price,
+      @Nullable Double stopPrice,
       @Nullable BitmexSide side,
       @Nullable BitmexOrderType orderType,
       @Nullable String clOrdId,
       @Nullable List<BitmexExecutionInstruction> executionInstructions,
       @Nullable String clOrdLinkId,
       @Nullable BitmexContingencyType contingencyType,
-      @Nullable BigDecimal pegOffsetValue,
+      @Nullable Double pegOffsetValue,
       @Nullable BitmexPegPriceType pegPriceType,
       @Nullable BitmexTimeInForce timeInForce,
       @Nullable String text) {
@@ -70,27 +69,27 @@ public class BitmexPlaceOrderParameters {
   }
 
   @Nullable
-  public BigDecimal getOrderQuantity() {
+  public Double getOrderQuantity() {
     return orderQuantity;
   }
 
   @Nullable
-  public BigDecimal getSimpleOrderQuantity() {
+  public Double getSimpleOrderQuantity() {
     return simpleOrderQuantity;
   }
 
   @Nullable
-  public BigDecimal getDisplayQuantity() {
+  public Double getDisplayQuantity() {
     return displayQuantity;
   }
 
   @Nullable
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
   @Nullable
-  public BigDecimal getStopPrice() {
+  public Double getStopPrice() {
     return stopPrice;
   }
 
@@ -130,7 +129,7 @@ public class BitmexPlaceOrderParameters {
   }
 
   @Nullable
-  public BigDecimal getPegOffsetValue() {
+  public Double getPegOffsetValue() {
     return pegOffsetValue;
   }
 
@@ -153,18 +152,18 @@ public class BitmexPlaceOrderParameters {
   public static class Builder {
 
     private final String symbol;
-    @Nullable private BigDecimal orderQuantity;
-    @Nullable private BigDecimal simpleOrderQuantity;
-    @Nullable private BigDecimal displayQuantity;
-    @Nullable private BigDecimal price;
-    @Nullable private BigDecimal stopPrice;
+    @Nullable private Double orderQuantity;
+    @Nullable private Double simpleOrderQuantity;
+    @Nullable private Double displayQuantity;
+    @Nullable private Double price;
+    @Nullable private Double stopPrice;
     @Nullable private BitmexSide side;
     @Nullable private BitmexOrderType orderType;
     @Nullable private String clOrdId;
     @Nullable private List<BitmexExecutionInstruction> executionInstructions;
     @Nullable private String clOrdLinkId;
     @Nullable private BitmexContingencyType contingencyType;
-    @Nullable private BigDecimal pegOffsetValue;
+    @Nullable private Double pegOffsetValue;
     @Nullable private BitmexPegPriceType pegPriceType;
     @Nullable private BitmexTimeInForce timeInForce;
     @Nullable private String text;
@@ -195,31 +194,31 @@ public class BitmexPlaceOrderParameters {
     }
 
     @Nonnull
-    public Builder setOrderQuantity(@Nullable BigDecimal orderQuantity) {
+    public Builder setOrderQuantity(@Nullable Double orderQuantity) {
       this.orderQuantity = orderQuantity;
       return this;
     }
 
     @Nonnull
-    public Builder setSimpleOrderQuantity(@Nullable BigDecimal simpleOrderQuantity) {
+    public Builder setSimpleOrderQuantity(@Nullable Double simpleOrderQuantity) {
       this.simpleOrderQuantity = simpleOrderQuantity;
       return this;
     }
 
     @Nonnull
-    public Builder setDisplayQuantity(@Nullable BigDecimal displayQuantity) {
+    public Builder setDisplayQuantity(@Nullable Double displayQuantity) {
       this.displayQuantity = displayQuantity;
       return this;
     }
 
     @Nonnull
-    public Builder setPrice(@Nullable BigDecimal price) {
+    public Builder setPrice(@Nullable Double price) {
       this.price = price;
       return this;
     }
 
     @Nonnull
-    public Builder setStopPrice(@Nullable BigDecimal stopPrice) {
+    public Builder setStopPrice(@Nullable Double stopPrice) {
       this.stopPrice = stopPrice;
       return this;
     }
@@ -271,7 +270,7 @@ public class BitmexPlaceOrderParameters {
     }
 
     @Nonnull
-    public Builder setPegOffsetValue(@Nullable BigDecimal pegOffsetValue) {
+    public Builder setPegOffsetValue(@Nullable Double pegOffsetValue) {
       this.pegOffsetValue = pegOffsetValue;
       return this;
     }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.v1.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.dto.account.FundingRecord;
 
@@ -20,7 +19,7 @@ public class BitfinexDepositWithdrawalHistoryResponse {
   private FundingRecord.Type type;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("description")
   private String description;
@@ -32,30 +31,30 @@ public class BitfinexDepositWithdrawalHistoryResponse {
   private String status;
 
   @JsonProperty("timestamp")
-  private BigDecimal timestamp;
+  private Double timestamp;
 
   @JsonProperty("txid")
   private String txid;
 
   @JsonProperty("timestamp_created")
-  private BigDecimal timestampCreated;
+  private Double timestampCreated;
 
   @JsonProperty("fee")
-  private BigDecimal fee;
+  private Double fee;
 
   public BitfinexDepositWithdrawalHistoryResponse(
       @JsonProperty("id") Long id,
       @JsonProperty("currency") String currency,
       @JsonProperty("method") String method,
       @JsonProperty("type") FundingRecord.Type type,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("description") String description,
       @JsonProperty("address") String address,
       @JsonProperty("status") String status,
-      @JsonProperty("timestamp") BigDecimal timestamp,
+      @JsonProperty("timestamp") Double timestamp,
       @JsonProperty("txid") String txid,
-      @JsonProperty("timestamp_created") BigDecimal timestampCreated,
-      @JsonProperty("fee") BigDecimal fee) {
+      @JsonProperty("timestamp_created") Double timestampCreated,
+      @JsonProperty("fee") Double fee) {
     this.id = id;
     this.currency = currency;
     this.method = method;
@@ -115,7 +114,7 @@ public class BitfinexDepositWithdrawalHistoryResponse {
     return type;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -132,7 +131,7 @@ public class BitfinexDepositWithdrawalHistoryResponse {
   }
 
   public Date getTimestamp() {
-    return new Date(timestamp.scaleByPowerOfTen(3).longValue());
+    return new Date(Double.doubleToLongBits(timestamp * 1e3));
   }
 
   public String getTxid() {
@@ -140,10 +139,10 @@ public class BitfinexDepositWithdrawalHistoryResponse {
   }
 
   public Date getTimestampCreated() {
-    return new Date(timestampCreated.scaleByPowerOfTen(3).longValue());
+    return new Date(Double.doubleToLongBits(timestampCreated * 1e3));
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 }

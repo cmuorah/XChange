@@ -1,7 +1,6 @@
 package org.knowm.xchange.kraken.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class DepostitStatus {
@@ -12,8 +11,8 @@ public class DepostitStatus {
   private final String refid;
   private final String txid;
   private final String info;
-  private final BigDecimal amount;
-  private final BigDecimal fee;
+  private final Double amount;
+  private final Double fee;
   private final Date timestamp;
   private final String status;
   private final String statusProp;
@@ -25,8 +24,8 @@ public class DepostitStatus {
       @JsonProperty("refid") String refid,
       @JsonProperty("txid") String txid,
       @JsonProperty("info") String info,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("time") long unixTimestamp,
       @JsonProperty("status") String status,
       @JsonProperty("status-prop") String statusProp) {
@@ -68,11 +67,11 @@ public class DepostitStatus {
     return info;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

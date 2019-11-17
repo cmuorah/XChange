@@ -1,7 +1,6 @@
 package org.knowm.xchange.cexio.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.cexio.dto.CexIOApiResponse;
 import org.knowm.xchange.currency.Currency;
@@ -32,20 +31,20 @@ public class CexIOCurrencyLimits extends CexIOApiResponse<CexIOCurrencyLimits.Da
   public static class Pair {
     private final Currency symbol1;
     private final Currency symbol2;
-    private final BigDecimal minLotSize;
-    private final BigDecimal minLotSizeS2;
-    private final BigDecimal maxLotSize;
-    private final BigDecimal minPrice;
-    private final BigDecimal maxPrice;
+    private final Double minLotSize;
+    private final Double minLotSizeS2;
+    private final Double maxLotSize;
+    private final Double minPrice;
+    private final Double maxPrice;
 
     public Pair(
         @JsonProperty("symbol1") Currency symbol1,
         @JsonProperty("symbol2") Currency symbol2,
-        @JsonProperty("minLotSize") BigDecimal minLotSize,
-        @JsonProperty("minLotSizeS2") BigDecimal minLotSizeS2,
-        @JsonProperty("maxLotSize") BigDecimal maxLotSize,
-        @JsonProperty("minPrice") BigDecimal minPrice,
-        @JsonProperty("maxPrice") BigDecimal maxPrice) {
+        @JsonProperty("minLotSize") Double minLotSize,
+        @JsonProperty("minLotSizeS2") Double minLotSizeS2,
+        @JsonProperty("maxLotSize") Double maxLotSize,
+        @JsonProperty("minPrice") Double minPrice,
+        @JsonProperty("maxPrice") Double maxPrice) {
       this.symbol1 = symbol1;
       this.symbol2 = symbol2;
       this.minLotSize = minLotSize;
@@ -63,23 +62,23 @@ public class CexIOCurrencyLimits extends CexIOApiResponse<CexIOCurrencyLimits.Da
       return symbol2;
     }
 
-    public BigDecimal getMinLotSize() {
+    public Double getMinLotSize() {
       return minLotSize;
     }
 
-    public BigDecimal getMinLotSizeS2() {
+    public Double getMinLotSizeS2() {
       return minLotSizeS2;
     }
 
-    public BigDecimal getMaxLotSize() {
+    public Double getMaxLotSize() {
       return maxLotSize;
     }
 
-    public BigDecimal getMinPrice() {
+    public Double getMinPrice() {
       return minPrice;
     }
 
-    public BigDecimal getMaxPrice() {
+    public Double getMaxPrice() {
       return maxPrice;
     }
 

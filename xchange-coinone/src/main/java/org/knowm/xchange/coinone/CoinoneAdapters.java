@@ -1,6 +1,5 @@
 package org.knowm.xchange.coinone;
 
-import java.math.BigDecimal;
 import java.util.*;
 import org.knowm.xchange.coinone.dto.CoinoneException;
 import org.knowm.xchange.coinone.dto.account.CoinoneBalancesResponse;
@@ -50,8 +49,8 @@ public final class CoinoneAdapters {
     List<LimitOrder> orders = new ArrayList<>(coinoneOrders.length);
     for (int i = 0; i < coinoneOrders.length; i++) {
       CoinoneOrderBookData coinoneOrder = coinoneOrders[i];
-      BigDecimal price = coinoneOrder.getPrice();
-      BigDecimal amount = coinoneOrder.getQty();
+      Double price = coinoneOrder.getPrice();
+      Double amount = coinoneOrder.getQty();
       LimitOrder limitOrder = new LimitOrder(orderType, amount, currencyPair, null, null, price);
       orders.add(limitOrder);
     }
@@ -69,12 +68,12 @@ public final class CoinoneAdapters {
     else status = OrderStatus.CANCELED;
     CoinoneOrderInfo orderInfo = coinoneOrderInfoResponse.getInfo();
     OrderType type = orderInfo.getType().equals("ask") ? OrderType.ASK : OrderType.BID;
-    BigDecimal originalAmount = orderInfo.getQty();
+    Double originalAmount = orderInfo.getQty();
     CurrencyPair currencyPair =
         new CurrencyPair(new Currency(orderInfo.getCurrency().toUpperCase()), Currency.KRW);
     String orderId = orderInfo.getOrderId();
-    BigDecimal cumulativeAmount = orderInfo.getQty().subtract(orderInfo.getRemainQty());
-    BigDecimal price = orderInfo.getPrice();
+    Double cumulativeAmount = orderInfo.getQty() - (orderInfo.getRemainQty());
+    Double price = orderInfo.getPrice();
     Calendar cal = Calendar.getInstance();
     cal.setTimeInMillis(orderInfo.getTimestamp());
     LimitOrder order =

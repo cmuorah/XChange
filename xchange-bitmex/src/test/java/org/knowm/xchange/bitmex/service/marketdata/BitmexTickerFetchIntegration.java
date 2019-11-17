@@ -3,7 +3,6 @@ package org.knowm.xchange.bitmex.service.marketdata;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 import org.knowm.xchange.ExchangeFactory;
@@ -50,13 +49,13 @@ public class BitmexTickerFetchIntegration {
     Ticker ticker = marketDataService.getTicker(activeContract);
     assertThat(ticker).isNotNull();
     assertThat(ticker.getCurrencyPair()).isEqualTo(activeContract);
-    assertThat(ticker.getOpen()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getLast()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getBid()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getAsk()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getHigh()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getLow()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getVwap()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getVolume()).isGreaterThan(BigDecimal.ZERO);
+    assertThat(ticker.getOpen()).isGreaterThan(0d);
+    assertThat(ticker.getLast()).isGreaterThan(0d);
+    assertThat(ticker.getBid()).isGreaterThan(0d);
+    assertThat(ticker.getAsk()).isGreaterThan(0d);
+    assertThat(ticker.getHigh()).isGreaterThan(0d);
+    assertThat(ticker.getLow()).isGreaterThan(0d);
+    assertThat(ticker.getVwap()).isGreaterThan(0d);
+    assertThat(ticker.getVolume()).isGreaterThan(0d);
   }
 }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bleutrade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.GET;
@@ -121,7 +120,7 @@ public interface BleutradeAuthenticated extends Bleutrade {
       @HeaderParam("apisign") ParamsDigest signature,
       @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
       @QueryParam("currency") String currency,
-      @QueryParam("quantity") BigDecimal quantity,
+      @QueryParam("quantity") Double quantity,
       @QueryParam("address") String address)
       throws IOException, BleutradeException;
 

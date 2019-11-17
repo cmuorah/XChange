@@ -1,7 +1,6 @@
 package org.knowm.xchange.coindeal.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -34,8 +33,7 @@ public class CoindealAccountService extends CoindealAccountServiceRaw implements
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbase.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinbase.CoinbaseAdapters;
 import org.knowm.xchange.coinbase.dto.account.CoinbaseAddress;
@@ -43,8 +42,7 @@ public final class CoinbaseAccountService extends CoinbaseAccountServiceRaw
    *     retrieve more information about the transaction, including the blockchain transaction hash.
    */
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
 
     final CoinbaseSendMoneyRequest sendMoneyRequest =
         CoinbaseTransaction.createSendMoneyRequest(address, currency.toString(), amount);

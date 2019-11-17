@@ -1,19 +1,18 @@
 package org.knowm.xchange.quoine.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author timmolter */
 public final class Execution {
 
-  private final BigDecimal quantity;
-  private final BigDecimal price;
+  private final Double quantity;
+  private final Double price;
   private final String makerSide;
-  private final BigDecimal createdAt;
-  private final BigDecimal sellerFee;
-  private final BigDecimal buyerFee;
-  private final BigDecimal buyFxRate;
-  private final BigDecimal sellFxRate;
+  private final Double createdAt;
+  private final Double sellerFee;
+  private final Double buyerFee;
+  private final Double buyFxRate;
+  private final Double sellFxRate;
 
   /**
    * Constructor
@@ -28,14 +27,14 @@ public final class Execution {
    * @param sellFxRate
    */
   public Execution(
-      @JsonProperty("quantity") BigDecimal quantity,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("quantity") Double quantity,
+      @JsonProperty("price") Double price,
       @JsonProperty("maker_side") String makerSide,
-      @JsonProperty("created_at") BigDecimal createdAt,
-      @JsonProperty("seller_fee") BigDecimal sellerFee,
-      @JsonProperty("buyer_fee") BigDecimal buyerFee,
-      @JsonProperty("buy_fx_rate") BigDecimal buyFxRate,
-      @JsonProperty("sell_fx_rate") BigDecimal sellFxRate) {
+      @JsonProperty("created_at") Double createdAt,
+      @JsonProperty("seller_fee") Double sellerFee,
+      @JsonProperty("buyer_fee") Double buyerFee,
+      @JsonProperty("buy_fx_rate") Double buyFxRate,
+      @JsonProperty("sell_fx_rate") Double sellFxRate) {
     this.quantity = quantity;
     this.price = price;
     this.makerSide = makerSide;
@@ -46,11 +45,11 @@ public final class Execution {
     this.sellFxRate = sellFxRate;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -58,23 +57,23 @@ public final class Execution {
     return makerSide;
   }
 
-  public BigDecimal getCreatedAt() {
+  public Double getCreatedAt() {
     return createdAt;
   }
 
-  public BigDecimal getSellerFee() {
+  public Double getSellerFee() {
     return sellerFee;
   }
 
-  public BigDecimal getBuyerFee() {
+  public Double getBuyerFee() {
     return buyerFee;
   }
 
-  public BigDecimal getBuyFxRate() {
+  public Double getBuyFxRate() {
     return buyFxRate;
   }
 
-  public BigDecimal getSellFxRate() {
+  public Double getSellFxRate() {
     return sellFxRate;
   }
 

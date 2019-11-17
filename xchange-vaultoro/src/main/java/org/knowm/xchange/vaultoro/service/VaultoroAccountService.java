@@ -1,7 +1,6 @@
 package org.knowm.xchange.vaultoro.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
@@ -39,7 +38,7 @@ public class VaultoroAccountService extends VaultoroAccountServiceRaw implements
   }
 
   @Override
-  public String withdrawFunds(Currency arg0, BigDecimal arg1, String arg2) throws IOException {
+  public String withdrawFunds(Currency arg0, Double arg1, String arg2) throws IOException {
 
     throw new NotAvailableFromExchangeException();
   }

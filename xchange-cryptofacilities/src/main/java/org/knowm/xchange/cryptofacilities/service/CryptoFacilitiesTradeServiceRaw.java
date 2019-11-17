@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptofacilities.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -40,8 +39,8 @@ public class CryptoFacilitiesTradeServiceRaw extends CryptoFacilitiesBaseService
     if (order.getType().equals(OrderType.ASK)) {
       side = "sell";
     }
-    BigDecimal size = order.getOriginalAmount();
-    BigDecimal limitPrice = order.getLimitPrice();
+    Double size = order.getOriginalAmount();
+    Double limitPrice = order.getLimitPrice();
 
     CryptoFacilitiesOrder ord =
         cryptoFacilities.sendOrder(

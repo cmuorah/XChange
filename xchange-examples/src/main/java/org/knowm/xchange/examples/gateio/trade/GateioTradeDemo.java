@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.gateio.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -36,11 +35,11 @@ public class GateioTradeDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             OrderType.ASK,
-            new BigDecimal("0.384"),
+            new Double("0.384"),
             CurrencyPair.LTC_BTC,
             "",
             null,
-            new BigDecimal("0.0265"));
+            new Double("0.0265"));
     String orderId = tradeService.placeLimitOrder(limitOrder);
     System.out.println(
         orderId); // Returned order id is currently broken for Gateio, rely on open orders instead//
@@ -77,10 +76,7 @@ public class GateioTradeDemo {
 
     String placedOrderId =
         tradeService.placeGateioLimitOrder(
-            CurrencyPair.LTC_BTC,
-            GateioOrderType.SELL,
-            new BigDecimal("0.0265"),
-            new BigDecimal("0.384"));
+            CurrencyPair.LTC_BTC, GateioOrderType.SELL, new Double("0.0265"), new Double("0.384"));
     System.out.println(placedOrderId);
 
     Thread.sleep(2000); // wait for Gateio's back-end to propagate the order

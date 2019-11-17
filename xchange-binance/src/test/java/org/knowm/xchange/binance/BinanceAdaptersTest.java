@@ -2,7 +2,6 @@ package org.knowm.xchange.binance;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.binance.dto.trade.BinanceOrder;
 import org.knowm.xchange.dto.Order;
@@ -22,7 +21,7 @@ public class BinanceAdaptersTest {
     assertThat(marketOrder.getStatus()).isEqualByComparingTo(Order.OrderStatus.FILLED);
     assertThat(marketOrder.getOriginalAmount()).isEqualByComparingTo("0.10700000");
     assertThat(marketOrder.getCumulativeAmount()).isEqualByComparingTo("0.10700000");
-    assertThat(marketOrder.getRemainingAmount()).isEqualByComparingTo(BigDecimal.ZERO);
+    assertThat(marketOrder.getRemainingAmount()).isEqualByComparingTo(0d);
     assertThat(marketOrder.getAveragePrice()).isEqualByComparingTo("0.01858383");
   }
 }

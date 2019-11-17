@@ -1,14 +1,13 @@
 package org.knowm.xchange.ccex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CCEXMarket {
   private final String MarketCurrency;
   private final String BaseCurrency;
   private final String MarketCurrencyLong;
   private final String BaseCurrencyLong;
-  private final BigDecimal MinTradeSize;
+  private final Double MinTradeSize;
   private final String MarketName;
   private final Boolean IsActive;
   private final String Created;
@@ -18,7 +17,7 @@ public class CCEXMarket {
       @JsonProperty("BaseCurrency") String baseCurrency,
       @JsonProperty("MarketCurrencyLong") String marketCurrencyLong,
       @JsonProperty("BaseCurrencyLong") String baseCurrencyLong,
-      @JsonProperty("MinTradeSize") BigDecimal minTradeSize,
+      @JsonProperty("MinTradeSize") Double minTradeSize,
       @JsonProperty("MarketName") String marketName,
       @JsonProperty("IsActive") Boolean isActive,
       @JsonProperty("Created") String created) {
@@ -49,7 +48,7 @@ public class CCEXMarket {
     return BaseCurrencyLong;
   }
 
-  public BigDecimal getMinTradeSize() {
+  public Double getMinTradeSize() {
     return MinTradeSize;
   }
 

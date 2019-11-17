@@ -2,8 +2,6 @@ package org.knowm.xchange.bitflyer.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import org.knowm.xchange.bitflyer.BitflyerUtils;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -16,8 +14,8 @@ public class BitflyerChildOrder {
   private String productCode;
   private BitflyerChildOrderType childOrderType;
   private BitflyerSide side;
-  private BigDecimal price;
-  private BigDecimal size;
+  private Double price;
+  private Double size;
   private Long minuteToExpire;
   private BitflyerTimeInForce timeInForce;
 
@@ -25,16 +23,16 @@ public class BitflyerChildOrder {
       String productCode,
       BitflyerChildOrderType childOrderType,
       BitflyerSide side,
-      BigDecimal price,
-      BigDecimal size,
+      Double price,
+      Double size,
       Long minuteToExpire,
       BitflyerTimeInForce timeInForce) {
 
     this.productCode = productCode;
     this.childOrderType = childOrderType;
     this.side = side;
-    this.price = price != null ? price.setScale(CURRENCY_SCALE, RoundingMode.HALF_EVEN) : null;
-    this.size = size != null ? size.setScale(SIZE_SCALE, RoundingMode.HALF_EVEN) : null;
+    this.price = price;
+    this.size = size;
     this.minuteToExpire = minuteToExpire;
     this.timeInForce = timeInForce;
   }
@@ -71,20 +69,20 @@ public class BitflyerChildOrder {
   }
 
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
   @JsonProperty("size")
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
-  public void setSize(BigDecimal size) {
+  public void setSize(Double size) {
     this.size = size;
   }
 
@@ -131,8 +129,8 @@ public class BitflyerChildOrder {
     private CurrencyPair currencyPair;
     private BitflyerChildOrderType childOrderType;
     private BitflyerSide side;
-    private BigDecimal price;
-    private BigDecimal size;
+    private Double price;
+    private Double size;
     private Long minuteToExpire = null;
     private BitflyerTimeInForce timeInForce = BitflyerTimeInForce.GTC;
 
@@ -154,13 +152,13 @@ public class BitflyerChildOrder {
       return this;
     }
 
-    public BitflyerChildOrderBuilder withPrice(BigDecimal price) {
+    public BitflyerChildOrderBuilder withPrice(Double price) {
       this.price = price;
 
       return this;
     }
 
-    public BitflyerChildOrderBuilder withSize(BigDecimal size) {
+    public BitflyerChildOrderBuilder withSize(Double size) {
       this.size = size;
 
       return this;

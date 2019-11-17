@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitz.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -53,7 +52,7 @@ public class BitZMarketDataServiceRaw extends BitZBaseService {
    * @return
    * @throws IOException
    */
-  public Map<Currency, Map<Currency, BigDecimal>> getCoinRate(CurrencyPair... currencyPairs)
+  public Map<Currency, Map<Currency, Double>> getCoinRate(CurrencyPair... currencyPairs)
       throws IOException {
     List<String> coinList = new ArrayList<>(currencyPairs.length);
     Arrays.stream(currencyPairs)
@@ -168,7 +167,7 @@ public class BitZMarketDataServiceRaw extends BitZBaseService {
    * @return
    * @throws IOException
    */
-  public Map<Currency, Map<Currency, BigDecimal>> getCurrencyCoinRate(CurrencyPair... currencyPairs)
+  public Map<Currency, Map<Currency, Double>> getCurrencyCoinRate(CurrencyPair... currencyPairs)
       throws IOException {
     List<String> coinList = new ArrayList<>(currencyPairs.length);
     Arrays.stream(currencyPairs)

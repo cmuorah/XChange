@@ -1,6 +1,5 @@
 package org.knowm.xchange.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.dto.LoanOrder;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -16,7 +15,7 @@ public final class FixedRateLoanOrder extends LoanOrder implements Comparable<Fi
   private static final long serialVersionUID = 2627042395091155053L;
 
   /** The fixed rate of return for a day */
-  private final BigDecimal rate;
+  private final Double rate;
 
   /**
    * @param type Either BID (debtor) or ASK (creditor)
@@ -30,11 +29,11 @@ public final class FixedRateLoanOrder extends LoanOrder implements Comparable<Fi
   public FixedRateLoanOrder(
       OrderType type,
       String currency,
-      BigDecimal originalAmount,
+      Double originalAmount,
       int dayPeriod,
       String id,
       Date timestamp,
-      BigDecimal rate) {
+      Double rate) {
 
     super(type, currency, originalAmount, dayPeriod, id, timestamp);
 
@@ -42,7 +41,7 @@ public final class FixedRateLoanOrder extends LoanOrder implements Comparable<Fi
   }
 
   /** @return The fixed rate of return for a day */
-  public BigDecimal getRate() {
+  public Double getRate() {
 
     return rate;
   }

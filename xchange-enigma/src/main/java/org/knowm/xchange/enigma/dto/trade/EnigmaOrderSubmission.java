@@ -2,7 +2,6 @@ package org.knowm.xchange.enigma.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,13 +28,13 @@ public final class EnigmaOrderSubmission extends BaseResponse {
   private Date sent;
 
   @JsonProperty("quantity")
-  private BigDecimal quantity;
+  private Double quantity;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("nominal")
-  private BigDecimal nominal;
+  private Double nominal;
 
   @JsonProperty("result")
   private boolean result;

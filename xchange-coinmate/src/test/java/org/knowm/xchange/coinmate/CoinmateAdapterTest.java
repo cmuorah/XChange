@@ -28,7 +28,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import org.junit.Test;
@@ -56,7 +55,7 @@ public class CoinmateAdapterTest {
     assertThat(ticker.getLast().toString()).isEqualTo("254.08");
     assertThat(ticker.getBid().toString()).isEqualTo("252.93");
     assertThat(ticker.getAsk().toString()).isEqualTo("254.08");
-    assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("42.78294066"));
+    assertThat(ticker.getVolume()).isEqualTo(new Double("42.78294066"));
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     f.setTimeZone(TimeZone.getTimeZone("UTC"));
     String dateString = f.format(ticker.getTimestamp());

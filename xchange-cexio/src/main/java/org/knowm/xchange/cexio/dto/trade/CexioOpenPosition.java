@@ -1,7 +1,6 @@
 package org.knowm.xchange.cexio.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /**
  * Object is returned when a position is opened
@@ -20,27 +19,26 @@ public class CexioOpenPosition {
       lsymbol; //	currency of borrowed funds, can be one of the currencies, presented in the pair
   private final CexioPositionPair pair; // 	trading pair as a string like "XXX:XXX"
 
-  private final BigDecimal pamount; // total position amount, presented in "psymbol"
-  private final BigDecimal
+  private final Double pamount; // total position amount, presented in "psymbol"
+  private final Double
       omamount; //	string	("open money amount') user's amount used in the position, presented in
   // 'msymbol"
-  private final BigDecimal
-      lamount; //	amount of borrowed funds in the position, presented in "lsymbol"
-  private final BigDecimal
+  private final Double lamount; // 	amount of borrowed funds in the position, presented in "lsymbol"
+  private final Double
       oprice; //	price the position was opened at, calculated as average of underlying executed
   // orders
   private final CexioPositionType
       ptype; //	position type. long - buying product, profitable if product price grows; short -
   // selling product, profitable if product price falls;
-  private final BigDecimal
+  private final Double
       stopLossPrice; //	price, near which your position will be closed automatically in case of
   // unfavorable market conditions
-  private final BigDecimal
+  private final Double
       pfee; //	estimated fee (in %) from user's amount, that will be charged for position rollover
   // for the next 4 hours
-  private final BigDecimal
+  private final Double
       cfee; //	fee (in %) from user's amount, that will be charged for position closing
-  private final BigDecimal
+  private final Double
       tfeeAmount; //	total fees paid by user, it is equal to opening fee amount, when position has
   // been just opened
 
@@ -51,15 +49,15 @@ public class CexioOpenPosition {
       @JsonProperty("msymbol") String msymbol,
       @JsonProperty("lsymbol") String lsymbol,
       @JsonProperty("pair") CexioPositionPair pair,
-      @JsonProperty("pamount") BigDecimal pamount,
-      @JsonProperty("omamount") BigDecimal omamount,
-      @JsonProperty("lamount") BigDecimal lamount,
-      @JsonProperty("oprice") BigDecimal oprice,
+      @JsonProperty("pamount") Double pamount,
+      @JsonProperty("omamount") Double omamount,
+      @JsonProperty("lamount") Double lamount,
+      @JsonProperty("oprice") Double oprice,
       @JsonProperty("ptype") CexioPositionType ptype,
-      @JsonProperty("stopLossPrice") BigDecimal stopLossPrice,
-      @JsonProperty("pfee") BigDecimal pfee,
-      @JsonProperty("cfee") BigDecimal cfee,
-      @JsonProperty("tfeeAmount") BigDecimal tfeeAmount) {
+      @JsonProperty("stopLossPrice") Double stopLossPrice,
+      @JsonProperty("pfee") Double pfee,
+      @JsonProperty("cfee") Double cfee,
+      @JsonProperty("tfeeAmount") Double tfeeAmount) {
     this.id = id;
     this.otime = otime;
     this.psymbol = psymbol;
@@ -101,19 +99,19 @@ public class CexioOpenPosition {
     return pair;
   }
 
-  public BigDecimal getPamount() {
+  public Double getPamount() {
     return pamount;
   }
 
-  public BigDecimal getOmamount() {
+  public Double getOmamount() {
     return omamount;
   }
 
-  public BigDecimal getLamount() {
+  public Double getLamount() {
     return lamount;
   }
 
-  public BigDecimal getOprice() {
+  public Double getOprice() {
     return oprice;
   }
 
@@ -121,19 +119,19 @@ public class CexioOpenPosition {
     return ptype;
   }
 
-  public BigDecimal getStopLossPrice() {
+  public Double getStopLossPrice() {
     return stopLossPrice;
   }
 
-  public BigDecimal getPfee() {
+  public Double getPfee() {
     return pfee;
   }
 
-  public BigDecimal getCfee() {
+  public Double getCfee() {
     return cfee;
   }
 
-  public BigDecimal getTfeeAmount() {
+  public Double getTfeeAmount() {
     return tfeeAmount;
   }
 }

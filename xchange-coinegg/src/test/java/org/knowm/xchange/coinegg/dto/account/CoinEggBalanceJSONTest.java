@@ -6,7 +6,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.coinegg.dto.CoinEggResult;
 import org.knowm.xchange.coinegg.dto.accounts.CoinEggBalance;
@@ -37,8 +36,8 @@ public class CoinEggBalanceJSONTest {
     assertThat(coinEggBalance.isETHLocked()).isEqualTo(false);
     assertThat(coinEggBalance.isBTCLocked()).isEqualTo(false);
 
-    assertThat(coinEggBalance.getXASBalance()).isEqualTo(new BigDecimal("1"));
-    assertThat(coinEggBalance.getETHBalance()).isEqualTo(new BigDecimal("1"));
-    assertThat(coinEggBalance.getBTCBalance()).isEqualTo(new BigDecimal("1"));
+    assertThat(coinEggBalance.getXASBalance()).isEqualTo(new Double("1"));
+    assertThat(coinEggBalance.getETHBalance()).isEqualTo(new Double("1"));
+    assertThat(coinEggBalance.getBTCBalance()).isEqualTo(new Double("1"));
   }
 }

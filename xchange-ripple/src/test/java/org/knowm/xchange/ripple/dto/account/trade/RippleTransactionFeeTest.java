@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.ripple.dto.trade.RippleTransactionFee;
 
@@ -26,6 +25,6 @@ public class RippleTransactionFeeTest {
 
     // Verify that the example data was unmarshalled correctly
     assertThat(response.isSuccess()).isEqualTo(true);
-    assertThat(response.getFee()).isGreaterThan(BigDecimal.ZERO);
+    assertThat(response.getFee()).isGreaterThan(0d);
   }
 }

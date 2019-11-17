@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbasepro.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,13 +53,12 @@ public class CoinbaseProAccountService extends CoinbaseProAccountServiceRaw
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, AddressWithTag address)
+  public String withdrawFunds(Currency currency, Double amount, AddressWithTag address)
       throws IOException {
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }
@@ -82,7 +80,7 @@ public class CoinbaseProAccountService extends CoinbaseProAccountServiceRaw
     throw new IllegalStateException("Don't know how to withdraw: " + params);
   }
 
-  public String moveFunds(Currency currency, String address, BigDecimal amount) throws IOException {
+  public String moveFunds(Currency currency, String address, Double amount) throws IOException {
     org.knowm.xchange.coinbasepro.dto.account.CoinbaseProAccount[] accounts =
         getCoinbaseProAccountInfo();
     String accountId = null;
@@ -185,10 +183,10 @@ public class CoinbaseProAccountService extends CoinbaseProAccountServiceRaw
 
   public static class CoinbaseProMoveFundsParams implements WithdrawFundsParams {
     public final Currency currency;
-    public final BigDecimal amount;
+    public final Double amount;
     public final String address;
 
-    public CoinbaseProMoveFundsParams(Currency currency, BigDecimal amount, String address) {
+    public CoinbaseProMoveFundsParams(Currency currency, Double amount, String address) {
       this.currency = currency;
       this.amount = amount;
       this.address = address;

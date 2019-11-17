@@ -1,7 +1,6 @@
 package org.knowm.xchange.mercadobitcoin.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Felipe Micaroni Lalli */
 public class MercadoBitcoinAccountInfo {
@@ -50,31 +49,31 @@ public class MercadoBitcoinAccountInfo {
 
   public static class Funds {
 
-    private final BigDecimal ltc;
-    private final BigDecimal brl;
-    private final BigDecimal btc;
+    private final Double ltc;
+    private final Double brl;
+    private final Double btc;
 
     public Funds(
-        @JsonProperty("ltc") BigDecimal ltc,
-        @JsonProperty("brl") BigDecimal brl,
-        @JsonProperty("btc") BigDecimal btc) {
+        @JsonProperty("ltc") Double ltc,
+        @JsonProperty("brl") Double brl,
+        @JsonProperty("btc") Double btc) {
 
       this.ltc = ltc;
       this.brl = brl;
       this.btc = btc;
     }
 
-    public BigDecimal getLtc() {
+    public Double getLtc() {
 
       return ltc;
     }
 
-    public BigDecimal getBrl() {
+    public Double getBrl() {
 
       return brl;
     }
 
-    public BigDecimal getBtc() {
+    public Double getBtc() {
 
       return btc;
     }

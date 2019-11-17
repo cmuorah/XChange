@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.coinbase.marketdata;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -41,11 +40,11 @@ public class CoinbaseMarketDataDemo {
     List<CoinbaseCurrency> currencies = marketDataService.getCoinbaseCurrencies();
     System.out.println(currencies);
 
-    Map<String, BigDecimal> exchangeRates = marketDataService.getCoinbaseCurrencyExchangeRates();
+    Map<String, Double> exchangeRates = marketDataService.getCoinbaseCurrencyExchangeRates();
     System.out.println("Exchange Rates: " + exchangeRates);
 
     String amount = "1.57";
-    CoinbasePrice buyPrice = marketDataService.getCoinbaseBuyPrice(new BigDecimal(amount));
+    CoinbasePrice buyPrice = marketDataService.getCoinbaseBuyPrice(new Double(amount));
     System.out.println("Buy Price for " + amount + " BTC: " + buyPrice);
 
     CoinbasePrice sellPrice = marketDataService.getCoinbaseSellPrice();

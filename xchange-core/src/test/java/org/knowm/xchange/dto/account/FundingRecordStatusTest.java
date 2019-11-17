@@ -1,6 +1,5 @@
 package org.knowm.xchange.dto.account;
 
-import static java.math.BigDecimal.ONE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.knowm.xchange.currency.Currency.BTC;
 import static org.knowm.xchange.dto.account.FundingRecord.Type.DEPOSIT;
@@ -45,7 +44,7 @@ public class FundingRecordStatusTest {
       String expectedDescription) {
     final FundingRecord fundingRecord =
         new FundingRecord(
-            "", null, BTC, ONE, "", "", DEPOSIT, statusInput, ONE, ONE, descriptionInput);
+            "", null, BTC, 1d, "", "", DEPOSIT, statusInput, 1d, 1d, descriptionInput);
     assertThat(fundingRecord.getStatus()).isEqualTo(expectedStatus);
     assertThat(fundingRecord.getDescription()).isEqualTo(expectedDescription);
   }

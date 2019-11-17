@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbase.v2.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -27,7 +26,7 @@ class CoinbaseMarketDataServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://developers.coinbase.com/api/v2#exchange-rates">developers.coinbase.com/api/v2#exchange-rates</a>
    */
-  public Map<String, BigDecimal> getCoinbaseExchangeRates() throws IOException {
+  public Map<String, Double> getCoinbaseExchangeRates() throws IOException {
 
     return coinbase.getCurrencyExchangeRates(Coinbase.CB_VERSION_VALUE).getData().getRates();
   }

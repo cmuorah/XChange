@@ -1,6 +1,5 @@
 package org.knowm.xchange.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 import org.knowm.xchange.currency.Currency;
@@ -19,7 +18,7 @@ public class UserTrade extends Trade {
   private final String orderId;
 
   /** The fee that was charged by the exchange for this trade. */
-  private final BigDecimal feeAmount;
+  private final Double feeAmount;
 
   /** The currency in which the fee was charged. */
   private final Currency feeCurrency;
@@ -40,13 +39,13 @@ public class UserTrade extends Trade {
    */
   public UserTrade(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
-      BigDecimal price,
+      Double price,
       Date timestamp,
       String id,
       String orderId,
-      BigDecimal feeAmount,
+      Double feeAmount,
       Currency feeCurrency) {
 
     super(type, originalAmount, currencyPair, price, timestamp, id);
@@ -61,7 +60,7 @@ public class UserTrade extends Trade {
     return orderId;
   }
 
-  public BigDecimal getFeeAmount() {
+  public Double getFeeAmount() {
 
     return feeAmount;
   }
@@ -116,7 +115,7 @@ public class UserTrade extends Trade {
   public static class Builder extends Trade.Builder {
 
     protected String orderId;
-    protected BigDecimal feeAmount;
+    protected Double feeAmount;
     protected Currency feeCurrency;
 
     public static Builder from(UserTrade trade) {
@@ -138,7 +137,7 @@ public class UserTrade extends Trade {
     }
 
     @Override
-    public Builder originalAmount(BigDecimal originalAmount) {
+    public Builder originalAmount(Double originalAmount) {
       return (Builder) super.originalAmount(originalAmount);
     }
 
@@ -148,7 +147,7 @@ public class UserTrade extends Trade {
     }
 
     @Override
-    public Builder price(BigDecimal price) {
+    public Builder price(Double price) {
       return (Builder) super.price(price);
     }
 
@@ -167,7 +166,7 @@ public class UserTrade extends Trade {
       return this;
     }
 
-    public Builder feeAmount(BigDecimal feeAmount) {
+    public Builder feeAmount(Double feeAmount) {
       this.feeAmount = feeAmount;
       return this;
     }

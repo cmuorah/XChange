@@ -1,21 +1,20 @@
 package org.knowm.xchange.livecoin.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class LivecoinTrade {
 
   private final Long time;
   private final Long id;
-  private final BigDecimal price;
-  private final BigDecimal quantity;
+  private final Double price;
+  private final Double quantity;
   private final String type;
 
   public LivecoinTrade(
       @JsonProperty("time") Long time,
       @JsonProperty("id") Long id,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("quantity") BigDecimal quantity,
+      @JsonProperty("price") Double price,
+      @JsonProperty("quantity") Double quantity,
       @JsonProperty("type") String type) {
     super();
 
@@ -34,11 +33,11 @@ public class LivecoinTrade {
     return id;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 

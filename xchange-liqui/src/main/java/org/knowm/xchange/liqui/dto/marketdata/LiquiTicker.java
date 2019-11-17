@@ -1,29 +1,28 @@
 package org.knowm.xchange.liqui.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class LiquiTicker {
 
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal avg;
-  private final BigDecimal vol;
-  private final BigDecimal volCur;
-  private final BigDecimal last;
-  private final BigDecimal buy;
-  private final BigDecimal sell;
+  private final Double high;
+  private final Double low;
+  private final Double avg;
+  private final Double vol;
+  private final Double volCur;
+  private final Double last;
+  private final Double buy;
+  private final Double sell;
   private final long updated;
 
   public LiquiTicker(
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("avg") BigDecimal avg,
-      @JsonProperty("vol") BigDecimal vol,
-      @JsonProperty("vol_cur") BigDecimal volCur,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("buy") BigDecimal buy,
-      @JsonProperty("sell") BigDecimal sell,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("avg") Double avg,
+      @JsonProperty("vol") Double vol,
+      @JsonProperty("vol_cur") Double volCur,
+      @JsonProperty("last") Double last,
+      @JsonProperty("buy") Double buy,
+      @JsonProperty("sell") Double sell,
       @JsonProperty("updated") long updated) {
     this.high = high;
     this.low = low;
@@ -36,35 +35,35 @@ public class LiquiTicker {
     this.updated = updated;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return this.high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return this.low;
   }
 
-  public BigDecimal getAvg() {
+  public Double getAvg() {
     return this.avg;
   }
 
-  public BigDecimal getVol() {
+  public Double getVol() {
     return this.vol;
   }
 
-  public BigDecimal getVolCur() {
+  public Double getVolCur() {
     return this.volCur;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return this.last;
   }
 
-  public BigDecimal getBuy() {
+  public Double getBuy() {
     return this.buy;
   }
 
-  public BigDecimal getSell() {
+  public Double getSell() {
     return this.sell;
   }
 

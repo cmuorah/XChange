@@ -1,30 +1,29 @@
 package org.knowm.xchange.ccex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CCEXBuySellData {
 
-  private final BigDecimal quantity;
-  private final BigDecimal rate;
+  private final Double quantity;
+  private final Double rate;
 
   /**
    * @param rate
    * @param quantity
    */
   public CCEXBuySellData(
-      @JsonProperty("Quantity") BigDecimal quantity, @JsonProperty("Rate") BigDecimal rate) {
+      @JsonProperty("Quantity") Double quantity, @JsonProperty("Rate") Double rate) {
     this.quantity = quantity;
     this.rate = rate;
   }
 
   /** @return The quantity */
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
   /** @return The rate */
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 }

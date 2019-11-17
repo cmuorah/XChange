@@ -1,19 +1,18 @@
 package org.knowm.xchange.cexio.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Author: veken0m */
 public class GHashIOHashrate {
 
-  private final BigDecimal last5m;
-  private final BigDecimal last15m;
-  private final BigDecimal last1h;
-  private final BigDecimal last1d;
-  private final BigDecimal prev5m;
-  private final BigDecimal prev15m;
-  private final BigDecimal prev1h;
-  private final BigDecimal prev1d;
+  private final Double last5m;
+  private final Double last15m;
+  private final Double last1h;
+  private final Double last1d;
+  private final Double prev5m;
+  private final Double prev15m;
+  private final Double prev1h;
+  private final Double prev1d;
 
   /**
    * @param last5m
@@ -26,14 +25,14 @@ public class GHashIOHashrate {
    * @param prev1d
    */
   public GHashIOHashrate(
-      @JsonProperty("last5m") BigDecimal last5m,
-      @JsonProperty("last15m") BigDecimal last15m,
-      @JsonProperty("last1h") BigDecimal last1h,
-      @JsonProperty("last1d") BigDecimal last1d,
-      @JsonProperty("prev5m") BigDecimal prev5m,
-      @JsonProperty("prev15m") BigDecimal prev15m,
-      @JsonProperty("prev1h") BigDecimal prev1h,
-      @JsonProperty("prev1d") BigDecimal prev1d) {
+      @JsonProperty("last5m") Double last5m,
+      @JsonProperty("last15m") Double last15m,
+      @JsonProperty("last1h") Double last1h,
+      @JsonProperty("last1d") Double last1d,
+      @JsonProperty("prev5m") Double prev5m,
+      @JsonProperty("prev15m") Double prev15m,
+      @JsonProperty("prev1h") Double prev1h,
+      @JsonProperty("prev1d") Double prev1d) {
 
     this.last5m = last5m;
     this.last15m = last15m;
@@ -45,42 +44,42 @@ public class GHashIOHashrate {
     this.prev1d = prev1d;
   }
 
-  public BigDecimal getLast5m() {
+  public Double getLast5m() {
 
     return last5m;
   }
 
-  public BigDecimal getLast15m() {
+  public Double getLast15m() {
 
     return last15m;
   }
 
-  public BigDecimal getLast1h() {
+  public Double getLast1h() {
 
     return last1h;
   }
 
-  public BigDecimal getLast1d() {
+  public Double getLast1d() {
 
     return last1d;
   }
 
-  public BigDecimal getPrev5m() {
+  public Double getPrev5m() {
 
     return prev5m;
   }
 
-  public BigDecimal getPrev15m() {
+  public Double getPrev15m() {
 
     return prev15m;
   }
 
-  public BigDecimal getPrev1h() {
+  public Double getPrev1h() {
 
     return prev1h;
   }
 
-  public BigDecimal getPrev1d() {
+  public Double getPrev1d() {
 
     return prev1d;
   }

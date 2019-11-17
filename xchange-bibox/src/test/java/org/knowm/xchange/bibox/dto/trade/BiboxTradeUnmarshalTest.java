@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.bibox.BiboxTestUtils;
 import org.knowm.xchange.bibox.dto.BiboxSingleResponse;
@@ -36,11 +35,11 @@ public class BiboxTradeUnmarshalTest {
     assertThat(first.getCurrencySymbol()).isEqualTo("ETH");
     assertThat(first.getOrderSide()).isEqualTo(BiboxOrderSide.ASK);
     assertThat(first.getOrderType()).isEqualTo(BiboxOrderType.LIMIT_ORDER);
-    assertThat(first.getPrice()).isEqualTo(new BigDecimal("1.00000000"));
-    assertThat(first.getAmount()).isEqualTo(new BigDecimal("0.0400"));
-    assertThat(first.getMoney()).isEqualTo(new BigDecimal("0.04000000"));
-    assertThat(first.getDealAmount()).isEqualTo(new BigDecimal("0.0000"));
-    assertThat(first.getUnexecuted()).isEqualTo(new BigDecimal("0.0400"));
+    assertThat(first.getPrice()).isEqualTo(new Double("1.00000000"));
+    assertThat(first.getAmount()).isEqualTo(new Double("0.0400"));
+    assertThat(first.getMoney()).isEqualTo(new Double("0.04000000"));
+    assertThat(first.getDealAmount()).isEqualTo(new Double("0.0000"));
+    assertThat(first.getUnexecuted()).isEqualTo(new Double("0.0400"));
     assertThat(first.getStatus()).isEqualTo(BiboxOrderStatus.PENDING);
 
     BiboxOrder second = orders.getItems().get(1);
@@ -51,11 +50,11 @@ public class BiboxTradeUnmarshalTest {
     assertThat(second.getCurrencySymbol()).isEqualTo("ETH");
     assertThat(second.getOrderSide()).isEqualTo(BiboxOrderSide.ASK);
     assertThat(second.getOrderType()).isEqualTo(BiboxOrderType.LIMIT_ORDER);
-    assertThat(second.getPrice()).isEqualTo(new BigDecimal("1.00000000"));
-    assertThat(second.getAmount()).isEqualTo(new BigDecimal("0.1000"));
-    assertThat(second.getMoney()).isEqualTo(new BigDecimal("0.10000000"));
-    assertThat(second.getDealAmount()).isEqualTo(new BigDecimal("0.0000"));
-    assertThat(second.getUnexecuted()).isEqualTo(new BigDecimal("0.1000"));
+    assertThat(second.getPrice()).isEqualTo(new Double("1.00000000"));
+    assertThat(second.getAmount()).isEqualTo(new Double("0.1000"));
+    assertThat(second.getMoney()).isEqualTo(new Double("0.10000000"));
+    assertThat(second.getDealAmount()).isEqualTo(new Double("0.0000"));
+    assertThat(second.getUnexecuted()).isEqualTo(new Double("0.1000"));
     assertThat(second.getStatus()).isEqualTo(BiboxOrderStatus.PENDING);
   }
 
@@ -79,10 +78,10 @@ public class BiboxTradeUnmarshalTest {
     assertThat(first.getCurrencySymbol()).isEqualTo("ETH");
     assertThat(first.getOrderSide()).isEqualTo(BiboxOrderSide.ASK);
     assertThat(first.getOrderType()).isEqualTo(BiboxOrderType.LIMIT_ORDER);
-    assertThat(first.getPrice()).isEqualTo(new BigDecimal("0.02641939"));
-    assertThat(first.getAmount()).isEqualTo(new BigDecimal("0.0474"));
-    assertThat(first.getMoney()).isEqualTo(new BigDecimal("0.00125227"));
-    assertThat(first.getFee()).isEqualTo(new BigDecimal("0.00000000"));
+    assertThat(first.getPrice()).isEqualTo(new Double("0.02641939"));
+    assertThat(first.getAmount()).isEqualTo(new Double("0.0474"));
+    assertThat(first.getMoney()).isEqualTo(new Double("0.00125227"));
+    assertThat(first.getFee()).isEqualTo(new Double("0.00000000"));
     assertThat(first.getFeeSymbol()).isEqualTo("BIX");
 
     BiboxOrder second = orders.getItems().get(1);
@@ -93,10 +92,10 @@ public class BiboxTradeUnmarshalTest {
     assertThat(second.getCurrencySymbol()).isEqualTo("ETH");
     assertThat(second.getOrderSide()).isEqualTo(BiboxOrderSide.ASK);
     assertThat(second.getOrderType()).isEqualTo(BiboxOrderType.LIMIT_ORDER);
-    assertThat(second.getPrice()).isEqualTo(new BigDecimal("0.02691475"));
-    assertThat(second.getAmount()).isEqualTo(new BigDecimal("0.0542"));
-    assertThat(second.getMoney()).isEqualTo(new BigDecimal("0.00145877"));
-    assertThat(second.getFee()).isEqualTo(new BigDecimal("0.00000146"));
+    assertThat(second.getPrice()).isEqualTo(new Double("0.02691475"));
+    assertThat(second.getAmount()).isEqualTo(new Double("0.0542"));
+    assertThat(second.getMoney()).isEqualTo(new Double("0.00145877"));
+    assertThat(second.getFee()).isEqualTo(new Double("0.00000146"));
     assertThat(second.getFeeSymbol()).isEqualTo("ETH");
   }
 }

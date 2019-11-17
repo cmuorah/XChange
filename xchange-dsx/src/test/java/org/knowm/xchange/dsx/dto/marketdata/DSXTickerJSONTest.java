@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import org.junit.Test;
@@ -34,22 +33,22 @@ public class DSXTickerJSONTest {
             dsxTickerWrapper
                 .getTicker(DSXAdapters.currencyPairToMarketName(CurrencyPair.BTC_USD))
                 .getLast())
-        .isEqualTo(new BigDecimal("101.773"));
+        .isEqualTo(new Double("101.773"));
     assertThat(
             dsxTickerWrapper
                 .getTicker(DSXAdapters.currencyPairToMarketName(CurrencyPair.BTC_USD))
                 .getHigh())
-        .isEqualTo(new BigDecimal("109.88"));
+        .isEqualTo(new Double("109.88"));
     assertThat(
             dsxTickerWrapper
                 .getTicker(DSXAdapters.currencyPairToMarketName(CurrencyPair.BTC_USD))
                 .getLow())
-        .isEqualTo(new BigDecimal("91.14"));
+        .isEqualTo(new Double("91.14"));
     assertThat(
             dsxTickerWrapper
                 .getTicker(DSXAdapters.currencyPairToMarketName(CurrencyPair.BTC_USD))
                 .getVol())
-        .isEqualTo(new BigDecimal("1632898.2249"));
+        .isEqualTo(new Double("1632898.2249"));
 
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     f.setTimeZone(TimeZone.getTimeZone("UTC"));

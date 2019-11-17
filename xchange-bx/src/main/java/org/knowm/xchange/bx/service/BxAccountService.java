@@ -1,7 +1,6 @@
 package org.knowm.xchange.bx.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bx.BxAdapters;
@@ -25,8 +24,7 @@ public class BxAccountService extends BxAccountServiceRaw implements AccountServ
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal bigDecimal, String s)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double Double, String s) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 

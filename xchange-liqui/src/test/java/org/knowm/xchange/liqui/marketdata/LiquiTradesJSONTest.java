@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
@@ -31,20 +30,20 @@ public class LiquiTradesJSONTest {
     final List<LiquiPublicTrade> ethTrades = ethBtc.getTrades();
 
     assertThat(ethTrades.get(0).getType()).isEqualTo(LiquiTradeType.BUY);
-    assertThat(ethTrades.get(0).getPrice()).isEqualTo(new BigDecimal("0.05308935"));
-    assertThat(ethTrades.get(0).getAmount()).isEqualTo(new BigDecimal("0.130412"));
+    assertThat(ethTrades.get(0).getPrice()).isEqualTo(new Double("0.05308935"));
+    assertThat(ethTrades.get(0).getAmount()).isEqualTo(new Double("0.130412"));
     assertThat(ethTrades.get(0).getTradeId()).isEqualTo(35093453L);
     assertThat(ethTrades.get(0).getTimestamp()).isEqualTo(1509285104L);
 
     assertThat(ethTrades.get(1).getType()).isEqualTo(LiquiTradeType.BUY);
-    assertThat(ethTrades.get(1).getPrice()).isEqualTo(new BigDecimal("0.05308936"));
-    assertThat(ethTrades.get(1).getAmount()).isEqualTo(new BigDecimal("0.13055678"));
+    assertThat(ethTrades.get(1).getPrice()).isEqualTo(new Double("0.05308936"));
+    assertThat(ethTrades.get(1).getAmount()).isEqualTo(new Double("0.13055678"));
     assertThat(ethTrades.get(1).getTradeId()).isEqualTo(35093435L);
     assertThat(ethTrades.get(1).getTimestamp()).isEqualTo(1509285101L);
 
     assertThat(ethTrades.get(2).getType()).isEqualTo(LiquiTradeType.BUY);
-    assertThat(ethTrades.get(2).getPrice()).isEqualTo(new BigDecimal("0.0530532"));
-    assertThat(ethTrades.get(2).getAmount()).isEqualTo(new BigDecimal("0.5402235"));
+    assertThat(ethTrades.get(2).getPrice()).isEqualTo(new Double("0.0530532"));
+    assertThat(ethTrades.get(2).getAmount()).isEqualTo(new Double("0.5402235"));
     assertThat(ethTrades.get(2).getTradeId()).isEqualTo(35093405L);
     assertThat(ethTrades.get(2).getTimestamp()).isEqualTo(1509285093L);
 
@@ -52,20 +51,20 @@ public class LiquiTradesJSONTest {
     final List<LiquiPublicTrade> ltcTrades = ltcBtc.getTrades();
 
     assertThat(ltcTrades.get(0).getType()).isEqualTo(LiquiTradeType.BUY);
-    assertThat(ltcTrades.get(0).getPrice()).isEqualTo(new BigDecimal("0.00972064"));
-    assertThat(ltcTrades.get(0).getAmount()).isEqualTo(new BigDecimal("0.17742352"));
+    assertThat(ltcTrades.get(0).getPrice()).isEqualTo(new Double("0.00972064"));
+    assertThat(ltcTrades.get(0).getAmount()).isEqualTo(new Double("0.17742352"));
     assertThat(ltcTrades.get(0).getTradeId()).isEqualTo(35093212L);
     assertThat(ltcTrades.get(0).getTimestamp()).isEqualTo(1509285037L);
 
     assertThat(ltcTrades.get(1).getType()).isEqualTo(LiquiTradeType.BUY);
-    assertThat(ltcTrades.get(1).getPrice()).isEqualTo(new BigDecimal("0.00972064"));
-    assertThat(ltcTrades.get(1).getAmount()).isEqualTo(new BigDecimal("0.17742352"));
+    assertThat(ltcTrades.get(1).getPrice()).isEqualTo(new Double("0.00972064"));
+    assertThat(ltcTrades.get(1).getAmount()).isEqualTo(new Double("0.17742352"));
     assertThat(ltcTrades.get(1).getTradeId()).isEqualTo(35093203L);
     assertThat(ltcTrades.get(1).getTimestamp()).isEqualTo(1509285035L);
 
     assertThat(ltcTrades.get(2).getType()).isEqualTo(LiquiTradeType.SELL);
-    assertThat(ltcTrades.get(2).getPrice()).isEqualTo(new BigDecimal("0.0096956"));
-    assertThat(ltcTrades.get(2).getAmount()).isEqualTo(new BigDecimal("2.13100861"));
+    assertThat(ltcTrades.get(2).getPrice()).isEqualTo(new Double("0.0096956"));
+    assertThat(ltcTrades.get(2).getAmount()).isEqualTo(new Double("2.13100861"));
     assertThat(ltcTrades.get(2).getTradeId()).isEqualTo(35093113L);
     assertThat(ltcTrades.get(2).getTimestamp()).isEqualTo(1509285003L);
   }

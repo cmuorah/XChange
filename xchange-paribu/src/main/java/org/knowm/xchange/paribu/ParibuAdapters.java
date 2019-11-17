@@ -3,7 +3,6 @@ package org.knowm.xchange.paribu;
 import static org.knowm.xchange.currency.Currency.BTC;
 import static org.knowm.xchange.currency.Currency.TRY;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.Ticker;
@@ -29,12 +28,12 @@ public final class ParibuAdapters {
     }
     BTC_TL btcTL = paribuTicker.getBtcTL();
     if (btcTL != null) {
-      BigDecimal last = btcTL.getLast();
-      BigDecimal lowestAsk = btcTL.getLowestAsk();
-      BigDecimal highestBid = btcTL.getHighestBid();
-      BigDecimal volume = btcTL.getVolume();
-      BigDecimal high24hr = btcTL.getHigh24hr();
-      BigDecimal low24hr = btcTL.getLow24hr();
+      Double last = btcTL.getLast();
+      Double lowestAsk = btcTL.getLowestAsk();
+      Double highestBid = btcTL.getHighestBid();
+      Double volume = btcTL.getVolume();
+      Double high24hr = btcTL.getHigh24hr();
+      Double low24hr = btcTL.getLow24hr();
       return new Ticker.Builder()
           .currencyPair(new CurrencyPair(BTC, Currency.TRY))
           .last(last)

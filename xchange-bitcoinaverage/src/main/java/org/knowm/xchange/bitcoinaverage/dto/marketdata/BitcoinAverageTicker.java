@@ -2,7 +2,6 @@ package org.knowm.xchange.bitcoinaverage.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,11 +11,11 @@ import java.util.Locale;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class BitcoinAverageTicker {
 
-  private final BigDecimal last;
-  private final BigDecimal ask;
-  private final BigDecimal bid;
-  private final BigDecimal volume_percent;
-  private final BigDecimal volume;
+  private final Double last;
+  private final Double ask;
+  private final Double bid;
+  private final Double volume_percent;
+  private final Double volume;
   private final String timestamp;
 
   /**
@@ -29,11 +28,11 @@ public final class BitcoinAverageTicker {
    * @param timestamp
    */
   public BitcoinAverageTicker(
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("volume_btc") BigDecimal volume,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("volume_percent") BigDecimal volume_percent,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("volume_btc") Double volume,
+      @JsonProperty("last") Double last,
+      @JsonProperty("volume_percent") Double volume_percent,
       @JsonProperty("timestamp") String timestamp) {
 
     this.ask = ask;
@@ -44,27 +43,27 @@ public final class BitcoinAverageTicker {
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return ask;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return bid;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getVolumePercent() {
+  public Double getVolumePercent() {
 
     return volume_percent;
   }

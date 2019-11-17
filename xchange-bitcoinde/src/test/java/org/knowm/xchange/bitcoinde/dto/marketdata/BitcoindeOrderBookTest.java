@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /** @author matthewdowney */
@@ -29,15 +28,14 @@ public class BitcoindeOrderBookTest {
 
     // Make sure asks are correct
     assertEquals(
-        bitcoindeOrderBook.getBitcoindeOrders().getAsks()[0].getPrice(), new BigDecimal("2461.61"));
+        bitcoindeOrderBook.getBitcoindeOrders().getAsks()[0].getPrice(), new Double("2461.61"));
     assertEquals(
-        bitcoindeOrderBook.getBitcoindeOrders().getAsks()[0].getAmount(),
-        new BigDecimal("0.0406218"));
+        bitcoindeOrderBook.getBitcoindeOrders().getAsks()[0].getAmount(), new Double("0.0406218"));
 
     // Make sure bids are correct
     assertEquals(
-        bitcoindeOrderBook.getBitcoindeOrders().getBids()[0].getPrice(), new BigDecimal("1200"));
+        bitcoindeOrderBook.getBitcoindeOrders().getBids()[0].getPrice(), new Double("1200"));
     assertEquals(
-        bitcoindeOrderBook.getBitcoindeOrders().getBids()[0].getAmount(), new BigDecimal("8.333"));
+        bitcoindeOrderBook.getBitcoindeOrders().getBids()[0].getAmount(), new Double("8.333"));
   }
 }

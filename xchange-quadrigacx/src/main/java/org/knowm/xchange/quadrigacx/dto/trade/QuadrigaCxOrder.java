@@ -3,7 +3,6 @@ package org.knowm.xchange.quadrigacx.dto.trade;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.quadrigacx.QuadrigaCxUtils;
 
@@ -14,8 +13,8 @@ public final class QuadrigaCxOrder {
   /** 0 - buy (bid); 1 - sell (ask) */
   private final int type;
 
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final String errorMessage;
 
   /**
@@ -31,8 +30,8 @@ public final class QuadrigaCxOrder {
       @JsonProperty("id") String id,
       @JsonProperty("datetime") String datetime,
       @JsonProperty("type") int type,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("error") @JsonDeserialize(using = QuadrigaCxErrorDeserializer.class)
           String errorMessage) {
 
@@ -59,12 +58,12 @@ public final class QuadrigaCxOrder {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.gateio.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.gateio.GateioAdapters;
 import org.knowm.xchange.gateio.dto.GateioBaseResponse;
@@ -41,22 +40,22 @@ public class GateioOrderStatus extends GateioBaseResponse {
     return orderStatusInfo.getType();
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
 
     return orderStatusInfo.getRate();
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return orderStatusInfo.getAmount();
   }
 
-  public BigDecimal getInitialRate() {
+  public Double getInitialRate() {
 
     return orderStatusInfo.getInitialRate();
   }
 
-  public BigDecimal getInitialAmount() {
+  public Double getInitialAmount() {
 
     return orderStatusInfo.getInitialAmount();
   }
@@ -72,20 +71,20 @@ public class GateioOrderStatus extends GateioBaseResponse {
     private final String status;
     private final CurrencyPair currencyPair;
     private final GateioOrderType type;
-    private final BigDecimal rate;
-    private final BigDecimal amount;
-    private final BigDecimal initialRate;
-    private final BigDecimal initialAmount;
+    private final Double rate;
+    private final Double amount;
+    private final Double initialRate;
+    private final Double initialAmount;
 
     private BTEROrderStatusInfo(
         @JsonProperty("id") String id,
         @JsonProperty("status") String status,
         @JsonProperty("pair") String currencyPair,
         @JsonProperty("type") GateioOrderType type,
-        @JsonProperty("rate") BigDecimal rate,
-        @JsonProperty("amount") BigDecimal amount,
-        @JsonProperty("initial_rate") BigDecimal initialRate,
-        @JsonProperty("initial_amount") BigDecimal initialAmount) {
+        @JsonProperty("rate") Double rate,
+        @JsonProperty("amount") Double amount,
+        @JsonProperty("initial_rate") Double initialRate,
+        @JsonProperty("initial_amount") Double initialAmount) {
 
       this.id = id;
       this.status = status;
@@ -117,22 +116,22 @@ public class GateioOrderStatus extends GateioBaseResponse {
       return type;
     }
 
-    public BigDecimal getRate() {
+    public Double getRate() {
 
       return rate;
     }
 
-    public BigDecimal getAmount() {
+    public Double getAmount() {
 
       return amount;
     }
 
-    public BigDecimal getInitialRate() {
+    public Double getInitialRate() {
 
       return initialRate;
     }
 
-    public BigDecimal getInitialAmount() {
+    public Double getInitialAmount() {
 
       return initialAmount;
     }

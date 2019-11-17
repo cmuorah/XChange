@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptofacilities.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
 import org.knowm.xchange.cryptofacilities.Util;
@@ -16,8 +15,8 @@ public class CryptoFacilitiesFill extends CryptoFacilitiesResult {
   private final String cliOrdId;
   private final String symbol;
   private final String side;
-  private final BigDecimal size;
-  private final BigDecimal price;
+  private final Double size;
+  private final Double price;
   private final String fillType;
 
   public CryptoFacilitiesFill(
@@ -29,8 +28,8 @@ public class CryptoFacilitiesFill extends CryptoFacilitiesResult {
       @JsonProperty("cliOrdId") String cliOrdId,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("side") String side,
-      @JsonProperty("size") BigDecimal size,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("size") Double size,
+      @JsonProperty("price") Double price,
       @JsonProperty("fillType") String fillType)
       throws ParseException {
 
@@ -71,11 +70,11 @@ public class CryptoFacilitiesFill extends CryptoFacilitiesResult {
     return side;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

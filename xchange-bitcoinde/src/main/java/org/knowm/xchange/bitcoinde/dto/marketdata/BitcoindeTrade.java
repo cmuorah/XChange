@@ -1,14 +1,13 @@
 package org.knowm.xchange.bitcoinde.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author matthewdowney */
 public class BitcoindeTrade {
 
   private final long date;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final int tid;
 
   /**
@@ -21,8 +20,8 @@ public class BitcoindeTrade {
    */
   public BitcoindeTrade(
       @JsonProperty("tid") int tid,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("date") long date) {
 
     this.tid = tid;
@@ -36,12 +35,12 @@ public class BitcoindeTrade {
     return tid;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

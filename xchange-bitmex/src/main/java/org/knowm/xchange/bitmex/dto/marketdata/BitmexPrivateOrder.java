@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitmex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.bitmex.AbstractHttpResponseAware;
 import org.knowm.xchange.bitmex.dto.trade.BitmexSide;
@@ -9,8 +8,8 @@ import org.knowm.xchange.bitmex.dto.trade.BitmexSide;
 /** see field description at http://www.onixs.biz/fix-dictionary/5.0.SP2/fields_by_name.html */
 public class BitmexPrivateOrder extends AbstractHttpResponseAware {
 
-  private final BigDecimal price;
-  private final BigDecimal size;
+  private final Double price;
+  private final Double size;
   private final String symbol;
   private final String id;
   private final String clOrdID;
@@ -22,10 +21,10 @@ public class BitmexPrivateOrder extends AbstractHttpResponseAware {
 
   private final String clOrdLinkID;
 
-  private final BigDecimal simpleOrderQty;
-  private final BigDecimal displayQty;
-  private final BigDecimal stopPx;
-  private final BigDecimal pegOffsetValue;
+  private final Double simpleOrderQty;
+  private final Double displayQty;
+  private final Double stopPx;
+  private final Double pegOffsetValue;
   private final String pegPriceType;
   private final String orderType;
   private final String timeInForce;
@@ -36,11 +35,11 @@ public class BitmexPrivateOrder extends AbstractHttpResponseAware {
   private final boolean workingIndicator;
   private final String ordRejReason;
 
-  private final BigDecimal simpleLeavesQty;
-  private final BigDecimal leavesQty;
-  private final BigDecimal simpleCumQty;
-  private final BigDecimal cumQty;
-  private final BigDecimal avgPx;
+  private final Double simpleLeavesQty;
+  private final Double leavesQty;
+  private final Double simpleCumQty;
+  private final Double cumQty;
+  private final Double avgPx;
 
   private final String multiLegReportingType;
   private final String text;
@@ -51,9 +50,9 @@ public class BitmexPrivateOrder extends AbstractHttpResponseAware {
   private final String error;
 
   public BitmexPrivateOrder(
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("orderID") String id,
-      @JsonProperty("orderQty") BigDecimal size,
+      @JsonProperty("orderQty") Double size,
       @JsonProperty("side") BitmexSide side,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("clOrdID") String clOrdID,
@@ -62,10 +61,10 @@ public class BitmexPrivateOrder extends AbstractHttpResponseAware {
       @JsonProperty("currency") String currency,
       @JsonProperty("settlCurrency") String settleCurrency,
       @JsonProperty("clOrdLinkID") String clOrdLinkID,
-      @JsonProperty("simpleOrderQty") BigDecimal simpleOrderQty,
-      @JsonProperty("displayQty") BigDecimal displayQty,
-      @JsonProperty("stopPx") BigDecimal stopPx,
-      @JsonProperty("pegOffsetValue") BigDecimal pegOffsetValue,
+      @JsonProperty("simpleOrderQty") Double simpleOrderQty,
+      @JsonProperty("displayQty") Double displayQty,
+      @JsonProperty("stopPx") Double stopPx,
+      @JsonProperty("pegOffsetValue") Double pegOffsetValue,
       @JsonProperty("pegPriceType") String pegPriceType,
       @JsonProperty("orderType") String orderType,
       @JsonProperty("timeInForce") String timeInForce,
@@ -75,11 +74,11 @@ public class BitmexPrivateOrder extends AbstractHttpResponseAware {
       @JsonProperty("triggered") String triggered,
       @JsonProperty("workingIndicator") boolean workingIndicator,
       @JsonProperty("ordRejReason") String ordRejReason,
-      @JsonProperty("simpleLeavesQty") BigDecimal simpleLeavesQty,
-      @JsonProperty("leavesQty") BigDecimal leavesQty,
-      @JsonProperty("simpleCumQty") BigDecimal simpleCumQty,
-      @JsonProperty("cumQty") BigDecimal cumQty,
-      @JsonProperty("avgPx") BigDecimal avgPx,
+      @JsonProperty("simpleLeavesQty") Double simpleLeavesQty,
+      @JsonProperty("leavesQty") Double leavesQty,
+      @JsonProperty("simpleCumQty") Double simpleCumQty,
+      @JsonProperty("cumQty") Double cumQty,
+      @JsonProperty("avgPx") Double avgPx,
       @JsonProperty("multiLegReportingType") String multiLegReportingType,
       @JsonProperty("text") String text,
       @JsonProperty("transactTime") Date transactTime,
@@ -121,12 +120,12 @@ public class BitmexPrivateOrder extends AbstractHttpResponseAware {
     this.error = error;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return size;
   }
@@ -172,19 +171,19 @@ public class BitmexPrivateOrder extends AbstractHttpResponseAware {
     return clOrdLinkID;
   }
 
-  public BigDecimal getSimpleOrderQty() {
+  public Double getSimpleOrderQty() {
     return simpleOrderQty;
   }
 
-  public BigDecimal getDisplayQty() {
+  public Double getDisplayQty() {
     return displayQty;
   }
 
-  public BigDecimal getStopPx() {
+  public Double getStopPx() {
     return stopPx;
   }
 
-  public BigDecimal getPegOffsetValue() {
+  public Double getPegOffsetValue() {
     return pegOffsetValue;
   }
 
@@ -224,23 +223,23 @@ public class BitmexPrivateOrder extends AbstractHttpResponseAware {
     return ordRejReason;
   }
 
-  public BigDecimal getSimpleLeavesQty() {
+  public Double getSimpleLeavesQty() {
     return simpleLeavesQty;
   }
 
-  public BigDecimal getLeavesQty() {
+  public Double getLeavesQty() {
     return leavesQty;
   }
 
-  public BigDecimal getSimpleCumQty() {
+  public Double getSimpleCumQty() {
     return simpleCumQty;
   }
 
-  public BigDecimal getCumQty() {
+  public Double getCumQty() {
     return cumQty;
   }
 
-  public BigDecimal getAvgPx() {
+  public Double getAvgPx() {
     return avgPx;
   }
 

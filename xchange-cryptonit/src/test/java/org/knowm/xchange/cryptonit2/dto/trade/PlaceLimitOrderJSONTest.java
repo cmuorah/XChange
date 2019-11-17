@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /** Test Transaction[] JSON parsing */
@@ -24,8 +23,8 @@ public class PlaceLimitOrderJSONTest {
     CryptonitOrder newOrder = mapper.readValue(is, CryptonitOrder.class);
 
     assertThat(newOrder.getId()).isEqualTo(1273070);
-    assertThat(newOrder.getAmount()).isEqualTo(BigDecimal.ONE);
-    assertThat(newOrder.getPrice()).isEqualTo(new BigDecimal("1.25"));
+    assertThat(newOrder.getAmount()).isEqualTo(1d);
+    assertThat(newOrder.getPrice()).isEqualTo(new Double("1.25"));
     assertThat(newOrder.getType()).isEqualTo(0);
   }
 

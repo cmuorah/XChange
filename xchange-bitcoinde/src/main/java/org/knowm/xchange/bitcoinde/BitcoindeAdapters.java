@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitcoinde;
 
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -92,7 +91,7 @@ public final class BitcoindeAdapters {
     // This adapter is not complete yet
     BitcoindeBalance btc = bitcoindeAccount.getData().getBalances().getBtc();
     BitcoindeBalance eth = bitcoindeAccount.getData().getBalances().getEth();
-    BigDecimal eur = bitcoindeAccount.getData().getFidorReservation().getAvailableAmount();
+    Double eur = bitcoindeAccount.getData().getFidorReservation().getAvailableAmount();
 
     Balance btcBalance = new Balance(Currency.BTC, btc.getAvailableAmount());
     Balance ethBalance = new Balance(Currency.ETH, eth.getAvailableAmount());

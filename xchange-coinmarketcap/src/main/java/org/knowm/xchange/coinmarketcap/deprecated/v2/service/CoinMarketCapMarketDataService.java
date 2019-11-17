@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinmarketcap.deprecated.v2.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.*;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinmarketcap.deprecated.v2.dto.marketdata.CoinMarketCapCurrency;
@@ -47,8 +46,8 @@ public class CoinMarketCapMarketDataService extends CoinMarketCapMarketDataServi
       throw new IOException("base and counter currency must not be identical");
 
     CoinMarketCapTicker cmcB = tickers.get(b.getCurrencyCode());
-    BigDecimal price;
-    BigDecimal volume;
+    Double price;
+    Double volume;
     try {
       price = cmcB.getQuotes().get(c.toString()).getPrice();
       volume = cmcB.getQuotes().get(c.toString()).getVolume24h();

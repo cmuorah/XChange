@@ -1,7 +1,6 @@
 package org.knowm.xchange.hitbtc.v2.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +41,7 @@ public class HitbtcAccountServiceRawIntegration extends BaseAuthenticatedService
     }
 
     Assert.assertNotNull(balance);
-    BigDecimal expected = new BigDecimal("0.00000000");
+    Double expected = new Double("0.00000000");
     Assert.assertTrue(expected.equals(balanceMap.get(Currency.BTC).getAvailable()));
   }
 
@@ -57,7 +56,7 @@ public class HitbtcAccountServiceRawIntegration extends BaseAuthenticatedService
     }
 
     Assert.assertNotNull(balance);
-    BigDecimal expected = new BigDecimal("0.040000000");
+    Double expected = new Double("0.040000000");
     Assert.assertTrue(expected.equals(balanceMap.get(Currency.BTC).getAvailable()));
   }
 
@@ -133,7 +132,6 @@ public class HitbtcAccountServiceRawIntegration extends BaseAuthenticatedService
 
     exception.expect(HttpStatusIOException.class);
     exception.expectMessage("HTTP status code was not OK: 400");
-    service.transferFunds(
-        Currency.USD, new BigDecimal("0.01"), HitbtcTransferType.BANK_TO_EXCHANGE);
+    service.transferFunds(Currency.USD, new Double("0.01"), HitbtcTransferType.BANK_TO_EXCHANGE);
   }
 }

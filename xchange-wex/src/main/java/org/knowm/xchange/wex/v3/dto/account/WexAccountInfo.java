@@ -1,7 +1,6 @@
 package org.knowm.xchange.wex.v3.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.Map;
 
@@ -12,7 +11,7 @@ public class WexAccountInfo {
   private final int openOrders;
   private final long serverTime;
   private final Rights rights;
-  private final Map<String, BigDecimal> funds;
+  private final Map<String, Double> funds;
 
   /**
    * Constructor
@@ -28,7 +27,7 @@ public class WexAccountInfo {
       @JsonProperty("open_orders") int openOrders,
       @JsonProperty("server_time") long serverTime,
       @JsonProperty("rights") Rights rights,
-      @JsonProperty("funds") Map<String, BigDecimal> funds) {
+      @JsonProperty("funds") Map<String, Double> funds) {
 
     this.transactionCount = transactionCount;
     this.openOrders = openOrders;
@@ -58,7 +57,7 @@ public class WexAccountInfo {
     return rights;
   }
 
-  public Map<String, BigDecimal> getFunds() {
+  public Map<String, Double> getFunds() {
 
     return funds;
   }

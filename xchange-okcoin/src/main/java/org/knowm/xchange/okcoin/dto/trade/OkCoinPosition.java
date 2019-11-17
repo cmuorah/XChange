@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -20,40 +19,40 @@ public class OkCoinPosition {
 
   private final String type;
 
-  private final BigDecimal rate;
+  private final Double rate;
 
   private final Date createDate;
 
-  private BigDecimal buyAmount;
+  private Double buyAmount;
 
-  private BigDecimal buyAmountAvailable;
+  private Double buyAmountAvailable;
 
-  private BigDecimal buyProfitReal;
+  private Double buyProfitReal;
 
-  private BigDecimal buyPriceAvg;
+  private Double buyPriceAvg;
 
-  private BigDecimal sellAmount;
+  private Double sellAmount;
 
-  private BigDecimal sellAmountAvailable;
+  private Double sellAmountAvailable;
 
-  private BigDecimal sellProfitReal;
+  private Double sellProfitReal;
 
-  private BigDecimal sellPriceAvg;
+  private Double sellPriceAvg;
 
   public OkCoinPosition(
       @JsonProperty("contract_id") final long orderId,
       @JsonProperty("status") final int status,
       @JsonProperty("symbol") final String symbol,
       @JsonProperty("type") final String type,
-      @JsonProperty("lever_rate") final BigDecimal rate,
-      @JsonProperty("buy_amount") final BigDecimal buyAmount,
-      @JsonProperty("buy_available") final BigDecimal buyAmountAvailable,
-      @JsonProperty("buy_profit_real") final BigDecimal buyProfitReal,
-      @JsonProperty("buy_price_avg") final BigDecimal buyPriceAvg,
-      @JsonProperty("sell_amount") final BigDecimal sellAmount,
-      @JsonProperty("sell_available") final BigDecimal sellAmountAvailable,
-      @JsonProperty("sell_profit_real") final BigDecimal sellProfitReal,
-      @JsonProperty("sell_price_avg") final BigDecimal sellPriceAvg,
+      @JsonProperty("lever_rate") final Double rate,
+      @JsonProperty("buy_amount") final Double buyAmount,
+      @JsonProperty("buy_available") final Double buyAmountAvailable,
+      @JsonProperty("buy_profit_real") final Double buyProfitReal,
+      @JsonProperty("buy_price_avg") final Double buyPriceAvg,
+      @JsonProperty("sell_amount") final Double sellAmount,
+      @JsonProperty("sell_available") final Double sellAmountAvailable,
+      @JsonProperty("sell_profit_real") final Double sellProfitReal,
+      @JsonProperty("sell_price_avg") final Double sellPriceAvg,
       @JsonProperty("create_date") final Date createDate) {
 
     this.contractId = orderId;
@@ -95,7 +94,7 @@ public class OkCoinPosition {
     return type;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
 
     return rate;
   }
@@ -105,42 +104,42 @@ public class OkCoinPosition {
     return createDate;
   }
 
-  public BigDecimal getBuyAmount() {
+  public Double getBuyAmount() {
 
     return buyAmount;
   }
 
-  public BigDecimal getBuyAmountAvailable() {
+  public Double getBuyAmountAvailable() {
 
     return buyAmountAvailable;
   }
 
-  public BigDecimal getBuyProfitReal() {
+  public Double getBuyProfitReal() {
 
     return buyProfitReal;
   }
 
-  public BigDecimal getBuyPriceAvg() {
+  public Double getBuyPriceAvg() {
 
     return buyPriceAvg;
   }
 
-  public BigDecimal getSellAmount() {
+  public Double getSellAmount() {
 
     return sellAmount;
   }
 
-  public BigDecimal getSellAmountAvailable() {
+  public Double getSellAmountAvailable() {
 
     return sellAmountAvailable;
   }
 
-  public BigDecimal getSellProfitReal() {
+  public Double getSellProfitReal() {
 
     return sellProfitReal;
   }
 
-  public BigDecimal getSellPriceAvg() {
+  public Double getSellPriceAvg() {
 
     return sellPriceAvg;
   }

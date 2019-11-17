@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -66,10 +65,10 @@ public class GateioAdapterTest {
 
     LimitOrder adaptedOrder = adaptedOrderList.get(0);
     assertThat(adaptedOrder.getType()).isEqualTo(OrderType.ASK);
-    assertThat(adaptedOrder.getOriginalAmount()).isEqualTo(new BigDecimal("100000"));
+    assertThat(adaptedOrder.getOriginalAmount()).isEqualTo(new Double("100000"));
     assertThat(adaptedOrder.getCurrencyPair()).isEqualTo(CurrencyPair.ETH_BTC);
     assertThat(adaptedOrder.getId()).isEqualTo("0");
-    assertThat(adaptedOrder.getLimitPrice()).isEqualTo(new BigDecimal("0.0693"));
+    assertThat(adaptedOrder.getLimitPrice()).isEqualTo(new Double("0.0693"));
   }
 
   @Test
@@ -113,17 +112,15 @@ public class GateioAdapterTest {
 
     assertThat(wallet.getBalances()).hasSize(5);
     assertThat(wallet.getBalance(Currency.BTC).getTotal()).isEqualTo("0.83357671");
-    assertThat(wallet.getBalance(Currency.BTC).getAvailable())
-        .isEqualTo(new BigDecimal("0.83337671"));
-    assertThat(wallet.getBalance(Currency.BTC).getFrozen()).isEqualTo(new BigDecimal("0.0002"));
-    assertThat(wallet.getBalance(Currency.LTC).getAvailable()).isEqualTo(new BigDecimal("94.364"));
-    assertThat(wallet.getBalance(Currency.LTC).getFrozen()).isEqualTo(BigDecimal.ZERO);
+    assertThat(wallet.getBalance(Currency.BTC).getAvailable()).isEqualTo(new Double("0.83337671"));
+    assertThat(wallet.getBalance(Currency.BTC).getFrozen()).isEqualTo(new Double("0.0002"));
+    assertThat(wallet.getBalance(Currency.LTC).getAvailable()).isEqualTo(new Double("94.364"));
+    assertThat(wallet.getBalance(Currency.LTC).getFrozen()).isEqualTo(0d);
     assertThat(wallet.getBalance(Currency.getInstance("YAC")).getFrozen())
-        .isEqualTo(new BigDecimal("10.01"));
+        .isEqualTo(new Double("10.01"));
     assertThat(wallet.getBalance(Currency.getInstance("YAC")).getTotal())
-        .isEqualTo(new BigDecimal("10.01"));
-    assertThat(wallet.getBalance(Currency.getInstance("YAC")).getAvailable())
-        .isEqualTo(BigDecimal.ZERO);
+        .isEqualTo(new Double("10.01"));
+    assertThat(wallet.getBalance(Currency.getInstance("YAC")).getAvailable()).isEqualTo(0d);
   }
 
   @Test

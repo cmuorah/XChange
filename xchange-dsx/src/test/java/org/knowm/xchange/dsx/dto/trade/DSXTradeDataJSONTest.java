@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
@@ -42,8 +41,7 @@ public class DSXTradeDataJSONTest {
     assertThat(rv.getFunds().keySet().containsAll(Arrays.asList("BTC", "USD", "EUR", "LTC")))
         .isTrue();
     assertThat(rv.getFunds().get("BTC"))
-        .isEqualToComparingFieldByField(
-            new DSXCurrencyAmount(new BigDecimal("100"), new BigDecimal("95")));
+        .isEqualToComparingFieldByField(new DSXCurrencyAmount(new Double("100"), new Double("95")));
     assertThat(rv.getOrderId()).isEqualTo(1067L);
   }
 
@@ -57,7 +55,7 @@ public class DSXTradeDataJSONTest {
     DSXCancelOrderResult rv = result.getReturnValue();
     Map<String, DSXCurrencyAmount> funds = rv.getFunds();
     assertThat(funds.keySet().containsAll(Arrays.asList("BTC", "USD", "EUR", "LTC"))).isTrue();
-    assertThat(funds.get("USD").getAvailable()).isEqualTo(new BigDecimal("9995"));
+    assertThat(funds.get("USD").getAvailable()).isEqualTo(new Double("9995"));
     assertThat(rv.getOrderId()).isEqualTo(1L);
   }
 

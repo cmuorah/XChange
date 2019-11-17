@@ -3,7 +3,6 @@ package org.knowm.xchange.fcoin;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.lang.annotation.Annotation;
-import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,11 +24,7 @@ public class ApiSignatureTest {
     paramsMap.put(HeaderParam.class, Params.of("FC-ACCESS-TIMESTAMP", "1523069544359"));
     FCoinOrder order =
         new FCoinOrder(
-            "btcusdt",
-            FCoinSide.buy,
-            FCoinType.limit,
-            new BigDecimal("100.0"),
-            new BigDecimal("100.0"));
+            "btcusdt", FCoinSide.buy, FCoinType.limit, new Double("100.0"), new Double("100.0"));
     RequestWriterResolver writerResolver = new RequestWriterResolver();
     writerResolver.addWriter(
         "application/json",

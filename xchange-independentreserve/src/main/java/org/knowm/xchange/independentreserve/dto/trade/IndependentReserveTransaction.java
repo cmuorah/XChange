@@ -1,34 +1,33 @@
 package org.knowm.xchange.independentreserve.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class IndependentReserveTransaction {
 
-  private final BigDecimal balance;
+  private final Double balance;
   private final String bitcoinTransactionId;
   private final String bitcoinTransactionOutputIndex;
   private final String ethereumTransactionId;
   private final String comment;
   private final Date createdTimestamp;
-  private final BigDecimal credit;
+  private final Double credit;
   private final String currencyCode;
-  private final BigDecimal debit;
+  private final Double debit;
   private final Date settleTimestamp;
   private final String status;
   private final Type type;
 
   public IndependentReserveTransaction(
-      @JsonProperty("Balance") BigDecimal balance,
+      @JsonProperty("Balance") Double balance,
       @JsonProperty("BitcoinTransactionId") String bitcoinTransactionId,
       @JsonProperty("BitcoinTransactionOutputIndex") String bitcoinTransactionOutputIndex,
       @JsonProperty("EthereumTransactionId") String ethereumTransactionId,
       @JsonProperty("Comment") String comment,
       @JsonProperty("CreatedTimestampUtc") String createdTimestampUtc,
-      @JsonProperty("Credit") BigDecimal credit,
+      @JsonProperty("Credit") Double credit,
       @JsonProperty("CurrencyCode") String currencyCode,
-      @JsonProperty("Debit") BigDecimal debit,
+      @JsonProperty("Debit") Double debit,
       @JsonProperty("SettleTimestampUtc") String settleTimestampUtc,
       @JsonProperty("Status") String status,
       @JsonProperty("Type") Type type)
@@ -54,7 +53,7 @@ public class IndependentReserveTransaction {
     this.type = type;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
@@ -74,7 +73,7 @@ public class IndependentReserveTransaction {
     return createdTimestamp;
   }
 
-  public BigDecimal getCredit() {
+  public Double getCredit() {
     return credit;
   }
 
@@ -82,7 +81,7 @@ public class IndependentReserveTransaction {
     return currencyCode;
   }
 
-  public BigDecimal getDebit() {
+  public Double getDebit() {
     return debit;
   }
 

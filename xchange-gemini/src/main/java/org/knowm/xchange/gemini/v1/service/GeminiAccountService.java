@@ -1,7 +1,6 @@
 package org.knowm.xchange.gemini.v1.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -52,8 +51,7 @@ public class GeminiAccountService extends GeminiAccountServiceRaw implements Acc
    * @throws IOException
    */
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return withdraw(currency, amount, address);
   }
 

@@ -1,38 +1,37 @@
 package org.knowm.xchange.bittrex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class BittrexV2Summary {
   private Integer openSellOrders;
   private LocalDateTime timeStamp;
-  private BigDecimal last;
-  private BigDecimal low;
+  private Double last;
+  private Double low;
   private LocalDateTime created;
-  private BigDecimal prevDay;
+  private Double prevDay;
   private Integer openBuyOrders;
-  private BigDecimal volume;
-  private BigDecimal baseVolume;
-  private BigDecimal bid;
-  private BigDecimal ask;
+  private Double volume;
+  private Double baseVolume;
+  private Double bid;
+  private Double ask;
   private String marketName;
-  private BigDecimal high;
+  private Double high;
 
   public BittrexV2Summary(
       @JsonProperty("OpenSellOrders") Integer openSellOrders,
       @JsonProperty("TimeStamp") String timeStamp,
-      @JsonProperty("Last") BigDecimal last,
-      @JsonProperty("Low") BigDecimal low,
+      @JsonProperty("Last") Double last,
+      @JsonProperty("Low") Double low,
       @JsonProperty("Created") String created,
-      @JsonProperty("PrevDay") BigDecimal prevDay,
+      @JsonProperty("PrevDay") Double prevDay,
       @JsonProperty("OpenBuyOrders") Integer openBuyOrders,
-      @JsonProperty("Volume") BigDecimal volume,
-      @JsonProperty("BaseVolume") BigDecimal baseVolume,
-      @JsonProperty("Bid") BigDecimal bid,
-      @JsonProperty("Ask") BigDecimal ask,
+      @JsonProperty("Volume") Double volume,
+      @JsonProperty("BaseVolume") Double baseVolume,
+      @JsonProperty("Bid") Double bid,
+      @JsonProperty("Ask") Double ask,
       @JsonProperty("MarketName") String marketName,
-      @JsonProperty("High") BigDecimal high) {
+      @JsonProperty("High") Double high) {
     this.openSellOrders = openSellOrders;
     this.timeStamp = LocalDateTime.parse(timeStamp);
     this.last = last;
@@ -64,19 +63,19 @@ public class BittrexV2Summary {
     this.timeStamp = timeStamp;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public void setLast(BigDecimal last) {
+  public void setLast(Double last) {
     this.last = last;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public void setLow(BigDecimal low) {
+  public void setLow(Double low) {
     this.low = low;
   }
 
@@ -88,11 +87,11 @@ public class BittrexV2Summary {
     this.created = created;
   }
 
-  public BigDecimal getPrevDay() {
+  public Double getPrevDay() {
     return prevDay;
   }
 
-  public void setPrevDay(BigDecimal prevDay) {
+  public void setPrevDay(Double prevDay) {
     this.prevDay = prevDay;
   }
 
@@ -104,35 +103,35 @@ public class BittrexV2Summary {
     this.openBuyOrders = openBuyOrders;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public void setVolume(BigDecimal volume) {
+  public void setVolume(Double volume) {
     this.volume = volume;
   }
 
-  public BigDecimal getBaseVolume() {
+  public Double getBaseVolume() {
     return baseVolume;
   }
 
-  public void setBaseVolume(BigDecimal baseVolume) {
+  public void setBaseVolume(Double baseVolume) {
     this.baseVolume = baseVolume;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public void setBid(BigDecimal bid) {
+  public void setBid(Double bid) {
     this.bid = bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public void setAsk(BigDecimal ask) {
+  public void setAsk(Double ask) {
     this.ask = ask;
   }
 
@@ -144,11 +143,11 @@ public class BittrexV2Summary {
     this.marketName = marketName;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public void setHigh(BigDecimal high) {
+  public void setHigh(Double high) {
     this.high = high;
   }
 

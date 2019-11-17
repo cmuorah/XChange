@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitbay.v3.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class BitbayBalances extends BitbayBaseResponse {
@@ -34,13 +33,13 @@ public class BitbayBalances extends BitbayBaseResponse {
     private String userId;
 
     @JsonProperty("availableFunds")
-    private BigDecimal availableFunds;
+    private Double availableFunds;
 
     @JsonProperty("totalFunds")
-    private BigDecimal totalFunds;
+    private Double totalFunds;
 
     @JsonProperty("lockedFunds")
-    private BigDecimal lockedFunds;
+    private Double lockedFunds;
 
     @JsonProperty("currency")
     private String currency;
@@ -62,15 +61,15 @@ public class BitbayBalances extends BitbayBaseResponse {
       return userId;
     }
 
-    public BigDecimal getAvailableFunds() {
+    public Double getAvailableFunds() {
       return availableFunds;
     }
 
-    public BigDecimal getTotalFunds() {
+    public Double getTotalFunds() {
       return totalFunds;
     }
 
-    public BigDecimal getLockedFunds() {
+    public Double getLockedFunds() {
       return lockedFunds;
     }
 

@@ -5,7 +5,6 @@ import static org.knowm.xchange.currency.Currency.BTC;
 import static org.knowm.xchange.currency.Currency.LTC;
 import static org.knowm.xchange.currency.Currency.USD;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -51,7 +50,7 @@ import org.knowm.xchange.utils.DateUtils;
 
 public final class OkCoinAdapters {
 
-  private static final Balance zeroUsdBalance = new Balance(USD, BigDecimal.ZERO);
+  private static final Balance zeroUsdBalance = new Balance(USD, 0d);
 
   private OkCoinAdapters() {}
 
@@ -118,7 +117,7 @@ public final class OkCoinAdapters {
 
     Map<String, Balance.Builder> builders = new TreeMap<>();
 
-    for (Map.Entry<String, BigDecimal> available : funds.getFree().entrySet()) {
+    for (Map.Entry<String, Double> available : funds.getFree().entrySet()) {
       builders.put(
           available.getKey(),
           new Balance.Builder()
@@ -126,7 +125,7 @@ public final class OkCoinAdapters {
               .available(available.getValue()));
     }
 
-    for (Map.Entry<String, BigDecimal> frozen : funds.getFreezed().entrySet()) {
+    for (Map.Entry<String, Double> frozen : funds.getFreezed().entrySet()) {
       Balance.Builder builder = builders.get(frozen.getKey());
       if (builder == null) {
         builder = new Balance.Builder().currency(Currency.getInstance(frozen.getKey()));
@@ -134,7 +133,7 @@ public final class OkCoinAdapters {
       builders.put(frozen.getKey(), builder.frozen(frozen.getValue()));
     }
 
-    for (Map.Entry<String, BigDecimal> borrowed : funds.getBorrow().entrySet()) {
+    for (Map.Entry<String, Double> borrowed : funds.getBorrow().entrySet()) {
       Balance.Builder builder = builders.get(borrowed.getKey());
       if (builder == null) {
         builder = new Balance.Builder().currency(Currency.getInstance(borrowed.getKey()));
@@ -198,7 +197,7 @@ public final class OkCoinAdapters {
       OkCoinOrder order = orderResult.getOrders()[i];
 
       // skip cancels that have not yet been filtered out
-      if (order.getDealAmount().equals(BigDecimal.ZERO)) {
+      if (order.getDealAmount().equals(0d)) {
         continue;
       }
       trades.add(adaptTrade(order));
@@ -213,7 +212,7 @@ public final class OkCoinAdapters {
       OkCoinFuturesOrder order = orderResult.getOrders()[i];
 
       // skip cancels that have not yet been filtered out
-      if (order.getDealAmount().equals(BigDecimal.ZERO)) {
+      if (order.getDealAmount().equals(0d)) {
         continue;
       }
       trades.add(adaptTradeFutures(order));
@@ -222,13 +221,13 @@ public final class OkCoinAdapters {
   }
 
   private static Stream<LimitOrder> adaptLimitOrders(
-      OrderType type, BigDecimal[][] list, Date timestamp, CurrencyPair currencyPair) {
+      OrderType type, Double[][] list, Date timestamp, CurrencyPair currencyPair) {
     return Arrays.stream(list)
         .map(data -> adaptLimitOrder(type, data, currencyPair, null, timestamp));
   }
 
   private static LimitOrder adaptLimitOrder(
-      OrderType type, BigDecimal[] data, CurrencyPair currencyPair, String id, Date timestamp) {
+      OrderType type, Double[] data, CurrencyPair currencyPair, String id, Date timestamp) {
 
     return new LimitOrder(type, data[1], currencyPair, id, timestamp, data[0]);
   }
@@ -356,8 +355,8 @@ public final class OkCoinAdapters {
       // { // skip account deposits and withdrawals.
       OrderType orderType =
           okCoinFuturesTrade.getType().equals(TransactionType.sell) ? OrderType.ASK : OrderType.BID;
-      BigDecimal originalAmount = BigDecimal.valueOf(okCoinFuturesTrade.getAmount());
-      BigDecimal price = okCoinFuturesTrade.getPrice();
+      Double originalAmount = Double.valueOf(okCoinFuturesTrade.getAmount());
+      Double price = okCoinFuturesTrade.getPrice();
       Date timestamp = new Date(okCoinFuturesTrade.getTimestamp());
       long transactionId = okCoinFuturesTrade.getId();
       if (transactionId > lastTradeId) {
@@ -367,7 +366,7 @@ public final class OkCoinAdapters {
       final String orderId = String.valueOf(okCoinFuturesTrade.getId());
       final CurrencyPair currencyPair = CurrencyPair.BTC_USD;
 
-      BigDecimal feeAmont = BigDecimal.ZERO;
+      Double feeAmont = 0d;
       UserTrade trade =
           new UserTrade(
               orderType,

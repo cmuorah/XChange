@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.knowm.xchange.bitmex.AbstractHttpResponseAware;
@@ -41,10 +40,10 @@ public final class BitmexWalletTransaction extends AbstractHttpResponseAware {
   private String transactType;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("fee")
-  private BigDecimal fee;
+  private Double fee;
 
   @JsonProperty("transactStatus")
   private String transactStatus;
@@ -62,10 +61,10 @@ public final class BitmexWalletTransaction extends AbstractHttpResponseAware {
   private String transactTime;
 
   @JsonProperty("walletBalance")
-  private BigDecimal walletBalance;
+  private Double walletBalance;
 
   @JsonProperty("marginBalance")
-  private BigDecimal marginBalance;
+  private Double marginBalance;
 
   @JsonProperty("timestamp")
   private String timestamp;
@@ -88,11 +87,11 @@ public final class BitmexWalletTransaction extends AbstractHttpResponseAware {
     return transactType;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
@@ -116,11 +115,11 @@ public final class BitmexWalletTransaction extends AbstractHttpResponseAware {
     return transactTime;
   }
 
-  public BigDecimal getWalletBalance() {
+  public Double getWalletBalance() {
     return walletBalance;
   }
 
-  public BigDecimal getMarginBalance() {
+  public Double getMarginBalance() {
     return marginBalance;
   }
 

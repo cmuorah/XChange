@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto.account;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -36,9 +35,9 @@ public final class Wallet implements Serializable {
   /** Features supported by this wallet */
   private final Set<WalletFeature> features;
   /** Maximum leverage for margin trading supported by this wallet */
-  private BigDecimal maxLeverage = BigDecimal.ZERO;
+  private Double maxLeverage = 0d;
   /** Current leverage for margin trading done on this wallet */
-  private BigDecimal currentLeverage = BigDecimal.ZERO;
+  private Double currentLeverage = 0d;
 
   /**
    * Constructs a {@link Wallet}.
@@ -47,15 +46,15 @@ public final class Wallet implements Serializable {
    * @param name a descriptive name for the wallet
    * @param balances the balances, the currencies of the balances should not be duplicated.
    * @param features all the features that wallet supports
-   *     <p>maxLeverage and currentLeverage are BigDecimal.ZERO for the default constructor
+   *     <p>maxLeverage and currentLeverage are 0d for the default constructor
    */
   public Wallet(
       String id,
       String name,
       Collection<Balance> balances,
       Set<WalletFeature> features,
-      BigDecimal maxLeverage,
-      BigDecimal currentLeverage) {
+      Double maxLeverage,
+      Double currentLeverage) {
 
     this.id = id;
     if (name == null) {
@@ -107,12 +106,12 @@ public final class Wallet implements Serializable {
   }
 
   /** @return Max leverage of wallet */
-  public BigDecimal getMaxLeverage() {
+  public Double getMaxLeverage() {
     return maxLeverage;
   }
 
   /** @return current leverage of wallet */
-  public BigDecimal getCurrentLeverage() {
+  public Double getCurrentLeverage() {
     return currentLeverage;
   }
 
@@ -176,9 +175,9 @@ public final class Wallet implements Serializable {
     private Set<WalletFeature> features =
         Stream.of(WalletFeature.TRADING, WalletFeature.FUNDING).collect(Collectors.toSet());
 
-    private BigDecimal maxLeverage = BigDecimal.ZERO;
+    private Double maxLeverage = 0d;
 
-    private BigDecimal currentLeverage = BigDecimal.ZERO;
+    private Double currentLeverage = 0d;
 
     public static Builder from(Collection<Balance> balances) {
       return new Builder().balances(balances);
@@ -207,13 +206,13 @@ public final class Wallet implements Serializable {
       return this;
     }
 
-    public Builder maxLeverage(BigDecimal maxLeverage) {
+    public Builder maxLeverage(Double maxLeverage) {
 
       this.maxLeverage = maxLeverage;
       return this;
     }
 
-    public Builder currentLeverage(BigDecimal currentLeverage) {
+    public Builder currentLeverage(Double currentLeverage) {
 
       this.currentLeverage = currentLeverage;
       return this;

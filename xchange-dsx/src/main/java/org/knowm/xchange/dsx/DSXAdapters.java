@@ -1,14 +1,9 @@
 package org.knowm.xchange.dsx;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
+import net.openhft.chronicle.core.Maths;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dsx.dto.account.DSXAccountInfo;
@@ -30,11 +25,7 @@ import org.knowm.xchange.dto.meta.CurrencyMetaData;
 import org.knowm.xchange.dto.meta.CurrencyPairMetaData;
 import org.knowm.xchange.dto.meta.ExchangeMetaData;
 import org.knowm.xchange.dto.meta.RateLimit;
-import org.knowm.xchange.dto.trade.LimitOrder;
-import org.knowm.xchange.dto.trade.MarketOrder;
-import org.knowm.xchange.dto.trade.OpenOrders;
-import org.knowm.xchange.dto.trade.UserTrade;
-import org.knowm.xchange.dto.trade.UserTrades;
+import org.knowm.xchange.dto.trade.*;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.utils.DateUtils;
 import org.slf4j.Logger;
@@ -44,18 +35,17 @@ import org.slf4j.LoggerFactory;
 public class DSXAdapters {
 
   private static final Logger log = LoggerFactory.getLogger(DSXAdapters.class);
+  public static DSXExchangeInfo dsxExchangeInfo;
 
   private DSXAdapters() {}
 
-  public static DSXExchangeInfo dsxExchangeInfo;
-
   public static List<LimitOrder> adaptOrders(
-      List<BigDecimal[]> dSXOrders, CurrencyPair currencyPair, String orderTypeString, String id) {
+      List<Double[]> dSXOrders, CurrencyPair currencyPair, String orderTypeString, String id) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
     OrderType orderType = orderTypeString.equalsIgnoreCase("bid") ? OrderType.BID : OrderType.ASK;
 
-    for (BigDecimal[] dsxOrder : dSXOrders) {
+    for (Double[] dsxOrder : dSXOrders) {
       limitOrders.add(adaptOrders(dsxOrder[1], dsxOrder[0], currencyPair, orderType, id));
     }
 
@@ -63,11 +53,7 @@ public class DSXAdapters {
   }
 
   public static LimitOrder adaptOrders(
-      BigDecimal amount,
-      BigDecimal price,
-      CurrencyPair currencyPair,
-      OrderType orderType,
-      String id) {
+      Double amount, Double price, CurrencyPair currencyPair, OrderType orderType, String id) {
 
     return new LimitOrder(orderType, amount, currencyPair, id, null, price);
   }
@@ -76,8 +62,8 @@ public class DSXAdapters {
 
     OrderType orderType =
         dSXTrade.getTradeType().equalsIgnoreCase("bid") ? OrderType.BID : OrderType.ASK;
-    BigDecimal amount = dSXTrade.getAmount();
-    BigDecimal price = dSXTrade.getPrice();
+    Double amount = dSXTrade.getAmount();
+    Double price = dSXTrade.getPrice();
     Date date = DateUtils.fromMillisUtc(dSXTrade.getDate() * 1000L);
 
     final String tradeId = String.valueOf(dSXTrade.getTid());
@@ -101,13 +87,13 @@ public class DSXAdapters {
 
   public static Ticker adaptTicker(DSXTicker dSXTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = dSXTicker.getLast();
-    BigDecimal bid = dSXTicker.getSell();
-    BigDecimal ask = dSXTicker.getBuy();
-    BigDecimal high = dSXTicker.getHigh();
-    BigDecimal low = dSXTicker.getLow();
-    BigDecimal avg = dSXTicker.getAvg();
-    BigDecimal volume = dSXTicker.getVol();
+    Double last = dSXTicker.getLast();
+    Double bid = dSXTicker.getSell();
+    Double ask = dSXTicker.getBuy();
+    Double high = dSXTicker.getHigh();
+    Double low = dSXTicker.getLow();
+    Double avg = dSXTicker.getAvg();
+    Double volume = dSXTicker.getVol();
     Date timestamp = DateUtils.fromMillisUtc(dSXTicker.getUpdated() * 1000L);
 
     return new Ticker.Builder()
@@ -127,8 +113,8 @@ public class DSXAdapters {
     List<Balance> balances = new ArrayList<>();
     for (Entry<String, DSXCurrencyAmount> e : dsxAccountInfo.getFunds().entrySet()) {
       String currency = e.getKey();
-      BigDecimal total = e.getValue().getTotal();
-      BigDecimal available = e.getValue().getAvailable();
+      Double total = e.getValue().getTotal();
+      Double available = e.getValue().getAvailable();
       if (available == null) {
         available = total;
       }
@@ -144,15 +130,15 @@ public class DSXAdapters {
     for (Long id : dsxOrderMap.keySet()) {
       DSXOrder dsxOrder = dsxOrderMap.get(id);
       OrderType orderType = dsxOrder.getType() == DSXOrder.Type.buy ? OrderType.BID : OrderType.ASK;
-      BigDecimal price = dsxOrder.getRate();
+      Double price = dsxOrder.getRate();
       CurrencyPair currencyPair = adaptCurrencyPair(dsxOrder.getPair());
-      Date timestamp = DateUtils.fromUnixTime(Long.valueOf(dsxOrder.getTimestampCreated()));
+      Date timestamp = DateUtils.fromUnixTime(Long.parseLong(dsxOrder.getTimestampCreated()));
 
       limitOrders.add(
           new LimitOrder(
               orderType,
               dsxOrder.getAmount(),
-              dsxOrder.getAmount().subtract(dsxOrder.getRemainingVolume()),
+              dsxOrder.getAmount() - (dsxOrder.getRemainingVolume()),
               currencyPair,
               Long.toString(id),
               timestamp,
@@ -168,13 +154,13 @@ public class DSXAdapters {
       DSXTradeHistoryResult result = entry.getValue();
       OrderType type =
           result.getType() == DSXTradeHistoryResult.Type.buy ? OrderType.BID : OrderType.ASK;
-      BigDecimal price = result.getRate();
-      BigDecimal originalAmount = result.getAmount();
+      Double price = result.getRate();
+      Double originalAmount = result.getAmount();
       Date timeStamp = DateUtils.fromMillisUtc(result.getTimestamp() * 1000L);
       String orderId = String.valueOf(result.getOrderId());
       String tradeId = String.valueOf(entry.getKey());
       CurrencyPair currencyPair = adaptCurrencyPair(result.getPair());
-      BigDecimal feeAmount = result.getCommission();
+      Double feeAmount = result.getCommission();
       Currency feeCurrency = adaptCurrency(result.getCommissionCurrency());
       trades.add(
           new UserTrade(
@@ -254,7 +240,7 @@ public class DSXAdapters {
       Currency symbol, Map<Currency, CurrencyMetaData> currencies, DSXMetaData dsxMetaData) {
 
     if (!currencies.containsKey(symbol)) {
-      BigDecimal withdrawalFee =
+      Double withdrawalFee =
           dsxMetaData.getCurrencies().get(symbol) == null
               ? null
               : dsxMetaData.getCurrencies().get(symbol).getWithdrawalFee();
@@ -265,28 +251,22 @@ public class DSXAdapters {
   public static CurrencyPairMetaData toMarketMetaData(DSXPairInfo info) {
 
     int priceScale = info.getDecimalsPrice();
-    BigDecimal minimumAmount = withScale(info.getMinAmount(), info.getDecimalVolume());
-    BigDecimal maximumAmount = withScale(info.getMaxPrice(), info.getDecimalVolume());
-    BigDecimal feeFraction = info.getFee().movePointLeft(2);
+    Double minimumAmount = withScale(info.getMinAmount(), info.getDecimalVolume());
+    Double maximumAmount = withScale(info.getMaxPrice(), info.getDecimalVolume());
+    Double feeFraction = info.getFee() / 100.0;
 
     return new CurrencyPairMetaData(feeFraction, minimumAmount, maximumAmount, priceScale, null);
   }
 
-  private static BigDecimal withScale(BigDecimal value, int priceScale) {
-
-    try {
-      return value.setScale(priceScale, RoundingMode.UNNECESSARY);
-    } catch (ArithmeticException e) {
-      log.debug("Could not round {} to {} decimal places: {}", value, priceScale, e.getMessage());
-      return value.setScale(priceScale, RoundingMode.CEILING);
-    }
+  private static Double withScale(Double value, int priceScale) {
+    return Maths.roundN(value, priceScale);
   }
 
   public static LimitOrder createLimitOrder(
       MarketOrder marketOrder, DSXExchangeInfo dsxExchangeInfo) {
     DSXPairInfo dsxPairInfo =
         dsxExchangeInfo.getPairs().get(currencyPairToMarketName(marketOrder.getCurrencyPair()));
-    BigDecimal limitPrice =
+    Double limitPrice =
         marketOrder.getType() == OrderType.BID
             ? dsxPairInfo.getMaxPrice()
             : dsxPairInfo.getMinPrice();

@@ -2,8 +2,6 @@ package org.knowm.xchange.bitflyer.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BitflyerParentOrderParameter {
@@ -13,27 +11,26 @@ public class BitflyerParentOrderParameter {
   private String productCode;
   private BitflyerParentOrderConditionType conditionType;
   private BitflyerSide side;
-  private BigDecimal price;
-  private BigDecimal triggerPrice;
-  private BigDecimal size;
-  private BigDecimal offset;
+  private Double price;
+  private Double triggerPrice;
+  private Double size;
+  private Double offset;
 
   public BitflyerParentOrderParameter(
       String productCode,
       BitflyerParentOrderConditionType conditionType,
       BitflyerSide side,
-      BigDecimal price,
-      BigDecimal triggerPrice,
-      BigDecimal size,
-      BigDecimal offset) {
+      Double price,
+      Double triggerPrice,
+      Double size,
+      Double offset) {
     this.productCode = productCode;
     this.conditionType = conditionType;
     this.side = side;
-    this.price = price != null ? price.setScale(CURRENCY_SCALE, RoundingMode.HALF_EVEN) : null;
-    this.triggerPrice =
-        triggerPrice != null ? triggerPrice.setScale(CURRENCY_SCALE, RoundingMode.HALF_EVEN) : null;
-    this.size = size != null ? size.setScale(SIZE_SCALE, RoundingMode.HALF_EVEN) : null;
-    this.offset = offset != null ? offset.setScale(CURRENCY_SCALE, RoundingMode.HALF_EVEN) : null;
+    this.price = price;
+    this.triggerPrice = triggerPrice;
+    this.size = size;
+    this.offset = offset;
   }
 
   @JsonProperty("product_code")
@@ -64,38 +61,38 @@ public class BitflyerParentOrderParameter {
   }
 
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
   @JsonProperty("trigger_price")
-  public BigDecimal getTriggerPrice() {
+  public Double getTriggerPrice() {
     return triggerPrice;
   }
 
-  public void setTriggerPrice(BigDecimal triggerPrice) {
+  public void setTriggerPrice(Double triggerPrice) {
     this.triggerPrice = triggerPrice;
   }
 
   @JsonProperty("size")
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
-  public void setSize(BigDecimal size) {
+  public void setSize(Double size) {
     this.size = size;
   }
 
   @JsonProperty("offset")
-  public BigDecimal getOffset() {
+  public Double getOffset() {
     return offset;
   }
 
-  public void setOffset(BigDecimal offset) {
+  public void setOffset(Double offset) {
     this.offset = offset;
   }
 

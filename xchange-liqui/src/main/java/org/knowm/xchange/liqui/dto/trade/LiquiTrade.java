@@ -1,17 +1,16 @@
 package org.knowm.xchange.liqui.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LiquiTrade {
 
-  private final BigDecimal received;
-  private final BigDecimal remains;
+  private final Double received;
+  private final Double remains;
   private final long orderId;
   private final long initOrderId;
-  private final Map<String, BigDecimal> funds;
+  private final Map<String, Double> funds;
   private final Object trades;
 
   public LiquiTrade(
@@ -22,21 +21,21 @@ public class LiquiTrade {
       @JsonProperty("funds") final Map<String, String> funds,
       @JsonProperty("trades") final Object trades) {
 
-    this.received = new BigDecimal(received);
-    this.remains = new BigDecimal(remains);
+    this.received = new Double(received);
+    this.remains = new Double(remains);
     this.orderId = orderId;
     this.initOrderId = initOrderId;
     this.funds =
         funds.entrySet().stream()
-            .collect(Collectors.toMap((Map.Entry::getKey), (e -> new BigDecimal(e.getValue()))));
+            .collect(Collectors.toMap((Map.Entry::getKey), (e -> new Double(e.getValue()))));
     this.trades = trades;
   }
 
-  public BigDecimal getReceived() {
+  public Double getReceived() {
     return received;
   }
 
-  public BigDecimal getRemains() {
+  public Double getRemains() {
     return remains;
   }
 
@@ -48,7 +47,7 @@ public class LiquiTrade {
     return initOrderId;
   }
 
-  public Map<String, BigDecimal> getFunds() {
+  public Map<String, Double> getFunds() {
     return funds;
   }
 

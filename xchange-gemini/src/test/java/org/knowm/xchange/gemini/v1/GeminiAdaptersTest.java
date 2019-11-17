@@ -6,7 +6,6 @@ import static org.junit.Assert.assertEquals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,10 +47,10 @@ public class GeminiAdaptersTest {
     Wallet wallet = GeminiAdapters.adaptWallet(response);
 
     assertEquals(2, wallet.getBalances().size());
-    assertEquals(new BigDecimal("105.5"), wallet.getBalance(Currency.USD).getTotal());
-    assertEquals(new BigDecimal("55.5"), wallet.getBalance(Currency.USD).getAvailable());
-    assertEquals(new BigDecimal("50"), wallet.getBalance(Currency.BTC).getTotal());
-    assertEquals(new BigDecimal("30"), wallet.getBalance(Currency.BTC).getAvailable());
+    assertEquals(new Double("105.5"), wallet.getBalance(Currency.USD).getTotal());
+    assertEquals(new Double("55.5"), wallet.getBalance(Currency.USD).getAvailable());
+    assertEquals(new Double("50"), wallet.getBalance(Currency.BTC).getTotal());
+    assertEquals(new Double("30"), wallet.getBalance(Currency.BTC).getAvailable());
   }
 
   @Test
@@ -63,14 +62,12 @@ public class GeminiAdaptersTest {
 
     GeminiLevel lastLevel = levels[levels.length - 1];
     assertEquals(
-        lastLevel.getTimestamp().multiply(new BigDecimal(1000L)).longValue(),
-        container.getTimestamp());
+        lastLevel.getTimestamp() * (new Double(1000L)).longValue(), container.getTimestamp());
     assertEquals(container.getLimitOrders().size(), levels.length);
 
     for (int i = 0; i < levels.length; i++) {
       LimitOrder order = container.getLimitOrders().get(i);
-      long expectedTimestampMillis =
-          levels[i].getTimestamp().multiply(new BigDecimal(1000L)).longValue();
+      long expectedTimestampMillis = levels[i].getTimestamp() * (new Double(1000L)).longValue();
 
       assertEquals(levels[i].getAmount(), order.getOriginalAmount());
       assertEquals(expectedTimestampMillis, order.getTimestamp().getTime());
@@ -90,11 +87,10 @@ public class GeminiAdaptersTest {
     GeminiLevel[] responses = new GeminiLevel[60];
 
     for (int i = 0; i < responses.length; i++) {
-      BigDecimal price = new BigDecimal(350L + i);
-      BigDecimal timestamp =
-          new BigDecimal("1414669893.823615468")
-              .add(new BigDecimal(i * (1 + 60 + 60 * 60 + 60 * 60 * 24)));
-      BigDecimal amount = new BigDecimal(1L + i);
+      Double price = new Double(350L + i);
+      Double timestamp =
+          new Double("1414669893.823615468").add(new Double(i * (1 + 60 + 60 * 60 + 60 * 60 * 24)));
+      Double amount = new Double(1L + i);
       responses[i] = new GeminiLevel(price, amount, timestamp);
     }
 
@@ -111,7 +107,7 @@ public class GeminiAdaptersTest {
     for (int i = 0; i < responses.length; i++) {
       LimitOrder order = orders.getOpenOrders().get(i);
       long expectedTimestampMillis =
-          new BigDecimal(responses[i].getTimestamp()).multiply(new BigDecimal(1000L)).longValue();
+          new Double(responses[i].getTimestamp()) * (new Double(1000L)).longValue();
       Order.OrderType expectedOrderType =
           responses[i].getSide().equalsIgnoreCase("buy")
               ? Order.OrderType.BID
@@ -122,7 +118,7 @@ public class GeminiAdaptersTest {
       assertEquals(responses[i].getRemainingAmount(), order.getRemainingAmount());
       assertEquals(
           responses[i].getExecutedAmount(),
-          order.getOriginalAmount().subtract(order.getRemainingAmount()));
+          order.getOriginalAmount() - (order.getRemainingAmount()));
       assertEquals(GeminiAdapters.adaptCurrencyPair(SYMBOL), order.getCurrencyPair());
       assertEquals(expectedOrderType, order.getType());
       assertEquals(expectedTimestampMillis, order.getTimestamp().getTime());
@@ -142,19 +138,18 @@ public class GeminiAdaptersTest {
     GeminiOrderStatusResponse[] responses = new GeminiOrderStatusResponse[60];
 
     for (int i = 0; i < responses.length; i++) {
-      BigDecimal price = new BigDecimal(350L + i);
-      BigDecimal avgExecutionPrice = price.add(new BigDecimal(0.25 * i));
+      Double price = new Double(350L + i);
+      Double avgExecutionPrice = price.add(new Double(0.25 * i));
       String side = i % 2 == 0 ? "buy" : "sell";
       String type = "limit";
-      BigDecimal timestamp =
-          new BigDecimal("1414658239.41373654")
-              .add(new BigDecimal(i * (1 + 60 + 60 * 60 + 60 * 60 * 24)));
+      Double timestamp =
+          new Double("1414658239.41373654").add(new Double(i * (1 + 60 + 60 * 60 + 60 * 60 * 24)));
       boolean isLive = false;
       boolean isCancelled = false;
       boolean wasForced = false;
-      BigDecimal originalAmount = new BigDecimal("70");
-      BigDecimal remainingAmount = originalAmount.subtract(new BigDecimal(i * 1));
-      BigDecimal executedAmount = originalAmount.subtract(remainingAmount);
+      Double originalAmount = new Double("70");
+      Double remainingAmount = originalAmount - (new Double(i * 1));
+      Double executedAmount = originalAmount - (remainingAmount);
       responses[i] =
           new GeminiOrderStatusResponse(
               i,
@@ -165,7 +160,7 @@ public class GeminiAdaptersTest {
               side,
               type,
               timestamp.toString(),
-              timestamp.multiply(new BigDecimal(1000)).longValue(),
+              timestamp * (new Double(1000)).longValue(),
               isLive,
               isCancelled,
               wasForced,
@@ -186,8 +181,7 @@ public class GeminiAdaptersTest {
 
     for (int i = 0; i < responses.length; i++) {
       Trade trade = trades.getTrades().get(i);
-      long expectedTimestampMillis =
-          responses[i].getTimestamp().multiply(new BigDecimal(1000L)).longValue();
+      long expectedTimestampMillis = responses[i].getTimestamp() * (new Double(1000L)).longValue();
       Order.OrderType expectedOrderType =
           responses[i].getType().equalsIgnoreCase("buy") ? OrderType.BID : OrderType.ASK;
 
@@ -214,15 +208,14 @@ public class GeminiAdaptersTest {
     long orderId = 1000;
 
     for (int i = 0; i < responses.length; i++) {
-      BigDecimal price = new BigDecimal(350L + i);
-      BigDecimal amount = new BigDecimal(1L + i);
-      BigDecimal timestamp =
-          new BigDecimal("1414658239.41373654")
-              .add(new BigDecimal(i * (1 + 60 + 60 * 60 + 60 * 60 * 24)));
+      Double price = new Double(350L + i);
+      Double amount = new Double(1L + i);
+      Double timestamp =
+          new Double("1414658239.41373654").add(new Double(i * (1 + 60 + 60 * 60 + 60 * 60 * 24)));
       String type = i % 2 == 0 ? "buy" : "sell";
       String tradeIdString = String.valueOf(tradeId++);
       String orderIdString = String.valueOf(orderId++);
-      BigDecimal feeAmount = new BigDecimal(0L);
+      Double feeAmount = new Double(0L);
       String feeCurrency = "USD";
       responses[i] =
           new GeminiTradeResponse(
@@ -256,8 +249,8 @@ public class GeminiAdaptersTest {
     Order order = GeminiAdapters.adaptOrder(geminiOrderStatusResponse);
 
     assertThat(order.getId()).isEqualTo("44375901");
-    assertThat(order.getAveragePrice()).isEqualTo(new BigDecimal("400.00"));
-    assertThat(order.getCumulativeAmount()).isEqualTo(new BigDecimal("3"));
+    assertThat(order.getAveragePrice()).isEqualTo(new Double("400.00"));
+    assertThat(order.getCumulativeAmount()).isEqualTo(new Double("3"));
     assertThat(order.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
     assertThat(LimitOrder.class.isAssignableFrom(order.getClass()));
   }
@@ -282,8 +275,8 @@ public class GeminiAdaptersTest {
 
     assertThat(dynamicFees.size()).isEqualTo(fakeSupportedCurrencyPairs.size());
     for (CurrencyPair pair : fakeSupportedCurrencyPairs) {
-      assertThat(dynamicFees.get(pair).getMakerFee()).isEqualTo(new BigDecimal("0.0035"));
-      assertThat(dynamicFees.get(pair).getTakerFee()).isEqualTo(new BigDecimal("0.0010"));
+      assertThat(dynamicFees.get(pair).getMakerFee()).isEqualTo(new Double("0.0035"));
+      assertThat(dynamicFees.get(pair).getTakerFee()).isEqualTo(new Double("0.0010"));
     }
   }
 }

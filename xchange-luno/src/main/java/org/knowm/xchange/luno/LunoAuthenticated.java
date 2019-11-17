@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -159,8 +158,8 @@ public interface LunoAuthenticated extends Luno {
       @HeaderParam("Authorization") ParamsDigest auth,
       @FormParam("pair") String pair,
       @FormParam("type") OrderType type,
-      @FormParam("volume") BigDecimal volume,
-      @FormParam("price") BigDecimal price,
+      @FormParam("volume") Double volume,
+      @FormParam("price") Double price,
       @FormParam("base_account_id") String baseAccountId,
       @FormParam("counter_account_id") String counterAccountId)
       throws IOException, LunoException;
@@ -194,8 +193,8 @@ public interface LunoAuthenticated extends Luno {
       @HeaderParam("Authorization") ParamsDigest auth,
       @FormParam("pair") String pair,
       @FormParam("type") OrderType type,
-      @FormParam("counter_volume") BigDecimal counterVolume,
-      @FormParam("base_volume") BigDecimal baseVolume,
+      @FormParam("counter_volume") Double counterVolume,
+      @FormParam("base_volume") Double baseVolume,
       @FormParam("base_account_id") String baseAccountId,
       @FormParam("counter_account_id") String counterAccountId)
       throws IOException, LunoException;
@@ -338,7 +337,7 @@ public interface LunoAuthenticated extends Luno {
   Withdrawal requestWithdrawal(
       @HeaderParam("Authorization") ParamsDigest auth,
       @FormParam("type") String type,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("beneficiary_id") String beneficiaryId)
       throws IOException, LunoException;
 
@@ -395,7 +394,7 @@ public interface LunoAuthenticated extends Luno {
   @Path("send")
   LunoBoolean send(
       @HeaderParam("Authorization") ParamsDigest auth,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("currency") String currency,
       @FormParam("address") String address,
       @FormParam("description") String description,
@@ -427,7 +426,7 @@ public interface LunoAuthenticated extends Luno {
   LunoQuote createQuote(
       @HeaderParam("Authorization") ParamsDigest auth,
       @FormParam("type") OrderType type,
-      @FormParam("base_amount") BigDecimal baseAmount,
+      @FormParam("base_amount") Double baseAmount,
       @FormParam("pair") String pair)
       throws IOException, LunoException;
 

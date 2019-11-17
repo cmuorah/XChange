@@ -2,7 +2,6 @@ package org.knowm.xchange.kuna.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.kuna.dto.enums.KunaOrderType;
 import org.knowm.xchange.kuna.dto.enums.KunaSide;
@@ -27,14 +26,14 @@ public class KunaOrder {
   private int id;
   private KunaSide side;
   private KunaOrderType orderType;
-  private BigDecimal price;
-  private BigDecimal averagePrice;
+  private Double price;
+  private Double averagePrice;
   private String state;
   private String market;
   private Date createdAt;
-  private BigDecimal volume;
-  private BigDecimal remainingVolume;
-  private BigDecimal executedVolume;
+  private Double volume;
+  private Double remainingVolume;
+  private Double executedVolume;
   private int tradesCount;
 
   /** Hide default constructor. */
@@ -82,7 +81,7 @@ public class KunaOrder {
    *
    * @return price
    */
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -92,7 +91,7 @@ public class KunaOrder {
    * @return average price
    */
   @JsonProperty(AVG_PRICE)
-  public BigDecimal getAveragePrice() {
+  public Double getAveragePrice() {
     return averagePrice;
   }
 
@@ -129,7 +128,7 @@ public class KunaOrder {
    *
    * @return trading volume
    */
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
@@ -139,7 +138,7 @@ public class KunaOrder {
    * @return unfilled amount
    */
   @JsonProperty(REMAINING_VOLUME)
-  public BigDecimal getRemainingVolume() {
+  public Double getRemainingVolume() {
     return remainingVolume;
   }
 
@@ -149,7 +148,7 @@ public class KunaOrder {
    * @return sold amount
    */
   @JsonProperty(EXECUTED_VOLUME)
-  public BigDecimal getExecutedVolume() {
+  public Double getExecutedVolume() {
     return executedVolume;
   }
 
@@ -178,13 +177,13 @@ public class KunaOrder {
       return this;
     }
 
-    public Builder withPrice(BigDecimal price) {
+    public Builder withPrice(Double price) {
       target.price = price;
       return this;
     }
 
     @JsonProperty(AVG_PRICE)
-    public Builder withAveragePrice(BigDecimal averagePrice) {
+    public Builder withAveragePrice(Double averagePrice) {
       target.averagePrice = averagePrice;
       return this;
     }
@@ -209,19 +208,19 @@ public class KunaOrder {
       return this;
     }
 
-    public Builder withVolume(BigDecimal volume) {
+    public Builder withVolume(Double volume) {
       target.volume = volume;
       return this;
     }
 
     @JsonProperty(REMAINING_VOLUME)
-    public Builder withRemainingVolume(BigDecimal remainingVolume) {
+    public Builder withRemainingVolume(Double remainingVolume) {
       target.remainingVolume = remainingVolume;
       return this;
     }
 
     @JsonProperty(EXECUTED_VOLUME)
-    public Builder withExecutedVolume(BigDecimal executedVolume) {
+    public Builder withExecutedVolume(Double executedVolume) {
       target.executedVolume = executedVolume;
       return this;
     }

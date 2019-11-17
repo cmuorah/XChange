@@ -1,20 +1,19 @@
 package org.knowm.xchange.itbit.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class ItBitWithdrawalResponse {
 
   private final String id;
   private final String currency;
-  private final BigDecimal amount;
+  private final Double amount;
   private final String address;
   private final String completionDate;
 
   public ItBitWithdrawalResponse(
       @JsonProperty("id") String id,
       @JsonProperty("currency") String currency,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("address") String address,
       @JsonProperty("completionDate") String completionDate) {
 
@@ -35,7 +34,7 @@ public class ItBitWithdrawalResponse {
     return currency;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

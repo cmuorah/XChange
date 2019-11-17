@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.Ticker;
@@ -26,11 +25,11 @@ public class ParibuAdapterTest {
 
     Ticker ticker = ParibuAdapters.adaptTicker(paribuTicker, new CurrencyPair("BTC", "TRY"));
     assertThat(ticker).isNotNull();
-    assertThat(ticker.getLast()).isEqualTo(new BigDecimal("41400"));
-    assertThat(ticker.getAsk()).isEqualTo(new BigDecimal("41450.89"));
-    assertThat(ticker.getBid()).isEqualTo(new BigDecimal("41400"));
-    assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("2370.89"));
-    assertThat(ticker.getHigh()).isEqualTo(new BigDecimal("42000"));
-    assertThat(ticker.getLow()).isEqualTo(new BigDecimal("37650"));
+    assertThat(ticker.getLast()).isEqualTo(new Double("41400"));
+    assertThat(ticker.getAsk()).isEqualTo(new Double("41450.89"));
+    assertThat(ticker.getBid()).isEqualTo(new Double("41400"));
+    assertThat(ticker.getVolume()).isEqualTo(new Double("2370.89"));
+    assertThat(ticker.getHigh()).isEqualTo(new Double("42000"));
+    assertThat(ticker.getLow()).isEqualTo(new Double("37650"));
   }
 }

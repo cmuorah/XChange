@@ -4,7 +4,6 @@ import static org.knowm.xchange.dto.Order.OrderType.ASK;
 import static org.knowm.xchange.dto.Order.OrderType.BID;
 import static org.knowm.xchange.utils.DateUtils.fromISODateString;
 
-import java.math.BigDecimal;
 import java.util.*;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -143,9 +142,9 @@ public final class TheRockAdapters {
     } catch (Exception e) {
       timestamp = null;
     }
-    BigDecimal amount = order.getAmount();
-    BigDecimal unfilled = order.getAmountUnfilled();
-    BigDecimal cumulative = (unfilled != null && amount != null) ? amount.subtract(unfilled) : null;
+    Double amount = order.getAmount();
+    Double unfilled = order.getAmountUnfilled();
+    Double cumulative = (unfilled != null && amount != null) ? amount - (unfilled) : null;
 
     return new LimitOrder(
         adaptOrderType(order.getSide()),

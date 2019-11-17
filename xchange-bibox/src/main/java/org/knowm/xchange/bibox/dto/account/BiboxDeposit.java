@@ -1,7 +1,6 @@
 package org.knowm.xchange.bibox.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.bibox.dto.BiboxAdapters;
 
@@ -12,7 +11,7 @@ public class BiboxDeposit {
   public final String to;
   public final String coinSymbol;
   public final String confirmCount;
-  public final BigDecimal amount;
+  public final Double amount;
   private final Date updatedAt;
   private final Date createdAt;
   public final String url;
@@ -25,7 +24,7 @@ public class BiboxDeposit {
       @JsonProperty("to") String to,
       @JsonProperty("coin_symbol") String coinSymbol,
       @JsonProperty("confirmCount") String confirmCount,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("updatedAt") String updatedAt,
       @JsonProperty("createdAt") String createdAt,
       @JsonProperty("url") String url,

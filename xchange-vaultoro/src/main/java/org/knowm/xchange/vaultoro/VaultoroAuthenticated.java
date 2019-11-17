@@ -1,7 +1,6 @@
 package org.knowm.xchange.vaultoro;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
@@ -44,8 +43,8 @@ public interface VaultoroAuthenticated extends Vaultoro {
       @PathParam("type") String type,
       @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
       @QueryParam("apikey") String apiKey,
-      @QueryParam("btc") BigDecimal btc,
-      @QueryParam("price") BigDecimal price,
+      @QueryParam("btc") Double btc,
+      @QueryParam("price") Double price,
       @HeaderParam("X-Signature") ParamsDigest signature)
       throws IOException, VaultoroException;
 
@@ -56,8 +55,8 @@ public interface VaultoroAuthenticated extends Vaultoro {
       @PathParam("type") String type,
       @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
       @QueryParam("apikey") String apiKey,
-      @QueryParam("gld") BigDecimal gld,
-      @QueryParam("price") BigDecimal price,
+      @QueryParam("gld") Double gld,
+      @QueryParam("price") Double price,
       @HeaderParam("X-Signature") ParamsDigest signature)
       throws IOException, VaultoroException;
 

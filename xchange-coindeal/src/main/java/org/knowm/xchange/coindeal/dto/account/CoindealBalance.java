@@ -1,7 +1,6 @@
 package org.knowm.xchange.coindeal.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoindealBalance {
 
@@ -9,15 +8,15 @@ public class CoindealBalance {
   private final String currency;
 
   @JsonProperty("available")
-  private final BigDecimal available;
+  private final Double available;
 
   @JsonProperty("reserved")
-  private final BigDecimal reserved;
+  private final Double reserved;
 
   public CoindealBalance(
       @JsonProperty("currency") String currency,
-      @JsonProperty("available") BigDecimal available,
-      @JsonProperty("reserved") BigDecimal reserved) {
+      @JsonProperty("available") Double available,
+      @JsonProperty("reserved") Double reserved) {
     this.currency = currency;
     this.available = available;
     this.reserved = reserved;
@@ -27,11 +26,11 @@ public class CoindealBalance {
     return currency;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 
-  public BigDecimal getReserved() {
+  public Double getReserved() {
     return reserved;
   }
 

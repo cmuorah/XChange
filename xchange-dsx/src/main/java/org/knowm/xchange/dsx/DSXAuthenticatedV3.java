@@ -1,7 +1,6 @@
 package org.knowm.xchange.dsx;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
@@ -207,8 +206,8 @@ public interface DSXAuthenticatedV3 extends DSXAuthenticatedV2 {
       @HeaderParam("Sign") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("type") DSXOrder.Type type,
-      @FormParam("rate") BigDecimal rate,
-      @FormParam("volume") BigDecimal volume,
+      @FormParam("rate") Double rate,
+      @FormParam("volume") Double volume,
       @FormParam("pair") String pair,
       @FormParam("orderType") DSXOrder.OrderType orderType)
       throws IOException;
@@ -343,8 +342,8 @@ public interface DSXAuthenticatedV3 extends DSXAuthenticatedV2 {
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("currency") String currency,
       @FormParam("address") String address,
-      @FormParam("amount") BigDecimal amount,
-      @FormParam("commission") BigDecimal commission)
+      @FormParam("amount") Double amount,
+      @FormParam("commission") Double commission)
       throws IOException;
 
   /**
@@ -384,7 +383,7 @@ public interface DSXAuthenticatedV3 extends DSXAuthenticatedV2 {
       @HeaderParam("Sign") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount)
+      @FormParam("amount") Double amount)
       throws IOException;
 
   /**

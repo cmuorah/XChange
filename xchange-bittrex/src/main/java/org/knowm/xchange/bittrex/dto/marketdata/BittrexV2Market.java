@@ -1,7 +1,6 @@
 package org.knowm.xchange.bittrex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import org.knowm.xchange.currency.Currency;
 
@@ -13,7 +12,7 @@ public class BittrexV2Market {
   private String notice;
   private String baseCurrencyLong;
   private String marketName;
-  private BigDecimal minTradeSize;
+  private Double minTradeSize;
   private Boolean isSponsored;
   private Currency baseCurrency;
   private Currency marketCurrency;
@@ -27,7 +26,7 @@ public class BittrexV2Market {
       @JsonProperty("Notice") String notice,
       @JsonProperty("BaseCurrencyLong") String baseCurrencyLong,
       @JsonProperty("MarketName") String marketName,
-      @JsonProperty("MinTradeSize") BigDecimal minTradeSize,
+      @JsonProperty("MinTradeSize") Double minTradeSize,
       @JsonProperty("IsSponsored") Boolean isSponsored,
       @JsonProperty("BaseCurrency") Currency baseCurrency,
       @JsonProperty("MarketCurrency") Currency marketCurrency,
@@ -102,11 +101,11 @@ public class BittrexV2Market {
     this.marketName = marketName;
   }
 
-  public BigDecimal getMinTradeSize() {
+  public Double getMinTradeSize() {
     return minTradeSize;
   }
 
-  public void setMinTradeSize(BigDecimal minTradeSize) {
+  public void setMinTradeSize(Double minTradeSize) {
     this.minTradeSize = minTradeSize;
   }
 

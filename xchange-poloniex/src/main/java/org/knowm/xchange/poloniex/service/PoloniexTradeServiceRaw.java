@@ -1,7 +1,6 @@
 package org.knowm.xchange.poloniex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -97,7 +96,7 @@ public class PoloniexTradeServiceRaw extends PoloniexBaseService {
         apiKey, signatureCreator, exchange.getNonceFactory(), account);
   }
 
-  public Map<String, Map<String, BigDecimal>> returnTradableBalances() throws IOException {
+  public Map<String, Map<String, Double>> returnTradableBalances() throws IOException {
     return poloniexAuthenticated.returnTradableBalances(
         apiKey, signatureCreator, exchange.getNonceFactory());
   }
@@ -131,16 +130,16 @@ public class PoloniexTradeServiceRaw extends PoloniexBaseService {
               apiKey,
               signatureCreator,
               exchange.getNonceFactory(),
-              limitOrder.getOriginalAmount().toPlainString(),
-              limitOrder.getLimitPrice().toPlainString(),
+              limitOrder.getOriginalAmount().toString(),
+              limitOrder.getLimitPrice().toString(),
               PoloniexUtils.toPairString(limitOrder.getCurrencyPair()),
               lendingRate)
           : poloniexAuthenticated.marginBuy(
               apiKey,
               signatureCreator,
               exchange.getNonceFactory(),
-              limitOrder.getOriginalAmount().toPlainString(),
-              limitOrder.getLimitPrice().toPlainString(),
+              limitOrder.getOriginalAmount().toString(),
+              limitOrder.getLimitPrice().toString(),
               PoloniexUtils.toPairString(limitOrder.getCurrencyPair()),
               lendingRate);
 
@@ -151,8 +150,8 @@ public class PoloniexTradeServiceRaw extends PoloniexBaseService {
               apiKey,
               signatureCreator,
               exchange.getNonceFactory(),
-              limitOrder.getOriginalAmount().toPlainString(),
-              limitOrder.getLimitPrice().toPlainString(),
+              limitOrder.getOriginalAmount().toString(),
+              limitOrder.getLimitPrice().toString(),
               PoloniexUtils.toPairString(limitOrder.getCurrencyPair()),
               fillOrKill,
               immediateOrCancel,
@@ -161,8 +160,8 @@ public class PoloniexTradeServiceRaw extends PoloniexBaseService {
               apiKey,
               signatureCreator,
               exchange.getNonceFactory(),
-              limitOrder.getOriginalAmount().toPlainString(),
-              limitOrder.getLimitPrice().toPlainString(),
+              limitOrder.getOriginalAmount().toString(),
+              limitOrder.getLimitPrice().toString(),
               PoloniexUtils.toPairString(limitOrder.getCurrencyPair()),
               fillOrKill,
               immediateOrCancel,
@@ -171,7 +170,7 @@ public class PoloniexTradeServiceRaw extends PoloniexBaseService {
   }
 
   public PoloniexMoveResponse move(
-      String orderId, BigDecimal originalAmount, BigDecimal limitPrice, PoloniexOrderFlags flag)
+      String orderId, Double originalAmount, Double limitPrice, PoloniexOrderFlags flag)
       throws IOException {
 
     Integer immediateOrCancel;
@@ -193,13 +192,13 @@ public class PoloniexTradeServiceRaw extends PoloniexBaseService {
         signatureCreator,
         exchange.getNonceFactory(),
         orderId,
-        originalAmount.toPlainString(),
-        limitPrice.toPlainString(),
+        originalAmount.toString(),
+        limitPrice.toString(),
         immediateOrCancel,
         postOnly);
   }
 
-  public PoloniexMoveResponse move(String orderId, BigDecimal originalAmount, BigDecimal limitPrice)
+  public PoloniexMoveResponse move(String orderId, Double originalAmount, Double limitPrice)
       throws IOException {
 
     return move(orderId, originalAmount, limitPrice, null);

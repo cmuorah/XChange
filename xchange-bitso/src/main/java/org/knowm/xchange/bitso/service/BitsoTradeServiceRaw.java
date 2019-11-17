@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitso.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitso.BitsoAuthenticated;
 import org.knowm.xchange.bitso.dto.trade.BitsoOrder;
@@ -38,7 +37,7 @@ public class BitsoTradeServiceRaw extends BitsoBaseService {
         exchange.getNonceFactory());
   }
 
-  public BitsoOrder sellBitsoOrder(BigDecimal originalAmount, BigDecimal price) throws IOException {
+  public BitsoOrder sellBitsoOrder(Double originalAmount, Double price) throws IOException {
 
     return bitsoAuthenticated.sell(
         exchange.getExchangeSpecification().getApiKey(),
@@ -48,7 +47,7 @@ public class BitsoTradeServiceRaw extends BitsoBaseService {
         price);
   }
 
-  public BitsoOrder buyBitoOrder(BigDecimal originalAmount, BigDecimal price) throws IOException {
+  public BitsoOrder buyBitoOrder(Double originalAmount, Double price) throws IOException {
 
     return bitsoAuthenticated.buy(
         exchange.getExchangeSpecification().getApiKey(),

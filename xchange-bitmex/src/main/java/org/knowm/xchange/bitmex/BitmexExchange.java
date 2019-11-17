@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitmex;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.*;
 import org.knowm.xchange.BaseExchange;
 import org.knowm.xchange.Exchange;
@@ -22,9 +21,8 @@ import si.mazi.rescu.SynchronizedValueFactory;
 
 public class BitmexExchange extends BaseExchange implements Exchange {
 
-  private SynchronizedValueFactory<Long> nonceFactory = new ExpirationTimeFactory(30);
-
   protected RateLimitUpdateListener rateLimitUpdateListener;
+  private SynchronizedValueFactory<Long> nonceFactory = new ExpirationTimeFactory(30);
 
   /** Adjust host parameters depending on exchange specific parameters */
   private static void concludeHostParams(ExchangeSpecification exchangeSpecification) {
@@ -111,9 +109,7 @@ public class BitmexExchange extends BaseExchange implements Exchange {
         cp -> {
           if (!pairsMap.containsKey(cp)) {
             pairsMap.put(
-                cp,
-                new CurrencyPairMetaData(
-                    null, BigDecimal.ONE, null, getPriceScale(tickers, cp), null));
+                cp, new CurrencyPairMetaData(null, 10d, null, getPriceScale(tickers, cp), null));
           }
           if (!currenciesMap.containsKey(cp.base)) {
             currenciesMap.put(cp.base, null);
@@ -147,11 +143,7 @@ public class BitmexExchange extends BaseExchange implements Exchange {
   }
 
   private Integer getPriceScale(List<BitmexTicker> tickers, CurrencyPair cp) {
-    return tickers.stream()
-        .filter(ticker -> ticker.getSymbol().equals(BitmexAdapters.adaptCurrencyPairToSymbol(cp)))
-        .findFirst()
-        .map(ticker -> ticker.getLastPrice().scale())
-        .get();
+    return 6;
   }
 
   public CurrencyPair determineActiveContract(

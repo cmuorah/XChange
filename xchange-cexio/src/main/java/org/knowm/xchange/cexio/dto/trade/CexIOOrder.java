@@ -1,7 +1,6 @@
 package org.knowm.xchange.cexio.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Author: brox Since: 2/5/14 */
 public class CexIOOrder {
@@ -9,9 +8,9 @@ public class CexIOOrder {
   private final long id;
   private final long time;
   private final Type type;
-  private final BigDecimal price;
-  private final BigDecimal amount;
-  private final BigDecimal pending;
+  private final Double price;
+  private final Double amount;
+  private final Double pending;
   private final String errorMessage;
   private final String symbol1;
   private final String symbol2;
@@ -32,9 +31,9 @@ public class CexIOOrder {
       @JsonProperty("id") long id,
       @JsonProperty("time") long time,
       @JsonProperty("type") Type type,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("pending") BigDecimal pending,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("pending") Double pending,
       @JsonProperty("symbol1") String symbol1,
       @JsonProperty("symbol2") String symbol2,
       @JsonProperty("error") String errorMessage) {
@@ -65,17 +64,17 @@ public class CexIOOrder {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getPending() {
+  public Double getPending() {
 
     return pending;
   }

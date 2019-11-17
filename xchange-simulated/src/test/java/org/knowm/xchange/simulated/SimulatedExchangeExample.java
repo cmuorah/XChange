@@ -8,7 +8,6 @@ import static org.knowm.xchange.simulated.SimulatedExchange.*;
 
 import com.google.common.util.concurrent.RateLimiter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.ExchangeSpecification;
@@ -38,8 +37,8 @@ public class SimulatedExchangeExample {
 
     // Provide an initial balance and fill the exchange with orders. By default
     // every order book is completely empty.
-    exchange.getAccountService().deposit(USD, new BigDecimal(10000));
-    exchange.getAccountService().deposit(BTC, new BigDecimal(10000));
+    exchange.getAccountService().deposit(USD, new Double(10000));
+    exchange.getAccountService().deposit(BTC, new Double(10000));
     MockMarket.mockMarket(exchange);
 
     // Accounts
@@ -49,7 +48,7 @@ public class SimulatedExchangeExample {
     exchange
         .getTradeService()
         .placeMarketOrder(
-            new MarketOrder.Builder(BID, BTC_USD).originalAmount(new BigDecimal("0.1")).build());
+            new MarketOrder.Builder(BID, BTC_USD).originalAmount(new Double("0.1")).build());
 
     // Market data
     System.out.println("Ticker: " + exchange.getMarketDataService().getTicker(BTC_USD));
@@ -70,8 +69,8 @@ public class SimulatedExchangeExample {
 
     // Provide an initial balance and fill the exchange with orders. By default
     // every order book is completely empty.
-    exchange.getAccountService().deposit(USD, new BigDecimal(10000));
-    exchange.getAccountService().deposit(BTC, new BigDecimal(10000));
+    exchange.getAccountService().deposit(USD, new Double(10000));
+    exchange.getAccountService().deposit(BTC, new Double(10000));
     MockMarket.mockMarket(exchange);
 
     // Accounts
@@ -83,8 +82,8 @@ public class SimulatedExchangeExample {
             .getTradeService()
             .placeLimitOrder(
                 new LimitOrder.Builder(BID, BTC_USD)
-                    .originalAmount(new BigDecimal("0.1"))
-                    .limitPrice(new BigDecimal("90")) // this wont execute
+                    .originalAmount(new Double("0.1"))
+                    .limitPrice(new Double("90")) // this wont execute
                     .build());
 
     // Market data
@@ -153,8 +152,8 @@ public class SimulatedExchangeExample {
     makerSpec.setExchangeSpecificParametersItem(ACCOUNT_FACTORY_PARAM, accountFactory);
     SimulatedExchange makerEx =
         (SimulatedExchange) ExchangeFactory.INSTANCE.createExchange(makerSpec);
-    makerEx.getAccountService().deposit(USD, new BigDecimal(10000));
-    makerEx.getAccountService().deposit(BTC, new BigDecimal(10000));
+    makerEx.getAccountService().deposit(USD, new Double(10000));
+    makerEx.getAccountService().deposit(BTC, new Double(10000));
     MockMarket.mockMarket(makerEx);
 
     // Access as a test user. Add realistic transient errors and rate limitation, which
@@ -166,7 +165,7 @@ public class SimulatedExchangeExample {
     takerSpec.setExchangeSpecificParametersItem(ON_OPERATION_PARAM, new RandomExceptionThrower());
     SimulatedExchange takerEx =
         (SimulatedExchange) ExchangeFactory.INSTANCE.createExchange(takerSpec);
-    takerEx.getAccountService().deposit(USD, new BigDecimal(1000));
+    takerEx.getAccountService().deposit(USD, new Double(1000));
 
     // We can now go ahead and interact with the exchange, but now we are forced to obey best
     // practice; we need to obey the rate limit and if we encounter transient exceptions, we
@@ -186,7 +185,7 @@ public class SimulatedExchangeExample {
                 .getTradeService()
                 .placeMarketOrder(
                     new MarketOrder.Builder(BID, BTC_USD)
-                        .originalAmount(new BigDecimal("0.1"))
+                        .originalAmount(new Double("0.1"))
                         .build()));
 
     // Market data

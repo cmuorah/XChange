@@ -3,7 +3,6 @@ package org.knowm.xchange.bitstamp.service;
 import static org.knowm.xchange.dto.Order.OrderType.BID;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -56,7 +55,7 @@ public class BitstampTradeService extends BitstampTradeServiceRaw implements Tra
       for (BitstampOrder bitstampOrder : openOrders) {
         OrderType orderType = bitstampOrder.getType() == 0 ? OrderType.BID : OrderType.ASK;
         String id = Long.toString(bitstampOrder.getId());
-        BigDecimal price = bitstampOrder.getPrice();
+        Double price = bitstampOrder.getPrice();
         limitOrders.add(
             new LimitOrder(
                 orderType,

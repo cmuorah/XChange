@@ -1,24 +1,23 @@
 package org.knowm.xchange.luno.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class LunoTicker {
 
   public final long timestamp;
-  public final BigDecimal bid;
-  public final BigDecimal ask;
-  public final BigDecimal lastTrade;
-  public final BigDecimal rolling24HourVolume;
+  public final Double bid;
+  public final Double ask;
+  public final Double lastTrade;
+  public final Double rolling24HourVolume;
   public final String pair;
 
   public LunoTicker(
       @JsonProperty(value = "timestamp", required = true) long timestamp,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("last_trade") BigDecimal lastTrade,
-      @JsonProperty("rolling_24_hour_volume") BigDecimal rolling24HourVolume,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("last_trade") Double lastTrade,
+      @JsonProperty("rolling_24_hour_volume") Double rolling24HourVolume,
       @JsonProperty("pair") String pair) {
     super();
     this.timestamp = timestamp;

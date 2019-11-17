@@ -28,7 +28,7 @@ abstract class AbstractUserTradeAssert<S extends AbstractUserTradeAssert<S, A>, 
    * @return this assertion object.
    * @throws AssertionError - if the actual UserTrade's feeAmount is not equal to the given one.
    */
-  public S hasFeeAmount(java.math.BigDecimal feeAmount) {
+  public S hasFeeAmount(java.math.Double feeAmount) {
     // check that actual UserTrade we want to make assertions on is not null.
     isNotNull();
 
@@ -37,7 +37,7 @@ abstract class AbstractUserTradeAssert<S extends AbstractUserTradeAssert<S, A>, 
         "\nExpecting feeAmount of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
     // null safe check
-    java.math.BigDecimal actualFeeAmount = actual.getFeeAmount();
+    java.math.Double actualFeeAmount = actual.getFeeAmount();
     if (!Objects.areEqual(actualFeeAmount, feeAmount)) {
       failWithMessage(assertjErrorMessage, actual, feeAmount, actualFeeAmount);
     }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 public class LunoBalance {
@@ -26,17 +25,17 @@ public class LunoBalance {
   public static class Balance {
     public final String accountId;
     public final String asset;
-    public final BigDecimal balance;
-    public final BigDecimal reserved;
-    public final BigDecimal unconfirmed;
+    public final Double balance;
+    public final Double reserved;
+    public final Double unconfirmed;
     public final String name;
 
     public Balance(
         @JsonProperty(value = "account_id", required = true) String accountId,
         @JsonProperty(value = "asset", required = true) String asset,
-        @JsonProperty(value = "balance", required = true) BigDecimal balance,
-        @JsonProperty(value = "reserved", required = true) BigDecimal reserved,
-        @JsonProperty(value = "unconfirmed", required = true) BigDecimal unconfirmed,
+        @JsonProperty(value = "balance", required = true) Double balance,
+        @JsonProperty(value = "reserved", required = true) Double reserved,
+        @JsonProperty(value = "unconfirmed", required = true) Double unconfirmed,
         @JsonProperty(value = "name") String name) {
       super();
       this.accountId = accountId;

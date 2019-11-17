@@ -1,6 +1,5 @@
 package org.knowm.xchange.upbit;
 
-import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.*;
 import org.knowm.xchange.currency.Currency;
@@ -46,8 +45,8 @@ public final class UpbitAdapters {
         .forEach(
             upbitOrder -> {
               OrderType orderType = OrderType.ASK;
-              BigDecimal price = upbitOrder.getAskPrice();
-              BigDecimal amount = upbitOrder.getAskSize();
+              Double price = upbitOrder.getAskPrice();
+              Double amount = upbitOrder.getAskSize();
               LimitOrder limitOrder =
                   new LimitOrder(orderType, amount, currencyPair, null, null, price);
               asks.add(limitOrder);
@@ -70,8 +69,7 @@ public final class UpbitAdapters {
     CurrencyPair currencyPair =
         new CurrencyPair(
             Currency.getInstance(market.split("-")[0]), Currency.getInstance(market.split("-")[1]));
-    final Date date =
-        DateUtils.fromMillisUtc(Long.valueOf(ticker.getTimestamp().longValue()) * 1000);
+    final Date date = DateUtils.fromMillisUtc(ticker.getTimestamp().longValue() * 1000);
     return new Ticker.Builder()
         .currencyPair(currencyPair)
         .high(ticker.getHigh_price())
@@ -109,13 +107,12 @@ public final class UpbitAdapters {
     List<Balance> balances = new ArrayList<>();
     Arrays.stream(wallets.getBalances())
         .forEach(
-            balance -> {
-              balances.add(
-                  new Balance(
-                      Currency.getInstance(balance.getCurrency()),
-                      balance.getBalance().add(balance.getLocked()),
-                      balance.getBalance()));
-            });
+            balance ->
+                balances.add(
+                    new Balance(
+                        Currency.getInstance(balance.getCurrency()),
+                        balance.getBalance() + (balance.getLocked()),
+                        balance.getBalance())));
     return Wallet.Builder.from(balances).build();
   }
 
@@ -123,34 +120,30 @@ public final class UpbitAdapters {
     Order.OrderStatus status = Order.OrderStatus.NEW;
     if (upbitOrderResponse.getState().equalsIgnoreCase("cancel")) {
       status = Order.OrderStatus.CANCELED;
-    } else if (upbitOrderResponse.getExecutedVolume().compareTo(BigDecimal.ZERO) == 0) {
-      status = Order.OrderStatus.NEW;
-    } else if (upbitOrderResponse.getRemainingVolume().compareTo(BigDecimal.ZERO) > 0) {
+    } else if (upbitOrderResponse.getRemainingVolume().compareTo(0d) > 0) {
       status = Order.OrderStatus.PARTIALLY_FILLED;
     } else if (upbitOrderResponse.getState().equalsIgnoreCase("done")) {
       status = Order.OrderStatus.FILLED;
     }
     OrderType type = upbitOrderResponse.getSide().equals("ask") ? OrderType.ASK : OrderType.BID;
-    BigDecimal originalAmount = upbitOrderResponse.getVolume();
+    Double originalAmount = upbitOrderResponse.getVolume();
     String[] markets = upbitOrderResponse.getMarket().split("-");
     CurrencyPair currencyPair =
         new CurrencyPair(new Currency(markets[1]), new Currency(markets[0]));
     String orderId = upbitOrderResponse.getUuid();
-    BigDecimal cumulativeAmount = upbitOrderResponse.getExecutedVolume();
-    BigDecimal price = upbitOrderResponse.getAvgPrice();
+    Double cumulativeAmount = upbitOrderResponse.getExecutedVolume();
+    Double price = upbitOrderResponse.getAvgPrice();
     ZonedDateTime dateTime = ZonedDateTime.parse(upbitOrderResponse.getCreatedAt());
-    LimitOrder order =
-        new LimitOrder(
-            type,
-            originalAmount,
-            currencyPair,
-            orderId,
-            Date.from(dateTime.toInstant()),
-            price,
-            price,
-            cumulativeAmount,
-            upbitOrderResponse.getPaidFee(),
-            status);
-    return order;
+    return new LimitOrder(
+        type,
+        originalAmount,
+        currencyPair,
+        orderId,
+        Date.from(dateTime.toInstant()),
+        price,
+        price,
+        cumulativeAmount,
+        upbitOrderResponse.getPaidFee(),
+        status);
   }
 }

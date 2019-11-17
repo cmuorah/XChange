@@ -1,20 +1,19 @@
 package org.knowm.xchange.upbit.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class UpbitBalance {
   private final String currency;
-  private final BigDecimal balance;
-  private final BigDecimal locked;
-  private final BigDecimal avgKrwBuyPrice;
+  private final Double balance;
+  private final Double locked;
+  private final Double avgKrwBuyPrice;
   private final boolean modified;
 
   public UpbitBalance(
       @JsonProperty("currency") String currency,
-      @JsonProperty("balance") BigDecimal balance,
-      @JsonProperty("locked") BigDecimal locked,
-      @JsonProperty("avg_krw_buy_price") BigDecimal avgKrwBuyPrice,
+      @JsonProperty("balance") Double balance,
+      @JsonProperty("locked") Double locked,
+      @JsonProperty("avg_krw_buy_price") Double avgKrwBuyPrice,
       @JsonProperty("modified") boolean modified) {
     this.currency = currency;
     this.balance = balance;
@@ -27,15 +26,15 @@ public class UpbitBalance {
     return currency;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
-  public BigDecimal getLocked() {
+  public Double getLocked() {
     return locked;
   }
 
-  public BigDecimal getAvgKrwBuyPrice() {
+  public Double getAvgKrwBuyPrice() {
     return avgKrwBuyPrice;
   }
 

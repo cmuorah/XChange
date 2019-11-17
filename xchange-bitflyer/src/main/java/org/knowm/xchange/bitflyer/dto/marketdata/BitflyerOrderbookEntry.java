@@ -1,25 +1,24 @@
 package org.knowm.xchange.bitflyer.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitflyerOrderbookEntry {
 
-  private final BigDecimal price;
-  private final BigDecimal size;
+  private final Double price;
+  private final Double size;
 
   public BitflyerOrderbookEntry(
-      @JsonProperty("price") BigDecimal price, @JsonProperty("size") BigDecimal size) {
+      @JsonProperty("price") Double price, @JsonProperty("size") Double size) {
 
     this.price = price;
     this.size = size;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitmex;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.annotation.Nullable;
 import javax.ws.rs.Consumes;
@@ -172,17 +171,17 @@ public interface BitmexAuthenticated extends Bitmex {
       @HeaderParam("api-signature") ParamsDigest paramsDigest,
       @FormParam("symbol") String symbol,
       @Nullable @FormParam("side") String side,
-      @Nullable @FormParam("orderQty") BigDecimal orderQuantity,
-      @Nullable @FormParam("simpleOrderQty") BigDecimal simpleOrderQuantity,
-      @Nullable @FormParam("displayQty") BigDecimal displayQuantity,
-      @Nullable @FormParam("price") BigDecimal price,
-      @Nullable @FormParam("stopPx") BigDecimal stopPrice,
+      @Nullable @FormParam("orderQty") Double orderQuantity,
+      @Nullable @FormParam("simpleOrderQty") Double simpleOrderQuantity,
+      @Nullable @FormParam("displayQty") Double displayQuantity,
+      @Nullable @FormParam("price") Double price,
+      @Nullable @FormParam("stopPx") Double stopPrice,
       @Nullable @FormParam("ordType") String orderType,
       @Nullable @FormParam("clOrdID") String clOrdID,
       @Nullable @FormParam("execInst") String executionInstructions,
       @Nullable @FormParam("clOrdLinkID") String clOrdLinkID,
       @Nullable @FormParam("contingencyType") String contingencyType,
-      @Nullable @FormParam("pegOffsetValue") BigDecimal pegOffsetValue,
+      @Nullable @FormParam("pegOffsetValue") Double pegOffsetValue,
       @Nullable @FormParam("pegPriceType") String pegPriceType,
       @Nullable @FormParam("timeInForce") String timeInForce,
       @Nullable @FormParam("text") String text)
@@ -227,13 +226,13 @@ public interface BitmexAuthenticated extends Bitmex {
       @Nullable @FormParam("orderID") String orderId,
       @Nullable @FormParam("origClOrdID") String origClOrdID,
       @Nullable @FormParam("clOrdID") String clOrdID,
-      @Nullable @FormParam("simpleOrderQty") BigDecimal simpleOrderQty,
-      @Nullable @FormParam("orderQty") BigDecimal orderQuantity,
-      @Nullable @FormParam("simpleLeavesQty") BigDecimal simpleLeavesQty,
-      @Nullable @FormParam("leavesQty") BigDecimal leavesQty,
-      @Nullable @FormParam("price") BigDecimal price,
-      @Nullable @FormParam("stopPx") BigDecimal stopPrice,
-      @Nullable @FormParam("pegOffsetValue") BigDecimal pegOffsetValue,
+      @Nullable @FormParam("simpleOrderQty") Double simpleOrderQty,
+      @Nullable @FormParam("orderQty") Double orderQuantity,
+      @Nullable @FormParam("simpleLeavesQty") Double simpleLeavesQty,
+      @Nullable @FormParam("leavesQty") Double leavesQty,
+      @Nullable @FormParam("price") Double price,
+      @Nullable @FormParam("stopPx") Double stopPrice,
+      @Nullable @FormParam("pegOffsetValue") Double pegOffsetValue,
       @Nullable @FormParam("text") String text)
       throws IOException, BitmexException;
 
@@ -327,7 +326,7 @@ public interface BitmexAuthenticated extends Bitmex {
       @HeaderParam("api-expires") SynchronizedValueFactory<Long> nonce,
       @HeaderParam("api-signature") ParamsDigest paramsDigest,
       @FormParam("symbol") String symbol,
-      @FormParam("leverage") BigDecimal leverage)
+      @FormParam("leverage") Double leverage)
       throws IOException, BitmexException;
 
   @GET
@@ -418,7 +417,7 @@ public interface BitmexAuthenticated extends Bitmex {
       @HeaderParam("api-expires") SynchronizedValueFactory<Long> nonce,
       @HeaderParam("api-signature") ParamsDigest paramsDigest,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws IOException, BitmexException;
 }

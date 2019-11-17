@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /** Test QuoineTicker JSON parsing */
@@ -26,7 +25,7 @@ public class QuoineWalletJSONTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(quoineAccountInfo.getBitcoinAccount().getId()).isEqualTo(59);
     assertThat(quoineAccountInfo.getBitcoinAccount().getBalance())
-        .isEqualTo(new BigDecimal("2.63499784"));
+        .isEqualTo(new Double("2.63499784"));
     assertThat(quoineAccountInfo.getFiatAccounts()[0].getId()).isEqualTo(52);
   }
 }

@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.dsx.meta;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dsx.DSXExchangeV3;
@@ -50,7 +49,7 @@ public class DSXMetaDataDemoV3 {
         .getTradeService()
         .verifyOrder(
             new MarketOrder.Builder(Order.OrderType.ASK, CurrencyPair.BTC_EUR)
-                .originalAmount(BigDecimal.ONE)
+                .originalAmount(1d)
                 .build());
   }
 }

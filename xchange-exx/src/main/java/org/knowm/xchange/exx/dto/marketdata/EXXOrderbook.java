@@ -1,16 +1,15 @@
 package org.knowm.xchange.exx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class EXXOrderbook {
   @JsonProperty("asks")
-  private List<BigDecimal[]> asks = null;
+  private List<Double[]> asks = null;
 
   @JsonProperty("bids")
-  private List<BigDecimal[]> bids = null;
+  private List<Double[]> bids = null;
 
   @JsonProperty("timestamp")
   private long timestamp;
@@ -23,7 +22,7 @@ public class EXXOrderbook {
    * @param asks
    * @param bids
    */
-  public EXXOrderbook(List<BigDecimal[]> asks, List<BigDecimal[]> bids, long timestamp) {
+  public EXXOrderbook(List<Double[]> asks, List<Double[]> bids, long timestamp) {
     super();
     this.asks = asks;
     this.bids = bids;
@@ -31,22 +30,22 @@ public class EXXOrderbook {
   }
 
   @JsonProperty("asks")
-  public List<BigDecimal[]> getAsks() {
+  public List<Double[]> getAsks() {
     return asks;
   }
 
   @JsonProperty("asks")
-  public void setAsks(List<BigDecimal[]> asks) {
+  public void setAsks(List<Double[]> asks) {
     this.asks = asks;
   }
 
   @JsonProperty("bids")
-  public List<BigDecimal[]> getBids() {
+  public List<Double[]> getBids() {
     return bids;
   }
 
   @JsonProperty("bids")
-  public void setBids(List<BigDecimal[]> bids) {
+  public void setBids(List<Double[]> bids) {
     this.bids = bids;
   }
 

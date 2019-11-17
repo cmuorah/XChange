@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Assert;
 import org.junit.Test;
 import org.knowm.xchange.bittrex.dto.BittrexBaseResponse;
@@ -21,10 +20,10 @@ import org.knowm.xchange.dto.trade.LimitOrder;
 
 public class BittrexAdaptersTest {
 
-  private static final BigDecimal QUANTITY = new BigDecimal("100.32");
-  private static final BigDecimal LIMIT_PRICE = new BigDecimal("200");
-  private static final BigDecimal AVERAGE_PRICE = new BigDecimal("2");
-  private static final BigDecimal FEE = new BigDecimal("1");
+  private static final Double QUANTITY = new Double("100.32");
+  private static final Double LIMIT_PRICE = new Double("200");
+  private static final Double AVERAGE_PRICE = new Double("2");
+  private static final Double FEE = new Double("1");
   private static final String ORDER_UUID = "ORDER-UUID";
 
   @Test
@@ -62,7 +61,7 @@ public class BittrexAdaptersTest {
     assertEquals(CurrencyPair.ETH_USDT, adaptedOrder.getCurrencyPair());
     assertEquals(OrderType.ASK, adaptedOrder.getType());
     assertEquals(QUANTITY, adaptedOrder.getOriginalAmount());
-    assertEquals(BigDecimal.ZERO, adaptedOrder.getCumulativeAmount().stripTrailingZeros());
+    assertEquals(0d, adaptedOrder.getCumulativeAmount().stripTrailingZeros());
     assertEquals(LIMIT_PRICE, adaptedOrder.getLimitPrice());
     assertEquals(FEE, adaptedOrder.getFee());
     assertEquals(AVERAGE_PRICE, adaptedOrder.getAveragePrice());
@@ -98,7 +97,7 @@ public class BittrexAdaptersTest {
     assertEquals(CurrencyPair.ETH_USDT, adaptedOrder.getCurrencyPair());
     assertEquals(OrderType.ASK, adaptedOrder.getType());
     assertEquals(QUANTITY, adaptedOrder.getOriginalAmount());
-    assertEquals(BigDecimal.ZERO, adaptedOrder.getCumulativeAmount().stripTrailingZeros());
+    assertEquals(0d, adaptedOrder.getCumulativeAmount().stripTrailingZeros());
     assertEquals(LIMIT_PRICE, adaptedOrder.getLimitPrice());
     assertEquals(FEE, adaptedOrder.getFee());
     assertEquals(AVERAGE_PRICE, adaptedOrder.getAveragePrice());
@@ -115,7 +114,7 @@ public class BittrexAdaptersTest {
             "USDT-ETH",
             "LIMIT_SELL",
             QUANTITY,
-            new BigDecimal("100.00"),
+            new Double("100.00"),
             null,
             null,
             null,
@@ -147,7 +146,7 @@ public class BittrexAdaptersTest {
             "USDT-ETH",
             "LIMIT_SELL",
             QUANTITY,
-            new BigDecimal("100.31"),
+            new Double("100.31"),
             null,
             null,
             null,
@@ -173,7 +172,7 @@ public class BittrexAdaptersTest {
             "USDT-ETH",
             "LIMIT_SELL",
             QUANTITY,
-            new BigDecimal("100.00"),
+            new Double("100.00"),
             null,
             null,
             null,
@@ -231,7 +230,7 @@ public class BittrexAdaptersTest {
             "USDT-ETH",
             "LIMIT_SELL",
             QUANTITY,
-            new BigDecimal("100.00"),
+            new Double("100.00"),
             null,
             null,
             null,
@@ -263,7 +262,7 @@ public class BittrexAdaptersTest {
             "USDT-ETH",
             "LIMIT_SELL",
             QUANTITY,
-            new BigDecimal("0E-8"),
+            new Double("0E-8"),
             null,
             null,
             null,
@@ -305,7 +304,7 @@ public class BittrexAdaptersTest {
 
     assertThat(order.getId()).isEqualTo("0cb4c4e4-bdc7-4e13-8c13-430e587d2cc1");
     assertThat(order.getAveragePrice()).isNull();
-    assertThat(order.getCumulativeAmount()).isEqualTo(new BigDecimal("0.00000000"));
+    assertThat(order.getCumulativeAmount()).isEqualTo(new Double("0.00000000"));
     assertThat(order.getCurrencyPair()).isEqualTo(CurrencyPair.LTC_BTC);
     assertThat(order.getStatus()).isEqualTo(Order.OrderStatus.NEW);
     assertThat(LimitOrder.class.isAssignableFrom(order.getClass()));
@@ -314,14 +313,12 @@ public class BittrexAdaptersTest {
   @Test
   public void testCalculateFrozenBalance() {
     BittrexBalance balance = new BittrexBalance(null, null, null, null, null, false, null);
-    Assert.assertEquals(BigDecimal.ZERO, BittrexAdapters.calculateFrozenBalance(balance));
+    Assert.assertEquals(0d, BittrexAdapters.calculateFrozenBalance(balance));
 
-    balance =
-        new BittrexBalance(
-            BigDecimal.ONE, new BigDecimal("100"), null, null, BigDecimal.TEN, false, null);
-    Assert.assertEquals(new BigDecimal("89"), BittrexAdapters.calculateFrozenBalance(balance));
+    balance = new BittrexBalance(1d, new Double("100"), null, null, 10d, false, null);
+    Assert.assertEquals(new Double("89"), BittrexAdapters.calculateFrozenBalance(balance));
 
-    balance = new BittrexBalance(null, new BigDecimal("100"), null, null, null, false, null);
-    Assert.assertEquals(new BigDecimal("100"), BittrexAdapters.calculateFrozenBalance(balance));
+    balance = new BittrexBalance(null, new Double("100"), null, null, null, false, null);
+    Assert.assertEquals(new Double("100"), BittrexAdapters.calculateFrozenBalance(balance));
   }
 }

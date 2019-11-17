@@ -3,7 +3,6 @@ package org.knowm.xchange.exmo.service;
 import static org.apache.commons.lang3.StringUtils.join;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.*;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
@@ -61,7 +60,7 @@ public class ExmoMarketDataServiceRaw extends BaseExmoService {
       Map<String, String> data = map.get(marketName);
 
       Integer priceScale = null;
-      BigDecimal tradingFee = null;
+      Double tradingFee = null;
 
       if (currencyPairs.containsKey(currencyPair)) {
         priceScale = currencyPairs.get(currencyPair).getPriceScale();
@@ -73,8 +72,8 @@ public class ExmoMarketDataServiceRaw extends BaseExmoService {
       CurrencyPairMetaData currencyPairMetaData =
           new CurrencyPairMetaData(
               tradingFee,
-              new BigDecimal(data.get("min_quantity")),
-              new BigDecimal(data.get("max_quantity")),
+              new Double(data.get("min_quantity")),
+              new Double(data.get("max_quantity")),
               priceScale,
               staticMeta != null ? staticMeta.getFeeTiers() : null);
 
@@ -120,9 +119,9 @@ public class ExmoMarketDataServiceRaw extends BaseExmoService {
         results.add(
             new Trade(
                 type.equalsIgnoreCase("sell") ? Order.OrderType.ASK : Order.OrderType.BID,
-                new BigDecimal(quantity),
+                new Double(quantity),
                 currencyPair,
-                new BigDecimal(price),
+                new Double(price),
                 new Date(unixTimestamp * 1000L),
                 id));
       }

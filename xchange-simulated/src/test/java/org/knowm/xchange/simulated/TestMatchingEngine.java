@@ -20,7 +20,6 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.hamcrest.MockitoHamcrest.argThat;
 
-import java.math.BigDecimal;
 import java.util.function.Consumer;
 import org.assertj.core.matcher.AssertionMatcher;
 import org.junit.Before;
@@ -51,8 +50,7 @@ public class TestMatchingEngine {
   public void setup() {
     MockitoAnnotations.initMocks(this);
     Mockito.when(accountFactory.get(Mockito.anyString())).thenReturn(account);
-    matchingEngine =
-        new MatchingEngine(accountFactory, BTC_USD, 2, new BigDecimal("0.001"), onFill);
+    matchingEngine = new MatchingEngine(accountFactory, BTC_USD, 2, new Double("0.001"), onFill);
   }
 
   @Test
@@ -60,8 +58,8 @@ public class TestMatchingEngine {
     matchingEngine.postOrder(
         TAKER,
         new LimitOrder.Builder(ASK, BTC_USD)
-            .limitPrice(new BigDecimal("100.01"))
-            .originalAmount(new BigDecimal("0.001"))
+            .limitPrice(new Double("100.01"))
+            .originalAmount(new Double("0.001"))
             .build());
   }
 
@@ -69,7 +67,7 @@ public class TestMatchingEngine {
   public void testValidationNoPriceViolation() {
     matchingEngine.postOrder(
         TAKER,
-        new LimitOrder.Builder(ASK, BTC_USD).originalAmount(new BigDecimal("0.000999999")).build());
+        new LimitOrder.Builder(ASK, BTC_USD).originalAmount(new Double("0.000999999")).build());
   }
 
   @Test(expected = ExchangeException.class)
@@ -77,8 +75,8 @@ public class TestMatchingEngine {
     matchingEngine.postOrder(
         TAKER,
         new LimitOrder.Builder(ASK, BTC_USD)
-            .limitPrice(new BigDecimal("100.01"))
-            .originalAmount(new BigDecimal("0.000999999"))
+            .limitPrice(new Double("100.01"))
+            .originalAmount(new Double("0.000999999"))
             .build());
   }
 
@@ -87,8 +85,8 @@ public class TestMatchingEngine {
     matchingEngine.postOrder(
         TAKER,
         new LimitOrder.Builder(ASK, BTC_USD)
-            .limitPrice(new BigDecimal("100.011"))
-            .originalAmount(new BigDecimal("0.001"))
+            .limitPrice(new Double("100.011"))
+            .originalAmount(new Double("0.001"))
             .build());
   }
 
@@ -97,8 +95,8 @@ public class TestMatchingEngine {
     matchingEngine.postOrder(
         TAKER,
         new LimitOrder.Builder(ASK, BTC_USD)
-            .limitPrice(new BigDecimal(0))
-            .originalAmount(new BigDecimal("0.001"))
+            .limitPrice(new Double(0))
+            .originalAmount(new Double("0.001"))
             .build());
   }
 
@@ -107,8 +105,8 @@ public class TestMatchingEngine {
     matchingEngine.postOrder(
         TAKER,
         new LimitOrder.Builder(ASK, BTC_USD)
-            .limitPrice(new BigDecimal("-0.0001"))
-            .originalAmount(new BigDecimal("0.001"))
+            .limitPrice(new Double("-0.0001"))
+            .originalAmount(new Double("0.001"))
             .build());
   }
 
@@ -122,8 +120,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             TAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(5))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(5))
                 .build());
 
     // Then
@@ -146,8 +144,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             TAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(5))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(5))
                 .build());
 
     // Then
@@ -166,13 +164,13 @@ public class TestMatchingEngine {
   @Test(expected = ExchangeException.class)
   public void testMarketAskEmptyBook() {
     matchingEngine.postOrder(
-        TAKER, new MarketOrder.Builder(ASK, BTC_USD).originalAmount(new BigDecimal(5)).build());
+        TAKER, new MarketOrder.Builder(ASK, BTC_USD).originalAmount(new Double(5)).build());
   }
 
   @Test(expected = ExchangeException.class)
   public void testMarketBidEmptyBook() {
     matchingEngine.postOrder(
-        TAKER, new MarketOrder.Builder(BID, BTC_USD).originalAmount(new BigDecimal(5)).build());
+        TAKER, new MarketOrder.Builder(BID, BTC_USD).originalAmount(new Double(5)).build());
   }
 
   @Test
@@ -183,8 +181,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(5))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(5))
                 .build());
 
     verify(account, never()).fill(any(UserTrade.class), any(Boolean.class));
@@ -197,8 +195,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             TAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(5))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(5))
                 .build());
 
     verify(account, times(2)).fill(any(UserTrade.class), any(Boolean.class));
@@ -218,10 +216,10 @@ public class TestMatchingEngine {
                     assertThat(actual.getTrade())
                         .hasOrderId(taker.getId())
                         .hasId()
-                        .hasFeeAmount(new BigDecimal("0.500"))
+                        .hasFeeAmount(new Double("0.500"))
                         .hasFeeCurrency(USD)
-                        .hasOriginalAmount(new BigDecimal(5))
-                        .hasPrice(new BigDecimal(100))
+                        .hasOriginalAmount(new Double(5))
+                        .hasPrice(new Double(100))
                         .hasType(ASK);
                   }
                 }));
@@ -236,10 +234,10 @@ public class TestMatchingEngine {
                     assertThat(actual.getTrade())
                         .hasOrderId(maker.getId())
                         .hasId()
-                        .hasFeeAmount(new BigDecimal("0.005"))
+                        .hasFeeAmount(new Double("0.005"))
                         .hasFeeCurrency(BTC)
-                        .hasOriginalAmount(new BigDecimal(5))
-                        .hasPrice(new BigDecimal(100))
+                        .hasOriginalAmount(new Double(5))
+                        .hasPrice(new Double(100))
                         .hasType(BID);
                   }
                 }));
@@ -259,8 +257,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(5))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(5))
                 .build());
 
     verify(account, never()).fill(any(UserTrade.class), any(Boolean.class));
@@ -273,8 +271,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             TAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(5))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(5))
                 .build());
 
     verify(account, times(2)).fill(any(UserTrade.class), any(Boolean.class));
@@ -294,10 +292,10 @@ public class TestMatchingEngine {
                     assertThat(actual.getTrade())
                         .hasOrderId(taker.getId())
                         .hasId()
-                        .hasFeeAmount(new BigDecimal("0.005"))
+                        .hasFeeAmount(new Double("0.005"))
                         .hasFeeCurrency(BTC)
-                        .hasOriginalAmount(new BigDecimal(5))
-                        .hasPrice(new BigDecimal(100))
+                        .hasOriginalAmount(new Double(5))
+                        .hasPrice(new Double(100))
                         .hasType(BID);
                   }
                 }));
@@ -312,10 +310,10 @@ public class TestMatchingEngine {
                     assertThat(actual.getTrade())
                         .hasOrderId(maker.getId())
                         .hasId()
-                        .hasFeeAmount(new BigDecimal("0.500"))
+                        .hasFeeAmount(new Double("0.500"))
                         .hasFeeCurrency(USD)
-                        .hasOriginalAmount(new BigDecimal(5))
-                        .hasPrice(new BigDecimal(100))
+                        .hasOriginalAmount(new Double(5))
+                        .hasPrice(new Double(100))
                         .hasType(ASK);
                   }
                 }));
@@ -335,8 +333,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(5))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(5))
                 .build());
 
     // When
@@ -344,21 +342,21 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             TAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(7))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(7))
                 .build());
 
     // Then
     assertThat(taker.getStatus()).isEqualTo(PARTIALLY_FILLED);
 
-    verify(onFill).accept(argThat(useAmount(TAKER, taker, new BigDecimal(5))));
-    verify(onFill).accept(argThat(useAmount(MAKER, maker, new BigDecimal(5))));
+    verify(onFill).accept(argThat(useAmount(TAKER, taker, new Double(5))));
+    verify(onFill).accept(argThat(useAmount(MAKER, maker, new Double(5))));
     verifyNoMoreInteractions(onFill);
 
     Level3OrderBook book = matchingEngine.book();
     assertThat(book.getBids()).isEmpty();
     assertThat(book.getAsks()).hasSize(1);
-    assertThat(book.getAsks().get(0).getCumulativeAmount()).isEqualTo(new BigDecimal(5));
+    assertThat(book.getAsks().get(0).getCumulativeAmount()).isEqualTo(new Double(5));
   }
 
   @Test
@@ -369,8 +367,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(5))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(5))
                 .build());
 
     // When
@@ -378,21 +376,21 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             TAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(7))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(7))
                 .build());
 
     // Then
     assertThat(taker.getStatus()).isEqualTo(PARTIALLY_FILLED);
 
-    verify(onFill).accept(argThat(useAmount(TAKER, taker, new BigDecimal(5))));
-    verify(onFill).accept(argThat(useAmount(MAKER, maker, new BigDecimal(5))));
+    verify(onFill).accept(argThat(useAmount(TAKER, taker, new Double(5))));
+    verify(onFill).accept(argThat(useAmount(MAKER, maker, new Double(5))));
     verifyNoMoreInteractions(onFill);
 
     Level3OrderBook book = matchingEngine.book();
     assertThat(book.getBids()).hasSize(1);
     assertThat(book.getAsks()).isEmpty();
-    assertThat(book.getBids().get(0).getCumulativeAmount()).isEqualTo(new BigDecimal(5));
+    assertThat(book.getBids().get(0).getCumulativeAmount()).isEqualTo(new Double(5));
   }
 
   @SuppressWarnings("unchecked")
@@ -404,29 +402,29 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(102))
-                .originalAmount(new BigDecimal(1))
+                .limitPrice(new Double(102))
+                .originalAmount(new Double(1))
                 .build());
     LimitOrder maker2 =
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(2))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(2))
                 .build());
     LimitOrder maker3 =
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(4))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(4))
                 .build());
     LimitOrder maker4 =
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(101))
-                .originalAmount(new BigDecimal(8))
+                .limitPrice(new Double(101))
+                .originalAmount(new Double(8))
                 .build());
 
     // When
@@ -434,8 +432,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             TAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(10))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(10))
                 .build());
 
     // Then
@@ -468,17 +466,9 @@ public class TestMatchingEngine {
         maker4.getOriginalAmount(),
         maker4.getLimitPrice());
     assertFill(
-        fillCaptor1.getAllValues().get(4),
-        TAKER,
-        taker1,
-        new BigDecimal(1),
-        maker2.getLimitPrice());
+        fillCaptor1.getAllValues().get(4), TAKER, taker1, new Double(1), maker2.getLimitPrice());
     assertFill(
-        fillCaptor1.getAllValues().get(5),
-        MAKER,
-        maker2,
-        new BigDecimal(1),
-        maker2.getLimitPrice());
+        fillCaptor1.getAllValues().get(5), MAKER, maker2, new Double(1), maker2.getLimitPrice());
 
     verifyNoMoreInteractions(onFill);
     reset(onFill);
@@ -488,8 +478,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             TAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(5))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(5))
                 .build());
 
     // Then
@@ -498,29 +488,13 @@ public class TestMatchingEngine {
     verify(onFill, atLeastOnce()).accept(fillCaptor2.capture());
     assertThat(fillCaptor2.getAllValues()).hasSize(4);
     assertFill(
-        fillCaptor2.getAllValues().get(0),
-        TAKER,
-        taker2,
-        new BigDecimal(1),
-        maker2.getLimitPrice());
+        fillCaptor2.getAllValues().get(0), TAKER, taker2, new Double(1), maker2.getLimitPrice());
     assertFill(
-        fillCaptor2.getAllValues().get(1),
-        MAKER,
-        maker2,
-        new BigDecimal(1),
-        maker2.getLimitPrice());
+        fillCaptor2.getAllValues().get(1), MAKER, maker2, new Double(1), maker2.getLimitPrice());
     assertFill(
-        fillCaptor2.getAllValues().get(2),
-        TAKER,
-        taker2,
-        new BigDecimal(4),
-        maker3.getLimitPrice());
+        fillCaptor2.getAllValues().get(2), TAKER, taker2, new Double(4), maker3.getLimitPrice());
     assertFill(
-        fillCaptor2.getAllValues().get(3),
-        MAKER,
-        maker3,
-        new BigDecimal(4),
-        maker3.getLimitPrice());
+        fillCaptor2.getAllValues().get(3), MAKER, maker3, new Double(4), maker3.getLimitPrice());
 
     Level3OrderBook book = matchingEngine.book();
     assertThat(book.getBids()).isEmpty();
@@ -536,29 +510,29 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(100))
-                .originalAmount(new BigDecimal(1))
+                .limitPrice(new Double(100))
+                .originalAmount(new Double(1))
                 .build());
     LimitOrder maker2 =
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(102))
-                .originalAmount(new BigDecimal(2))
+                .limitPrice(new Double(102))
+                .originalAmount(new Double(2))
                 .build());
     LimitOrder maker3 =
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(102))
-                .originalAmount(new BigDecimal(4))
+                .limitPrice(new Double(102))
+                .originalAmount(new Double(4))
                 .build());
     LimitOrder maker4 =
         matchingEngine.postOrder(
             MAKER,
             new LimitOrder.Builder(ASK, BTC_USD)
-                .limitPrice(new BigDecimal(101))
-                .originalAmount(new BigDecimal(8))
+                .limitPrice(new Double(101))
+                .originalAmount(new Double(8))
                 .build());
 
     // When
@@ -566,8 +540,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             TAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(102))
-                .originalAmount(new BigDecimal(10))
+                .limitPrice(new Double(102))
+                .originalAmount(new Double(10))
                 .build());
 
     // Then
@@ -600,17 +574,9 @@ public class TestMatchingEngine {
         maker4.getOriginalAmount(),
         maker4.getLimitPrice());
     assertFill(
-        fillCaptor1.getAllValues().get(4),
-        TAKER,
-        taker1,
-        new BigDecimal(1),
-        maker2.getLimitPrice());
+        fillCaptor1.getAllValues().get(4), TAKER, taker1, new Double(1), maker2.getLimitPrice());
     assertFill(
-        fillCaptor1.getAllValues().get(5),
-        MAKER,
-        maker2,
-        new BigDecimal(1),
-        maker2.getLimitPrice());
+        fillCaptor1.getAllValues().get(5), MAKER, maker2, new Double(1), maker2.getLimitPrice());
 
     verifyNoMoreInteractions(onFill);
     reset(onFill);
@@ -620,8 +586,8 @@ public class TestMatchingEngine {
         matchingEngine.postOrder(
             TAKER,
             new LimitOrder.Builder(BID, BTC_USD)
-                .limitPrice(new BigDecimal(102))
-                .originalAmount(new BigDecimal(5))
+                .limitPrice(new Double(102))
+                .originalAmount(new Double(5))
                 .build());
 
     // Then
@@ -630,36 +596,20 @@ public class TestMatchingEngine {
     verify(onFill, atLeastOnce()).accept(fillCaptor2.capture());
     assertThat(fillCaptor2.getAllValues()).hasSize(4);
     assertFill(
-        fillCaptor2.getAllValues().get(0),
-        TAKER,
-        taker2,
-        new BigDecimal(1),
-        maker2.getLimitPrice());
+        fillCaptor2.getAllValues().get(0), TAKER, taker2, new Double(1), maker2.getLimitPrice());
     assertFill(
-        fillCaptor2.getAllValues().get(1),
-        MAKER,
-        maker2,
-        new BigDecimal(1),
-        maker2.getLimitPrice());
+        fillCaptor2.getAllValues().get(1), MAKER, maker2, new Double(1), maker2.getLimitPrice());
     assertFill(
-        fillCaptor2.getAllValues().get(2),
-        TAKER,
-        taker2,
-        new BigDecimal(4),
-        maker3.getLimitPrice());
+        fillCaptor2.getAllValues().get(2), TAKER, taker2, new Double(4), maker3.getLimitPrice());
     assertFill(
-        fillCaptor2.getAllValues().get(3),
-        MAKER,
-        maker3,
-        new BigDecimal(4),
-        maker3.getLimitPrice());
+        fillCaptor2.getAllValues().get(3), MAKER, maker3, new Double(4), maker3.getLimitPrice());
 
     Level3OrderBook book = matchingEngine.book();
     assertThat(book.getBids()).isEmpty();
     assertThat(book.getAsks()).isEmpty();
   }
 
-  private AssertionMatcher<Fill> useAmount(String apiKey, LimitOrder order, BigDecimal amount) {
+  private AssertionMatcher<Fill> useAmount(String apiKey, LimitOrder order, Double amount) {
     return new AssertionMatcher<Fill>() {
       @Override
       public void assertion(Fill actual) throws AssertionError {
@@ -668,8 +618,7 @@ public class TestMatchingEngine {
     };
   }
 
-  private void assertFill(
-      Fill fill, String apiKey, LimitOrder order, BigDecimal amount, BigDecimal price) {
+  private void assertFill(Fill fill, String apiKey, LimitOrder order, Double amount, Double price) {
     assertThat(fill).hasApiKey(apiKey);
     assertThat(fill.getTrade())
         .hasOrderId(order.getId())

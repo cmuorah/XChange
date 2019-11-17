@@ -1,7 +1,6 @@
 package org.knowm.xchange.bittrex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bittrex.dto.account.BittrexBalance;
@@ -76,7 +75,7 @@ public class BittrexAccountServiceRaw extends BittrexBaseService {
         .getResult();
   }
 
-  public String withdraw(String currencyCode, BigDecimal amount, String address, String paymentId)
+  public String withdraw(String currencyCode, Double amount, String address, String paymentId)
       throws IOException {
 
     return bittrexAuthenticated
@@ -85,7 +84,7 @@ public class BittrexAccountServiceRaw extends BittrexBaseService {
             signatureCreator,
             exchange.getNonceFactory(),
             currencyCode,
-            amount.toPlainString(),
+            amount.toString(),
             address,
             paymentId)
         .getResult()

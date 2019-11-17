@@ -1,19 +1,18 @@
 package org.knowm.xchange.exx.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class EXXBalance {
 
   @JsonProperty("total")
-  private BigDecimal total;
+  private Double total;
 
   @JsonProperty("freeze")
-  private BigDecimal freeze;
+  private Double freeze;
 
   @JsonProperty("balance")
-  private BigDecimal balance;
+  private Double balance;
 
   @JsonProperty("fundsType")
   private String fundsType;
@@ -22,13 +21,13 @@ public class EXXBalance {
   private String propTag;
 
   @JsonProperty("credit_quota")
-  private BigDecimal creditQuota;
+  private Double creditQuota;
 
   @JsonProperty("credit_borrowed")
-  private BigDecimal creditBorrowed;
+  private Double creditBorrowed;
 
   @JsonProperty("credit_interest")
-  private BigDecimal creditInterest;
+  private Double creditInterest;
 
   /** No args constructor for use in serialization */
   public EXXBalance() {}
@@ -44,14 +43,14 @@ public class EXXBalance {
    * @param fundsType
    */
   public EXXBalance(
-      BigDecimal total,
-      BigDecimal freeze,
-      BigDecimal balance,
+      Double total,
+      Double freeze,
+      Double balance,
       String fundsType,
       String propTag,
-      BigDecimal creditQuota,
-      BigDecimal creditBorrowed,
-      BigDecimal creditInterest) {
+      Double creditQuota,
+      Double creditBorrowed,
+      Double creditInterest) {
     super();
     this.total = total;
     this.freeze = freeze;
@@ -64,32 +63,32 @@ public class EXXBalance {
   }
 
   @JsonProperty("total")
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 
   @JsonProperty("total")
-  public void setTotal(BigDecimal total) {
+  public void setTotal(Double total) {
     this.total = total;
   }
 
   @JsonProperty("freeze")
-  public BigDecimal getFreeze() {
+  public Double getFreeze() {
     return freeze;
   }
 
   @JsonProperty("freeze")
-  public void setFreeze(BigDecimal freeze) {
+  public void setFreeze(Double freeze) {
     this.freeze = freeze;
   }
 
   @JsonProperty("balance")
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
   @JsonProperty("balance")
-  public void setBalance(BigDecimal balance) {
+  public void setBalance(Double balance) {
     this.balance = balance;
   }
 
@@ -114,32 +113,32 @@ public class EXXBalance {
   }
 
   @JsonProperty("credit_quota")
-  public BigDecimal getCreditQuota() {
+  public Double getCreditQuota() {
     return creditQuota;
   }
 
   @JsonProperty("credit_quota")
-  public void setCreditQuota(BigDecimal creditQuota) {
+  public void setCreditQuota(Double creditQuota) {
     this.creditQuota = creditQuota;
   }
 
   @JsonProperty("credit_borrowed")
-  public BigDecimal getCreditBorrowed() {
+  public Double getCreditBorrowed() {
     return creditBorrowed;
   }
 
   @JsonProperty("credit_borrowed")
-  public void setCreditBorrowed(BigDecimal creditBorrowed) {
+  public void setCreditBorrowed(Double creditBorrowed) {
     this.creditBorrowed = creditBorrowed;
   }
 
   @JsonProperty("credit_interest")
-  public BigDecimal getCreditInterest() {
+  public Double getCreditInterest() {
     return creditInterest;
   }
 
   @JsonProperty("credit_interest")
-  public void setCreditInterest(BigDecimal creditInterest) {
+  public void setCreditInterest(Double creditInterest) {
     this.creditInterest = creditInterest;
   }
 

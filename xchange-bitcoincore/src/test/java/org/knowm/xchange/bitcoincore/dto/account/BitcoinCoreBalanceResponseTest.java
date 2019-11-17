@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 public class BitcoinCoreBalanceResponseTest {
@@ -19,6 +18,6 @@ public class BitcoinCoreBalanceResponseTest {
     ObjectMapper mapper = new ObjectMapper();
     BitcoinCoreBalanceResponse rawBalance = mapper.readValue(is, BitcoinCoreBalanceResponse.class);
 
-    assertThat(rawBalance.getAmount()).isEqualTo(new BigDecimal("68480.47579046"));
+    assertThat(rawBalance.getAmount()).isEqualTo(new Double("68480.47579046"));
   }
 }

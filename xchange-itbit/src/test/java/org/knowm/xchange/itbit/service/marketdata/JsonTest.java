@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.itbit.dto.trade.ItBitTradeHistory;
 import org.knowm.xchange.itbit.dto.trade.ItBitUserTrade;
@@ -34,8 +33,8 @@ public class JsonTest {
 
     assertThat(userTrade.getDirection()).isEqualTo(ItBitUserTrade.Direction.buy);
     assertThat(userTrade.getCurrency1()).isEqualTo("XBT");
-    assertThat(userTrade.getCurrency1Amount()).isEqualByComparingTo(new BigDecimal("0.0001"));
-    assertThat(userTrade.getRebatesApplied()).isEqualTo(new BigDecimal("-0.000125265"));
+    assertThat(userTrade.getCurrency1Amount()).isEqualByComparingTo(new Double("0.0001"));
+    assertThat(userTrade.getRebatesApplied()).isEqualTo(new Double("-0.000125265"));
     assertThat(userTrade.getTimestamp())
         .withDateFormat(new ISO8601DateFormat())
         .isEqualTo("2015-05-11T14:48:01.987Z");

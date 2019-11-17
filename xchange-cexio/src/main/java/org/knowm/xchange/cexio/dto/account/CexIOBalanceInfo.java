@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -68,11 +67,10 @@ public class CexIOBalanceInfo {
         } else if (key.equalsIgnoreCase("error")) {
           error = node.asText();
         } else if (node.isObject()) {
-          BigDecimal available =
-              node.has("available") ? new BigDecimal(node.get("available").asText()) : null;
-          BigDecimal orders =
-              node.has("orders") ? new BigDecimal(node.get("orders").asText()) : null;
-          BigDecimal bonus = node.has("bonus") ? new BigDecimal(node.get("bonus").asText()) : null;
+          Double available =
+              node.has("available") ? new Double(node.get("available").asText()) : null;
+          Double orders = node.has("orders") ? new Double(node.get("orders").asText()) : null;
+          Double bonus = node.has("bonus") ? new Double(node.get("bonus").asText()) : null;
           balances.put(key, new CexIOBalance(available, orders, bonus));
         }
       }

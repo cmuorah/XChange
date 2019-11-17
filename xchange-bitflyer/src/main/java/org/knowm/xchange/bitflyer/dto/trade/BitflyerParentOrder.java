@@ -4,7 +4,6 @@ import static org.knowm.xchange.bitflyer.dto.trade.BitflyerOrderMethod.SIMPLE;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.bitflyer.BitflyerUtils;
@@ -112,10 +111,10 @@ public class BitflyerParentOrder {
         CurrencyPair productCode,
         BitflyerParentOrderConditionType conditionType,
         Order.OrderType side,
-        BigDecimal price,
-        BigDecimal triggerPrice,
-        BigDecimal size,
-        BigDecimal offset) {
+        Double price,
+        Double triggerPrice,
+        Double size,
+        Double offset) {
 
       BitflyerParentOrderParameter parameter =
           new BitflyerParentOrderParameter(

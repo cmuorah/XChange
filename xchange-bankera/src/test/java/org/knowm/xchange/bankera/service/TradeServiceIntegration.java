@@ -1,6 +1,5 @@
 package org.knowm.xchange.bankera.service;
 
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import org.junit.Assert;
@@ -43,11 +42,11 @@ public class TradeServiceIntegration {
     LimitOrder limitOrder =
         new LimitOrder(
             Order.OrderType.BID,
-            BigDecimal.valueOf(0.01),
+            Double.valueOf(0.01),
             CurrencyPair.ETH_BTC,
             "",
             new Date(),
-            BigDecimal.valueOf(0.000001));
+            Double.valueOf(0.000001));
     String createdOrderId = tradeService.placeLimitOrder(limitOrder);
     Assert.assertNotNull(createdOrderId);
     orderId = createdOrderId;
@@ -59,7 +58,7 @@ public class TradeServiceIntegration {
 
     MarketOrder marketOrder =
         new MarketOrder(
-            Order.OrderType.ASK, BigDecimal.valueOf(0.01), CurrencyPair.ETH_BTC, "", new Date());
+            Order.OrderType.ASK, Double.valueOf(0.01), CurrencyPair.ETH_BTC, "", new Date());
 
     Assert.assertNotNull(tradeService.placeMarketOrder(marketOrder));
   }

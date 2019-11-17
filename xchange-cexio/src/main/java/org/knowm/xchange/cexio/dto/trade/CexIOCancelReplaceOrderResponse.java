@@ -1,19 +1,18 @@
 package org.knowm.xchange.cexio.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CexIOCancelReplaceOrderResponse {
 
   private Boolean complete;
-  private BigDecimal price;
-  private BigDecimal amount;
+  private Double price;
+  private Double amount;
   private Date time;
   private String type;
   private String id;
-  private BigDecimal pending;
+  private Double pending;
 
   private String error;
 
@@ -21,11 +20,11 @@ public class CexIOCancelReplaceOrderResponse {
     return complete;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -41,7 +40,7 @@ public class CexIOCancelReplaceOrderResponse {
     return id;
   }
 
-  public BigDecimal getPending() {
+  public Double getPending() {
     return pending;
   }
 

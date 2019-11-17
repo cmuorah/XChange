@@ -1,19 +1,18 @@
 package org.knowm.xchange.bitbay.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author kpysniak */
 public final class BitbayTicker {
 
-  private final BigDecimal max;
-  private final BigDecimal min;
-  private final BigDecimal last;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
-  private final BigDecimal vwap;
-  private final BigDecimal average;
-  private final BigDecimal volume;
+  private final Double max;
+  private final Double min;
+  private final Double last;
+  private final Double bid;
+  private final Double ask;
+  private final Double vwap;
+  private final Double average;
+  private final Double volume;
 
   /**
    * Constructor
@@ -28,14 +27,14 @@ public final class BitbayTicker {
    * @param volume
    */
   public BitbayTicker(
-      @JsonProperty("max") BigDecimal max,
-      @JsonProperty("min") BigDecimal min,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("vwap") BigDecimal vwap,
-      @JsonProperty("average") BigDecimal average,
-      @JsonProperty("volume") BigDecimal volume) {
+      @JsonProperty("max") Double max,
+      @JsonProperty("min") Double min,
+      @JsonProperty("last") Double last,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("vwap") Double vwap,
+      @JsonProperty("average") Double average,
+      @JsonProperty("volume") Double volume) {
 
     this.max = max;
     this.min = min;
@@ -47,42 +46,42 @@ public final class BitbayTicker {
     this.volume = volume;
   }
 
-  public BigDecimal getMax() {
+  public Double getMax() {
 
     return max;
   }
 
-  public BigDecimal getMin() {
+  public Double getMin() {
 
     return min;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return ask;
   }
 
-  public BigDecimal getVwap() {
+  public Double getVwap() {
 
     return vwap;
   }
 
-  public BigDecimal getAverage() {
+  public Double getAverage() {
 
     return average;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }

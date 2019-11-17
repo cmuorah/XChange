@@ -1,7 +1,6 @@
 package org.knowm.xchange.bankera.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.function.Function;
 
@@ -120,10 +119,10 @@ public class BankeraOrder {
     return transactions;
   }
 
-  public BigDecimal getTotalFee() {
-    Function<BankeraTransaction, BigDecimal> totalMapper = tx -> new BigDecimal(tx.getFee());
+  public Double getTotalFee() {
+    Function<BankeraTransaction, Double> totalMapper = tx -> new Double(tx.getFee());
     return transactions.size() > 0
-        ? transactions.stream().map(totalMapper).reduce(BigDecimal.ZERO, BigDecimal::add)
-        : BigDecimal.ZERO;
+        ? transactions.stream().map(totalMapper).reduce(0d, Double::sum)
+        : 0d;
   }
 }

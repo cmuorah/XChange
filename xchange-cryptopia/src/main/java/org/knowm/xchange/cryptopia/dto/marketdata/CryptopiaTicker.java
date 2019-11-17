@@ -1,44 +1,43 @@
 package org.knowm.xchange.cryptopia.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public final class CryptopiaTicker {
 
   private final long tradePairId;
   private final String label;
-  private final BigDecimal ask;
-  private final BigDecimal bid;
-  private final BigDecimal low;
-  private final BigDecimal high;
-  private final BigDecimal volume;
-  private final BigDecimal last;
-  private final BigDecimal buyVolume;
-  private final BigDecimal sellVolume;
-  private final BigDecimal change;
-  private final BigDecimal open;
-  private final BigDecimal close;
-  private final BigDecimal baseVolume;
-  private final BigDecimal buyBaseVolume;
-  private final BigDecimal sellBaseVolume;
+  private final Double ask;
+  private final Double bid;
+  private final Double low;
+  private final Double high;
+  private final Double volume;
+  private final Double last;
+  private final Double buyVolume;
+  private final Double sellVolume;
+  private final Double change;
+  private final Double open;
+  private final Double close;
+  private final Double baseVolume;
+  private final Double buyBaseVolume;
+  private final Double sellBaseVolume;
 
   public CryptopiaTicker(
       @JsonProperty("TradePairId") long tradePairId,
       @JsonProperty("Label") String label,
-      @JsonProperty("AskPrice") BigDecimal ask,
-      @JsonProperty("BidPrice") BigDecimal bid,
-      @JsonProperty("Low") BigDecimal low,
-      @JsonProperty("High") BigDecimal high,
-      @JsonProperty("Volume") BigDecimal volume,
-      @JsonProperty("LastPrice") BigDecimal last,
-      @JsonProperty("BuyVolume") BigDecimal buyVolume,
-      @JsonProperty("SellVolume") BigDecimal sellVolume,
-      @JsonProperty("Change") BigDecimal change,
-      @JsonProperty("Open") BigDecimal open,
-      @JsonProperty("Close") BigDecimal close,
-      @JsonProperty("BaseVolume") BigDecimal baseVolume,
-      @JsonProperty("BuyBaseVolume") BigDecimal buyBaseVolume,
-      @JsonProperty("SellBaseVolume") BigDecimal sellBaseVolume) {
+      @JsonProperty("AskPrice") Double ask,
+      @JsonProperty("BidPrice") Double bid,
+      @JsonProperty("Low") Double low,
+      @JsonProperty("High") Double high,
+      @JsonProperty("Volume") Double volume,
+      @JsonProperty("LastPrice") Double last,
+      @JsonProperty("BuyVolume") Double buyVolume,
+      @JsonProperty("SellVolume") Double sellVolume,
+      @JsonProperty("Change") Double change,
+      @JsonProperty("Open") Double open,
+      @JsonProperty("Close") Double close,
+      @JsonProperty("BaseVolume") Double baseVolume,
+      @JsonProperty("BuyBaseVolume") Double buyBaseVolume,
+      @JsonProperty("SellBaseVolume") Double sellBaseVolume) {
     this.tradePairId = tradePairId;
     this.label = label;
     this.ask = ask;
@@ -65,59 +64,59 @@ public final class CryptopiaTicker {
     return label;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getBuyVolume() {
+  public Double getBuyVolume() {
     return buyVolume;
   }
 
-  public BigDecimal getSellVolume() {
+  public Double getSellVolume() {
     return sellVolume;
   }
 
-  public BigDecimal getChange() {
+  public Double getChange() {
     return change;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
     return close;
   }
 
-  public BigDecimal getBaseVolume() {
+  public Double getBaseVolume() {
     return baseVolume;
   }
 
-  public BigDecimal getBuyBaseVolume() {
+  public Double getBuyBaseVolume() {
     return buyBaseVolume;
   }
 
-  public BigDecimal getSellBaseVolume() {
+  public Double getSellBaseVolume() {
     return sellBaseVolume;
   }
 

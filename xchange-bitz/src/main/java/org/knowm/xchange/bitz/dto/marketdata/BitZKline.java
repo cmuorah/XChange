@@ -2,7 +2,6 @@ package org.knowm.xchange.bitz.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 // History Data
@@ -15,7 +14,7 @@ public class BitZKline {
   private final String symbol;
   private final String url;
 
-  private final List<BigDecimal[]> data;
+  private final List<Double[]> data;
 
   public BitZKline(
       @JsonProperty("contractUnit") String contractUnit,
@@ -23,7 +22,7 @@ public class BitZKline {
       @JsonProperty("marketName") String marketName,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("url") String url,
-      @JsonProperty("data") List<BigDecimal[]> data) {
+      @JsonProperty("data") List<Double[]> data) {
 
     this.contractUnit = contractUnit;
     this.moneyType = moneyType;

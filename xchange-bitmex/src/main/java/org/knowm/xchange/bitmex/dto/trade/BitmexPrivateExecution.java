@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,13 +32,13 @@ public class BitmexPrivateExecution {
   public String side;
 
   @JsonProperty("lastQty")
-  public BigDecimal lastQty;
+  public Double lastQty;
 
   @JsonProperty("lastPx")
-  public BigDecimal lastPx;
+  public Double lastPx;
 
   @JsonProperty("underlyingLastPx")
-  public BigDecimal underlyingLastPx;
+  public Double underlyingLastPx;
 
   @JsonProperty("lastMkt")
   public String lastMkt;
@@ -48,22 +47,22 @@ public class BitmexPrivateExecution {
   public String lastLiquidityInd;
 
   @JsonProperty("simpleOrderQty")
-  public BigDecimal simpleOrderQty;
+  public Double simpleOrderQty;
 
   @JsonProperty("orderQty")
-  public BigDecimal orderQty;
+  public Double orderQty;
 
   @JsonProperty("price")
-  public BigDecimal price;
+  public Double price;
 
   @JsonProperty("displayQty")
-  public BigDecimal displayQty;
+  public Double displayQty;
 
   @JsonProperty("stopPx")
-  public BigDecimal stopPx;
+  public Double stopPx;
 
   @JsonProperty("pegOffsetValue")
-  public BigDecimal pegOffsetValue;
+  public Double pegOffsetValue;
 
   @JsonProperty("pegPriceType")
   public String pegPriceType;
@@ -105,22 +104,22 @@ public class BitmexPrivateExecution {
   public String ordRejReason;
 
   @JsonProperty("simpleLeavesQty")
-  public BigDecimal simpleLeavesQty;
+  public Double simpleLeavesQty;
 
   @JsonProperty("leavesQty")
-  public BigDecimal leavesQty;
+  public Double leavesQty;
 
   @JsonProperty("simpleCumQty")
-  public BigDecimal simpleCumQty;
+  public Double simpleCumQty;
 
   @JsonProperty("cumQty")
-  public BigDecimal cumQty;
+  public Double cumQty;
 
   @JsonProperty("avgPx")
-  public BigDecimal avgPx;
+  public Double avgPx;
 
   @JsonProperty("commission")
-  public BigDecimal commission;
+  public Double commission;
 
   @JsonProperty("tradePublishIndicator")
   public String tradePublishIndicator;
@@ -135,16 +134,16 @@ public class BitmexPrivateExecution {
   public String trdMatchID;
 
   @JsonProperty("execCost")
-  public BigDecimal execCost;
+  public Double execCost;
 
   @JsonProperty("execComm")
-  public BigDecimal execComm;
+  public Double execComm;
 
   @JsonProperty("homeNotional")
-  public BigDecimal homeNotional;
+  public Double homeNotional;
 
   @JsonProperty("foreignNotional")
-  public BigDecimal foreignNotional;
+  public Double foreignNotional;
 
   @JsonProperty("transactTime")
   public Date transactTime;

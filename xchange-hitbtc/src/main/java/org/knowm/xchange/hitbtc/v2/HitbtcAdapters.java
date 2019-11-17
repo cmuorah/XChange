@@ -1,6 +1,5 @@
 package org.knowm.xchange.hitbtc.v2;
 
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.knowm.xchange.ExchangeFactory;
@@ -65,12 +64,12 @@ public class HitbtcAdapters {
 
   public static Ticker adaptTicker(HitbtcTicker hitbtcTicker, CurrencyPair currencyPair) {
 
-    BigDecimal bid = hitbtcTicker.getBid();
-    BigDecimal ask = hitbtcTicker.getAsk();
-    BigDecimal high = hitbtcTicker.getHigh();
-    BigDecimal low = hitbtcTicker.getLow();
-    BigDecimal last = hitbtcTicker.getLast();
-    BigDecimal volume = hitbtcTicker.getVolume();
+    Double bid = hitbtcTicker.getBid();
+    Double ask = hitbtcTicker.getAsk();
+    Double high = hitbtcTicker.getHigh();
+    Double low = hitbtcTicker.getLow();
+    Double last = hitbtcTicker.getLast();
+    Double volume = hitbtcTicker.getVolume();
     Date timestamp = hitbtcTicker.getTimestamp();
 
     return new Ticker.Builder()
@@ -149,8 +148,8 @@ public class HitbtcAdapters {
       HitbtcTrade hitbtcTrade = allHitbtcTrades.get(i);
 
       Date timestamp = hitbtcTrade.getTimestamp();
-      BigDecimal price = hitbtcTrade.getPrice();
-      BigDecimal amount = hitbtcTrade.getQuantity();
+      Double price = hitbtcTrade.getPrice();
+      Double amount = hitbtcTrade.getQuantity();
       String tid = hitbtcTrade.getId();
       long longTradeId = tid == null ? 0 : Long.parseLong(tid);
       if (longTradeId > lastTradeId) {
@@ -207,7 +206,7 @@ public class HitbtcAdapters {
 
       OrderType type = adaptOrderType(hitbtcOwnTrade.getSide().getValue());
       CurrencyPair pair = adaptSymbol(hitbtcOwnTrade.symbol);
-      BigDecimal originalAmount = hitbtcOwnTrade.getQuantity();
+      Double originalAmount = hitbtcOwnTrade.getQuantity();
       Date timestamp = hitbtcOwnTrade.getTimestamp();
       String id = Long.toString(hitbtcOwnTrade.getId());
       String orderId = String.valueOf(hitbtcOwnTrade.getOrderId());
@@ -262,12 +261,12 @@ public class HitbtcAdapters {
     if (symbols != null) {
       for (HitbtcSymbol symbol : symbols) {
         CurrencyPair pair = adaptSymbol(symbol);
-        BigDecimal tickSize = symbol.getTickSize();
-        int priceScale = tickSize.scale(); // not 100% sure this is correct
+        Double tickSize = symbol.getTickSize();
+        int priceScale = 8; // not 100% sure this is correct
 
-        BigDecimal tradingFee = symbol.getTakeLiquidityRate();
-        BigDecimal minimumAmount = symbol.getQuantityIncrement();
-        BigDecimal maximumAmount = null;
+        Double tradingFee = symbol.getTakeLiquidityRate();
+        Double minimumAmount = symbol.getQuantityIncrement();
+        Double maximumAmount = null;
 
         FeeTier[] feeTiers = null;
         if (currencyPairs.containsKey(pair)) {

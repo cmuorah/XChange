@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.poloniex.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,7 +29,7 @@ public class PoloniexTradeDemo {
   private static final CurrencyPair REP_ETH = new CurrencyPair("REP", "ETH");
 
   private static CurrencyPair currencyPair;
-  private static BigDecimal xmrBuyRate;
+  private static Double xmrBuyRate;
 
   public static void main(String[] args) throws Exception {
     CertHelper.trustAllCerts();
@@ -42,7 +41,7 @@ public class PoloniexTradeDemo {
     /*
      * Make sure this is below the current market rate!!
      */
-    xmrBuyRate = new BigDecimal("0.003");
+    xmrBuyRate = new Double("0.003");
 
     generic(tradeService);
     raw((PoloniexTradeServiceRaw) tradeService);
@@ -66,7 +65,7 @@ public class PoloniexTradeDemo {
 
     LimitOrder order =
         new LimitOrder.Builder(OrderType.BID, currencyPair)
-            .originalAmount(new BigDecimal(".1"))
+            .originalAmount(new Double(".1"))
             .limitPrice(xmrBuyRate)
             .build();
     String orderId = tradeService.placeLimitOrder(order);
@@ -98,7 +97,7 @@ public class PoloniexTradeDemo {
 
     LimitOrder order =
         new LimitOrder.Builder(OrderType.BID, currencyPair)
-            .originalAmount(new BigDecimal("1"))
+            .originalAmount(new Double("1"))
             .limitPrice(xmrBuyRate)
             .build();
     String orderId = tradeService.buy(order).getOrderNumber().toString();
@@ -135,7 +134,7 @@ public class PoloniexTradeDemo {
         tradeService.returnAllAvailableAccountBalances();
     System.out.println(availableAccountBalances);
 
-    Map<String, Map<String, BigDecimal>> tradableBalances = tradeService.returnTradableBalances();
+    Map<String, Map<String, Double>> tradableBalances = tradeService.returnTradableBalances();
     System.out.println(tradableBalances);
   }
 

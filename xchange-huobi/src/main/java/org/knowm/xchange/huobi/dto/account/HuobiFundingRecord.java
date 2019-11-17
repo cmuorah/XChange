@@ -1,7 +1,6 @@
 package org.knowm.xchange.huobi.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.dto.account.FundingRecord;
 
@@ -11,10 +10,10 @@ public class HuobiFundingRecord {
   private final FundingRecord.Type type;
   private final String currency;
   private final String txhash;
-  private final BigDecimal amount;
+  private final Double amount;
   private final String address;
   private final String addressTag;
-  private final BigDecimal fee;
+  private final Double fee;
   private final String state;
   private final Date createdAt;
   private final Date updatedAt;
@@ -24,10 +23,10 @@ public class HuobiFundingRecord {
       @JsonProperty("type") String type,
       @JsonProperty("currency") String currency,
       @JsonProperty("tx-hash") String txhash,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("address") String address,
       @JsonProperty("address-tag") String addressTag,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("state") String state,
       @JsonProperty("created-at") Date created,
       @JsonProperty("updated-at") Date updated) {
@@ -69,7 +68,7 @@ public class HuobiFundingRecord {
     return txhash;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -81,7 +80,7 @@ public class HuobiFundingRecord {
     return addressTag;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

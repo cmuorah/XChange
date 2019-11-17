@@ -1,7 +1,6 @@
 package org.knowm.xchange.gemini.v1.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import javax.ws.rs.PathParam;
 
 public class GeminiWithdrawalRequest {
@@ -21,7 +20,7 @@ public class GeminiWithdrawalRequest {
   @JsonProperty("address")
   public final String address;
 
-  public GeminiWithdrawalRequest(String nonce, String currency, BigDecimal amount, String address) {
+  public GeminiWithdrawalRequest(String nonce, String currency, Double amount, String address) {
     this.request = "/v1/withdraw/" + currency;
     this.nonce = String.valueOf(nonce);
     this.currency = currency;

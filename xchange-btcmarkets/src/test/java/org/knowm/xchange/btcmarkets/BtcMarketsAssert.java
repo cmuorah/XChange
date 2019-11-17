@@ -2,7 +2,6 @@ package org.knowm.xchange.btcmarkets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.btcmarkets.dto.account.BTCMarketsBalance;
 import org.knowm.xchange.btcmarkets.dto.marketdata.BTCMarketsTicker;
 import org.knowm.xchange.btcmarkets.dto.trade.BTCMarketsOrder;
@@ -56,7 +55,7 @@ public class BtcMarketsAssert {
   }
 
   public static void assertEquals(
-      LimitOrder o1, Order.OrderType orderType, CurrencyPair currencyPair, BigDecimal[] history) {
+      LimitOrder o1, Order.OrderType orderType, CurrencyPair currencyPair, Double[] history) {
     assertThat(o1.getType()).isEqualTo(orderType);
     assertThat(o1.getCurrencyPair()).isEqualTo(currencyPair);
     assertThat(o1.getLimitPrice()).isEqualTo(history[0]);

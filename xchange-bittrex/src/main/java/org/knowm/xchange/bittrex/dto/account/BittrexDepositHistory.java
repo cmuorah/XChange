@@ -3,7 +3,6 @@ package org.knowm.xchange.bittrex.dto.account;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.annotation.Generated;
 
@@ -16,7 +15,7 @@ public class BittrexDepositHistory {
   private Long id;
 
   @JsonProperty("Amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("Currency")
   private String currency;
@@ -46,13 +45,13 @@ public class BittrexDepositHistory {
   }
 
   @JsonProperty("Amount")
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
   @JsonProperty("Amount")
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
 
     this.amount = amount;
   }

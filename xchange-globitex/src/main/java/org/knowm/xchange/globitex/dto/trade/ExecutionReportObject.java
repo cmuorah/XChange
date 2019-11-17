@@ -2,7 +2,6 @@ package org.knowm.xchange.globitex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class ExecutionReportObject implements Serializable {
 
@@ -22,10 +21,10 @@ public class ExecutionReportObject implements Serializable {
   private final String side;
 
   @JsonProperty("price")
-  private final BigDecimal price;
+  private final Double price;
 
   @JsonProperty("quantity")
-  private final BigDecimal quantity;
+  private final Double quantity;
 
   @JsonProperty("type")
   private final String type;
@@ -34,19 +33,19 @@ public class ExecutionReportObject implements Serializable {
   private final String timeInForce;
 
   @JsonProperty("lastQuantity")
-  private final BigDecimal lastQuantity;
+  private final Double lastQuantity;
 
   @JsonProperty("lastPrice")
-  private final BigDecimal lastPrice;
+  private final Double lastPrice;
 
   @JsonProperty("leavesQuantity")
-  private final BigDecimal leavesQuantity;
+  private final Double leavesQuantity;
 
   @JsonProperty("cumQuantity")
-  private final BigDecimal cumQuantity;
+  private final Double cumQuantity;
 
   @JsonProperty("averagePrice")
-  private final BigDecimal averagePrice;
+  private final Double averagePrice;
 
   @JsonProperty("created")
   private final long created;
@@ -69,15 +68,15 @@ public class ExecutionReportObject implements Serializable {
       @JsonProperty("orderStatus") String orderStatus,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("side") String side,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("quantity") BigDecimal quantity,
+      @JsonProperty("price") Double price,
+      @JsonProperty("quantity") Double quantity,
       @JsonProperty("type") String type,
       @JsonProperty("timeInForce") String timeInForce,
-      @JsonProperty("lastQuantity") BigDecimal lastQuantity,
-      @JsonProperty("lastPrice") BigDecimal lastPrice,
-      @JsonProperty("leavesQuantity") BigDecimal leavesQuantity,
-      @JsonProperty("cumQuantity") BigDecimal cumQuantity,
-      @JsonProperty("averagePrice") BigDecimal averagePrice,
+      @JsonProperty("lastQuantity") Double lastQuantity,
+      @JsonProperty("lastPrice") Double lastPrice,
+      @JsonProperty("leavesQuantity") Double leavesQuantity,
+      @JsonProperty("cumQuantity") Double cumQuantity,
+      @JsonProperty("averagePrice") Double averagePrice,
       @JsonProperty("created") long created,
       @JsonProperty("execReportType") String execReportType,
       @JsonProperty("lastTimestamp") long lastTimestamp,
@@ -125,11 +124,11 @@ public class ExecutionReportObject implements Serializable {
     return side;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
@@ -141,23 +140,23 @@ public class ExecutionReportObject implements Serializable {
     return timeInForce;
   }
 
-  public BigDecimal getLastQuantity() {
+  public Double getLastQuantity() {
     return lastQuantity;
   }
 
-  public BigDecimal getLastPrice() {
+  public Double getLastPrice() {
     return lastPrice;
   }
 
-  public BigDecimal getLeavesQuantity() {
+  public Double getLeavesQuantity() {
     return leavesQuantity;
   }
 
-  public BigDecimal getCumQuantity() {
+  public Double getCumQuantity() {
     return cumQuantity;
   }
 
-  public BigDecimal getAveragePrice() {
+  public Double getAveragePrice() {
     return averagePrice;
   }
 

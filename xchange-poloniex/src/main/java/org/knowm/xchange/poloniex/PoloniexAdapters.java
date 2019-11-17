@@ -3,8 +3,6 @@ package org.knowm.xchange.poloniex;
 import static org.knowm.xchange.dto.account.FundingRecord.Type.DEPOSIT;
 import static org.knowm.xchange.dto.account.FundingRecord.Type.WITHDRAWAL;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -46,12 +44,12 @@ public class PoloniexAdapters {
 
   public static Ticker adaptPoloniexTicker(
       PoloniexMarketData marketData, CurrencyPair currencyPair) {
-    BigDecimal last = marketData.getLast();
-    BigDecimal bid = marketData.getHighestBid();
-    BigDecimal ask = marketData.getLowestAsk();
-    BigDecimal high = marketData.getHigh24hr();
-    BigDecimal low = marketData.getLow24hr();
-    BigDecimal volume = marketData.getQuoteVolume();
+    Double last = marketData.getLast();
+    Double bid = marketData.getHighestBid();
+    Double ask = marketData.getLowestAsk();
+    Double high = marketData.getHigh24hr();
+    Double low = marketData.getLow24hr();
+    Double volume = marketData.getQuoteVolume();
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
@@ -73,11 +71,11 @@ public class PoloniexAdapters {
   }
 
   public static List<LimitOrder> adaptPoloniexPublicOrders(
-      List<List<BigDecimal>> rawLevels, OrderType orderType, CurrencyPair currencyPair) {
+      List<List<Double>> rawLevels, OrderType orderType, CurrencyPair currencyPair) {
 
     List<PoloniexLevel> levels = new ArrayList<>();
 
-    for (List<BigDecimal> rawLevel : rawLevels) {
+    for (List<Double> rawLevel : rawLevels) {
       levels.add(adaptRawPoloniexLevel(rawLevel));
     }
 
@@ -95,40 +93,31 @@ public class PoloniexAdapters {
     return orders;
   }
 
-  public static PoloniexLevel adaptRawPoloniexLevel(List<BigDecimal> level) {
-
-    PoloniexLevel poloniexLevel = new PoloniexLevel(level.get(1), level.get(0));
-    return poloniexLevel;
+  public static PoloniexLevel adaptRawPoloniexLevel(List<Double> level) {
+    return new PoloniexLevel(level.get(1), level.get(0));
   }
 
   public static Trades adaptPoloniexPublicTrades(
       PoloniexPublicTrade[] poloniexPublicTrades, CurrencyPair currencyPair) {
-
     List<Trade> trades = new ArrayList<>();
-
     for (PoloniexPublicTrade poloniexTrade : poloniexPublicTrades) {
       trades.add(adaptPoloniexPublicTrade(poloniexTrade, currencyPair));
     }
-
     return new Trades(trades, TradeSortType.SortByTimestamp);
   }
 
   public static Trade adaptPoloniexPublicTrade(
       PoloniexPublicTrade poloniexTrade, CurrencyPair currencyPair) {
-
     OrderType type =
         poloniexTrade.getType().equalsIgnoreCase("buy") ? OrderType.BID : OrderType.ASK;
     Date timestamp = PoloniexUtils.stringToDate(poloniexTrade.getDate());
-
-    Trade trade =
-        new Trade(
-            type,
-            poloniexTrade.getAmount(),
-            currencyPair,
-            poloniexTrade.getRate(),
-            timestamp,
-            poloniexTrade.getTradeID());
-    return trade;
+    return new Trade(
+        type,
+        poloniexTrade.getAmount(),
+        currencyPair,
+        poloniexTrade.getRate(),
+        timestamp,
+        poloniexTrade.getTradeID());
   }
 
   public static List<Balance> adaptPoloniexBalances(
@@ -148,9 +137,7 @@ public class PoloniexAdapters {
   }
 
   public static LoanInfo adaptPoloniexLoans(HashMap<String, PoloniexLoan[]> poloniexLoans) {
-
     Map<String, List<LoanOrder>> loans = new HashMap<>();
-
     for (Map.Entry<String, PoloniexLoan[]> item : poloniexLoans.entrySet()) {
       List<LoanOrder> loanOrders = new ArrayList<>();
       for (PoloniexLoan poloniexLoan : item.getValue()) {
@@ -196,7 +183,7 @@ public class PoloniexAdapters {
     return new LimitOrder.Builder(type, currencyPair)
         .limitPrice(openOrder.getRate())
         .originalAmount(openOrder.getStartingAmount())
-        .cumulativeAmount(openOrder.getStartingAmount().subtract(openOrder.getAmount()))
+        .cumulativeAmount(openOrder.getStartingAmount() - openOrder.getAmount())
         .id(openOrder.getOrderNumber())
         .timestamp(timestamp)
         .build();
@@ -207,22 +194,21 @@ public class PoloniexAdapters {
 
     OrderType orderType =
         userTrade.getType().equalsIgnoreCase("buy") ? OrderType.BID : OrderType.ASK;
-    BigDecimal amount = userTrade.getAmount();
-    BigDecimal price = userTrade.getRate();
+    Double amount = userTrade.getAmount();
+    Double price = userTrade.getRate();
     Date date = PoloniexUtils.stringToDate(userTrade.getDate());
     String tradeId = String.valueOf(userTrade.getTradeID());
     String orderId = String.valueOf(userTrade.getOrderNumber());
 
     // Poloniex returns fee as a multiplier, e.g. a 0.2% fee is 0.002
     // fee currency/size depends on trade direction (buy/sell). It appears to be rounded down
-    final BigDecimal feeAmount;
+    final double feeAmount;
     final String feeCurrencyCode;
     if (orderType == OrderType.ASK) {
-      feeAmount =
-          amount.multiply(price).multiply(userTrade.getFee()).setScale(8, BigDecimal.ROUND_DOWN);
+      feeAmount = amount * price * userTrade.getFee();
       feeCurrencyCode = currencyPair.counter.getCurrencyCode();
     } else {
-      feeAmount = amount.multiply(userTrade.getFee()).setScale(8, BigDecimal.ROUND_DOWN);
+      feeAmount = amount * userTrade.getFee();
       feeCurrencyCode = currencyPair.base.getCurrencyCode();
     }
 
@@ -314,7 +300,7 @@ public class PoloniexAdapters {
       final String externalId = statusParts.length == 1 ? null : statusParts[1];
 
       // Poloniex returns the fee as an absolute value, that behaviour differs from UserTrades
-      final BigDecimal feeAmount = w.getFee();
+      final Double feeAmount = w.getFee();
 
       fundingRecords.add(
           new FundingRecord(
@@ -340,23 +326,20 @@ public class PoloniexAdapters {
 
     OrderType orderType = null;
     CurrencyPair currencyPair = null;
-    BigDecimal amount = new BigDecimal(0);
+    double amount = 0d;
 
-    List<BigDecimal> weightedPrices = new ArrayList<>();
+    List<Double> weightedPrices = new ArrayList<>();
 
     for (PoloniexUserTrade poloniexUserTrade : poloniexUserTrades) {
       orderType =
           poloniexUserTrade.getType().equals("buy")
               ? OrderType.BID
               : OrderType.ASK; // what about others?
-      amount = amount.add(poloniexUserTrade.getAmount());
-      weightedPrices.add(poloniexUserTrade.getRate().multiply(poloniexUserTrade.getAmount()));
+      amount += poloniexUserTrade.getAmount();
+      weightedPrices.add(poloniexUserTrade.getRate() * poloniexUserTrade.getAmount());
     }
 
-    BigDecimal weightedAveragePrice =
-        weightedPrices.stream()
-            .reduce(new BigDecimal(0), (a, b) -> a.add(b))
-            .divide(amount, RoundingMode.HALF_UP);
+    Double weightedAveragePrice = weightedPrices.stream().reduce(0d, Double::sum) / amount;
 
     return new LimitOrder(
         orderType,

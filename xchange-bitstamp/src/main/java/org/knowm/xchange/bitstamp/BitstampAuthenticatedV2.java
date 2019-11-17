@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitstamp;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -40,7 +39,7 @@ public interface BitstampAuthenticatedV2 {
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @PathParam("side") Side side,
       @PathParam("pair") BitstampV2.Pair pair,
-      @FormParam("amount") BigDecimal amount)
+      @FormParam("amount") Double amount)
       throws BitstampException, IOException;
 
   @POST
@@ -51,8 +50,8 @@ public interface BitstampAuthenticatedV2 {
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @PathParam("side") Side side,
       @PathParam("pair") BitstampV2.Pair pair,
-      @FormParam("amount") BigDecimal amount,
-      @FormParam("price") BigDecimal price)
+      @FormParam("amount") Double amount,
+      @FormParam("price") Double price)
       throws BitstampException, IOException;
 
   @POST
@@ -86,7 +85,7 @@ public interface BitstampAuthenticatedV2 {
       @FormParam("key") String apiKey,
       @FormParam("signature") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String rippleAddress,
       @FormParam("destination_tag") String destinationTag)
       throws BitstampException, IOException;
@@ -97,7 +96,7 @@ public interface BitstampAuthenticatedV2 {
       @FormParam("key") String apiKey,
       @FormParam("signature") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws BitstampException, IOException;
 
@@ -107,7 +106,7 @@ public interface BitstampAuthenticatedV2 {
       @FormParam("key") String apiKey,
       @FormParam("signature") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws BitstampException, IOException;
 
@@ -117,7 +116,7 @@ public interface BitstampAuthenticatedV2 {
       @FormParam("key") String apiKey,
       @FormParam("signature") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws BitstampException, IOException;
 
@@ -127,7 +126,7 @@ public interface BitstampAuthenticatedV2 {
       @FormParam("key") String apiKey,
       @FormParam("signature") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("currency") String currency,
       @FormParam("subAccount") String subAccount)
       throws BitstampException, IOException;
@@ -147,7 +146,7 @@ public interface BitstampAuthenticatedV2 {
       @FormParam("key") String apiKey,
       @FormParam("signature") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("account_currency") AccountCurrency accountCurrency,
       @FormParam("name") String name,
       @FormParam("iban") String IBAN,

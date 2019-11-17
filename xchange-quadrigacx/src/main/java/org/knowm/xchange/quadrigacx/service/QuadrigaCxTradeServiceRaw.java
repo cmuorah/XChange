@@ -1,7 +1,6 @@
 package org.knowm.xchange.quadrigacx.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.quadrigacx.QuadrigaCxAuthenticated;
@@ -41,7 +40,7 @@ public class QuadrigaCxTradeServiceRaw extends QuadrigaCxBaseService {
   }
 
   public QuadrigaCxOrder sellQuadrigaCxOrder(
-      CurrencyPair currencyPair, BigDecimal originalAmount, BigDecimal price) throws IOException {
+      CurrencyPair currencyPair, Double originalAmount, Double price) throws IOException {
 
     return quadrigacxAuthenticated.sell(
         QuadrigaCxUtils.currencyPairToBook(currencyPair),
@@ -53,7 +52,7 @@ public class QuadrigaCxTradeServiceRaw extends QuadrigaCxBaseService {
   }
 
   public QuadrigaCxOrder buyQuadrigaCxOrder(
-      CurrencyPair currencyPair, BigDecimal originalAmount, BigDecimal price) throws IOException {
+      CurrencyPair currencyPair, Double originalAmount, Double price) throws IOException {
 
     return quadrigacxAuthenticated.buy(
         QuadrigaCxUtils.currencyPairToBook(currencyPair),
@@ -64,7 +63,7 @@ public class QuadrigaCxTradeServiceRaw extends QuadrigaCxBaseService {
         price);
   }
 
-  public QuadrigaCxOrder sellQuadrigaCxOrder(CurrencyPair currencyPair, BigDecimal originalAmount)
+  public QuadrigaCxOrder sellQuadrigaCxOrder(CurrencyPair currencyPair, Double originalAmount)
       throws IOException {
 
     return quadrigacxAuthenticated.sell(
@@ -76,7 +75,7 @@ public class QuadrigaCxTradeServiceRaw extends QuadrigaCxBaseService {
         null);
   }
 
-  public QuadrigaCxOrder buyQuadrigaCxOrder(CurrencyPair currencyPair, BigDecimal originalAmount)
+  public QuadrigaCxOrder buyQuadrigaCxOrder(CurrencyPair currencyPair, Double originalAmount)
       throws IOException {
 
     return quadrigacxAuthenticated.buy(

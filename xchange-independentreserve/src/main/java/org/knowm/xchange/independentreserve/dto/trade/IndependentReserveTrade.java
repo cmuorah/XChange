@@ -1,7 +1,6 @@
 package org.knowm.xchange.independentreserve.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /** Author: Kamil Zbikowski Date: 4/16/15 */
@@ -11,8 +10,8 @@ public class IndependentReserveTrade {
   private final String orderGuid;
   private final String orderType;
   private final Date orderTimestamp;
-  private final BigDecimal volumeTraded;
-  private final BigDecimal price;
+  private final Double volumeTraded;
+  private final Double price;
   private final String primaryCurrencyCode;
   private final String secondaryCurrencyCode;
 
@@ -22,8 +21,8 @@ public class IndependentReserveTrade {
       @JsonProperty("TradeTimestampUtc") String tradeTimestampUtc,
       @JsonProperty("OrderType") String orderType,
       @JsonProperty("OrderTimestampUtc") String orderTimestampUtc,
-      @JsonProperty("VolumeTraded") BigDecimal volumeTraded,
-      @JsonProperty("Price") BigDecimal price,
+      @JsonProperty("VolumeTraded") Double volumeTraded,
+      @JsonProperty("Price") Double price,
       @JsonProperty("PrimaryCurrencyCode") String primaryCurrencyCode,
       @JsonProperty("SecondaryCurrencyCode") String secondaryCurrencyCode)
       throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
@@ -50,7 +49,7 @@ public class IndependentReserveTrade {
     return orderType;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -70,7 +69,7 @@ public class IndependentReserveTrade {
     return tradeTimestamp;
   }
 
-  public BigDecimal getVolumeTraded() {
+  public Double getVolumeTraded() {
     return volumeTraded;
   }
 }

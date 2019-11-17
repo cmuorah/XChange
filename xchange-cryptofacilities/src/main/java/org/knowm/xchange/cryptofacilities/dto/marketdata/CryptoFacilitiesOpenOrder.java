@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptofacilities.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
 import org.knowm.xchange.cryptofacilities.Util;
@@ -16,10 +15,10 @@ public class CryptoFacilitiesOpenOrder extends CryptoFacilitiesResult {
   private final String orderType;
   private final String symbol;
   private final String side;
-  private final BigDecimal unfilledSize;
-  private final BigDecimal filledSize;
-  private final BigDecimal limitPrice;
-  private final BigDecimal stopPrice;
+  private final Double unfilledSize;
+  private final Double filledSize;
+  private final Double limitPrice;
+  private final Double stopPrice;
 
   public CryptoFacilitiesOpenOrder(
       @JsonProperty("result") String result,
@@ -30,10 +29,10 @@ public class CryptoFacilitiesOpenOrder extends CryptoFacilitiesResult {
       @JsonProperty("orderType") String orderType,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("side") String side,
-      @JsonProperty("unfilledSize") BigDecimal unfilledSize,
-      @JsonProperty("filledSize") BigDecimal filledSize,
-      @JsonProperty("limitPrice") BigDecimal limitPrice,
-      @JsonProperty("stopPrice") BigDecimal stopPrice)
+      @JsonProperty("unfilledSize") Double unfilledSize,
+      @JsonProperty("filledSize") Double filledSize,
+      @JsonProperty("limitPrice") Double limitPrice,
+      @JsonProperty("stopPrice") Double stopPrice)
       throws ParseException {
 
     super(result, error);
@@ -74,23 +73,23 @@ public class CryptoFacilitiesOpenOrder extends CryptoFacilitiesResult {
     return side;
   }
 
-  public BigDecimal getUnfilled() {
+  public Double getUnfilled() {
     return unfilledSize;
   }
 
-  public BigDecimal getFilled() {
+  public Double getFilled() {
     return filledSize;
   }
 
-  public BigDecimal getQuantity() {
-    return filledSize.add(unfilledSize);
+  public Double getQuantity() {
+    return filledSize + (unfilledSize);
   }
 
-  public BigDecimal getLimitPrice() {
+  public Double getLimitPrice() {
     return limitPrice;
   }
 
-  public BigDecimal getStopPrice() {
+  public Double getStopPrice() {
     return stopPrice;
   }
 

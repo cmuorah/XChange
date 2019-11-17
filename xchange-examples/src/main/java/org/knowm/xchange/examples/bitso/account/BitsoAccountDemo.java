@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.bitso.account;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitso.dto.account.BitsoBalance;
 import org.knowm.xchange.bitso.dto.account.BitsoDepositAddress;
@@ -42,7 +41,7 @@ public class BitsoAccountDemo {
     System.out.println("Deposit address: " + depositAddress);
 
     String withdrawResult =
-        accountService.withdrawFunds(Currency.BTC, new BigDecimal(1).movePointLeft(4), "XXX");
+        accountService.withdrawFunds(Currency.BTC, new Double(1) / 10000.0, "XXX");
     System.out.println("withdrawResult = " + withdrawResult);
   }
 
@@ -54,8 +53,7 @@ public class BitsoAccountDemo {
     BitsoDepositAddress depositAddress = accountService.getBitsoBitcoinDepositAddress();
     System.out.println("Bitcoin deposit address: " + depositAddress);
 
-    String withdrawResult =
-        accountService.withdrawBitsoFunds(new BigDecimal(1).movePointLeft(4), "XXX");
+    String withdrawResult = accountService.withdrawBitsoFunds(new Double(1) / 10000.0, "XXX");
     System.out.println("Bitso withdrawal response = " + withdrawResult);
   }
 }

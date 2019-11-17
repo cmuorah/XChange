@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinone.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Currency;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.trade.LimitOrder;
@@ -19,10 +18,10 @@ public class CoinoneTradeCancelRequest implements CancelOrderParams {
   protected String orderId;
 
   @JsonProperty("price")
-  protected BigDecimal price;
+  protected Double price;
 
   @JsonProperty("qty")
-  protected BigDecimal qty;
+  protected Double qty;
 
   @JsonProperty("is_ask")
   protected boolean isAsk;
@@ -31,7 +30,7 @@ public class CoinoneTradeCancelRequest implements CancelOrderParams {
   protected String currency;
 
   public CoinoneTradeCancelRequest(
-      String orderId, BigDecimal price, BigDecimal qty, boolean isAsk, Currency currency) {
+      String orderId, Double price, Double qty, boolean isAsk, Currency currency) {
     this.orderId = orderId;
     this.price = price;
     this.qty = qty;
@@ -71,19 +70,19 @@ public class CoinoneTradeCancelRequest implements CancelOrderParams {
     this.orderId = orderId;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
-  public BigDecimal getQty() {
+  public Double getQty() {
     return qty;
   }
 
-  public void setQty(BigDecimal qty) {
+  public void setQty(Double qty) {
     this.qty = qty;
   }
 

@@ -1,6 +1,5 @@
 package org.knowm.xchange.quoine;
 
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,10 +51,10 @@ public class QuoineAdapters {
   }
 
   public static List<LimitOrder> createOrders(
-      CurrencyPair currencyPair, OrderType orderType, List<BigDecimal[]> orders) {
+      CurrencyPair currencyPair, OrderType orderType, List<Double[]> orders) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (BigDecimal[] ask : orders) {
+    for (Double[] ask : orders) {
       checkArgument(
           ask.length == 2, "Expected a pair (price, amount) but got {0} elements.", ask.length);
       limitOrders.add(createOrder(currencyPair, ask, orderType));
@@ -64,7 +63,7 @@ public class QuoineAdapters {
   }
 
   public static LimitOrder createOrder(
-      CurrencyPair currencyPair, BigDecimal[] priceAndAmount, OrderType orderType) {
+      CurrencyPair currencyPair, Double[] priceAndAmount, OrderType orderType) {
 
     return new LimitOrder(orderType, priceAndAmount[1], currencyPair, "", null, priceAndAmount[0]);
   }
@@ -79,9 +78,7 @@ public class QuoineAdapters {
   public static Wallet adaptTradingWallet(QuoineTradingAccountInfo[] quoineWallet) {
     List<Balance> balances = new ArrayList<>(quoineWallet.length);
 
-    for (int i = 0; i < quoineWallet.length; i++) {
-      QuoineTradingAccountInfo info = quoineWallet[i];
-
+    for (QuoineTradingAccountInfo info : quoineWallet) {
       balances.add(
           new Balance(Currency.getInstance(info.getFundingCurrency()), info.getFreeMargin()));
     }
@@ -213,11 +210,11 @@ public class QuoineAdapters {
 
   public static FundingRecord adaptFunding(
       Currency currency, QuoineTransaction transaction, FundingRecord.Type deposit) {
-    BigDecimal fee = null;
+    Double fee = null;
     if (transaction.exchange_fee != null) fee = transaction.exchange_fee;
 
     if (transaction.network_fee != null) {
-      fee = fee == null ? transaction.network_fee : fee.add(transaction.network_fee);
+      fee = fee == null ? transaction.network_fee : fee + transaction.network_fee;
     }
 
     return new FundingRecord(

@@ -1,13 +1,10 @@
 package org.knowm.xchange.simulated;
 
-import static java.math.BigDecimal.ZERO;
-
-import com.google.common.collect.Collections2;
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.account.Balance;
@@ -24,21 +21,21 @@ class Account {
 
   void initialize(Iterable<Currency> currencies) {
     currencies.forEach(
-        currency -> balances.put(currency, new AtomicReference<>(new Balance(currency, ZERO))));
+        currency -> balances.put(currency, new AtomicReference<>(new Balance(currency, 0d))));
   }
 
   public Collection<Balance> balances() {
-    return Collections2.transform(balances.values(), AtomicReference::get);
+    return balances.values().stream().map(AtomicReference::get).collect(Collectors.toList());
   }
 
   public void checkBalance(LimitOrder order) {
-    checkBalance(order, order.getOriginalAmount().multiply(order.getLimitPrice()));
+    checkBalance(order, order.getOriginalAmount() * (order.getLimitPrice()));
   }
 
-  public void checkBalance(Order order, BigDecimal bidAmount) {
+  public void checkBalance(Order order, Double bidAmount) {
     switch (order.getType()) {
       case ASK:
-        BigDecimal askAmount = order.getRemainingAmount();
+        Double askAmount = order.getRemainingAmount();
         Balance askBalance =
             balances.computeIfAbsent(order.getCurrencyPair().base, this::defaultBalance).get();
         checkBalance(order, askAmount, askBalance);
@@ -54,11 +51,11 @@ class Account {
     }
   }
 
-  private void checkBalance(Order order, BigDecimal amount, Balance balance) {
+  private void checkBalance(Order order, Double amount, Balance balance) {
     if (balance.getAvailable().compareTo(amount) < 0) {
       throw new FundsExceededException(
           "Insufficient balance: "
-              + amount.toPlainString()
+              + amount.toString()
               + order.getCurrencyPair().base
               + " required but only "
               + balance.getAvailable()
@@ -75,50 +72,49 @@ class Account {
   }
 
   private AtomicReference<Balance> defaultBalance(Currency currency) {
-    return new AtomicReference<>(new Balance(currency, ZERO));
+    return new AtomicReference<>(new Balance(currency, 0d));
   }
 
   private void reserve(LimitOrder order, boolean negate) {
     switch (order.getType()) {
       case ASK:
-        BigDecimal askAmount =
-            negate ? order.getRemainingAmount().negate() : order.getRemainingAmount();
+        Double askAmount = negate ? -order.getRemainingAmount() : order.getRemainingAmount();
         balance(order.getCurrencyPair().base)
             .updateAndGet(
                 b -> {
                   if (b.getAvailable().compareTo(askAmount) < 0) {
                     throw new ExchangeException(
                         "Insufficient balance: "
-                            + askAmount.toPlainString()
+                            + askAmount.toString()
                             + order.getCurrencyPair().base
                             + " required but only "
                             + b.getAvailable()
                             + " available");
                   }
                   return Balance.Builder.from(b)
-                      .available(b.getAvailable().subtract(askAmount))
-                      .frozen(b.getFrozen().add(askAmount))
+                      .available(b.getAvailable() - (askAmount))
+                      .frozen(b.getFrozen() + (askAmount))
                       .build();
                 });
         break;
       case BID:
-        BigDecimal bid = order.getRemainingAmount().multiply(order.getLimitPrice());
-        BigDecimal bidAmount = negate ? bid.negate() : bid;
+        double bid = order.getRemainingAmount() * (order.getLimitPrice());
+        Double bidAmount = negate ? -bid : bid;
         balance(order.getCurrencyPair().counter)
             .updateAndGet(
                 b -> {
                   if (b.getAvailable().compareTo(bidAmount) < 0) {
                     throw new ExchangeException(
                         "Insufficient balance: "
-                            + bidAmount.toPlainString()
+                            + bidAmount.toString()
                             + order.getCurrencyPair().counter
                             + " required but only "
                             + b.getAvailable()
                             + " available");
                   }
                   return Balance.Builder.from(b)
-                      .available(b.getAvailable().subtract(bidAmount))
-                      .frozen(b.getFrozen().add(bidAmount))
+                      .available(b.getAvailable() - (bidAmount))
+                      .frozen(b.getFrozen() + (bidAmount))
                       .build();
                 });
         break;
@@ -129,7 +125,7 @@ class Account {
   }
 
   public void fill(UserTrade userTrade, boolean reserved) {
-    BigDecimal counterAmount = userTrade.getOriginalAmount().multiply(userTrade.getPrice());
+    Double counterAmount = userTrade.getOriginalAmount() * (userTrade.getPrice());
     switch (userTrade.getType()) {
       case ASK:
         balance(userTrade.getCurrencyPair().base)
@@ -139,19 +135,19 @@ class Account {
                         .available(
                             reserved
                                 ? b.getAvailable()
-                                : b.getAvailable().subtract(userTrade.getOriginalAmount()))
+                                : b.getAvailable() - (userTrade.getOriginalAmount()))
                         .frozen(
                             reserved
-                                ? b.getFrozen().subtract(userTrade.getOriginalAmount())
+                                ? b.getFrozen() - (userTrade.getOriginalAmount())
                                 : b.getFrozen())
-                        .total(b.getTotal().subtract(userTrade.getOriginalAmount()))
+                        .total(b.getTotal() - (userTrade.getOriginalAmount()))
                         .build());
         balance(userTrade.getCurrencyPair().counter)
             .updateAndGet(
                 b ->
                     Balance.Builder.from(b)
-                        .total(b.getTotal().add(counterAmount))
-                        .available(b.getAvailable().add(counterAmount))
+                        .total(b.getTotal() + (counterAmount))
+                        .available(b.getAvailable() + (counterAmount))
                         .build());
         break;
       case BID:
@@ -159,17 +155,16 @@ class Account {
             .updateAndGet(
                 b ->
                     Balance.Builder.from(b)
-                        .total(b.getTotal().add(userTrade.getOriginalAmount()))
-                        .available(b.getAvailable().add(userTrade.getOriginalAmount()))
+                        .total(b.getTotal() + (userTrade.getOriginalAmount()))
+                        .available(b.getAvailable() + (userTrade.getOriginalAmount()))
                         .build());
         balance(userTrade.getCurrencyPair().counter)
             .updateAndGet(
                 b ->
                     Balance.Builder.from(b)
-                        .available(
-                            reserved ? b.getAvailable() : b.getAvailable().subtract(counterAmount))
-                        .frozen(reserved ? b.getFrozen().subtract(counterAmount) : b.getFrozen())
-                        .total(b.getTotal().subtract(counterAmount))
+                        .available(reserved ? b.getAvailable() : b.getAvailable() - (counterAmount))
+                        .frozen(reserved ? b.getFrozen() - (counterAmount) : b.getFrozen())
+                        .total(b.getTotal() - (counterAmount))
                         .build());
         break;
       default:
@@ -182,13 +177,13 @@ class Account {
     return balances.computeIfAbsent(currency, this::defaultBalance);
   }
 
-  public void deposit(Currency currency, BigDecimal amount) {
+  public void deposit(Currency currency, Double amount) {
     balance(currency)
         .updateAndGet(
             b ->
                 Balance.Builder.from(b)
-                    .total(b.getTotal().add(amount))
-                    .available(b.getAvailable().add(amount))
+                    .total(b.getTotal() + (amount))
+                    .available(b.getAvailable() + (amount))
                     .build());
   }
 }

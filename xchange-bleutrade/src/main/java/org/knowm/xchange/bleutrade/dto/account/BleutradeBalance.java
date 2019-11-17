@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -20,13 +19,13 @@ public class BleutradeBalance {
   private String Currency;
 
   @JsonProperty("Balance")
-  private BigDecimal Balance;
+  private Double Balance;
 
   @JsonProperty("Available")
-  private BigDecimal Available;
+  private Double Available;
 
   @JsonProperty("Pending")
-  private BigDecimal Pending;
+  private Double Pending;
 
   @JsonProperty("CryptoAddress")
   private String CryptoAddress;
@@ -52,42 +51,42 @@ public class BleutradeBalance {
 
   /** @return The Balance */
   @JsonProperty("Balance")
-  public BigDecimal getBalance() {
+  public Double getBalance() {
 
     return Balance;
   }
 
   /** @param Balance The Balance */
   @JsonProperty("Balance")
-  public void setBalance(BigDecimal Balance) {
+  public void setBalance(Double Balance) {
 
     this.Balance = Balance;
   }
 
   /** @return The Available */
   @JsonProperty("Available")
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
 
     return Available;
   }
 
   /** @param Available The Available */
   @JsonProperty("Available")
-  public void setAvailable(BigDecimal Available) {
+  public void setAvailable(Double Available) {
 
     this.Available = Available;
   }
 
   /** @return The Pending */
   @JsonProperty("Pending")
-  public BigDecimal getPending() {
+  public Double getPending() {
 
     return Pending;
   }
 
   /** @param Pending The Pending */
   @JsonProperty("Pending")
-  public void setPending(BigDecimal Pending) {
+  public void setPending(Double Pending) {
 
     this.Pending = Pending;
   }

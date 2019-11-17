@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,7 +43,7 @@ public class TheRockDtoTest {
   @Test
   public void testTicker() throws Exception {
     final TheRockTicker json = parse(TheRockTicker.class);
-    assertThat(json.getVolume()).isEqualTo(new BigDecimal("25726.86"));
+    assertThat(json.getVolume()).isEqualTo(new Double("25726.86"));
     assertThat(json.getDate()).isEqualTo(getDate("2015-06-13T17:17:45.847+00:00"));
     assertThat(json.getFundId()).isEqualTo(CurrencyPair.BTC_EUR);
   }
@@ -53,8 +52,8 @@ public class TheRockDtoTest {
   public void testBalance() throws Exception {
     final TheRockBalance json = parse(TheRockBalance.class);
     assertThat(json.getCurrency()).isEqualTo("LTC");
-    assertThat(json.getBalance()).isEqualTo(new BigDecimal("6.50884835"));
-    assertThat(json.getTradingBalance()).isEqualTo(new BigDecimal("2.30884835"));
+    assertThat(json.getBalance()).isEqualTo(new Double("6.50884835"));
+    assertThat(json.getTradingBalance()).isEqualTo(new Double("2.30884835"));
   }
 
   @Test
@@ -63,8 +62,8 @@ public class TheRockDtoTest {
     assertThat(json.getBalances()).hasSize(2);
     final TheRockBalance balance = json.getBalances().get(0);
     assertThat(balance.getCurrency()).isEqualTo("LTC");
-    assertThat(balance.getBalance()).isEqualTo(new BigDecimal("6.50884835"));
-    assertThat(balance.getTradingBalance()).isEqualTo(new BigDecimal("2.30884835"));
+    assertThat(balance.getBalance()).isEqualTo(new Double("6.50884835"));
+    assertThat(balance.getTradingBalance()).isEqualTo(new Double("2.30884835"));
   }
 
   @Test
@@ -72,7 +71,7 @@ public class TheRockDtoTest {
     final TheRockOrder json = parse(TheRockOrder.class);
     assertThat(json.getId()).isEqualTo(4325578);
     assertThat(json.getFundId()).isEqualTo(new TheRock.Pair(CurrencyPair.BTC_EUR));
-    assertThat(json.getPrice()).isEqualTo(new BigDecimal("0.0102"));
+    assertThat(json.getPrice()).isEqualTo(new Double("0.0102"));
   }
 
   @Test
@@ -81,16 +80,16 @@ public class TheRockDtoTest {
     TheRockOrder order1 = json.getOrders()[0];
     assertThat(order1.getId()).isEqualTo(54000000);
     assertThat(order1.getFundId()).isEqualTo(new TheRock.Pair(CurrencyPair.BTC_EUR));
-    assertThat(order1.getPrice()).isEqualTo(new BigDecimal("506.46"));
-    assertThat(order1.getAmount()).isEqualTo(new BigDecimal("0.624"));
-    assertThat(order1.getAmountUnfilled()).isEqualTo(new BigDecimal("0.624"));
+    assertThat(order1.getPrice()).isEqualTo(new Double("506.46"));
+    assertThat(order1.getAmount()).isEqualTo(new Double("0.624"));
+    assertThat(order1.getAmountUnfilled()).isEqualTo(new Double("0.624"));
 
     final TheRockOrder order2 = json.getOrders()[1];
     assertThat(order2.getId()).isEqualTo(54000001);
     assertThat(order2.getFundId()).isEqualTo(new TheRock.Pair(CurrencyPair.BTC_EUR));
-    assertThat(order2.getPrice()).isEqualTo(new BigDecimal("504.11"));
-    assertThat(order2.getAmount()).isEqualTo(new BigDecimal("0.399"));
-    assertThat(order2.getAmountUnfilled()).isEqualTo(new BigDecimal("0.399"));
+    assertThat(order2.getPrice()).isEqualTo(new Double("504.11"));
+    assertThat(order2.getAmount()).isEqualTo(new Double("0.399"));
+    assertThat(order2.getAmountUnfilled()).isEqualTo(new Double("0.399"));
   }
 
   @Test

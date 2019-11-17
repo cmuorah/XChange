@@ -6,7 +6,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.dto.Order;
@@ -32,9 +31,9 @@ public class CoindealTradeDtoTest {
     assertThat(coindealTradeHistory.get(0).getOrderId()).isEqualTo("orderId");
     assertThat(coindealTradeHistory.get(0).getSymbol()).isEqualTo("BTCEUR");
     assertThat(coindealTradeHistory.get(0).getSide()).isEqualTo("BUY");
-    assertThat(coindealTradeHistory.get(0).getQuantity()).isEqualTo(new BigDecimal("10.00"));
-    assertThat(coindealTradeHistory.get(0).getFee()).isEqualTo(new BigDecimal("0.1"));
-    assertThat(coindealTradeHistory.get(0).getPrice()).isEqualTo(new BigDecimal("10.00"));
+    assertThat(coindealTradeHistory.get(0).getQuantity()).isEqualTo(new Double("10.00"));
+    assertThat(coindealTradeHistory.get(0).getFee()).isEqualTo(new Double("0.1"));
+    assertThat(coindealTradeHistory.get(0).getPrice()).isEqualTo(new Double("10.00"));
     assertThat(coindealTradeHistory.get(0).getTimestamp()).isEqualTo("2019-01-30 18:13:36");
   }
 
@@ -55,12 +54,12 @@ public class CoindealTradeDtoTest {
     assertThat(coindealOrders.get(0).getSymbol()).isEqualTo("BTCEUR");
     assertThat(coindealOrders.get(0).getSide()).isEqualTo("BUY");
     assertThat(coindealOrders.get(0).getStatus()).isEqualTo(Order.OrderStatus.NEW.toString());
-    assertThat(coindealOrders.get(0).getQuantity()).isEqualTo(new BigDecimal("10.00"));
-    assertThat(coindealOrders.get(0).getPrice()).isEqualTo(new BigDecimal("10.00"));
-    assertThat(coindealOrders.get(0).getCumQuantity()).isEqualTo(new BigDecimal("10.00"));
+    assertThat(coindealOrders.get(0).getQuantity()).isEqualTo(new Double("10.00"));
+    assertThat(coindealOrders.get(0).getPrice()).isEqualTo(new Double("10.00"));
+    assertThat(coindealOrders.get(0).getCumQuantity()).isEqualTo(new Double("10.00"));
     assertThat(coindealOrders.get(0).getCreatedAt()).isEqualTo("2019-04-11T16:40:12.314Z");
     assertThat(coindealOrders.get(0).getUpdatedAt()).isEqualTo("2019-04-11T16:40:12.314Z");
-    assertThat(coindealOrders.get(0).getStopPrice()).isEqualTo(new BigDecimal("10.00"));
+    assertThat(coindealOrders.get(0).getStopPrice()).isEqualTo(new Double("10.00"));
     assertThat(coindealOrders.get(0).getExpireTime()).isEqualTo("2019-04-11T16:40:12.314Z");
   }
 }

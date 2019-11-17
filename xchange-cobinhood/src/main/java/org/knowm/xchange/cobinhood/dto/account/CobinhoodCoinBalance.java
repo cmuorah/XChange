@@ -1,17 +1,16 @@
 package org.knowm.xchange.cobinhood.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CobinhoodCoinBalance {
   private final String currency;
-  private final BigDecimal totalAmount;
-  private final BigDecimal onOrderAmount;
+  private final Double totalAmount;
+  private final Double onOrderAmount;
 
   public CobinhoodCoinBalance(
       @JsonProperty("currency") String currency,
-      @JsonProperty("total") BigDecimal totalAmount,
-      @JsonProperty("on_order") BigDecimal onOrderAmount) {
+      @JsonProperty("total") Double totalAmount,
+      @JsonProperty("on_order") Double onOrderAmount) {
     this.currency = currency;
     this.totalAmount = totalAmount;
     this.onOrderAmount = onOrderAmount;
@@ -21,11 +20,11 @@ public class CobinhoodCoinBalance {
     return currency;
   }
 
-  public BigDecimal getTotalAmount() {
+  public Double getTotalAmount() {
     return totalAmount;
   }
 
-  public BigDecimal getOnOrderAmount() {
+  public Double getOnOrderAmount() {
     return onOrderAmount;
   }
 

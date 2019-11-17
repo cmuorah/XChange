@@ -1,7 +1,6 @@
 package org.knowm.xchange.hitbtc.v2.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class HitbtcTransaction {
@@ -9,9 +8,9 @@ public class HitbtcTransaction {
   private final String id;
   private final String index;
   private final String currency;
-  private final BigDecimal amount;
-  private final BigDecimal fee;
-  private final BigDecimal networkFee;
+  private final Double amount;
+  private final Double fee;
+  private final Double networkFee;
   private final String address;
   private final String paymentId;
   private final String hash;
@@ -24,9 +23,9 @@ public class HitbtcTransaction {
       @JsonProperty("id") String id,
       @JsonProperty("index") String index,
       @JsonProperty("currency") String currency,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("networkFee") BigDecimal networkFee,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("networkFee") Double networkFee,
       @JsonProperty("address") String address,
       @JsonProperty("paymentId") String paymentId,
       @JsonProperty("hash") String hash,
@@ -62,15 +61,15 @@ public class HitbtcTransaction {
     return currency;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public BigDecimal getNetworkFee() {
+  public Double getNetworkFee() {
     return networkFee;
   }
 

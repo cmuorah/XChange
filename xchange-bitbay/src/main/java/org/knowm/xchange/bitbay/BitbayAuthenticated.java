@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitbay;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.Consumes;
@@ -49,9 +48,9 @@ public interface BitbayAuthenticated {
       @FormParam("moment") SynchronizedValueFactory<Long> timestamp,
       @FormParam("type") String type,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("payment_currency") String paymentCurrency,
-      @FormParam("rate") BigDecimal rate)
+      @FormParam("rate") Double rate)
       throws IOException;
 
   /**

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -29,13 +28,13 @@ public class VaultoroNewOrderData {
   private String time;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("btc")
-  private BigDecimal btc;
+  private Double btc;
 
   @JsonProperty("gld")
-  private BigDecimal gld;
+  private Double gld;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -97,42 +96,42 @@ public class VaultoroNewOrderData {
 
   /** @return The price */
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
   /** @param price The price */
   @JsonProperty("price")
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
 
     this.price = price;
   }
 
   /** @return The btc */
   @JsonProperty("btc")
-  public BigDecimal getBtc() {
+  public Double getBtc() {
 
     return btc;
   }
 
   /** @param btc The btc */
   @JsonProperty("btc")
-  public void setBtc(BigDecimal btc) {
+  public void setBtc(Double btc) {
 
     this.btc = btc;
   }
 
   /** @return The gld */
   @JsonProperty("gld")
-  public BigDecimal getGld() {
+  public Double getGld() {
 
     return gld;
   }
 
   /** @param gld The gld */
   @JsonProperty("gld")
-  public void setGld(BigDecimal gld) {
+  public void setGld(Double gld) {
 
     this.gld = gld;
   }

@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 
@@ -28,14 +27,14 @@ public class CryptoFacilitiesOrderBookJSONTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(cryptoFacilitiesOrderBook.isSuccess()).isTrue();
 
-    List<List<BigDecimal>> asks = cryptoFacilitiesOrderBook.getAsks();
+    List<List<Double>> asks = cryptoFacilitiesOrderBook.getAsks();
     assertThat(asks.size()).isEqualTo(28);
-    assertThat(asks.get(0).get(0)).isEqualTo(new BigDecimal("644.74"));
-    assertThat(asks.get(0).get(1)).isEqualTo(new BigDecimal("8"));
+    assertThat(asks.get(0).get(0)).isEqualTo(new Double("644.74"));
+    assertThat(asks.get(0).get(1)).isEqualTo(new Double("8"));
 
-    List<List<BigDecimal>> bids = cryptoFacilitiesOrderBook.getBids();
+    List<List<Double>> bids = cryptoFacilitiesOrderBook.getBids();
     assertThat(bids.size()).isEqualTo(23);
-    assertThat(bids.get(0).get(0)).isEqualTo(new BigDecimal("643.92"));
-    assertThat(bids.get(0).get(1)).isEqualTo(new BigDecimal("9"));
+    assertThat(bids.get(0).get(0)).isEqualTo(new Double("643.92"));
+    assertThat(bids.get(0).get(1)).isEqualTo(new Double("9"));
   }
 }

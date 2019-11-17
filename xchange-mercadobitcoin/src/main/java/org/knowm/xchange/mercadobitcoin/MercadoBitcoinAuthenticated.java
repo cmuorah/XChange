@@ -1,7 +1,6 @@
 package org.knowm.xchange.mercadobitcoin;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.ws.rs.Consumes;
@@ -61,8 +60,8 @@ public interface MercadoBitcoinAuthenticated {
       @FormParam("tonce") long tonce,
       @Nonnull @FormParam("pair") String pair,
       @Nonnull @FormParam("type") String type,
-      @Nonnull @FormParam("volume") BigDecimal volume,
-      @Nonnull @FormParam("price") BigDecimal price)
+      @Nonnull @FormParam("volume") Double volume,
+      @Nonnull @FormParam("price") Double price)
       throws IOException;
 
   @POST

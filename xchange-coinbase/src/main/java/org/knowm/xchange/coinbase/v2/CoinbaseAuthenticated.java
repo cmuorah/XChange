@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbase.v2;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Map;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -53,7 +52,7 @@ public interface CoinbaseAuthenticated extends Coinbase {
       @HeaderParam(CB_VERSION) String apiVersion,
       @HeaderParam(CB_ACCESS_KEY) String apiKey,
       @HeaderParam(CB_ACCESS_SIGN) ParamsDigest signature,
-      @HeaderParam(CB_ACCESS_TIMESTAMP) BigDecimal timestamp,
+      @HeaderParam(CB_ACCESS_TIMESTAMP) Double timestamp,
       @PathParam("accountId") String accountId)
       throws IOException, CoinbaseException;
 
@@ -63,7 +62,7 @@ public interface CoinbaseAuthenticated extends Coinbase {
       @HeaderParam(CB_VERSION) String apiVersion,
       @HeaderParam(CB_ACCESS_KEY) String apiKey,
       @HeaderParam(CB_ACCESS_SIGN) ParamsDigest signature,
-      @HeaderParam(CB_ACCESS_TIMESTAMP) BigDecimal timestamp,
+      @HeaderParam(CB_ACCESS_TIMESTAMP) Double timestamp,
       @PathParam("accountId") String accountId)
       throws IOException, CoinbaseException;
 
@@ -73,7 +72,7 @@ public interface CoinbaseAuthenticated extends Coinbase {
       @HeaderParam(CB_VERSION) String apiVersion,
       @HeaderParam(CB_ACCESS_KEY) String apiKey,
       @HeaderParam(CB_ACCESS_SIGN) ParamsDigest signature,
-      @HeaderParam(CB_ACCESS_TIMESTAMP) BigDecimal timestamp,
+      @HeaderParam(CB_ACCESS_TIMESTAMP) Double timestamp,
       @PathParam("accountId") String accountId)
       throws IOException, CoinbaseException;
 
@@ -83,7 +82,7 @@ public interface CoinbaseAuthenticated extends Coinbase {
       @HeaderParam(CB_VERSION) String apiVersion,
       @HeaderParam(CB_ACCESS_KEY) String apiKey,
       @HeaderParam(CB_ACCESS_SIGN) ParamsDigest signature,
-      @HeaderParam(CB_ACCESS_TIMESTAMP) BigDecimal timestamp)
+      @HeaderParam(CB_ACCESS_TIMESTAMP) Double timestamp)
       throws IOException, CoinbaseException;
 
   @GET
@@ -92,7 +91,7 @@ public interface CoinbaseAuthenticated extends Coinbase {
       @HeaderParam(CB_VERSION) String apiVersion,
       @HeaderParam(CB_ACCESS_KEY) String apiKey,
       @HeaderParam(CB_ACCESS_SIGN) CoinbaseV2Digest signature,
-      @HeaderParam(CB_ACCESS_TIMESTAMP) BigDecimal timestamp,
+      @HeaderParam(CB_ACCESS_TIMESTAMP) Double timestamp,
       @PathParam("currency") String currency)
       throws IOException, CoinbaseException;
 
@@ -104,7 +103,7 @@ public interface CoinbaseAuthenticated extends Coinbase {
       @HeaderParam(CB_VERSION) String apiVersion,
       @HeaderParam(CB_ACCESS_KEY) String apiKey,
       @HeaderParam(CB_ACCESS_SIGN) String signature,
-      @HeaderParam(CB_ACCESS_TIMESTAMP) BigDecimal timestamp,
+      @HeaderParam(CB_ACCESS_TIMESTAMP) Double timestamp,
       Object payload)
       throws IOException, CoinbaseException;
 
@@ -114,7 +113,7 @@ public interface CoinbaseAuthenticated extends Coinbase {
       @HeaderParam(CB_VERSION) String apiVersion,
       @HeaderParam(CB_ACCESS_KEY) String apiKey,
       @HeaderParam(CB_ACCESS_SIGN) CoinbaseV2Digest signature,
-      @HeaderParam(CB_ACCESS_TIMESTAMP) BigDecimal timestamp)
+      @HeaderParam(CB_ACCESS_TIMESTAMP) Double timestamp)
       throws IOException, CoinbaseException;
 
   @POST
@@ -125,7 +124,7 @@ public interface CoinbaseAuthenticated extends Coinbase {
       @HeaderParam(CB_VERSION) String apiVersion,
       @HeaderParam(CB_ACCESS_KEY) String apiKey,
       @HeaderParam(CB_ACCESS_SIGN) String signature,
-      @HeaderParam(CB_ACCESS_TIMESTAMP) BigDecimal timestamp,
+      @HeaderParam(CB_ACCESS_TIMESTAMP) Double timestamp,
       @PathParam("account") String accountId,
       Object payload)
       throws IOException, CoinbaseException;
@@ -138,7 +137,7 @@ public interface CoinbaseAuthenticated extends Coinbase {
       @HeaderParam(CB_VERSION) String apiVersion,
       @HeaderParam(CB_ACCESS_KEY) String apiKey,
       @HeaderParam(CB_ACCESS_SIGN) String signature,
-      @HeaderParam(CB_ACCESS_TIMESTAMP) BigDecimal timestamp,
+      @HeaderParam(CB_ACCESS_TIMESTAMP) Double timestamp,
       @PathParam("account") String accountId,
       Object payload)
       throws IOException, CoinbaseException;

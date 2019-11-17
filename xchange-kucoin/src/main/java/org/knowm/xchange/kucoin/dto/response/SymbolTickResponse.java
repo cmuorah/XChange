@@ -2,7 +2,6 @@
 package org.knowm.xchange.kucoin.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.math.BigDecimal;
 import lombok.Data;
 
 /**
@@ -15,27 +14,27 @@ public class SymbolTickResponse {
 
   private String symbol;
 
-  private BigDecimal changeRate;
+  private Double changeRate;
 
-  private BigDecimal changePrice;
+  private Double changePrice;
 
-  private BigDecimal open;
+  private Double open;
 
-  private BigDecimal close;
+  private Double close;
 
-  private BigDecimal high;
+  private Double high;
 
-  private BigDecimal low;
+  private Double low;
 
-  private BigDecimal vol;
+  private Double vol;
 
-  private BigDecimal volValue;
+  private Double volValue;
 
-  private BigDecimal last;
+  private Double last;
 
-  private BigDecimal buy;
+  private Double buy;
 
-  private BigDecimal sell;
+  private Double sell;
 
   private long time;
 }

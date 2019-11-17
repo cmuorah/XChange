@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbase.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinbase.dto.trade.CoinbaseTransfer;
 import org.knowm.xchange.coinbase.dto.trade.CoinbaseTransfers;
@@ -31,11 +30,11 @@ class CoinbaseTradeServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://coinbase.com/api/doc/1.0/buys/create.html">coinbase.com/api/doc/1.0/buys/create.html</a>
    */
-  public CoinbaseTransfer buy(BigDecimal quantity) throws IOException {
+  public CoinbaseTransfer buy(Double quantity) throws IOException {
 
     final CoinbaseTransfer buyTransfer =
         coinbase.buy(
-            quantity.toPlainString(),
+            quantity.toString(),
             false,
             exchange.getExchangeSpecification().getApiKey(),
             signatureCreator,
@@ -55,11 +54,11 @@ class CoinbaseTradeServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://coinbase.com/api/doc/1.0/buys/create.html">coinbase.com/api/doc/1.0/buys/create.html</a>
    */
-  public CoinbaseTransfer buyAndAgreeBTCAmountVaries(BigDecimal quantity) throws IOException {
+  public CoinbaseTransfer buyAndAgreeBTCAmountVaries(Double quantity) throws IOException {
 
     final CoinbaseTransfer buyTransfer =
         coinbase.buy(
-            quantity.toPlainString(),
+            quantity.toString(),
             true,
             exchange.getExchangeSpecification().getApiKey(),
             signatureCreator,
@@ -78,11 +77,11 @@ class CoinbaseTradeServiceRaw extends CoinbaseBaseService {
    * @see <a
    *     href="https://coinbase.com/api/doc/1.0/sells/create.html">coinbase.com/api/doc/1.0/sells/create.html</a>
    */
-  public CoinbaseTransfer sell(BigDecimal quantity) throws IOException {
+  public CoinbaseTransfer sell(Double quantity) throws IOException {
 
     final CoinbaseTransfer sellTransfer =
         coinbase.sell(
-            quantity.toPlainString(),
+            quantity.toString(),
             exchange.getExchangeSpecification().getApiKey(),
             signatureCreator,
             exchange.getNonceFactory());

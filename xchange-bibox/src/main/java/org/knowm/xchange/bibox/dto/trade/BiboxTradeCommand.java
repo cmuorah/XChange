@@ -1,6 +1,5 @@
 package org.knowm.xchange.bibox.dto.trade;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.bibox.dto.BiboxCommand;
 
 /** @author odrotleff */
@@ -12,9 +11,9 @@ public class BiboxTradeCommand extends BiboxCommand<BiboxTradeCommandBody> {
       int orderType,
       int orderSide,
       boolean payBix,
-      BigDecimal price,
-      BigDecimal amount,
-      BigDecimal money) {
+      Double price,
+      Double amount,
+      Double money) {
     super(
         "orderpending/trade",
         new BiboxTradeCommandBody(

@@ -2,7 +2,6 @@ package org.knowm.xchange.bitcoinaverage;
 
 import static org.knowm.xchange.currency.Currency.BTC;
 
-import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -31,11 +30,11 @@ public final class BitcoinAverageAdapters {
   public static Ticker adaptTicker(
       BitcoinAverageTicker bitcoinAverageTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = bitcoinAverageTicker.getLast();
-    BigDecimal bid = bitcoinAverageTicker.getBid();
-    BigDecimal ask = bitcoinAverageTicker.getAsk();
+    Double last = bitcoinAverageTicker.getLast();
+    Double bid = bitcoinAverageTicker.getBid();
+    Double ask = bitcoinAverageTicker.getAsk();
     Date timestamp = bitcoinAverageTicker.getTimestamp();
-    BigDecimal volume = bitcoinAverageTicker.getVolume();
+    Double volume = bitcoinAverageTicker.getVolume();
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)

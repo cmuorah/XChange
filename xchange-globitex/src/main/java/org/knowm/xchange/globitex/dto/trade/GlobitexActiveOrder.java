@@ -3,7 +3,6 @@ package org.knowm.xchange.globitex.dto.trade;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class GlobitexActiveOrder implements Serializable {
 
@@ -17,13 +16,13 @@ public class GlobitexActiveOrder implements Serializable {
   private final long lastTimestamp;
 
   @JsonProperty("orderPrice")
-  private final BigDecimal orderPrice;
+  private final Double orderPrice;
 
   @JsonProperty("orderQuantity")
-  private final BigDecimal orderQuantity;
+  private final Double orderQuantity;
 
   @JsonProperty("avgPrice")
-  private final BigDecimal avgPrice;
+  private final Double avgPrice;
 
   @JsonProperty("type")
   private final String type;
@@ -47,17 +46,17 @@ public class GlobitexActiveOrder implements Serializable {
   private final String orderSource;
 
   @JsonProperty("leavesQuantity")
-  private final BigDecimal leavesQuantity;
+  private final Double leavesQuantity;
 
   @JsonProperty("cumQuantity")
-  private final BigDecimal cumQuantity;
+  private final Double cumQuantity;
 
   @JsonProperty("execQuantity")
-  private final BigDecimal execQuantity;
+  private final Double execQuantity;
 
   @JsonProperty("stopPrice")
   @JsonIgnore
-  private final BigDecimal stopPrice;
+  private final Double stopPrice;
 
   @JsonProperty("expireTime")
   @JsonIgnore
@@ -67,9 +66,9 @@ public class GlobitexActiveOrder implements Serializable {
       @JsonProperty("orderId") String orderId,
       @JsonProperty("orderStatus") String orderStatus,
       @JsonProperty("lastTimestamp") long lastTimestamp,
-      @JsonProperty("orderPrice") BigDecimal orderPrice,
-      @JsonProperty("orderQuantity") BigDecimal orderQuantity,
-      @JsonProperty("avgPrice") BigDecimal avgPrice,
+      @JsonProperty("orderPrice") Double orderPrice,
+      @JsonProperty("orderQuantity") Double orderQuantity,
+      @JsonProperty("avgPrice") Double avgPrice,
       @JsonProperty("type") String type,
       @JsonProperty("timeInForce") String timeInForce,
       @JsonProperty("clientOrderId") String clientOrderId,
@@ -77,10 +76,10 @@ public class GlobitexActiveOrder implements Serializable {
       @JsonProperty("side") String side,
       @JsonProperty("account") String account,
       @JsonProperty("orderSource") String orderSource,
-      @JsonProperty("leavesQuantity") BigDecimal leavesQuantity,
-      @JsonProperty("cumQuantity") BigDecimal cumQuantity,
-      @JsonProperty("execQuantity") BigDecimal execQuantity,
-      @JsonProperty("stopPrice") BigDecimal stopPrice,
+      @JsonProperty("leavesQuantity") Double leavesQuantity,
+      @JsonProperty("cumQuantity") Double cumQuantity,
+      @JsonProperty("execQuantity") Double execQuantity,
+      @JsonProperty("stopPrice") Double stopPrice,
       @JsonProperty("expireTime") long expireTime) {
     super();
     this.orderId = orderId;
@@ -115,15 +114,15 @@ public class GlobitexActiveOrder implements Serializable {
     return lastTimestamp;
   }
 
-  public BigDecimal getOrderPrice() {
+  public Double getOrderPrice() {
     return orderPrice;
   }
 
-  public BigDecimal getOrderQuantity() {
+  public Double getOrderQuantity() {
     return orderQuantity;
   }
 
-  public BigDecimal getAvgPrice() {
+  public Double getAvgPrice() {
     return avgPrice;
   }
 
@@ -155,19 +154,19 @@ public class GlobitexActiveOrder implements Serializable {
     return orderSource;
   }
 
-  public BigDecimal getLeavesQuantity() {
+  public Double getLeavesQuantity() {
     return leavesQuantity;
   }
 
-  public BigDecimal getCumQuantity() {
+  public Double getCumQuantity() {
     return cumQuantity;
   }
 
-  public BigDecimal getExecQuantity() {
+  public Double getExecQuantity() {
     return execQuantity;
   }
 
-  public BigDecimal getStopPrice() {
+  public Double getStopPrice() {
     return stopPrice;
   }
 

@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import org.junit.Test;
 import org.knowm.xchange.cryptofacilities.Util;
@@ -29,28 +28,28 @@ public class CryptoFacilitiesTickersJSONTest {
     // Verify that the example data was unmarshalled correctly for fwd contract
     assertThat(cryptoFacilitiesTickers.isSuccess()).isTrue();
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getAskSize())
-        .isEqualTo(new BigDecimal("2"));
+        .isEqualTo(new Double("2"));
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getLast())
-        .isEqualTo(new BigDecimal("424.85"));
+        .isEqualTo(new Double("424.85"));
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getLow24H())
-        .isEqualTo(new BigDecimal("422.9"));
+        .isEqualTo(new Double("422.9"));
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getBidSize())
-        .isEqualTo(new BigDecimal("2"));
+        .isEqualTo(new Double("2"));
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getSuspended()).isFalse();
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getOpen24H())
-        .isEqualTo(new BigDecimal("422.9"));
+        .isEqualTo(new Double("422.9"));
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getHigh24H())
-        .isEqualTo(new BigDecimal("424.85"));
+        .isEqualTo(new Double("424.85"));
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getMarkPrice())
-        .isEqualTo(new BigDecimal("421.7"));
+        .isEqualTo(new Double("421.7"));
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getAsk())
-        .isEqualTo(new BigDecimal("427.81"));
+        .isEqualTo(new Double("427.81"));
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getBid())
-        .isEqualTo(new BigDecimal("426.75"));
+        .isEqualTo(new Double("426.75"));
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getLastSize())
-        .isEqualTo(new BigDecimal("4"));
+        .isEqualTo(new Double("4"));
     assertThat(cryptoFacilitiesTickers.getTicker("F-XBT:USD-Apr16-W5").getVol24H())
-        .isEqualTo(new BigDecimal("5"));
+        .isEqualTo(new Double("5"));
 
     // 2016-04-04 18:19:56 UTC
 
@@ -60,7 +59,7 @@ public class CryptoFacilitiesTickersJSONTest {
     // Verify that the example data was unmarshalled correctly for vol index contract
     assertThat(cryptoFacilitiesTickers.isSuccess()).isTrue();
     assertThat(cryptoFacilitiesTickers.getTicker("CF-Bpi-V").getLast())
-        .isEqualTo(new BigDecimal("29.31"));
+        .isEqualTo(new Double("29.31"));
 
     // 2016-04-05 08:49:41.116 UTC
     assertThat(cryptoFacilitiesTickers.getTicker("CF-Bpi-V").getLastTime())

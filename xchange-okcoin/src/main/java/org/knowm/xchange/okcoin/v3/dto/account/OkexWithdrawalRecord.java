@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.v3.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import lombok.Data;
@@ -14,7 +13,7 @@ public class OkexWithdrawalRecord {
   /** token */
   private String currency;
   /** amount */
-  private BigDecimal amount;
+  private Double amount;
   /** withdrawal request creation date */
   private String timestamp;
   /** remitting address(OKEx account will be shown for OKEx address), ie 13454335123 */

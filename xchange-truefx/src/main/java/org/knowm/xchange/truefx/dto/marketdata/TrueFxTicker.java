@@ -10,34 +10,33 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 @JsonPropertyOrder(
     value = {"pair", "timestamp", "bid", "bidBP", "ask", "askBP", "low", "high", "open"})
 public class TrueFxTicker {
-  private static final BigDecimal BASIS_POINT_MULTIPLIER = new BigDecimal("0.00001");
+  private static final Double BASIS_POINT_MULTIPLIER = new Double("0.00001");
 
   private final String pair;
   private final long timestamp;
-  private final BigDecimal bid;
-  private final BigDecimal bidBP;
-  private final BigDecimal ask;
-  private final BigDecimal askBP;
+  private final Double bid;
+  private final Double bidBP;
+  private final Double ask;
+  private final Double askBP;
 
-  private final BigDecimal low;
-  private final BigDecimal high;
-  private final BigDecimal open;
+  private final Double low;
+  private final Double high;
+  private final Double open;
 
   public TrueFxTicker(
       @JsonProperty("pair") String pair,
       @JsonProperty("timestamp") long timestamp,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("bidBP") BigDecimal bidBP,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("askBP") BigDecimal askBP,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("open") BigDecimal open) {
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("bidBP") Double bidBP,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("askBP") Double askBP,
+      @JsonProperty("low") Double low,
+      @JsonProperty("high") Double high,
+      @JsonProperty("open") Double open) {
     this.pair = pair;
     this.timestamp = timestamp;
     this.bid = bid;
@@ -57,40 +56,40 @@ public class TrueFxTicker {
     return timestamp;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getBidBP() {
+  public Double getBidBP() {
     return bidBP;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getAskBP() {
+  public Double getAskBP() {
     return askBP;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal calcBid() {
-    return bid.add(BASIS_POINT_MULTIPLIER.multiply(bidBP));
+  public Double calcBid() {
+    return bid + (BASIS_POINT_MULTIPLIER * (bidBP));
   }
 
-  public BigDecimal calcAsk() {
-    return ask.add(BASIS_POINT_MULTIPLIER.multiply(askBP));
+  public Double calcAsk() {
+    return ask + (BASIS_POINT_MULTIPLIER * (askBP));
   }
 
   @Override
@@ -119,13 +118,13 @@ public class TrueFxTicker {
 
       String pair = array.get(0).asText();
       long timestamp = array.get(1).asLong();
-      BigDecimal bid = new BigDecimal(array.get(2).asText());
-      BigDecimal bidBP = new BigDecimal(array.get(3).asText());
-      BigDecimal ask = new BigDecimal(array.get(4).asText());
-      BigDecimal askBP = new BigDecimal(array.get(5).asText());
-      BigDecimal low = new BigDecimal(array.get(6).asText());
-      BigDecimal high = new BigDecimal(array.get(7).asText());
-      BigDecimal open = new BigDecimal(array.get(8).asText());
+      Double bid = new Double(array.get(2).asText());
+      Double bidBP = new Double(array.get(3).asText());
+      Double ask = new Double(array.get(4).asText());
+      Double askBP = new Double(array.get(5).asText());
+      Double low = new Double(array.get(6).asText());
+      Double high = new Double(array.get(7).asText());
+      Double open = new Double(array.get(8).asText());
 
       return new TrueFxTicker(pair, timestamp, bid, bidBP, ask, askBP, low, high, open);
     }

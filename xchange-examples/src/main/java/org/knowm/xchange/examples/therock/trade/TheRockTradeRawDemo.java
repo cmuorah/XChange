@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.therock.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.examples.therock.TheRockExampleUtils;
@@ -26,8 +25,8 @@ public class TheRockTradeRawDemo {
         (TheRockTradeServiceRaw) theRockExchange.getTradeService();
 
     // create order
-    BigDecimal amount = new BigDecimal("0.01");
-    BigDecimal price = new BigDecimal("50.0");
+    Double amount = new Double("0.01");
+    Double price = new Double("50.0");
     TheRock.Pair pair = new TheRock.Pair(BTC_EUR);
     TheRockOrder order = new TheRockOrder(pair, Side.buy, Type.limit, amount, price);
     TheRockOrder orderResult = tradeService.placeTheRockOrder(BTC_EUR, order);

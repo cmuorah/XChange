@@ -3,20 +3,18 @@ package org.knowm.xchange.itbit;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
-import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DateFormat;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
-import org.knowm.xchange.dto.account.*;
+import org.knowm.xchange.dto.account.AccountInfo;
+import org.knowm.xchange.dto.account.Balance;
+import org.knowm.xchange.dto.account.FundingRecord;
+import org.knowm.xchange.dto.account.Wallet;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
 import org.knowm.xchange.dto.marketdata.Trades;
@@ -117,13 +115,13 @@ public final class ItBitAdapters {
   }
 
   public static List<LimitOrder> adaptOrders(
-      List<BigDecimal[]> orders, CurrencyPair currencyPair, OrderType orderType) {
+      List<Double[]> orders, CurrencyPair currencyPair, OrderType orderType) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
 
     if (orders == null) return limitOrders;
 
-    for (BigDecimal[] level : orders) {
+    for (Double[] level : orders) {
       limitOrders.add(adaptOrder(level[1], level[0], currencyPair, null, orderType, null));
     }
 
@@ -131,8 +129,8 @@ public final class ItBitAdapters {
   }
 
   private static LimitOrder adaptOrder(
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       CurrencyPair currencyPair,
       String orderId,
       OrderType orderType,
@@ -146,17 +144,14 @@ public final class ItBitAdapters {
     List<Wallet> wallets = new ArrayList<>(info.length);
     String userId = "";
 
-    for (int i = 0; i < info.length; i++) {
-      ItBitAccountInfoReturn itBitAccountInfoReturn = info[i];
+    for (ItBitAccountInfoReturn itBitAccountInfoReturn : info) {
       ItBitAccountBalance[] balances = itBitAccountInfoReturn.getBalances();
 
       userId = itBitAccountInfoReturn.getUserId();
 
       List<Balance> walletContent = new ArrayList<>(balances.length);
 
-      for (int j = 0; j < balances.length; j++) {
-        ItBitAccountBalance itBitAccountBalance = balances[j];
-
+      for (ItBitAccountBalance itBitAccountBalance : balances) {
         Currency currency = adaptCcy(itBitAccountBalance.getCurrency());
         Balance balance =
             new Balance(
@@ -184,8 +179,7 @@ public final class ItBitAdapters {
 
     List<LimitOrder> limitOrders = new ArrayList<>(orders.length);
 
-    for (int i = 0; i < orders.length; i++) {
-      ItBitOrder itBitOrder = orders[i];
+    for (ItBitOrder itBitOrder : orders) {
       String instrument = itBitOrder.getInstrument();
 
       CurrencyPair currencyPair =
@@ -217,21 +211,20 @@ public final class ItBitAdapters {
     List<UserTrade> trades = new ArrayList<>();
 
     for (String orderId : tradesByOrderId.keySet()) {
-      BigDecimal totalValue = BigDecimal.ZERO;
-      BigDecimal totalQuantity = BigDecimal.ZERO;
-      BigDecimal totalFee = BigDecimal.ZERO;
+      Double totalValue = 0d;
+      Double totalQuantity = 0d;
+      Double totalFee = 0d;
 
       for (ItBitUserTrade trade : tradesByOrderId.get(orderId)) {
         // can have multiple trades for same order, so add them all up here to
         // get the average price and total fee
         // we have to do this because there is no trade id
-        totalValue = totalValue.add(trade.getCurrency1Amount().multiply(trade.getRate()));
-        totalQuantity = totalQuantity.add(trade.getCurrency1Amount());
-        totalFee = totalFee.add(trade.getCommissionPaid());
+        totalValue = totalValue + (trade.getCurrency1Amount() * (trade.getRate()));
+        totalQuantity = totalQuantity + (trade.getCurrency1Amount());
+        totalFee = totalFee + (trade.getCommissionPaid());
       }
 
-      BigDecimal volumeWeightedAveragePrice =
-          totalValue.divide(totalQuantity, 8, BigDecimal.ROUND_HALF_UP);
+      Double volumeWeightedAveragePrice = totalValue / totalQuantity;
 
       ItBitUserTrade itBitTrade = tradesByOrderId.get(orderId).get(0);
       OrderType orderType =
@@ -275,12 +268,12 @@ public final class ItBitAdapters {
 
   public static Ticker adaptTicker(CurrencyPair currencyPair, ItBitTicker itBitTicker) {
 
-    BigDecimal bid = itBitTicker.getBid();
-    BigDecimal ask = itBitTicker.getAsk();
-    BigDecimal high = itBitTicker.getHighToday();
-    BigDecimal low = itBitTicker.getLowToday();
-    BigDecimal last = itBitTicker.getLastPrice();
-    BigDecimal volume = itBitTicker.getVolume24h();
+    Double bid = itBitTicker.getBid();
+    Double ask = itBitTicker.getAsk();
+    Double high = itBitTicker.getHighToday();
+    Double low = itBitTicker.getLowToday();
+    Double last = itBitTicker.getLastPrice();
+    Double volume = itBitTicker.getVolume24h();
     Date timestamp =
         itBitTicker.getTimestamp() != null ? parseDate(itBitTicker.getTimestamp()) : null;
 
@@ -298,12 +291,12 @@ public final class ItBitAdapters {
         .build();
   }
 
-  public static String formatFiatAmount(BigDecimal amount) {
-    return getFiatFormat().format(amount.add(new BigDecimal(0.00000001)));
+  public static String formatFiatAmount(Double amount) {
+    return getFiatFormat().format(amount + (0.00000001));
   }
 
-  public static String formatCryptoAmount(BigDecimal amount) {
-    return getCryptoFormat().format(amount.add(new BigDecimal(0.00000001)));
+  public static String formatCryptoAmount(Double amount) {
+    return getCryptoFormat().format(amount + (0.00000001));
   }
 
   public static CurrencyPair adaptCurrencyPairToExchange(CurrencyPair currencyPair) {

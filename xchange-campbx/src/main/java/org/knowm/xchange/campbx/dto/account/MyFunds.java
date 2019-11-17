@@ -1,85 +1,84 @@
 package org.knowm.xchange.campbx.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.campbx.dto.CampBXResponse;
 
 public final class MyFunds extends CampBXResponse {
 
   @JsonProperty("Total USD")
-  private BigDecimal totalUSD;
+  private Double totalUSD;
 
   @JsonProperty("Total BTC")
-  private BigDecimal totalBTC;
+  private Double totalBTC;
 
   @JsonProperty("Liquid USD")
-  private BigDecimal liquidUSD;
+  private Double liquidUSD;
 
   @JsonProperty("Liquid BTC")
-  private BigDecimal liquidBTC;
+  private Double liquidBTC;
 
   @JsonProperty("Margin Account USD")
-  private BigDecimal marginAccountUSD;
+  private Double marginAccountUSD;
 
   @JsonProperty("Margin Account BTC")
-  private BigDecimal marginAccountBTC;
+  private Double marginAccountBTC;
 
-  public BigDecimal getTotalUSD() {
+  public Double getTotalUSD() {
 
     return totalUSD;
   }
 
-  public void setTotalUSD(BigDecimal totalUSD) {
+  public void setTotalUSD(Double totalUSD) {
 
     this.totalUSD = totalUSD;
   }
 
-  public BigDecimal getTotalBTC() {
+  public Double getTotalBTC() {
 
     return totalBTC;
   }
 
-  public void setTotalBTC(BigDecimal totalBTC) {
+  public void setTotalBTC(Double totalBTC) {
 
     this.totalBTC = totalBTC;
   }
 
-  public BigDecimal getLiquidUSD() {
+  public Double getLiquidUSD() {
 
     return liquidUSD;
   }
 
-  public void setLiquidUSD(BigDecimal liquidUSD) {
+  public void setLiquidUSD(Double liquidUSD) {
 
     this.liquidUSD = liquidUSD;
   }
 
-  public BigDecimal getLiquidBTC() {
+  public Double getLiquidBTC() {
 
     return liquidBTC;
   }
 
-  public void setLiquidBTC(BigDecimal liquidBTC) {
+  public void setLiquidBTC(Double liquidBTC) {
 
     this.liquidBTC = liquidBTC;
   }
 
-  public BigDecimal getMarginAccountUSD() {
+  public Double getMarginAccountUSD() {
 
     return marginAccountUSD;
   }
 
-  public void setMarginAccountUSD(BigDecimal marginAccountUSD) {
+  public void setMarginAccountUSD(Double marginAccountUSD) {
 
     this.marginAccountUSD = marginAccountUSD;
   }
 
-  public BigDecimal getMarginAccountBTC() {
+  public Double getMarginAccountBTC() {
 
     return marginAccountBTC;
   }
 
-  public void setMarginAccountBTC(BigDecimal marginAccountBTC) {
+  public void setMarginAccountBTC(Double marginAccountBTC) {
 
     this.marginAccountBTC = marginAccountBTC;
   }

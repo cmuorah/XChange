@@ -1,7 +1,6 @@
 package org.knowm.xchange.dragonex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class OrderPlacement {
 
@@ -14,7 +13,7 @@ public class OrderPlacement {
   @JsonProperty("volume")
   public final String volume;
 
-  public OrderPlacement(long symbolId, BigDecimal price, BigDecimal volume) {
+  public OrderPlacement(long symbolId, Double price, Double volume) {
     this.symbolId = symbolId;
     this.price = price.toString();
     this.volume = volume.toString();

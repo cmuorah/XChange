@@ -1,13 +1,12 @@
 package org.knowm.xchange.itbit.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class ItBitFunding {
   public final String time;
   public final String currency;
   public final String transactionType;
-  public final BigDecimal amount;
+  public final Double amount;
   public final String walletName;
   public final String status;
 
@@ -24,7 +23,7 @@ public class ItBitFunding {
       @JsonProperty("time") String time,
       @JsonProperty("currency") String currency,
       @JsonProperty("transactionType") String transactionType,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("walletName") String walletName,
       @JsonProperty("status") String status,
       @JsonProperty("bankName") String bankName,

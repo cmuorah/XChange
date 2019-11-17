@@ -1,7 +1,6 @@
 package org.knowm.xchange.bibox.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.Getter;
 import org.knowm.xchange.currency.Currency;
 
@@ -13,21 +12,21 @@ public class BiboxAsset {
 
   @JsonProperty("BTCValue")
   @Getter
-  private BigDecimal BTCValue;
+  private Double BTCValue;
 
   @JsonProperty("CNYValue")
   @Getter
-  private BigDecimal CNYValue;
+  private Double CNYValue;
 
   @JsonProperty("USDValue")
   @Getter
-  private BigDecimal USDValue;
+  private Double USDValue;
 
   @JsonProperty("balance")
   @Getter
-  private BigDecimal balance;
+  private Double balance;
 
   @JsonProperty("freeze")
   @Getter
-  private BigDecimal freeze;
+  private Double freeze;
 }

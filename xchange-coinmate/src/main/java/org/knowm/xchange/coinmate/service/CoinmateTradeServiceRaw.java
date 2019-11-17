@@ -24,7 +24,6 @@
 package org.knowm.xchange.coinmate.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinmate.CoinmateAuthenticated;
 import org.knowm.xchange.coinmate.dto.trade.*;
@@ -168,10 +167,10 @@ public class CoinmateTradeServiceRaw extends CoinmateBaseService {
   }
 
   public CoinmateTradeResponse buyCoinmateLimit(
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       String currencyPair,
-      BigDecimal stopPrice,
+      Double stopPrice,
       Integer hidden,
       Integer immediateOrCancel,
       Integer trailing)
@@ -196,10 +195,10 @@ public class CoinmateTradeServiceRaw extends CoinmateBaseService {
   }
 
   public CoinmateTradeResponse sellCoinmateLimit(
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       String currencyPair,
-      BigDecimal stopPrice,
+      Double stopPrice,
       Integer hidden,
       Integer immediateOrCancel,
       Integer trailing)
@@ -225,10 +224,10 @@ public class CoinmateTradeServiceRaw extends CoinmateBaseService {
 
   public CoinmateReplaceResponse coinmateReplaceByBuyLimit(
       String orderId,
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       String currencyPair,
-      BigDecimal stopPrice,
+      Double stopPrice,
       Integer hidden,
       Integer immediateOrCancel,
       Integer trailing)
@@ -255,10 +254,10 @@ public class CoinmateTradeServiceRaw extends CoinmateBaseService {
 
   public CoinmateReplaceResponse coinmateReplaceBySellLimit(
       String orderId,
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       String currencyPair,
-      BigDecimal stopPrice,
+      Double stopPrice,
       Integer hidden,
       Integer immediateOrCancel,
       Integer trailing)
@@ -283,7 +282,7 @@ public class CoinmateTradeServiceRaw extends CoinmateBaseService {
     return response;
   }
 
-  public CoinmateTradeResponse buyCoinmateInstant(BigDecimal total, String currencyPair)
+  public CoinmateTradeResponse buyCoinmateInstant(Double total, String currencyPair)
       throws IOException {
     CoinmateTradeResponse response =
         coinmateAuthenticated.buyInstant(
@@ -299,7 +298,7 @@ public class CoinmateTradeServiceRaw extends CoinmateBaseService {
     return response;
   }
 
-  public CoinmateTradeResponse sellCoinmateInstant(BigDecimal total, String currencyPair)
+  public CoinmateTradeResponse sellCoinmateInstant(Double total, String currencyPair)
       throws IOException {
     CoinmateTradeResponse response =
         coinmateAuthenticated.sellInstant(
@@ -316,7 +315,7 @@ public class CoinmateTradeServiceRaw extends CoinmateBaseService {
   }
 
   public CoinmateReplaceResponse coinmateReplaceByBuyInstant(
-      String orderId, BigDecimal total, String currencyPair) throws IOException {
+      String orderId, Double total, String currencyPair) throws IOException {
     CoinmateReplaceResponse response =
         coinmateAuthenticated.replaceByBuyInstant(
             exchange.getExchangeSpecification().getApiKey(),
@@ -333,7 +332,7 @@ public class CoinmateTradeServiceRaw extends CoinmateBaseService {
   }
 
   public CoinmateReplaceResponse coinmateReplaceBySellInstant(
-      String orderId, BigDecimal total, String currencyPair) throws IOException {
+      String orderId, Double total, String currencyPair) throws IOException {
     CoinmateReplaceResponse response =
         coinmateAuthenticated.replaceBySellInstant(
             exchange.getExchangeSpecification().getApiKey(),

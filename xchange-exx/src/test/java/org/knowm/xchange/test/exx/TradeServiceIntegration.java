@@ -1,7 +1,6 @@
 package org.knowm.xchange.test.exx;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.ExchangeSpecification;
@@ -80,11 +79,11 @@ public class TradeServiceIntegration {
       LimitOrder limitOrder =
           new LimitOrder(
               (OrderType.BID),
-              new BigDecimal("1.0"),
+              new Double("1.0"),
               CurrencyPair.ETH_BTC,
               null,
               null,
-              new BigDecimal("0.00050"));
+              new Double("0.00050"));
 
       String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
       System.out.println("Order Id: " + limitOrderReturnValue);

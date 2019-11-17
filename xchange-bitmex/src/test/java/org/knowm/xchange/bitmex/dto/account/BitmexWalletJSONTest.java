@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /** Test BitstampTicker JSON parsing */
@@ -26,8 +25,8 @@ public class BitmexWalletJSONTest {
     assertThat(bitmexWallet.getAccount()).isEqualTo(0);
     assertThat(bitmexWallet.getAddr()).isEqualTo("string");
     assertThat(bitmexWallet.getCurrency()).isEqualTo("string");
-    assertThat(bitmexWallet.getAmount()).isEqualTo(BigDecimal.ZERO);
-    assertThat(bitmexWallet.getDeltaAmount()).isEqualTo(BigDecimal.ZERO);
-    assertThat(bitmexWallet.getPrevAmount()).isEqualTo(BigDecimal.ZERO);
+    assertThat(bitmexWallet.getAmount()).isEqualTo(0d);
+    assertThat(bitmexWallet.getDeltaAmount()).isEqualTo(0d);
+    assertThat(bitmexWallet.getPrevAmount()).isEqualTo(0d);
   }
 }

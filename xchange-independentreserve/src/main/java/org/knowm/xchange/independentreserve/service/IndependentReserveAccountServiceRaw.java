@@ -1,7 +1,6 @@
 package org.knowm.xchange.independentreserve.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.exceptions.ExchangeException;
@@ -77,7 +76,7 @@ public class IndependentReserveAccountServiceRaw extends IndependentReserveBaseS
   }
 
   public void withdrawDigitalCurrency(
-      BigDecimal amount,
+      Double amount,
       String withdrawalAddress,
       String comment,
       String primaryCurrencyCode,

@@ -10,7 +10,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,10 +23,10 @@ public final class CoinMarketCapTicker {
   private final String name;
   private final String symbol;
   private final String websiteSlug;
-  private final BigDecimal rank;
-  private final BigDecimal circulatingSupply;
-  private final BigDecimal totalSupply;
-  private final BigDecimal maxSupply;
+  private final Double rank;
+  private final Double circulatingSupply;
+  private final Double totalSupply;
+  private final Double maxSupply;
   private final Map<String, CoinMarketCapQuote> quotes;
   private final Date lastUpdated;
   private final CoinMarketCapCurrency baseCurrency;
@@ -37,10 +36,10 @@ public final class CoinMarketCapTicker {
       final String name,
       final String isoCode,
       final String websiteSlug,
-      final BigDecimal rank,
-      final BigDecimal circulatingSupply,
-      final BigDecimal totalSupply,
-      final BigDecimal maxSupply,
+      final Double rank,
+      final Double circulatingSupply,
+      final Double totalSupply,
+      final Double maxSupply,
       final Map<String, CoinMarketCapQuote> quotes,
       final Date lastUpdated) {
     this.id = id;
@@ -76,19 +75,19 @@ public final class CoinMarketCapTicker {
     return websiteSlug;
   }
 
-  public BigDecimal getRank() {
+  public Double getRank() {
     return rank;
   }
 
-  public BigDecimal getCirculatingSupply() {
+  public Double getCirculatingSupply() {
     return circulatingSupply;
   }
 
-  public BigDecimal getTotalSupply() {
+  public Double getTotalSupply() {
     return totalSupply;
   }
 
-  public BigDecimal getMaxSupply() {
+  public Double getMaxSupply() {
     return maxSupply;
   }
 
@@ -121,10 +120,10 @@ public final class CoinMarketCapTicker {
         String symbol = node.get("symbol").asText();
         String websiteSlug = node.get("website_slug").asText();
         Date lastUpdated = new Date(node.get("last_updated").asLong() * 1000);
-        BigDecimal rank = new BigDecimal(node.get("rank").asInt());
-        BigDecimal circulatingSupply = new BigDecimal(node.get("circulating_supply").asDouble());
-        BigDecimal totalSupply = new BigDecimal(node.get("total_supply").asDouble());
-        BigDecimal maxSupply = new BigDecimal(node.get("max_supply").asDouble());
+        Double rank = new Double(node.get("rank").asInt());
+        Double circulatingSupply = new Double(node.get("circulating_supply").asDouble());
+        Double totalSupply = new Double(node.get("total_supply").asDouble());
+        Double maxSupply = new Double(node.get("max_supply").asDouble());
 
         Map<String, CoinMarketCapQuote> quotes = new HashMap<>();
         ObjectMapper mapper = new ObjectMapper();

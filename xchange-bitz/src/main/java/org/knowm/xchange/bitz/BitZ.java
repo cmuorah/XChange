@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitz;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import org.knowm.xchange.bitz.dto.account.result.BitZUserAssetsResult;
@@ -80,8 +79,8 @@ public interface BitZ {
       @FormParam("nonce") String nonce,
       @FormParam("sign") ParamsDigest sign,
       @FormParam("type") String type,
-      @FormParam("price") BigDecimal price,
-      @FormParam("number") BigDecimal number,
+      @FormParam("price") Double price,
+      @FormParam("number") Double number,
       @FormParam("tradePwd") String tradePwd)
       throws IOException;
 

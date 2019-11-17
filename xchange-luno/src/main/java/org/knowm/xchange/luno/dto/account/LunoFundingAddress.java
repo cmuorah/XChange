@@ -1,20 +1,19 @@
 package org.knowm.xchange.luno.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class LunoFundingAddress {
 
   public final String asset;
   public final String address;
-  public final BigDecimal totalReceived;
-  public final BigDecimal totalUnconfirmed;
+  public final Double totalReceived;
+  public final Double totalUnconfirmed;
 
   public LunoFundingAddress(
       @JsonProperty(value = "asset", required = true) String asset,
       @JsonProperty(value = "address", required = true) String address,
-      @JsonProperty(value = "total_received", required = true) BigDecimal totalReceived,
-      @JsonProperty(value = "total_unconfirmed", required = true) BigDecimal totalUnconfirmed) {
+      @JsonProperty(value = "total_received", required = true) Double totalReceived,
+      @JsonProperty(value = "total_unconfirmed", required = true) Double totalUnconfirmed) {
     this.asset = asset;
     this.address = address;
     this.totalReceived = totalReceived;

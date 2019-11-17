@@ -2,7 +2,6 @@ package org.knowm.xchange.luno.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -52,8 +51,8 @@ public class LunoWithdrawals {
     public final long createdAt;
     public final String type;
     public final String currency;
-    public final BigDecimal amount;
-    public final BigDecimal fee;
+    public final Double amount;
+    public final Double fee;
 
     public Withdrawal(
         @JsonProperty(value = "id", required = true) String id,
@@ -61,8 +60,8 @@ public class LunoWithdrawals {
         @JsonProperty(value = "created_at", required = false) long createdAt,
         @JsonProperty(value = "type", required = false) String type,
         @JsonProperty(value = "currency", required = false) String currency,
-        @JsonProperty(value = "amount", required = false) BigDecimal amount,
-        @JsonProperty(value = "fee", required = false) BigDecimal fee) {
+        @JsonProperty(value = "amount", required = false) Double amount,
+        @JsonProperty(value = "fee", required = false) Double fee) {
       this.id = id;
       this.status = status;
       this.createdAt = createdAt;

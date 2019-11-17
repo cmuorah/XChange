@@ -6,7 +6,6 @@ import static org.knowm.xchange.utils.DateUtils.toUnixTimeNullSafe;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -102,11 +101,7 @@ public class CexIOTradeServiceRaw extends CexIOBaseService {
   }
 
   public CexIOCancelReplaceOrderResponse cancelReplaceCexIOOrder(
-      CurrencyPair currencyPair,
-      Order.OrderType type,
-      String orderId,
-      BigDecimal amount,
-      BigDecimal price)
+      CurrencyPair currencyPair, Order.OrderType type, String orderId, Double amount, Double price)
       throws ExchangeException, IOException {
 
     String orderType;
@@ -281,13 +276,13 @@ public class CexIOTradeServiceRaw extends CexIOBaseService {
    */
   public CexioOpenPosition openCexIOPosition(
       CurrencyPair currencyPair,
-      BigDecimal amount,
+      Double amount,
       Currency collateral,
       Integer leverage,
       CexioPositionType type,
       Boolean anySlippage,
-      BigDecimal estimatedOpenPrice,
-      BigDecimal stopLossPrice)
+      Double estimatedOpenPrice,
+      Double stopLossPrice)
       throws IOException {
     CexioOpenPositionResponse order =
         cexIOAuthenticated.openPosition(

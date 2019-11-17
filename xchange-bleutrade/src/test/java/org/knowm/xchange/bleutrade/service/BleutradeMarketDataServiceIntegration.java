@@ -8,7 +8,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -47,13 +46,13 @@ public class BleutradeMarketDataServiceIntegration extends BleutradeServiceTestS
   private static final Ticker TICKER =
       new Ticker.Builder()
           .currencyPair(BLEU_BTC_CP)
-          .last(new BigDecimal("0.00101977"))
-          .bid(new BigDecimal("0.00100000"))
-          .ask(new BigDecimal("0.00101977"))
-          .high(new BigDecimal("0.00105000"))
-          .low(new BigDecimal("0.00086000"))
-          .vwap(new BigDecimal("0.00103455"))
-          .volume(new BigDecimal("2450.97496015"))
+          .last(new Double("0.00101977"))
+          .bid(new Double("0.00100000"))
+          .ask(new Double("0.00101977"))
+          .high(new Double("0.00105000"))
+          .low(new Double("0.00086000"))
+          .vwap(new Double("0.00103455"))
+          .volume(new Double("2450.97496015"))
           .timestamp(new Date(1406632770000L))
           .build();
   private BleutradeMarketDataService marketDataService;

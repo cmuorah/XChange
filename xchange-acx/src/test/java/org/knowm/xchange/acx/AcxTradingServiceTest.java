@@ -11,7 +11,6 @@ import static org.powermock.api.mockito.PowerMockito.when;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,10 +50,10 @@ public class AcxTradingServiceTest {
 
     assertEquals(1, openOrders.size());
     assertEquals("198602763", openOrders.get(0).getId());
-    assertEquals(new BigDecimal("97900.99"), openOrders.get(0).getLimitPrice());
-    assertEquals(new BigDecimal("0.01"), openOrders.get(0).getRemainingAmount());
-    assertEquals(new BigDecimal("0.01"), openOrders.get(0).getOriginalAmount());
-    assertEquals(new BigDecimal("0.00"), openOrders.get(0).getCumulativeAmount());
+    assertEquals(new Double("97900.99"), openOrders.get(0).getLimitPrice());
+    assertEquals(new Double("0.01"), openOrders.get(0).getRemainingAmount());
+    assertEquals(new Double("0.01"), openOrders.get(0).getOriginalAmount());
+    assertEquals(new Double("0.00"), openOrders.get(0).getCumulativeAmount());
   }
 
   @Test
@@ -65,8 +64,8 @@ public class AcxTradingServiceTest {
 
     LimitOrder order =
         new LimitOrder.Builder(Order.OrderType.BID, CurrencyPair.BTC_AUD)
-            .limitPrice(new BigDecimal(10.1234))
-            .originalAmount(new BigDecimal(0.1))
+            .limitPrice(new Double(10.1234))
+            .originalAmount(new Double(0.1))
             .build();
     String id = service.placeLimitOrder(order);
 

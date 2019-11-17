@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitmex.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -209,7 +208,7 @@ public class BitmexTradeServiceRaw extends BitmexBaseService {
   }
 
   @Nonnull
-  public BitmexPosition updateLeveragePosition(String symbol, BigDecimal leverage)
+  public BitmexPosition updateLeveragePosition(String symbol, Double leverage)
       throws ExchangeException {
     return updateRateLimit(
         () ->

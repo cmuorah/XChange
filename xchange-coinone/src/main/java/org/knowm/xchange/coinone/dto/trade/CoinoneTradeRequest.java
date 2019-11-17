@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinone.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.Currency;
 
 public class CoinoneTradeRequest {
@@ -13,10 +12,10 @@ public class CoinoneTradeRequest {
   protected Long nonce;
 
   @JsonProperty("price")
-  protected BigDecimal price;
+  protected Double price;
 
   @JsonProperty("qty")
-  protected BigDecimal qty;
+  protected Double qty;
 
   @JsonProperty("currency")
   protected String currency;
@@ -27,7 +26,7 @@ public class CoinoneTradeRequest {
    * @param nonce
    */
   public CoinoneTradeRequest(
-      String accessTocken, Long nonce, BigDecimal price, BigDecimal qty, Currency currency) {
+      String accessTocken, Long nonce, Double price, Double qty, Currency currency) {
 
     this.accessTocken = accessTocken;
     this.nonce = nonce;
@@ -52,19 +51,19 @@ public class CoinoneTradeRequest {
     this.nonce = nonce;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
-  public BigDecimal getQty() {
+  public Double getQty() {
     return qty;
   }
 
-  public void setQty(BigDecimal qty) {
+  public void setQty(Double qty) {
     this.qty = qty;
   }
 

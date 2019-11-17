@@ -24,7 +24,6 @@
 package org.knowm.xchange.coinmate.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Martin Stachon */
 public class CoinmateTransactionHistoryEntry {
@@ -32,11 +31,11 @@ public class CoinmateTransactionHistoryEntry {
   private final long transactionId;
   private final long timestamp;
   private final String transactionType;
-  private final BigDecimal amount;
+  private final Double amount;
   private final String amountCurrency;
-  private final BigDecimal price;
+  private final Double price;
   private final String priceCurrency;
-  private final BigDecimal fee;
+  private final Double fee;
   private final String feeCurrency;
   private final String description;
   private final String status;
@@ -46,11 +45,11 @@ public class CoinmateTransactionHistoryEntry {
       @JsonProperty("transactionId") long transactionId,
       @JsonProperty("timestamp") long timestamp,
       @JsonProperty("transactionType") String transactionType,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("amountCurrency") String amountCurrency,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("priceCurrency") String priceCurrency,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("feeCurrency") String feeCurrency,
       @JsonProperty("description") String description,
       @JsonProperty("status") String status,
@@ -82,7 +81,7 @@ public class CoinmateTransactionHistoryEntry {
     return transactionType;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -90,7 +89,7 @@ public class CoinmateTransactionHistoryEntry {
     return amountCurrency;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -98,7 +97,7 @@ public class CoinmateTransactionHistoryEntry {
     return priceCurrency;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

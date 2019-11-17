@@ -1,7 +1,6 @@
 package org.knowm.xchange.binance.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -157,7 +156,7 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
   }
 
   private String placeOrder(
-      OrderType type, Order order, BigDecimal limitPrice, BigDecimal stopPrice, TimeInForce tif)
+      OrderType type, Order order, Double limitPrice, Double stopPrice, TimeInForce tif)
       throws IOException {
     try {
       Long recvWindow =
@@ -182,8 +181,8 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
     }
   }
 
-  public void placeTestOrder(
-      OrderType type, Order order, BigDecimal limitPrice, BigDecimal stopPrice) throws IOException {
+  public void placeTestOrder(OrderType type, Order order, Double limitPrice, Double stopPrice)
+      throws IOException {
     try {
       Long recvWindow =
           (Long)

@@ -1,6 +1,5 @@
 package org.knowm.xchange.liqui;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -74,12 +73,12 @@ public class LiquiAdapters {
   }
 
   public static LimitOrder adaptOrder(final LiquiPublicAsk order, final CurrencyPair currencyPair) {
-    final BigDecimal volume = order.getVolume();
+    final Double volume = order.getVolume();
     return new LimitOrder(OrderType.ASK, volume, currencyPair, "", null, order.getPrice());
   }
 
   public static LimitOrder adaptOrder(final LiquiPublicBid order, final CurrencyPair currencyPair) {
-    final BigDecimal volume = order.getVolume();
+    final Double volume = order.getVolume();
     return new LimitOrder(OrderType.BID, volume, currencyPair, "", null, order.getPrice());
   }
 
@@ -95,9 +94,9 @@ public class LiquiAdapters {
 
   public static Trade adaptTrade(final LiquiPublicTrade trade, final CurrencyPair currencyPair) {
     final OrderType type = adaptOrderType(trade.getType());
-    final BigDecimal originalAmount = trade.getAmount();
+    final Double originalAmount = trade.getAmount();
     final Date timestamp = new Date((long) (trade.getTimestamp() * 1000L));
-    final BigDecimal price = trade.getPrice();
+    final Double price = trade.getPrice();
     final long tradeId = trade.getTradeId();
 
     return new Trade(type, originalAmount, currencyPair, price, timestamp, String.valueOf(tradeId));
@@ -152,10 +151,10 @@ public class LiquiAdapters {
 
   public static UserTrade adaptTrade(final LiquiUserTrade liquiTrade, final Long tradeId) {
     final OrderType orderType = adaptOrderType(liquiTrade.getType());
-    final BigDecimal originalAmount = liquiTrade.getAmount();
+    final Double originalAmount = liquiTrade.getAmount();
     final CurrencyPair pair = liquiTrade.getPair();
     final Date timestamp = new Date(liquiTrade.getTimestamp() * 1000L);
-    final BigDecimal price = liquiTrade.getRate();
+    final Double price = liquiTrade.getRate();
 
     return new UserTrade(
         orderType,
@@ -165,7 +164,7 @@ public class LiquiAdapters {
         timestamp,
         String.valueOf(tradeId),
         String.valueOf(tradeId),
-        new BigDecimal("0"),
+        new Double("0"),
         null);
   }
 
@@ -177,9 +176,9 @@ public class LiquiAdapters {
   public static Order adaptLiquiOrderInfo(final LiquiOrderInfo orderInfo) {
 
     final OrderType type = adaptOrderType(orderInfo.getType());
-    final Optional<BigDecimal> originalAmount = Optional.ofNullable(orderInfo.getStartAmount());
-    final Optional<BigDecimal> cumulativeAmount =
-        originalAmount.map(startAmount -> startAmount.subtract(orderInfo.getAmount()));
+    final Optional<Double> originalAmount = Optional.ofNullable(orderInfo.getStartAmount());
+    final Optional<Double> cumulativeAmount =
+        originalAmount.map(startAmount -> startAmount - (orderInfo.getAmount()));
     final Date timestamp = new Date(orderInfo.getTimestampCreated() * 1000L);
     final Order.OrderStatus status = adaptOrderStatus(orderInfo.getStatus());
 
@@ -198,9 +197,9 @@ public class LiquiAdapters {
 
     for (final Map.Entry<String, LiquiPairInfo> entry : infos.entrySet()) {
       final CurrencyPair pair = adaptCurrencyPair(entry.getKey());
-      final BigDecimal fee = entry.getValue().getFee();
-      final BigDecimal minAmount = entry.getValue().getMinAmount();
-      final BigDecimal maxAmount = entry.getValue().getMaxAmount();
+      final Double fee = entry.getValue().getFee();
+      final Double minAmount = entry.getValue().getMinAmount();
+      final Double maxAmount = entry.getValue().getMaxAmount();
       final int priceScale = entry.getValue().getDecimalPlaces();
 
       currencyPairs.put(
@@ -220,7 +219,7 @@ public class LiquiAdapters {
   }
 
   public static AccountInfo adaptAccountInfo(final LiquiAccountInfo info) {
-    final Map<Currency, BigDecimal> funds = info.getFunds().getFunds();
+    final Map<Currency, Double> funds = info.getFunds().getFunds();
     final List<Balance> balances =
         funds.entrySet().stream()
             .map(entry -> new Balance(entry.getKey(), entry.getValue()))

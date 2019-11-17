@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto.marketdata;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -15,7 +14,7 @@ public final class OrderBookUpdate implements Serializable {
   private final LimitOrder limitOrder;
 
   /** this is the total volume at this price in the order book */
-  private final BigDecimal totalVolume;
+  private final Double totalVolume;
 
   /**
    * Build an order book update.
@@ -32,11 +31,11 @@ public final class OrderBookUpdate implements Serializable {
   // TODO clarify what should be provided for volume parameter
   public OrderBookUpdate(
       OrderType type,
-      BigDecimal volume,
+      Double volume,
       CurrencyPair currencyPair,
-      BigDecimal limitPrice,
+      Double limitPrice,
       Date timestamp,
-      BigDecimal totalVolume) {
+      Double totalVolume) {
 
     this.limitOrder = new LimitOrder(type, volume, currencyPair, "", timestamp, limitPrice);
     this.totalVolume = totalVolume;
@@ -57,7 +56,7 @@ public final class OrderBookUpdate implements Serializable {
    *
    * @return the total volume
    */
-  public BigDecimal getTotalVolume() {
+  public Double getTotalVolume() {
 
     return totalVolume;
   }

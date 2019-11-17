@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.coinbase.dto.marketdata.CoinbaseMoney;
 
 /** @author jamespedwards42 */
@@ -18,7 +17,7 @@ public class CoinbaseMoneyDeserializer extends JsonDeserializer<CoinbaseMoney> {
     final String amount = node.path("amount").asText();
     final String currency = node.path("currency").asText();
 
-    return new CoinbaseMoney(currency, new BigDecimal(amount));
+    return new CoinbaseMoney(currency, new Double(amount));
   }
 
   @Override

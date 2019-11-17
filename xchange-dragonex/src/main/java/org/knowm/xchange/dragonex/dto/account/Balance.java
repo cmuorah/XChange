@@ -1,20 +1,19 @@
 package org.knowm.xchange.dragonex.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class Balance {
 
   public final String code;
   public final long coinId;
-  public final BigDecimal frozen;
-  public final BigDecimal volume;
+  public final Double frozen;
+  public final Double volume;
 
   public Balance(
       @JsonProperty("code") String code,
       @JsonProperty("coin_id") long coinId,
-      @JsonProperty("frozen") BigDecimal frozen,
-      @JsonProperty("volume") BigDecimal volume) {
+      @JsonProperty("frozen") Double frozen,
+      @JsonProperty("volume") Double volume) {
     this.code = code;
     this.coinId = coinId;
     this.frozen = frozen;

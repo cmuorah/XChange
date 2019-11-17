@@ -1,7 +1,6 @@
 package org.knowm.xchange.kraken.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 /** Data object representing depth from Kraken */
@@ -10,13 +9,13 @@ public class KrakenTicker {
   private final KrakenPublicOrder ask; // ask array(<price>, <lot volume>),
   private final KrakenPublicOrder bid; // bid array(<price>, <lot volume>),
   private final KrakenPublicOrder close; // last trade closed array(<price>, <lot volume>),
-  private final BigDecimal[] volume; // volume array(<today>, <last 24 hours>),
-  private final BigDecimal[]
+  private final Double[] volume; // volume array(<today>, <last 24 hours>),
+  private final Double[]
       volumeAvg; // volume weighted average price array(<today>, <last 24 hours>),
-  private final BigDecimal[] trades; // number of trades array(<today>, <last 24 hours>),
-  private final BigDecimal[] low; // low array(<today>, <last 24 hours>),
-  private final BigDecimal[] high; // high array(<today>, <last 24 hours>),
-  private final BigDecimal open; // today's opening price
+  private final Double[] trades; // number of trades array(<today>, <last 24 hours>),
+  private final Double[] low; // low array(<today>, <last 24 hours>),
+  private final Double[] high; // high array(<today>, <last 24 hours>),
+  private final Double open; // today's opening price
 
   /**
    * Constructor
@@ -36,12 +35,12 @@ public class KrakenTicker {
       @JsonProperty("a") KrakenPublicOrder ask,
       @JsonProperty("b") KrakenPublicOrder bid,
       @JsonProperty("c") KrakenPublicOrder close,
-      @JsonProperty("v") BigDecimal[] volume,
-      @JsonProperty("p") BigDecimal[] volumeAvg,
-      @JsonProperty("t") BigDecimal[] trades,
-      @JsonProperty("l") BigDecimal[] low,
-      @JsonProperty("h") BigDecimal[] high,
-      @JsonProperty("o") BigDecimal open) {
+      @JsonProperty("v") Double[] volume,
+      @JsonProperty("p") Double[] volumeAvg,
+      @JsonProperty("t") Double[] trades,
+      @JsonProperty("l") Double[] low,
+      @JsonProperty("h") Double[] high,
+      @JsonProperty("o") Double open) {
 
     this.ask = ask;
     this.bid = bid;
@@ -69,57 +68,57 @@ public class KrakenTicker {
     return close;
   }
 
-  public BigDecimal getTodaysVolume() {
+  public Double getTodaysVolume() {
 
     return volume[0];
   }
 
-  public BigDecimal get24HourVolume() {
+  public Double get24HourVolume() {
 
     return volume[1];
   }
 
-  public BigDecimal getTodaysVolumeAvg() {
+  public Double getTodaysVolumeAvg() {
 
     return volumeAvg[0];
   }
 
-  public BigDecimal get24HourVolumeAvg() {
+  public Double get24HourVolumeAvg() {
 
     return volumeAvg[1];
   }
 
-  public BigDecimal getTodaysNumTrades() {
+  public Double getTodaysNumTrades() {
 
     return trades[0];
   }
 
-  public BigDecimal get24HourNumTrades() {
+  public Double get24HourNumTrades() {
 
     return trades[1];
   }
 
-  public BigDecimal getTodaysLow() {
+  public Double getTodaysLow() {
 
     return low[0];
   }
 
-  public BigDecimal get24HourLow() {
+  public Double get24HourLow() {
 
     return low[1];
   }
 
-  public BigDecimal getTodaysHigh() {
+  public Double getTodaysHigh() {
 
     return high[0];
   }
 
-  public BigDecimal get24HourHigh() {
+  public Double get24HourHigh() {
 
     return high[1];
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
 
     return open;
   }

@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 public class DeribitCurrencyTest {
@@ -30,8 +29,8 @@ public class DeribitCurrencyTest {
     assertThat(currency.isDisabledDepositAddressCreation()).isFalse();
     assertThat(currency.getFeePrecision()).isEqualTo(4);
     assertThat(currency.getMinConfirmations()).isEqualTo(1);
-    assertThat(currency.getMinWithdrawalFee()).isEqualTo(new BigDecimal("0.0001"));
-    assertThat(currency.getWithdrawalFee()).isEqualTo(new BigDecimal("0.0001"));
+    assertThat(currency.getMinWithdrawalFee()).isEqualTo(new Double("0.0001"));
+    assertThat(currency.getWithdrawalFee()).isEqualTo(new Double("0.0001"));
     assertThat(currency.getWithdrawalPriorities()).isNotEmpty();
   }
 }

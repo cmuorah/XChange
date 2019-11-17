@@ -4,7 +4,6 @@ import static org.knowm.xchange.dto.Order.OrderType.BID;
 
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -51,7 +50,7 @@ public class CryptonitTradeService extends CryptonitTradeServiceRaw implements T
       for (CryptonitOrder CryptonitOrder : openOrders) {
         OrderType orderType = CryptonitOrder.getType() == 0 ? OrderType.BID : OrderType.ASK;
         String id = Integer.toString(CryptonitOrder.getId());
-        BigDecimal price = CryptonitOrder.getPrice();
+        Double price = CryptonitOrder.getPrice();
         limitOrders.add(
             new LimitOrder(
                 orderType,

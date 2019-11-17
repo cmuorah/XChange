@@ -1,7 +1,6 @@
 package org.knowm.xchange.btcturk.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 /** @author mertguner */
@@ -10,7 +9,7 @@ public class BTCTurkWithdrawalRequestInfo {
   private final List<BTCTurkKeyValues> bankList;
   private final List<BTCTurkKeyValues> friendlyNameList;
   private final String bankName;
-  private final BigDecimal amount;
+  private final Double amount;
   private final Boolean hasBalanceRequest;
   private final String balanceRequestId;
   private final String firstName;
@@ -21,7 +20,7 @@ public class BTCTurkWithdrawalRequestInfo {
       @JsonProperty("bank_list") List<BTCTurkKeyValues> bankList,
       @JsonProperty("friendly_name_list") List<BTCTurkKeyValues> friendlyNameList,
       @JsonProperty("bank_name") String bankName,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("has_balance_request") Boolean hasBalanceRequest,
       @JsonProperty("balance_request_id") String balanceRequestId,
       @JsonProperty("first_name") String firstName,
@@ -49,7 +48,7 @@ public class BTCTurkWithdrawalRequestInfo {
     return friendlyNameList;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

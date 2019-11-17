@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.coingi.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -14,8 +13,8 @@ public class CoingBuyBtcForEurDemo {
     Exchange coingi = CoingiDemoUtils.createExchange();
 
     CurrencyPair currencyPair = CurrencyPair.BTC_EUR;
-    BigDecimal volume = BigDecimal.valueOf(0.02); // buy 0.02BTC
-    BigDecimal maxPrice = BigDecimal.valueOf(5000); // max price of 1 BTC
+    Double volume = Double.valueOf(0.02); // buy 0.02BTC
+    Double maxPrice = Double.valueOf(5000); // max price of 1 BTC
 
     // OrderType.BID = Buy, OrderType.ASK = Sell
     LimitOrder limitOrder =

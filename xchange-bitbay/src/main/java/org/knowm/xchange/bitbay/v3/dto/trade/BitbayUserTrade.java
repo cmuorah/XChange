@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitbay.v3.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.UUID;
 
 /** @author walec51 */
@@ -10,16 +9,16 @@ public class BitbayUserTrade {
   private final UUID id;
   private final String market;
   private final long time;
-  private final BigDecimal amount;
-  private final BigDecimal rate;
+  private final Double amount;
+  private final Double rate;
   private final String userAction;
 
   public BitbayUserTrade(
       @JsonProperty("id") UUID id,
       @JsonProperty("market") String market,
       @JsonProperty("time") long time,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("rate") Double rate,
       @JsonProperty("userAction") String userAction) {
     this.id = id;
     this.market = market;
@@ -41,11 +40,11 @@ public class BitbayUserTrade {
     return time;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 

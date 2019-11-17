@@ -1,33 +1,32 @@
 package org.knowm.xchange.independentreserve.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class IndependentReserveOrderDetailsResponse {
-  private final BigDecimal avgPrice;
+  private final Double avgPrice;
   private final Date createdTimestamp;
   private final String orderGuid;
   private final String orderType;
-  private final BigDecimal price;
+  private final Double price;
   private final String primaryCurrencyCode;
   private final String secondaryCurrencyCode;
   private final String status;
-  private final BigDecimal volumeOrdered;
-  private final BigDecimal volumeFilled;
-  private final BigDecimal reservedAmount;
+  private final Double volumeOrdered;
+  private final Double volumeFilled;
+  private final Double reservedAmount;
 
   public IndependentReserveOrderDetailsResponse(
       @JsonProperty("OrderGuid") String orderGuid,
       @JsonProperty("CreatedTimestampUtc") String createdTimestampUtc,
       @JsonProperty("Type") String orderType,
-      @JsonProperty("VolumeOrdered") BigDecimal volumeOrdered,
-      @JsonProperty("VolumeFilled") BigDecimal volumeFilled,
-      @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("AvgPrice") BigDecimal avgPrice,
-      @JsonProperty("ReservedAmount") BigDecimal reservedAmount,
+      @JsonProperty("VolumeOrdered") Double volumeOrdered,
+      @JsonProperty("VolumeFilled") Double volumeFilled,
+      @JsonProperty("Price") Double price,
+      @JsonProperty("AvgPrice") Double avgPrice,
+      @JsonProperty("ReservedAmount") Double reservedAmount,
       @JsonProperty("Status") String status,
       @JsonProperty("PrimaryCurrencyCode") String primaryCurrencyCode,
       @JsonProperty("SecondaryCurrencyCode") String secondaryCurrencyCode)
@@ -47,7 +46,7 @@ public class IndependentReserveOrderDetailsResponse {
     this.secondaryCurrencyCode = secondaryCurrencyCode;
   }
 
-  public BigDecimal getAvgPrice() {
+  public Double getAvgPrice() {
     return avgPrice;
   }
 
@@ -63,7 +62,7 @@ public class IndependentReserveOrderDetailsResponse {
     return orderType;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -79,15 +78,15 @@ public class IndependentReserveOrderDetailsResponse {
     return status;
   }
 
-  public BigDecimal getVolumeOrdered() {
+  public Double getVolumeOrdered() {
     return volumeOrdered;
   }
 
-  public BigDecimal getVolumeFilled() {
+  public Double getVolumeFilled() {
     return volumeFilled;
   }
 
-  public BigDecimal getReservedAmount() {
+  public Double getReservedAmount() {
     return reservedAmount;
   }
 

@@ -46,8 +46,8 @@ public class BleutradeTradeServiceRaw extends BleutradeBaseService {
               signatureCreator,
               exchange.getNonceFactory(),
               pairString,
-              limitOrder.getOriginalAmount().toPlainString(),
-              limitOrder.getLimitPrice().toPlainString());
+              limitOrder.getOriginalAmount().toString(),
+              limitOrder.getLimitPrice().toString());
 
       if (!response.getSuccess()) {
         throw new ExchangeException(response.getMessage());
@@ -70,8 +70,8 @@ public class BleutradeTradeServiceRaw extends BleutradeBaseService {
               signatureCreator,
               exchange.getNonceFactory(),
               pairString,
-              limitOrder.getOriginalAmount().toPlainString(),
-              limitOrder.getLimitPrice().toPlainString());
+              limitOrder.getOriginalAmount().toString(),
+              limitOrder.getLimitPrice().toString());
 
       if (!response.getSuccess()) {
         throw new ExchangeException(response.getMessage());

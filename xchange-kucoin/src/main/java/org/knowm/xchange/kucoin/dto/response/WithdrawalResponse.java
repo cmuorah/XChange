@@ -1,6 +1,5 @@
 package org.knowm.xchange.kucoin.dto.response;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 
@@ -20,9 +19,9 @@ public class WithdrawalResponse {
   /** Currency */
   private String currency;
   /** Withdrawal amount */
-  private BigDecimal amount;
+  private Double amount;
   /** Withdrawal fee */
-  private BigDecimal fee;
+  private Double fee;
   /** Wallet Txid */
   private String walletTxId;
   /** Internal withdrawal or not */

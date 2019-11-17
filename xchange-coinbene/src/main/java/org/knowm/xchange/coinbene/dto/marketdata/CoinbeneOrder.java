@@ -1,23 +1,22 @@
 package org.knowm.xchange.coinbene.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbeneOrder {
-  private final BigDecimal price;
-  private final BigDecimal quantity;
+  private final Double price;
+  private final Double quantity;
 
   public CoinbeneOrder(
-      @JsonProperty("price") BigDecimal price, @JsonProperty("quantity") BigDecimal quantity) {
+      @JsonProperty("price") Double price, @JsonProperty("quantity") Double quantity) {
     this.price = price;
     this.quantity = quantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 

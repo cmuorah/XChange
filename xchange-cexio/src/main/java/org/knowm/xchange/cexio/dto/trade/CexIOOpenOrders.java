@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.cexio.dto.trade.CexIOOpenOrders.CexIOOpenOrdersDeserializer;
@@ -76,9 +75,9 @@ public class CexIOOpenOrders {
           final long id = openOrderNode.path("id").asLong();
           final long time = openOrderNode.path("time").asLong();
           final Type type = Type.valueOf(openOrderNode.path("type").asText());
-          final BigDecimal price = new BigDecimal(openOrderNode.path("price").asText());
-          final BigDecimal amount = new BigDecimal(openOrderNode.path("amount").asText());
-          final BigDecimal pending = new BigDecimal(openOrderNode.path("pending").asText());
+          final Double price = new Double(openOrderNode.path("price").asText());
+          final Double amount = new Double(openOrderNode.path("amount").asText());
+          final Double pending = new Double(openOrderNode.path("pending").asText());
           final String symbol1 = openOrderNode.path("symbol1").asText();
           final String symbol2 = openOrderNode.path("symbol2").asText();
 

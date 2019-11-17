@@ -1,7 +1,6 @@
 package org.knowm.xchange.bleutrade.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bleutrade.BleutradeException;
@@ -22,7 +21,7 @@ public class BleutradeAccountServiceRaw extends BleutradeBaseService {
     super(exchange, restProxyFactory);
   }
 
-  public String withdraw(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdraw(Currency currency, Double amount, String address) throws IOException {
     BleutradeWithdrawReturn response =
         bleutrade.withdraw(
             apiKey,

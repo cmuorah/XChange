@@ -1,6 +1,5 @@
 package org.knowm.xchange.cryptofacilities;
 
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +65,7 @@ public class CryptoFacilitiesAdapters {
     List<Balance> balances = new ArrayList<>(cryptoFacilitiesAccount.getBalances().size());
     Balance balance;
 
-    for (Entry<String, BigDecimal> balancePair : cryptoFacilitiesAccount.getBalances().entrySet()) {
+    for (Entry<String, Double> balancePair : cryptoFacilitiesAccount.getBalances().entrySet()) {
       if (balancePair.getKey().equalsIgnoreCase("xbt")) {
         // For xbt balance we construct both total=deposited xbt and available=total - margin
         // balances
@@ -94,8 +93,7 @@ public class CryptoFacilitiesAdapters {
       List<Balance> balances = new ArrayList<>(accounts.get(accountName).getBalances().size());
       Balance balance;
 
-      for (Entry<String, BigDecimal> balancePair :
-          accounts.get(accountName).getBalances().entrySet()) {
+      for (Entry<String, Double> balancePair : accounts.get(accountName).getBalances().entrySet()) {
         if (!accountName.equalsIgnoreCase("cash") && balancePair.getKey().equalsIgnoreCase("xbt")) {
           // For xbt balance we construct both total=deposited xbt and available=total - margin
           // balances
@@ -145,7 +143,7 @@ public class CryptoFacilitiesAdapters {
         ord.getId(),
         ord.getTimestamp(),
         ord.getLimitPrice(),
-        BigDecimal.ZERO,
+        0d,
         ord.getFilled(),
         null,
         adaptOrderStatus(ord.getStatus()));
@@ -208,10 +206,10 @@ public class CryptoFacilitiesAdapters {
   }
 
   public static List<LimitOrder> createOrders(
-      CurrencyPair currencyPair, Order.OrderType orderType, List<List<BigDecimal>> orders) {
+      CurrencyPair currencyPair, Order.OrderType orderType, List<List<Double>> orders) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (List<BigDecimal> ask : orders) {
+    for (List<Double> ask : orders) {
       checkArgument(
           ask.size() == 2, "Expected a pair (price, amount) but got {0} elements.", ask.size());
       limitOrders.add(createOrder(currencyPair, ask, orderType));
@@ -220,7 +218,7 @@ public class CryptoFacilitiesAdapters {
   }
 
   public static LimitOrder createOrder(
-      CurrencyPair currencyPair, List<BigDecimal> priceAndAmount, Order.OrderType orderType) {
+      CurrencyPair currencyPair, List<Double> priceAndAmount, Order.OrderType orderType) {
 
     return new LimitOrder(
         orderType, priceAndAmount.get(1), currencyPair, "", null, priceAndAmount.get(0));

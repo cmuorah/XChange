@@ -1,7 +1,6 @@
 package org.knowm.xchange.gemini.v1.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class GeminiTransfer {
   public @JsonProperty("type") String type;
@@ -9,7 +8,7 @@ public class GeminiTransfer {
   public @JsonProperty("timestampms") Long timestamp;
   public @JsonProperty("eid") String eid;
   public @JsonProperty("currency") String currency;
-  public @JsonProperty("amount") BigDecimal amount;
+  public @JsonProperty("amount") Double amount;
   public @JsonProperty("method") String method;
   public @JsonProperty("txHash") String txnHash;
   public @JsonProperty("outputIdx") Long outputIdx;

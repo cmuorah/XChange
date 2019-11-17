@@ -1,7 +1,6 @@
 package org.knowm.xchange.anx.v2.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /** Data object representing trades from ANX */
@@ -10,8 +9,8 @@ public final class ANXTradeResult {
   private final String tradeId;
   private final String orderId;
   private final Date timestamp;
-  private final BigDecimal tradedCurrencyFillAmount;
-  private final BigDecimal settlementCurrencyFillAmount;
+  private final Double tradedCurrencyFillAmount;
+  private final Double settlementCurrencyFillAmount;
   private final String currencyPair;
   private final String side;
 
@@ -19,8 +18,8 @@ public final class ANXTradeResult {
       @JsonProperty("tradeId") String tradeId,
       @JsonProperty("orderId") String orderId,
       @JsonProperty("timestamp") Date timestamp,
-      @JsonProperty("tradedCurrencyFillAmount") BigDecimal tradedCurrencyFillAmount,
-      @JsonProperty("settlementCurrencyFillAmount") BigDecimal settlementCurrencyFillAmount,
+      @JsonProperty("tradedCurrencyFillAmount") Double tradedCurrencyFillAmount,
+      @JsonProperty("settlementCurrencyFillAmount") Double settlementCurrencyFillAmount,
       @JsonProperty("ccyPair") String currencyPair,
       @JsonProperty("side") String side) {
 
@@ -48,12 +47,12 @@ public final class ANXTradeResult {
     return timestamp;
   }
 
-  public BigDecimal getTradedCurrencyFillAmount() {
+  public Double getTradedCurrencyFillAmount() {
 
     return tradedCurrencyFillAmount;
   }
 
-  public BigDecimal getSettlementCurrencyFillAmount() {
+  public Double getSettlementCurrencyFillAmount() {
 
     return settlementCurrencyFillAmount;
   }

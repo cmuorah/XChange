@@ -1,24 +1,23 @@
 package org.knowm.xchange.dsx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Mikhail Wall */
 public final class DSXBar {
 
-  private final BigDecimal high;
-  private final BigDecimal open;
-  private final BigDecimal low;
-  private final BigDecimal close;
-  private final BigDecimal amount;
+  private final Double high;
+  private final Double open;
+  private final Double low;
+  private final Double close;
+  private final Double amount;
   private final long timestamp;
 
   public DSXBar(
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("open") BigDecimal open,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("close") BigDecimal close,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("high") Double high,
+      @JsonProperty("open") Double open,
+      @JsonProperty("low") Double low,
+      @JsonProperty("close") Double close,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("timestamp") long timestamp) {
 
     this.high = high;
@@ -29,27 +28,27 @@ public final class DSXBar {
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
 
     return open;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
 
     return close;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

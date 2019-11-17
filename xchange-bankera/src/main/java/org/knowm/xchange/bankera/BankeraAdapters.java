@@ -1,13 +1,16 @@
 package org.knowm.xchange.bankera;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 import org.knowm.xchange.bankera.dto.BankeraException;
 import org.knowm.xchange.bankera.dto.account.BankeraUserInfo;
 import org.knowm.xchange.bankera.dto.account.BankeraWallet;
-import org.knowm.xchange.bankera.dto.marketdata.*;
+import org.knowm.xchange.bankera.dto.marketdata.BankeraOrderBook;
+import org.knowm.xchange.bankera.dto.marketdata.BankeraTickerResponse;
+import org.knowm.xchange.bankera.dto.marketdata.BankeraTrade;
+import org.knowm.xchange.bankera.dto.marketdata.BankeraTradesResponse;
 import org.knowm.xchange.bankera.dto.trade.BankeraOpenOrders;
 import org.knowm.xchange.bankera.dto.trade.BankeraOrder;
 import org.knowm.xchange.bankera.dto.trade.BankeraUserTrades;
@@ -44,9 +47,9 @@ public final class BankeraAdapters {
             .map(
                 w ->
                     new Balance.Builder()
-                        .total(new BigDecimal(w.getTotal()))
-                        .available(new BigDecimal(w.getBalance()))
-                        .frozen(new BigDecimal(w.getReserved()))
+                        .total(new Double(w.getTotal()))
+                        .available(new Double(w.getBalance()))
+                        .frozen(new Double(w.getReserved()))
                         .currency(new Currency(w.getCurrency()))
                         .build())
             .collect(Collectors.toList());
@@ -68,12 +71,12 @@ public final class BankeraAdapters {
    */
   public static Ticker adaptTicker(BankeraTickerResponse ticker, CurrencyPair currencyPair) {
 
-    BigDecimal high = new BigDecimal(ticker.getTicker().getHigh());
-    BigDecimal low = new BigDecimal(ticker.getTicker().getLow());
-    BigDecimal bid = new BigDecimal(ticker.getTicker().getBid());
-    BigDecimal ask = new BigDecimal(ticker.getTicker().getAsk());
-    BigDecimal last = new BigDecimal(ticker.getTicker().getLast());
-    BigDecimal volume = new BigDecimal(ticker.getTicker().getVolume());
+    Double high = new Double(ticker.getTicker().getHigh());
+    Double low = new Double(ticker.getTicker().getLow());
+    Double bid = new Double(ticker.getTicker().getBid());
+    Double ask = new Double(ticker.getTicker().getAsk());
+    Double last = new Double(ticker.getTicker().getLast());
+    Double volume = new Double(ticker.getTicker().getVolume());
     Date timestamp = new Date(ticker.getTicker().getTimestamp());
 
     return new Ticker.Builder()
@@ -104,8 +107,8 @@ public final class BankeraAdapters {
 
     bankeraTrades.forEach(
         bankeraTrade -> {
-          BigDecimal amount = new BigDecimal(bankeraTrade.getAmount());
-          BigDecimal price = new BigDecimal(bankeraTrade.getPrice());
+          Double amount = new Double(bankeraTrade.getAmount());
+          Double price = new Double(bankeraTrade.getPrice());
           Date date = new Date(Long.parseLong(bankeraTrade.getTime()));
           OrderType type =
               bankeraTrade.getSide().equalsIgnoreCase(ORDER_SIDE_BUY)
@@ -125,16 +128,15 @@ public final class BankeraAdapters {
     if (ordersList == null) return limitOrders;
 
     ordersList.forEach(
-        order -> {
-          limitOrders.add(
-              new LimitOrder(
-                  orderType,
-                  new BigDecimal(order.getAmount()),
-                  currencyPair,
-                  String.valueOf(order.getId()),
-                  null,
-                  new BigDecimal(order.getPrice())));
-        });
+        order ->
+            limitOrders.add(
+                new LimitOrder(
+                    orderType,
+                    new Double(order.getAmount()),
+                    currencyPair,
+                    String.valueOf(order.getId()),
+                    null,
+                    new Double(order.getPrice()))));
 
     return limitOrders;
   }
@@ -154,12 +156,12 @@ public final class BankeraAdapters {
                       bankeraOrder.getSide().equalsIgnoreCase("buy")
                           ? OrderType.BID
                           : OrderType.ASK,
-                      new BigDecimal(bankeraOrder.getAmount()),
-                      new BigDecimal(bankeraOrder.getRemainingAmount()),
+                      new Double(bankeraOrder.getAmount()),
+                      new Double(bankeraOrder.getRemainingAmount()),
                       pair,
                       String.valueOf(bankeraOrder.getId()),
-                      new Date(Long.valueOf(bankeraOrder.getCreatedAt())),
-                      new BigDecimal(bankeraOrder.getPrice())));
+                      new Date(Long.parseLong(bankeraOrder.getCreatedAt())),
+                      new Double(bankeraOrder.getPrice())));
             });
 
     return orderList;
@@ -178,13 +180,13 @@ public final class BankeraAdapters {
               tradeList.add(
                   new UserTrade(
                       trade.getSide().equalsIgnoreCase("buy") ? OrderType.BID : OrderType.ASK,
-                      new BigDecimal(trade.getAmount()),
+                      new Double(trade.getAmount()),
                       pair,
-                      new BigDecimal(trade.getPrice()),
-                      new Date(Long.valueOf(trade.getCompletedAt())),
+                      new Double(trade.getPrice()),
+                      new Date(Long.parseLong(trade.getCompletedAt())),
                       String.valueOf(trade.getId()),
                       String.valueOf(trade.getOrderId()),
-                      new BigDecimal(trade.getFeeAmount()),
+                      new Double(trade.getFeeAmount()),
                       feeCurrency));
             });
 
@@ -194,17 +196,15 @@ public final class BankeraAdapters {
   public static Order adaptOrder(BankeraOrder bankeraOrder) {
     String[] currencies = bankeraOrder.getMarket().split("-");
     CurrencyPair pair = new CurrencyPair(currencies[0], currencies[1]);
-    DecimalFormat format = new DecimalFormat();
-    format.setParseBigDecimal(true);
     return new LimitOrder(
         bankeraOrder.getSide().equalsIgnoreCase("buy") ? OrderType.BID : OrderType.ASK,
-        new BigDecimal(bankeraOrder.getAmount()),
+        new Double(bankeraOrder.getAmount()),
         pair,
         String.valueOf(bankeraOrder.getId()),
         new Date(Long.parseLong(bankeraOrder.getCreatedAt())),
-        new BigDecimal(bankeraOrder.getPrice()),
-        new BigDecimal(bankeraOrder.getPrice()),
-        new BigDecimal(bankeraOrder.getExecutedAmount()),
+        Double.parseDouble(bankeraOrder.getPrice()),
+        Double.parseDouble(bankeraOrder.getPrice()),
+        Double.parseDouble(bankeraOrder.getExecutedAmount()),
         bankeraOrder.getTotalFee(),
         adaptOrderStatus(bankeraOrder.getStatus()));
   }

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,28 +29,28 @@ import javax.annotation.Generated;
 public class BitfinexMarginInfosResponse {
 
   @JsonProperty("margin_balance")
-  private BigDecimal marginBalance;
+  private Double marginBalance;
 
   @JsonProperty("tradable_balance")
-  private BigDecimal tradableBalance;
+  private Double tradableBalance;
 
   @JsonProperty("unrealized_pl")
-  private BigDecimal unrealizedPl;
+  private Double unrealizedPl;
 
   @JsonProperty("unrealized_swap")
-  private BigDecimal unrealizedSwap;
+  private Double unrealizedSwap;
 
   @JsonProperty("net_value")
-  private BigDecimal netValue;
+  private Double netValue;
 
   @JsonProperty("required_margin")
-  private BigDecimal requiredMargin;
+  private Double requiredMargin;
 
   @JsonProperty("leverage")
-  private BigDecimal leverage;
+  private Double leverage;
 
   @JsonProperty("margin_requirement")
-  private BigDecimal marginRequirement;
+  private Double marginRequirement;
 
   @JsonProperty("margin_limits")
   private List<BitfinexMarginLimit> marginLimits = new ArrayList<BitfinexMarginLimit>();
@@ -62,97 +61,97 @@ public class BitfinexMarginInfosResponse {
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("margin_balance")
-  public BigDecimal getMarginBalance() {
+  public Double getMarginBalance() {
 
     return marginBalance;
   }
 
   @JsonProperty("margin_balance")
-  public void setMarginBalance(BigDecimal marginBalance) {
+  public void setMarginBalance(Double marginBalance) {
 
     this.marginBalance = marginBalance;
   }
 
   @JsonProperty("tradable_balance")
-  public BigDecimal getTradableBalance() {
+  public Double getTradableBalance() {
 
     return tradableBalance;
   }
 
   @JsonProperty("tradable_balance")
-  public void setTradableBalance(BigDecimal tradableBalance) {
+  public void setTradableBalance(Double tradableBalance) {
 
     this.tradableBalance = tradableBalance;
   }
 
   @JsonProperty("unrealized_pl")
-  public BigDecimal getUnrealizedPl() {
+  public Double getUnrealizedPl() {
 
     return unrealizedPl;
   }
 
   @JsonProperty("unrealized_pl")
-  public void setUnrealizedPl(BigDecimal unrealizedPl) {
+  public void setUnrealizedPl(Double unrealizedPl) {
 
     this.unrealizedPl = unrealizedPl;
   }
 
   @JsonProperty("unrealized_swap")
-  public BigDecimal getUnrealizedSwap() {
+  public Double getUnrealizedSwap() {
 
     return unrealizedSwap;
   }
 
   @JsonProperty("unrealized_swap")
-  public void setUnrealizedSwap(BigDecimal unrealizedSwap) {
+  public void setUnrealizedSwap(Double unrealizedSwap) {
 
     this.unrealizedSwap = unrealizedSwap;
   }
 
   @JsonProperty("net_value")
-  public BigDecimal getNetValue() {
+  public Double getNetValue() {
 
     return netValue;
   }
 
   @JsonProperty("net_value")
-  public void setNetValue(BigDecimal netValue) {
+  public void setNetValue(Double netValue) {
 
     this.netValue = netValue;
   }
 
   @JsonProperty("required_margin")
-  public BigDecimal getRequiredMargin() {
+  public Double getRequiredMargin() {
 
     return requiredMargin;
   }
 
   @JsonProperty("required_margin")
-  public void setRequiredMargin(BigDecimal requiredMargin) {
+  public void setRequiredMargin(Double requiredMargin) {
 
     this.requiredMargin = requiredMargin;
   }
 
   @JsonProperty("leverage")
-  public BigDecimal getLeverage() {
+  public Double getLeverage() {
 
     return leverage;
   }
 
   @JsonProperty("leverage")
-  public void setLeverage(BigDecimal leverage) {
+  public void setLeverage(Double leverage) {
 
     this.leverage = leverage;
   }
 
   @JsonProperty("margin_requirement")
-  public BigDecimal getMarginRequirement() {
+  public Double getMarginRequirement() {
 
     return marginRequirement;
   }
 
   @JsonProperty("margin_requirement")
-  public void setMarginRequirement(BigDecimal marginRequirement) {
+  public void setMarginRequirement(Double marginRequirement) {
 
     this.marginRequirement = marginRequirement;
   }

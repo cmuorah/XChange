@@ -1,7 +1,6 @@
 package org.knowm.xchange.enigma.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import lombok.Getter;
@@ -16,8 +15,8 @@ public class EnigmaOrderBook extends BaseResponse {
   private Date timestamp;
 
   @JsonProperty("bids")
-  private List<List<BigDecimal>> bids;
+  private List<List<Double>> bids;
 
   @JsonProperty("asks")
-  private List<List<BigDecimal>> asks;
+  private List<List<Double>> asks;
 }

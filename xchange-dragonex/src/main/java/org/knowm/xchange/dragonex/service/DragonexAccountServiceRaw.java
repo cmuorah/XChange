@@ -1,7 +1,6 @@
 package org.knowm.xchange.dragonex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.dragonex.dto.DragonResult;
@@ -79,8 +78,7 @@ public class DragonexAccountServiceRaw extends DragonexBaseService {
     return coinWithdrawHistory.getResult();
   }
 
-  public Withdrawal coinWithdrawNew(long coinId, BigDecimal volume, long addressId)
-      throws IOException {
+  public Withdrawal coinWithdrawNew(long coinId, Double volume, long addressId) throws IOException {
     String token = exchange.getOrCreateToken().token;
     DragonResult<Withdrawal> coinWithdrawHistory =
         exchange

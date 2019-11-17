@@ -2,7 +2,6 @@ package org.knowm.xchange.deribit.v2.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 
@@ -12,46 +11,46 @@ public class DeribitTicker {
 
   /** (Only for option) implied volatility for best ask */
   @JsonProperty("ask_iv")
-  private BigDecimal askIv;
+  private Double askIv;
 
   /** It represents the requested order size of all best asks */
   @JsonProperty("best_ask_amount")
-  private BigDecimal bestAskAmount;
+  private Double bestAskAmount;
 
   /** The current best ask price, null if there aren't any asks */
   @JsonProperty("best_ask_price")
-  private BigDecimal bestAskPrice;
+  private Double bestAskPrice;
 
   /** It represents the requested order size of all best bids */
   @JsonProperty("best_bid_amount")
-  private BigDecimal bestBidAmount;
+  private Double bestBidAmount;
 
   /** The current best bid price, null if there aren't any bids */
   @JsonProperty("best_bid_price")
-  private BigDecimal bestBidPrice;
+  private Double bestBidPrice;
 
   /** (Only for option) implied volatility for best bid */
   @JsonProperty("bid_iv")
-  private BigDecimal bidIv;
+  private Double bidIv;
 
   @JsonProperty("greeks")
   private DeribitGreeks greeks;
 
   /** The settlement price for the instrument. Only when state = closed */
   @JsonProperty("delivery_price")
-  private BigDecimal deliveryPrice;
+  private Double deliveryPrice;
 
   /** Current funding (perpetual only) */
   @JsonProperty("current_funding")
-  private BigDecimal currentFunding;
+  private Double currentFunding;
 
   /** Funding 8h (perpetual only) */
   @JsonProperty("funding_8h")
-  private BigDecimal funding8h;
+  private Double funding8h;
 
   /** Current index price */
   @JsonProperty("index_price")
-  private BigDecimal indexPrice;
+  private Double indexPrice;
 
   /** Unique instrument identifier */
   @JsonProperty("instrument_name")
@@ -59,33 +58,33 @@ public class DeribitTicker {
 
   /** Interest rate used in implied volatility calculations (options only) */
   @JsonProperty("interest_rate")
-  private BigDecimal interestRate;
+  private Double interestRate;
 
   /** The price for the last trade */
   @JsonProperty("last_price")
-  private BigDecimal lastPrice;
+  private Double lastPrice;
 
   /** (Only for option) implied volatility for mark price */
   @JsonProperty("mark_iv")
-  private BigDecimal markIv;
+  private Double markIv;
 
   /** The mark price for the instrument */
   @JsonProperty("mark_price")
-  private BigDecimal markPrice;
+  private Double markPrice;
 
   /**
    * The maximum price for the future. Any buy orders you submit higher than this price, will be
    * clamped to this maximum.
    */
   @JsonProperty("max_price")
-  private BigDecimal maxPrice;
+  private Double maxPrice;
 
   /**
    * The minimum price for the future. Any sell orders you submit lower than this price will be
    * clamped to this minimum.
    */
   @JsonProperty("min_price")
-  private BigDecimal minPrice;
+  private Double minPrice;
 
   /**
    * The total amount of outstanding contracts in the corresponding amount units. For perpetual and
@@ -93,11 +92,11 @@ public class DeribitTicker {
    * contracts, e.g., BTC or ETH.
    */
   @JsonProperty("open_interest")
-  private BigDecimal openInterest;
+  private Double openInterest;
 
   /** The settlement price for the instrument. Only when state = open */
   @JsonProperty("settlement_price")
-  private BigDecimal settlementPrice;
+  private Double settlementPrice;
 
   /** The state of the order book. Possible values are open and closed. */
   @JsonProperty("state")
@@ -116,7 +115,7 @@ public class DeribitTicker {
 
   /** Underlying price for implied volatility calculations (options only) */
   @JsonProperty("underlying_price")
-  private BigDecimal underlyingPrice;
+  private Double underlyingPrice;
 
   public Date getTimestamp() {
     return new Date(timestamp);

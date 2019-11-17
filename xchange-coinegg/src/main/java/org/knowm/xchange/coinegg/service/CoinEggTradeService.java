@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinegg.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinegg.CoinEggAdapters;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -28,8 +27,8 @@ public class CoinEggTradeService extends CoinEggTradeServiceRaw implements Trade
   @Override
   public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
 
-    BigDecimal amount = limitOrder.getOriginalAmount();
-    BigDecimal price = limitOrder.getAveragePrice();
+    Double amount = limitOrder.getOriginalAmount();
+    Double price = limitOrder.getAveragePrice();
     String type = limitOrder.getType() == OrderType.ASK ? "buy" : "sell";
     String coin = limitOrder.getCurrencyPair().base.getCurrencyCode().toLowerCase();
 

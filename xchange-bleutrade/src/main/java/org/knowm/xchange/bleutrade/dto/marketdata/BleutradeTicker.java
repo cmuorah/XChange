@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -33,34 +32,34 @@ public class BleutradeTicker {
   private String MarketName;
 
   @JsonProperty("PrevDay")
-  private BigDecimal PrevDay;
+  private Double PrevDay;
 
   @JsonProperty("High")
-  private BigDecimal High;
+  private Double High;
 
   @JsonProperty("Low")
-  private BigDecimal Low;
+  private Double Low;
 
   @JsonProperty("Last")
-  private BigDecimal Last;
+  private Double Last;
 
   @JsonProperty("Average")
-  private BigDecimal Average;
+  private Double Average;
 
   @JsonProperty("Volume")
-  private BigDecimal Volume;
+  private Double Volume;
 
   @JsonProperty("BaseVolume")
-  private BigDecimal BaseVolume;
+  private Double BaseVolume;
 
   @JsonProperty("TimeStamp")
   private String TimeStamp;
 
   @JsonProperty("Bid")
-  private BigDecimal Bid;
+  private Double Bid;
 
   @JsonProperty("Ask")
-  private BigDecimal Ask;
+  private Double Ask;
 
   @JsonProperty("IsActive")
   private Boolean IsActive;
@@ -83,98 +82,98 @@ public class BleutradeTicker {
 
   /** @return The PrevDay */
   @JsonProperty("PrevDay")
-  public BigDecimal getPrevDay() {
+  public Double getPrevDay() {
 
     return PrevDay;
   }
 
   /** @param PrevDay The PrevDay */
   @JsonProperty("PrevDay")
-  public void setPrevDay(BigDecimal PrevDay) {
+  public void setPrevDay(Double PrevDay) {
 
     this.PrevDay = PrevDay;
   }
 
   /** @return The High */
   @JsonProperty("High")
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return High;
   }
 
   /** @param High The High */
   @JsonProperty("High")
-  public void setHigh(BigDecimal High) {
+  public void setHigh(Double High) {
 
     this.High = High;
   }
 
   /** @return The Low */
   @JsonProperty("Low")
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return Low;
   }
 
   /** @param Low The Low */
   @JsonProperty("Low")
-  public void setLow(BigDecimal Low) {
+  public void setLow(Double Low) {
 
     this.Low = Low;
   }
 
   /** @return The Last */
   @JsonProperty("Last")
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return Last;
   }
 
   /** @param Last The Last */
   @JsonProperty("Last")
-  public void setLast(BigDecimal Last) {
+  public void setLast(Double Last) {
 
     this.Last = Last;
   }
 
   /** @return The Average */
   @JsonProperty("Average")
-  public BigDecimal getAverage() {
+  public Double getAverage() {
 
     return Average;
   }
 
   /** @param Average The Average */
   @JsonProperty("Average")
-  public void setAverage(BigDecimal Average) {
+  public void setAverage(Double Average) {
 
     this.Average = Average;
   }
 
   /** @return The Volume */
   @JsonProperty("Volume")
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return Volume;
   }
 
   /** @param Volume The Volume */
   @JsonProperty("Volume")
-  public void setVolume(BigDecimal Volume) {
+  public void setVolume(Double Volume) {
 
     this.Volume = Volume;
   }
 
   /** @return The BaseVolume */
   @JsonProperty("BaseVolume")
-  public BigDecimal getBaseVolume() {
+  public Double getBaseVolume() {
 
     return BaseVolume;
   }
 
   /** @param BaseVolume The BaseVolume */
   @JsonProperty("BaseVolume")
-  public void setBaseVolume(BigDecimal BaseVolume) {
+  public void setBaseVolume(Double BaseVolume) {
 
     this.BaseVolume = BaseVolume;
   }
@@ -195,28 +194,28 @@ public class BleutradeTicker {
 
   /** @return The Bid */
   @JsonProperty("Bid")
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return Bid;
   }
 
   /** @param Bid The Bid */
   @JsonProperty("Bid")
-  public void setBid(BigDecimal Bid) {
+  public void setBid(Double Bid) {
 
     this.Bid = Bid;
   }
 
   /** @return The Ask */
   @JsonProperty("Ask")
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return Ask;
   }
 
   /** @param Ask The Ask */
   @JsonProperty("Ask")
-  public void setAsk(BigDecimal Ask) {
+  public void setAsk(Double Ask) {
 
     this.Ask = Ask;
   }

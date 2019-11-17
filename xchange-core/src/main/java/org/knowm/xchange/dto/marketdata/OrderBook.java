@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto.marketdata;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -95,13 +94,13 @@ public final class OrderBook implements Serializable {
   }
 
   // Returns a copy of limitOrder with tradeableAmount replaced.
-  private static LimitOrder withAmount(LimitOrder limitOrder, BigDecimal tradeableAmount) {
+  private static LimitOrder withAmount(LimitOrder limitOrder, Double tradeableAmount) {
 
     OrderType type = limitOrder.getType();
     CurrencyPair currencyPair = limitOrder.getCurrencyPair();
     String id = limitOrder.getId();
     Date date = limitOrder.getTimestamp();
-    BigDecimal limit = limitOrder.getLimitPrice();
+    Double limit = limitOrder.getLimitPrice();
     return new LimitOrder(type, tradeableAmount, currencyPair, id, date, limit);
   }
 
@@ -168,7 +167,7 @@ public final class OrderBook implements Serializable {
       idx = -idx - 1;
     }
 
-    if (orderBookUpdate.getTotalVolume().compareTo(BigDecimal.ZERO) != 0) {
+    if (orderBookUpdate.getTotalVolume().compareTo(0d) != 0) {
       LimitOrder updatedOrder = withAmount(limitOrder, orderBookUpdate.getTotalVolume());
       limitOrders.add(idx, updatedOrder);
     }

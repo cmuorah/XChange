@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class OkCoinOrder {
@@ -14,25 +13,25 @@ public class OkCoinOrder {
 
   private final String type;
 
-  private final BigDecimal amount;
+  private final Double amount;
 
-  private final BigDecimal dealAmount;
+  private final Double dealAmount;
 
   private final Date createDate;
 
-  private final BigDecimal price;
+  private final Double price;
 
-  private final BigDecimal averagePrice;
+  private final Double averagePrice;
 
   public OkCoinOrder(
       @JsonProperty("order_id") final long orderId,
       @JsonProperty("status") final int status,
       @JsonProperty("symbol") final String symbol,
       @JsonProperty("type") final String type,
-      @JsonProperty("price") final BigDecimal price,
-      @JsonProperty("avg_price") final BigDecimal averagePrice,
-      @JsonProperty("amount") final BigDecimal amount,
-      @JsonProperty("deal_amount") final BigDecimal dealAmount,
+      @JsonProperty("price") final Double price,
+      @JsonProperty("avg_price") final Double averagePrice,
+      @JsonProperty("amount") final Double amount,
+      @JsonProperty("deal_amount") final Double dealAmount,
       @JsonProperty("create_date") final Date createDate) {
 
     this.orderId = orderId;
@@ -66,12 +65,12 @@ public class OkCoinOrder {
     return type;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getDealAmount() {
+  public Double getDealAmount() {
 
     return dealAmount;
   }
@@ -81,12 +80,12 @@ public class OkCoinOrder {
     return createDate;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAveragePrice() {
+  public Double getAveragePrice() {
 
     return averagePrice;
   }

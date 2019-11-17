@@ -3,7 +3,6 @@ package org.knowm.xchange.bitmex.service.trade;
 import static org.knowm.xchange.bitmex.BitmexPrompt.PERPETUAL;
 import static org.knowm.xchange.currency.CurrencyPair.XBT_USD;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Ignore;
@@ -59,9 +58,9 @@ public class BitmexBulkOrderTest {
 
     BitmexTradeService tradeService = (BitmexTradeService) exchange.getTradeService();
     String nosOrdId = System.currentTimeMillis() + "";
-    BigDecimal originalOrderSize = new BigDecimal("30");
-    //    BigDecimal price = new BigDecimal("10000");
-    BigDecimal price = orderBook.getBids().get(0).getLimitPrice().add(new BigDecimal("0.5"));
+    Double originalOrderSize = new Double("30");
+    //    Double price = new Double("10000");
+    Double price = orderBook.getBids().get(0).getLimitPrice().add(new Double("0.5"));
     //    LimitOrder limitOrder =
     //        new LimitOrder(
     //            Order.OrderType.ASK,
@@ -89,7 +88,7 @@ public class BitmexBulkOrderTest {
     //    BitmexPrivateOrder bitmexPrivateOrder =
     //        tradeService.replaceLimitOrder(
     //            "XBTUSD",
-    //            originalOrderSize.divide(new BigDecimal("2")),
+    //            originalOrderSize.divide(new Double("2")),
     //            null,
     //            orderId,
     //            //            null, null,

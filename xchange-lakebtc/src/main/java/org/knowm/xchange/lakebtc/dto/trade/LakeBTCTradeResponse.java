@@ -1,23 +1,22 @@
 package org.knowm.xchange.lakebtc.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Created by cristian.lucaci on 12/19/2014. */
 public class LakeBTCTradeResponse {
 
   private final String type;
   private final String currency;
-  private final BigDecimal amount;
-  private final BigDecimal total;
+  private final Double amount;
+  private final Double total;
   private final long at;
   private final String id;
 
   public LakeBTCTradeResponse(
       @JsonProperty("type") String type,
       @JsonProperty("currency") String currency,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("total") BigDecimal total,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("total") Double total,
       @JsonProperty("at") long at) {
     this.type = type;
     this.currency = currency;
@@ -35,11 +34,11 @@ public class LakeBTCTradeResponse {
     return currency;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 

@@ -2,9 +2,6 @@ package org.knowm.xchange.kuna.dto;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
-import static java.math.BigDecimal.ONE;
-import static java.math.BigDecimal.TEN;
-import static java.math.BigDecimal.ZERO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.knowm.xchange.kuna.dto.enums.KunaSide.BUY;
@@ -57,9 +54,9 @@ public class KunaTradeTest {
 
   @Test
   public void test_price() {
-    assertEquals(ZERO, KunaTrade.builder().withPrice(ZERO).build().getPrice());
+    assertEquals(0d, KunaTrade.builder().withPrice(0d).build().getPrice());
     assertEquals(ONE, KunaTrade.builder().withPrice(ONE).build().getPrice());
-    assertEquals(TEN, KunaTrade.builder().withPrice(TEN).build().getPrice());
+    assertEquals(10d, KunaTrade.builder().withPrice(10d).build().getPrice());
 
     assertThat(trade.getPrice()).isEqualByComparingTo("380505.0");
   }
@@ -83,18 +80,18 @@ public class KunaTradeTest {
 
   @Test
   public void test_volume() {
-    assertEquals(ZERO, KunaTrade.builder().withVolume(ZERO).build().getVolume());
+    assertEquals(0d, KunaTrade.builder().withVolume(0d).build().getVolume());
     assertEquals(ONE, KunaTrade.builder().withVolume(ONE).build().getVolume());
-    assertEquals(TEN, KunaTrade.builder().withVolume(TEN).build().getVolume());
+    assertEquals(10d, KunaTrade.builder().withVolume(10d).build().getVolume());
 
     assertThat(trade.getVolume()).isEqualByComparingTo("0.03536");
   }
 
   @Test
   public void test_funds() {
-    assertEquals(ZERO, KunaTrade.builder().withFunds(ZERO).build().getFunds());
+    assertEquals(0d, KunaTrade.builder().withFunds(0d).build().getFunds());
     assertEquals(ONE, KunaTrade.builder().withFunds(ONE).build().getFunds());
-    assertEquals(TEN, KunaTrade.builder().withFunds(TEN).build().getFunds());
+    assertEquals(10d, KunaTrade.builder().withFunds(10d).build().getFunds());
 
     assertThat(trade.getFunds()).isEqualByComparingTo("13454.6568");
   }

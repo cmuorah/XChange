@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexNewOrder {
 
@@ -18,18 +17,13 @@ public class BitfinexNewOrder {
   protected String type;
 
   @JsonProperty("amount")
-  protected BigDecimal amount;
+  protected Double amount;
 
   @JsonProperty("price")
-  protected BigDecimal price;
+  protected Double price;
 
   public BitfinexNewOrder(
-      String symbol,
-      String exchange,
-      String side,
-      String type,
-      BigDecimal amount,
-      BigDecimal price) {
+      String symbol, String exchange, String side, String type, Double amount, Double price) {
 
     this.symbol = symbol;
     this.exchange = exchange;
@@ -79,22 +73,22 @@ public class BitfinexNewOrder {
     this.type = type;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
 
     this.amount = amount;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
 
     this.price = price;
   }

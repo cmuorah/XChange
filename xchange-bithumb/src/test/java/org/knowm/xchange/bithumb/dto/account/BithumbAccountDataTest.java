@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.bithumb.BithumbAdapters;
 
@@ -21,9 +20,9 @@ public class BithumbAccountDataTest {
             "/org/knowm/xchange/bithumb/dto/account/example-balance.json");
     final BithumbBalance bithumbBalance = mapper.readValue(is, BithumbBalance.class);
 
-    assertThat(bithumbBalance.getTotalKrw()).isEqualTo(BigDecimal.valueOf(1));
-    assertThat(bithumbBalance.getInUseKrw()).isEqualTo(BigDecimal.valueOf(0));
-    assertThat(bithumbBalance.getAvailableKrw()).isEqualTo(BigDecimal.valueOf(1));
+    assertThat(bithumbBalance.getTotalKrw()).isEqualTo(Double.valueOf(1));
+    assertThat(bithumbBalance.getInUseKrw()).isEqualTo(Double.valueOf(0));
+    assertThat(bithumbBalance.getAvailableKrw()).isEqualTo(Double.valueOf(1));
   }
 
   @Test
@@ -40,9 +39,9 @@ public class BithumbAccountDataTest {
     assertThat(bithumbOrder.getPaymentCurrency()).isEqualTo("KRW");
     assertThat(bithumbOrder.getType()).isEqualTo(BithumbAdapters.OrderType.ask);
     assertThat(bithumbOrder.getStatus()).isEqualTo("placed");
-    assertThat(bithumbOrder.getUnits()).isEqualTo(BigDecimal.valueOf(1.0));
-    assertThat(bithumbOrder.getUnitsRemaining()).isEqualTo(BigDecimal.valueOf(1.0));
-    assertThat(bithumbOrder.getPrice()).isEqualTo(BigDecimal.valueOf(700));
+    assertThat(bithumbOrder.getUnits()).isEqualTo(Double.valueOf(1.0));
+    assertThat(bithumbOrder.getUnitsRemaining()).isEqualTo(Double.valueOf(1.0));
+    assertThat(bithumbOrder.getPrice()).isEqualTo(Double.valueOf(700));
     assertThat(bithumbOrder.getFee()).isNull();
     assertThat(bithumbOrder.getTotal()).isNull();
     assertThat(bithumbOrder.getDateCompleted()).isEqualTo(0L);
@@ -60,10 +59,10 @@ public class BithumbAccountDataTest {
     assertThat(bithumbOrderDetail.getType()).isEqualTo("ask");
     assertThat(bithumbOrderDetail.getOrderCurrency()).isEqualTo("BTC");
     assertThat(bithumbOrderDetail.getPaymentCurrency()).isEqualTo("KRW");
-    assertThat(bithumbOrderDetail.getUnitsTraded()).isEqualTo(BigDecimal.valueOf(0.0017D));
-    assertThat(bithumbOrderDetail.getPrice()).isEqualTo(BigDecimal.valueOf(264000L));
-    assertThat(bithumbOrderDetail.getFee()).isEqualTo(BigDecimal.valueOf(0.0000017D));
-    assertThat(bithumbOrderDetail.getTotal()).isEqualTo(BigDecimal.valueOf(449L));
+    assertThat(bithumbOrderDetail.getUnitsTraded()).isEqualTo(Double.valueOf(0.0017D));
+    assertThat(bithumbOrderDetail.getPrice()).isEqualTo(Double.valueOf(264000L));
+    assertThat(bithumbOrderDetail.getFee()).isEqualTo(Double.valueOf(0.0000017D));
+    assertThat(bithumbOrderDetail.getTotal()).isEqualTo(Double.valueOf(449L));
   }
 
   @Test
@@ -77,9 +76,9 @@ public class BithumbAccountDataTest {
     assertThat(bithumbTransaction.getSearch()).isEqualTo("2");
     assertThat(bithumbTransaction.getTransferDate()).isEqualTo(1417138805912L);
     assertThat(bithumbTransaction.getUnits()).isEqualTo("- 0.1");
-    assertThat(bithumbTransaction.getPrice()).isEqualTo(BigDecimal.valueOf(51600));
-    assertThat(bithumbTransaction.getFee()).isEqualTo(BigDecimal.valueOf(0.24));
-    assertThat(bithumbTransaction.getKrwRemain()).isEqualTo(BigDecimal.valueOf(305455680));
+    assertThat(bithumbTransaction.getPrice()).isEqualTo(Double.valueOf(51600));
+    assertThat(bithumbTransaction.getFee()).isEqualTo(Double.valueOf(0.24));
+    assertThat(bithumbTransaction.getKrwRemain()).isEqualTo(Double.valueOf(305455680));
   }
 
   @Test
@@ -92,8 +91,8 @@ public class BithumbAccountDataTest {
 
     assertThat(bithumbTransaction.getCreated()).isEqualTo(1489545326000L);
     assertThat(bithumbTransaction.getAccountId()).isEqualTo("ABCDE");
-    assertThat(bithumbTransaction.getTradeFee()).isEqualTo(BigDecimal.valueOf(0.0015));
-    assertThat(bithumbTransaction.getBalance()).isEqualTo(BigDecimal.valueOf(0.00001971));
+    assertThat(bithumbTransaction.getTradeFee()).isEqualTo(Double.valueOf(0.0015));
+    assertThat(bithumbTransaction.getBalance()).isEqualTo(Double.valueOf(0.00001971));
   }
 
   @Test

@@ -1,12 +1,11 @@
 package org.knowm.xchange.bitfinex.v1.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexTrade {
 
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final long timestamp;
   private final String exchange;
   private final long tradeId;
@@ -22,8 +21,8 @@ public class BitfinexTrade {
    * @param tradeId
    */
   public BitfinexTrade(
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("timestamp") long timestamp,
       @JsonProperty("exchange") String exchange,
       @JsonProperty("tid") long tradeId,
@@ -37,12 +36,12 @@ public class BitfinexTrade {
     this.type = type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

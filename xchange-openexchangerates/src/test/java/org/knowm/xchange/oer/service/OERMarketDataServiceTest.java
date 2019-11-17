@@ -3,7 +3,6 @@ package org.knowm.xchange.oer.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
@@ -32,6 +31,6 @@ public class OERMarketDataServiceTest {
 
     Ticker t = marketDataService.getTicker(CurrencyPair.USD_AUD);
     assertThat(t.getCurrencyPair()).isEqualTo(CurrencyPair.USD_AUD);
-    assertThat(t.getLast()).isEqualTo(BigDecimal.valueOf(1.23d));
+    assertThat(t.getLast()).isEqualTo(Double.valueOf(1.23d));
   }
 }

@@ -2,7 +2,6 @@ package org.knowm.xchange.lgo.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class LgoUserTrade {
@@ -10,10 +9,10 @@ public class LgoUserTrade {
   private final String id;
   private final String orderId;
   private final String productId;
-  private final BigDecimal price;
-  private final BigDecimal quantity;
+  private final Double price;
+  private final Double quantity;
   private final Date creationDate;
-  private final BigDecimal fees;
+  private final Double fees;
   private final String side;
   private final String liquidity;
 
@@ -21,12 +20,12 @@ public class LgoUserTrade {
       @JsonProperty("id") String id,
       @JsonProperty("order_id") String orderId,
       @JsonProperty("product_id") String productId,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("quantity") BigDecimal quantity,
+      @JsonProperty("price") Double price,
+      @JsonProperty("quantity") Double quantity,
       @JsonProperty("creation_date")
           @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
           Date creationDate,
-      @JsonProperty("fees") BigDecimal fees,
+      @JsonProperty("fees") Double fees,
       @JsonProperty("side") String side,
       @JsonProperty("liquidity") String liquidity) {
     this.id = id;
@@ -52,11 +51,11 @@ public class LgoUserTrade {
     return productId;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
@@ -64,7 +63,7 @@ public class LgoUserTrade {
     return creationDate;
   }
 
-  public BigDecimal getFees() {
+  public Double getFees() {
     return fees;
   }
 

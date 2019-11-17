@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinsuper.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinsuperUserAssetInfo {
 
@@ -570,10 +569,10 @@ public class CoinsuperUserAssetInfo {
     public static class CoinsuperBalance {
 
       @JsonProperty("available")
-      private BigDecimal available;
+      private Double available;
 
       @JsonProperty("total")
-      private BigDecimal total;
+      private Double total;
 
       public CoinsuperBalance() {
         super();
@@ -582,29 +581,29 @@ public class CoinsuperUserAssetInfo {
        * @param total
        * @param available
        */
-      public CoinsuperBalance(BigDecimal available, BigDecimal total) {
+      public CoinsuperBalance(Double available, Double total) {
         super();
         this.available = available;
         this.total = total;
       }
 
       @JsonProperty("available")
-      public BigDecimal getAvailable() {
+      public Double getAvailable() {
         return available;
       }
 
       @JsonProperty("available")
-      public void setAvailable(BigDecimal available) {
+      public void setAvailable(Double available) {
         this.available = available;
       }
 
       @JsonProperty("total")
-      public BigDecimal getTotal() {
+      public Double getTotal() {
         return total;
       }
 
       @JsonProperty("total")
-      public void setTotal(BigDecimal total) {
+      public void setTotal(Double total) {
         this.total = total;
       }
     }

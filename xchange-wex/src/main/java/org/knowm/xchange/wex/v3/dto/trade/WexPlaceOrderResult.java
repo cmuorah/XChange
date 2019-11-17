@@ -1,7 +1,6 @@
 package org.knowm.xchange.wex.v3.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.Map;
 
@@ -9,9 +8,9 @@ import java.util.Map;
 public class WexPlaceOrderResult {
 
   private final long orderId; // 0 if order completely filled, initial order_id otherwise
-  private final BigDecimal received;
-  private final BigDecimal remains;
-  private final Map<String, BigDecimal> funds;
+  private final Double received;
+  private final Double remains;
+  private final Map<String, Double> funds;
 
   /**
    * Constructor
@@ -23,9 +22,9 @@ public class WexPlaceOrderResult {
    */
   public WexPlaceOrderResult(
       @JsonProperty("order_id") long orderId,
-      @JsonProperty("received") BigDecimal received,
-      @JsonProperty("remains") BigDecimal remains,
-      @JsonProperty("funds") Map<String, BigDecimal> funds) {
+      @JsonProperty("received") Double received,
+      @JsonProperty("remains") Double remains,
+      @JsonProperty("funds") Map<String, Double> funds) {
 
     this.orderId = orderId;
     this.received = received;
@@ -38,17 +37,17 @@ public class WexPlaceOrderResult {
     return orderId;
   }
 
-  public Map<String, BigDecimal> getFunds() {
+  public Map<String, Double> getFunds() {
 
     return funds;
   }
 
-  public BigDecimal getReceived() {
+  public Double getReceived() {
 
     return received;
   }
 
-  public BigDecimal getRemains() {
+  public Double getRemains() {
 
     return remains;
   }

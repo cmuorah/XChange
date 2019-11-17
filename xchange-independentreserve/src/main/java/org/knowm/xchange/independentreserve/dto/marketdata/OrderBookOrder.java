@@ -1,18 +1,17 @@
 package org.knowm.xchange.independentreserve.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Author: Kamil Zbikowski Date: 4/10/15 */
 public class OrderBookOrder {
   private final String guid;
-  private final BigDecimal price;
-  private final BigDecimal volume;
+  private final Double price;
+  private final Double volume;
 
   public OrderBookOrder(
       @JsonProperty("Guid") String guid,
-      @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("Volume") BigDecimal volume) {
+      @JsonProperty("Price") Double price,
+      @JsonProperty("Volume") Double volume) {
     this.guid = guid;
     this.price = price;
     this.volume = volume;
@@ -22,11 +21,11 @@ public class OrderBookOrder {
     return guid;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 

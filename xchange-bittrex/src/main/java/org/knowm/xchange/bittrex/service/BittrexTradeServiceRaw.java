@@ -39,13 +39,13 @@ public class BittrexTradeServiceRaw extends BittrexBaseService {
                 signatureCreator,
                 exchange.getNonceFactory(),
                 BittrexUtils.toPairString(marketOrder.getCurrencyPair()),
-                marketOrder.getOriginalAmount().toPlainString())
+                marketOrder.getOriginalAmount().toString())
             : bittrexAuthenticated.sellmarket(
                 apiKey,
                 signatureCreator,
                 exchange.getNonceFactory(),
                 BittrexUtils.toPairString(marketOrder.getCurrencyPair()),
-                marketOrder.getOriginalAmount().toPlainString()))
+                marketOrder.getOriginalAmount().toString()))
         .getResult()
         .getUuid();
   }
@@ -58,15 +58,15 @@ public class BittrexTradeServiceRaw extends BittrexBaseService {
                 signatureCreator,
                 exchange.getNonceFactory(),
                 BittrexUtils.toPairString(limitOrder.getCurrencyPair()),
-                limitOrder.getOriginalAmount().toPlainString(),
-                limitOrder.getLimitPrice().toPlainString())
+                limitOrder.getOriginalAmount().toString(),
+                limitOrder.getLimitPrice().toString())
             : bittrexAuthenticated.selllimit(
                 apiKey,
                 signatureCreator,
                 exchange.getNonceFactory(),
                 BittrexUtils.toPairString(limitOrder.getCurrencyPair()),
-                limitOrder.getOriginalAmount().toPlainString(),
-                limitOrder.getLimitPrice().toPlainString()))
+                limitOrder.getOriginalAmount().toString(),
+                limitOrder.getLimitPrice().toString()))
         .getResult()
         .getUuid();
   }

@@ -45,7 +45,7 @@ public class CryptonitAccountDemo {
     /*
        Api not implemented or uses other specification?
     String withdrawResult =
-        accountService.withdrawFunds(Currency.BTC, new BigDecimal(1).movePointLeft(4), "XXX");
+        accountService.withdrawFunds(Currency.BTC, new Double(1)/10000.0, "XXX");
     System.out.println("withdrawResult = " + withdrawResult);*/
   }
 
@@ -80,7 +80,7 @@ public class CryptonitAccountDemo {
     /*
     Api not implemented or uses other specification?
     CryptonitWithdrawal withdrawResult =
-        accountService.withdrawBtcFunds(new BigDecimal(1).movePointLeft(4), "XXX");
+        accountService.withdrawBtcFunds(new Double(1)/10000.0, "XXX");
     System.out.println("CryptonitBooleanResponse = " + withdrawResult);*/
   }
 }

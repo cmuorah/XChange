@@ -1,7 +1,6 @@
 package org.knowm.xchange.wex.v3.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 
 /** @author Dyorgio Nascimento */
@@ -9,9 +8,9 @@ public class WexOrderInfoResult {
 
   private final String pair;
   private final Type type;
-  private final BigDecimal startAmount;
-  private final BigDecimal amount;
-  private final BigDecimal rate;
+  private final Double startAmount;
+  private final Double amount;
+  private final Double rate;
   private final Long timestampCreated;
   /** 0 - active, 1 – executed order, 2 - canceled, 3 – canceled, but was partially executed. */
   private final int status;
@@ -30,9 +29,9 @@ public class WexOrderInfoResult {
   public WexOrderInfoResult(
       @JsonProperty("status") int status,
       @JsonProperty("timestamp_created") Long timestampCreated,
-      @JsonProperty("rate") BigDecimal rate,
-      @JsonProperty("start_amount") BigDecimal startAmount,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("rate") Double rate,
+      @JsonProperty("start_amount") Double startAmount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("type") Type type,
       @JsonProperty("pair") String pair) {
 
@@ -55,17 +54,17 @@ public class WexOrderInfoResult {
     return type;
   }
 
-  public BigDecimal getStartAmount() {
+  public Double getStartAmount() {
 
     return startAmount;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
 
     return rate;
   }

@@ -1,16 +1,15 @@
 package org.knowm.xchange.okcoin.dto.marketdata;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class OkCoinFutureKline {
   protected Date closeTime;
-  protected BigDecimal close;
-  protected BigDecimal high;
-  protected BigDecimal low;
-  protected BigDecimal open;
-  protected BigDecimal volume;
-  protected BigDecimal quoteAssetVolume;
+  protected Double close;
+  protected Double high;
+  protected Double low;
+  protected Double open;
+  protected Double volume;
+  protected Double quoteAssetVolume;
 
   public OkCoinFutureKline() {}
 
@@ -20,39 +19,39 @@ public class OkCoinFutureKline {
     } else {
       this.closeTime = new Date(Long.valueOf((String) kline[0]));
     }
-    this.open = new BigDecimal(String.valueOf(kline[1]));
-    this.high = new BigDecimal(String.valueOf(kline[2]));
-    this.low = new BigDecimal(String.valueOf(kline[3]));
-    this.close = new BigDecimal(String.valueOf(kline[4]));
-    this.volume = new BigDecimal(String.valueOf(kline[5]));
-    this.quoteAssetVolume = new BigDecimal(String.valueOf(kline[6]));
+    this.open = new Double(String.valueOf(kline[1]));
+    this.high = new Double(String.valueOf(kline[2]));
+    this.low = new Double(String.valueOf(kline[3]));
+    this.close = new Double(String.valueOf(kline[4]));
+    this.volume = new Double(String.valueOf(kline[5]));
+    this.quoteAssetVolume = new Double(String.valueOf(kline[6]));
   }
 
   public Date getCloseTime() {
     return closeTime;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
     return close;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getQuoteAssetVolume() {
+  public Double getQuoteAssetVolume() {
     return quoteAssetVolume;
   }
 }

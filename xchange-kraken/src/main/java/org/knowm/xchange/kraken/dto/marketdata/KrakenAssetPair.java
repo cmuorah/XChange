@@ -1,7 +1,6 @@
 package org.knowm.xchange.kraken.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class KrakenAssetPair {
@@ -15,14 +14,14 @@ public class KrakenAssetPair {
   private final String volumeLotSize;
   private final int pairScale;
   private final int volumeLotScale;
-  private final BigDecimal volumeMultiplier;
+  private final Double volumeMultiplier;
   private final List<String> leverage_buy;
   private final List<String> leverage_sell;
   private final List<KrakenFee> fees;
   private final List<KrakenFee> fees_maker;
   private final String feeVolumeCurrency;
-  private final BigDecimal marginCall;
-  private final BigDecimal marginStop;
+  private final Double marginCall;
+  private final Double marginStop;
 
   /**
    * Constructor
@@ -52,12 +51,12 @@ public class KrakenAssetPair {
       @JsonProperty("lot") String volumeLotSize,
       @JsonProperty("pair_decimals") int pairScale,
       @JsonProperty("lot_decimals") int volumeLotScale,
-      @JsonProperty("lot_multiplier") BigDecimal volumeMultiplier,
+      @JsonProperty("lot_multiplier") Double volumeMultiplier,
       @JsonProperty("fees") List<KrakenFee> fees,
       @JsonProperty("fees_maker") List<KrakenFee> fees_maker,
       @JsonProperty("fee_volume_currency") String feeVolumeCurrency,
-      @JsonProperty("margin_call") BigDecimal marginCall,
-      @JsonProperty("margin_stop") BigDecimal marginStop,
+      @JsonProperty("margin_call") Double marginCall,
+      @JsonProperty("margin_stop") Double marginStop,
       @JsonProperty("leverage_buy") List<String> leverage_buy,
       @JsonProperty("leverage_sell") List<String> leverage_sell) {
 
@@ -124,7 +123,7 @@ public class KrakenAssetPair {
     return volumeLotScale;
   }
 
-  public BigDecimal getVolumeMultiplier() {
+  public Double getVolumeMultiplier() {
 
     return volumeMultiplier;
   }
@@ -154,12 +153,12 @@ public class KrakenAssetPair {
     return feeVolumeCurrency;
   }
 
-  public BigDecimal getMarginCall() {
+  public Double getMarginCall() {
 
     return marginCall;
   }
 
-  public BigDecimal getMarginStop() {
+  public Double getMarginStop() {
 
     return marginStop;
   }

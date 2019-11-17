@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -261,11 +260,11 @@ public class BitfinexTradeService extends BitfinexTradeServiceRaw implements Tra
     }
   }
 
-  public BigDecimal getMakerFee() throws IOException {
+  public Double getMakerFee() throws IOException {
     return getBitfinexAccountInfos()[0].getMakerFees();
   }
 
-  public BigDecimal getTakerFee() throws IOException {
+  public Double getTakerFee() throws IOException {
     return getBitfinexAccountInfos()[0].getTakerFees();
   }
 

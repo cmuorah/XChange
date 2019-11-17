@@ -1,6 +1,5 @@
 package org.knowm.xchange.kraken.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -15,7 +14,7 @@ public class KrakenStandardOrder {
   private final KrakenOrderType orderType;
   private final String price;
   private final String secondaryPrice;
-  private final BigDecimal volume;
+  private final Double volume;
   private final String leverage;
   private final String positionTxId;
   private final Set<IOrderFlags> orderFlags;
@@ -31,7 +30,7 @@ public class KrakenStandardOrder {
       KrakenOrderType orderType,
       String price,
       String secondaryPrice,
-      BigDecimal volume,
+      Double volume,
       String leverage,
       String positionTxId,
       Set<IOrderFlags> orderFlags,
@@ -58,27 +57,27 @@ public class KrakenStandardOrder {
   }
 
   public static KrakenOrderBuilder getMarketOrderBuilder(
-      CurrencyPair currencyPair, KrakenType type, BigDecimal volume) {
+      CurrencyPair currencyPair, KrakenType type, Double volume) {
 
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.MARKET, volume);
   }
 
   public static KrakenOrderBuilder getLimitOrderBuilder(
-      CurrencyPair currencyPair, KrakenType type, String limitPrice, BigDecimal volume) {
+      CurrencyPair currencyPair, KrakenType type, String limitPrice, Double volume) {
 
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.LIMIT, volume)
         .withPrice(limitPrice);
   }
 
   public static KrakenOrderBuilder getStopLossOrderBuilder(
-      CurrencyPair currencyPair, KrakenType type, String stopLossPrice, BigDecimal volume) {
+      CurrencyPair currencyPair, KrakenType type, String stopLossPrice, Double volume) {
 
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.STOP_LOSS, volume)
         .withPrice(stopLossPrice);
   }
 
   public static KrakenOrderBuilder getTakeProfitOrderBuilder(
-      CurrencyPair currencyPair, KrakenType type, String takeProfitPrice, BigDecimal volume) {
+      CurrencyPair currencyPair, KrakenType type, String takeProfitPrice, Double volume) {
 
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.TAKE_PROFIT, volume)
         .withPrice(takeProfitPrice);
@@ -89,7 +88,7 @@ public class KrakenStandardOrder {
       KrakenType type,
       String stopLossPrice,
       String takeProfitPrice,
-      BigDecimal volume) {
+      Double volume) {
 
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.STOP_LOSS_PROFIT, volume)
         .withPrice(stopLossPrice)
@@ -101,7 +100,7 @@ public class KrakenStandardOrder {
       KrakenType type,
       String stopLossPrice,
       String takeProfitPrice,
-      BigDecimal volume) {
+      Double volume) {
 
     return new KrakenOrderBuilder(
             currencyPair, type, KrakenOrderType.STOP_LOSS_PROFIT_LIMIT, volume)
@@ -114,7 +113,7 @@ public class KrakenStandardOrder {
       KrakenType type,
       String stopLossTriggerPrice,
       String triggeredLimitPrice,
-      BigDecimal volume) {
+      Double volume) {
 
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.STOP_LOSS_LIMIT, volume)
         .withPrice(stopLossTriggerPrice)
@@ -126,7 +125,7 @@ public class KrakenStandardOrder {
       KrakenType type,
       String takeProfitTriggerPrice,
       String triggeredLimitPrice,
-      BigDecimal volume) {
+      Double volume) {
 
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.TAKE_PROFIT_LIMIT, volume)
         .withPrice(takeProfitTriggerPrice)
@@ -134,7 +133,7 @@ public class KrakenStandardOrder {
   }
 
   public static KrakenOrderBuilder getTrailingStopOrderBuilder(
-      CurrencyPair currencyPair, KrakenType type, String trailingStopOffset, BigDecimal volume) {
+      CurrencyPair currencyPair, KrakenType type, String trailingStopOffset, Double volume) {
 
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.TRAILING_STOP, volume)
         .withPrice(trailingStopOffset);
@@ -145,7 +144,7 @@ public class KrakenStandardOrder {
       KrakenType type,
       String trailingStopOffset,
       String triggeredLimitOffset,
-      BigDecimal volume) {
+      Double volume) {
 
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.TRAILING_STOP_LIMIT, volume)
         .withPrice(trailingStopOffset)
@@ -157,7 +156,7 @@ public class KrakenStandardOrder {
       KrakenType type,
       String stopLossPrice,
       String limitPrice,
-      BigDecimal volume) {
+      Double volume) {
 
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.STOP_LOSS_AND_LIMIT, volume)
         .withPrice(stopLossPrice)
@@ -165,7 +164,7 @@ public class KrakenStandardOrder {
   }
 
   public static KrakenOrderBuilder getSettlePositionOrderBuilder(
-      CurrencyPair currencyPair, KrakenType type, BigDecimal volume) {
+      CurrencyPair currencyPair, KrakenType type, Double volume) {
 
     // Leverage parameter is required but its value is irrelevant for settling position
     return new KrakenOrderBuilder(currencyPair, type, KrakenOrderType.SETTLE_POSITION, volume)
@@ -197,7 +196,7 @@ public class KrakenStandardOrder {
     return secondaryPrice;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
@@ -281,7 +280,7 @@ public class KrakenStandardOrder {
     private final CurrencyPair currencyPair;
     private final KrakenType type;
     private final KrakenOrderType orderType;
-    private final BigDecimal volume;
+    private final Double volume;
     private final Set<IOrderFlags> orderFlags;
     private String price;
     private String secondaryPrice;
@@ -294,7 +293,7 @@ public class KrakenStandardOrder {
     private Map<String, String> closeOrder;
 
     private KrakenOrderBuilder(
-        CurrencyPair currencyPair, KrakenType type, KrakenOrderType orderType, BigDecimal volume) {
+        CurrencyPair currencyPair, KrakenType type, KrakenOrderType orderType, Double volume) {
 
       this.currencyPair = currencyPair;
       this.type = type;
@@ -452,7 +451,7 @@ public class KrakenStandardOrder {
       return secondaryPrice;
     }
 
-    public BigDecimal getVolume() {
+    public Double getVolume() {
 
       return volume;
     }

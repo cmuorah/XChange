@@ -1,7 +1,6 @@
 package org.knowm.xchange.dsx.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.Map;
 import org.knowm.xchange.dsx.dto.account.DSXCurrencyAmount;
@@ -10,14 +9,14 @@ import org.knowm.xchange.dsx.dto.account.DSXCurrencyAmount;
 public class DSXTradeResult {
 
   private final long orderId;
-  private final BigDecimal received;
-  private final BigDecimal remains;
+  private final Double received;
+  private final Double remains;
   private final Map<String, DSXCurrencyAmount> funds;
 
   public DSXTradeResult(
       @JsonProperty("orderId") long orderId,
-      @JsonProperty("received") BigDecimal received,
-      @JsonProperty("remains") BigDecimal remains,
+      @JsonProperty("received") Double received,
+      @JsonProperty("remains") Double remains,
       @JsonProperty("funds") Map<String, DSXCurrencyAmount> funds) {
 
     this.orderId = orderId;
@@ -31,12 +30,12 @@ public class DSXTradeResult {
     return orderId;
   }
 
-  public BigDecimal getReceived() {
+  public Double getReceived() {
 
     return received;
   }
 
-  public BigDecimal getRemains() {
+  public Double getRemains() {
 
     return remains;
   }

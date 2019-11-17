@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.junit.Test;
 
@@ -29,7 +28,7 @@ public class WexTransHistoryJSONTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(firstEntry.getKey()).isEqualTo(1081672L);
     assertThat(firstEntry.getValue().getType()).isEqualTo(WexTransHistoryResult.Type.BTC_deposit);
-    assertThat(firstEntry.getValue().getAmount()).isEqualTo(new BigDecimal("1.00000000"));
+    assertThat(firstEntry.getValue().getAmount()).isEqualTo(new Double("1.00000000"));
     assertThat(firstEntry.getValue().getCurrency()).isEqualTo("BTC");
     assertThat(firstEntry.getValue().getDescription()).isEqualTo("BTC Payment");
     assertThat(firstEntry.getValue().getStatus()).isEqualTo(WexTransHistoryResult.Status.complete);

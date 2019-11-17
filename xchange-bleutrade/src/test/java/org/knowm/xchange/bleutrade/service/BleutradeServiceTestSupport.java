@@ -1,6 +1,5 @@
 package org.knowm.xchange.bleutrade.service;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -35,10 +34,10 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
             "65489",
             "LTC_BTC",
             "BUY",
-            new BigDecimal("20.00000000"),
-            new BigDecimal("5.00000000"),
+            new Double("20.00000000"),
+            new Double("5.00000000"),
             "0.16549400",
-            new BigDecimal("0.01268311"),
+            new Double("0.01268311"),
             "OPEN",
             "2014-08-03 13:55:20",
             "My optional comment, eg function id #123"),
@@ -46,10 +45,10 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
             "65724",
             "DOGE_BTC",
             "SELL",
-            new BigDecimal("150491.98700000"),
-            new BigDecimal("795.00000000"),
+            new Double("150491.98700000"),
+            new Double("795.00000000"),
             "0.04349400",
-            new BigDecimal("0.00000055"),
+            new Double("0.00000055"),
             "OPEN",
             "2014-07-29 18:45:17",
             "Function #123 Connect #456"));
@@ -60,16 +59,16 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
         Arrays.asList(
             createBleutradeTicker(
                 "BLEU_BTC",
-                new BigDecimal("0.00095000"),
-                new BigDecimal("0.00105000"),
-                new BigDecimal("0.00086000"),
-                new BigDecimal("0.00101977"),
-                new BigDecimal("0.00103455"),
-                new BigDecimal("2450.97496015"),
-                new BigDecimal("2.40781647"),
+                new Double("0.00095000"),
+                new Double("0.00105000"),
+                new Double("0.00086000"),
+                new Double("0.00101977"),
+                new Double("0.00103455"),
+                new Double("2450.97496015"),
+                new Double("2.40781647"),
                 "2014-07-29 11:19:30",
-                new BigDecimal("0.00100000"),
-                new BigDecimal("0.00101977"),
+                new Double("0.00100000"),
+                new Double("0.00101977"),
                 true)));
   }
 
@@ -78,29 +77,29 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
         Arrays.asList(
             createBleutradeTicker(
                 "BLEU_BTC",
-                new BigDecimal("0.00095000"),
-                new BigDecimal("0.00105000"),
-                new BigDecimal("0.00086000"),
-                new BigDecimal("0.00101977"),
-                new BigDecimal("0.00103455"),
-                new BigDecimal("2450.97496015"),
-                new BigDecimal("2.40781647"),
+                new Double("0.00095000"),
+                new Double("0.00105000"),
+                new Double("0.00086000"),
+                new Double("0.00101977"),
+                new Double("0.00103455"),
+                new Double("2450.97496015"),
+                new Double("2.40781647"),
                 "2014-07-29 11:19:30",
-                new BigDecimal("0.00100000"),
-                new BigDecimal("0.00101977"),
+                new Double("0.00100000"),
+                new Double("0.00101977"),
                 true),
             createBleutradeTicker(
                 "LTC_BTC",
-                new BigDecimal("0.00095000"),
-                new BigDecimal("0.01333000"),
-                new BigDecimal("0.01167001"),
-                new BigDecimal("0.01333000"),
-                new BigDecimal("0.01235000"),
-                new BigDecimal("14.46077245"),
-                new BigDecimal("0.18765956"),
+                new Double("0.00095000"),
+                new Double("0.01333000"),
+                new Double("0.01167001"),
+                new Double("0.01333000"),
+                new Double("0.01235000"),
+                new Double("14.46077245"),
+                new Double("0.18765956"),
                 "2014-07-29 11:48:02",
-                new BigDecimal("0.01268311"),
-                new BigDecimal("0.01333000"),
+                new Double("0.01268311"),
+                new Double("0.01333000"),
                 true)));
   }
 
@@ -120,17 +119,17 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
   protected static List<BleutradeLevel> expectedBleutradeLevelBuys() {
     return Collections.unmodifiableList(
         Arrays.asList(
-            createBleutradeLevel(new BigDecimal("4.99400000"), new BigDecimal("3.00650900")),
-            createBleutradeLevel(new BigDecimal("50.00000000"), new BigDecimal("3.50000000"))));
+            createBleutradeLevel(new Double("4.99400000"), new Double("3.00650900")),
+            createBleutradeLevel(new Double("50.00000000"), new Double("3.50000000"))));
   }
 
   protected static List<BleutradeLevel> expectedBleutradeLevelSells() {
     return Collections.unmodifiableList(
         Arrays.asList(
-            createBleutradeLevel(new BigDecimal("12.44147454"), new BigDecimal("5.13540000")),
-            createBleutradeLevel(new BigDecimal("100.00000000"), new BigDecimal("6.25500000")),
-            createBleutradeLevel(new BigDecimal("30.00000000"), new BigDecimal("6.75500001")),
-            createBleutradeLevel(new BigDecimal("13.49989999"), new BigDecimal("6.76260099"))));
+            createBleutradeLevel(new Double("12.44147454"), new Double("5.13540000")),
+            createBleutradeLevel(new Double("100.00000000"), new Double("6.25500000")),
+            createBleutradeLevel(new Double("30.00000000"), new Double("6.75500001")),
+            createBleutradeLevel(new Double("13.49989999"), new Double("6.76260099"))));
   }
 
   protected static List<BleutradeTrade> expectedBleutradeTrades() {
@@ -138,25 +137,24 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
         Arrays.asList(
             createBleutradeTrade(
                 "2014-07-29 18:08:00",
-                new BigDecimal("654971.69417461"),
-                new BigDecimal("0.00000055"),
-                new BigDecimal("0.360234432"),
+                new Double("654971.69417461"),
+                new Double("0.00000055"),
+                new Double("0.360234432"),
                 "BUY"),
             createBleutradeTrade(
                 "2014-07-29 18:12:35",
-                new BigDecimal("120.00000000"),
-                new BigDecimal("0.00006600"),
-                new BigDecimal("0.360234432"),
+                new Double("120.00000000"),
+                new Double("0.00006600"),
+                new Double("0.360234432"),
                 "SELL")));
   }
 
   protected static List<BleutradeCurrency> expectedBleutradeCurrencies() {
     return Collections.unmodifiableList(
         Arrays.asList(
+            createBleutradeCurrency("BTC", "Bitcoin", 2, new Double("0.00080000"), true, "BITCOIN"),
             createBleutradeCurrency(
-                "BTC", "Bitcoin", 2, new BigDecimal("0.00080000"), true, "BITCOIN"),
-            createBleutradeCurrency(
-                "LTC", "Litecoin", 4, new BigDecimal("0.02000000"), true, "BITCOIN")));
+                "LTC", "Litecoin", 4, new Double("0.02000000"), true, "BITCOIN")));
   }
 
   protected static String[] expectedBleutradeCurrenciesStr() {
@@ -172,19 +170,13 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
     return Collections.unmodifiableList(
         Arrays.asList(
             createBleutradeMarket(
-                "DOGE",
-                "BTC",
-                "Dogecoin",
-                "Bitcoin",
-                new BigDecimal("0.10000000"),
-                "DOGE_BTC",
-                true),
+                "DOGE", "BTC", "Dogecoin", "Bitcoin", new Double("0.10000000"), "DOGE_BTC", true),
             createBleutradeMarket(
                 "BLEU",
                 "BTC",
                 "Bleutrade Share",
                 "Bitcoin",
-                new BigDecimal("0.00000001"),
+                new Double("0.00000001"),
                 "BLEU_BTC",
                 true)));
   }
@@ -202,31 +194,27 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
     return Collections.unmodifiableList(
         Arrays.asList(
             createBalance(
-                new BigDecimal("10.00000000"),
+                new Double("10.00000000"),
                 "AUD",
-                new BigDecimal("40.00000000"),
-                new BigDecimal("30.00000000"),
+                new Double("40.00000000"),
+                new Double("30.00000000"),
                 true),
             createBalance(
-                new BigDecimal("40.00000000"),
+                new Double("40.00000000"),
                 "BTC",
-                new BigDecimal("100.00000000"),
-                new BigDecimal("60.00000000"),
+                new Double("100.00000000"),
+                new Double("60.00000000"),
                 false),
             createBalance(
-                new BigDecimal("70.00000000"),
+                new Double("70.00000000"),
                 "BLEU",
-                new BigDecimal("160.00000000"),
-                new BigDecimal("90.00000000"),
+                new Double("160.00000000"),
+                new Double("90.00000000"),
                 true)));
   }
 
   protected static BleutradeBalance createBalance(
-      BigDecimal available,
-      String currency,
-      BigDecimal balance,
-      BigDecimal pending,
-      Boolean isActive) {
+      Double available, String currency, Double balance, Double pending, Boolean isActive) {
     BleutradeBalance bleutradeBalance = new BleutradeBalance();
     bleutradeBalance.setAvailable(available);
     bleutradeBalance.setCurrency(currency);
@@ -247,16 +235,16 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
 
   protected static BleutradeTicker createBleutradeTicker(
       String marketName,
-      BigDecimal prevDay,
-      BigDecimal high,
-      BigDecimal low,
-      BigDecimal last,
-      BigDecimal average,
-      BigDecimal volume,
-      BigDecimal baseVolume,
+      Double prevDay,
+      Double high,
+      Double low,
+      Double last,
+      Double average,
+      Double volume,
+      Double baseVolume,
       String timestamp,
-      BigDecimal bid,
-      BigDecimal ask,
+      Double bid,
+      Double ask,
       Boolean isActive) {
 
     BleutradeTicker ticker = new BleutradeTicker();
@@ -285,7 +273,7 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
     return bleutradeOrderBook;
   }
 
-  protected static BleutradeLevel createBleutradeLevel(BigDecimal quantity, BigDecimal rate) {
+  protected static BleutradeLevel createBleutradeLevel(Double quantity, Double rate) {
     BleutradeLevel level = new BleutradeLevel();
     level.setQuantity(quantity);
     level.setRate(rate);
@@ -294,7 +282,7 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
   }
 
   protected static BleutradeTrade createBleutradeTrade(
-      String timestamp, BigDecimal quantity, BigDecimal price, BigDecimal total, String orderType) {
+      String timestamp, Double quantity, Double price, Double total, String orderType) {
     BleutradeTrade bleutradeTrade = new BleutradeTrade();
     bleutradeTrade.setTimeStamp(timestamp);
     bleutradeTrade.setQuantity(quantity);
@@ -309,7 +297,7 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
       String currency,
       String currencyLong,
       Integer minConfirmation,
-      BigDecimal txFee,
+      Double txFee,
       Boolean isActive,
       String coinType) {
 
@@ -329,7 +317,7 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
       String baseCurrency,
       String marketCurrencyLong,
       String baseCurrencyLong,
-      BigDecimal minTradeSize,
+      Double minTradeSize,
       String marketName,
       Boolean isActive) {
     BleutradeMarket bleutradeMarket = new BleutradeMarket();
@@ -348,10 +336,10 @@ public class BleutradeServiceTestSupport extends BleutradeTestData {
       String orderId,
       String exchange,
       String type,
-      BigDecimal quantity,
-      BigDecimal quantityRemaining,
+      Double quantity,
+      Double quantityRemaining,
       String quantityBaseTraded,
-      BigDecimal price,
+      Double price,
       String status,
       String created,
       String comments) {

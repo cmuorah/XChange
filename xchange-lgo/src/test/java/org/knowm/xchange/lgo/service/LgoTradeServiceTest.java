@@ -6,7 +6,6 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.Before;
@@ -56,17 +55,17 @@ public class LgoTradeServiceTest {
     tradeService.verifyOrder(
         new LimitOrder(
             OrderType.ASK,
-            new BigDecimal("3"),
+            new Double("3"),
             CurrencyPair.BTC_USD,
             "",
             new Date(),
-            new BigDecimal(7000)));
+            new Double(7000)));
   }
 
   @Test
   public void acceptsCorrectMarketOrder() {
     tradeService.verifyOrder(
-        new MarketOrder(OrderType.BID, new BigDecimal("1000"), CurrencyPair.BTC_USD, new Date()));
+        new MarketOrder(OrderType.BID, new Double("1000"), CurrencyPair.BTC_USD, new Date()));
   }
 
   @Test
@@ -77,11 +76,11 @@ public class LgoTradeServiceTest {
             tradeService.verifyOrder(
                 new LimitOrder(
                     OrderType.ASK,
-                    new BigDecimal("0.00000001"),
+                    new Double("0.00000001"),
                     CurrencyPair.BTC_USD,
                     "",
                     new Date(),
-                    new BigDecimal(7000)));
+                    new Double(7000)));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -95,11 +94,11 @@ public class LgoTradeServiceTest {
             tradeService.verifyOrder(
                 new LimitOrder(
                     OrderType.ASK,
-                    new BigDecimal("1001"),
+                    new Double("1001"),
                     CurrencyPair.BTC_USD,
                     "",
                     new Date(),
-                    new BigDecimal(7000)));
+                    new Double(7000)));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -113,11 +112,11 @@ public class LgoTradeServiceTest {
             tradeService.verifyOrder(
                 new LimitOrder(
                     OrderType.ASK,
-                    new BigDecimal("10"),
+                    new Double("10"),
                     CurrencyPair.BTC_USD,
                     "",
                     new Date(),
-                    new BigDecimal(9)));
+                    new Double(9)));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -131,11 +130,11 @@ public class LgoTradeServiceTest {
             tradeService.verifyOrder(
                 new LimitOrder(
                     OrderType.ASK,
-                    new BigDecimal("10"),
+                    new Double("10"),
                     CurrencyPair.BTC_USD,
                     "",
                     new Date(),
-                    new BigDecimal(1000001)));
+                    new Double(1000001)));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -149,11 +148,11 @@ public class LgoTradeServiceTest {
             tradeService.verifyOrder(
                 new LimitOrder(
                     OrderType.ASK,
-                    new BigDecimal("10"),
+                    new Double("10"),
                     CurrencyPair.BTC_USD,
                     "",
                     new Date(),
-                    new BigDecimal("100.05")));
+                    new Double("100.05")));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -166,7 +165,7 @@ public class LgoTradeServiceTest {
         () ->
             tradeService.verifyOrder(
                 new MarketOrder(
-                    OrderType.BID, new BigDecimal("0.00001"), CurrencyPair.BTC_USD, new Date()));
+                    OrderType.BID, new Double("0.00001"), CurrencyPair.BTC_USD, new Date()));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -179,7 +178,7 @@ public class LgoTradeServiceTest {
         () ->
             tradeService.verifyOrder(
                 new MarketOrder(
-                    OrderType.BID, new BigDecimal("1000001"), CurrencyPair.BTC_USD, new Date()));
+                    OrderType.BID, new Double("1000001"), CurrencyPair.BTC_USD, new Date()));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -192,7 +191,7 @@ public class LgoTradeServiceTest {
         () ->
             tradeService.verifyOrder(
                 new MarketOrder(
-                    OrderType.ASK, new BigDecimal("0.00001"), CurrencyPair.BTC_USD, new Date()));
+                    OrderType.ASK, new Double("0.00001"), CurrencyPair.BTC_USD, new Date()));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)
@@ -205,7 +204,7 @@ public class LgoTradeServiceTest {
         () ->
             tradeService.verifyOrder(
                 new MarketOrder(
-                    OrderType.ASK, new BigDecimal("1001"), CurrencyPair.BTC_USD, new Date()));
+                    OrderType.ASK, new Double("1001"), CurrencyPair.BTC_USD, new Date()));
 
     assertThatThrownBy(check)
         .isInstanceOf(IllegalArgumentException.class)

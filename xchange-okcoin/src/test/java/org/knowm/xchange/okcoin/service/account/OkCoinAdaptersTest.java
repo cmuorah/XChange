@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,9 +48,8 @@ public class OkCoinAdaptersTest {
     assertThat(depositRecord).isInstanceOf(FundingRecord.class);
     assertThat(depositRecord.getType()).isEqualTo(FundingRecord.Type.DEPOSIT);
     assertThat(depositRecord.getStatus()).isEqualTo(FundingRecord.Status.COMPLETE);
-    assertThat(depositRecord.getAmount()).isEqualTo(new BigDecimal("50"));
-    assertThat(depositRecord.getFee().doubleValue())
-        .isEqualTo(new BigDecimal("0.07").doubleValue());
+    assertThat(depositRecord.getAmount()).isEqualTo(new Double("50"));
+    assertThat(depositRecord.getFee().doubleValue()).isEqualTo(new Double("0.07").doubleValue());
     assertThat(depositRecord.getAddress()).isEqualTo("1lEWjmlkmlhTqcYj3l33sg980slkjtdqd");
 
     records =
@@ -61,30 +59,27 @@ public class OkCoinAdaptersTest {
     assertThat(withdrawalRecord).isInstanceOf(FundingRecord.class);
     assertThat(withdrawalRecord.getType()).isEqualTo(FundingRecord.Type.WITHDRAWAL);
     assertThat(withdrawalRecord.getStatus()).isEqualTo(FundingRecord.Status.PROCESSING);
-    assertThat(withdrawalRecord.getAmount()).isEqualTo(new BigDecimal("50"));
-    assertThat(withdrawalRecord.getFee().doubleValue())
-        .isEqualTo(new BigDecimal("0.07").doubleValue());
+    assertThat(withdrawalRecord.getAmount()).isEqualTo(new Double("50"));
+    assertThat(withdrawalRecord.getFee().doubleValue()).isEqualTo(new Double("0.07").doubleValue());
     assertThat(withdrawalRecord.getAddress()).isEqualTo("1lEWjmlkmlhTqcYj3l33sg980slkjtdqd");
   }
 
   @Test
   public void testAdaptOrderBook() {
-    BigDecimal ask1Price = new BigDecimal("8");
-    BigDecimal ask1Amount = new BigDecimal("28");
-    BigDecimal ask2Price = new BigDecimal("5");
-    BigDecimal ask2Amount = new BigDecimal("20");
-    BigDecimal ask3Price = new BigDecimal("7");
-    BigDecimal ask3Amount = new BigDecimal("24");
+    Double ask1Price = new Double("8");
+    Double ask1Amount = new Double("28");
+    Double ask2Price = new Double("5");
+    Double ask2Amount = new Double("20");
+    Double ask3Price = new Double("7");
+    Double ask3Amount = new Double("24");
 
-    BigDecimal bid1Price = new BigDecimal("4");
-    BigDecimal bid1Amount = new BigDecimal("35");
-    BigDecimal bid2Price = new BigDecimal("2");
-    BigDecimal bid2Amount = new BigDecimal("45");
+    Double bid1Price = new Double("4");
+    Double bid1Amount = new Double("35");
+    Double bid2Price = new Double("2");
+    Double bid2Amount = new Double("45");
 
-    BigDecimal[][] asks = {
-      {ask1Price, ask1Amount}, {ask2Price, ask2Amount}, {ask3Price, ask3Amount}
-    };
-    BigDecimal[][] bids = {{bid1Price, bid1Amount}, {bid2Price, bid2Amount}};
+    Double[][] asks = {{ask1Price, ask1Amount}, {ask2Price, ask2Amount}, {ask3Price, ask3Amount}};
+    Double[][] bids = {{bid1Price, bid1Amount}, {bid2Price, bid2Amount}};
     Date date = new Date();
     OkCoinDepth depth = new OkCoinDepth(asks, bids, date);
 

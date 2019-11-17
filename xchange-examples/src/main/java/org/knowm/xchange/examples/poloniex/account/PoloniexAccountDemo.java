@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.poloniex.account;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -34,7 +33,7 @@ public class PoloniexAccountDemo {
     System.out.println(accountService.requestDepositAddress(Currency.BTC));
     System.out.println(accountService.getAccountInfo());
 
-    System.out.println(accountService.withdrawFunds(Currency.BTC, new BigDecimal("0.03"), "XXX"));
+    System.out.println(accountService.withdrawFunds(Currency.BTC, new Double("0.03"), "XXX"));
 
     final TradeHistoryParams params = accountService.createFundingHistoryParams();
     ((TradeHistoryParamsTimeSpan) params)

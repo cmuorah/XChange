@@ -1,23 +1,22 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexOrderStatusResponse {
 
   private final long id;
   private final String symbol;
-  private final BigDecimal price;
-  private final BigDecimal avgExecutionPrice;
+  private final Double price;
+  private final Double avgExecutionPrice;
   private final String side;
   private final String type;
-  private final BigDecimal timestamp;
+  private final Double timestamp;
   private final boolean isLive;
   private final boolean isCancelled;
   private final boolean wasForced;
-  private final BigDecimal originalAmount;
-  private final BigDecimal remainingAmount;
-  private final BigDecimal executedAmount;
+  private final Double originalAmount;
+  private final Double remainingAmount;
+  private final Double executedAmount;
 
   /**
    * Constructor
@@ -39,17 +38,17 @@ public class BitfinexOrderStatusResponse {
   public BitfinexOrderStatusResponse(
       @JsonProperty("order_id") long id,
       @JsonProperty("symbol") String symbol,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("avg_execution_price") BigDecimal avgExecutionPrice,
+      @JsonProperty("price") Double price,
+      @JsonProperty("avg_execution_price") Double avgExecutionPrice,
       @JsonProperty("side") String side,
       @JsonProperty("type") String type,
-      @JsonProperty("timestamp") BigDecimal timestamp,
+      @JsonProperty("timestamp") Double timestamp,
       @JsonProperty("is_live") boolean isLive,
       @JsonProperty("is_cancelled") boolean isCancelled,
       @JsonProperty("was_forced") boolean wasForced,
-      @JsonProperty("original_amount") BigDecimal originalAmount,
-      @JsonProperty("remaining_amount") BigDecimal remainingAmount,
-      @JsonProperty("executed_amount") BigDecimal executedAmount) {
+      @JsonProperty("original_amount") Double originalAmount,
+      @JsonProperty("remaining_amount") Double remainingAmount,
+      @JsonProperty("executed_amount") Double executedAmount) {
 
     this.id = id;
     this.symbol = symbol;
@@ -66,17 +65,17 @@ public class BitfinexOrderStatusResponse {
     this.executedAmount = executedAmount;
   }
 
-  public BigDecimal getExecutedAmount() {
+  public Double getExecutedAmount() {
 
     return executedAmount;
   }
 
-  public BigDecimal getRemainingAmount() {
+  public Double getRemainingAmount() {
 
     return remainingAmount;
   }
 
-  public BigDecimal getOriginalAmount() {
+  public Double getOriginalAmount() {
 
     return originalAmount;
   }
@@ -101,7 +100,7 @@ public class BitfinexOrderStatusResponse {
     return isCancelled;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
@@ -111,7 +110,7 @@ public class BitfinexOrderStatusResponse {
     return side;
   }
 
-  public BigDecimal getTimestamp() {
+  public Double getTimestamp() {
 
     return timestamp;
   }
@@ -126,7 +125,7 @@ public class BitfinexOrderStatusResponse {
     return isLive;
   }
 
-  public BigDecimal getAvgExecutionPrice() {
+  public Double getAvgExecutionPrice() {
 
     return avgExecutionPrice;
   }

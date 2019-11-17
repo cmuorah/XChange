@@ -3,7 +3,6 @@ package org.knowm.xchange.bibox.dto.marketdata;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import javax.annotation.Generated;
 
 /** @author odrotleff */
@@ -39,43 +38,43 @@ public class BiboxMarket {
   private String currencySymbol;
 
   @JsonProperty("last")
-  private BigDecimal last;
+  private Double last;
 
   @JsonProperty("high")
-  private BigDecimal high;
+  private Double high;
 
   @JsonProperty("low")
-  private BigDecimal low;
+  private Double low;
 
   @JsonProperty("change")
-  private BigDecimal change;
+  private Double change;
 
   @JsonProperty("percent")
   private String percent;
 
   @JsonProperty("vol24H")
-  private BigDecimal vol24H;
+  private Double vol24H;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("last_cny")
-  private BigDecimal lastCny;
+  private Double lastCny;
 
   @JsonProperty("high_cny")
-  private BigDecimal highCny;
+  private Double highCny;
 
   @JsonProperty("low_cny")
-  private BigDecimal lowCny;
+  private Double lowCny;
 
   @JsonProperty("last_usd")
-  private BigDecimal lastUsd;
+  private Double lastUsd;
 
   @JsonProperty("high_usd")
-  private BigDecimal highUsd;
+  private Double highUsd;
 
   @JsonProperty("low_usd")
-  private BigDecimal lowUsd;
+  private Double lowUsd;
 
   /** @return The id */
   @JsonProperty("id")
@@ -115,49 +114,49 @@ public class BiboxMarket {
 
   /** @return The last */
   @JsonProperty("last")
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
   /** @param last The last */
   @JsonProperty("last")
-  public void setLast(BigDecimal last) {
+  public void setLast(Double last) {
     this.last = last;
   }
 
   /** @return The high */
   @JsonProperty("high")
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
   /** @param high The high */
   @JsonProperty("high")
-  public void setHigh(BigDecimal high) {
+  public void setHigh(Double high) {
     this.high = high;
   }
 
   /** @return The low */
   @JsonProperty("low")
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
   /** @param low The low */
   @JsonProperty("low")
-  public void setLow(BigDecimal low) {
+  public void setLow(Double low) {
     this.low = low;
   }
 
   /** @return The change */
   @JsonProperty("change")
-  public BigDecimal getChange() {
+  public Double getChange() {
     return change;
   }
 
   /** @param change The change */
   @JsonProperty("change")
-  public void setChange(BigDecimal change) {
+  public void setChange(Double change) {
     this.change = change;
   }
 
@@ -175,97 +174,97 @@ public class BiboxMarket {
 
   /** @return The vol24H */
   @JsonProperty("vol24H")
-  public BigDecimal getVol24H() {
+  public Double getVol24H() {
     return vol24H;
   }
 
   /** @param vol24H The vol24H */
   @JsonProperty("vol24H")
-  public void setVol24H(BigDecimal vol24H) {
+  public void setVol24H(Double vol24H) {
     this.vol24H = vol24H;
   }
 
   /** @return The amount */
   @JsonProperty("amount")
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
   /** @param amount The amount */
   @JsonProperty("amount")
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
   /** @return The lastCny */
   @JsonProperty("last_cny")
-  public BigDecimal getLastCny() {
+  public Double getLastCny() {
     return lastCny;
   }
 
   /** @param lastCny The last_cny */
   @JsonProperty("last_cny")
-  public void setLastCny(BigDecimal lastCny) {
+  public void setLastCny(Double lastCny) {
     this.lastCny = lastCny;
   }
 
   /** @return The highCny */
   @JsonProperty("high_cny")
-  public BigDecimal getHighCny() {
+  public Double getHighCny() {
     return highCny;
   }
 
   /** @param highCny The high_cny */
   @JsonProperty("high_cny")
-  public void setHighCny(BigDecimal highCny) {
+  public void setHighCny(Double highCny) {
     this.highCny = highCny;
   }
 
   /** @return The lowCny */
   @JsonProperty("low_cny")
-  public BigDecimal getLowCny() {
+  public Double getLowCny() {
     return lowCny;
   }
 
   /** @param lowCny The low_cny */
   @JsonProperty("low_cny")
-  public void setLowCny(BigDecimal lowCny) {
+  public void setLowCny(Double lowCny) {
     this.lowCny = lowCny;
   }
 
   /** @return The lastUsd */
   @JsonProperty("last_usd")
-  public BigDecimal getLastUsd() {
+  public Double getLastUsd() {
     return lastUsd;
   }
 
   /** @param lastUsd The last_usd */
   @JsonProperty("last_usd")
-  public void setLastUsd(BigDecimal lastUsd) {
+  public void setLastUsd(Double lastUsd) {
     this.lastUsd = lastUsd;
   }
 
   /** @return The highUsd */
   @JsonProperty("high_usd")
-  public BigDecimal getHighUsd() {
+  public Double getHighUsd() {
     return highUsd;
   }
 
   /** @param highUsd The high_usd */
   @JsonProperty("high_usd")
-  public void setHighUsd(BigDecimal highUsd) {
+  public void setHighUsd(Double highUsd) {
     this.highUsd = highUsd;
   }
 
   /** @return The lowUsd */
   @JsonProperty("low_usd")
-  public BigDecimal getLowUsd() {
+  public Double getLowUsd() {
     return lowUsd;
   }
 
   /** @param lowUsd The low_usd */
   @JsonProperty("low_usd")
-  public void setLowUsd(BigDecimal lowUsd) {
+  public void setLowUsd(Double lowUsd) {
     this.lowUsd = lowUsd;
   }
 }

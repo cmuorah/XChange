@@ -6,7 +6,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Objects;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -22,116 +21,116 @@ public class CoinfloorUserTransaction {
 
   public TransactionType type = TransactionType.UNKNOWN;
 
-  public BigDecimal fee = BigDecimal.ZERO;
+  public Double fee = 0d;
 
   // amounts: for TRADE transactions, negative -> BID, positive -> ASK
   // for other transactions, negative -> WITHDRAWAL, positive -> DEPOSIT
   @JsonProperty("xbt")
-  public BigDecimal btc = BigDecimal.ZERO;
+  public Double btc = 0d;
 
-  public BigDecimal gbp = BigDecimal.ZERO;
+  public Double gbp = 0d;
 
-  public BigDecimal usd = BigDecimal.ZERO;
+  public Double usd = 0d;
 
-  public BigDecimal eur = BigDecimal.ZERO;
+  public Double eur = 0d;
 
-  public BigDecimal eth = BigDecimal.ZERO;
+  public Double eth = 0d;
 
-  public BigDecimal ltc = BigDecimal.ZERO;
+  public Double ltc = 0d;
 
-  public BigDecimal bch = BigDecimal.ZERO;
+  public Double bch = 0d;
 
-  public BigDecimal xrp = BigDecimal.ZERO;
+  public Double xrp = 0d;
 
   // prices
   @JsonProperty("xbt_gbp")
-  public BigDecimal btc_gbp = BigDecimal.ZERO;
+  public Double btc_gbp = 0d;
 
   @JsonProperty("xbt_usd")
-  public BigDecimal btc_usd = BigDecimal.ZERO;
+  public Double btc_usd = 0d;
 
   @JsonProperty("xbt_eur")
-  public BigDecimal btc_eur = BigDecimal.ZERO;
+  public Double btc_eur = 0d;
 
   @JsonProperty("bch_gbp")
-  public BigDecimal bch_gbp = BigDecimal.ZERO;
+  public Double bch_gbp = 0d;
 
   @JsonProperty("eth_gbp")
-  public BigDecimal eth_gbp = BigDecimal.ZERO;
+  public Double eth_gbp = 0d;
 
   @JsonProperty("xrp_gbp")
-  public BigDecimal xrp_gbp = BigDecimal.ZERO;
+  public Double xrp_gbp = 0d;
 
   @JsonProperty("ltc_gbp")
-  public BigDecimal ltc_gbp = BigDecimal.ZERO;
+  public Double ltc_gbp = 0d;
 
   public CurrencyPair getCurrencyPair() {
     if (isTrade()) {
-      if (!Objects.equals(btc_gbp, BigDecimal.ZERO)) {
+      if (!Objects.equals(btc_gbp, 0d)) {
         return CurrencyPair.BTC_GBP;
-      } else if (!Objects.equals(btc_usd, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(btc_usd, 0d)) {
         return CurrencyPair.BTC_USD;
-      } else if (!Objects.equals(btc_eur, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(btc_eur, 0d)) {
         return CurrencyPair.BTC_EUR;
-      } else if (!Objects.equals(bch_gbp, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(bch_gbp, 0d)) {
         return CurrencyPair.BCH_GBP;
-      } else if (!Objects.equals(eth_gbp, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(eth_gbp, 0d)) {
         return CurrencyPair.ETH_GBP;
-      } else if (!Objects.equals(xrp_gbp, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(xrp_gbp, 0d)) {
         return CurrencyPair.XRP_GBP;
-      } else if (!Objects.equals(ltc_gbp, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(ltc_gbp, 0d)) {
         return CurrencyPair.LTC_GBP;
       }
     }
     return null; // not a trade or an unsupported currency pair
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     if (isTrade()) {
-      if (!Objects.equals(btc_gbp, BigDecimal.ZERO)) {
+      if (!Objects.equals(btc_gbp, 0d)) {
         return btc_gbp;
-      } else if (!Objects.equals(btc_usd, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(btc_usd, 0d)) {
         return btc_usd;
-      } else if (!Objects.equals(btc_eur, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(btc_eur, 0d)) {
         return btc_eur;
-      } else if (!Objects.equals(bch_gbp, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(bch_gbp, 0d)) {
         return bch_gbp;
-      } else if (!Objects.equals(eth_gbp, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(eth_gbp, 0d)) {
         return eth_gbp;
-      } else if (!Objects.equals(xrp_gbp, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(xrp_gbp, 0d)) {
         return xrp_gbp;
-      } else if (!Objects.equals(ltc_gbp, BigDecimal.ZERO)) {
+      } else if (!Objects.equals(ltc_gbp, 0d)) {
         return ltc_gbp;
       }
     }
-    return BigDecimal.ZERO; // not a trade or an unsupported currency pair
+    return 0d; // not a trade or an unsupported currency pair
   }
 
   public Currency getCurrency() {
     if (isTrade()) {
       return null;
-    } else if (btc.signum() != 0) {
+    } else if (btc != 0.0) {
       return Currency.BTC;
-    } else if (gbp.signum() != 0) {
+    } else if (gbp != 0.0) {
       return Currency.GBP;
-    } else if (usd.signum() != 0) {
+    } else if (usd != 0.0) {
       return Currency.USD;
-    } else if (eur.signum() != 0) {
+    } else if (eur != 0.0) {
       return Currency.EUR;
-    } else if (ltc.signum() != 0) {
+    } else if (ltc != 0.0) {
       return Currency.LTC;
-    } else if (eth.signum() != 0) {
+    } else if (eth != 0.0) {
       return Currency.ETH;
-    } else if (bch.signum() != 0) {
+    } else if (bch != 0.0) {
       return Currency.BCH;
-    } else if (xrp.signum() != 0) {
+    } else if (xrp != 0.0) {
       return Currency.XRP;
     } else {
       return null;
     }
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     if (isTrade()) {
       if (getCurrencyPair().base == Currency.BTC) {
         return btc;
@@ -144,32 +143,32 @@ public class CoinfloorUserTransaction {
       } else if (getCurrencyPair().base == Currency.BCH) {
         return bch;
       } else {
-        return BigDecimal.ZERO;
+        return 0d;
       }
-    } else if (btc.signum() != 0) {
+    } else if (btc != 0.0) {
       return btc;
-    } else if (bch.signum() != 0) {
+    } else if (bch != 0.0) {
       return bch;
-    } else if (xrp.signum() != 0) {
+    } else if (xrp != 0.0) {
       return xrp;
-    } else if (ltc.signum() != 0) {
+    } else if (ltc != 0.0) {
       return ltc;
-    } else if (eth.signum() != 0) {
+    } else if (eth != 0.0) {
       return eth;
-    } else if (gbp.signum() != 0) {
+    } else if (gbp != 0.0) {
       return gbp;
-    } else if (usd.signum() != 0) {
+    } else if (usd != 0.0) {
       return usd;
-    } else if (eur.signum() != 0) {
+    } else if (eur != 0.0) {
       return eur;
     } else {
-      return BigDecimal.ZERO; // an unsupported currency
+      return 0d; // an unsupported currency
     }
   }
 
   public OrderType getSide() {
     if (isTrade()) {
-      switch (getAmount().signum()) {
+      switch ((int) Math.signum(getAmount())) {
         case 0:
         default:
           return null; // deposit or withdrawal
@@ -211,7 +210,7 @@ public class CoinfloorUserTransaction {
     return orderId;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.dragonex.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class Withdrawal {
 
@@ -11,7 +10,7 @@ public class Withdrawal {
   public final long addressId;
   public final String addressName;
   public final String address;
-  public final BigDecimal volume;
+  public final Double volume;
   public final long status;
 
   public Withdrawal(
@@ -21,7 +20,7 @@ public class Withdrawal {
       @JsonProperty("addr_id") long addressId,
       @JsonProperty("addr_name") String addressName,
       @JsonProperty("addr") String address,
-      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("volume") Double volume,
       @JsonProperty("status") long status) {
     this.withdrawId = withdrawId;
     this.uid = uid;

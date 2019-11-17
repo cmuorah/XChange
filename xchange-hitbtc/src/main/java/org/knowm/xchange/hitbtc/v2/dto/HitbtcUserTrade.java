@@ -1,6 +1,5 @@
 package org.knowm.xchange.hitbtc.v2.dto;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -13,13 +12,13 @@ public class HitbtcUserTrade extends UserTrade {
 
   public HitbtcUserTrade(
       Order.OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
-      BigDecimal price,
+      Double price,
       Date timestamp,
       String id,
       String orderId,
-      BigDecimal feeAmount,
+      Double feeAmount,
       Currency feeCurrency,
       String clientOrderId) {
     super(

@@ -3,7 +3,6 @@ package org.knowm.xchange.bitflyer.dto.trade;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -23,10 +22,10 @@ public class BitflyerExecution {
   private String side;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("size")
-  private BigDecimal size;
+  private Double size;
 
   @JsonProperty("exec_date")
   private String execDate;
@@ -53,19 +52,19 @@ public class BitflyerExecution {
     this.side = side;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 
-  public void setSize(BigDecimal size) {
+  public void setSize(Double size) {
     this.size = size;
   }
 

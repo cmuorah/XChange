@@ -1,7 +1,6 @@
 package org.knowm.xchange.bl3p.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class Bl3pAmountObj {
 
@@ -18,5 +17,5 @@ public class Bl3pAmountObj {
   public String currency;
 
   @JsonProperty("value")
-  public BigDecimal value;
+  public Double value;
 }

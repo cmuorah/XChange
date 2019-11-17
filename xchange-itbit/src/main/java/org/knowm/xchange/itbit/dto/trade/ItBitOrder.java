@@ -1,7 +1,6 @@
 package org.knowm.xchange.itbit.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class ItBitOrder {
 
@@ -13,10 +12,10 @@ public class ItBitOrder {
   private final String type;
   private final String status;
   private final String createdTime;
-  private final BigDecimal amountFilled;
-  private final BigDecimal price;
-  private final BigDecimal amount;
-  private final BigDecimal volumeWeightedAveragePrice;
+  private final Double amountFilled;
+  private final Double price;
+  private final Double amount;
+  private final Double volumeWeightedAveragePrice;
 
   public ItBitOrder(
       @JsonProperty("id") String id,
@@ -25,10 +24,10 @@ public class ItBitOrder {
       @JsonProperty("instrument") String instrument,
       @JsonProperty("currency") String currency,
       @JsonProperty("type") String type,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amountFilled") BigDecimal amountFilled,
-      @JsonProperty("volumeWeightedAveragePrice") BigDecimal volumeWeightedAveragePrice,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amountFilled") Double amountFilled,
+      @JsonProperty("volumeWeightedAveragePrice") Double volumeWeightedAveragePrice,
       @JsonProperty("createdTime") String createdTime,
       @JsonProperty("status") String status) {
 
@@ -86,22 +85,22 @@ public class ItBitOrder {
     return createdTime;
   }
 
-  public BigDecimal getAmountFilled() {
+  public Double getAmountFilled() {
 
     return amountFilled;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getVolumeWeightedAveragePrice() {
+  public Double getVolumeWeightedAveragePrice() {
 
     return volumeWeightedAveragePrice;
   }

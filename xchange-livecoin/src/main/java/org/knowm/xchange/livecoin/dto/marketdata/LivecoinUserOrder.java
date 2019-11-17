@@ -1,7 +1,6 @@
 package org.knowm.xchange.livecoin.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class LivecoinUserOrder {
   private final Long id;
@@ -10,11 +9,11 @@ public class LivecoinUserOrder {
   private final String type;
   private final String orderStatus;
   private final Long issueTime;
-  private final BigDecimal price;
-  private final BigDecimal quantity;
-  private final BigDecimal remainingQuantity;
-  private final BigDecimal commission;
-  private final BigDecimal commissionRate;
+  private final Double price;
+  private final Double quantity;
+  private final Double remainingQuantity;
+  private final Double commission;
+  private final Double commissionRate;
   private final Long lastModificationTime;
 
   public LivecoinUserOrder(
@@ -24,11 +23,11 @@ public class LivecoinUserOrder {
       @JsonProperty("type") String type,
       @JsonProperty("orderStatus") String orderStatus,
       @JsonProperty("issueTime") Long issueTime,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("quantity") BigDecimal quantity,
-      @JsonProperty("remainingQuantity") BigDecimal remainingQuantity,
-      @JsonProperty("commission") BigDecimal commission,
-      @JsonProperty("commissionRate") BigDecimal commissionRate,
+      @JsonProperty("price") Double price,
+      @JsonProperty("quantity") Double quantity,
+      @JsonProperty("remainingQuantity") Double remainingQuantity,
+      @JsonProperty("commission") Double commission,
+      @JsonProperty("commissionRate") Double commissionRate,
       @JsonProperty("lastModificationTime") Long lastModificationTime) {
     this.id = id;
     this.currencyPair = currencyPair;
@@ -68,23 +67,23 @@ public class LivecoinUserOrder {
     return issueTime;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getRemainingQuantity() {
+  public Double getRemainingQuantity() {
     return remainingQuantity;
   }
 
-  public BigDecimal getCommission() {
+  public Double getCommission() {
     return commission;
   }
 
-  public BigDecimal getCommissionRate() {
+  public Double getCommissionRate() {
     return commissionRate;
   }
 

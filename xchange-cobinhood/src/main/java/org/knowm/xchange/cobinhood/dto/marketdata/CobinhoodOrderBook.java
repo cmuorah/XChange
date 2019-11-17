@@ -1,25 +1,24 @@
 package org.knowm.xchange.cobinhood.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class CobinhoodOrderBook {
-  private final List<List<BigDecimal>> asks;
-  private final List<List<BigDecimal>> bids;
+  private final List<List<Double>> asks;
+  private final List<List<Double>> bids;
 
   public CobinhoodOrderBook(
-      @JsonProperty("asks") List<List<BigDecimal>> asks,
-      @JsonProperty("bids") List<List<BigDecimal>> bids) {
+      @JsonProperty("asks") List<List<Double>> asks,
+      @JsonProperty("bids") List<List<Double>> bids) {
     this.asks = asks;
     this.bids = bids;
   }
 
-  public List<List<BigDecimal>> getAsks() {
+  public List<List<Double>> getAsks() {
     return asks;
   }
 
-  public List<List<BigDecimal>> getBids() {
+  public List<List<Double>> getBids() {
     return bids;
   }
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinegg.dto.accounts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinEggBalance {
 
@@ -10,17 +9,17 @@ public class CoinEggBalance {
   private final int ethLock;
   private final int btcLock;
 
-  private final BigDecimal xasBalance;
-  private final BigDecimal ethBalance;
-  private final BigDecimal btcBalance;
+  private final Double xasBalance;
+  private final Double ethBalance;
+  private final Double btcBalance;
 
   public CoinEggBalance(
       @JsonProperty("uid") int id,
-      @JsonProperty("xas_balance") BigDecimal xasBalance,
+      @JsonProperty("xas_balance") Double xasBalance,
       @JsonProperty("xas_lock") int xasLock,
-      @JsonProperty("eth_balance") BigDecimal ethBalance,
+      @JsonProperty("eth_balance") Double ethBalance,
       @JsonProperty("eth_lock") int ethLock,
-      @JsonProperty("btc_balance") BigDecimal btcBalance,
+      @JsonProperty("btc_balance") Double btcBalance,
       @JsonProperty("btc_lock") int btcLock) {
 
     this.id = id;
@@ -48,15 +47,15 @@ public class CoinEggBalance {
     return btcLock == 1;
   }
 
-  public BigDecimal getXASBalance() {
+  public Double getXASBalance() {
     return xasBalance;
   }
 
-  public BigDecimal getETHBalance() {
+  public Double getETHBalance() {
     return ethBalance;
   }
 
-  public BigDecimal getBTCBalance() {
+  public Double getBTCBalance() {
     return btcBalance;
   }
 }

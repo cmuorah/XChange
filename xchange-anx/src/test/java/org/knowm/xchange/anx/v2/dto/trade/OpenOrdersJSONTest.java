@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -31,10 +30,10 @@ public class OpenOrdersJSONTest {
     Assert.assertEquals("HKD", anxOpenOrders[1].getCurrency());
     Assert.assertEquals("bid", anxOpenOrders[1].getType());
     Assert.assertEquals("BTC", anxOpenOrders[1].getAmount().getCurrency());
-    Assert.assertEquals(new BigDecimal("10.00000000"), anxOpenOrders[1].getAmount().getValue());
+    Assert.assertEquals(new Double("10.00000000"), anxOpenOrders[1].getAmount().getValue());
 
-    Assert.assertEquals(new BigDecimal("412.34567"), anxOpenOrders[0].getPrice().getValue());
-    Assert.assertEquals(new BigDecimal("212.34567"), anxOpenOrders[1].getPrice().getValue());
+    Assert.assertEquals(new Double("412.34567"), anxOpenOrders[0].getPrice().getValue());
+    Assert.assertEquals(new Double("212.34567"), anxOpenOrders[1].getPrice().getValue());
     Assert.assertEquals("open", anxOpenOrders[1].getStatus());
   }
 }

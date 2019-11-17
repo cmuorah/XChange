@@ -1,7 +1,6 @@
 package org.knowm.xchange.quoine.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author timmolter */
 public final class FiatAccount {
@@ -9,11 +8,11 @@ public final class FiatAccount {
   private final Integer id;
   private final String currency;
   private final String currencySymbol;
-  private final BigDecimal balance;
+  private final Double balance;
   private final String sendToBtcAddress;
   private final String pusherChannel;
-  private final BigDecimal lowestOfferInterestRate;
-  private final BigDecimal highestOfferInterestRate;
+  private final Double lowestOfferInterestRate;
+  private final Double highestOfferInterestRate;
 
   /**
    * Constructor
@@ -31,11 +30,11 @@ public final class FiatAccount {
       @JsonProperty("id") Integer id,
       @JsonProperty("currency") String currency,
       @JsonProperty("currency_symbol") String currencySymbol,
-      @JsonProperty("balance") BigDecimal balance,
+      @JsonProperty("balance") Double balance,
       @JsonProperty("send_to_btc_address") String sendToBtcAddress,
       @JsonProperty("pusher_channel") String pusherChannel,
-      @JsonProperty("lowest_offer_interest_rate") BigDecimal lowestOfferInterestRate,
-      @JsonProperty("highest_offer_interest_rate") BigDecimal highestOfferInterestRate) {
+      @JsonProperty("lowest_offer_interest_rate") Double lowestOfferInterestRate,
+      @JsonProperty("highest_offer_interest_rate") Double highestOfferInterestRate) {
     this.id = id;
     this.currency = currency;
     this.currencySymbol = currencySymbol;
@@ -58,7 +57,7 @@ public final class FiatAccount {
     return currencySymbol;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
@@ -70,11 +69,11 @@ public final class FiatAccount {
     return pusherChannel;
   }
 
-  public BigDecimal getLowestOfferInterestRate() {
+  public Double getLowestOfferInterestRate() {
     return lowestOfferInterestRate;
   }
 
-  public BigDecimal getHighestOfferInterestRate() {
+  public Double getHighestOfferInterestRate() {
     return highestOfferInterestRate;
   }
 

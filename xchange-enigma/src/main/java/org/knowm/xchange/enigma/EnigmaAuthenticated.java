@@ -1,7 +1,6 @@
 package org.knowm.xchange.enigma;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.*;
@@ -43,7 +42,7 @@ public interface EnigmaAuthenticated extends Enigma {
 
   @GET
   @Path("risk/limit")
-  Map<String, BigDecimal> getAccountRiskLimits(@HeaderParam("Authorization") String accessToken)
+  Map<String, Double> getAccountRiskLimits(@HeaderParam("Authorization") String accessToken)
       throws IOException;
 
   @POST
@@ -74,7 +73,7 @@ public interface EnigmaAuthenticated extends Enigma {
 
   @GET
   @Path("balance/{infra}")
-  Map<String, BigDecimal> getBalance(
+  Map<String, Double> getBalance(
       @HeaderParam("Authorization") String accessToken, @PathParam("infra") String infrastructure)
       throws IOException;
 

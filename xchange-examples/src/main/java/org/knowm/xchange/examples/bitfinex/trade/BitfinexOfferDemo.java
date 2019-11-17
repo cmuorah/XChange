@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.bitfinex.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitfinex.service.BitfinexTradeServiceRaw;
@@ -29,14 +28,13 @@ public class BitfinexOfferDemo {
     BitfinexOfferStatusResponse fixedRateResponse =
         tradeService.placeBitfinexFixedRateLoanOrder(
             new FixedRateLoanOrder(
-                OrderType.BID, "USD", new BigDecimal("0.01"), 2, "", null, new BigDecimal("0.01")),
+                OrderType.BID, "USD", new Double("0.01"), 2, "", null, new Double("0.01")),
             BitfinexOrderType.LIMIT);
     System.out.println("Fixed rate order response: " + fixedRateResponse);
 
     BitfinexOfferStatusResponse floatingRateResponse =
         tradeService.placeBitfinexFloatingRateLoanOrder(
-            new FloatingRateLoanOrder(
-                OrderType.BID, "USD", new BigDecimal("0.01"), 2, "", null, BigDecimal.ZERO),
+            new FloatingRateLoanOrder(OrderType.BID, "USD", new Double("0.01"), 2, "", null, 0d),
             BitfinexOrderType.MARKET);
     System.out.println("Floating rate order response: " + floatingRateResponse);
 

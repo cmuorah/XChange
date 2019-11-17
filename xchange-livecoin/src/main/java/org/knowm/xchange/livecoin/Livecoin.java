@@ -1,7 +1,6 @@
 package org.knowm.xchange.livecoin;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.FormParam;
@@ -104,7 +103,7 @@ public interface Livecoin {
       @HeaderParam("Api-key") String apiKey,
       @HeaderParam("Sign") LivecoinDigest signatureCreator,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("wallet") String wallet)
       throws IOException, LivecoinException;
 
@@ -114,7 +113,7 @@ public interface Livecoin {
       @HeaderParam("Api-key") String apiKey,
       @HeaderParam("Sign") LivecoinDigest signatureCreator,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("wallet") String wallet,
       @FormParam("protect") String protect,
       @FormParam("protect_code") String protectCode,
@@ -127,7 +126,7 @@ public interface Livecoin {
       @HeaderParam("Api-key") String apiKey,
       @HeaderParam("Sign") LivecoinDigest signatureCreator,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("wallet") String wallet)
       throws IOException;
 
@@ -137,7 +136,7 @@ public interface Livecoin {
       @HeaderParam("Api-key") String apiKey,
       @HeaderParam("Sign") LivecoinDigest signatureCreator,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("card_number") String cardNumber,
       @FormParam("expiry_month") String expiryMonth,
       @FormParam("expiry_year") String expiryYear)
@@ -149,7 +148,7 @@ public interface Livecoin {
       @HeaderParam("Api-key") String apiKey,
       @HeaderParam("Sign") LivecoinDigest signatureCreator,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("wallet") String wallet,
       @FormParam("invoice") String invoice)
       throws IOException;
@@ -160,7 +159,7 @@ public interface Livecoin {
       @HeaderParam("Api-key") String apiKey,
       @HeaderParam("Sign") LivecoinDigest signatureCreator,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("wallet") String wallet,
       @FormParam("protect_code") String protectCode,
       @FormParam("protect_period") Integer protectPeriod)
@@ -185,8 +184,8 @@ public interface Livecoin {
       @HeaderParam("Api-key") String apiKey,
       @HeaderParam("Sign") LivecoinDigest signatureCreator,
       @FormParam("currencyPair") String currencyPair,
-      @FormParam("price") BigDecimal price,
-      @FormParam("quantity") BigDecimal quantity)
+      @FormParam("price") Double price,
+      @FormParam("quantity") Double quantity)
       throws IOException;
 
   @POST
@@ -195,8 +194,8 @@ public interface Livecoin {
       @HeaderParam("Api-key") String apiKey,
       @HeaderParam("Sign") LivecoinDigest signatureCreator,
       @FormParam("currencyPair") String currencyPair,
-      @FormParam("price") BigDecimal price,
-      @FormParam("quantity") BigDecimal quantity)
+      @FormParam("price") Double price,
+      @FormParam("quantity") Double quantity)
       throws IOException;
 
   @POST
@@ -205,7 +204,7 @@ public interface Livecoin {
       @HeaderParam("Api-key") String apiKey,
       @HeaderParam("Sign") LivecoinDigest signatureCreator,
       @FormParam("currencyPair") String currencyPair,
-      @FormParam("quantity") BigDecimal quantity)
+      @FormParam("quantity") Double quantity)
       throws IOException;
 
   @POST
@@ -214,7 +213,7 @@ public interface Livecoin {
       @HeaderParam("Api-key") String apiKey,
       @HeaderParam("Sign") LivecoinDigest signatureCreator,
       @FormParam("currencyPair") String currencyPair,
-      @FormParam("quantity") BigDecimal quantity)
+      @FormParam("quantity") Double quantity)
       throws IOException;
 
   @POST

@@ -1,25 +1,24 @@
 package org.knowm.xchange.bitz.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitZTicker {
 
-  private final BigDecimal last;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal volume;
-  private final BigDecimal buy;
-  private final BigDecimal sell;
+  private final Double last;
+  private final Double high;
+  private final Double low;
+  private final Double volume;
+  private final Double buy;
+  private final Double sell;
   private final long timestamp;
 
   public BitZTicker(
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("vol") BigDecimal volume,
-      @JsonProperty("buy") BigDecimal buy,
-      @JsonProperty("sell") BigDecimal sell,
+      @JsonProperty("last") Double last,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("vol") Double volume,
+      @JsonProperty("buy") Double buy,
+      @JsonProperty("sell") Double sell,
       @JsonProperty("date") long timestamp) {
 
     this.last = last;
@@ -31,27 +30,27 @@ public class BitZTicker {
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getBuy() {
+  public Double getBuy() {
     return buy;
   }
 
-  public BigDecimal getSell() {
+  public Double getSell() {
     return sell;
   }
 

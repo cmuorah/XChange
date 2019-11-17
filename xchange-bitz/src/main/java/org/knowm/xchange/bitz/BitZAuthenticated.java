@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitz;
 
-import java.math.BigDecimal;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -23,8 +22,8 @@ public interface BitZAuthenticated {
       @FormParam("timestamp") String timestamp,
       @FormParam("nonce") String nonce,
       @FormParam("type") String type,
-      @FormParam("price") BigDecimal price,
-      @FormParam("number") BigDecimal amount,
+      @FormParam("price") Double price,
+      @FormParam("number") Double amount,
       @FormParam("coin") String pair,
       @FormParam("tradepwd") String tradePwd,
       @FormParam("sign") String signed);

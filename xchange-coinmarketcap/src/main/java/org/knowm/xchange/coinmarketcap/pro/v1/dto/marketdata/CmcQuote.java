@@ -2,27 +2,26 @@ package org.knowm.xchange.coinmarketcap.pro.v1.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.utils.jackson.ISO8601DateDeserializer;
 
 public final class CmcQuote {
 
-  private BigDecimal price;
-  private BigDecimal volume24h;
-  private BigDecimal percentChange1h;
-  private BigDecimal percentChange7d;
-  private BigDecimal percentChange24h;
-  private BigDecimal marketCap;
+  private Double price;
+  private Double volume24h;
+  private Double percentChange1h;
+  private Double percentChange7d;
+  private Double percentChange24h;
+  private Double marketCap;
   private Date lastUpdated;
 
   public CmcQuote(
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("volume_24h") BigDecimal volume24h,
-      @JsonProperty("percent_change_1h") BigDecimal percentChange1h,
-      @JsonProperty("percent_change_7d") BigDecimal percentChange7d,
-      @JsonProperty("percent_change_24h") BigDecimal percentChange24h,
-      @JsonProperty("market_cap") BigDecimal marketCap,
+      @JsonProperty("price") Double price,
+      @JsonProperty("volume_24h") Double volume24h,
+      @JsonProperty("percent_change_1h") Double percentChange1h,
+      @JsonProperty("percent_change_7d") Double percentChange7d,
+      @JsonProperty("percent_change_24h") Double percentChange24h,
+      @JsonProperty("market_cap") Double marketCap,
       @JsonProperty("last_updated") @JsonDeserialize(using = ISO8601DateDeserializer.class)
           Date lastUpdated) {
 
@@ -35,27 +34,27 @@ public final class CmcQuote {
     this.lastUpdated = lastUpdated;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getVolume24h() {
+  public Double getVolume24h() {
     return volume24h;
   }
 
-  public BigDecimal getPercentChange1h() {
+  public Double getPercentChange1h() {
     return percentChange1h;
   }
 
-  public BigDecimal getPercentChange7d() {
+  public Double getPercentChange7d() {
     return percentChange7d;
   }
 
-  public BigDecimal getPercentChange24h() {
+  public Double getPercentChange24h() {
     return percentChange24h;
   }
 
-  public BigDecimal getMarketCap() {
+  public Double getMarketCap() {
     return marketCap;
   }
 

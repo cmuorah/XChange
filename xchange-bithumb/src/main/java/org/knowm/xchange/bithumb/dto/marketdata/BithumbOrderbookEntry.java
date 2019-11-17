@@ -1,24 +1,23 @@
 package org.knowm.xchange.bithumb.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BithumbOrderbookEntry {
 
-  private final BigDecimal quantity;
-  private final BigDecimal price;
+  private final Double quantity;
+  private final Double price;
 
   public BithumbOrderbookEntry(
-      @JsonProperty("quantity") BigDecimal quantity, @JsonProperty("price") BigDecimal price) {
+      @JsonProperty("quantity") Double quantity, @JsonProperty("price") Double price) {
     this.quantity = quantity;
     this.price = price;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

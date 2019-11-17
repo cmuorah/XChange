@@ -1,20 +1,19 @@
 package org.knowm.xchange.okcoin.v3.dto.account;
 
-import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
 public class OkexSpotAccountRecord {
-  private BigDecimal frozen;
+  private Double frozen;
   /** amount on hold(not available) */
-  private BigDecimal hold;
+  private Double hold;
   /** account ID */
   private String id;
 
   private String currency;
-  private BigDecimal balance;
+  private Double balance;
   /** available amount */
-  private BigDecimal available;
+  private Double available;
 
-  private BigDecimal holds;
+  private Double holds;
 }

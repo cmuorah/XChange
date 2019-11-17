@@ -2,7 +2,6 @@ package org.knowm.xchange.coinbasepro.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /**
  * These parameters are common to all order types. Depending on the order type, additional
@@ -48,7 +47,7 @@ public abstract class CoinbaseProPlaceOrder {
 
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
   @JsonProperty("stop_price")
-  BigDecimal stopPrice;
+  Double stopPrice;
 
   public CoinbaseProPlaceOrder(
       String clientOid,
@@ -57,7 +56,7 @@ public abstract class CoinbaseProPlaceOrder {
       String productId,
       SelfTradePrevention stp,
       Stop stop,
-      BigDecimal stopPrice) {
+      Double stopPrice) {
     this.clientOid = clientOid;
     this.type = type;
     this.side = side;
@@ -91,7 +90,7 @@ public abstract class CoinbaseProPlaceOrder {
     return stop;
   }
 
-  public BigDecimal getStopPrice() {
+  public Double getStopPrice() {
     return stopPrice;
   }
 
@@ -103,7 +102,7 @@ public abstract class CoinbaseProPlaceOrder {
     String productId;
     SelfTradePrevention stp;
     Stop stop;
-    BigDecimal stopPrice;
+    Double stopPrice;
 
     public B clientOid(String clientOid) {
       this.clientOid = clientOid;
@@ -135,7 +134,7 @@ public abstract class CoinbaseProPlaceOrder {
       return (B) this;
     }
 
-    public B stopPrice(BigDecimal stopPrice) {
+    public B stopPrice(Double stopPrice) {
       this.stopPrice = stopPrice;
       return (B) this;
     }

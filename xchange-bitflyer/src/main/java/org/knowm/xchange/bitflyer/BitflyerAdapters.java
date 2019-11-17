@@ -1,11 +1,6 @@
 package org.knowm.xchange.bitflyer;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -84,10 +79,10 @@ public class BitflyerAdapters {
    */
   public static Ticker adaptTicker(BitflyerTicker ticker, CurrencyPair currencyPair) {
 
-    BigDecimal bid = ticker.getBestBid();
-    BigDecimal ask = ticker.getBestAsk();
-    BigDecimal volume = ticker.getVolume();
-    BigDecimal last = ticker.getLtp();
+    Double bid = ticker.getBestBid();
+    Double ask = ticker.getBestAsk();
+    Double volume = ticker.getVolume();
+    Double last = ticker.getLtp();
     Date timestamp =
         ticker.getTimestamp() != null ? BitflyerUtils.parseDate(ticker.getTimestamp()) : null;
 
@@ -202,11 +197,10 @@ public class BitflyerAdapters {
     return FundingRecord.Status.FAILED;
   }
 
-  private static BigDecimal add(BigDecimal a, BigDecimal b) {
-    BigDecimal a1 = a == null ? BigDecimal.ZERO : a;
-    BigDecimal b1 = b == null ? BigDecimal.ZERO : b;
-
-    return a1.add(b1);
+  private static Double add(Double a, Double b) {
+    double a1 = a == null ? 0d : a;
+    double b1 = b == null ? 0d : b;
+    return a1 + b1;
   }
 
   public static void main(String[] args) {

@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.bitcoincore.dto.account.BitcoinCoreBalanceResponse;
 import org.knowm.xchange.currency.Currency;
@@ -34,8 +33,8 @@ public class BitcoinCoreAdaptersTest {
     AccountInfo account = BitcoinCoreAdapters.adaptAccountInfo(available, unconfirmed);
     Balance btc = account.getWallet().getBalance(Currency.BTC);
 
-    assertThat(btc.getAvailable()).isEqualTo(new BigDecimal("68480.47579046"));
-    assertThat(btc.getFrozen()).isEqualTo(new BigDecimal("10.00000001"));
-    assertThat(btc.getTotal()).isEqualTo(new BigDecimal("68490.47579047"));
+    assertThat(btc.getAvailable()).isEqualTo(new Double("68480.47579046"));
+    assertThat(btc.getFrozen()).isEqualTo(new Double("10.00000001"));
+    assertThat(btc.getTotal()).isEqualTo(new Double("68490.47579047"));
   }
 }

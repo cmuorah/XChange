@@ -89,12 +89,12 @@ public class BinanceExchange extends BaseExchange {
           int pairPrecision = 8;
           int amountPrecision = 8;
 
-          BigDecimal minQty = null;
-          BigDecimal maxQty = null;
-          BigDecimal stepSize = null;
+          Double minQty = null;
+          Double maxQty = null;
+          Double stepSize = null;
 
-          BigDecimal counterMinQty = null;
-          BigDecimal counterMaxQty = null;
+          Double counterMinQty = null;
+          Double counterMaxQty = null;
 
           Filter[] filters = symbol.getFilters();
 
@@ -102,16 +102,20 @@ public class BinanceExchange extends BaseExchange {
               new CurrencyPair(symbol.getBaseAsset(), symbol.getQuoteAsset());
 
           for (Filter filter : filters) {
-            if (filter.getFilterType().equals("PRICE_FILTER")) {
-              pairPrecision = Math.min(pairPrecision, numberOfDecimals(filter.getTickSize()));
-            } else if (filter.getFilterType().equals("LOT_SIZE")) {
-              amountPrecision = Math.min(amountPrecision, numberOfDecimals(filter.getMinQty()));
-              minQty = new BigDecimal(filter.getMinQty()).stripTrailingZeros();
-              maxQty = new BigDecimal(filter.getMaxQty()).stripTrailingZeros();
-              stepSize = new BigDecimal(filter.getStepSize()).stripTrailingZeros();
-            } else if (filter.getFilterType().equals("MARKET_LOT_SIZE")) {
-              counterMinQty = new BigDecimal(filter.getMinQty()).stripTrailingZeros();
-              counterMaxQty = new BigDecimal(filter.getMaxQty()).stripTrailingZeros();
+            switch (filter.getFilterType()) {
+              case "PRICE_FILTER":
+                pairPrecision = Math.min(pairPrecision, numberOfDecimals(filter.getTickSize()));
+                break;
+              case "LOT_SIZE":
+                amountPrecision = Math.min(amountPrecision, numberOfDecimals(filter.getMinQty()));
+                minQty = Double.parseDouble(filter.getMinQty());
+                maxQty = Double.parseDouble(filter.getMaxQty());
+                stepSize = Double.parseDouble(filter.getStepSize());
+                break;
+              case "MARKET_LOT_SIZE":
+                counterMinQty = Double.parseDouble(filter.getMinQty());
+                counterMaxQty = Double.parseDouble(filter.getMaxQty());
+                break;
             }
           }
 
@@ -119,7 +123,7 @@ public class BinanceExchange extends BaseExchange {
           currencyPairs.put(
               currentCurrencyPair,
               new CurrencyPairMetaData(
-                  new BigDecimal("0.1"), // Trading fee at Binance is 0.1 %
+                  new Double("0.1"), // Trading fee at Binance is 0.1 %
                   minQty, // Min amount
                   maxQty, // Max amount
                   counterMinQty,
@@ -133,11 +137,11 @@ public class BinanceExchange extends BaseExchange {
                   marketOrderAllowed));
 
           Currency baseCurrency = currentCurrencyPair.base;
-          BigDecimal baseWithdrawalFee = getWithdrawalFee(currencies, baseCurrency, assetDetailMap);
+          Double baseWithdrawalFee = getWithdrawalFee(currencies, baseCurrency, assetDetailMap);
           currencies.put(baseCurrency, new CurrencyMetaData(basePrecision, baseWithdrawalFee));
 
           Currency counterCurrency = currentCurrencyPair.counter;
-          BigDecimal counterWithdrawalFee =
+          Double counterWithdrawalFee =
               getWithdrawalFee(currencies, counterCurrency, assetDetailMap);
           currencies.put(
               counterCurrency, new CurrencyMetaData(counterPrecision, counterWithdrawalFee));
@@ -148,21 +152,20 @@ public class BinanceExchange extends BaseExchange {
     }
   }
 
-  private BigDecimal getWithdrawalFee(
+  private Double getWithdrawalFee(
       Map<Currency, CurrencyMetaData> currencies,
       Currency currency,
       Map<String, AssetDetail> assetDetailMap) {
     if (assetDetailMap != null) {
       AssetDetail asset = assetDetailMap.get(currency.getCurrencyCode());
-      return asset != null ? asset.getWithdrawFee().stripTrailingZeros() : null;
+      return asset != null ? asset.getWithdrawFee() : null;
     }
 
     return currencies.containsKey(currency) ? currencies.get(currency).getWithdrawalFee() : null;
   }
 
   private int numberOfDecimals(String value) {
-
-    return new BigDecimal(value).stripTrailingZeros().scale();
+    return new BigDecimal(value).scale();
   }
 
   public void clearDeltaServerTime() {

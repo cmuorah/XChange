@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.coinbase.account;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinbase.dto.CoinbaseBaseResponse;
@@ -44,7 +43,7 @@ public class CoinbaseAccountDemo {
     String depositAddress = accountService.requestDepositAddress(Currency.BTC);
     System.out.println("Deposit Address: " + depositAddress);
 
-    // String transactionHash = accountService.withdrawFunds(new BigDecimal(".01"), "XXX");
+    // String transactionHash = accountService.withdrawFunds(new Double(".01"), "XXX");
     // System.out.println("Bitcoin blockchain transaction hash: " + transactionHash);
   }
 
@@ -127,7 +126,7 @@ public class CoinbaseAccountDemo {
   private static void demoTransactions(CoinbaseAccountService accountService) throws IOException {
 
     CoinbaseRequestMoneyRequest moneyRequest =
-        CoinbaseTransaction.createMoneyRequest("xchange@demo.com", "BTC", new BigDecimal(".001"))
+        CoinbaseTransaction.createMoneyRequest("xchange@demo.com", "BTC", new Double(".001"))
             .withNotes("test");
     CoinbaseTransaction pendingTransaction =
         accountService.requestMoneyCoinbaseRequest(moneyRequest);

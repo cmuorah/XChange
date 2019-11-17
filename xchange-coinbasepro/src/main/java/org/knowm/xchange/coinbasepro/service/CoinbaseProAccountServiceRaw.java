@@ -2,7 +2,6 @@ package org.knowm.xchange.coinbasepro.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -36,7 +35,7 @@ public class CoinbaseProAccountServiceRaw extends CoinbaseProBaseService {
   }
 
   public CoinbaseProSendMoneyResponse sendMoney(
-      String accountId, String to, BigDecimal amount, Currency currency)
+      String accountId, String to, Double amount, Currency currency)
       throws CoinbaseProException, IOException {
     return coinbasePro.sendMoney(
         new CoinbaseProSendMoneyRequest(to, amount, currency.getCurrencyCode()),
@@ -49,7 +48,7 @@ public class CoinbaseProAccountServiceRaw extends CoinbaseProBaseService {
 
   public CoinbaseProWithdrawCryptoResponse withdrawCrypto(
       String address,
-      BigDecimal amount,
+      Double amount,
       Currency currency,
       String destinationTag,
       boolean noDestinationTag)

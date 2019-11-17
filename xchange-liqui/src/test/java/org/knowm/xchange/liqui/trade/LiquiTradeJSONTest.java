@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.junit.Test;
 import org.knowm.xchange.liqui.dto.trade.LiquiTrade;
@@ -25,14 +24,14 @@ public class LiquiTradeJSONTest {
     assertThat(tradeResult.isSuccess()).isTrue();
     final LiquiTrade trade = tradeResult.getResult();
 
-    assertThat(trade.getReceived()).isEqualTo(new BigDecimal("2.0"));
-    assertThat(trade.getRemains()).isEqualTo(new BigDecimal("5.0"));
+    assertThat(trade.getReceived()).isEqualTo(new Double("2.0"));
+    assertThat(trade.getRemains()).isEqualTo(new Double("5.0"));
     assertThat(trade.getOrderId()).isEqualTo(108000000L);
     assertThat(trade.getInitOrderId()).isEqualTo(108000000L);
 
-    final Map<String, BigDecimal> funds = trade.getFunds();
-    assertThat(funds.get("trx")).isEqualTo(new BigDecimal("499.0"));
-    assertThat(funds.get("btc")).isEqualTo(new BigDecimal("0.0"));
+    final Map<String, Double> funds = trade.getFunds();
+    assertThat(funds.get("trx")).isEqualTo(new Double("499.0"));
+    assertThat(funds.get("btc")).isEqualTo(new Double("0.0"));
   }
 
   @Test

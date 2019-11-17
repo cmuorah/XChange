@@ -24,7 +24,6 @@
 package org.knowm.xchange.coinmate.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Martin Stachon */
 public class CoinmateOpenOrdersEntry {
@@ -33,16 +32,16 @@ public class CoinmateOpenOrdersEntry {
   private final long timestamp;
   private final String type;
   private final String currencyPair;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
 
   public CoinmateOpenOrdersEntry(
       @JsonProperty("id") long id,
       @JsonProperty("timestamp") long timestamp,
       @JsonProperty("type") String type,
       @JsonProperty("currencyPair") String currencyPair,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount) {
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount) {
 
     this.id = id;
     this.timestamp = timestamp;
@@ -73,12 +72,12 @@ public class CoinmateOpenOrdersEntry {
   }
 
   /** @return the price */
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
   /** @return the amount */
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 }

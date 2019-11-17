@@ -1,7 +1,6 @@
 package org.knowm.xchange.yobit;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
@@ -58,7 +57,7 @@ public interface YoBit {
       @FormParam("method") String method,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("coinName") String coinName,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws IOException;
 
@@ -129,7 +128,7 @@ public interface YoBit {
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("pair") String market,
       @FormParam("type") String type,
-      @FormParam("rate") BigDecimal price,
-      @FormParam("amount") BigDecimal amount)
+      @FormParam("rate") Double price,
+      @FormParam("amount") Double amount)
       throws IOException;
 }

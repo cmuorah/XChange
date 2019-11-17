@@ -1,15 +1,14 @@
 package org.knowm.xchange.anx.v2.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public final class ANXTrade {
 
-  private final BigDecimal amount;
+  private final Double amount;
   private final long amountInt;
   private final String item;
   private final String priceCurrency;
-  private final BigDecimal price;
+  private final Double price;
   private final long priceInt;
   private final String primary;
   private final String properties;
@@ -17,11 +16,11 @@ public final class ANXTrade {
   private final String tradeType;
 
   public ANXTrade(
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("amount_int") long amountInt,
       @JsonProperty("item") String item,
       @JsonProperty("price_currency") String priceCurrency,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("price_int") long priceInt,
       @JsonProperty("primary") String primary,
       @JsonProperty("properties") String properties,
@@ -40,7 +39,7 @@ public final class ANXTrade {
     this.tradeType = tradeType;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
@@ -60,7 +59,7 @@ public final class ANXTrade {
     return priceCurrency;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }

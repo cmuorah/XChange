@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -66,12 +65,12 @@ public class KrakenOHLCs {
         } else if (value.isArray()) {
           for (JsonNode jsonSpreadNode : value) {
             long time = jsonSpreadNode.path(0).asLong();
-            BigDecimal open = new BigDecimal(jsonSpreadNode.path(1).asText());
-            BigDecimal high = new BigDecimal(jsonSpreadNode.path(2).asText());
-            BigDecimal low = new BigDecimal(jsonSpreadNode.path(3).asText());
-            BigDecimal close = new BigDecimal(jsonSpreadNode.path(4).asText());
-            BigDecimal vwap = new BigDecimal(jsonSpreadNode.path(5).asText());
-            BigDecimal volume = new BigDecimal(jsonSpreadNode.path(6).asText());
+            Double open = new Double(jsonSpreadNode.path(1).asText());
+            Double high = new Double(jsonSpreadNode.path(2).asText());
+            Double low = new Double(jsonSpreadNode.path(3).asText());
+            Double close = new Double(jsonSpreadNode.path(4).asText());
+            Double vwap = new Double(jsonSpreadNode.path(5).asText());
+            Double volume = new Double(jsonSpreadNode.path(6).asText());
             long count = jsonSpreadNode.path(7).asLong();
             krakenOHLCs.add(new KrakenOHLC(time, open, high, low, close, vwap, volume, count));
           }

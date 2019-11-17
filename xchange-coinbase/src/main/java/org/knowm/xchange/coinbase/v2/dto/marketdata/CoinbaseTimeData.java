@@ -2,7 +2,6 @@ package org.knowm.xchange.coinbase.v2.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseTimeData {
 
@@ -18,11 +17,11 @@ public class CoinbaseTimeData {
 
   public static class CoinbaseTime {
 
-    private final BigDecimal epoch;
+    private final Double epoch;
     private final String iso;
 
     @JsonCreator
-    public CoinbaseTime(@JsonProperty("iso") String iso, @JsonProperty("epoch") BigDecimal epoch) {
+    public CoinbaseTime(@JsonProperty("iso") String iso, @JsonProperty("epoch") Double epoch) {
       this.epoch = epoch;
       this.iso = iso;
     }
@@ -31,7 +30,7 @@ public class CoinbaseTimeData {
       return iso;
     }
 
-    public BigDecimal getEpoch() {
+    public Double getEpoch() {
       return epoch;
     }
 

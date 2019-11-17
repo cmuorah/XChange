@@ -1,7 +1,6 @@
 package org.knowm.xchange.huobi.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
@@ -35,8 +34,7 @@ public class HuobiAccountService extends HuobiAccountServiceRaw implements Accou
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return String.valueOf(createWithdraw(currency.toString(), amount, null, address, null));
   }
 

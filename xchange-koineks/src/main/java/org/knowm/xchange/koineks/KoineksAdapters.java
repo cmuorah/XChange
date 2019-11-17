@@ -1,6 +1,5 @@
 package org.knowm.xchange.koineks;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -41,12 +40,12 @@ public final class KoineksAdapters {
 
   private static Ticker getTickerOf(BaseKoineksTicker koineksTicker, Currency currency) {
     if (koineksTicker != null) {
-      BigDecimal last = koineksTicker.getCurrent();
-      BigDecimal lowestAsk = koineksTicker.getAsk();
-      BigDecimal highestBid = koineksTicker.getBid();
-      BigDecimal volume = koineksTicker.getVolume();
-      BigDecimal high24hr = koineksTicker.getHigh();
-      BigDecimal low24hr = koineksTicker.getLow();
+      Double last = koineksTicker.getCurrent();
+      Double lowestAsk = koineksTicker.getAsk();
+      Double highestBid = koineksTicker.getBid();
+      Double volume = koineksTicker.getVolume();
+      Double high24hr = koineksTicker.getHigh();
+      Double low24hr = koineksTicker.getLow();
       String timestampStr = koineksTicker.getTimestamp();
       Date timestamp = new Date(Long.valueOf(timestampStr));
       return new Ticker.Builder()

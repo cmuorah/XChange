@@ -1,14 +1,13 @@
 package org.knowm.xchange.dragonex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class Order {
 
-  public final BigDecimal price;
-  public final BigDecimal volume;
+  public final Double price;
+  public final Double volume;
 
-  public Order(@JsonProperty("price") BigDecimal price, @JsonProperty("volume") BigDecimal volume) {
+  public Order(@JsonProperty("price") Double price, @JsonProperty("volume") Double volume) {
     this.price = price;
     this.volume = volume;
   }

@@ -1,6 +1,5 @@
 package org.knowm.xchange.service.trade.params;
 
-import java.math.BigDecimal;
 import javax.annotation.Nullable;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.dto.account.AddressWithTag;
@@ -12,20 +11,20 @@ public class DefaultWithdrawFundsParams implements WithdrawFundsParams {
 
   public final Currency currency;
 
-  public final BigDecimal amount;
+  public final Double amount;
 
-  @Nullable public final BigDecimal commission;
+  @Nullable public final Double commission;
 
-  public DefaultWithdrawFundsParams(String address, Currency currency, BigDecimal amount) {
+  public DefaultWithdrawFundsParams(String address, Currency currency, Double amount) {
     this(address, currency, amount, null);
   }
 
-  public DefaultWithdrawFundsParams(AddressWithTag address, Currency currency, BigDecimal amount) {
+  public DefaultWithdrawFundsParams(AddressWithTag address, Currency currency, Double amount) {
     this(address, currency, amount, null);
   }
 
   public DefaultWithdrawFundsParams(
-      String address, Currency currency, BigDecimal amount, BigDecimal commission) {
+      String address, Currency currency, Double amount, Double commission) {
     this.address = address;
     this.destinationTag = null;
     this.currency = currency;
@@ -34,7 +33,7 @@ public class DefaultWithdrawFundsParams implements WithdrawFundsParams {
   }
 
   public DefaultWithdrawFundsParams(
-      AddressWithTag address, Currency currency, BigDecimal amount, BigDecimal commission) {
+      AddressWithTag address, Currency currency, Double amount, Double commission) {
     this.address = address.getAddress();
     this.destinationTag = address.getDestinationTag();
     this.currency = currency;
@@ -54,12 +53,12 @@ public class DefaultWithdrawFundsParams implements WithdrawFundsParams {
     return currency;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
   @Nullable
-  public BigDecimal getCommission() {
+  public Double getCommission() {
     return commission;
   }
 

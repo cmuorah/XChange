@@ -1,19 +1,18 @@
 package org.knowm.xchange.bitcoinium.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Data object representing Ticker from Bitcoinium Web Service */
 public final class BitcoiniumTicker {
 
-  private final BigDecimal last;
+  private final Double last;
   private final long timestamp;
-  private final BigDecimal volume;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
-  private final BigDecimal trades;
+  private final Double volume;
+  private final Double high;
+  private final Double low;
+  private final Double bid;
+  private final Double ask;
+  private final Double trades;
 
   /**
    * Constructor
@@ -27,14 +26,14 @@ public final class BitcoiniumTicker {
    * @param ask
    */
   public BitcoiniumTicker(
-      @JsonProperty("l") BigDecimal last,
+      @JsonProperty("l") Double last,
       @JsonProperty("t") long timestamp,
-      @JsonProperty("v") BigDecimal volume,
-      @JsonProperty("h") BigDecimal high,
-      @JsonProperty("lo") BigDecimal low,
-      @JsonProperty("b") BigDecimal bid,
-      @JsonProperty("a") BigDecimal ask,
-      @JsonProperty("tr") BigDecimal trades) {
+      @JsonProperty("v") Double volume,
+      @JsonProperty("h") Double high,
+      @JsonProperty("lo") Double low,
+      @JsonProperty("b") Double bid,
+      @JsonProperty("a") Double ask,
+      @JsonProperty("tr") Double trades) {
 
     this.last = last;
     this.timestamp = timestamp;
@@ -46,7 +45,7 @@ public final class BitcoiniumTicker {
     this.trades = trades;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return this.last;
   }
@@ -56,32 +55,32 @@ public final class BitcoiniumTicker {
     return this.timestamp;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return this.volume;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return this.high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return this.low;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return this.bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return this.ask;
   }
 
-  public BigDecimal getTrades() {
+  public Double getTrades() {
 
     return trades;
   }

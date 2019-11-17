@@ -2,7 +2,6 @@ package org.knowm.xchange.hitbtc.v2;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Assert;
@@ -21,9 +20,9 @@ public class HitbtcAdaptersTest {
   public void testAdaptWallet_getBalance() {
     try {
       List<HitbtcBalance> main = new ArrayList<>();
-      main.add(new HitbtcBalance("BTC", new BigDecimal("0.1234"), new BigDecimal("32.23")));
+      main.add(new HitbtcBalance("BTC", new Double("0.1234"), new Double("32.23")));
       List<HitbtcBalance> trading = new ArrayList<>();
-      trading.add(new HitbtcBalance("BTC", new BigDecimal("0.111"), BigDecimal.ZERO));
+      trading.add(new HitbtcBalance("BTC", new Double("0.111"), 0d));
 
       AccountInfo accountInfo =
           new AccountInfo(

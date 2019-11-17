@@ -1,7 +1,6 @@
 package org.knowm.xchange.btcmarkets.dto.marketdata;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.knowm.xchange.utils.jackson.UnixTimestampDeserializer;
@@ -16,10 +15,10 @@ public class BTCMarketsOrderBook {
   private Date timestamp;
 
   /** (price, amount) pairs in units of 10e-8 */
-  private List<BigDecimal[]> bids;
+  private List<Double[]> bids;
 
   /** (price, amount) pairs in units of 10e-8 */
-  private List<BigDecimal[]> asks;
+  private List<Double[]> asks;
 
   public String getCurrency() {
     return currency;
@@ -33,11 +32,11 @@ public class BTCMarketsOrderBook {
     return timestamp;
   }
 
-  public List<BigDecimal[]> getBids() {
+  public List<Double[]> getBids() {
     return bids;
   }
 
-  public List<BigDecimal[]> getAsks() {
+  public List<Double[]> getAsks() {
     return asks;
   }
 

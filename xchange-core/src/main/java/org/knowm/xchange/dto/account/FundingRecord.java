@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto.account;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +29,7 @@ public final class FundingRecord implements Serializable {
   private final Currency currency;
 
   /** Amount deposited/withdrawn in given transaction currency (always positive) */
-  private final BigDecimal amount;
+  private final Double amount;
 
   /** Internal transaction identifier, specific to the Exchange. */
   private final String internalId;
@@ -48,9 +47,9 @@ public final class FundingRecord implements Serializable {
    */
   private final Status status;
   /** Balance of the associated account after the transaction is performed */
-  private final BigDecimal balance;
+  private final Double balance;
   /** Transaction Fee Amount in given transaction currency (always positive) */
-  private final BigDecimal fee;
+  private final Double fee;
   /** Description of the transaction */
   private String description;
 
@@ -79,13 +78,13 @@ public final class FundingRecord implements Serializable {
       final String address,
       final Date date,
       final Currency currency,
-      final BigDecimal amount,
+      final Double amount,
       final String internalId,
       final String blockchainTransactionHash,
       final Type type,
       final String status,
-      final BigDecimal balance,
-      final BigDecimal fee,
+      final Double balance,
+      final Double fee,
       final String description) {
     this(
         address,
@@ -130,25 +129,25 @@ public final class FundingRecord implements Serializable {
       final String destinationTag,
       final Date date,
       final Currency currency,
-      final BigDecimal amount,
+      final Double amount,
       final String internalId,
       final String blockchainTransactionHash,
       final Type type,
       final Status status,
-      final BigDecimal balance,
-      final BigDecimal fee,
+      final Double balance,
+      final Double fee,
       final String description) {
     this.address = address;
     this.destinationTag = destinationTag;
     this.date = date;
     this.currency = currency;
-    this.amount = amount == null ? null : amount.abs();
+    this.amount = amount == null ? null : Math.abs(amount);
     this.internalId = internalId;
     this.blockchainTransactionHash = blockchainTransactionHash;
     this.type = type;
     this.status = status;
     this.balance = balance;
-    this.fee = fee == null ? null : fee.abs();
+    this.fee = fee == null ? null : Math.abs(fee);
     this.description = description;
   }
 
@@ -173,13 +172,13 @@ public final class FundingRecord implements Serializable {
       final String address,
       final Date date,
       final Currency currency,
-      final BigDecimal amount,
+      final Double amount,
       final String internalId,
       final String blockchainTransactionHash,
       final Type type,
       final Status status,
-      final BigDecimal balance,
-      final BigDecimal fee,
+      final Double balance,
+      final Double fee,
       final String description) {
     this(
         address,
@@ -216,7 +215,7 @@ public final class FundingRecord implements Serializable {
   }
 
   /** @return Amount deposited/withdrawn in given transaction currency (always positive) */
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -252,12 +251,12 @@ public final class FundingRecord implements Serializable {
   }
 
   /** @return Balance of the associated account after the transaction is performed */
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
   /** @return Transaction Fee Amount in given transaction currency (always positive) */
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
@@ -365,14 +364,14 @@ public final class FundingRecord implements Serializable {
     private String address;
     private Date date;
     private Currency currency;
-    private BigDecimal amount;
+    private Double amount;
     private String internalId;
     private String blockchainTransactionHash;
     private String description;
     private Type type;
     private Status status;
-    private BigDecimal balance;
-    private BigDecimal fee;
+    private Double balance;
+    private Double fee;
 
     public static Builder from(FundingRecord record) {
       return new Builder()
@@ -403,7 +402,7 @@ public final class FundingRecord implements Serializable {
       return this;
     }
 
-    public Builder setAmount(BigDecimal amount) {
+    public Builder setAmount(Double amount) {
       this.amount = amount;
       return this;
     }
@@ -433,12 +432,12 @@ public final class FundingRecord implements Serializable {
       return this;
     }
 
-    public Builder setBalance(BigDecimal balance) {
+    public Builder setBalance(Double balance) {
       this.balance = balance;
       return this;
     }
 
-    public Builder setFee(BigDecimal fee) {
+    public Builder setFee(Double fee) {
       this.fee = fee;
       return this;
     }

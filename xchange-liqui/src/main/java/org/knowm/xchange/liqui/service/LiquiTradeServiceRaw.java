@@ -28,8 +28,8 @@ public class LiquiTradeServiceRaw extends LiquiBaseService {
             "trade",
             new Liqui.Pairs(order.getCurrencyPair()),
             orderType.toString(),
-            order.getLimitPrice().toPlainString(),
-            order.getRemainingAmount().toPlainString());
+            order.getLimitPrice().toString(),
+            order.getRemainingAmount().toString());
 
     return checkResult(trade);
   }

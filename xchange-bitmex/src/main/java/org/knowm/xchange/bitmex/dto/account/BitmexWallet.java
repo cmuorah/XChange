@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,61 +46,61 @@ public final class BitmexWallet extends AbstractHttpResponseAware {
   private String currency;
 
   @JsonProperty("prevDeposited")
-  private BigDecimal prevDeposited;
+  private Double prevDeposited;
 
   @JsonProperty("prevWithdrawn")
-  private BigDecimal prevWithdrawn;
+  private Double prevWithdrawn;
 
   @JsonProperty("prevTransferIn")
-  private BigDecimal prevTransferIn;
+  private Double prevTransferIn;
 
   @JsonProperty("prevTransferOut")
-  private BigDecimal prevTransferOut;
+  private Double prevTransferOut;
 
   @JsonProperty("prevAmount")
-  private BigDecimal prevAmount;
+  private Double prevAmount;
 
   @JsonProperty("prevTimestamp")
   private String prevTimestamp;
 
   @JsonProperty("deltaDeposited")
-  private BigDecimal deltaDeposited;
+  private Double deltaDeposited;
 
   @JsonProperty("deltaWithdrawn")
-  private BigDecimal deltaWithdrawn;
+  private Double deltaWithdrawn;
 
   @JsonProperty("deltaTransferIn")
-  private BigDecimal deltaTransferIn;
+  private Double deltaTransferIn;
 
   @JsonProperty("deltaTransferOut")
-  private BigDecimal deltaTransferOut;
+  private Double deltaTransferOut;
 
   @JsonProperty("deltaAmount")
-  private BigDecimal deltaAmount;
+  private Double deltaAmount;
 
   @JsonProperty("deposited")
-  private BigDecimal deposited;
+  private Double deposited;
 
   @JsonProperty("withdrawn")
-  private BigDecimal withdrawn;
+  private Double withdrawn;
 
   @JsonProperty("transferIn")
-  private BigDecimal transferIn;
+  private Double transferIn;
 
   @JsonProperty("transferOut")
-  private BigDecimal transferOut;
+  private Double transferOut;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("pendingCredit")
-  private BigDecimal pendingCredit;
+  private Double pendingCredit;
 
   @JsonProperty("pendingDebit")
-  private BigDecimal pendingDebit;
+  private Double pendingDebit;
 
   @JsonProperty("confirmedDebit")
-  private BigDecimal confirmedDebit;
+  private Double confirmedDebit;
 
   @JsonProperty("timestamp")
   private String timestamp;
@@ -125,23 +124,23 @@ public final class BitmexWallet extends AbstractHttpResponseAware {
     return currency;
   }
 
-  public BigDecimal getPrevDeposited() {
+  public Double getPrevDeposited() {
     return prevDeposited;
   }
 
-  public BigDecimal getPrevWithdrawn() {
+  public Double getPrevWithdrawn() {
     return prevWithdrawn;
   }
 
-  public BigDecimal getPrevTransferIn() {
+  public Double getPrevTransferIn() {
     return prevTransferIn;
   }
 
-  public BigDecimal getPrevTransferOut() {
+  public Double getPrevTransferOut() {
     return prevTransferOut;
   }
 
-  public BigDecimal getPrevAmount() {
+  public Double getPrevAmount() {
     return prevAmount;
   }
 
@@ -149,55 +148,55 @@ public final class BitmexWallet extends AbstractHttpResponseAware {
     return prevTimestamp;
   }
 
-  public BigDecimal getDeltaDeposited() {
+  public Double getDeltaDeposited() {
     return deltaDeposited;
   }
 
-  public BigDecimal getDeltaWithdrawn() {
+  public Double getDeltaWithdrawn() {
     return deltaWithdrawn;
   }
 
-  public BigDecimal getDeltaTransferIn() {
+  public Double getDeltaTransferIn() {
     return deltaTransferIn;
   }
 
-  public BigDecimal getDeltaTransferOut() {
+  public Double getDeltaTransferOut() {
     return deltaTransferOut;
   }
 
-  public BigDecimal getDeltaAmount() {
+  public Double getDeltaAmount() {
     return deltaAmount;
   }
 
-  public BigDecimal getDeposited() {
+  public Double getDeposited() {
     return deposited;
   }
 
-  public BigDecimal getWithdrawn() {
+  public Double getWithdrawn() {
     return withdrawn;
   }
 
-  public BigDecimal getTransferIn() {
+  public Double getTransferIn() {
     return transferIn;
   }
 
-  public BigDecimal getTransferOut() {
+  public Double getTransferOut() {
     return transferOut;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getPendingCredit() {
+  public Double getPendingCredit() {
     return pendingCredit;
   }
 
-  public BigDecimal getPendingDebit() {
+  public Double getPendingDebit() {
     return pendingDebit;
   }
 
-  public BigDecimal getConfirmedDebit() {
+  public Double getConfirmedDebit() {
     return confirmedDebit;
   }
 

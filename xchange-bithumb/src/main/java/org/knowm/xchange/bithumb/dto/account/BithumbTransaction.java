@@ -2,7 +2,6 @@ package org.knowm.xchange.bithumb.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
@@ -13,18 +12,18 @@ public class BithumbTransaction {
   private final String search;
   private final long transferDate;
   private final String units;
-  private final BigDecimal price;
-  private final BigDecimal fee;
-  private final BigDecimal krwRemain;
+  private final Double price;
+  private final Double fee;
+  private final Double krwRemain;
   private final Map<String, Object> additionalProperties = new HashMap<>();
 
   public BithumbTransaction(
       @JsonProperty("search") String search,
       @JsonProperty("transfer_date") long transferDate,
       @JsonProperty("units") String units,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("krw_remain") BigDecimal krwRemain) {
+      @JsonProperty("price") Double price,
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("krw_remain") Double krwRemain) {
     this.search = search;
     this.transferDate = transferDate;
     this.units = units;
@@ -45,15 +44,15 @@ public class BithumbTransaction {
     return units;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public BigDecimal getKrwRemain() {
+  public Double getKrwRemain() {
     return krwRemain;
   }
 

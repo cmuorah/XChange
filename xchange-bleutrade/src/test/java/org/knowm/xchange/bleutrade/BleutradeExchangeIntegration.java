@@ -10,7 +10,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.assertj.core.api.Condition;
 import org.junit.Before;
@@ -102,9 +101,9 @@ public class BleutradeExchangeIntegration extends BleutradeServiceTestSupport {
         new BleutradeCurrenciesReturn(
             asList(
                 createBleutradeCurrency(
-                    "BTC", "Bitcoin", 2, new BigDecimal("0.00080000"), true, "BITCOIN"),
+                    "BTC", "Bitcoin", 2, new Double("0.00080000"), true, "BITCOIN"),
                 createBleutradeCurrency(
-                    "LTC", "Litecoin", 4, new BigDecimal("0.02000000"), true, "BITCOIN")));
+                    "LTC", "Litecoin", 4, new Double("0.02000000"), true, "BITCOIN")));
 
     BleutradeMarketsReturn bleutradeMarketsReturn =
         new BleutradeMarketsReturn(
@@ -114,7 +113,7 @@ public class BleutradeExchangeIntegration extends BleutradeServiceTestSupport {
                     "BTC",
                     "Dogecoin",
                     "Bitcoin",
-                    new BigDecimal("0.10000000"),
+                    new Double("0.10000000"),
                     "DOGE_BTC",
                     true),
                 createBleutradeMarket(
@@ -122,7 +121,7 @@ public class BleutradeExchangeIntegration extends BleutradeServiceTestSupport {
                     "BTC",
                     "Bleutrade Share",
                     "Bitcoin",
-                    new BigDecimal("0.00000001"),
+                    new Double("0.00000001"),
                     "BLEU_BTC",
                     true)));
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto.marketdata;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -17,13 +16,13 @@ public class Trade implements Serializable {
   protected final OrderType type;
 
   /** Amount that was traded */
-  protected final BigDecimal originalAmount;
+  protected final Double originalAmount;
 
   /** The currency pair */
   protected final CurrencyPair currencyPair;
 
   /** The price */
-  protected final BigDecimal price;
+  protected final Double price;
 
   /** The timestamp of the trade according to the exchange's server, null if not provided */
   protected final Date timestamp;
@@ -49,9 +48,9 @@ public class Trade implements Serializable {
    */
   public Trade(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
-      BigDecimal price,
+      Double price,
       Date timestamp,
       String id) {
 
@@ -68,7 +67,7 @@ public class Trade implements Serializable {
     return type;
   }
 
-  public BigDecimal getOriginalAmount() {
+  public Double getOriginalAmount() {
 
     return originalAmount;
   }
@@ -78,7 +77,7 @@ public class Trade implements Serializable {
     return currencyPair;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
@@ -155,9 +154,9 @@ public class Trade implements Serializable {
   public static class Builder {
 
     protected OrderType type;
-    protected BigDecimal originalAmount;
+    protected Double originalAmount;
     protected CurrencyPair currencyPair;
-    protected BigDecimal price;
+    protected Double price;
     protected Date timestamp;
     protected String id;
 
@@ -177,7 +176,7 @@ public class Trade implements Serializable {
       return this;
     }
 
-    public Builder originalAmount(BigDecimal originalAmount) {
+    public Builder originalAmount(Double originalAmount) {
 
       this.originalAmount = originalAmount;
       return this;
@@ -189,7 +188,7 @@ public class Trade implements Serializable {
       return this;
     }
 
-    public Builder price(BigDecimal price) {
+    public Builder price(Double price) {
 
       this.price = price;
       return this;

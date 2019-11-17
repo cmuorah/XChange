@@ -1,7 +1,6 @@
 package org.knowm.xchange.bity.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class BityTicker {
@@ -13,16 +12,16 @@ public class BityTicker {
   private String pair;
 
   @JsonProperty("rate")
-  private BigDecimal rate;
+  private Double rate;
 
   @JsonProperty("rate_we_buy")
-  private BigDecimal rateWeBuy;
+  private Double rateWeBuy;
 
   @JsonProperty("rate_we_buy_timestamp")
   private Date rateWeBuyTimestamp;
 
   @JsonProperty("rate_we_sell")
-  private BigDecimal rateWeSell;
+  private Double rateWeSell;
 
   @JsonProperty("rate_we_sell_timestamp")
   private Date rateWeSellTimestamp;
@@ -60,22 +59,22 @@ public class BityTicker {
   }
 
   @JsonProperty("rate")
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 
   @JsonProperty("rate")
-  public void setRate(BigDecimal rate) {
+  public void setRate(Double rate) {
     this.rate = rate;
   }
 
   @JsonProperty("rate_we_buy")
-  public BigDecimal getRateWeBuy() {
+  public Double getRateWeBuy() {
     return rateWeBuy;
   }
 
   @JsonProperty("rate_we_buy")
-  public void setRateWeBuy(BigDecimal rateWeBuy) {
+  public void setRateWeBuy(Double rateWeBuy) {
     this.rateWeBuy = rateWeBuy;
   }
 
@@ -90,12 +89,12 @@ public class BityTicker {
   }
 
   @JsonProperty("rate_we_sell")
-  public BigDecimal getRateWeSell() {
+  public Double getRateWeSell() {
     return rateWeSell;
   }
 
   @JsonProperty("rate_we_sell")
-  public void setRateWeSell(BigDecimal rateWeSell) {
+  public void setRateWeSell(Double rateWeSell) {
     this.rateWeSell = rateWeSell;
   }
 

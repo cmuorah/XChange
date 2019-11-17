@@ -1,7 +1,6 @@
 package org.knowm.xchange.binance.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import org.knowm.xchange.binance.dto.account.WithdrawList.BinanceWithdraw;
@@ -47,7 +46,7 @@ public final class WithdrawList extends WapiResponse<List<BinanceWithdraw>> {
           }
              */
 
-    public final BigDecimal amount;
+    public final Double amount;
     public final String address;
     public final String destinationTag;
     public final long successTime;
@@ -61,7 +60,7 @@ public final class WithdrawList extends WapiResponse<List<BinanceWithdraw>> {
     public final int status;
 
     public BinanceWithdraw(
-        @JsonProperty("amount") BigDecimal amount,
+        @JsonProperty("amount") Double amount,
         @JsonProperty("address") String address,
         @JsonProperty("destinationTag") String destinationTag,
         @JsonProperty("successTime") long successTime,

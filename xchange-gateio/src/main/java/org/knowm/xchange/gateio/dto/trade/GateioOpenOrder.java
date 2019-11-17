@@ -1,7 +1,6 @@
 package org.knowm.xchange.gateio.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class GateioOpenOrder {
 
@@ -9,11 +8,11 @@ public class GateioOpenOrder {
 
   private String total;
 
-  private BigDecimal amount;
+  private Double amount;
 
   private String id;
 
-  private BigDecimal rate;
+  private Double rate;
 
   private String status;
 
@@ -27,9 +26,9 @@ public class GateioOpenOrder {
   private GateioOpenOrder(
       @JsonProperty("timestamp") String timestamp,
       @JsonProperty("total") String total,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("id") String id,
-      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("rate") Double rate,
       @JsonProperty("status") String status,
       @JsonProperty("orderNumber") String orderNumber,
       @JsonProperty("type") String type,
@@ -53,7 +52,7 @@ public class GateioOpenOrder {
     return total;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -61,7 +60,7 @@ public class GateioOpenOrder {
     return id;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 

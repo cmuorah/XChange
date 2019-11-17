@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.dvchain;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -31,12 +30,7 @@ public class DVChainNewLimitOrderDemo {
     // Send out a limit order
     LimitOrder order =
         new LimitOrder(
-            Order.OrderType.BID,
-            new BigDecimal(1),
-            CurrencyPair.BTC_USD,
-            "",
-            null,
-            new BigDecimal("1000"));
+            Order.OrderType.BID, new Double(1), CurrencyPair.BTC_USD, "", null, new Double("1000"));
     System.out.println("Placing limit order 1@1000 for BTC / USD: ");
 
     String orderResponse = tradeService.placeLimitOrder(order);
@@ -48,7 +42,7 @@ public class DVChainNewLimitOrderDemo {
 
     // Send out a limit order
     DVChainNewLimitOrder order =
-        new DVChainNewLimitOrder("Buy", new BigDecimal("1000"), new BigDecimal("1"), "USD");
+        new DVChainNewLimitOrder("Buy", new Double("1000"), new Double("1"), "USD");
     System.out.println("Placing limit order 1@1000 for BTC / USD: ");
 
     DVChainTrade orderResponse = tradeServiceRaw.newDVChainLimitOrder(order);

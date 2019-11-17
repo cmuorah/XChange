@@ -1,7 +1,6 @@
 package org.knowm.xchange.kucoin.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
@@ -13,11 +12,11 @@ public class AccountLedgersResponse {
    * The total amount of assets (fees included) involved in assets changes such as transaction,
    * withdrawal and bonus distribution.
    */
-  private BigDecimal amount;
+  private Double amount;
   /** Fees generated in transaction, withdrawal, etc. */
-  private BigDecimal fee;
+  private Double fee;
   /** Remaining funds after the transaction. */
-  private BigDecimal balance;
+  private Double balance;
   /**
    * Business type leading to the changes in funds, such as exchange, withdrawal, deposit,
    * KUCOIN_BONUS, REFERRAL_BONUS etc.

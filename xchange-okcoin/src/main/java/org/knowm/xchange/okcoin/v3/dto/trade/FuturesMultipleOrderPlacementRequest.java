@@ -3,7 +3,6 @@ package org.knowm.xchange.okcoin.v3.dto.trade;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +17,7 @@ public class FuturesMultipleOrderPlacementRequest {
   private String instrumentId;
 
   /** required, Leverage , 1-100x */
-  private BigDecimal leverage;
+  private Double leverage;
 
   @JsonProperty("orders_data")
   private List<MultipleOrderPlacement> ordersData;
@@ -45,10 +44,10 @@ public class FuturesMultipleOrderPlacementRequest {
     private FuturesSwapType type;
 
     /** required, Price of each contract */
-    private BigDecimal price;
+    private Double price;
 
     /** required, The buying or selling quantityd */
-    private BigDecimal size;
+    private Double size;
     /**
      * optional, Order at best counter party price? (0:no 1:yes) the parameter is defaulted as 0. If
      * it is set as 1, the price parameter will be ignored，When posting orders at best bid price,

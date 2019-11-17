@@ -1,7 +1,6 @@
 package org.knowm.xchange.vaultoro;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.BaseExchange;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeSpecification;
@@ -13,7 +12,7 @@ import si.mazi.rescu.SynchronizedValueFactory;
 
 public class VaultoroExchange extends BaseExchange implements Exchange {
 
-  public static BigDecimal latest;
+  public static Double latest;
   public static long latestTimestamp;
   private SynchronizedValueFactory<Long> nonceFactory = new CurrentTime250NonceFactory();
 

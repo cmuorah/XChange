@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.junit.Test;
 import org.knowm.xchange.bitcoinde.dto.marketdata.BitcoindeOrderbookWrapper;
@@ -38,7 +37,7 @@ public class BitcoindeAdapterTest {
     // verify all fields are filled correctly
     assertThat(orderBook.getBids().get(0).getLimitPrice().toString()).isEqualTo("2406.11");
     assertThat(orderBook.getBids().get(0).getType()).isEqualTo(OrderType.BID);
-    assertThat(orderBook.getBids().get(0).getOriginalAmount()).isEqualTo(new BigDecimal("1.745"));
+    assertThat(orderBook.getBids().get(0).getOriginalAmount()).isEqualTo(new Double("1.745"));
     assertThat(orderBook.getBids().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_EUR);
   }
 
@@ -65,9 +64,8 @@ public class BitcoindeAdapterTest {
 
     // Verify that all fields are filled
     assertThat(trades.getTrades().get(0).getId()).isEqualTo("2844111");
-    assertThat(trades.getTrades().get(0).getPrice()).isEqualTo(new BigDecimal("2395"));
-    assertThat(trades.getTrades().get(0).getOriginalAmount())
-        .isEqualTo(new BigDecimal("0.08064516"));
+    assertThat(trades.getTrades().get(0).getPrice()).isEqualTo(new Double("2395"));
+    assertThat(trades.getTrades().get(0).getOriginalAmount()).isEqualTo(new Double("0.08064516"));
     assertThat(trades.getTrades().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_EUR);
 
     // Verify that the date is correct

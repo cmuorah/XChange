@@ -1,7 +1,6 @@
 package org.knowm.xchange.exx;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.*;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -36,10 +35,10 @@ public interface EXXAuthenticated extends EXX {
   @Path("order")
   EXXPlaceOrder placeLimitOrder(
       @QueryParam("accesskey") String accesskey,
-      @QueryParam("amount") BigDecimal amount,
+      @QueryParam("amount") Double amount,
       @QueryParam("currency") String currency,
       @QueryParam("nonce") Long nonce,
-      @QueryParam("price") BigDecimal price,
+      @QueryParam("price") Double price,
       @QueryParam("type") String type,
       @QueryParam("signature") String signature);
 

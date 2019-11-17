@@ -3,7 +3,6 @@ package org.knowm.xchange.gemini.v1.service;
 import static org.knowm.xchange.gemini.v1.GeminiUtils.convertToGeminiCcyName;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -56,7 +55,7 @@ public class GeminiAccountServiceRaw extends GeminiBaseService {
     }
   }
 
-  public String withdraw(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdraw(Currency currency, Double amount, String address) throws IOException {
 
     try {
       String ccy = convertToGeminiCcyName(currency.getCurrencyCode());

@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptofacilities.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -28,11 +27,11 @@ public class CryptoFacilitiesOrderBook extends CryptoFacilitiesResult {
     this.bidsAsks = bidsAsks;
   }
 
-  public List<List<BigDecimal>> getBids() {
+  public List<List<Double>> getBids() {
     return bidsAsks.getBids();
   }
 
-  public List<List<BigDecimal>> getAsks() {
+  public List<List<Double>> getAsks() {
     return bidsAsks.getAsks();
   }
 

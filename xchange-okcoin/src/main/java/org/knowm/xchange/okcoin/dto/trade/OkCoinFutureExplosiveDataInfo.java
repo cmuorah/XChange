@@ -1,20 +1,19 @@
 package org.knowm.xchange.okcoin.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class OkCoinFutureExplosiveDataInfo {
   private final Integer amount;
   private final String createDate;
-  private final BigDecimal loss;
-  private final BigDecimal price;
+  private final Double loss;
+  private final Double price;
   private final Integer type;
 
   public OkCoinFutureExplosiveDataInfo(
       @JsonProperty("amount") final Integer amount,
       @JsonProperty("create_date") final String createDate,
-      @JsonProperty("loss") final BigDecimal loss,
-      @JsonProperty("price") final BigDecimal price,
+      @JsonProperty("loss") final Double loss,
+      @JsonProperty("price") final Double price,
       @JsonProperty("type") final Integer type) {
     this.amount = amount;
     this.createDate = createDate;
@@ -31,11 +30,11 @@ public class OkCoinFutureExplosiveDataInfo {
     return createDate;
   }
 
-  public BigDecimal getLoss() {
+  public Double getLoss() {
     return loss;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

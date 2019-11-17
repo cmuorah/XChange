@@ -1,7 +1,6 @@
 package org.knowm.xchange.service.account;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -63,7 +62,7 @@ public interface AccountService extends BaseService {
    *     requested function or data, but it has not yet been implemented
    * @throws IOException - Indication that a networking error occurred while fetching JSON data
    */
-  default String withdrawFunds(Currency currency, BigDecimal amount, String address)
+  default String withdrawFunds(Currency currency, Double amount, String address)
       throws IOException {
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }
@@ -83,7 +82,7 @@ public interface AccountService extends BaseService {
    *     requested function or data, but it has not yet been implemented
    * @throws IOException - Indication that a networking error occurred while fetching JSON data
    */
-  default String withdrawFunds(Currency currency, BigDecimal amount, AddressWithTag address)
+  default String withdrawFunds(Currency currency, Double amount, AddressWithTag address)
       throws IOException {
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }

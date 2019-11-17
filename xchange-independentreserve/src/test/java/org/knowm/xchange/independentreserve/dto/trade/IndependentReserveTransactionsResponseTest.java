@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import org.junit.Test;
@@ -31,7 +30,7 @@ public class IndependentReserveTransactionsResponseTest {
 
     IndependentReserveTransaction transaction =
         response.getIndependentReserveTranasactions().get(0);
-    assertThat(transaction.getBalance()).isEqualByComparingTo(new BigDecimal("199954.27000000"));
+    assertThat(transaction.getBalance()).isEqualByComparingTo(new Double("199954.27000000"));
     assertThat(transaction.getBitcoinTransactionId()).isNull();
     assertThat(transaction.getBitcoinTransactionOutputIndex()).isNull();
     assertThat(transaction.getEthereumTransactionId()).isNull();
@@ -40,7 +39,7 @@ public class IndependentReserveTransactionsResponseTest {
         .isEqualTo(Date.from(ZonedDateTime.of(2014, 8, 3, 5, 33, 48, 23, UTC).toInstant()));
     assertThat(transaction.getCredit()).isNull();
     assertThat(transaction.getCurrencyCode()).isEqualTo("Usd");
-    assertThat(transaction.getDebit()).isEqualByComparingTo(new BigDecimal("6.98000000"));
+    assertThat(transaction.getDebit()).isEqualByComparingTo(new Double("6.98000000"));
     assertThat(transaction.getSettleTimestamp())
         .isEqualTo(Date.from(ZonedDateTime.of(2014, 8, 3, 5, 36, 24, 55, UTC).toInstant()));
     assertThat(transaction.getStatus()).isEqualTo("Confirmed");

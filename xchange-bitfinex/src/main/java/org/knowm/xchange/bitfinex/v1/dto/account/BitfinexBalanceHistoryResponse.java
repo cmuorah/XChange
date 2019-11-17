@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.v1.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexBalanceHistoryResponse {
 
@@ -9,23 +8,23 @@ public class BitfinexBalanceHistoryResponse {
   private String currency;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("balance")
-  private BigDecimal balance;
+  private Double balance;
 
   @JsonProperty("description")
   private String description;
 
   @JsonProperty("timestamp")
-  private BigDecimal timestamp;
+  private Double timestamp;
 
   public BitfinexBalanceHistoryResponse(
       @JsonProperty("currency") String currency,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("balance") BigDecimal balance,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("balance") Double balance,
       @JsonProperty("description") String description,
-      @JsonProperty("timestamp") BigDecimal timestamp) {
+      @JsonProperty("timestamp") Double timestamp) {
 
     this.currency = currency;
     this.balance = balance;
@@ -38,11 +37,11 @@ public class BitfinexBalanceHistoryResponse {
     return currency;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
@@ -50,7 +49,7 @@ public class BitfinexBalanceHistoryResponse {
     return description;
   }
 
-  public BigDecimal getTimestamp() {
+  public Double getTimestamp() {
     return timestamp;
   }
 

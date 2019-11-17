@@ -25,27 +25,26 @@ package org.knowm.xchange.coinmate.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Martin Stachon */
 public class CoinmateTickerData {
 
-  private final BigDecimal last;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal amount;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
+  private final Double last;
+  private final Double high;
+  private final Double low;
+  private final Double amount;
+  private final Double bid;
+  private final Double ask;
   private final long timestamp;
 
   @JsonCreator
   public CoinmateTickerData(
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask,
+      @JsonProperty("last") Double last,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("ask") Double ask,
       @JsonProperty("timestamp") long timestamp) {
 
     this.last = last;
@@ -57,27 +56,27 @@ public class CoinmateTickerData {
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 

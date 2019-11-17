@@ -1,16 +1,15 @@
 package org.knowm.xchange.quoine.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author timmolter */
 public final class QuoineOrderResponse {
 
   private final String id;
-  private final BigDecimal price;
+  private final Double price;
   private final String status;
-  private final BigDecimal quantity;
-  private final BigDecimal filledQuantity;
+  private final Double quantity;
+  private final Double filledQuantity;
   private final String productCode;
   private final String currencyPairCode;
   private final String createdAt;
@@ -38,10 +37,10 @@ public final class QuoineOrderResponse {
    */
   public QuoineOrderResponse(
       @JsonProperty("id") String id,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("status") String status,
-      @JsonProperty("quantity") BigDecimal quantity,
-      @JsonProperty("filled_quantity") BigDecimal filledQuantity,
+      @JsonProperty("quantity") Double quantity,
+      @JsonProperty("filled_quantity") Double filledQuantity,
       @JsonProperty("product_code") String productCode,
       @JsonProperty("currency_pair_code") String currencyPairCode,
       @JsonProperty("created_at") String createdAt,
@@ -69,7 +68,7 @@ public final class QuoineOrderResponse {
     return id;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -77,11 +76,11 @@ public final class QuoineOrderResponse {
     return status;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 
-  public BigDecimal getFilledQuantity() {
+  public Double getFilledQuantity() {
     return filledQuantity;
   }
 

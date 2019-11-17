@@ -1,7 +1,6 @@
 package org.knowm.xchange.bl3p.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
@@ -32,7 +31,7 @@ public class Bl3pTradeServiceIntegration {
   public void createMarketOrder() throws IOException {
     /**
      * MarketOrder order = new MarketOrder.Builder(Order.OrderType.BID, CurrencyPair.BTC_EUR)
-     * .originalAmount(new BigDecimal("0.0001")) .build();
+     * .originalAmount(new Double("0.0001")) .build();
      *
      * <p>String orderId = tradeService.placeMarketOrder(order);
      *
@@ -44,8 +43,8 @@ public class Bl3pTradeServiceIntegration {
   public void createLimitOrder() throws IOException {
     LimitOrder order =
         new LimitOrder.Builder(Order.OrderType.BID, CurrencyPair.BTC_EUR)
-            .originalAmount(new BigDecimal("0.001"))
-            .limitPrice(new BigDecimal("4000"))
+            .originalAmount(new Double("0.001"))
+            .limitPrice(new Double("4000"))
             .build();
 
     String orderId = tradeService.placeLimitOrder(order);

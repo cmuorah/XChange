@@ -3,7 +3,6 @@ package org.knowm.xchange.huobi;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.*;
@@ -90,11 +89,11 @@ public class HuobiPrivateApiIntegration {
     LimitOrder limitOrder =
         new LimitOrder(
             OrderType.BID,
-            new BigDecimal("0.001"),
+            new Double("0.001"),
             new CurrencyPair("BTC", "USDT"),
             String.valueOf(accounts[0].getId()),
             null,
-            new BigDecimal("10000"));
+            new Double("10000"));
     return tradeService.placeLimitOrder(limitOrder);
   }
 
@@ -106,7 +105,7 @@ public class HuobiPrivateApiIntegration {
     MarketOrder marketOrder =
         new MarketOrder(
             OrderType.ASK,
-            new BigDecimal("0.0002"),
+            new Double("0.0002"),
             new CurrencyPair("BTC", "USDT"),
             String.valueOf(accounts[0].getId()),
             null);

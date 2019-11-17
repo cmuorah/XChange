@@ -1,14 +1,13 @@
 package org.knowm.xchange.coinbasepro.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseProTrade {
 
   private final String timestamp;
   private final long tradeId;
-  private final BigDecimal price;
-  private final BigDecimal size;
+  private final Double price;
+  private final Double size;
   private final String side;
   private final String maker_order_id;
   private final String taker_order_id;
@@ -25,8 +24,8 @@ public class CoinbaseProTrade {
   public CoinbaseProTrade(
       @JsonProperty("time") String timestamp,
       @JsonProperty("trade_id") long tradeId,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("price") Double price,
+      @JsonProperty("size") Double size,
       @JsonProperty("side") String side,
       @JsonProperty("maker_order_id") String maker_order_id,
       @JsonProperty("taker_order_id") String taker_order_id) {
@@ -48,11 +47,11 @@ public class CoinbaseProTrade {
     return tradeId;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getSize() {
+  public Double getSize() {
     return size;
   }
 

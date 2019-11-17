@@ -1,7 +1,6 @@
 package org.knowm.xchange.btctrade.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.btctrade.dto.BTCTradeResult;
 import org.knowm.xchange.btctrade.dto.trade.BTCTradeOrder;
@@ -41,24 +40,24 @@ public class BTCTradeTradeServiceRaw extends BTCTradeBaseTradeService {
     }
   }
 
-  public BTCTradePlaceOrderResult buy(BigDecimal amount, BigDecimal price) throws IOException {
+  public BTCTradePlaceOrderResult buy(Double amount, Double price) throws IOException {
 
     synchronized (session) {
       return btcTrade.buy(
-          amount.toPlainString(),
-          price.toPlainString(),
+          amount.toString(),
+          price.toString(),
           exchange.getNonceFactory(),
           publicKey,
           getSignatureCreator());
     }
   }
 
-  public BTCTradePlaceOrderResult sell(BigDecimal amount, BigDecimal price) throws IOException {
+  public BTCTradePlaceOrderResult sell(Double amount, Double price) throws IOException {
 
     synchronized (session) {
       return btcTrade.sell(
-          amount.toPlainString(),
-          price.toPlainString(),
+          amount.toString(),
+          price.toString(),
           exchange.getNonceFactory(),
           publicKey,
           getSignatureCreator());

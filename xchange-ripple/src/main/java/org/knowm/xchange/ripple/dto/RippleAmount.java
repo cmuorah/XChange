@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import java.math.BigDecimal;
 
 @JsonPropertyOrder({"currency", "counterparty", "value"})
 public final class RippleAmount {
@@ -16,7 +15,7 @@ public final class RippleAmount {
   private String counterparty;
 
   @JsonProperty("value")
-  private BigDecimal value;
+  private Double value;
 
   public String getCurrency() {
     return currency;
@@ -42,11 +41,11 @@ public final class RippleAmount {
   }
 
   @JsonSerialize(using = ToStringSerializer.class)
-  public BigDecimal getValue() {
+  public Double getValue() {
     return value;
   }
 
-  public void setValue(final BigDecimal value) {
+  public void setValue(final Double value) {
     this.value = value;
   }
 

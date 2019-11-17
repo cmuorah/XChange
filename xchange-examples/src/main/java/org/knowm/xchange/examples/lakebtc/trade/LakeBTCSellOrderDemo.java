@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.lakebtc.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -31,11 +30,11 @@ public class LakeBTCSellOrderDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (Order.OrderType.ASK),
-            new BigDecimal(".01"),
+            new Double(".01"),
             CurrencyPair.BTC_LTC,
             "",
             null,
-            new BigDecimal("51.25"));
+            new Double("51.25"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 
@@ -52,11 +51,11 @@ public class LakeBTCSellOrderDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             (Order.OrderType.ASK),
-            new BigDecimal(".01"),
+            new Double(".01"),
             CurrencyPair.BTC_LTC,
             "",
             null,
-            new BigDecimal("51.25"));
+            new Double("51.25"));
     LakeBTCOrderResponse limitOrderReturnValue = tradeService.placeLakeBTCLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 

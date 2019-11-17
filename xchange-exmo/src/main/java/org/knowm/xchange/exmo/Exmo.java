@@ -1,7 +1,6 @@
 package org.knowm.xchange.exmo;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.Consumes;
@@ -51,8 +50,8 @@ public interface Exmo {
       @HeaderParam("Key") String publicKey,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonceFactory,
       @FormParam("pair") String pair,
-      @FormParam("quantity") BigDecimal quantity,
-      @FormParam("price") BigDecimal price,
+      @FormParam("quantity") Double quantity,
+      @FormParam("price") Double price,
       @FormParam("type") String type);
 
   @POST
@@ -116,7 +115,7 @@ public interface Exmo {
       @HeaderParam("Sign") ExmoDigest signatureCreator,
       @HeaderParam("Key") String publicKey,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonceFactory,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("currency") String currency,
       @FormParam("address") String address,
       @FormParam("invoice") String invoice);

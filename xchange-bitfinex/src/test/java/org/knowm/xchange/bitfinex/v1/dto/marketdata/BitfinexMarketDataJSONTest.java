@@ -6,7 +6,6 @@ import static org.junit.Assert.assertEquals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.bitfinex.service.BitfinexAdapters;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -39,10 +38,8 @@ public class BitfinexMarketDataJSONTest {
     BitfinexAdapters.OrdersContainer bidsOrdersContainer =
         BitfinexAdapters.adaptOrders(depthRaw.getBids(), CurrencyPair.BTC_EUR, OrderType.BID);
 
-    assertEquals(
-        new BigDecimal("851.87"), asksOrdersContainer.getLimitOrders().get(0).getLimitPrice());
-    assertEquals(
-        new BigDecimal("849.59"), bidsOrdersContainer.getLimitOrders().get(0).getLimitPrice());
+    assertEquals(new Double("851.87"), asksOrdersContainer.getLimitOrders().get(0).getLimitPrice());
+    assertEquals(new Double("849.59"), bidsOrdersContainer.getLimitOrders().get(0).getLimitPrice());
 
     assertThat(asksOrdersContainer.getTimestamp()).isEqualTo(1387060950000L);
     assertThat(bidsOrdersContainer.getTimestamp()).isEqualTo(1387060435000L);

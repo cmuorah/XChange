@@ -3,7 +3,6 @@ package org.knowm.xchange.bitstamp.dto.trade;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,12 +17,12 @@ public final class BitstampUserTransaction {
   private final long id;
   private final long order_id;
   private final TransactionType type;
-  private final BigDecimal fee;
-  private final Map<String, BigDecimal> amounts = new HashMap<>();
+  private final Double fee;
+  private final Map<String, Double> amounts = new HashMap<>();
   // possible pairs at the moment: btcusd, btceur, eurusd, xrpusd, xrpeur, xrpbtc
   private String base; // btc, eur, xrp
   private String counter; // usd, eur, btc
-  private BigDecimal price;
+  private Double price;
 
   /**
    * Constructor
@@ -39,7 +38,7 @@ public final class BitstampUserTransaction {
       @JsonProperty("id") long id,
       @JsonProperty("order_id") long order_id,
       @JsonProperty("type") TransactionType type,
-      @JsonProperty("fee") BigDecimal fee) {
+      @JsonProperty("fee") Double fee) {
 
     this.datetime = BitstampUtils.parseDate(datetime);
     this.id = id;
@@ -60,11 +59,11 @@ public final class BitstampUserTransaction {
       if (ccyCodeList.contains(name1) && ccyCodeList.contains(name2)) {
         base = name1;
         counter = name2;
-        price = new BigDecimal(value.toString());
+        price = new Double(value.toString());
       }
     } else if (nameArr.length == 1) {
       if (ccyCodeList.contains(name1)) {
-        amounts.put(name1, new BigDecimal(value.toString()));
+        amounts.put(name1, new Double(value.toString()));
       }
     }
   }
@@ -97,15 +96,15 @@ public final class BitstampUserTransaction {
     return type == TransactionType.trade;
   }
 
-  public BigDecimal getCounterAmount() {
+  public Double getCounterAmount() {
     return amounts.get(counter);
   }
 
-  public BigDecimal getBaseAmount() {
+  public Double getBaseAmount() {
     return amounts.get(base);
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -117,7 +116,7 @@ public final class BitstampUserTransaction {
     return base;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
@@ -125,7 +124,7 @@ public final class BitstampUserTransaction {
     return counter;
   }
 
-  public Map<String, BigDecimal> getAmounts() {
+  public Map<String, Double> getAmounts() {
     return amounts;
   }
 

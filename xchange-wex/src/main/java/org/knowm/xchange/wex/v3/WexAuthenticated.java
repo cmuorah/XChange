@@ -1,7 +1,6 @@
 package org.knowm.xchange.wex.v3;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.HeaderParam;
@@ -73,8 +72,8 @@ public interface WexAuthenticated extends Wex {
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("pair") String pair,
       @FormParam("type") WexOrder.Type type,
-      @FormParam("rate") BigDecimal rate,
-      @FormParam("amount") BigDecimal amount)
+      @FormParam("rate") Double rate,
+      @FormParam("amount") Double amount)
       throws IOException;
 
   /** @param orderId order ID to cancel */
@@ -182,7 +181,7 @@ public interface WexAuthenticated extends Wex {
       @HeaderParam("Sign") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("coinName") String coinName,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address);
 
   enum SortOrder {

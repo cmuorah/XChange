@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -43,11 +42,11 @@ public class GateioMarketInfoWrapper {
 
     private final CurrencyPair currencyPair;
     private final int decimalPlaces;
-    private final BigDecimal minAmount;
-    private final BigDecimal fee;
+    private final Double minAmount;
+    private final Double fee;
 
     public GateioMarketInfo(
-        CurrencyPair currencyPair, int decimalPlaces, BigDecimal minAmount, BigDecimal fee) {
+        CurrencyPair currencyPair, int decimalPlaces, Double minAmount, Double fee) {
 
       this.currencyPair = currencyPair;
       this.decimalPlaces = decimalPlaces;
@@ -65,12 +64,12 @@ public class GateioMarketInfoWrapper {
       return decimalPlaces;
     }
 
-    public BigDecimal getMinAmount() {
+    public Double getMinAmount() {
 
       return minAmount;
     }
 
-    public BigDecimal getFee() {
+    public Double getFee() {
 
       return fee;
     }
@@ -110,8 +109,8 @@ public class GateioMarketInfoWrapper {
             CurrencyPair currencyPair = GateioAdapters.adaptCurrencyPair(entry.getKey());
             JsonNode marketInfoData = entry.getValue();
             int decimalPlaces = marketInfoData.path("decimal_places").asInt();
-            BigDecimal minAmount = new BigDecimal(marketInfoData.path("min_amount").asText());
-            BigDecimal fee = new BigDecimal(marketInfoData.path("fee").asText());
+            Double minAmount = new Double(marketInfoData.path("min_amount").asText());
+            Double fee = new Double(marketInfoData.path("fee").asText());
             GateioMarketInfo marketInfoObject =
                 new GateioMarketInfo(currencyPair, decimalPlaces, minAmount, fee);
 

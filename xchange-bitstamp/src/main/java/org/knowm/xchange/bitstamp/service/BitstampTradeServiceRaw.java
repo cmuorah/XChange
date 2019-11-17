@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitstamp.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitstamp.BitstampAuthenticated;
 import org.knowm.xchange.bitstamp.BitstampAuthenticatedV2;
@@ -55,7 +54,7 @@ public class BitstampTradeServiceRaw extends BitstampBaseService {
   }
 
   public BitstampOrder placeBitstampMarketOrder(
-      CurrencyPair pair, BitstampAuthenticatedV2.Side side, BigDecimal originalAmount)
+      CurrencyPair pair, BitstampAuthenticatedV2.Side side, Double originalAmount)
       throws IOException {
 
     try {
@@ -67,10 +66,7 @@ public class BitstampTradeServiceRaw extends BitstampBaseService {
   }
 
   public BitstampOrder placeBitstampOrder(
-      CurrencyPair pair,
-      BitstampAuthenticatedV2.Side side,
-      BigDecimal originalAmount,
-      BigDecimal price)
+      CurrencyPair pair, BitstampAuthenticatedV2.Side side, Double originalAmount, Double price)
       throws IOException {
 
     try {

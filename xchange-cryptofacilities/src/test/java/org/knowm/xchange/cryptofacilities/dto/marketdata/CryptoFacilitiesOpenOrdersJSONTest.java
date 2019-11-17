@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 import org.junit.Test;
@@ -41,9 +40,9 @@ public class CryptoFacilitiesOpenOrdersJSONTest {
     assertThat(ord.getType()).isEqualTo("lmt");
     assertThat(ord.getSymbol()).isEqualTo("f-xbt:usd-sep16");
     assertThat(ord.getDirection()).isEqualTo("sell");
-    assertThat(ord.getUnfilled()).isEqualTo(new BigDecimal("2"));
-    assertThat(ord.getFilled()).isEqualTo(new BigDecimal("3"));
-    assertThat(ord.getQuantity()).isEqualTo(new BigDecimal("5"));
-    assertThat(ord.getLimitPrice()).isEqualTo(new BigDecimal("430.11"));
+    assertThat(ord.getUnfilled()).isEqualTo(new Double("2"));
+    assertThat(ord.getFilled()).isEqualTo(new Double("3"));
+    assertThat(ord.getQuantity()).isEqualTo(new Double("5"));
+    assertThat(ord.getLimitPrice()).isEqualTo(new Double("430.11"));
   }
 }

@@ -1,18 +1,17 @@
 package org.knowm.xchange.coinone.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinoneOrderInfo {
 
-  private final BigDecimal price;
+  private final Double price;
   private final Long timestamp;
-  private final BigDecimal qty;
-  private final BigDecimal remainQty;
+  private final Double qty;
+  private final Double remainQty;
   private final String type;
   private final String currency;
-  private final BigDecimal feeRate;
-  private final BigDecimal fee;
+  private final Double feeRate;
+  private final Double fee;
   private final String orderId;
 
   /**
@@ -37,18 +36,18 @@ public class CoinoneOrderInfo {
       @JsonProperty("fee") String fee,
       @JsonProperty("orderId") String orderId) {
 
-    this.price = new BigDecimal(price);
+    this.price = new Double(price);
     this.timestamp = Long.valueOf(timestamp);
-    this.qty = new BigDecimal(qty);
-    this.remainQty = new BigDecimal(remainQty);
+    this.qty = new Double(qty);
+    this.remainQty = new Double(remainQty);
     this.type = type;
     this.currency = currency;
-    this.feeRate = new BigDecimal(feeRate);
-    this.fee = new BigDecimal(fee);
+    this.feeRate = new Double(feeRate);
+    this.fee = new Double(fee);
     this.orderId = orderId;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -56,11 +55,11 @@ public class CoinoneOrderInfo {
     return timestamp;
   }
 
-  public BigDecimal getQty() {
+  public Double getQty() {
     return qty;
   }
 
-  public BigDecimal getRemainQty() {
+  public Double getRemainQty() {
     return remainQty;
   }
 
@@ -72,11 +71,11 @@ public class CoinoneOrderInfo {
     return currency;
   }
 
-  public BigDecimal getFeeRate() {
+  public Double getFeeRate() {
     return feeRate;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

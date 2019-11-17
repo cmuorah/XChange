@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.KeyDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.knowm.xchange.cexio.dto.CexIOApiResponse;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -31,35 +30,35 @@ public class CexIOFeeInfo extends CexIOApiResponse<Map<CurrencyPair, CexIOFeeInf
   }
 
   public static class FeeDetails {
-    private final BigDecimal sell;
-    private final BigDecimal sellMaker;
-    private final BigDecimal buy;
-    private final BigDecimal buyMaker;
+    private final Double sell;
+    private final Double sellMaker;
+    private final Double buy;
+    private final Double buyMaker;
 
     public FeeDetails(
-        @JsonProperty("sell") BigDecimal sell,
-        @JsonProperty("sellMaker") BigDecimal sellMaker,
-        @JsonProperty("buy") BigDecimal buy,
-        @JsonProperty("buyMaker") BigDecimal buyMaker) {
+        @JsonProperty("sell") Double sell,
+        @JsonProperty("sellMaker") Double sellMaker,
+        @JsonProperty("buy") Double buy,
+        @JsonProperty("buyMaker") Double buyMaker) {
       this.sell = sell;
       this.sellMaker = sellMaker;
       this.buy = buy;
       this.buyMaker = buyMaker;
     }
 
-    public BigDecimal getSell() {
+    public Double getSell() {
       return sell;
     }
 
-    public BigDecimal getSellMaker() {
+    public Double getSellMaker() {
       return sellMaker;
     }
 
-    public BigDecimal getBuy() {
+    public Double getBuy() {
       return buy;
     }
 
-    public BigDecimal getBuyMaker() {
+    public Double getBuyMaker() {
       return buyMaker;
     }
   }

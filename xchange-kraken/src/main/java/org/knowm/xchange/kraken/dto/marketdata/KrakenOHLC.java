@@ -1,26 +1,24 @@
 package org.knowm.xchange.kraken.dto.marketdata;
 
-import java.math.BigDecimal;
-
 public class KrakenOHLC {
 
   private final long time;
-  private final BigDecimal open;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal close;
-  private final BigDecimal vwap;
-  private final BigDecimal volume;
+  private final Double open;
+  private final Double high;
+  private final Double low;
+  private final Double close;
+  private final Double vwap;
+  private final Double volume;
   private final long count;
 
   public KrakenOHLC(
       long time,
-      BigDecimal open,
-      BigDecimal high,
-      BigDecimal low,
-      BigDecimal close,
-      BigDecimal vwap,
-      BigDecimal volume,
+      Double open,
+      Double high,
+      Double low,
+      Double close,
+      Double vwap,
+      Double volume,
       long count) {
     this.time = time;
     this.open = open;
@@ -36,27 +34,27 @@ public class KrakenOHLC {
     return time;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
     return close;
   }
 
-  public BigDecimal getVwap() {
+  public Double getVwap() {
     return vwap;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.poloniex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class PoloniexWithdrawal {
@@ -9,8 +8,8 @@ public class PoloniexWithdrawal {
   private final long withdrawalNumber;
   private final String currency;
   private final String address;
-  private final BigDecimal amount;
-  private final BigDecimal fee;
+  private final Double amount;
+  private final Double fee;
   private final Date timestamp;
   private final String status;
   private final String ipAddress;
@@ -20,8 +19,8 @@ public class PoloniexWithdrawal {
       @JsonProperty("withdrawalNumber") long withdrawalNumber,
       @JsonProperty("currency") String currency,
       @JsonProperty("address") String address,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("timestamp") long timestamp,
       @JsonProperty("status") String status,
       @JsonProperty("ipAddress") String ipAddress,
@@ -50,11 +49,11 @@ public class PoloniexWithdrawal {
     return address;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

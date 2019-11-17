@@ -1,7 +1,6 @@
 package org.knowm.xchange.poloniex;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Nullable;
@@ -228,7 +227,7 @@ public interface PoloniexAuthenticated {
       @HeaderParam("Sign") ParamsDigest signature,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address,
       @FormParam("paymentId") @Nullable String paymentId)
       throws PoloniexException, IOException;
@@ -240,7 +239,7 @@ public interface PoloniexAuthenticated {
       @HeaderParam("Sign") ParamsDigest signature,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
       @FormParam("currency") String currency,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("fromAccount") String fromAccount,
       @FormParam("toAccount") String toAccount)
       throws PoloniexException, IOException;
@@ -264,7 +263,7 @@ public interface PoloniexAuthenticated {
 
   @POST
   @FormParam("command")
-  Map<String, Map<String, BigDecimal>> returnTradableBalances(
+  Map<String, Map<String, Double>> returnTradableBalances(
       @HeaderParam("Key") String apiKey,
       @HeaderParam("Sign") ParamsDigest signature,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce)

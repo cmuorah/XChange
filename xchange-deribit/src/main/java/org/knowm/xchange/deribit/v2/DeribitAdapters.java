@@ -2,7 +2,6 @@ package org.knowm.xchange.deribit.v2;
 
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
@@ -64,7 +63,7 @@ public class DeribitAdapters {
 
   /** convert orders map (price -> amount) to a list of limit orders */
   private static List<LimitOrder> adaptOrdersList(
-      TreeMap<BigDecimal, BigDecimal> map, Order.OrderType type, CurrencyPair pair) {
+      TreeMap<Double, Double> map, Order.OrderType type, CurrencyPair pair) {
     return map.entrySet().stream()
         .map(e -> new LimitOrder(type, e.getValue(), pair, null, null, e.getKey()))
         .collect(Collectors.toList());

@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.v3.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import lombok.Data;
@@ -18,11 +17,11 @@ public class OkexOpenOrder {
 
   @JsonProperty("filled_notional")
   /** amount filled */
-  private BigDecimal filledNotional;
+  private Double filledNotional;
 
   @JsonProperty("filled_size")
   /** quantity filled */
-  private BigDecimal filledSize;
+  private Double filledSize;
 
   private String funds;
 
@@ -31,7 +30,7 @@ public class OkexOpenOrder {
   private String instrumentId;
 
   /** the total buying amount. This value will be returned for market orders */
-  private BigDecimal notional;
+  private Double notional;
 
   @JsonProperty("order_id")
   /** order ID */
@@ -42,11 +41,11 @@ public class OkexOpenOrder {
   private OrderPlacementType orderType;
 
   /** price */
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("price_avg")
   /** Average price */
-  private BigDecimal priceAvg;
+  private Double priceAvg;
 
   @JsonProperty("product_id")
   private String productId;
@@ -54,7 +53,7 @@ public class OkexOpenOrder {
   /** buy or sell */
   private Side side;
   /** quantity */
-  private BigDecimal size;
+  private Double size;
 
   /**
    * Order Status("-2":Failed,"-1":Cancelled,"0":Open ,"1":Partially Filled, "2":Fully

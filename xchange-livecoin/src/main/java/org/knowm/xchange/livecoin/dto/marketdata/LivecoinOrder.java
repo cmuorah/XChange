@@ -1,21 +1,19 @@
 package org.knowm.xchange.livecoin.dto.marketdata;
 
-import java.math.BigDecimal;
-
 public class LivecoinOrder {
-  private final BigDecimal rate;
-  private final BigDecimal quantity;
+  private final Double rate;
+  private final Double quantity;
 
-  public LivecoinOrder(BigDecimal rate, BigDecimal quantity) {
+  public LivecoinOrder(Double rate, Double quantity) {
     this.rate = rate;
     this.quantity = quantity;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
     return quantity;
   }
 }

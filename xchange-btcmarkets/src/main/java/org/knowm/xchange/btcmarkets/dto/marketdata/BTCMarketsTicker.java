@@ -2,7 +2,6 @@ package org.knowm.xchange.btcmarkets.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import si.mazi.rescu.serialization.jackson.serializers.TimestampDeserializer;
 
@@ -10,15 +9,15 @@ public class BTCMarketsTicker {
 
   // @JsonSerialize(using = BtcToSatoshi.class)
   // @JsonDeserialize(using = SatoshiToBtc.class)
-  private final BigDecimal bestBid;
+  private final Double bestBid;
 
   // @JsonSerialize(using = BtcToSatoshi.class)
   // @JsonDeserialize(using = SatoshiToBtc.class)
-  private final BigDecimal bestAsk;
+  private final Double bestAsk;
 
   // @JsonSerialize(using = BtcToSatoshi.class)
   // @JsonDeserialize(using = SatoshiToBtc.class)
-  private final BigDecimal lastPrice;
+  private final Double lastPrice;
 
   private final String currency;
 
@@ -27,9 +26,9 @@ public class BTCMarketsTicker {
   private final Date timestamp;
 
   public BTCMarketsTicker(
-      @JsonProperty("bestBid") BigDecimal bestBid,
-      @JsonProperty("bestAsk") BigDecimal bestAsk,
-      @JsonProperty("lastPrice") BigDecimal lastPrice,
+      @JsonProperty("bestBid") Double bestBid,
+      @JsonProperty("bestAsk") Double bestAsk,
+      @JsonProperty("lastPrice") Double lastPrice,
       @JsonProperty("currency") String currency,
       @JsonProperty("instrument") String instrument,
       @JsonProperty("timestamp") @JsonDeserialize(using = TimestampDeserializer.class)
@@ -42,15 +41,15 @@ public class BTCMarketsTicker {
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getBestBid() {
+  public Double getBestBid() {
     return bestBid;
   }
 
-  public BigDecimal getBestAsk() {
+  public Double getBestAsk() {
     return bestAsk;
   }
 
-  public BigDecimal getLastPrice() {
+  public Double getLastPrice() {
     return lastPrice;
   }
 

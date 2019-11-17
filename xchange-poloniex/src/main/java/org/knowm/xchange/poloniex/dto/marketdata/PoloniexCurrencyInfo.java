@@ -1,13 +1,12 @@
 package org.knowm.xchange.poloniex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class PoloniexCurrencyInfo {
 
   private final int id;
   private final String name;
-  private final BigDecimal txFee;
+  private final Double txFee;
   private final int minConf;
   private final String depositAddress;
   private final boolean disabled;
@@ -17,7 +16,7 @@ public class PoloniexCurrencyInfo {
   public PoloniexCurrencyInfo(
       @JsonProperty("id") int id,
       @JsonProperty("name") String name,
-      @JsonProperty("txFee") BigDecimal txFee,
+      @JsonProperty("txFee") Double txFee,
       @JsonProperty("minConf") int minConf,
       @JsonProperty("depositAddress") String depositAddress,
       @JsonProperty("disabled") boolean disabled,
@@ -49,7 +48,7 @@ public class PoloniexCurrencyInfo {
     return id;
   }
 
-  public BigDecimal getTxFee() {
+  public Double getTxFee() {
 
     return txFee;
   }

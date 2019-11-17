@@ -1,17 +1,14 @@
 package org.knowm.xchange.fcoin.dto.trade;
 
-import java.math.BigDecimal;
-
 public class FCoinOrder {
 
   private String symbol;
   private FCoinSide side;
   private FCoinType type;
-  private BigDecimal price;
-  private BigDecimal amount;
+  private Double price;
+  private Double amount;
 
-  public FCoinOrder(
-      String symbol, FCoinSide side, FCoinType type, BigDecimal price, BigDecimal amount) {
+  public FCoinOrder(String symbol, FCoinSide side, FCoinType type, Double price, Double amount) {
     this.symbol = symbol;
     this.side = side;
     this.type = type;
@@ -31,11 +28,11 @@ public class FCoinOrder {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 }

@@ -1,6 +1,5 @@
 package org.knowm.xchange.hitbtc.v2.dto;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.trade.LimitOrder;
@@ -10,11 +9,11 @@ public class HitbtcLimitOrder extends LimitOrder {
 
   public HitbtcLimitOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal limitPrice,
+      Double limitPrice,
       String clientOrderId) {
     super(type, originalAmount, currencyPair, id, timestamp, limitPrice);
     this.clientOrderId = clientOrderId;
@@ -22,12 +21,12 @@ public class HitbtcLimitOrder extends LimitOrder {
 
   public HitbtcLimitOrder(
       OrderType type,
-      BigDecimal originalAmount,
-      BigDecimal cumulativeAmount,
+      Double originalAmount,
+      Double cumulativeAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal limitPrice,
+      Double limitPrice,
       String clientOrderId) {
     super(type, originalAmount, cumulativeAmount, currencyPair, id, timestamp, limitPrice);
     this.clientOrderId = clientOrderId;
@@ -35,14 +34,14 @@ public class HitbtcLimitOrder extends LimitOrder {
 
   public HitbtcLimitOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal limitPrice,
-      BigDecimal averagePrice,
-      BigDecimal cumulativeAmount,
-      BigDecimal fee,
+      Double limitPrice,
+      Double averagePrice,
+      Double cumulativeAmount,
+      Double fee,
       OrderStatus status,
       String clientOrderId) {
     super(

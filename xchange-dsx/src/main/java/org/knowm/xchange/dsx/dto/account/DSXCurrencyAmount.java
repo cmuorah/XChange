@@ -1,13 +1,11 @@
 package org.knowm.xchange.dsx.dto.account;
 
-import java.math.BigDecimal;
-
 /** @author Mikhail Wall */
 public class DSXCurrencyAmount {
-  private BigDecimal total;
-  private BigDecimal available;
+  private Double total;
+  private Double available;
 
-  public DSXCurrencyAmount(BigDecimal total, BigDecimal available) {
+  public DSXCurrencyAmount(Double total, Double available) {
     this.total = total;
     this.available = available;
   }
@@ -15,11 +13,11 @@ public class DSXCurrencyAmount {
   // constructor for correct json parsing
   public DSXCurrencyAmount() {}
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 

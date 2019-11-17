@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitmex;
 
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -28,7 +27,7 @@ import org.knowm.xchange.dto.trade.UserTrade;
 
 public class BitmexAdapters {
 
-  private static final BigDecimal SATOSHIS_BY_BTC = BigDecimal.valueOf(100_000_000L);
+  private static final Double SATOSHIS_BY_BTC = 100_000_000d;
 
   public static OrderBook adaptOrderBook(BitmexDepth bitmexDepth, CurrencyPair currencyPair) {
 
@@ -79,8 +78,7 @@ public class BitmexAdapters {
   public static Trades adaptTrades(List<BitmexPublicTrade> trades, CurrencyPair currencyPair) {
 
     List<Trade> tradeList = new ArrayList<>(trades.size());
-    for (int i = 0; i < trades.size(); i++) {
-      BitmexPublicTrade trade = trades.get(i);
+    for (BitmexPublicTrade trade : trades) {
       tradeList.add(adaptTrade(trade, currencyPair));
     }
     long lastTid = trades.size() > 0 ? (trades.get(0).getTime().getTime()) : 0;
@@ -91,7 +89,7 @@ public class BitmexAdapters {
   public static LimitOrder adaptOrder(
       BitmexPublicOrder order, OrderType orderType, CurrencyPair currencyPair) {
 
-    BigDecimal volume = order.getVolume();
+    Double volume = order.getVolume();
 
     return new LimitOrder(orderType, volume, currencyPair, "", null, order.getPrice());
   }
@@ -123,7 +121,7 @@ public class BitmexAdapters {
     builder.last(bitmexTicker.getLastPrice());
     builder.high(bitmexTicker.getHighPrice());
     builder.low(bitmexTicker.getLowPrice());
-    builder.vwap(new BigDecimal(bitmexTicker.getVwap().longValue()));
+    builder.vwap(bitmexTicker.getVwap().doubleValue());
     builder.volume(bitmexTicker.getVolume24h());
     builder.currencyPair(currencyPair);
     return builder.build();
@@ -132,7 +130,7 @@ public class BitmexAdapters {
   public static Trade adaptTrade(BitmexPublicTrade bitmexPublicTrade, CurrencyPair currencyPair) {
 
     OrderType type = adaptOrderType(bitmexPublicTrade.getSide());
-    BigDecimal originalAmount = bitmexPublicTrade.getSize();
+    Double originalAmount = bitmexPublicTrade.getSize();
     Date timestamp = bitmexPublicTrade.getTime();
     // Date timestamp = adaptTimestamp(bitmexPublicTrade.getTime());
     // new Date((long) (bitmexPublicTrade.getTime()));
@@ -146,10 +144,10 @@ public class BitmexAdapters {
         String.valueOf(timestamp.getTime()));
   }
 
-  public static Wallet adaptWallet(Map<String, BigDecimal> bitmexWallet) {
+  public static Wallet adaptWallet(Map<String, Double> bitmexWallet) {
 
     List<Balance> balances = new ArrayList<>(bitmexWallet.size());
-    for (Entry<String, BigDecimal> balancePair : bitmexWallet.entrySet()) {
+    for (Entry<String, Double> balancePair : bitmexWallet.entrySet()) {
       Currency currency = new Currency(balancePair.getKey());
       Balance balance = new Balance(currency, balancePair.getValue());
       balances.add(balance);
@@ -180,15 +178,15 @@ public class BitmexAdapters {
     BitmexOrderDescription orderDescription = bitmexOrder.getOrderDescription();
     OrderType type = adaptOrderType(orderDescription.getType());
 
-    BigDecimal originalAmount = bitmexOrder.getVolume();
-    BigDecimal filledAmount = bitmexOrder.getVolumeExecuted();
+    Double originalAmount = bitmexOrder.getVolume();
+    Double filledAmount = bitmexOrder.getVolumeExecuted();
     CurrencyPair pair = BitmexAdapters.adaptSymbolToCurrencyPair(orderDescription.getAssetPair());
     Date timestamp = new Date((long) (bitmexOrder.getOpenTimestamp() * 1000L));
 
     OrderStatus status = adaptOrderStatus(bitmexOrder.getStatus());
 
     if (status == OrderStatus.NEW
-        && filledAmount.compareTo(BigDecimal.ZERO) > 0
+        && filledAmount.compareTo(0d) > 0
         && filledAmount.compareTo(originalAmount) < 0) {
       status = OrderStatus.PARTIALLY_FILLED;
     }
@@ -226,14 +224,14 @@ public class BitmexAdapters {
           ticker.getTakerFee(),
           originalMeta.getMinimumAmount(),
           originalMeta.getMaximumAmount(),
-          Math.max(0, ticker.getTickSize().stripTrailingZeros().scale()),
+          Math.max(0, Math.toIntExact(Math.round(ticker.getTickSize()))),
           originalMeta.getFeeTiers());
     } else {
       return new CurrencyPairMetaData(
           ticker.getTakerFee(),
           null,
           null,
-          Math.max(0, ticker.getTickSize().stripTrailingZeros().scale()),
+          Math.max(0, Math.toIntExact(Math.round(ticker.getTickSize()))),
           null);
     }
   }
@@ -290,32 +288,6 @@ public class BitmexAdapters {
     return new CurrencyPair(baseSymbol, counterSymbol);
   }
 
-  public static class OrdersContainer {
-
-    private final long timestamp;
-    private final List<LimitOrder> limitOrders;
-
-    /**
-     * Constructor
-     *
-     * @param timestamp
-     * @param limitOrders
-     */
-    public OrdersContainer(long timestamp, List<LimitOrder> limitOrders) {
-
-      this.timestamp = timestamp;
-      this.limitOrders = limitOrders;
-    }
-
-    public long getTimestamp() {
-      return timestamp;
-    }
-
-    public List<LimitOrder> getLimitOrders() {
-      return limitOrders;
-    }
-  }
-
   public static UserTrade adoptUserTrade(BitmexPrivateExecution exec) {
     CurrencyPair pair = BitmexAdapters.adaptSymbolToCurrencyPair(exec.symbol);
     // the "lastQty" parameter is in the USD currency for ???/USD pairs
@@ -328,7 +300,7 @@ public class BitmexAdapters {
             .currencyPair(pair)
             .originalAmount(exec.lastQty)
             .price(exec.lastPx)
-            .feeAmount(exec.commission.multiply(exec.lastQty))
+            .feeAmount(exec.commission * (exec.lastQty))
             .feeCurrency(pair.counter.equals(Currency.USD) ? pair.counter : pair.base)
             .timestamp(exec.timestamp)
             .type(orderType)
@@ -351,7 +323,7 @@ public class BitmexAdapters {
     String datePattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
     SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
-    Date dateFunding = null;
+    Date dateFunding;
 
     try {
       dateFunding = dateFormat.parse(walletTransaction.getTransactTime());
@@ -369,7 +341,7 @@ public class BitmexAdapters {
         walletTransaction.getAddress(),
         dateFunding,
         Currency.getInstance(currency),
-        walletTransaction.getAmount().divide(SATOSHIS_BY_BTC),
+        walletTransaction.getAmount() / (SATOSHIS_BY_BTC),
         walletTransaction.getTransactID(),
         walletTransaction.getTx(),
         walletTransaction.getTransactType().equals("Deposit")
@@ -377,9 +349,25 @@ public class BitmexAdapters {
             : FundingRecord.Type.WITHDRAWAL,
         FundingRecord.Status.COMPLETE,
         null,
-        walletTransaction.getFee() != null
-            ? walletTransaction.getFee().divide(SATOSHIS_BY_BTC)
-            : null,
+        walletTransaction.getFee() != null ? walletTransaction.getFee() / (SATOSHIS_BY_BTC) : null,
         walletTransaction.getText());
+  }
+
+  public static class OrdersContainer {
+    private final long timestamp;
+    private final List<LimitOrder> limitOrders;
+
+    public OrdersContainer(long timestamp, List<LimitOrder> limitOrders) {
+      this.timestamp = timestamp;
+      this.limitOrders = limitOrders;
+    }
+
+    public long getTimestamp() {
+      return timestamp;
+    }
+
+    public List<LimitOrder> getLimitOrders() {
+      return limitOrders;
+    }
   }
 }

@@ -1,26 +1,13 @@
 package org.knowm.xchange.kucoin;
 
 import static java.util.stream.Collectors.toCollection;
-import static org.knowm.xchange.dto.Order.OrderStatus.CANCELED;
-import static org.knowm.xchange.dto.Order.OrderStatus.NEW;
-import static org.knowm.xchange.dto.Order.OrderStatus.PARTIALLY_FILLED;
-import static org.knowm.xchange.dto.Order.OrderStatus.UNKNOWN;
+import static org.knowm.xchange.dto.Order.OrderStatus.*;
 import static org.knowm.xchange.dto.Order.OrderType.ASK;
 import static org.knowm.xchange.dto.Order.OrderType.BID;
-import static org.knowm.xchange.kucoin.dto.KucoinOrderFlags.HIDDEN;
-import static org.knowm.xchange.kucoin.dto.KucoinOrderFlags.ICEBERG;
-import static org.knowm.xchange.kucoin.dto.KucoinOrderFlags.POST_ONLY;
+import static org.knowm.xchange.kucoin.dto.KucoinOrderFlags.*;
 
 import com.google.common.base.MoreObjects;
-import com.google.common.collect.Ordering;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
 import org.knowm.xchange.currency.Currency;
@@ -48,16 +35,7 @@ import org.knowm.xchange.dto.trade.UserTrade;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.kucoin.KucoinTradeService.KucoinOrderFlags;
 import org.knowm.xchange.kucoin.dto.request.OrderCreateApiRequest;
-import org.knowm.xchange.kucoin.dto.response.AccountBalancesResponse;
-import org.knowm.xchange.kucoin.dto.response.AllTickersResponse;
-import org.knowm.xchange.kucoin.dto.response.DepositResponse;
-import org.knowm.xchange.kucoin.dto.response.OrderBookResponse;
-import org.knowm.xchange.kucoin.dto.response.OrderResponse;
-import org.knowm.xchange.kucoin.dto.response.SymbolResponse;
-import org.knowm.xchange.kucoin.dto.response.SymbolTickResponse;
-import org.knowm.xchange.kucoin.dto.response.TradeHistoryResponse;
-import org.knowm.xchange.kucoin.dto.response.TradeResponse;
-import org.knowm.xchange.kucoin.dto.response.WithdrawalResponse;
+import org.knowm.xchange.kucoin.dto.response.*;
 
 public class KucoinAdapters {
 
@@ -122,9 +100,9 @@ public class KucoinAdapters {
       CurrencyPair pair = adaptCurrencyPair(symbol.getSymbol());
       CurrencyPairMetaData staticMetaData = exchangeMetaData.getCurrencyPairs().get(pair);
 
-      BigDecimal minSize = symbol.getBaseMinSize();
-      BigDecimal maxSize = symbol.getBaseMaxSize();
-      int priceScale = symbol.getQuoteIncrement().stripTrailingZeros().scale();
+      Double minSize = symbol.getBaseMinSize();
+      Double maxSize = symbol.getBaseMaxSize();
+      int priceScale = 4;
 
       CurrencyPairMetaData cpmd =
           new CurrencyPairMetaData(
@@ -152,13 +130,13 @@ public class KucoinAdapters {
     List<LimitOrder> asks =
         kc.getAsks().stream()
             .map(PriceAndSize::new)
-            .sorted(Ordering.natural().onResultOf(s -> s.price))
+            .sorted(Comparator.comparingDouble(o -> o.price))
             .map(s -> adaptLimitOrder(currencyPair, ASK, s, timestamp))
             .collect(toCollection(LinkedList::new));
     List<LimitOrder> bids =
         kc.getBids().stream()
             .map(PriceAndSize::new)
-            .sorted(Ordering.natural().onResultOf((PriceAndSize s) -> s.price).reversed())
+            .sorted(Comparator.comparingDouble(o -> -o.price))
             .map(s -> adaptLimitOrder(currencyPair, BID, s, timestamp))
             .collect(toCollection(LinkedList::new));
     return new OrderBook(timestamp, asks, bids);
@@ -211,7 +189,7 @@ public class KucoinAdapters {
     if (order.isCancelExist()) {
       status = CANCELED;
     } else if (order.isActive()) {
-      if (order.getDealSize().signum() == 0) {
+      if (Math.signum(order.getDealSize()) == 0.0) {
         status = NEW;
       } else {
         status = PARTIALLY_FILLED;
@@ -222,8 +200,8 @@ public class KucoinAdapters {
 
     Order.Builder builder;
     if (StringUtils.isNotEmpty(order.getStop())) {
-      BigDecimal limitPrice = order.getPrice();
-      if (limitPrice != null && limitPrice.compareTo(BigDecimal.ZERO) == 0) {
+      Double limitPrice = order.getPrice();
+      if (limitPrice != null && limitPrice.compareTo(0d) == 0) {
         limitPrice = null;
       }
       builder =
@@ -236,22 +214,22 @@ public class KucoinAdapters {
     builder =
         builder
             .averagePrice(
-                order.getDealSize().compareTo(BigDecimal.ZERO) == 0
+                order.getDealSize().compareTo(0d) == 0
                     ? MoreObjects.firstNonNull(order.getPrice(), order.getStopPrice())
-                    : order.getDealFunds().divide(order.getDealSize(), RoundingMode.HALF_UP))
+                    : order.getDealFunds() / (order.getDealSize()))
             .cumulativeAmount(order.getDealSize())
             .fee(order.getFee())
             .id(order.getId())
             .orderStatus(status)
             .originalAmount(order.getSize())
-            .remainingAmount(order.getSize().subtract(order.getDealSize()))
+            .remainingAmount(order.getSize() - (order.getDealSize()))
             .timestamp(order.getCreatedAt());
 
     if (StringUtils.isNotEmpty(order.getTimeInForce())) {
       builder.flag(TimeInForce.getTimeInForce(order.getTimeInForce()));
     }
 
-    return StopOrder.Builder.class.isInstance(builder)
+    return builder instanceof StopOrder.Builder
         ? ((StopOrder.Builder) builder).build()
         : ((LimitOrder.Builder) builder).build();
   }
@@ -319,17 +297,6 @@ public class KucoinAdapters {
         .side(adaptSide(order.getType()));
   }
 
-  private static final class PriceAndSize {
-
-    final BigDecimal price;
-    final BigDecimal size;
-
-    PriceAndSize(List<String> data) {
-      this.price = new BigDecimal(data.get(0));
-      this.size = new BigDecimal(data.get(1));
-    }
-  }
-
   public static FundingRecord adaptFundingRecord(WithdrawalResponse wr) {
     FundingRecord.Builder b = new FundingRecord.Builder();
     return b.setAddress(wr.getAddress())
@@ -374,5 +341,16 @@ public class KucoinAdapters {
         .setDescription(dr.getMemo())
         .setDate(dr.getCreatedAt())
         .build();
+  }
+
+  private static final class PriceAndSize {
+
+    final Double price;
+    final Double size;
+
+    PriceAndSize(List<String> data) {
+      this.price = new Double(data.get(0));
+      this.size = new Double(data.get(1));
+    }
   }
 }

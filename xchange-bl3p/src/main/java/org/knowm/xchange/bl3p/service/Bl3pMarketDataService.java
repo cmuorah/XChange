@@ -1,7 +1,6 @@
 package org.knowm.xchange.bl3p.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -63,9 +62,9 @@ public class Bl3pMarketDataService extends Bl3pBaseService implements MarketData
       Trade trade =
           new Trade(
               null, // TODO @BL3P Trade Type is not returned by API
-              Bl3pUtils.fromSatoshi(new BigDecimal(bl3pTrade.getAmountInt())),
+              Bl3pUtils.fromSatoshi(new Double(bl3pTrade.getAmountInt())),
               currencyPair,
-              Bl3pUtils.fromEuroshi(new BigDecimal(bl3pTrade.getPriceInt())),
+              Bl3pUtils.fromEuroshi(new Double(bl3pTrade.getPriceInt())),
               bl3pTrade.getDate(),
               "" + bl3pTrade.getTradeId());
 
@@ -86,11 +85,11 @@ public class Bl3pMarketDataService extends Bl3pBaseService implements MarketData
       LimitOrder order =
           new LimitOrder(
               type,
-              new BigDecimal(bl3pOrder.getAmountInt()).multiply(new BigDecimal(1e8)),
+              new Double(bl3pOrder.getAmountInt()) * (new Double(1e8)),
               currencyPair,
               "",
               timestamp,
-              new BigDecimal(bl3pOrder.getPriceInt()).multiply(new BigDecimal(1e5)));
+              new Double(bl3pOrder.getPriceInt()) * (new Double(1e5)));
 
       orders.add(order);
     }

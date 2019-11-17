@@ -28,7 +28,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /** @author Martin Stachon */
@@ -47,13 +46,13 @@ public class OrderBookJSONTest {
 
     // Verify that the example data was unmarshalled correctly
     assertThat(coinmateOrderbook.getData().getAsks().get(0).getAmount())
-        .isEqualTo(new BigDecimal("0.057877"));
+        .isEqualTo(new Double("0.057877"));
     assertThat(coinmateOrderbook.getData().getAsks().get(0).getPrice())
-        .isEqualTo(new BigDecimal("259"));
+        .isEqualTo(new Double("259"));
 
     assertThat(coinmateOrderbook.getData().getBids().get(1).getAmount())
-        .isEqualTo(new BigDecimal("21.21730895"));
+        .isEqualTo(new Double("21.21730895"));
     assertThat(coinmateOrderbook.getData().getBids().get(1).getPrice())
-        .isEqualTo(new BigDecimal("254.6"));
+        .isEqualTo(new Double("254.6"));
   }
 }

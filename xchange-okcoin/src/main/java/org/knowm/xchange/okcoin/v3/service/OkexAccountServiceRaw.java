@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.v3.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.okcoin.OkexExchangeV3;
 import org.knowm.xchange.okcoin.v3.dto.account.FuturesPosition;
@@ -36,7 +35,7 @@ public class OkexAccountServiceRaw extends OkexBaseService {
 
   public FundsTransferResponse fundsTransfer(
       String currency,
-      BigDecimal amount,
+      Double amount,
       String from,
       String to,
       String subAccount,

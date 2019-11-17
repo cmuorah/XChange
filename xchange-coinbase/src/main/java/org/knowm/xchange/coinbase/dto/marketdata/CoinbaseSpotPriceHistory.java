@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbase.dto.marketdata;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -34,7 +33,7 @@ public class CoinbaseSpotPriceHistory {
     final Matcher matcher = historicalRateStringPatternInReverse.matcher(entireHistoryString);
     while (matcher.find()) {
       final String rateString = new StringBuilder(matcher.group(1)).reverse().toString();
-      final BigDecimal spotRate = new BigDecimal(rateString);
+      final Double spotRate = new Double(rateString);
       final String timestampString = new StringBuilder(matcher.group(2)).reverse().toString();
       Date timestamp = null;
       try {

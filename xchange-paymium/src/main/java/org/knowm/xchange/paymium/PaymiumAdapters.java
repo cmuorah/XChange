@@ -1,6 +1,5 @@
 package org.knowm.xchange.paymium;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -35,12 +34,12 @@ public class PaymiumAdapters {
    */
   public static Ticker adaptTicker(PaymiumTicker PaymiumTicker, CurrencyPair currencyPair) {
 
-    BigDecimal bid = PaymiumTicker.getBid();
-    BigDecimal ask = PaymiumTicker.getAsk();
-    BigDecimal high = PaymiumTicker.getHigh();
-    BigDecimal low = PaymiumTicker.getLow();
-    BigDecimal last = PaymiumTicker.getPrice();
-    BigDecimal volume = PaymiumTicker.getVolume();
+    Double bid = PaymiumTicker.getBid();
+    Double ask = PaymiumTicker.getAsk();
+    Double high = PaymiumTicker.getHigh();
+    Double low = PaymiumTicker.getLow();
+    Double last = PaymiumTicker.getPrice();
+    Double volume = PaymiumTicker.getVolume();
     Date timestamp = new Date(PaymiumTicker.getAt() * 1000L);
 
     return new Ticker.Builder()
@@ -127,14 +126,14 @@ public class PaymiumAdapters {
         new Balance(
             Currency.BTC,
             paymiumBalances.getBalanceBtc(),
-            paymiumBalances.getBalanceBtc().subtract(paymiumBalances.getLockedBtc()),
+            paymiumBalances.getBalanceBtc() - (paymiumBalances.getLockedBtc()),
             paymiumBalances.getLockedBtc()));
 
     wallets.add(
         new Balance(
             Currency.EUR,
             paymiumBalances.getBalanceEur(),
-            paymiumBalances.getBalanceEur().subtract(paymiumBalances.getLockedEur()),
+            paymiumBalances.getBalanceEur() - (paymiumBalances.getLockedEur()),
             paymiumBalances.getLockedEur()));
 
     return Wallet.Builder.from(wallets).build();

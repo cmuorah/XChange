@@ -1,14 +1,13 @@
 package org.knowm.xchange.bitz.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class BitZCurrencyRate {
 
   private final String coin;
   private final String currencyCoin;
-  private final BigDecimal rate;
+  private final Double rate;
   private final String rateTime;
   private final String ratenm;
   private final String flatform;
@@ -18,7 +17,7 @@ public class BitZCurrencyRate {
   public BitZCurrencyRate(
       @JsonProperty("coin") String coin,
       @JsonProperty("currencyCoin") String currencyCoin,
-      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("rate") Double rate,
       @JsonProperty("rateTime") String rateTime,
       @JsonProperty("ratenm") String ratenm,
       @JsonProperty("flatform") String flatform,
@@ -42,7 +41,7 @@ public class BitZCurrencyRate {
     return currencyCoin;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 

@@ -1,21 +1,20 @@
 package org.knowm.xchange.therock.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class TheRockTrade {
 
-  private final BigDecimal amount;
+  private final Double amount;
   private final Date date;
-  private final BigDecimal price;
+  private final Double price;
   private final long id;
   private final Side side;
 
   public TheRockTrade(
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("date") Date date,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("id") long id,
       @JsonProperty("side") Side tradeSide) {
     this.amount = amount;
@@ -25,7 +24,7 @@ public class TheRockTrade {
     this.side = tradeSide;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -33,7 +32,7 @@ public class TheRockTrade {
     return date;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

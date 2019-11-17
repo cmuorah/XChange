@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitmex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.knowm.xchange.bitmex.BitmexAdapters;
@@ -37,7 +36,7 @@ public class BitmexAccountService extends BitmexAccountServiceRaw implements Acc
 
     BitmexAccount account = super.getBitmexAccountInfo();
     BitmexMarginAccount bitmexMarginAccount = getBitmexMarginAccountStatus();
-    BigDecimal amount = bitmexMarginAccount.getAmount().divide(BigDecimal.valueOf(100_000_000L));
+    Double amount = bitmexMarginAccount.getAmount() / 100_000_000d;
 
     List<Balance> balances = new ArrayList<>();
     balances.add(new Balance(Currency.BTC, amount));
@@ -46,7 +45,7 @@ public class BitmexAccountService extends BitmexAccountServiceRaw implements Acc
         Wallet.Builder.from(balances)
             .id("margin")
             .features(EnumSet.of(Wallet.WalletFeature.MARGIN_TRADING, Wallet.WalletFeature.FUNDING))
-            .maxLeverage(BigDecimal.valueOf(100))
+            .maxLeverage(100d)
             .currentLeverage(bitmexMarginAccount.getMarginLeverage())
             .build();
 
@@ -54,8 +53,7 @@ public class BitmexAccountService extends BitmexAccountServiceRaw implements Acc
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return withdrawFunds(currency.getCurrencyCode(), amount, address);
   }
 
@@ -75,7 +73,7 @@ public class BitmexAccountService extends BitmexAccountServiceRaw implements Acc
   @Override
   public List<FundingRecord> getFundingHistory(TradeHistoryParams params) {
 
-    Currency currency = null;
+    Currency currency;
 
     if (params instanceof TradeHistoryParamCurrency) {
       currency = ((TradeHistoryParamCurrency) params).getCurrency();
@@ -93,7 +91,7 @@ public class BitmexAccountService extends BitmexAccountServiceRaw implements Acc
                 w.getTransactStatus().equals("Completed")
                     && (w.getTransactType().equals("Deposit")
                         || w.getTransactType().equals("Withdrawal")))
-        .map(w -> BitmexAdapters.adaptFundingRecord(w))
+        .map(BitmexAdapters::adaptFundingRecord)
         .collect(Collectors.toList());
   }
 }

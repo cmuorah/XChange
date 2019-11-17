@@ -1,7 +1,6 @@
 package org.knowm.xchange.itbit.dto.trade;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.itbit.ItBitDateDeserializer;
 
@@ -14,13 +13,13 @@ public class ItBitUserTrade {
   private String instrument;
   private Direction direction;
   private String currency1;
-  private BigDecimal currency1Amount;
+  private Double currency1Amount;
   private String currency2;
-  private BigDecimal currency2Amount;
-  private BigDecimal rate;
-  private BigDecimal commissionPaid;
+  private Double currency2Amount;
+  private Double rate;
+  private Double commissionPaid;
   private String commissionCurrency;
-  private BigDecimal rebatesApplied;
+  private Double rebatesApplied;
   private String rebateCurrency;
 
   public String getOrderId() {
@@ -43,7 +42,7 @@ public class ItBitUserTrade {
     return currency1;
   }
 
-  public BigDecimal getCurrency1Amount() {
+  public Double getCurrency1Amount() {
     return currency1Amount;
   }
 
@@ -51,15 +50,15 @@ public class ItBitUserTrade {
     return currency2;
   }
 
-  public BigDecimal getCurrency2Amount() {
+  public Double getCurrency2Amount() {
     return currency2Amount;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 
-  public BigDecimal getCommissionPaid() {
+  public Double getCommissionPaid() {
     return commissionPaid;
   }
 
@@ -67,7 +66,7 @@ public class ItBitUserTrade {
     return commissionCurrency;
   }
 
-  public BigDecimal getRebatesApplied() {
+  public Double getRebatesApplied() {
     return rebatesApplied;
   }
 

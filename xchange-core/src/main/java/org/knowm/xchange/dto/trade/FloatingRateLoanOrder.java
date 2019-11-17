@@ -1,6 +1,5 @@
 package org.knowm.xchange.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.dto.LoanOrder;
 import org.knowm.xchange.dto.Order;
@@ -16,7 +15,7 @@ public final class FloatingRateLoanOrder extends LoanOrder
 
   private static final long serialVersionUID = -1474202797547840095L;
 
-  private BigDecimal rate;
+  private Double rate;
 
   /**
    * @param type Either BID (debtor) or ASK (creditor)
@@ -29,22 +28,22 @@ public final class FloatingRateLoanOrder extends LoanOrder
   public FloatingRateLoanOrder(
       Order.OrderType type,
       String currency,
-      BigDecimal originalAmount,
+      Double originalAmount,
       int dayPeriod,
       String id,
       Date timestamp,
-      BigDecimal rate) {
+      Double rate) {
 
     super(type, currency, originalAmount, dayPeriod, id, timestamp);
     this.rate = rate;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
 
     return rate;
   }
 
-  public void setRate(BigDecimal rate) {
+  public void setRate(Double rate) {
 
     this.rate = rate;
   }

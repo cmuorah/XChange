@@ -75,7 +75,7 @@ public final class CoindealAdapters {
         balances.add(
             new Balance(
                 currency,
-                coindealBalance.getAvailable().add(coindealBalance.getReserved()),
+                coindealBalance.getAvailable() + (coindealBalance.getReserved()),
                 coindealBalance.getAvailable(),
                 coindealBalance.getReserved()));
       }

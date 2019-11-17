@@ -1,6 +1,5 @@
 package org.knowm.xchange.lakebtc;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,12 +34,12 @@ public class LakeBTCAdapters {
 
   public static Ticker adaptTicker(LakeBTCTicker lakeBTCTicker, CurrencyPair currencyPair) {
 
-    BigDecimal ask = lakeBTCTicker.getAsk();
-    BigDecimal bid = lakeBTCTicker.getBid();
-    BigDecimal high = lakeBTCTicker.getHigh();
-    BigDecimal low = lakeBTCTicker.getLow();
-    BigDecimal last = lakeBTCTicker.getLast();
-    BigDecimal volume = lakeBTCTicker.getVolume();
+    Double ask = lakeBTCTicker.getAsk();
+    Double bid = lakeBTCTicker.getBid();
+    Double high = lakeBTCTicker.getHigh();
+    Double low = lakeBTCTicker.getLow();
+    Double last = lakeBTCTicker.getLast();
+    Double volume = lakeBTCTicker.getVolume();
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
@@ -54,9 +53,9 @@ public class LakeBTCAdapters {
   }
 
   private static List<LimitOrder> transformArrayToLimitOrders(
-      BigDecimal[][] orders, OrderType orderType, CurrencyPair currencyPair) {
+      Double[][] orders, OrderType orderType, CurrencyPair currencyPair) {
     List<LimitOrder> limitOrders = new ArrayList<>();
-    for (BigDecimal[] order : orders) {
+    for (Double[] order : orders) {
       limitOrders.add(new LimitOrder(orderType, order[1], currencyPair, null, null, order[0]));
     }
 
@@ -129,8 +128,8 @@ public class LakeBTCAdapters {
     long lastTradeId = 0;
     for (LakeBTCTradeResponse trade : transactions) {
       final OrderType orderType = trade.getType().startsWith("buy") ? OrderType.BID : OrderType.ASK;
-      BigDecimal originalAmount = trade.getAmount();
-      BigDecimal price = trade.getTotal().abs();
+      Double originalAmount = trade.getAmount();
+      Double price = Math.abs(trade.getTotal());
       Date timestamp = DateUtils.fromMillisUtc(trade.getAt() * 1000L);
 
       final String tradeId = trade.getId();

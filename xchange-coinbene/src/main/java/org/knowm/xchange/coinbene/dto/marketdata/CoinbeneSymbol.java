@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbene.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.coinbene.dto.CoinbeneResponse;
 
@@ -10,21 +9,21 @@ public class CoinbeneSymbol {
   private String ticker; // "CONIUSDT";
   private String baseAsset; // "CONI";
   private String quoteAsset; // "USDT";
-  private BigDecimal takerFee; // "0.0010";
-  private BigDecimal makerFee; // "0.0010";
+  private Double takerFee; // "0.0010";
+  private Double makerFee; // "0.0010";
   private int tickSize; // "5";
   private int lotStepSize; // "2";
-  private BigDecimal minQuantity; // "1.00000000"
+  private Double minQuantity; // "1.00000000"
 
   public CoinbeneSymbol(
       @JsonProperty("ticker") String ticker,
       @JsonProperty("baseAsset") String baseAsset,
       @JsonProperty("quoteAsset") String quoteAsset,
-      @JsonProperty("takerFee") BigDecimal takerFee,
-      @JsonProperty("makerFee") BigDecimal makerFee,
+      @JsonProperty("takerFee") Double takerFee,
+      @JsonProperty("makerFee") Double makerFee,
       @JsonProperty("tickSize") int tickSize,
       @JsonProperty("lotStepSize") int lotStepSize,
-      @JsonProperty("minQuantity") BigDecimal minQuantity) {
+      @JsonProperty("minQuantity") Double minQuantity) {
     this.ticker = ticker;
     this.baseAsset = baseAsset;
     this.quoteAsset = quoteAsset;
@@ -47,11 +46,11 @@ public class CoinbeneSymbol {
     return quoteAsset;
   }
 
-  public BigDecimal getTakerFee() {
+  public Double getTakerFee() {
     return takerFee;
   }
 
-  public BigDecimal getMakerFee() {
+  public Double getMakerFee() {
     return makerFee;
   }
 
@@ -63,7 +62,7 @@ public class CoinbeneSymbol {
     return lotStepSize;
   }
 
-  public BigDecimal getMinQuantity() {
+  public Double getMinQuantity() {
     return minQuantity;
   }
 

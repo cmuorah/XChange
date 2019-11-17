@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitcoinium;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,12 +26,12 @@ public final class BitcoiniumAdapters {
    */
   public static Ticker adaptTicker(BitcoiniumTicker bitcoiniumTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = bitcoiniumTicker.getLast();
-    BigDecimal high = bitcoiniumTicker.getHigh();
-    BigDecimal low = bitcoiniumTicker.getLow();
-    BigDecimal ask = bitcoiniumTicker.getAsk();
-    BigDecimal bid = bitcoiniumTicker.getBid();
-    BigDecimal volume = bitcoiniumTicker.getVolume();
+    Double last = bitcoiniumTicker.getLast();
+    Double high = bitcoiniumTicker.getHigh();
+    Double low = bitcoiniumTicker.getLow();
+    Double ask = bitcoiniumTicker.getAsk();
+    Double bid = bitcoiniumTicker.getBid();
+    Double volume = bitcoiniumTicker.getVolume();
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)

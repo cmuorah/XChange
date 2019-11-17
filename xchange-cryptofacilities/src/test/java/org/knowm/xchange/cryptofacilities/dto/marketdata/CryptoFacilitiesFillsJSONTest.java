@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 import org.junit.Test;
@@ -40,8 +39,8 @@ public class CryptoFacilitiesFillsJSONTest {
     assertThat(fill.getClientOrderId()).isEqualTo("d427f920-ec55-4c18-ba95-5fe241513b30");
     assertThat(fill.getSymbol()).isEqualTo("fi_xbtusd_180615");
     assertThat(fill.getSide()).isEqualTo("buy");
-    assertThat(fill.getSize()).isEqualTo(new BigDecimal("2000"));
-    assertThat(fill.getPrice()).isEqualTo(new BigDecimal("4255"));
+    assertThat(fill.getSize()).isEqualTo(new Double("2000"));
+    assertThat(fill.getPrice()).isEqualTo(new Double("4255"));
     assertThat(fill.getFillType()).isEqualTo("maker");
   }
 }

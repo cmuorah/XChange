@@ -1,15 +1,14 @@
 package org.knowm.xchange.bitso.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Piotr Ładyżyński */
 public class BitsoTransaction {
 
   private final long date;
   private final int tid;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final String side;
 
   /**
@@ -24,8 +23,8 @@ public class BitsoTransaction {
   public BitsoTransaction(
       @JsonProperty("date") long date,
       @JsonProperty("tid") int tid,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("side") String side) {
 
     this.date = date;
@@ -40,12 +39,12 @@ public class BitsoTransaction {
     return tid;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
@@ -60,20 +59,20 @@ public class BitsoTransaction {
     return side;
   }
 
-  public BigDecimal calculateFeeBtc() {
+  public Double calculateFeeBtc() {
 
-    return roundUp(amount.multiply(new BigDecimal(.5))).divide(new BigDecimal(100.));
+    return roundUp(amount * (new Double(.5))) * (new Double(100.));
   }
 
-  private BigDecimal roundUp(BigDecimal x) {
+  private Double roundUp(Double x) {
 
     long n = x.longValue();
-    return new BigDecimal(x.equals(new BigDecimal(n)) ? n : n + 1);
+    return new Double(x.equals(new Double(n)) ? n : n + 1);
   }
 
-  public BigDecimal calculateFeeMxn() {
+  public Double calculateFeeMxn() {
 
-    return calculateFeeBtc().multiply(price);
+    return calculateFeeBtc() * (price);
   }
 
   @Override

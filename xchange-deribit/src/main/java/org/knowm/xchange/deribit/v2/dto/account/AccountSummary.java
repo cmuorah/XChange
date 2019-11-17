@@ -1,7 +1,6 @@
 package org.knowm.xchange.deribit.v2.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
@@ -9,19 +8,19 @@ public class AccountSummary {
 
   /** Profit and loss */
   @JsonProperty("total_pl")
-  private BigDecimal totalPl;
+  private Double totalPl;
 
   /** Session unrealized profit and loss */
   @JsonProperty("session_upl")
-  private BigDecimal sessionUpl;
+  private Double sessionUpl;
 
   /** Session realized profit and loss */
   @JsonProperty("session_rpl")
-  private BigDecimal sessionRpl;
+  private Double sessionRpl;
 
   /** Session funding */
   @JsonProperty("session_funding")
-  private BigDecimal sessionFunding;
+  private Double sessionFunding;
 
   /** true when portfolio margining is enabled for user */
   @JsonProperty("portfolio_margining_enabled")
@@ -29,59 +28,59 @@ public class AccountSummary {
 
   /** Options summary vega */
   @JsonProperty("options_vega")
-  private BigDecimal optionsVega;
+  private Double optionsVega;
 
   /** Options summary theta */
   @JsonProperty("options_theta")
-  private BigDecimal optionsTheta;
+  private Double optionsTheta;
 
   /** Options session unrealized profit and Loss */
   @JsonProperty("options_session_upl")
-  private BigDecimal optionsSessionUpl;
+  private Double optionsSessionUpl;
 
   /** Options session realized profit and Loss */
   @JsonProperty("options_session_rpl")
-  private BigDecimal optionsSessionRpl;
+  private Double optionsSessionRpl;
 
   /** Options profit and Loss */
   @JsonProperty("options_pl")
-  private BigDecimal optionsPl;
+  private Double optionsPl;
 
   /** Options summary gamma */
   @JsonProperty("options_gamma")
-  private BigDecimal optionsGamma;
+  private Double optionsGamma;
 
   /** Options summary delta */
   @JsonProperty("options_delta")
-  private BigDecimal optionsDelta;
+  private Double optionsDelta;
 
   /** The account's margin balance */
   @JsonProperty("margin_balance")
-  private BigDecimal marginBalance;
+  private Double marginBalance;
 
   /** The maintenance margin. */
   @JsonProperty("maintenance_margin")
-  private BigDecimal maintenanceMargin;
+  private Double maintenanceMargin;
 
   /** The account's initial margin */
   @JsonProperty("initial_margin")
-  private BigDecimal initialMargin;
+  private Double initialMargin;
 
   /** Futures session unrealized profit and Loss */
   @JsonProperty("futures_session_upl")
-  private BigDecimal futuresSessionUpl;
+  private Double futuresSessionUpl;
 
   /** Futures session realized profit and Loss */
   @JsonProperty("futures_session_rpl")
-  private BigDecimal futuresSessionRpl;
+  private Double futuresSessionRpl;
 
   /** Futures profit and Loss */
   @JsonProperty("futures_pl")
-  private BigDecimal futuresPl;
+  private Double futuresPl;
 
   /** The account's current equity */
   @JsonProperty("equity")
-  private BigDecimal equity;
+  private Double equity;
 
   /** The deposit address for the account (if available) */
   @JsonProperty("deposit_address")
@@ -89,7 +88,7 @@ public class AccountSummary {
 
   /** The sum of position deltas */
   @JsonProperty("delta_total")
-  private BigDecimal deltaTotal;
+  private Double deltaTotal;
 
   /** The selected currency */
   @JsonProperty("currency")
@@ -97,15 +96,15 @@ public class AccountSummary {
 
   /** The account's balance */
   @JsonProperty("balance")
-  private BigDecimal balance;
+  private Double balance;
 
   /** The account's available to withdrawal funds */
   @JsonProperty("available_withdrawal_funds")
-  private BigDecimal availableWithdrawalFunds;
+  private Double availableWithdrawalFunds;
 
   /** The account's available funds */
   @JsonProperty("available_funds")
-  private BigDecimal availableFunds;
+  private Double availableFunds;
 
   /** Account name (given by user) (available when parameter extended = true) */
   @JsonProperty("username")

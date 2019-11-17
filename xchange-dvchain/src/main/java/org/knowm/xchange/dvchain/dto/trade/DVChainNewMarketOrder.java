@@ -1,19 +1,18 @@
 package org.knowm.xchange.dvchain.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class DVChainNewMarketOrder {
   private String side;
-  private BigDecimal qty;
+  private Double qty;
   private String asset;
-  private BigDecimal price;
+  private Double price;
   private String orderType;
 
   public DVChainNewMarketOrder(
       @JsonProperty("side") String side,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("qty") BigDecimal qty,
+      @JsonProperty("price") Double price,
+      @JsonProperty("qty") Double qty,
       @JsonProperty("asset") String asset) {
     this.asset = asset;
     this.price = price;
@@ -22,11 +21,11 @@ public class DVChainNewMarketOrder {
     orderType = "market";
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getQty() {
+  public Double getQty() {
     return qty;
   }
 

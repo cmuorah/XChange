@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coindirect.CoindirectAdapters;
@@ -78,7 +79,7 @@ public class CoindirectTradeService extends CoindirectTradeServiceRaw implements
       TradeHistoryParamsIdSpan idParams = (TradeHistoryParamsIdSpan) params;
 
       try {
-        fromOffset = Long.valueOf(idParams.getStartId());
+        fromOffset = Long.parseLong(idParams.getStartId());
       } catch (Throwable ignored) {
       }
     }
@@ -89,7 +90,7 @@ public class CoindirectTradeService extends CoindirectTradeServiceRaw implements
         coindirectOrders.stream()
             .map(
                 t -> {
-                  if (t.executedAmount == null || t.executedAmount.signum() == 0) {
+                  if (t.executedAmount == null || Math.signum(t.executedAmount) == 0) {
                     return null;
                   }
                   return new UserTrade(
@@ -103,7 +104,7 @@ public class CoindirectTradeService extends CoindirectTradeServiceRaw implements
                       t.executedFees,
                       CoindirectAdapters.toCurrencyPair(t.symbol).counter);
                 })
-            .filter(t -> t != null)
+            .filter(Objects::nonNull)
             .collect(Collectors.toList());
 
     return new UserTrades(trades, (fromOffset + max), Trades.TradeSortType.SortByTimestamp);
@@ -140,7 +141,7 @@ public class CoindirectTradeService extends CoindirectTradeServiceRaw implements
   }
 
   @Override
-  public String placeStopOrder(StopOrder stopOrder) throws IOException {
+  public String placeStopOrder(StopOrder stopOrder) {
     throw new NotAvailableFromExchangeException();
   }
 

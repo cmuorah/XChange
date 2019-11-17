@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -52,8 +51,7 @@ public class LunoAccountService extends LunoBaseService implements AccountServic
     for (org.knowm.xchange.luno.dto.account.LunoBalance.Balance lb : lunoBalance.getBalance()) {
       List<Balance> balances = new ArrayList<>();
       balances.add(
-          new Balance(
-              LunoUtil.fromLunoCurrency(lb.asset), lb.balance, lb.balance.subtract(lb.reserved)));
+          new Balance(LunoUtil.fromLunoCurrency(lb.asset), lb.balance, lb.balance - (lb.reserved)));
       wallets.add(Wallet.Builder.from(balances).id(lb.accountId).name(lb.name).build());
     }
 
@@ -61,8 +59,7 @@ public class LunoAccountService extends LunoBaseService implements AccountServic
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     String lunoCurrency = LunoUtil.toLunoCurrency(currency);
     switch (lunoCurrency) {
       case "XBT":

@@ -1,22 +1,21 @@
 package org.knowm.xchange.coinsuper.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinsuperBalance {
 
   private final String asset;
 
-  private final BigDecimal balance;
+  private final Double balance;
 
-  private final BigDecimal frozen;
+  private final Double frozen;
 
   private final int state;
 
   public CoinsuperBalance(
       @JsonProperty("asset") String asset,
-      @JsonProperty("balance") BigDecimal balance,
-      @JsonProperty("frozen") BigDecimal frozen,
+      @JsonProperty("balance") Double balance,
+      @JsonProperty("frozen") Double frozen,
       @JsonProperty("state") int state) {
     super();
     this.asset = asset;
@@ -29,11 +28,11 @@ public class CoinsuperBalance {
     return asset;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
-  public BigDecimal getFrozen() {
+  public Double getFrozen() {
     return frozen;
   }
 

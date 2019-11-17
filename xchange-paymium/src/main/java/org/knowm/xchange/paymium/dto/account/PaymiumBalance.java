@@ -1,21 +1,20 @@
 package org.knowm.xchange.paymium.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class PaymiumBalance {
 
   @JsonProperty("locked_btc")
-  private BigDecimal lockedBtc;
+  private Double lockedBtc;
 
   @JsonProperty("locked_eur")
-  private BigDecimal lockedEur;
+  private Double lockedEur;
 
   @JsonProperty("balance_btc")
-  private BigDecimal balanceBtc;
+  private Double balanceBtc;
 
   @JsonProperty("balance_eur")
-  private BigDecimal balanceEur;
+  private Double balanceEur;
 
   @JsonProperty("meta_state")
   private String metaState;
@@ -32,35 +31,35 @@ public class PaymiumBalance {
   @JsonProperty("email")
   private String email;
 
-  public BigDecimal getLockedBtc() {
+  public Double getLockedBtc() {
     return lockedBtc;
   }
 
-  public void setLockedBtc(BigDecimal lockedBtc) {
+  public void setLockedBtc(Double lockedBtc) {
     this.lockedBtc = lockedBtc;
   }
 
-  public BigDecimal getLockedEur() {
+  public Double getLockedEur() {
     return lockedEur;
   }
 
-  public void setLockedEur(BigDecimal lockedEur) {
+  public void setLockedEur(Double lockedEur) {
     this.lockedEur = lockedEur;
   }
 
-  public BigDecimal getBalanceBtc() {
+  public Double getBalanceBtc() {
     return balanceBtc;
   }
 
-  public void setBalanceBtc(BigDecimal balanceBtc) {
+  public void setBalanceBtc(Double balanceBtc) {
     this.balanceBtc = balanceBtc;
   }
 
-  public BigDecimal getBalanceEur() {
+  public Double getBalanceEur() {
     return balanceEur;
   }
 
-  public void setBalanceEur(BigDecimal balanceEur) {
+  public void setBalanceEur(Double balanceEur) {
     this.balanceEur = balanceEur;
   }
 

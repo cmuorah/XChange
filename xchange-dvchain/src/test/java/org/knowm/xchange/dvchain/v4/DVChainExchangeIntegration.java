@@ -3,7 +3,6 @@ package org.knowm.xchange.dvchain.v4;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
@@ -70,8 +69,7 @@ public class DVChainExchangeIntegration {
     try {
       String order =
           tradeService.placeMarketOrder(
-              new MarketOrder(
-                  Order.OrderType.BID, new BigDecimal(1), new CurrencyPair("BTC", "USD")));
+              new MarketOrder(Order.OrderType.BID, new Double(1), new CurrencyPair("BTC", "USD")));
       assertNotNull(order);
     } catch (Exception exception) {
       System.out.println(exception.getMessage());
@@ -93,11 +91,11 @@ public class DVChainExchangeIntegration {
           tradeService.placeLimitOrder(
               new LimitOrder(
                   Order.OrderType.ASK,
-                  new BigDecimal(1),
+                  new Double(1),
                   new CurrencyPair("BTC", "USD"),
                   "",
                   null,
-                  new BigDecimal("7001")));
+                  new Double("7001")));
       assertNotNull(order);
     } catch (Exception exception) {
       System.out.println(exception.getMessage());

@@ -1,7 +1,6 @@
 package org.knowm.xchange.enigma.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,10 +18,10 @@ public class EnigmaExecuteQuoteRequest {
   private int sideId;
 
   @JsonProperty("quantity")
-  private BigDecimal quantity;
+  private Double quantity;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("rfq_client_id")
   private String rfqClientId;

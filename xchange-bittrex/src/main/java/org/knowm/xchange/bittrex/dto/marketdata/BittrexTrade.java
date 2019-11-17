@@ -1,26 +1,25 @@
 package org.knowm.xchange.bittrex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BittrexTrade {
 
   private String fillType;
   private String id;
   private String orderType;
-  private BigDecimal price;
-  private BigDecimal quantity;
+  private Double price;
+  private Double quantity;
   private String timeStamp;
-  private BigDecimal total;
+  private Double total;
 
   public BittrexTrade(
       @JsonProperty("FillType") String fillType,
       @JsonProperty("Id") String id,
       @JsonProperty("OrderType") String orderType,
-      @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("Quantity") BigDecimal quantity,
+      @JsonProperty("Price") Double price,
+      @JsonProperty("Quantity") Double quantity,
       @JsonProperty("TimeStamp") String timeStamp,
-      @JsonProperty("Total") BigDecimal total) {
+      @JsonProperty("Total") Double total) {
 
     super();
     this.fillType = fillType;
@@ -62,22 +61,22 @@ public class BittrexTrade {
     this.orderType = orderType;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return this.price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
 
     this.price = price;
   }
 
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
 
     return this.quantity;
   }
 
-  public void setQuantity(BigDecimal quantity) {
+  public void setQuantity(Double quantity) {
 
     this.quantity = quantity;
   }
@@ -92,12 +91,12 @@ public class BittrexTrade {
     this.timeStamp = timeStamp;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
 
     return this.total;
   }
 
-  public void setTotal(BigDecimal total) {
+  public void setTotal(Double total) {
 
     this.total = total;
   }

@@ -3,7 +3,6 @@ package org.knowm.xchange.examples.enigma.account;
 import static org.knowm.xchange.enigma.model.Infrastructure.DEVELOPMENT;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
@@ -38,8 +37,8 @@ public class EnigmaAccountDemo {
     EnigmaBalance enigmaBalance = accountService.getBalance();
     log.info("Enigma balances: " + enigmaBalance);
 
-    Map<String, BigDecimal> limits = accountService.getRiskLimits();
-    for (Map.Entry<String, BigDecimal> limit : limits.entrySet()) {
+    Map<String, Double> limits = accountService.getRiskLimits();
+    for (Map.Entry<String, Double> limit : limits.entrySet()) {
       log.info("key: {}, value: {}", limit.getKey(), limit.getValue().toString());
     }
 
@@ -49,7 +48,7 @@ public class EnigmaAccountDemo {
     }
 
     EnigmaWithdrawalRequest withdrawalRequest =
-        new EnigmaWithdrawalRequest(2, new BigDecimal("2"), "USD", DEVELOPMENT.getValue());
+        new EnigmaWithdrawalRequest(2, new Double("2"), "USD", DEVELOPMENT.getValue());
     EnigmaWithdrawal withdrawal = accountService.withdrawal(withdrawalRequest);
     log.info(withdrawal.toString());
   }

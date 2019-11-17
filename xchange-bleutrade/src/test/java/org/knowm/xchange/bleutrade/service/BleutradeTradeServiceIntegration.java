@@ -10,7 +10,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -64,12 +63,12 @@ public class BleutradeTradeServiceIntegration extends BleutradeServiceTestSuppor
         "id",
         "BTC_AUD",
         "buy",
-        new BigDecimal("99"),
+        new Double("99"),
         "0",
-        new BigDecimal("10"),
+        new Double("10"),
         "",
         "2000-01-02 01:02:03.456",
-        new BigDecimal("44"),
+        new Double("44"),
         "");
   }
 
@@ -161,8 +160,7 @@ public class BleutradeTradeServiceIntegration extends BleutradeServiceTestSuppor
   @Test(expected = NotAvailableFromExchangeException.class)
   public void shouldFailOnPlaceMarketOrder() throws IOException {
     // when
-    tradeService.placeMarketOrder(
-        new MarketOrder(Order.OrderType.ASK, BigDecimal.TEN, CurrencyPair.BTC_AUD));
+    tradeService.placeMarketOrder(new MarketOrder(Order.OrderType.ASK, 10d, CurrencyPair.BTC_AUD));
 
     // then
     fail(

@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinone.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinone.dto.CoinoneException;
 import org.knowm.xchange.coinone.dto.account.*;
@@ -27,7 +26,7 @@ public class CoinoneAccountServiceRaw extends CoinoneBaseService {
   }
 
   public CoinoneWithdrawResponse withdrawFund(
-      Currency currency, BigDecimal amount, String address, String authNumber)
+      Currency currency, Double amount, String address, String authNumber)
       throws CoinoneException, IOException {
     CoinoneWithdrawRequest request =
         new CoinoneWithdrawRequest(

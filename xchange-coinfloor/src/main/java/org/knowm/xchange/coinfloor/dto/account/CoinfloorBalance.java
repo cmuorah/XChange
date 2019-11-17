@@ -1,101 +1,100 @@
 package org.knowm.xchange.coinfloor.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Objects;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.dto.account.Balance;
 
 public class CoinfloorBalance {
   @JsonProperty("gbp_balance")
-  public BigDecimal gbpBalance = BigDecimal.ZERO;
+  public Double gbpBalance = 0d;
 
   @JsonProperty("usd_balance")
-  public BigDecimal usdBalance = BigDecimal.ZERO;
+  public Double usdBalance = 0d;
 
   @JsonProperty("eur_balance")
-  public BigDecimal eurBalance = BigDecimal.ZERO;
+  public Double eurBalance = 0d;
 
   @JsonProperty("xbt_balance")
-  public BigDecimal btcBalance = BigDecimal.ZERO;
+  public Double btcBalance = 0d;
 
   @JsonProperty("bch_balance")
-  public BigDecimal bchBalance = BigDecimal.ZERO;
+  public Double bchBalance = 0d;
 
   @JsonProperty("eth_balance")
-  public BigDecimal ethBalance = BigDecimal.ZERO;
+  public Double ethBalance = 0d;
 
   @JsonProperty("ltc_balance")
-  public BigDecimal ltcBalance = BigDecimal.ZERO;
+  public Double ltcBalance = 0d;
 
   @JsonProperty("xrp_balance")
-  public BigDecimal xrpBalance = BigDecimal.ZERO;
+  public Double xrpBalance = 0d;
 
   @JsonProperty("gbp_reserved")
-  public BigDecimal gbpReserved = BigDecimal.ZERO;
+  public Double gbpReserved = 0d;
 
   @JsonProperty("usd_reserved")
-  public BigDecimal usdReserved = BigDecimal.ZERO;
+  public Double usdReserved = 0d;
 
   @JsonProperty("eur_reserved")
-  public BigDecimal eurReserved = BigDecimal.ZERO;
+  public Double eurReserved = 0d;
 
   @JsonProperty("xbt_reserved")
-  public BigDecimal btcReserved = BigDecimal.ZERO;
+  public Double btcReserved = 0d;
 
   @JsonProperty("bch_reserved")
-  public BigDecimal bchReserved = BigDecimal.ZERO;
+  public Double bchReserved = 0d;
 
   @JsonProperty("eth_reserved")
-  public BigDecimal ethReserved = BigDecimal.ZERO;
+  public Double ethReserved = 0d;
 
   @JsonProperty("ltc_reserved")
-  public BigDecimal ltcReserved = BigDecimal.ZERO;
+  public Double ltcReserved = 0d;
 
   @JsonProperty("xrp_reserved")
-  public BigDecimal xrpReserved = BigDecimal.ZERO;
+  public Double xrpReserved = 0d;
 
   @JsonProperty("gbp_available")
-  public BigDecimal gbpAvailable = BigDecimal.ZERO;
+  public Double gbpAvailable = 0d;
 
   @JsonProperty("usd_available")
-  public BigDecimal usdAvailable = BigDecimal.ZERO;
+  public Double usdAvailable = 0d;
 
   @JsonProperty("eur_available")
-  public BigDecimal eurAvailable = BigDecimal.ZERO;
+  public Double eurAvailable = 0d;
 
   @JsonProperty("xbt_available")
-  public BigDecimal btcAvailable = BigDecimal.ZERO;
+  public Double btcAvailable = 0d;
 
   @JsonProperty("bch_available")
-  public BigDecimal bchAvailable = BigDecimal.ZERO;
+  public Double bchAvailable = 0d;
 
   @JsonProperty("eth_available")
-  public BigDecimal ethAvailable = BigDecimal.ZERO;
+  public Double ethAvailable = 0d;
 
   @JsonProperty("ltc_available")
-  public BigDecimal ltcAvailable = BigDecimal.ZERO;
+  public Double ltcAvailable = 0d;
 
   @JsonProperty("xrp_available")
-  public BigDecimal xrpAvailable = BigDecimal.ZERO;
+  public Double xrpAvailable = 0d;
 
   public boolean hasCurrency(Currency currency) {
     if (currency.equals(Currency.BTC)) {
-      return !Objects.equals(btcBalance, BigDecimal.ZERO);
+      return !Objects.equals(btcBalance, 0d);
     } else if (currency.equals(Currency.GBP)) {
-      return !Objects.equals(gbpBalance, BigDecimal.ZERO);
+      return !Objects.equals(gbpBalance, 0d);
     } else if (currency.equals(Currency.EUR)) {
-      return !Objects.equals(eurBalance, BigDecimal.ZERO);
+      return !Objects.equals(eurBalance, 0d);
     } else if (currency.equals(Currency.USD)) {
-      return !Objects.equals(usdBalance, BigDecimal.ZERO);
+      return !Objects.equals(usdBalance, 0d);
     } else if (currency.equals(Currency.BCH)) {
-      return !Objects.equals(bchBalance, BigDecimal.ZERO);
+      return !Objects.equals(bchBalance, 0d);
     } else if (currency.equals(Currency.XRP)) {
-      return !Objects.equals(xrpBalance, BigDecimal.ZERO);
+      return !Objects.equals(xrpBalance, 0d);
     } else if (currency.equals(Currency.LTC)) {
-      return !Objects.equals(ltcBalance, BigDecimal.ZERO);
+      return !Objects.equals(ltcBalance, 0d);
     } else if (currency.equals(Currency.ETH)) {
-      return !Objects.equals(ethBalance, BigDecimal.ZERO);
+      return !Objects.equals(ethBalance, 0d);
     } else {
       return false;
     }

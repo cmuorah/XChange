@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinone.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinone.CoinoneAdapters;
 import org.knowm.xchange.coinone.CoinoneExchange;
@@ -35,8 +34,7 @@ public class CoinoneAccountService extends CoinoneAccountServiceRaw implements A
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     return null;
   }
 

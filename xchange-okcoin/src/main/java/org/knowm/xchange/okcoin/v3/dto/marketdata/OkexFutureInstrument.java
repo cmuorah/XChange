@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.v3.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
@@ -21,11 +20,11 @@ public class OkexFutureInstrument {
 
   /** Order price accuracy, ie "0.01" */
   @JsonProperty("tick_size")
-  private BigDecimal tickSize;
+  private Double tickSize;
 
   /** Contract value (USD), ie "100" */
   @JsonProperty("contract_val")
-  private BigDecimal contractVal;
+  private Double contractVal;
 
   /** Listing date, ie "2019-06-07" */
   private String listing;
@@ -35,7 +34,7 @@ public class OkexFutureInstrument {
 
   /** Order quantity accuracy, ie "1" */
   @JsonProperty("trade_increment")
-  private BigDecimal tradeIncrement;
+  private Double tradeIncrement;
 
   /** this_week, next_week, quarter */
   private String alias;

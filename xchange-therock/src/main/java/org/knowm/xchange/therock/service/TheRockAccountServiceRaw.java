@@ -1,7 +1,6 @@
 package org.knowm.xchange.therock.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -35,7 +34,7 @@ public class TheRockAccountServiceRaw extends TheRockBaseService {
 
   /** Withdraw using the default method */
   public TheRockWithdrawalResponse withdrawDefault(
-      Currency currency, BigDecimal amount, String destinationAddress)
+      Currency currency, Double amount, String destinationAddress)
       throws TheRockException, IOException {
     final TheRockWithdrawal withdrawal =
         TheRockWithdrawal.createDefaultWithdrawal(
@@ -46,7 +45,7 @@ public class TheRockAccountServiceRaw extends TheRockBaseService {
 
   /** Withdraw to Ripple */
   public TheRockWithdrawalResponse withdrawRipple(
-      Currency currency, BigDecimal amount, String destinationAddress, Long destinationTag)
+      Currency currency, Double amount, String destinationAddress, Long destinationTag)
       throws TheRockException, IOException {
     final TheRockWithdrawal withdrawal =
         TheRockWithdrawal.createRippleWithdrawal(

@@ -1,19 +1,18 @@
 package org.knowm.xchange.yobit.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class YoBitTrade {
   private final String type;
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final Long tid;
   private final Long timestamp;
 
   public YoBitTrade(
       @JsonProperty("type") String type,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("tid") Long tid,
       @JsonProperty("timestamp") Long timestamp) {
     super();
@@ -28,11 +27,11 @@ public class YoBitTrade {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

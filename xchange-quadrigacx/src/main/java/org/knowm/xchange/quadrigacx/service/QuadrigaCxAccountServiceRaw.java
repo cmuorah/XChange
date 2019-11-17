@@ -1,7 +1,6 @@
 package org.knowm.xchange.quadrigacx.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.quadrigacx.QuadrigaCxAuthenticated;
@@ -42,7 +41,7 @@ public class QuadrigaCxAccountServiceRaw extends QuadrigaCxBaseService {
     return quadrigacxBalance;
   }
 
-  public String withdrawBitcoin(BigDecimal amount, final String address) throws IOException {
+  public String withdrawBitcoin(Double amount, final String address) throws IOException {
 
     final String response =
         quadrigacxAuthenticated.withdrawBitcoin(
@@ -71,7 +70,7 @@ public class QuadrigaCxAccountServiceRaw extends QuadrigaCxBaseService {
     return response;
   }
 
-  public String withdrawEther(BigDecimal amount, final String address) throws IOException {
+  public String withdrawEther(Double amount, final String address) throws IOException {
 
     final String response =
         quadrigacxAuthenticated.withdrawEther(
@@ -100,7 +99,7 @@ public class QuadrigaCxAccountServiceRaw extends QuadrigaCxBaseService {
     return response;
   }
 
-  public String withdrawBitcoinCach(BigDecimal amount, final String address) throws IOException {
+  public String withdrawBitcoinCach(Double amount, final String address) throws IOException {
     final String response =
         quadrigacxAuthenticated.withdrawBitcoinCach(
             exchange.getExchangeSpecification().getApiKey(),
@@ -127,7 +126,7 @@ public class QuadrigaCxAccountServiceRaw extends QuadrigaCxBaseService {
     return response;
   }
 
-  public String withdrawBitcoinGold(BigDecimal amount, final String address) throws IOException {
+  public String withdrawBitcoinGold(Double amount, final String address) throws IOException {
     final String response =
         quadrigacxAuthenticated.withdrawBitcoinGold(
             exchange.getExchangeSpecification().getApiKey(),
@@ -154,7 +153,7 @@ public class QuadrigaCxAccountServiceRaw extends QuadrigaCxBaseService {
     return response;
   }
 
-  public String withdrawLitecoin(BigDecimal amount, final String address) throws IOException {
+  public String withdrawLitecoin(Double amount, final String address) throws IOException {
     final String response =
         quadrigacxAuthenticated.withdrawLitecoin(
             exchange.getExchangeSpecification().getApiKey(),

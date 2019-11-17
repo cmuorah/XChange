@@ -2,10 +2,8 @@ package org.knowm.xchange.btcmarkets.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.utils.jackson.MillisecTimestampDeserializer;
-import org.knowm.xchange.utils.jackson.SatoshiToBtc;
 
 public class BTCMarketsFundtransfer {
 
@@ -46,8 +44,7 @@ public class BTCMarketsFundtransfer {
   @JsonDeserialize(using = MillisecTimestampDeserializer.class)
   private Date lastUpdate;
 
-  @JsonDeserialize(using = SatoshiToBtc.class)
-  private BigDecimal fee;
+  private Double fee;
 
   private String description;
   private String errorMessage;
@@ -60,8 +57,7 @@ public class BTCMarketsFundtransfer {
   private CryptoPaymentDetail cryptoPaymentDetail;
   private String currency;
 
-  @JsonDeserialize(using = SatoshiToBtc.class)
-  private BigDecimal amount;
+  private Double amount;
 
   private String transferType;
 
@@ -81,11 +77,11 @@ public class BTCMarketsFundtransfer {
     this.lastUpdate = lastUpdate;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public void setFee(BigDecimal fee) {
+  public void setFee(Double fee) {
     this.fee = fee;
   }
 
@@ -137,11 +133,11 @@ public class BTCMarketsFundtransfer {
     this.currency = currency;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
@@ -156,14 +152,14 @@ public class BTCMarketsFundtransfer {
   public BTCMarketsFundtransfer(
       @JsonProperty("status") String status,
       @JsonProperty("lastUpdate") Date lastUpdate,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("description") String description,
       @JsonProperty("errorMessage") String errorMessage,
       @JsonProperty("creationTime") Date creationTime,
       @JsonProperty("fundTransferId") Long fundTransferId,
       @JsonProperty("cryptoPaymentDetail") CryptoPaymentDetail cryptoPaymentDetail,
       @JsonProperty("currency") String currency,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("transferType") String transferType) {
     this.status = status;
     this.lastUpdate = lastUpdate;

@@ -1,29 +1,28 @@
 package org.knowm.xchange.cobinhood.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CobinhoodTicker {
   private final String tradingPairId;
   private final long timestamp;
-  private final BigDecimal dayHigh;
-  private final BigDecimal dayLow;
-  private final BigDecimal dayOpen;
-  private final BigDecimal dayVolume;
-  private final BigDecimal lastTradePrice;
-  private final BigDecimal highestBid;
-  private final BigDecimal lowestAsk;
+  private final Double dayHigh;
+  private final Double dayLow;
+  private final Double dayOpen;
+  private final Double dayVolume;
+  private final Double lastTradePrice;
+  private final Double highestBid;
+  private final Double lowestAsk;
 
   public CobinhoodTicker(
       @JsonProperty("trading_pair_id") String tradingPairId,
       @JsonProperty("timestamp") long timestamp,
-      @JsonProperty("24h_high") BigDecimal dayHigh,
-      @JsonProperty("24h_low") BigDecimal dayLow,
-      @JsonProperty("24h_open") BigDecimal dayOpen,
-      @JsonProperty("24h_volume") BigDecimal dayVolume,
-      @JsonProperty("last_trade_price") BigDecimal lastTradePrice,
-      @JsonProperty("highest_bid") BigDecimal highestBid,
-      @JsonProperty("lowest_ask") BigDecimal lowestAsk) {
+      @JsonProperty("24h_high") Double dayHigh,
+      @JsonProperty("24h_low") Double dayLow,
+      @JsonProperty("24h_open") Double dayOpen,
+      @JsonProperty("24h_volume") Double dayVolume,
+      @JsonProperty("last_trade_price") Double lastTradePrice,
+      @JsonProperty("highest_bid") Double highestBid,
+      @JsonProperty("lowest_ask") Double lowestAsk) {
     this.tradingPairId = tradingPairId;
     this.timestamp = timestamp;
     this.dayHigh = dayHigh;
@@ -43,31 +42,31 @@ public class CobinhoodTicker {
     return timestamp;
   }
 
-  public BigDecimal getDayHigh() {
+  public Double getDayHigh() {
     return dayHigh;
   }
 
-  public BigDecimal getDayLow() {
+  public Double getDayLow() {
     return dayLow;
   }
 
-  public BigDecimal getDayOpen() {
+  public Double getDayOpen() {
     return dayOpen;
   }
 
-  public BigDecimal getDayVolume() {
+  public Double getDayVolume() {
     return dayVolume;
   }
 
-  public BigDecimal getLastTradePrice() {
+  public Double getLastTradePrice() {
     return lastTradePrice;
   }
 
-  public BigDecimal getHighestBid() {
+  public Double getHighestBid() {
     return highestBid;
   }
 
-  public BigDecimal getLowestAsk() {
+  public Double getLowestAsk() {
     return lowestAsk;
   }
 

@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
 import org.knowm.xchange.dvchain.dto.marketdata.DVChainLevel;
@@ -33,16 +32,16 @@ public class DVChainMarketDataJSONTest {
 
     List<DVChainLevel> levels = readValue.getMarketData().get("BTC").getLevels();
 
-    assertEquals(levels.get(0).getBuyPrice(), new BigDecimal("6218.61"));
-    assertEquals(levels.get(0).getSellPrice(), new BigDecimal("6181.4"));
-    assertEquals(levels.get(0).getMaxQuantity(), new BigDecimal("1"));
+    assertEquals(levels.get(0).getBuyPrice(), new Double("6218.61"));
+    assertEquals(levels.get(0).getSellPrice(), new Double("6181.4"));
+    assertEquals(levels.get(0).getMaxQuantity(), new Double("1"));
 
-    assertEquals(levels.get(1).getBuyPrice(), new BigDecimal("6228.63"));
-    assertEquals(levels.get(1).getSellPrice(), new BigDecimal("6171.43"));
-    assertEquals(levels.get(1).getMaxQuantity(), new BigDecimal("5"));
+    assertEquals(levels.get(1).getBuyPrice(), new Double("6228.63"));
+    assertEquals(levels.get(1).getSellPrice(), new Double("6171.43"));
+    assertEquals(levels.get(1).getMaxQuantity(), new Double("5"));
 
-    assertEquals(levels.get(2).getBuyPrice(), new BigDecimal("6238.66"));
-    assertEquals(levels.get(2).getSellPrice(), new BigDecimal("6161.46"));
-    assertEquals(levels.get(2).getMaxQuantity(), new BigDecimal("10"));
+    assertEquals(levels.get(2).getBuyPrice(), new Double("6238.66"));
+    assertEquals(levels.get(2).getSellPrice(), new Double("6161.46"));
+    assertEquals(levels.get(2).getMaxQuantity(), new Double("10"));
   }
 }

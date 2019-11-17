@@ -1,7 +1,6 @@
 package org.knowm.xchange.btctrade.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BTCTradeOrder {
 
@@ -9,9 +8,9 @@ public class BTCTradeOrder {
   private final String datetime;
   private final String type;
   private final String coin;
-  private final BigDecimal price;
-  private final BigDecimal amountOriginal;
-  private final BigDecimal amountOutstanding;
+  private final Double price;
+  private final Double amountOriginal;
+  private final Double amountOutstanding;
 
   private final String status;
   private final BTCTradeTrade[] trades;
@@ -21,9 +20,9 @@ public class BTCTradeOrder {
       @JsonProperty("datetime") String datetime,
       @JsonProperty("type") String type,
       @JsonProperty("coin") String coin,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount_original") BigDecimal amountOriginal,
-      @JsonProperty("amount_outstanding") BigDecimal amountOutstanding,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount_original") Double amountOriginal,
+      @JsonProperty("amount_outstanding") Double amountOutstanding,
       @JsonProperty("status") String status,
       @JsonProperty("trades") BTCTradeTrade[] trades) {
 
@@ -59,17 +58,17 @@ public class BTCTradeOrder {
     return coin;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmountOriginal() {
+  public Double getAmountOriginal() {
 
     return amountOriginal;
   }
 
-  public BigDecimal getAmountOutstanding() {
+  public Double getAmountOutstanding() {
 
     return amountOutstanding;
   }

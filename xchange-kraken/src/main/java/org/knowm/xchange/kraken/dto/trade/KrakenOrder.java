@@ -2,7 +2,6 @@ package org.knowm.xchange.kraken.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 import org.knowm.xchange.kraken.dto.trade.KrakenOrderFlags.KrakenOrderFlagsDeserializer;
@@ -16,13 +15,13 @@ public class KrakenOrder {
   private final double startTimestamp;
   private final double expireTimestamp;
   private final KrakenOrderDescription orderDescription;
-  private final BigDecimal volume;
-  private final BigDecimal volumeExecuted;
-  private final BigDecimal cost;
-  private final BigDecimal fee;
-  private final BigDecimal price;
-  private final BigDecimal stopPrice;
-  private final BigDecimal limitPrice;
+  private final Double volume;
+  private final Double volumeExecuted;
+  private final Double cost;
+  private final Double fee;
+  private final Double price;
+  private final Double stopPrice;
+  private final Double limitPrice;
   private final String miscellaneous;
   private final Set<KrakenOrderFlags> orderFlags;
   private final List<String> tradeIds;
@@ -60,13 +59,13 @@ public class KrakenOrder {
       @JsonProperty("starttm") double startTimestamp,
       @JsonProperty("expiretm") double expireTimestamp,
       @JsonProperty("descr") KrakenOrderDescription orderDescription,
-      @JsonProperty("vol") BigDecimal volume,
-      @JsonProperty("vol_exec") BigDecimal volumeExecuted,
-      @JsonProperty("cost") BigDecimal cost,
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("stopprice") BigDecimal stopPrice,
-      @JsonProperty("limitprice") BigDecimal limitPrice,
+      @JsonProperty("vol") Double volume,
+      @JsonProperty("vol_exec") Double volumeExecuted,
+      @JsonProperty("cost") Double cost,
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("price") Double price,
+      @JsonProperty("stopprice") Double stopPrice,
+      @JsonProperty("limitprice") Double limitPrice,
       @JsonProperty("misc") String misc,
       @JsonProperty("oflags") @JsonDeserialize(using = KrakenOrderFlagsDeserializer.class)
           Set<KrakenOrderFlags> orderFLags,
@@ -130,37 +129,37 @@ public class KrakenOrder {
     return expireTimestamp;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getVolumeExecuted() {
+  public Double getVolumeExecuted() {
 
     return volumeExecuted;
   }
 
-  public BigDecimal getCost() {
+  public Double getCost() {
 
     return cost;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
 
     return fee;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getStopPrice() {
+  public Double getStopPrice() {
 
     return stopPrice;
   }
 
-  public BigDecimal getLimitPrice() {
+  public Double getLimitPrice() {
 
     return limitPrice;
   }

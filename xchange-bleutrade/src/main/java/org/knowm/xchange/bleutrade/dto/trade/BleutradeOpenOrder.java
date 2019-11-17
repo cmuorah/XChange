@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -37,16 +36,16 @@ public class BleutradeOpenOrder {
   private String Type;
 
   @JsonProperty("Quantity")
-  private BigDecimal Quantity;
+  private Double Quantity;
 
   @JsonProperty("QuantityRemaining")
-  private BigDecimal QuantityRemaining;
+  private Double QuantityRemaining;
 
   @JsonProperty("QuantityBaseTraded")
   private String QuantityBaseTraded;
 
   @JsonProperty("Price")
-  private BigDecimal Price;
+  private Double Price;
 
   @JsonProperty("Status")
   private String Status;
@@ -103,28 +102,28 @@ public class BleutradeOpenOrder {
 
   /** @return The Quantity */
   @JsonProperty("Quantity")
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
 
     return Quantity;
   }
 
   /** @param Quantity The Quantity */
   @JsonProperty("Quantity")
-  public void setQuantity(BigDecimal Quantity) {
+  public void setQuantity(Double Quantity) {
 
     this.Quantity = Quantity;
   }
 
   /** @return The QuantityRemaining */
   @JsonProperty("QuantityRemaining")
-  public BigDecimal getQuantityRemaining() {
+  public Double getQuantityRemaining() {
 
     return QuantityRemaining;
   }
 
   /** @param QuantityRemaining The QuantityRemaining */
   @JsonProperty("QuantityRemaining")
-  public void setQuantityRemaining(BigDecimal QuantityRemaining) {
+  public void setQuantityRemaining(Double QuantityRemaining) {
 
     this.QuantityRemaining = QuantityRemaining;
   }
@@ -145,14 +144,14 @@ public class BleutradeOpenOrder {
 
   /** @return The Price */
   @JsonProperty("Price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return Price;
   }
 
   /** @param Price The Price */
   @JsonProperty("Price")
-  public void setPrice(BigDecimal Price) {
+  public void setPrice(Double Price) {
 
     this.Price = Price;
   }

@@ -3,7 +3,6 @@ package org.knowm.xchange.hitbtc.v2.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.List;
@@ -52,12 +51,12 @@ public class HitbtcTradeServiceRawIntegration extends BaseAuthenticatedServiceTe
     String id = date.toString().replace(" ", "");
     LOGGER.info("Placing order id : " + id);
 
-    BigDecimal limitPrice = new BigDecimal("1.00");
+    Double limitPrice = new Double("1.00");
 
     LimitOrder limitOrder =
         new LimitOrder(
             Order.OrderType.BID,
-            new BigDecimal("0.01"),
+            new Double("0.01"),
             CurrencyPair.BTC_USD,
             id,
             new Date(),
@@ -79,7 +78,7 @@ public class HitbtcTradeServiceRawIntegration extends BaseAuthenticatedServiceTe
     exception.expectMessage("Insufficient funds");
     MarketOrder limitOrder =
         new MarketOrder(
-            Order.OrderType.BID, new BigDecimal("0.01"), CurrencyPair.BTC_USD, id, new Date());
+            Order.OrderType.BID, new Double("0.01"), CurrencyPair.BTC_USD, id, new Date());
 
     service.placeMarketOrderRaw(limitOrder);
   }
@@ -88,12 +87,12 @@ public class HitbtcTradeServiceRawIntegration extends BaseAuthenticatedServiceTe
   public void testUpdateOrder_noPrice() throws IOException {
 
     String orderId = String.valueOf(secureRandom.nextInt());
-    BigDecimal askingPrice = new BigDecimal("0.05");
+    Double askingPrice = new Double("0.05");
 
     LimitOrder limitOrder =
         new LimitOrder(
             Order.OrderType.ASK,
-            new BigDecimal("0.01"),
+            new Double("0.01"),
             CurrencyPair.ETH_BTC,
             orderId,
             null,
@@ -107,7 +106,7 @@ public class HitbtcTradeServiceRawIntegration extends BaseAuthenticatedServiceTe
 
       hitbtcOrder =
           service.updateMarketOrderRaw(
-              hitbtcOrder.clientOrderId, new BigDecimal("0.02"), "", Optional.empty());
+              hitbtcOrder.clientOrderId, new Double("0.02"), "", Optional.empty());
     } finally {
       if (hitbtcOrder != null) {
         service.cancelOrderRaw(hitbtcOrder.clientOrderId);
@@ -119,12 +118,12 @@ public class HitbtcTradeServiceRawIntegration extends BaseAuthenticatedServiceTe
   public void testUpdateOrder_withPrice() throws IOException {
 
     String orderId = String.valueOf(secureRandom.nextInt());
-    BigDecimal askingPrice = new BigDecimal("0.05");
+    Double askingPrice = new Double("0.05");
 
     LimitOrder limitOrder =
         new LimitOrder(
             Order.OrderType.ASK,
-            new BigDecimal("0.01"),
+            new Double("0.01"),
             CurrencyPair.ETH_BTC,
             orderId,
             null,
@@ -136,11 +135,10 @@ public class HitbtcTradeServiceRawIntegration extends BaseAuthenticatedServiceTe
       hitbtcOrder = service.placeLimitOrderRaw(limitOrder);
       assertThat(hitbtcOrder).isNotNull();
 
-      Optional<BigDecimal> newPrice = Optional.of(new BigDecimal("0.051"));
+      Optional<Double> newPrice = Optional.of(new Double("0.051"));
 
       hitbtcOrder =
-          service.updateMarketOrderRaw(
-              hitbtcOrder.clientOrderId, new BigDecimal("0.02"), "", newPrice);
+          service.updateMarketOrderRaw(hitbtcOrder.clientOrderId, new Double("0.02"), "", newPrice);
     } finally {
       if (hitbtcOrder != null) {
         service.cancelOrderRaw(hitbtcOrder.clientOrderId);

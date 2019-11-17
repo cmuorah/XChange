@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.cexio.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.cexio.dto.trade.CexIOOrder;
@@ -38,11 +37,11 @@ public class TradeDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             Order.OrderType.BID,
-            BigDecimal.ONE,
+            1d,
             new CurrencyPair(Currency.GHs, Currency.BTC),
             "",
             null,
-            new BigDecimal("0.00015600"));
+            new Double("0.00015600"));
     System.out.println("Trying to place: " + limitOrder);
     String orderId = "0";
     try {

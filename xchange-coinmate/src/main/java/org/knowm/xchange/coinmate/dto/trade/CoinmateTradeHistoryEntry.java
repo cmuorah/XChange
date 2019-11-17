@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinmate.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinmateTradeHistoryEntry {
 
@@ -11,9 +10,9 @@ public class CoinmateTradeHistoryEntry {
   private final String type;
   private final String orderType;
   private final long orderId;
-  private final BigDecimal amount;
-  private final BigDecimal price;
-  private final BigDecimal fee;
+  private final Double amount;
+  private final Double price;
+  private final Double fee;
   private final String feeType;
 
   public CoinmateTradeHistoryEntry(
@@ -23,9 +22,9 @@ public class CoinmateTradeHistoryEntry {
       @JsonProperty("orderType") String orderType,
       @JsonProperty("type") String type,
       @JsonProperty("orderId") long orderId,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("fee") Double fee,
       @JsonProperty("feeType") String feeType) {
 
     this.transactionId = transactionId;
@@ -64,15 +63,15 @@ public class CoinmateTradeHistoryEntry {
     return orderId;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 

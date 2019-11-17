@@ -1,7 +1,6 @@
 package org.knowm.xchange.binance.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import org.knowm.xchange.binance.dto.account.DepositList.BinanceDeposit;
@@ -39,7 +38,7 @@ public final class DepositList extends WapiResponse<List<BinanceDeposit>> {
              */
 
     public final long insertTime;
-    public final BigDecimal amount;
+    public final Double amount;
     public final String asset;
     public final String txId;
     public final String address;
@@ -49,7 +48,7 @@ public final class DepositList extends WapiResponse<List<BinanceDeposit>> {
 
     public BinanceDeposit(
         @JsonProperty("insertTime") long insertTime,
-        @JsonProperty("amount") BigDecimal amount,
+        @JsonProperty("amount") Double amount,
         @JsonProperty("asset") String asset,
         @JsonProperty("txId") String txId,
         @JsonProperty("address") String address,

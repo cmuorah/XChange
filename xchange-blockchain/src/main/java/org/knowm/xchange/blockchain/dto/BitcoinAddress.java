@@ -1,7 +1,6 @@
 package org.knowm.xchange.blockchain.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.blockchain.BlockchainUtils;
 
@@ -59,7 +58,7 @@ public final class BitcoinAddress {
     return this.finalBalance;
   }
 
-  public BigDecimal getFinalBalanceDecimal() {
+  public Double getFinalBalanceDecimal() {
 
     return BlockchainUtils.getAmount(this.finalBalance);
   }
@@ -79,7 +78,7 @@ public final class BitcoinAddress {
     return this.totalReceived;
   }
 
-  public BigDecimal getTotalReceivedDecimal() {
+  public Double getTotalReceivedDecimal() {
 
     return BlockchainUtils.getAmount(this.totalReceived);
   }
@@ -89,7 +88,7 @@ public final class BitcoinAddress {
     return this.totalSent;
   }
 
-  public BigDecimal getTotalSentDecimal() {
+  public Double getTotalSentDecimal() {
 
     return BlockchainUtils.getAmount(this.totalSent);
   }

@@ -1,20 +1,19 @@
 package org.knowm.xchange.bithumb.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BithumbAccount {
 
   private final long created;
   private final String accountId;
-  private final BigDecimal tradeFee;
-  private final BigDecimal balance;
+  private final Double tradeFee;
+  private final Double balance;
 
   public BithumbAccount(
       @JsonProperty("created") long created,
       @JsonProperty("account_id") String accountId,
-      @JsonProperty("trade_fee") BigDecimal tradeFee,
-      @JsonProperty("balance") BigDecimal balance) {
+      @JsonProperty("trade_fee") Double tradeFee,
+      @JsonProperty("balance") Double balance) {
     this.created = created;
     this.accountId = accountId;
     this.tradeFee = tradeFee;
@@ -29,11 +28,11 @@ public class BithumbAccount {
     return accountId;
   }
 
-  public BigDecimal getTradeFee() {
+  public Double getTradeFee() {
     return tradeFee;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 

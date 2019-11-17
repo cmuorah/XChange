@@ -1,19 +1,18 @@
 package org.knowm.xchange.kraken.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Map;
 
 public class KrakenTradeVolume {
 
   private final String currency;
-  private final BigDecimal volume;
+  private final Double volume;
   private final Map<String, KrakenVolumeFee> feesTaker;
   private final Map<String, KrakenVolumeFee> feesMaker;
 
   public KrakenTradeVolume(
       @JsonProperty("currency") String currency,
-      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("volume") Double volume,
       @JsonProperty("fees") Map<String, KrakenVolumeFee> feesTaker,
       @JsonProperty("fees_maker") Map<String, KrakenVolumeFee> feesMaker) {
 
@@ -28,7 +27,7 @@ public class KrakenTradeVolume {
     return currency;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }

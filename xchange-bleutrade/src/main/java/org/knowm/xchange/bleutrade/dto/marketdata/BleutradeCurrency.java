@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -26,7 +25,7 @@ public class BleutradeCurrency {
   private Integer MinConfirmation;
 
   @JsonProperty("TxFee")
-  private BigDecimal TxFee;
+  private Double TxFee;
 
   @JsonProperty("IsActive")
   private Boolean IsActive;
@@ -80,14 +79,14 @@ public class BleutradeCurrency {
 
   /** @return The TxFee */
   @JsonProperty("TxFee")
-  public BigDecimal getTxFee() {
+  public Double getTxFee() {
 
     return TxFee;
   }
 
   /** @param TxFee The TxFee */
   @JsonProperty("TxFee")
-  public void setTxFee(BigDecimal TxFee) {
+  public void setTxFee(Double TxFee) {
 
     this.TxFee = TxFee;
   }

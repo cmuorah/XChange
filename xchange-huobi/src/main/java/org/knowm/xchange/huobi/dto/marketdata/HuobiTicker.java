@@ -1,34 +1,33 @@
 package org.knowm.xchange.huobi.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public final class HuobiTicker {
 
   private final long id;
-  private final BigDecimal amount;
+  private final Double amount;
   private final long count;
-  private final BigDecimal open;
-  private final BigDecimal close;
-  private final BigDecimal low;
-  private final BigDecimal high;
-  private final BigDecimal vol;
+  private final Double open;
+  private final Double close;
+  private final Double low;
+  private final Double high;
+  private final Double vol;
   private final HuobiPrice bid;
   private final HuobiPrice ask;
   private Date ts;
 
   public HuobiTicker(
       @JsonProperty("id") long id,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("count") long count,
-      @JsonProperty("open") BigDecimal open,
-      @JsonProperty("close") BigDecimal close,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("vol") BigDecimal vol,
-      @JsonProperty("bid") BigDecimal[] bid,
-      @JsonProperty("ask") BigDecimal[] ask) {
+      @JsonProperty("open") Double open,
+      @JsonProperty("close") Double close,
+      @JsonProperty("low") Double low,
+      @JsonProperty("high") Double high,
+      @JsonProperty("vol") Double vol,
+      @JsonProperty("bid") Double[] bid,
+      @JsonProperty("ask") Double[] ask) {
     this.id = id;
     this.amount = amount;
     this.count = count;
@@ -45,7 +44,7 @@ public final class HuobiTicker {
     return id;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -53,23 +52,23 @@ public final class HuobiTicker {
     return count;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public BigDecimal getClose() {
+  public Double getClose() {
     return close;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getVol() {
+  public Double getVol() {
     return vol;
   }
 

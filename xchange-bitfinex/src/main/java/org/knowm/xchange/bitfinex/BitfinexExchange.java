@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +66,7 @@ public class BitfinexExchange extends BaseExchange implements Exchange {
       // Get the last-price of each pair. It is needed to infer XChange's priceScale out of
       // Bitfinex's pricePercision
 
-      Map<CurrencyPair, BigDecimal> lastPrices =
+      Map<CurrencyPair, Double> lastPrices =
           Arrays.stream(dataService.getBitfinexTickers(null))
               .map(BitfinexAdapters::adaptTicker)
               .collect(Collectors.toMap(t -> t.getCurrencyPair(), t -> t.getLast()));

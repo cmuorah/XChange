@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.junit.Test;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -58,12 +57,12 @@ public class LakeBTCMarketDataJsonTest {
     ObjectMapper mapper = new ObjectMapper();
     LakeBTCOrderBook orderBook = mapper.readValue(is, LakeBTCOrderBook.class);
 
-    BigDecimal[][] asks = orderBook.getAsks();
+    Double[][] asks = orderBook.getAsks();
     assertThat(asks).hasSize(3);
     assertThat(asks[0][0]).isEqualTo("564.87");
     assertThat(asks[0][1]).isEqualTo("22.371");
 
-    BigDecimal[][] bids = orderBook.getBids();
+    Double[][] bids = orderBook.getBids();
     assertThat(bids).hasSize(3);
     assertThat(bids[2][0]).isEqualTo("558.08");
     assertThat(bids[2][1]).isEqualTo("0.9878");

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -55,8 +54,7 @@ public class BitfinexAccountService extends BitfinexAccountServiceRaw implements
    * @throws IOException
    */
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     try {
       // determine withdrawal type
       String type = BitfinexUtils.convertToBitfinexWithdrawalType(currency.toString());
@@ -85,8 +83,7 @@ public class BitfinexAccountService extends BitfinexAccountServiceRaw implements
    * @throws IOException
    */
   public String withdrawFunds(
-      Currency currency, BigDecimal amount, String address, String tagOrPaymentId)
-      throws IOException {
+      Currency currency, Double amount, String address, String tagOrPaymentId) throws IOException {
     try {
       // determine withdrawal type
       String type = BitfinexUtils.convertToBitfinexWithdrawalType(currency.toString());

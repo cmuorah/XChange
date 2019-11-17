@@ -1,7 +1,6 @@
 package org.knowm.xchange.ripple.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.knowm.xchange.ripple.dto.RippleAmount;
@@ -13,7 +12,7 @@ public class RippleOrderTransaction extends RippleCommon implements IRippleTrade
   public Date timestamp;
 
   @JsonProperty("fee")
-  public BigDecimal fee;
+  public Double fee;
 
   @JsonProperty("action")
   public String action;
@@ -38,11 +37,11 @@ public class RippleOrderTransaction extends RippleCommon implements IRippleTrade
     this.timestamp = value;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public void setFee(final BigDecimal value) {
+  public void setFee(final Double value) {
     fee = value;
   }
 

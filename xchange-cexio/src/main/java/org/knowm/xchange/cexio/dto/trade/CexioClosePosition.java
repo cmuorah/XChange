@@ -1,7 +1,6 @@
 package org.knowm.xchange.cexio.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** Author: brox Since: 2/5/14 */
 public class CexioClosePosition {
@@ -10,9 +9,9 @@ public class CexioClosePosition {
   private final Long ctime;
   private final CexioPositionType ptype;
   private final String msymbol;
-  private final BigDecimal price;
+  private final Double price;
   private final CexioPositionPair pair;
-  private final BigDecimal profit;
+  private final Double profit;
 
   /**
    * @param id the position id
@@ -30,9 +29,9 @@ public class CexioClosePosition {
       @JsonProperty("ctime") Long ctime,
       @JsonProperty("ptype") CexioPositionType ptype,
       @JsonProperty("msymbol") String msymbol,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price") Double price,
       @JsonProperty("pair") CexioPositionPair pair,
-      @JsonProperty("profit") BigDecimal profit) {
+      @JsonProperty("profit") Double profit) {
     this.id = id;
     this.ctime = ctime;
     this.ptype = ptype;
@@ -58,7 +57,7 @@ public class CexioClosePosition {
     return msymbol;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -66,7 +65,7 @@ public class CexioClosePosition {
     return pair;
   }
 
-  public BigDecimal getProfit() {
+  public Double getProfit() {
     return profit;
   }
 }

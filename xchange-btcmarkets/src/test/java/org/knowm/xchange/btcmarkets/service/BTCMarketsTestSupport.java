@@ -1,6 +1,5 @@
 package org.knowm.xchange.btcmarkets.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
@@ -33,20 +32,20 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
       Base64.getEncoder().encodeToString("secretKey".getBytes());
 
   protected static final Balance EXPECTED_BALANCE =
-      new Balance(Currency.BTC, new BigDecimal("3.0E-7"), new BigDecimal("2.0E-7"));
+      new Balance(Currency.BTC, new Double("3.0E-7"), new Double("2.0E-7"));
   protected static final Ticker EXPECTED_TICKER =
       new Ticker.Builder()
-          .bid(new BigDecimal("137.00"))
-          .ask(new BigDecimal("140.00"))
-          .last(new BigDecimal("140.00"))
+          .bid(new Double("137.00"))
+          .ask(new Double("140.00"))
+          .last(new Double("140.00"))
           .currencyPair(CurrencyPair.BTC_AUD)
           .timestamp(new Date(1378878117000L))
           .build();
   protected static final BTCMarketsTicker EXPECTED_BTC_MARKETS_TICKER =
       new BTCMarketsTicker(
-          new BigDecimal("137.00"),
-          new BigDecimal("140.00"),
-          new BigDecimal("140.00"),
+          new Double("137.00"),
+          new Double("140.00"),
+          new Double("140.00"),
           "AUD",
           "BTC",
           new Date(1378878117000L));
@@ -55,25 +54,25 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
     return new LimitOrder[] {
       new LimitOrder(
           Order.OrderType.ASK,
-          new BigDecimal("1.004594"),
+          new Double("1.004594"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("329.31")),
+          new Double("329.31")),
       new LimitOrder(
           Order.OrderType.ASK,
-          new BigDecimal("22.265709"),
+          new Double("22.265709"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("329.38")),
+          new Double("329.38")),
       new LimitOrder(
           Order.OrderType.ASK,
-          new BigDecimal("10.0"),
+          new Double("10.0"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("329.41"))
+          new Double("329.41"))
     };
   }
 
@@ -81,18 +80,18 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
     return new LimitOrder[] {
       new LimitOrder(
           Order.OrderType.BID,
-          new BigDecimal("1.3593495"),
+          new Double("1.3593495"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("328.98")),
+          new Double("328.98")),
       new LimitOrder(
           Order.OrderType.BID,
-          new BigDecimal("0.21273699"),
+          new Double("0.21273699"),
           CurrencyPair.BTC_AUD,
           null,
           null,
-          new BigDecimal("327.6"))
+          new Double("327.6"))
     };
   }
 
@@ -100,18 +99,18 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
     return new LimitOrder[] {
       new LimitOrder(
           Order.OrderType.ASK,
-          new BigDecimal("10.00000000"),
+          new Double("10.00000000"),
           CurrencyPair.BTC_AUD,
           "1",
           null,
-          new BigDecimal("20.00000000")),
+          new Double("20.00000000")),
       new LimitOrder(
           Order.OrderType.BID,
-          new BigDecimal("30.00000000"),
+          new Double("30.00000000"),
           CurrencyPair.BTC_AUD,
           "2",
           null,
-          new BigDecimal("40.00000000"))
+          new Double("40.00000000"))
     };
   }
 
@@ -119,53 +118,53 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
     return new UserTrade[] {
       new UserTrade(
           Order.OrderType.ASK,
-          new BigDecimal("20.00000000"),
+          new Double("20.00000000"),
           CurrencyPair.BTC_AUD,
-          new BigDecimal("10.00000000"),
+          new Double("10.00000000"),
           new Date(111111111L),
           "1",
           "null",
-          new BigDecimal("1"),
+          new Double("1"),
           Currency.AUD),
       new UserTrade(
           Order.OrderType.ASK,
-          new BigDecimal("40.00000000"),
+          new Double("40.00000000"),
           CurrencyPair.BTC_AUD,
-          new BigDecimal("30.00000000"),
+          new Double("30.00000000"),
           new Date(222222222L),
           "2",
           "null",
-          new BigDecimal("2"),
+          new Double("2"),
           Currency.AUD),
       new UserTrade(
           Order.OrderType.BID,
-          new BigDecimal("60.00000000"),
+          new Double("60.00000000"),
           CurrencyPair.BTC_AUD,
-          new BigDecimal("50.00000000"),
+          new Double("50.00000000"),
           new Date(333333333L),
           "3",
           "null",
-          new BigDecimal("3"),
+          new Double("3"),
           Currency.AUD),
       new UserTrade(
           Order.OrderType.BID,
-          new BigDecimal("80.00000000"),
+          new Double("80.00000000"),
           CurrencyPair.BTC_AUD,
-          new BigDecimal("70.00000000"),
+          new Double("70.00000000"),
           new Date(444444444L),
           "4",
           "null",
-          new BigDecimal("4"),
+          new Double("4"),
           Currency.AUD),
       new UserTrade(
           Order.OrderType.BID,
-          new BigDecimal("0"),
+          new Double("0"),
           CurrencyPair.BTC_AUD,
-          new BigDecimal("90.00000000"),
+          new Double("90.00000000"),
           new Date(555555555L),
           "5",
           "null",
-          new BigDecimal("5"),
+          new Double("5"),
           Currency.AUD)
     };
   }
@@ -176,41 +175,41 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
             createBTCMarketsUserTrade(
                 1L,
                 "trade 1",
-                new BigDecimal("10.00000000"),
-                new BigDecimal("20.00000000"),
-                new BigDecimal("1"),
+                new Double("10.00000000"),
+                new Double("20.00000000"),
+                new Double("1"),
                 new Date(111111111L),
                 BTCMarketsOrder.Side.Ask),
             createBTCMarketsUserTrade(
                 2L,
                 "trade 2",
-                new BigDecimal("30.00000000"),
-                new BigDecimal("40.00000000"),
-                new BigDecimal("2"),
+                new Double("30.00000000"),
+                new Double("40.00000000"),
+                new Double("2"),
                 new Date(222222222L),
                 BTCMarketsOrder.Side.Ask),
             createBTCMarketsUserTrade(
                 3L,
                 "trade 3",
-                new BigDecimal("50.00000000"),
-                new BigDecimal("60.00000000"),
-                new BigDecimal("3"),
+                new Double("50.00000000"),
+                new Double("60.00000000"),
+                new Double("3"),
                 new Date(333333333L),
                 BTCMarketsOrder.Side.Bid),
             createBTCMarketsUserTrade(
                 4L,
                 "trade 4",
-                new BigDecimal("70.00000000"),
-                new BigDecimal("80.00000000"),
-                new BigDecimal("4"),
+                new Double("70.00000000"),
+                new Double("80.00000000"),
+                new Double("4"),
                 new Date(444444444L),
                 BTCMarketsOrder.Side.Bid),
             createBTCMarketsUserTrade(
                 5L,
                 "trade 5",
-                new BigDecimal("90.00000000"),
-                BigDecimal.ZERO,
-                new BigDecimal("5"),
+                new Double("90.00000000"),
+                0d,
+                new Double("5"),
                 new Date(555555555L),
                 BTCMarketsOrder.Side.Bid)));
   }
@@ -221,25 +220,25 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
             createBTCMarketsUserTrade(
                 45118157L,
                 null,
-                new BigDecimal("330.00000000"),
-                new BigDecimal("0.00100000"),
-                new BigDecimal("0.00280499"),
+                new Double("330.00000000"),
+                new Double("0.00100000"),
+                new Double("0.00280499"),
                 new Date(1442994673684L),
                 BTCMarketsOrder.Side.Bid),
             createBTCMarketsUserTrade(
                 45118095L,
                 null,
-                new BigDecimal("328.33000000"),
-                new BigDecimal("0.00100000"),
-                new BigDecimal("0.00279080"),
+                new Double("328.33000000"),
+                new Double("0.00100000"),
+                new Double("0.00279080"),
                 new Date(1442994664114L),
                 BTCMarketsOrder.Side.Ask),
             createBTCMarketsUserTrade(
                 45117892L,
                 null,
-                new BigDecimal("328.65000000"),
-                new BigDecimal("0.00100000"),
-                new BigDecimal("0.00279352"),
+                new Double("328.65000000"),
+                new Double("0.00100000"),
+                new Double("0.00279352"),
                 new Date(1442994245419L),
                 BTCMarketsOrder.Side.Ask)));
   }
@@ -248,8 +247,8 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
     return new BTCMarketsOrder[] {
       createBTCMarketsOrder(
           1L,
-          new BigDecimal("10.00000000"),
-          new BigDecimal("20.00000000"),
+          new Double("10.00000000"),
+          new Double("20.00000000"),
           "AUD",
           "BTC",
           BTCMarketsOrder.Side.Ask,
@@ -262,8 +261,8 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
           null),
       createBTCMarketsOrder(
           2L,
-          new BigDecimal("30.00000000"),
-          new BigDecimal("40.00000000"),
+          new Double("30.00000000"),
+          new Double("40.00000000"),
           "AUD",
           "BTC",
           BTCMarketsOrder.Side.Bid,
@@ -281,8 +280,8 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
     return new BTCMarketsOrder[] {
       createBTCMarketsOrder(
           1003245675L,
-          new BigDecimal("0.10000000"),
-          new BigDecimal("130.00000000"),
+          new Double("0.10000000"),
+          new Double("130.00000000"),
           "AUD",
           "BTC",
           BTCMarketsOrder.Side.Bid,
@@ -291,12 +290,12 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
           new Date(1378862733366L),
           "Placed",
           null,
-          new BigDecimal("0.10000000"),
+          new Double("0.10000000"),
           new ArrayList<BTCMarketsUserTrade>()),
       createBTCMarketsOrder(
           4345675L,
-          new BigDecimal("0.10000000"),
-          new BigDecimal("130.00000000"),
+          new Double("0.10000000"),
+          new Double("130.00000000"),
           "AUD",
           "BTC",
           BTCMarketsOrder.Side.Ask,
@@ -305,14 +304,14 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
           new Date(1378636912705L),
           "Fully Matched",
           null,
-          new BigDecimal("0E-8"),
+          new Double("0E-8"),
           Arrays.asList(
               createBTCMarketsUserTrade(
                   5345677L,
                   null,
-                  new BigDecimal("130.00000000"),
-                  new BigDecimal("0.10000000"),
-                  new BigDecimal("0.00100000"),
+                  new Double("130.00000000"),
+                  new Double("0.10000000"),
+                  new Double("0.00100000"),
                   new Date(1378636913151L),
                   null))),
     };
@@ -320,8 +319,8 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
 
   protected static BTCMarketsBalance[] expectedBtcMarketsBalances() {
     return new BTCMarketsBalance[] {
-      createBTCMarketsBalance(new BigDecimal("10.00000000"), null, "AUD"),
-      createBTCMarketsBalance(null, new BigDecimal("10.00000000"), "BTC"),
+      createBTCMarketsBalance(new Double("10.00000000"), null, "AUD"),
+      createBTCMarketsBalance(null, new Double("10.00000000"), "BTC"),
       createBTCMarketsBalance(null, null, "LTC")
     };
   }
@@ -329,9 +328,9 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
   protected static BTCMarketsUserTrade createBTCMarketsUserTrade(
       Long id,
       String description,
-      BigDecimal price,
-      BigDecimal volume,
-      BigDecimal fee,
+      Double price,
+      Double volume,
+      Double fee,
       Date creationTime,
       BTCMarketsOrder.Side side) {
 
@@ -349,8 +348,8 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
 
   protected static BTCMarketsOrder createBTCMarketsOrder(
       Long id,
-      BigDecimal volume,
-      BigDecimal price,
+      Double volume,
+      Double price,
       String currency,
       String instrument,
       BTCMarketsOrder.Side orderSide,
@@ -359,7 +358,7 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
       Date creationTime,
       String status,
       String errorMessage,
-      BigDecimal openVolume,
+      Double openVolume,
       List<BTCMarketsUserTrade> trades) {
     BTCMarketsOrder order =
         new BTCMarketsOrder(
@@ -376,7 +375,7 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
   }
 
   protected static BTCMarketsBalance createBTCMarketsBalance(
-      BigDecimal pendingFunds, BigDecimal balance, String currency) {
+      Double pendingFunds, Double balance, String currency) {
 
     BTCMarketsBalance marketsBalance = new BTCMarketsBalance();
     Whitebox.setInternalState(marketsBalance, "pendingFunds", pendingFunds);
@@ -396,7 +395,7 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
             new BTCMarketsFundtransfer(
                 "Complete",
                 new Date(1530533761866L),
-                BigDecimal.ZERO.setScale(8),
+                0d.setScale(8),
                 "Ethereum Deposit, S 15",
                 null,
                 new Date(1530533761866L),
@@ -404,7 +403,7 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
                 new BTCMarketsFundtransfer.CryptoPaymentDetail(
                     "0x1234abcdef1234abcdef1234abcdef1234abcdef1234abcdef1234abcdef", null),
                 "ETH",
-                BigDecimal.valueOf(15.04872041),
+                Double.valueOf(15.04872041),
                 "DEPOSIT")),
         new BTCMarketsFundtransferHistoryResponse.Paging(
             "/fundtransfer/history?since=1957653133&indexForward=true",

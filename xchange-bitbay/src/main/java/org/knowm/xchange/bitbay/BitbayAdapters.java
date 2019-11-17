@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitbay;
 
-import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,12 +43,12 @@ public class BitbayAdapters {
    */
   public static Ticker adaptTicker(BitbayTicker bitbayTicker, CurrencyPair currencyPair) {
 
-    BigDecimal ask = bitbayTicker.getAsk();
-    BigDecimal bid = bitbayTicker.getBid();
-    BigDecimal high = bitbayTicker.getMax();
-    BigDecimal low = bitbayTicker.getMin();
-    BigDecimal volume = bitbayTicker.getVolume();
-    BigDecimal last = bitbayTicker.getLast();
+    Double ask = bitbayTicker.getAsk();
+    Double bid = bitbayTicker.getBid();
+    Double high = bitbayTicker.getMax();
+    Double low = bitbayTicker.getMin();
+    Double volume = bitbayTicker.getVolume();
+    Double last = bitbayTicker.getLast();
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
@@ -62,19 +61,13 @@ public class BitbayAdapters {
         .build();
   }
 
-  /**
-   * @param orders
-   * @param orderType
-   * @param currencyPair
-   * @return
-   */
   private static List<LimitOrder> transformArrayToLimitOrders(
-      BigDecimal[][] orders, OrderType orderType, CurrencyPair currencyPair) {
+      Double[][] orders, OrderType orderType, CurrencyPair currencyPair) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
 
     if (orders != null) {
-      for (BigDecimal[] order : orders) {
+      for (Double[] order : orders) {
         limitOrders.add(
             new LimitOrder(orderType, order[1], currencyPair, null, new Date(), order[0]));
       }
@@ -83,28 +76,15 @@ public class BitbayAdapters {
     return limitOrders;
   }
 
-  /**
-   * @param bitbayOrderBook
-   * @param currencyPair
-   * @return
-   */
   public static OrderBook adaptOrderBook(
       BitbayOrderBook bitbayOrderBook, CurrencyPair currencyPair) {
 
-    OrderBook orderBook =
-        new OrderBook(
-            null,
-            transformArrayToLimitOrders(bitbayOrderBook.getAsks(), OrderType.ASK, currencyPair),
-            transformArrayToLimitOrders(bitbayOrderBook.getBids(), OrderType.BID, currencyPair));
-
-    return orderBook;
+    return new OrderBook(
+        null,
+        transformArrayToLimitOrders(bitbayOrderBook.getAsks(), OrderType.ASK, currencyPair),
+        transformArrayToLimitOrders(bitbayOrderBook.getBids(), OrderType.BID, currencyPair));
   }
 
-  /**
-   * @param bitbayTrades
-   * @param currencyPair
-   * @return
-   */
   public static Trades adaptTrades(BitbayTrade[] bitbayTrades, CurrencyPair currencyPair) {
 
     List<Trade> tradeList = new ArrayList<>();
@@ -123,8 +103,7 @@ public class BitbayAdapters {
       tradeList.add(trade);
     }
 
-    Trades trades = new Trades(tradeList, Trades.TradeSortType.SortByTimestamp);
-    return trades;
+    return new Trades(tradeList, Trades.TradeSortType.SortByTimestamp);
   }
 
   public static AccountInfo adaptAccountInfo(
@@ -139,7 +118,7 @@ public class BitbayAdapters {
       balances.add(
           new Balance(
               currency,
-              balance.getAvailable().add(balance.getLocked()),
+              balance.getAvailable() + (balance.getLocked()),
               balance.getAvailable(),
               balance.getLocked()));
     }
@@ -190,7 +169,7 @@ public class BitbayAdapters {
         currencyPair,
         String.valueOf(bitbayOrder.getId()),
         date,
-        bitbayOrder.getStartPrice().divide(bitbayOrder.getStartAmount()));
+        bitbayOrder.getStartPrice() / (bitbayOrder.getStartAmount()));
   }
 
   private static UserTrade createUserTrade(BitbayOrder bitbayOrder) {
@@ -210,7 +189,7 @@ public class BitbayAdapters {
         type,
         bitbayOrder.getAmount(),
         currencyPair,
-        bitbayOrder.getCurrentPrice().divide(bitbayOrder.getStartAmount()),
+        bitbayOrder.getCurrentPrice() / (bitbayOrder.getStartAmount()),
         date,
         String.valueOf(bitbayOrder.getId()),
         String.valueOf(bitbayOrder.getId()),
@@ -238,8 +217,8 @@ public class BitbayAdapters {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = map.get("date").toString();
         Date timestamp = formatter.parse(date);
-        BigDecimal amount = new BigDecimal(map.get("amount").toString());
-        BigDecimal price = new BigDecimal(map.get("rate").toString());
+        Double amount = new Double(map.get("amount").toString());
+        Double price = new Double(map.get("rate").toString());
 
         // there's no id - create a synthetic one
         String id = (type + "_" + date + "_" + market).replaceAll("\\s+", "");

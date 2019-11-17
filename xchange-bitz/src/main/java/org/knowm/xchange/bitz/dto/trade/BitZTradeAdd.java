@@ -1,32 +1,31 @@
 package org.knowm.xchange.bitz.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 // TODO: Implement Once Implemented By The Exchange
 public class BitZTradeAdd {
   private final long id;
   private final long uId;
-  private final BigDecimal price;
-  private final BigDecimal number;
-  private final BigDecimal numberOver;
+  private final Double price;
+  private final Double number;
+  private final Double numberOver;
   private final String flag;
   private final String status;
   private final String coinFrom;
   private final String coinTo;
-  private final BigDecimal numberDeal;
+  private final Double numberDeal;
 
   public BitZTradeAdd(
       @JsonProperty("id") long id,
       @JsonProperty("uId") long uId,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("number") BigDecimal number,
-      @JsonProperty("numberOver") BigDecimal numberOver,
+      @JsonProperty("price") Double price,
+      @JsonProperty("number") Double number,
+      @JsonProperty("numberOver") Double numberOver,
       @JsonProperty("flag") String flag,
       @JsonProperty("status") String status,
       @JsonProperty("coinFrom") String coinFrom,
       @JsonProperty("coinTo") String coinTo,
-      @JsonProperty("numberDeal") BigDecimal numberDeal) {
+      @JsonProperty("numberDeal") Double numberDeal) {
     this.id = id;
     this.uId = uId;
     this.price = price;
@@ -47,11 +46,11 @@ public class BitZTradeAdd {
     return uId;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getNumber() {
+  public Double getNumber() {
     return number;
   }
 
@@ -71,11 +70,11 @@ public class BitZTradeAdd {
     return coinTo;
   }
 
-  public BigDecimal getNumberDeal() {
+  public Double getNumberDeal() {
     return numberDeal;
   }
 
-  public BigDecimal getNumberOver() {
+  public Double getNumberOver() {
     return numberOver;
   }
 

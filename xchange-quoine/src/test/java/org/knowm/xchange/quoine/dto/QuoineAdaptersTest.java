@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.junit.Test;
 import org.knowm.xchange.currency.Currency;
@@ -40,10 +39,10 @@ public class QuoineAdaptersTest {
     Ticker ticker = QuoineAdapters.adaptTicker(quoineTicker, CurrencyPair.BTC_USD);
 
     // Verify that the example data was unmarshalled correctly
-    assertThat(ticker.getAsk()).isEqualTo(new BigDecimal("227.09383"));
-    assertThat(ticker.getBid()).isEqualTo(new BigDecimal("226.78383"));
-    assertThat(ticker.getLast()).isEqualTo(new BigDecimal("227.38586"));
-    assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("0.16"));
+    assertThat(ticker.getAsk()).isEqualTo(new Double("227.09383"));
+    assertThat(ticker.getBid()).isEqualTo(new Double("226.78383"));
+    assertThat(ticker.getLast()).isEqualTo(new Double("227.38586"));
+    assertThat(ticker.getVolume()).isEqualTo(new Double("0.16"));
     assertThat(ticker.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
   }
 
@@ -63,8 +62,7 @@ public class QuoineAdaptersTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(openOrders.getOpenOrders().size()).isEqualTo(6);
     assertThat(openOrders.getOpenOrders().get(0).getId()).isEqualTo("52362");
-    assertThat(openOrders.getOpenOrders().get(0).getLimitPrice())
-        .isEqualTo(new BigDecimal("250.0"));
+    assertThat(openOrders.getOpenOrders().get(0).getLimitPrice()).isEqualTo(new Double("250.0"));
     assertThat(openOrders.getOpenOrders().get(0).getTimestamp())
         .isEqualTo(new Date(1429953404000L));
   }
@@ -87,7 +85,7 @@ public class QuoineAdaptersTest {
     assertThat(orderBook.getAsks().size()).isEqualTo(20);
     assertThat(orderBook.getBids().size()).isEqualTo(20);
     assertThat(orderBook.getBids().get(0).getId()).isEqualTo("");
-    assertThat(orderBook.getBids().get(0).getLimitPrice()).isEqualTo(new BigDecimal("226.69718"));
+    assertThat(orderBook.getBids().get(0).getLimitPrice()).isEqualTo(new Double("226.69718"));
   }
 
   @Test
@@ -108,6 +106,6 @@ public class QuoineAdaptersTest {
     assertThat(wallet.getBalances()).hasSize(6);
     System.out.println(wallet.getBalance(Currency.JPY).toString());
     assertThat(wallet.getBalance(Currency.JPY).getCurrency()).isEqualTo(Currency.JPY);
-    assertThat(wallet.getBalance(Currency.JPY).getTotal()).isEqualTo(new BigDecimal("12546.36144"));
+    assertThat(wallet.getBalance(Currency.JPY).getTotal()).isEqualTo(new Double("12546.36144"));
   }
 }

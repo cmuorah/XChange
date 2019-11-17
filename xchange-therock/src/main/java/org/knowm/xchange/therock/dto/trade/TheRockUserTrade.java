@@ -2,7 +2,6 @@ package org.knowm.xchange.therock.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.therock.dto.marketdata.TheRockTrade.Side;
 
@@ -10,9 +9,9 @@ public class TheRockUserTrade {
 
   private final long id;
   private final String fundId;
-  private final BigDecimal amount;
+  private final Double amount;
   private final Date date;
-  private final BigDecimal price;
+  private final Double price;
   private final Side side;
   private final long orderId;
   private final TheRockUserTradeTransaction feeTransaction;
@@ -20,8 +19,8 @@ public class TheRockUserTrade {
   public TheRockUserTrade(
       @JsonProperty("id") long id,
       @JsonProperty("fund_id") String fundId,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("price") Double price,
       @JsonProperty("date") Date date,
       @JsonProperty("side") Side tradeSide,
       @JsonProperty("order_id") long orderId,
@@ -53,11 +52,11 @@ public class TheRockUserTrade {
     return fundId;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -73,8 +72,8 @@ public class TheRockUserTrade {
     return orderId;
   }
 
-  public BigDecimal getFeeAmount() {
-    return feeTransaction == null ? BigDecimal.ZERO : feeTransaction.price;
+  public Double getFeeAmount() {
+    return feeTransaction == null ? 0d : feeTransaction.price;
   }
 
   public String getFeeCurrency() {
@@ -118,14 +117,14 @@ public class TheRockUserTrade {
     private final long id;
     private final Date date;
     private final TransactionType type;
-    private final BigDecimal price;
+    private final Double price;
     private final String currency;
 
     public TheRockUserTradeTransaction(
         @JsonProperty("id") long id,
         @JsonProperty("date") Date date,
         @JsonProperty("type") TransactionType type,
-        @JsonProperty("price") BigDecimal price,
+        @JsonProperty("price") Double price,
         @JsonProperty("currency") String currency) {
       super();
       this.id = id;

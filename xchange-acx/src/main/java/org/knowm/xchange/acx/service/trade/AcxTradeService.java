@@ -3,7 +3,6 @@ package org.knowm.xchange.acx.service.trade;
 import static org.knowm.xchange.acx.utils.AcxUtils.getAcxMarket;
 
 import java.io.IOException;
-import java.math.RoundingMode;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,11 +23,8 @@ import org.knowm.xchange.service.trade.TradeService;
 import org.knowm.xchange.service.trade.params.orders.DefaultOpenOrdersParamCurrencyPair;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParamCurrencyPair;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AcxTradeService implements TradeService {
-  private static final Logger logger = LoggerFactory.getLogger(AcxTradeService.class);
   private final AcxApi api;
   private final AcxMapper mapper;
   private final AcxSignatureCreator signatureCreator;
@@ -67,8 +63,8 @@ public class AcxTradeService implements TradeService {
     long tonce = System.currentTimeMillis();
     String market = getAcxMarket(limitOrder.getCurrencyPair());
     String side = mapper.getOrderType(limitOrder.getType());
-    String volume = limitOrder.getOriginalAmount().setScale(2, RoundingMode.DOWN).toPlainString();
-    String price = limitOrder.getLimitPrice().setScale(4, RoundingMode.DOWN).toPlainString();
+    String volume = String.format("%.2f", limitOrder.getOriginalAmount());
+    String price = String.format("%.4f", limitOrder.getLimitPrice());
     AcxOrder order =
         api.createOrder(accessKey, tonce, market, side, volume, price, "limit", signatureCreator);
     return order.id;
@@ -89,7 +85,7 @@ public class AcxTradeService implements TradeService {
               try {
                 long tonce = System.currentTimeMillis();
                 return Stream.of(
-                    api.getOrder(accessKey, tonce, Long.valueOf(orderId), signatureCreator));
+                    api.getOrder(accessKey, tonce, Long.parseLong(orderId), signatureCreator));
               } catch (Exception e) {
                 throw new RuntimeException("Could not retrieve ACX order with id " + orderId, e);
               }

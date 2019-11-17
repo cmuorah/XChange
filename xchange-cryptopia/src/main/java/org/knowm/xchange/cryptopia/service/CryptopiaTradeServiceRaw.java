@@ -1,7 +1,6 @@
 package org.knowm.xchange.cryptopia.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,17 +44,17 @@ public class CryptopiaTradeServiceRaw extends CryptopiaBaseService {
 
       Order.OrderType type = type(map);
 
-      BigDecimal originalAmount = new BigDecimal(map.get("Amount").toString());
-      BigDecimal remaining = new BigDecimal(map.get("Remaining").toString());
-      BigDecimal total = new BigDecimal(map.get("Total").toString());
+      Double originalAmount = new Double(map.get("Amount").toString());
+      Double remaining = new Double(map.get("Remaining").toString());
+      Double total = new Double(map.get("Total").toString());
 
       String id = map.get("OrderId").toString();
       Date timestamp = CryptopiaAdapters.convertTimestamp(map.get("TimeStamp").toString());
 
       // asd
-      BigDecimal limitPrice = new BigDecimal(map.get("Rate").toString());
-      BigDecimal averagePrice = null;
-      BigDecimal cumulativeAmount = originalAmount.subtract(remaining);
+      Double limitPrice = new Double(map.get("Rate").toString());
+      Double averagePrice = null;
+      Double cumulativeAmount = originalAmount - (remaining);
       Order.OrderStatus status = Order.OrderStatus.PENDING_NEW;
 
       CurrencyPair pair = new CurrencyPair(map.get("Market").toString());
@@ -77,7 +76,7 @@ public class CryptopiaTradeServiceRaw extends CryptopiaBaseService {
   }
 
   public String submitTrade(
-      CurrencyPair currencyPair, LimitOrder.OrderType type, BigDecimal price, BigDecimal amount)
+      CurrencyPair currencyPair, LimitOrder.OrderType type, Double price, Double amount)
       throws IOException {
     String rawType = type.equals(Order.OrderType.BID) ? "Buy" : "Sell";
 
@@ -122,11 +121,11 @@ public class CryptopiaTradeServiceRaw extends CryptopiaBaseService {
     List<UserTrade> results = new ArrayList<>();
     for (Map map : response.getData()) {
       Order.OrderType type = type(map);
-      BigDecimal amount = new BigDecimal(map.get("Amount").toString());
-      BigDecimal price = new BigDecimal(map.get("Rate").toString());
+      Double amount = new Double(map.get("Amount").toString());
+      Double price = new Double(map.get("Rate").toString());
       Date timestamp = CryptopiaAdapters.convertTimestamp(map.get("TimeStamp").toString());
       String id = map.get("TradeId").toString();
-      BigDecimal fee = new BigDecimal(map.get("Fee").toString());
+      Double fee = new Double(map.get("Fee").toString());
       String orderId = id;
 
       CurrencyPair pair = new CurrencyPair(map.get("Market").toString());

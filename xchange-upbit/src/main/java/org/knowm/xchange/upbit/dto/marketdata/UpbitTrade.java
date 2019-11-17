@@ -1,7 +1,6 @@
 package org.knowm.xchange.upbit.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author interwater */
 public class UpbitTrade {
@@ -9,11 +8,11 @@ public class UpbitTrade {
   private final String market;
   private final String tradeDateUtc;
   private final String tradeTimeUtc;
-  private final BigDecimal timestamp;
-  private final BigDecimal tradePrice;
-  private final BigDecimal tradeVolume;
-  private final BigDecimal prevClosingPrice;
-  private final BigDecimal changePrice;
+  private final Double timestamp;
+  private final Double tradePrice;
+  private final Double tradeVolume;
+  private final Double prevClosingPrice;
+  private final Double changePrice;
   private final String askBid;
 
   /**
@@ -31,11 +30,11 @@ public class UpbitTrade {
       @JsonProperty("market") String market,
       @JsonProperty("trade_date_utc") String tradeDateUtc,
       @JsonProperty("trade_time_utc") String tradeTimeUtc,
-      @JsonProperty("timestamp") BigDecimal timestamp,
-      @JsonProperty("trade_price") BigDecimal tradePrice,
-      @JsonProperty("trade_volume") BigDecimal tradeVolume,
-      @JsonProperty("prev_closing_price") BigDecimal prevClosingPrice,
-      @JsonProperty("change_price") BigDecimal changePrice,
+      @JsonProperty("timestamp") Double timestamp,
+      @JsonProperty("trade_price") Double tradePrice,
+      @JsonProperty("trade_volume") Double tradeVolume,
+      @JsonProperty("prev_closing_price") Double prevClosingPrice,
+      @JsonProperty("change_price") Double changePrice,
       @JsonProperty("ask_bid") String askBid) {
     this.market = market;
     this.tradeDateUtc = tradeDateUtc;
@@ -60,23 +59,23 @@ public class UpbitTrade {
     return tradeTimeUtc;
   }
 
-  public BigDecimal getTimestamp() {
+  public Double getTimestamp() {
     return timestamp;
   }
 
-  public BigDecimal getTradePrice() {
+  public Double getTradePrice() {
     return tradePrice;
   }
 
-  public BigDecimal getTradeVolume() {
+  public Double getTradeVolume() {
     return tradeVolume;
   }
 
-  public BigDecimal getPrevClosingPrice() {
+  public Double getPrevClosingPrice() {
     return prevClosingPrice;
   }
 
-  public BigDecimal getChangePrice() {
+  public Double getChangePrice() {
     return changePrice;
   }
 

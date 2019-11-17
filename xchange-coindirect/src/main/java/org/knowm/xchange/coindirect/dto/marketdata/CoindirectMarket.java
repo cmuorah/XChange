@@ -2,30 +2,29 @@ package org.knowm.xchange.coindirect.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CoindirectMarket {
   public final long id;
-  public final BigDecimal maximumPrice;
-  public final BigDecimal minimumPrice;
-  public final BigDecimal maximumQuantity;
-  public final BigDecimal minimumQuantity;
+  public final Double maximumPrice;
+  public final Double minimumPrice;
+  public final Double maximumQuantity;
+  public final Double minimumQuantity;
   public final String status;
-  public final BigDecimal stepSize;
-  public final BigDecimal tickSize;
+  public final Double stepSize;
+  public final Double tickSize;
   public final String symbol;
   public final CoindirectMarketSummary summary;
 
   public CoindirectMarket(
       @JsonProperty("id") long id,
-      @JsonProperty("maximumPrice") BigDecimal maximumPrice,
-      @JsonProperty("minimumPrice") BigDecimal minimumPrice,
-      @JsonProperty("maximumQuantity") BigDecimal maximumQuantity,
-      @JsonProperty("minimumQuantity") BigDecimal minimumQuantity,
+      @JsonProperty("maximumPrice") Double maximumPrice,
+      @JsonProperty("minimumPrice") Double minimumPrice,
+      @JsonProperty("maximumQuantity") Double maximumQuantity,
+      @JsonProperty("minimumQuantity") Double minimumQuantity,
       @JsonProperty("status") String status,
-      @JsonProperty("stepSize") BigDecimal stepSize,
-      @JsonProperty("tickSize") BigDecimal tickSize,
+      @JsonProperty("stepSize") Double stepSize,
+      @JsonProperty("tickSize") Double tickSize,
       @JsonProperty("symbol") String symbol,
       @JsonProperty("summary") CoindirectMarketSummary summary) {
     this.id = id;

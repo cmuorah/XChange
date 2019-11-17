@@ -1,29 +1,27 @@
 package org.knowm.xchange.bitcointoyou.dto.marketdata;
 
-import java.math.BigDecimal;
-
 /**
  * @author Jonathas Carrijo
  * @author Danilo Guimaraes
  */
 public class BitcointoyouLevel {
 
-  private final BigDecimal amount;
-  private final BigDecimal limit;
+  private final Double amount;
+  private final Double limit;
 
-  public BitcointoyouLevel(BigDecimal price, BigDecimal quantity) {
+  public BitcointoyouLevel(Double price, Double quantity) {
 
     super();
     this.amount = quantity;
     this.limit = price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
-  public BigDecimal getLimit() {
+  public Double getLimit() {
 
     return limit;
   }

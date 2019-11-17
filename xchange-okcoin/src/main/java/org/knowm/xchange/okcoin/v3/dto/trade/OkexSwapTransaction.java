@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.v3.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import lombok.Data;
@@ -17,10 +16,10 @@ public class OkexSwapTransaction {
   /** trading pair */
   private String instrumentId;
   /** price */
-  private BigDecimal price;
+  private Double price;
   /** Quantity */
   @JsonProperty("order_qty")
-  private BigDecimal orderQty;
+  private Double orderQty;
 
   @JsonProperty("order_id")
   /** order ID */
@@ -35,7 +34,7 @@ public class OkexSwapTransaction {
   @JsonProperty("exec_type")
   private String execType;
 
-  private BigDecimal fee;
+  private Double fee;
   /** bills side (buy, sell or points_fee) */
   private SwapSide side;
 

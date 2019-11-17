@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.btcturk.dto.BTCTurkOrderTypes;
 import org.knowm.xchange.btcturk.dto.marketdata.BTCTurkTickerTest;
@@ -27,7 +26,7 @@ public class BTCTurkExchangeResultTest {
     assertThat(DateUtils.toUTCString(btcTurkExchangeResult.getDatetime()))
         .isEqualTo("2019-01-14 17:55:31 GMT");
     assertThat(btcTurkExchangeResult.getType()).isEqualTo(BTCTurkOrderTypes.Sell);
-    assertThat(btcTurkExchangeResult.getPrice()).isEqualTo(new BigDecimal("900"));
-    assertThat(btcTurkExchangeResult.getAmount()).isEqualTo(new BigDecimal("0.0123"));
+    assertThat(btcTurkExchangeResult.getPrice()).isEqualTo(new Double("900"));
+    assertThat(btcTurkExchangeResult.getAmount()).isEqualTo(new Double("0.0123"));
   }
 }

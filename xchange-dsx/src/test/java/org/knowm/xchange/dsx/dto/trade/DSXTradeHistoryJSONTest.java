@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.junit.Test;
 
@@ -27,11 +26,11 @@ public class DSXTradeHistoryJSONTest {
 
     assertThat(firstEnrty.getKey()).isEqualTo(1000L);
     assertThat(firstEnrty.getValue().getType()).isEqualTo(DSXTradeHistoryResult.Type.buy);
-    assertThat(firstEnrty.getValue().getAmount()).isEqualTo(new BigDecimal("10"));
-    assertThat(firstEnrty.getValue().getRate()).isEqualTo(new BigDecimal("300"));
+    assertThat(firstEnrty.getValue().getAmount()).isEqualTo(new Double("10"));
+    assertThat(firstEnrty.getValue().getRate()).isEqualTo(new Double("300"));
     assertThat(firstEnrty.getValue().getOrderId()).isEqualTo(576L);
     assertThat(firstEnrty.getValue().getTimestamp()).isEqualTo(142123698L);
-    assertThat(firstEnrty.getValue().getCommission()).isEqualTo(new BigDecimal("0.001"));
+    assertThat(firstEnrty.getValue().getCommission()).isEqualTo(new Double("0.001"));
     assertThat(firstEnrty.getValue().getCommissionCurrency()).isEqualTo("USD");
   }
 }

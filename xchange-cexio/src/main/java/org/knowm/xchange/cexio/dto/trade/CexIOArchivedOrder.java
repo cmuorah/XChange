@@ -6,8 +6,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -114,15 +112,15 @@ public class CexIOArchivedOrder {
   public final String status;
   public final String symbol1;
   public final String symbol2;
-  public final BigDecimal amount;
-  public final BigDecimal orderPrice;
-  public final BigDecimal averageExecutionPrice;
+  public final Double amount;
+  public final Double orderPrice;
+  public final Double averageExecutionPrice;
   public final String remains;
   public final String tradingFeeMaker;
   public final String tradingFeeTaker;
   public final String tradingFeeUserVolumeAmount;
   public final String orderId;
-  public final BigDecimal feeValue;
+  public final Double feeValue;
   public final String feeCcy;
 
   public CexIOArchivedOrder(
@@ -135,15 +133,15 @@ public class CexIOArchivedOrder {
       String status,
       String symbol1,
       String symbol2,
-      BigDecimal amount,
-      BigDecimal orderPrice,
-      BigDecimal averageExecutionPrice,
+      Double amount,
+      Double orderPrice,
+      Double averageExecutionPrice,
       String remains,
       String tradingFeeMaker,
       String tradingFeeTaker,
       String tradingFeeUserVolumeAmount,
       String orderId,
-      BigDecimal feeValue,
+      Double feeValue,
       String feeCcy) {
     this.id = id;
     this.type = type;
@@ -183,11 +181,11 @@ public class CexIOArchivedOrder {
           map.put(entry.getKey(), entry.getValue().asText());
         }
 
-        BigDecimal feeValue = null;
+        Double feeValue = null;
         String feeCcy = null;
         Pattern pattern = Pattern.compile("([af])\\:(.*?)\\:cds");
 
-        Map<String, BigDecimal> filled = new HashMap<>();
+        Map<String, Double> filled = new HashMap<>();
 
         for (String key : map.keySet()) {
           Matcher matcher = pattern.matcher(key);
@@ -195,7 +193,7 @@ public class CexIOArchivedOrder {
             String feeOrAmount = matcher.group(1);
 
             String ccy = matcher.group(2);
-            BigDecimal value = new BigDecimal(map.get(key));
+            Double value = new Double(map.get(key));
 
             if (feeOrAmount.equals("a")) {
               filled.put(ccy, value);
@@ -211,28 +209,27 @@ public class CexIOArchivedOrder {
         String counter = map.get("symbol2");
         String base = map.get("symbol1");
 
-        BigDecimal orderPrice = null;
+        Double orderPrice = null;
         // market orders don't have a price
-        if (map.containsKey("price")) orderPrice = new BigDecimal(map.get("price"));
+        if (map.containsKey("price")) orderPrice = new Double(map.get("price"));
 
         int priceScale = 8; // todo: check if this is correct for all
-        BigDecimal counterAmount = filled.get(counter);
-        BigDecimal baseAmount = filled.get(base);
+        Double counterAmount = filled.get(counter);
+        Double baseAmount = filled.get(base);
 
-        BigDecimal averageExecutionPrice = null;
-        if (baseAmount != null && baseAmount.compareTo(BigDecimal.ZERO) > 0)
-          averageExecutionPrice =
-              counterAmount.divide(baseAmount, priceScale, RoundingMode.HALF_UP);
+        Double averageExecutionPrice = null;
+        if (baseAmount != null && baseAmount.compareTo(0d) > 0)
+          averageExecutionPrice = counterAmount / baseAmount;
 
-        BigDecimal amount = new BigDecimal(map.get("amount"));
+        Double amount = new Double(map.get("amount"));
 
-        if (amount.compareTo(BigDecimal.ZERO) == 0 && map.containsKey("amount2")) {
+        if (amount.compareTo(0d) == 0 && map.containsKey("amount2")) {
           // the 'amount' field changes name for market orders
           // and represents the amount in the counter ccy instead
           // of the base ccy
-          BigDecimal amount2 = new BigDecimal(map.get("amount2"));
+          Double amount2 = new Double(map.get("amount2"));
 
-          amount = amount2.divide(averageExecutionPrice, 8, RoundingMode.HALF_UP);
+          amount = amount2 / averageExecutionPrice;
         }
 
         return new CexIOArchivedOrder(

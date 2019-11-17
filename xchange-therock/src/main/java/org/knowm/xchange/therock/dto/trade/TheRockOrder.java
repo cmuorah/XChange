@@ -2,7 +2,6 @@ package org.knowm.xchange.therock.dto.trade;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import java.math.BigDecimal;
 import org.knowm.xchange.therock.TheRock;
 
 /**
@@ -17,21 +16,20 @@ public class TheRockOrder {
   private Side side;
   private Type type;
   private String status;
-  private BigDecimal amount;
-  private BigDecimal amountUnfilled;
-  private BigDecimal price;
+  private Double amount;
+  private Double amountUnfilled;
+  private Double price;
   private String conditionalType;
-  private BigDecimal conditionalPrice;
+  private Double conditionalPrice;
   private String date;
   private String closeOn;
   private boolean dark;
-  private BigDecimal leverage;
+  private Double leverage;
   private long positionId;
 
   protected TheRockOrder() {}
 
-  public TheRockOrder(
-      TheRock.Pair fundId, Side side, Type type, BigDecimal amount, BigDecimal price) {
+  public TheRockOrder(TheRock.Pair fundId, Side side, Type type, Double amount, Double price) {
     this.fundId = fundId;
     this.side = side;
     this.type = type;
@@ -59,15 +57,15 @@ public class TheRockOrder {
     return status;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getAmountUnfilled() {
+  public Double getAmountUnfilled() {
     return amountUnfilled;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
@@ -75,7 +73,7 @@ public class TheRockOrder {
     return conditionalType;
   }
 
-  public BigDecimal getConditionalPrice() {
+  public Double getConditionalPrice() {
     return conditionalPrice;
   }
 
@@ -91,7 +89,7 @@ public class TheRockOrder {
     return dark;
   }
 
-  public BigDecimal getLeverage() {
+  public Double getLeverage() {
     return leverage;
   }
 

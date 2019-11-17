@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.wex.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -36,11 +35,11 @@ public class WexTradeDemo {
     LimitOrder limitOrder =
         new LimitOrder(
             Order.OrderType.ASK,
-            new BigDecimal("0.1"),
+            new Double("0.1"),
             CurrencyPair.BTC_USD,
             "",
             null,
-            new BigDecimal("1023.45"));
+            new Double("1023.45"));
 
     String limitOrderReturnValue = null;
     try {
@@ -68,8 +67,7 @@ public class WexTradeDemo {
     // place buy order
     WexOrder.Type type = WexOrder.Type.buy;
     String pair = "btc_usd";
-    WexOrder wexOrder =
-        new WexOrder(0, null, new BigDecimal("1"), new BigDecimal("0.1"), type, pair);
+    WexOrder wexOrder = new WexOrder(0, null, new Double("1"), new Double("0.1"), type, pair);
 
     WexPlaceOrderResult result = null;
     try {

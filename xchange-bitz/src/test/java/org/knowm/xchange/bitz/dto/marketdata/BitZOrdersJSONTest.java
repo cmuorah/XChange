@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.bitz.dto.marketdata.result.BitZTradesResult;
 
@@ -30,8 +29,8 @@ public class BitZOrdersJSONTest {
     assertThat(bitzOrdersResult.getData()).isNotNull();
 
     // Verify The Depth Unmarshalls Correctly
-    assertThat(bitzOrders.getMax()).isEqualTo(new BigDecimal("0.00100000"));
-    assertThat(bitzOrders.getMin()).isEqualTo(new BigDecimal("0.00089504"));
-    assertThat(bitzOrders.getSum()).isEqualTo(new BigDecimal("15263.8989"));
+    assertThat(bitzOrders.getMax()).isEqualTo(new Double("0.00100000"));
+    assertThat(bitzOrders.getMin()).isEqualTo(new Double("0.00089504"));
+    assertThat(bitzOrders.getSum()).isEqualTo(new Double("15263.8989"));
   }
 }

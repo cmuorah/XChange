@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbasepro.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -208,8 +207,8 @@ public class CoinbaseProTransfer {
     return amount;
   }
 
-  public BigDecimal amount() {
-    return new BigDecimal(amount);
+  public Double amount() {
+    return new Double(amount);
   }
 
   public Detail getDetails() {

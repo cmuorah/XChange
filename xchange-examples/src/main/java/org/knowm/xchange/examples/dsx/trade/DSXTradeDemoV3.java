@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.dsx.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Map;
 import org.knowm.xchange.Exchange;
@@ -37,11 +36,11 @@ public class DSXTradeDemoV3 {
     LimitOrder limitOrder =
         new LimitOrder(
             Order.OrderType.BID,
-            new BigDecimal("0.01"),
+            new Double("0.01"),
             CurrencyPair.BTC_USD,
             "",
             new Date(),
-            new BigDecimal("900"));
+            new Double("900"));
 
     String limitOrderReturnValue = null;
     try {
@@ -71,9 +70,9 @@ public class DSXTradeDemoV3 {
         new DSXOrder(
             pair,
             type,
-            new BigDecimal("0.01"),
-            new BigDecimal("900"),
-            new BigDecimal("900"),
+            new Double("0.01"),
+            new Double("900"),
+            new Double("900"),
             0,
             DSXOrder.OrderType.limit,
             null);
@@ -118,9 +117,9 @@ public class DSXTradeDemoV3 {
         new DSXOrder(
             pair,
             type,
-            new BigDecimal("0.1"),
-            new BigDecimal("900"),
-            new BigDecimal("900"),
+            new Double("0.1"),
+            new Double("900"),
+            new Double("900"),
             0,
             DSXOrder.OrderType.limit,
             null);

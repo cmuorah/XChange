@@ -1,7 +1,6 @@
 package org.knowm.xchange.quadrigacx.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.dto.account.AccountInfo;
@@ -32,8 +31,7 @@ public class QuadrigaCxAccountService extends QuadrigaCxAccountServiceRaw
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
 
     if (currency.equals(Currency.BTC)) return withdrawBitcoin(amount, address);
     else if (currency.equals(Currency.ETH)) return withdrawEther(amount, address);

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitmex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.bitmex.BitmexAdapters;
 import org.knowm.xchange.bitmex.BitmexExchange;
@@ -54,7 +53,7 @@ public class BitmexMarketDataService extends BitmexMarketDataServiceRaw
             .ask(bitmexTicker.getAskPrice())
             .high(bitmexTicker.getHighPrice())
             .low(bitmexTicker.getLowPrice())
-            .vwap(new BigDecimal(bitmexTicker.getVwap()))
+            .vwap(bitmexTicker.getVwap().doubleValue())
             .volume(bitmexTicker.getVolume24h())
             .quoteVolume(null)
             .timestamp(bitmexTicker.getTimestamp())

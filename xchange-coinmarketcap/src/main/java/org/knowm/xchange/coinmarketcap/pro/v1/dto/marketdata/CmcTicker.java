@@ -2,7 +2,6 @@ package org.knowm.xchange.coinmarketcap.pro.v1.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -11,35 +10,35 @@ import org.knowm.xchange.utils.jackson.ISO8601DateDeserializer;
 public final class CmcTicker {
 
   private final String symbol;
-  private final BigDecimal circulatingSupply;
+  private final Double circulatingSupply;
   private final Date lastUpdated;
-  private final BigDecimal totalSupply;
+  private final Double totalSupply;
   private final int cmcRank;
   private final CmcPlatform platform;
   private final List<String> tags;
   private final Date dateAdded;
   private final Map<String, CmcQuote> quoteData;
-  private final BigDecimal numMarketPairs;
+  private final Double numMarketPairs;
   private final String name;
-  private final BigDecimal maxSupply;
+  private final Double maxSupply;
   private final int id;
   private final String slug;
 
   public CmcTicker(
       @JsonProperty("symbol") String symbol,
-      @JsonProperty("circulating_supply") BigDecimal circulatingSupply,
+      @JsonProperty("circulating_supply") Double circulatingSupply,
       @JsonProperty("last_updated") @JsonDeserialize(using = ISO8601DateDeserializer.class)
           Date lastUpdated,
-      @JsonProperty("total_supply") BigDecimal totalSupply,
+      @JsonProperty("total_supply") Double totalSupply,
       @JsonProperty("cmc_rank") int cmcRank,
       @JsonProperty("platform") CmcPlatform platform,
       @JsonProperty("tags") List<String> tags,
       @JsonProperty("date_added") @JsonDeserialize(using = ISO8601DateDeserializer.class)
           Date dateAdded,
       @JsonProperty("quote") Map<String, CmcQuote> quoteData,
-      @JsonProperty("num_market_pairs") BigDecimal numMarketPairs,
+      @JsonProperty("num_market_pairs") Double numMarketPairs,
       @JsonProperty("name") String name,
-      @JsonProperty("max_supply") BigDecimal maxSupply,
+      @JsonProperty("max_supply") Double maxSupply,
       @JsonProperty("id") int id,
       @JsonProperty("slug") String slug) {
 
@@ -63,7 +62,7 @@ public final class CmcTicker {
     return symbol;
   }
 
-  public BigDecimal getCirculatingSupply() {
+  public Double getCirculatingSupply() {
     return circulatingSupply;
   }
 
@@ -71,7 +70,7 @@ public final class CmcTicker {
     return lastUpdated;
   }
 
-  public BigDecimal getTotalSupply() {
+  public Double getTotalSupply() {
     return totalSupply;
   }
 
@@ -95,7 +94,7 @@ public final class CmcTicker {
     return quoteData;
   }
 
-  public BigDecimal getNumMarketPairs() {
+  public Double getNumMarketPairs() {
     return numMarketPairs;
   }
 
@@ -103,7 +102,7 @@ public final class CmcTicker {
     return name;
   }
 
-  public BigDecimal getMaxSupply() {
+  public Double getMaxSupply() {
     return maxSupply;
   }
 

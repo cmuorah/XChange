@@ -1,7 +1,6 @@
 package org.knowm.xchange.btcturk.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.btcturk.dto.BTCTurkOperations;
 import org.knowm.xchange.currency.Currency;
@@ -15,22 +14,22 @@ public class BTCTurkUserTransactions {
 
   private final BTCTurkOperations operation;
   private final Currency currency;
-  private final BigDecimal funds;
-  private final BigDecimal amount;
-  private final BigDecimal fee;
-  private final BigDecimal tax;
-  private final BigDecimal price;
+  private final Double funds;
+  private final Double amount;
+  private final Double fee;
+  private final Double tax;
+  private final Double price;
 
   public BTCTurkUserTransactions(
       @JsonProperty("id") String id,
       @JsonProperty("date") Date date,
       @JsonProperty("operation") BTCTurkOperations operation,
       @JsonProperty("currency") Currency currency,
-      @JsonProperty("funds") BigDecimal funds,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("tax") BigDecimal tax,
-      @JsonProperty("price") BigDecimal price) {
+      @JsonProperty("funds") Double funds,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("fee") Double fee,
+      @JsonProperty("tax") Double tax,
+      @JsonProperty("price") Double price) {
     this.id = id;
     this.date = date;
     this.operation = operation;
@@ -58,23 +57,23 @@ public class BTCTurkUserTransactions {
     return currency;
   }
 
-  public BigDecimal getFunds() {
+  public Double getFunds() {
     return funds;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public BigDecimal getTax() {
+  public Double getTax() {
     return tax;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

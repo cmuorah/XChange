@@ -1,7 +1,6 @@
 package org.knowm.xchange.coingi.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Objects;
 
@@ -13,9 +12,9 @@ public class CoingiTransaction {
 
   private Map<String, String> currencyPair;
 
-  private BigDecimal amount;
+  private Double amount;
 
-  private BigDecimal price;
+  private Double price;
 
   private int type;
 
@@ -23,8 +22,8 @@ public class CoingiTransaction {
       @JsonProperty("id") String id,
       @JsonProperty("timestamp") long timestamp,
       @JsonProperty("currencyPair") Map<String, String> currencyPair,
-      @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") Double amount,
+      @JsonProperty("price") Double price,
       @JsonProperty("type") int type) {
     this.id = id;
     this.timestamp = timestamp;
@@ -48,11 +47,11 @@ public class CoingiTransaction {
     return currencyPair;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 

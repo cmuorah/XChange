@@ -1,15 +1,13 @@
 package org.knowm.xchange.therock.dto.marketdata;
 
-import java.math.BigDecimal;
-
 public class TheRockBid {
-  private BigDecimal price, amount;
+  private Double price, amount;
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

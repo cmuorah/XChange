@@ -8,16 +8,15 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.kraken.dto.marketdata.KrakenFee.KrakenFeeDeserializer;
 
 @JsonDeserialize(using = KrakenFeeDeserializer.class)
 public class KrakenFee implements Comparable<KrakenFee> {
 
-  private final BigDecimal volume;
-  private final BigDecimal percentFee;
+  private final Double volume;
+  private final Double percentFee;
 
-  public KrakenFee(BigDecimal volume, BigDecimal percentFee) {
+  public KrakenFee(Double volume, Double percentFee) {
 
     this.volume = volume;
     this.percentFee = percentFee;
@@ -27,12 +26,12 @@ public class KrakenFee implements Comparable<KrakenFee> {
     return volume.compareTo(other.volume);
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }
 
-  public BigDecimal getPercentFee() {
+  public Double getPercentFee() {
 
     return percentFee;
   }
@@ -51,8 +50,8 @@ public class KrakenFee implements Comparable<KrakenFee> {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);
-      BigDecimal volume = new BigDecimal(node.path(0).asText());
-      BigDecimal fee = new BigDecimal(node.path(1).asText());
+      Double volume = new Double(node.path(0).asText());
+      Double fee = new Double(node.path(1).asText());
 
       return new KrakenFee(volume, fee);
     }

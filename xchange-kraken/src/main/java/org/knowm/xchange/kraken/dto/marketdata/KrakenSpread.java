@@ -1,14 +1,12 @@
 package org.knowm.xchange.kraken.dto.marketdata;
 
-import java.math.BigDecimal;
-
 public class KrakenSpread {
 
   private final long time;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
+  private final Double bid;
+  private final Double ask;
 
-  public KrakenSpread(long time, BigDecimal bid, BigDecimal ask) {
+  public KrakenSpread(long time, Double bid, Double ask) {
 
     this.time = time;
     this.bid = bid;
@@ -20,12 +18,12 @@ public class KrakenSpread {
     return time;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return ask;
   }

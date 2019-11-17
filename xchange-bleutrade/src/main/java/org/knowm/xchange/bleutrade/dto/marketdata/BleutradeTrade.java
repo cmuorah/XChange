@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -20,13 +19,13 @@ public class BleutradeTrade {
   private String TimeStamp;
 
   @JsonProperty("Quantity")
-  private BigDecimal Quantity;
+  private Double Quantity;
 
   @JsonProperty("Price")
-  private BigDecimal Price;
+  private Double Price;
 
   @JsonProperty("Total")
-  private BigDecimal Total;
+  private Double Total;
 
   @JsonProperty("OrderType")
   private String OrderType;
@@ -49,42 +48,42 @@ public class BleutradeTrade {
 
   /** @return The Quantity */
   @JsonProperty("Quantity")
-  public BigDecimal getQuantity() {
+  public Double getQuantity() {
 
     return Quantity;
   }
 
   /** @param Quantity The Quantity */
   @JsonProperty("Quantity")
-  public void setQuantity(BigDecimal Quantity) {
+  public void setQuantity(Double Quantity) {
 
     this.Quantity = Quantity;
   }
 
   /** @return The Price */
   @JsonProperty("Price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return Price;
   }
 
   /** @param Price The Price */
   @JsonProperty("Price")
-  public void setPrice(BigDecimal Price) {
+  public void setPrice(Double Price) {
 
     this.Price = Price;
   }
 
   /** @return The Total */
   @JsonProperty("Total")
-  public BigDecimal getTotal() {
+  public Double getTotal() {
 
     return Total;
   }
 
   /** @param Total The Total */
   @JsonProperty("Total")
-  public void setTotal(BigDecimal Total) {
+  public void setTotal(Double Total) {
 
     this.Total = Total;
   }

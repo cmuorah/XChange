@@ -1,7 +1,6 @@
 package org.knowm.xchange.exmo.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,7 +42,7 @@ public class ExmoAccountServiceRaw extends BaseExmoService {
     List<FundingRecord> results = new ArrayList<>();
 
     for (Map<String, Object> item : (List<Map<String, Object>>) response.get("history")) {
-      long time = Long.valueOf(item.get("dt").toString());
+      long time = Long.parseLong(item.get("dt").toString());
       String type = item.get("type").toString();
       String curr = item.get("curr").toString();
       String status = item.get("status").toString();
@@ -67,9 +66,9 @@ public class ExmoAccountServiceRaw extends BaseExmoService {
       FundingRecord fundingRecord =
           new FundingRecord(
               address,
-              DateUtils.fromUnixTime(Long.valueOf(time)),
+              DateUtils.fromUnixTime(time),
               Currency.getInstance(curr),
-              new BigDecimal(amount).abs(),
+              Math.abs(Double.parseDouble(amount)),
               null,
               txid,
               type.equalsIgnoreCase("deposit")

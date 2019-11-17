@@ -1,7 +1,6 @@
 package org.knowm.xchange.simulated;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.dto.account.Wallet;
@@ -21,7 +20,7 @@ public class SimulatedAccountService extends BaseExchangeService<SimulatedExchan
     return new AccountInfo(Wallet.Builder.from(exchange.getAccount().balances()).build());
   }
 
-  public void deposit(Currency currency, BigDecimal amount) {
+  public void deposit(Currency currency, Double amount) {
     exchange.getAccount().deposit(currency, amount);
   }
 }

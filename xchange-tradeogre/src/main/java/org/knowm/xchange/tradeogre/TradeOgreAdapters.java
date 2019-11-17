@@ -1,6 +1,6 @@
 package org.knowm.xchange.tradeogre;
 
-import java.math.BigDecimal;
+
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.account.Balance;
@@ -29,12 +29,12 @@ public class TradeOgreAdapters {
 
   public static Ticker adaptTicker(CurrencyPair currencyPair, TradeOgreTicker tradeOgreTicker) {
     return new Ticker.Builder()
-        .quoteVolume(new BigDecimal(tradeOgreTicker.getVolume()))
-        .high(new BigDecimal(tradeOgreTicker.getHigh()))
-        .low(new BigDecimal(tradeOgreTicker.getLow()))
-        .last(new BigDecimal(tradeOgreTicker.getPrice()))
-        .ask(new BigDecimal(tradeOgreTicker.getAsk()))
-        .bid(new BigDecimal(tradeOgreTicker.getBid()))
+        .quoteVolume(new Double(tradeOgreTicker.getVolume()))
+        .high(new Double(tradeOgreTicker.getHigh()))
+        .low(new Double(tradeOgreTicker.getLow()))
+        .last(new Double(tradeOgreTicker.getPrice()))
+        .ask(new Double(tradeOgreTicker.getAsk()))
+        .bid(new Double(tradeOgreTicker.getBid()))
         .currencyPair(currencyPair)
         .build();
   }

@@ -3,7 +3,6 @@ package org.knowm.xchange.cryptonit2.dto.trade;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.cryptonit2.CryptonitUtils;
 import si.mazi.rescu.ExceptionalReturnContentException;
@@ -16,8 +15,8 @@ public final class CryptonitOrder {
   /** 0 - buy (bid); 1 - sell (ask) */
   private int type;
 
-  private BigDecimal price;
-  private BigDecimal amount;
+  private Double price;
+  private Double amount;
   private String errorMessage;
 
   public CryptonitOrder(
@@ -26,8 +25,8 @@ public final class CryptonitOrder {
       @JsonProperty("id") int id,
       @JsonProperty("datetime") String datetime,
       @JsonProperty("type") int type,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("error") @JsonDeserialize(using = CryptonitErrorDeserializer.class)
           String errorMessage) {
 
@@ -58,12 +57,12 @@ public final class CryptonitOrder {
     return type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }

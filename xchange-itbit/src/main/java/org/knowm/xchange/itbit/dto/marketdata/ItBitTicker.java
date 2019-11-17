@@ -1,20 +1,19 @@
 package org.knowm.xchange.itbit.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class ItBitTicker {
 
   private final String currencyPair;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
-  private final BigDecimal bidAmt;
-  private final BigDecimal askAmt;
-  private final BigDecimal lastPrice;
+  private final Double bid;
+  private final Double ask;
+  private final Double bidAmt;
+  private final Double askAmt;
+  private final Double lastPrice;
   private final double lastAmt;
-  private final BigDecimal volume24h;
-  private final BigDecimal highToday;
-  private final BigDecimal lowToday;
+  private final Double volume24h;
+  private final Double highToday;
+  private final Double lowToday;
   private final double openToday;
   private final double vwapToday;
   private final double vwap24h;
@@ -22,15 +21,15 @@ public class ItBitTicker {
 
   public ItBitTicker(
       @JsonProperty("pair") String currencyPair,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("bidAmt") BigDecimal bidAmt,
-      @JsonProperty("askAmt") BigDecimal askAmt,
-      @JsonProperty("lastPrice") BigDecimal lastPrice,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("bidAmt") Double bidAmt,
+      @JsonProperty("askAmt") Double askAmt,
+      @JsonProperty("lastPrice") Double lastPrice,
       @JsonProperty("lastAmt") double lastAmt,
-      @JsonProperty("volume24h") BigDecimal volume24h,
-      @JsonProperty("highToday") BigDecimal highToday,
-      @JsonProperty("lowToday") BigDecimal lowToday,
+      @JsonProperty("volume24h") Double volume24h,
+      @JsonProperty("highToday") Double highToday,
+      @JsonProperty("lowToday") Double lowToday,
       @JsonProperty("openToday") double openToday,
       @JsonProperty("vwapToday") double vwapToday,
       @JsonProperty("vwap24h") double vwap24h,
@@ -58,27 +57,27 @@ public class ItBitTicker {
     return currencyPair;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return ask;
   }
 
-  public BigDecimal getBidAmt() {
+  public Double getBidAmt() {
 
     return bidAmt;
   }
 
-  public BigDecimal getAskAmt() {
+  public Double getAskAmt() {
 
     return askAmt;
   }
 
-  public BigDecimal getLastPrice() {
+  public Double getLastPrice() {
 
     return lastPrice;
   }
@@ -88,17 +87,17 @@ public class ItBitTicker {
     return lastAmt;
   }
 
-  public BigDecimal getVolume24h() {
+  public Double getVolume24h() {
 
     return volume24h;
   }
 
-  public BigDecimal getHighToday() {
+  public Double getHighToday() {
 
     return highToday;
   }
 
-  public BigDecimal getLowToday() {
+  public Double getLowToday() {
 
     return lowToday;
   }

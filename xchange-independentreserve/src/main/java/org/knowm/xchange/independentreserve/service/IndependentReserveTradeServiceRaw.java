@@ -1,7 +1,6 @@
 package org.knowm.xchange.independentreserve.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -81,10 +80,7 @@ public class IndependentReserveTradeServiceRaw extends IndependentReserveBaseSer
   }
 
   public String independentReservePlaceLimitOrder(
-      CurrencyPair currencyPair,
-      Order.OrderType type,
-      BigDecimal limitPrice,
-      BigDecimal originalAmount)
+      CurrencyPair currencyPair, Order.OrderType type, Double limitPrice, Double originalAmount)
       throws IOException {
     Long nonce = exchange.getNonceFactory().createValue();
     String apiKey = exchange.getExchangeSpecification().getApiKey();

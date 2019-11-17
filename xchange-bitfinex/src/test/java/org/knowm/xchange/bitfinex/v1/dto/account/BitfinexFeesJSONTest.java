@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 
 /** Test JSON parsing for Bitfinex fees response */
@@ -27,8 +26,8 @@ public class BitfinexFeesJSONTest {
     BitfinexTradingFeeResponse readValue = readValues[0];
     BitfinexTradingFeeResponse.BitfinexTradingFeeResponseRow[] responseRows =
         readValue.getTradingFees();
-    BigDecimal point1 = BigDecimal.ONE.divide(new BigDecimal(10));
-    BigDecimal point2 = point1.multiply(new BigDecimal(2));
+    Double point1 = 10d / (new Double(10));
+    Double point2 = point1 * (new Double(2));
     assertEquals(3, responseRows.length);
     assertEquals("BTC", responseRows[0].getCurrency());
     assertEquals("LTC", responseRows[1].getCurrency());
@@ -40,8 +39,8 @@ public class BitfinexFeesJSONTest {
 
     readValue = readValues[1];
     responseRows = readValue.getTradingFees();
-    BigDecimal point025 = new BigDecimal(25).divide(new BigDecimal(1000));
-    BigDecimal point01 = BigDecimal.ONE.divide(new BigDecimal(100));
+    Double point025 = new Double(25).divide(new Double(1000));
+    Double point01 = 10d / (new Double(100));
     assertEquals(1, responseRows.length);
     assertEquals("DGC", responseRows[0].getCurrency());
     assertEquals(point025, responseRows[0].getMakerFee());

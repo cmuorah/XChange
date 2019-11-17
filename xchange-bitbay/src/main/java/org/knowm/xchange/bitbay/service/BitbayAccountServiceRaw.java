@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitbay.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public class BitbayAccountServiceRaw extends BitbayBaseService {
    * @return Success of transfer
    * @throws ExchangeException if an error occurred.
    */
-  public BitbayBaseResponse transfer(Currency currency, BigDecimal quantity, String address) {
+  public BitbayBaseResponse transfer(Currency currency, Double quantity, String address) {
     BitbayBaseResponse resp =
         bitbayAuthenticated.transfer(
             apiKey,
@@ -65,11 +64,7 @@ public class BitbayAccountServiceRaw extends BitbayBaseService {
    * @throws ExchangeException if an error occurred.
    */
   public BitbayBaseResponse withdraw(
-      Currency currency,
-      BigDecimal quantity,
-      String account,
-      boolean express,
-      String bicOrSwiftCode) {
+      Currency currency, Double quantity, String account, boolean express, String bicOrSwiftCode) {
     BitbayBaseResponse resp =
         bitbayAuthenticated.withdraw(
             apiKey,
@@ -107,7 +102,7 @@ public class BitbayAccountServiceRaw extends BitbayBaseService {
                 null,
                 dateFormat.parse(map.get("time").toString()),
                 Currency.getInstance(map.get("currency").toString()),
-                new BigDecimal(map.get("amount").toString()),
+                new Double(map.get("amount").toString()),
                 map.get("id").toString(),
                 null,
                 type,

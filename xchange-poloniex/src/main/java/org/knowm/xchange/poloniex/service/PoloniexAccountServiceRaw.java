@@ -1,7 +1,6 @@
 package org.knowm.xchange.poloniex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import javax.annotation.Nullable;
@@ -80,7 +79,7 @@ public class PoloniexAccountServiceRaw extends PoloniexBaseService {
 
   /** @param paymentId For XMR withdrawals, you may optionally specify "paymentId". */
   public String withdraw(
-      Currency currency, BigDecimal amount, String address, @Nullable String paymentId)
+      Currency currency, Double amount, String address, @Nullable String paymentId)
       throws IOException {
     return poloniexAuthenticated
         .withdraw(
@@ -105,7 +104,7 @@ public class PoloniexAccountServiceRaw extends PoloniexBaseService {
   }
 
   public String transfer(
-      Currency currency, BigDecimal amount, PoloniexWallet fromWallet, PoloniexWallet toWallet)
+      Currency currency, Double amount, PoloniexWallet fromWallet, PoloniexWallet toWallet)
       throws IOException {
     return poloniexAuthenticated
         .transferBalance(

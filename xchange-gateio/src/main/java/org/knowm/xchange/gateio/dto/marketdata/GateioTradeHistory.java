@@ -1,7 +1,6 @@
 package org.knowm.xchange.gateio.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.gateio.dto.GateioBaseResponse;
 import org.knowm.xchange.gateio.dto.GateioOrderType;
@@ -40,15 +39,15 @@ public class GateioTradeHistory extends GateioBaseResponse {
   public static class GateioPublicTrade {
 
     private final long date;
-    private final BigDecimal price;
-    private final BigDecimal amount;
+    private final Double price;
+    private final Double amount;
     private final String tradeId;
     private final GateioOrderType type;
 
     private GateioPublicTrade(
         @JsonProperty("date") String date,
-        @JsonProperty("rate") BigDecimal price,
-        @JsonProperty("amount") BigDecimal amount,
+        @JsonProperty("rate") Double price,
+        @JsonProperty("amount") Double amount,
         @JsonProperty("tradeID") String tradeId,
         @JsonProperty("timestamp") long timestamp,
         @JsonProperty("type") GateioOrderType type) {
@@ -65,12 +64,12 @@ public class GateioTradeHistory extends GateioBaseResponse {
       return date;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
 
       return price;
     }
 
-    public BigDecimal getAmount() {
+    public Double getAmount() {
 
       return amount;
     }

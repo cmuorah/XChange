@@ -1,6 +1,5 @@
 package org.knowm.xchange.bithumb;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -52,8 +51,8 @@ public final class BithumbAdapters {
   private static LimitOrder createOrder(
       CurrencyPair currencyPair,
       Order.OrderType orderType,
-      BigDecimal originalAmount,
-      BigDecimal limitPric) {
+      Double originalAmount,
+      Double limitPric) {
     return new LimitOrder(orderType, originalAmount, currencyPair, "", null, limitPric);
   }
 
@@ -163,7 +162,7 @@ public final class BithumbAdapters {
     final String units = StringUtils.remove(bithumbTransaction.getUnits(), ' ');
     return new UserTrade.Builder()
         .currencyPair(currencyPair)
-        .originalAmount(new BigDecimal(units).abs())
+        .originalAmount(Math.abs(Double.parseDouble(units)))
         .type(adaptTransactionSearch(bithumbTransaction.getSearch()))
         .feeAmount(bithumbTransaction.getFee())
         .feeCurrency(currencyPair.counter)

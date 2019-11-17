@@ -1,126 +1,125 @@
 package org.knowm.xchange.btcc.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BTCCTicker {
 
   @JsonProperty("BidPrice")
-  private BigDecimal bidPrice;
+  private Double bidPrice;
 
   @JsonProperty("AskPrice")
-  private BigDecimal askPrice;
+  private Double askPrice;
 
   @JsonProperty("Open")
-  private BigDecimal open;
+  private Double open;
 
   @JsonProperty("High")
-  private BigDecimal high;
+  private Double high;
 
   @JsonProperty("Low")
-  private BigDecimal low;
+  private Double low;
 
   @JsonProperty("Last")
-  private BigDecimal last;
+  private Double last;
 
   @JsonProperty("LastQuantity")
-  private BigDecimal lastQuantity;
+  private Double lastQuantity;
 
   @JsonProperty("PrevCls")
-  private BigDecimal prevClose;
+  private Double prevClose;
 
   @JsonProperty("Volume")
-  private BigDecimal volume;
+  private Double volume;
 
   @JsonProperty("Volume24H")
-  private BigDecimal volume24H;
+  private Double volume24H;
 
   @JsonProperty("Timestamp")
   private long timestamp;
 
   @JsonProperty("ExecutionLimitDown")
-  private BigDecimal executionLimitDown;
+  private Double executionLimitDown;
 
   @JsonProperty("ExecutionLimitUp")
-  private BigDecimal executionLimitUp;
+  private Double executionLimitUp;
 
-  public BigDecimal getBidPrice() {
+  public Double getBidPrice() {
     return bidPrice;
   }
 
-  public void setBidPrice(BigDecimal bidPrice) {
+  public void setBidPrice(Double bidPrice) {
     this.bidPrice = bidPrice;
   }
 
-  public BigDecimal getAskPrice() {
+  public Double getAskPrice() {
     return askPrice;
   }
 
-  public void setAskPrice(BigDecimal askPrice) {
+  public void setAskPrice(Double askPrice) {
     this.askPrice = askPrice;
   }
 
-  public BigDecimal getOpen() {
+  public Double getOpen() {
     return open;
   }
 
-  public void setOpen(BigDecimal open) {
+  public void setOpen(Double open) {
     this.open = open;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public void setHigh(BigDecimal high) {
+  public void setHigh(Double high) {
     this.high = high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public void setLow(BigDecimal low) {
+  public void setLow(Double low) {
     this.low = low;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public void setLast(BigDecimal last) {
+  public void setLast(Double last) {
     this.last = last;
   }
 
-  public BigDecimal getLastQuantity() {
+  public Double getLastQuantity() {
     return lastQuantity;
   }
 
-  public void setLastQuantity(BigDecimal lastQuantity) {
+  public void setLastQuantity(Double lastQuantity) {
     this.lastQuantity = lastQuantity;
   }
 
-  public BigDecimal getPrevClose() {
+  public Double getPrevClose() {
     return prevClose;
   }
 
-  public void setPrevClose(BigDecimal precClose) {
+  public void setPrevClose(Double precClose) {
     this.prevClose = precClose;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public void setVolume(BigDecimal volume) {
+  public void setVolume(Double volume) {
     this.volume = volume;
   }
 
-  public BigDecimal getVolume24H() {
+  public Double getVolume24H() {
     return volume24H;
   }
 
-  public void setVolume24H(BigDecimal volume24H) {
+  public void setVolume24H(Double volume24H) {
     this.volume24H = volume24H;
   }
 
@@ -132,19 +131,19 @@ public class BTCCTicker {
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getExecutionLimitDown() {
+  public Double getExecutionLimitDown() {
     return executionLimitDown;
   }
 
-  public void setExecutionLimitDown(BigDecimal executionLimitDown) {
+  public void setExecutionLimitDown(Double executionLimitDown) {
     this.executionLimitDown = executionLimitDown;
   }
 
-  public BigDecimal getExecutionLimitUp() {
+  public Double getExecutionLimitUp() {
     return executionLimitUp;
   }
 
-  public void setExecutionLimitUp(BigDecimal executionLimitUp) {
+  public void setExecutionLimitUp(Double executionLimitUp) {
     this.executionLimitUp = executionLimitUp;
   }
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinbasepro.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinbaseProSendMoneyRequest {
 
@@ -12,12 +11,12 @@ public class CoinbaseProSendMoneyRequest {
   private final String to;
 
   @JsonProperty("amount")
-  private final BigDecimal amount;
+  private final Double amount;
 
   @JsonProperty("currency")
   private final String currency;
 
-  public CoinbaseProSendMoneyRequest(String to, BigDecimal amount, String currency) {
+  public CoinbaseProSendMoneyRequest(String to, Double amount, String currency) {
     this.to = to;
     this.amount = amount;
     this.currency = currency;
@@ -31,7 +30,7 @@ public class CoinbaseProSendMoneyRequest {
     return to;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

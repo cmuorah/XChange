@@ -1,6 +1,5 @@
 package org.knowm.xchange.yobit;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -66,7 +65,7 @@ public class YoBitAdapters {
       CurrencyPair pair = entry.getKey();
       YoBitPair value = entry.getValue();
 
-      BigDecimal minSize = value.getMin_amount();
+      Double minSize = value.getMin_amount();
       Integer priceScale = value.getDecimal_places();
       currencyPairs.put(
           pair,
@@ -76,12 +75,12 @@ public class YoBitAdapters {
               null,
               priceScale,
               new FeeTier[] {
-                new FeeTier(BigDecimal.ZERO, new Fee(value.getFee_seller(), value.getFee_buyer()))
+                new FeeTier(0d, new Fee(value.getFee_seller(), value.getFee_buyer()))
               }));
 
       if (!currencies.containsKey(pair.base)) {
         CurrencyMetaData currencyMetaData = exchangeMetaData.getCurrencies().get(pair.base);
-        BigDecimal withdrawalFee =
+        Double withdrawalFee =
             currencyMetaData == null ? null : currencyMetaData.getWithdrawalFee();
         currencies.put(pair.base, new CurrencyMetaData(8, withdrawalFee));
       }
@@ -217,11 +216,11 @@ public class YoBitAdapters {
 
     return new LimitOrder(
         adaptType(type),
-        new BigDecimal(amountRemaining),
+        new Double(amountRemaining),
         adaptCurrencyPair(pair),
         orderId,
         time,
-        new BigDecimal(rate),
+        new Double(rate),
         null,
         null,
         null,
@@ -241,9 +240,9 @@ public class YoBitAdapters {
 
     return new UserTrade(
         adaptType(type),
-        new BigDecimal(amount),
+        new Double(amount),
         adaptCurrencyPair(pair),
-        new BigDecimal(rate),
+        new Double(rate),
         time,
         id,
         orderId,

@@ -1,24 +1,23 @@
 package org.knowm.xchange.bx.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BxBalance {
 
-  private final BigDecimal total;
-  private final BigDecimal available;
-  private final BigDecimal orders;
-  private final BigDecimal withdrawals;
-  private final BigDecimal deposits;
-  private final BigDecimal options;
+  private final Double total;
+  private final Double available;
+  private final Double orders;
+  private final Double withdrawals;
+  private final Double deposits;
+  private final Double options;
 
   public BxBalance(
-      @JsonProperty("total") BigDecimal total,
-      @JsonProperty("available") BigDecimal available,
-      @JsonProperty("orders") BigDecimal orders,
-      @JsonProperty("withdrawals") BigDecimal withdrawals,
-      @JsonProperty("deposits") BigDecimal deposits,
-      @JsonProperty("options") BigDecimal options) {
+      @JsonProperty("total") Double total,
+      @JsonProperty("available") Double available,
+      @JsonProperty("orders") Double orders,
+      @JsonProperty("withdrawals") Double withdrawals,
+      @JsonProperty("deposits") Double deposits,
+      @JsonProperty("options") Double options) {
     this.total = total;
     this.available = available;
     this.orders = orders;
@@ -27,27 +26,27 @@ public class BxBalance {
     this.options = options;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 
-  public BigDecimal getOrders() {
+  public Double getOrders() {
     return orders;
   }
 
-  public BigDecimal getWithdrawals() {
+  public Double getWithdrawals() {
     return withdrawals;
   }
 
-  public BigDecimal getDeposits() {
+  public Double getDeposits() {
     return deposits;
   }
 
-  public BigDecimal getOptions() {
+  public Double getOptions() {
     return options;
   }
 

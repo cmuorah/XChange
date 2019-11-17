@@ -1,7 +1,6 @@
 package org.knowm.xchange.kraken;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Map;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -262,7 +261,7 @@ public interface KrakenAuthenticated extends Kraken {
       @FormParam("aclass") String assetPairs,
       @FormParam("asset") String assets,
       @FormParam("key") String key,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @HeaderParam("API-Key") String apiKey,
       @HeaderParam("API-Sign") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
@@ -275,7 +274,7 @@ public interface KrakenAuthenticated extends Kraken {
       @FormParam("aclass") String assetPairs,
       @FormParam("asset") String assets,
       @FormParam("key") String key,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @HeaderParam("API-Key") String apiKey,
       @HeaderParam("API-Sign") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce)

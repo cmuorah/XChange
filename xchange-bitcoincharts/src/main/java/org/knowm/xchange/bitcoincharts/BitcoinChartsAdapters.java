@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitcoincharts;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,17 +28,17 @@ public final class BitcoinChartsAdapters {
     for (int i = 0; i < bitcoinChartsTickers.length; i++) {
       if (bitcoinChartsTickers[i].getSymbol().equals(currencyPair.counter.getCurrencyCode())) {
 
-        BigDecimal last =
+        Double last =
             bitcoinChartsTickers[i].getClose() != null ? bitcoinChartsTickers[i].getClose() : null;
-        BigDecimal bid =
+        Double bid =
             bitcoinChartsTickers[i].getBid() != null ? bitcoinChartsTickers[i].getBid() : null;
-        BigDecimal ask =
+        Double ask =
             bitcoinChartsTickers[i].getAsk() != null ? bitcoinChartsTickers[i].getAsk() : null;
-        BigDecimal high =
+        Double high =
             bitcoinChartsTickers[i].getHigh() != null ? bitcoinChartsTickers[i].getHigh() : null;
-        BigDecimal low =
+        Double low =
             bitcoinChartsTickers[i].getLow() != null ? bitcoinChartsTickers[i].getLow() : null;
-        BigDecimal volume = bitcoinChartsTickers[i].getVolume();
+        Double volume = bitcoinChartsTickers[i].getVolume();
         Date timeStamp = new Date(bitcoinChartsTickers[i].getLatestTrade() * 1000L);
 
         return new Ticker.Builder()
@@ -63,14 +62,14 @@ public final class BitcoinChartsAdapters {
     Map<CurrencyPair, CurrencyPairMetaData> pairs = new HashMap<>();
 
     for (BitcoinChartsTicker ticker : tickers) {
-      BigDecimal anyPrice =
+      Double anyPrice =
           firstNonNull(
               ticker.getAsk(),
               ticker.getBid(),
               ticker.getClose(),
               ticker.getHigh(),
               ticker.getHigh());
-      int scale = anyPrice != null ? anyPrice.scale() : 0;
+      int scale = 0;
       pairs.put(
           new CurrencyPair(Currency.BTC, Currency.getInstance(ticker.getSymbol())),
           new CurrencyPairMetaData(null, null, null, scale, null));

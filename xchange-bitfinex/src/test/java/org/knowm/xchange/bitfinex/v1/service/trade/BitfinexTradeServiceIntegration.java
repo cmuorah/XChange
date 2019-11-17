@@ -3,7 +3,6 @@ package org.knowm.xchange.bitfinex.v1.service.trade;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Collection;
 import org.junit.After;
 import org.junit.Assume;
@@ -47,8 +46,8 @@ public class BitfinexTradeServiceIntegration {
 
     LimitOrder limitOrder1 =
         new LimitOrder.Builder(Order.OrderType.BID, CurrencyPair.XRP_USD)
-            .originalAmount(new BigDecimal("38.0"))
-            .limitPrice(new BigDecimal("0.21"))
+            .originalAmount(new Double("38.0"))
+            .limitPrice(new Double("0.21"))
             .build();
 
     String orderId1 = exchange.getTradeService().placeLimitOrder(limitOrder1);
@@ -56,7 +55,7 @@ public class BitfinexTradeServiceIntegration {
 
     LimitOrder limitOrder2 =
         new LimitOrder.Builder(Order.OrderType.BID, CurrencyPair.XRP_USD)
-            .limitPrice(new BigDecimal("0.22"))
+            .limitPrice(new Double("0.22"))
             .id(orderId1)
             .build();
 
@@ -66,8 +65,8 @@ public class BitfinexTradeServiceIntegration {
     LimitOrder expectedOrder1 =
         new LimitOrder.Builder(Order.OrderType.BID, CurrencyPair.XRP_USD)
             .id(orderId1)
-            .limitPrice(new BigDecimal("0.21"))
-            .originalAmount(new BigDecimal("38.0"))
+            .limitPrice(new Double("0.21"))
+            .originalAmount(new Double("38.0"))
             .orderType(Order.OrderType.BID)
             .orderStatus(Order.OrderStatus.CANCELED)
             .build();
@@ -78,8 +77,8 @@ public class BitfinexTradeServiceIntegration {
     LimitOrder expectedOrder2 =
         new LimitOrder.Builder(Order.OrderType.BID, CurrencyPair.XRP_USD)
             .id(orderId2)
-            .limitPrice(new BigDecimal("0.22"))
-            .originalAmount(new BigDecimal("38.0"))
+            .limitPrice(new Double("0.22"))
+            .originalAmount(new Double("38.0"))
             .orderType(Order.OrderType.BID)
             .orderStatus(Order.OrderStatus.NEW)
             .build();

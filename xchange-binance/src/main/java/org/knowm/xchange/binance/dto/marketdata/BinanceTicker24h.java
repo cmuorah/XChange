@@ -1,7 +1,6 @@
 package org.knowm.xchange.binance.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.binance.BinanceAdapters;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -9,21 +8,21 @@ import org.knowm.xchange.dto.marketdata.Ticker;
 
 public final class BinanceTicker24h {
 
-  private final BigDecimal priceChange;
-  private final BigDecimal priceChangePercent;
-  private final BigDecimal weightedAvgPrice;
-  private final BigDecimal prevClosePrice;
-  private final BigDecimal lastPrice;
-  private final BigDecimal lastQty;
-  private final BigDecimal bidPrice;
-  private final BigDecimal bidQty;
-  private final BigDecimal askPrice;
-  private final BigDecimal askQty;
-  private final BigDecimal openPrice;
-  private final BigDecimal highPrice;
-  private final BigDecimal lowPrice;
-  private final BigDecimal volume;
-  private final BigDecimal quoteVolume;
+  private final Double priceChange;
+  private final Double priceChangePercent;
+  private final Double weightedAvgPrice;
+  private final Double prevClosePrice;
+  private final Double lastPrice;
+  private final Double lastQty;
+  private final Double bidPrice;
+  private final Double bidQty;
+  private final Double askPrice;
+  private final Double askQty;
+  private final Double openPrice;
+  private final Double highPrice;
+  private final Double lowPrice;
+  private final Double volume;
+  private final Double quoteVolume;
   private final long openTime;
   private final long closeTime;
   private final long firstId;
@@ -38,21 +37,21 @@ public final class BinanceTicker24h {
   private Ticker ticker;
 
   public BinanceTicker24h(
-      @JsonProperty("priceChange") BigDecimal priceChange,
-      @JsonProperty("priceChangePercent") BigDecimal priceChangePercent,
-      @JsonProperty("weightedAvgPrice") BigDecimal weightedAvgPrice,
-      @JsonProperty("prevClosePrice") BigDecimal prevClosePrice,
-      @JsonProperty("lastPrice") BigDecimal lastPrice,
-      @JsonProperty("lastQty") BigDecimal lastQty,
-      @JsonProperty("bidPrice") BigDecimal bidPrice,
-      @JsonProperty("bidQty") BigDecimal bidQty,
-      @JsonProperty("askPrice") BigDecimal askPrice,
-      @JsonProperty("askQty") BigDecimal askQty,
-      @JsonProperty("openPrice") BigDecimal openPrice,
-      @JsonProperty("highPrice") BigDecimal highPrice,
-      @JsonProperty("lowPrice") BigDecimal lowPrice,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("quoteVolume") BigDecimal quoteVolume,
+      @JsonProperty("priceChange") Double priceChange,
+      @JsonProperty("priceChangePercent") Double priceChangePercent,
+      @JsonProperty("weightedAvgPrice") Double weightedAvgPrice,
+      @JsonProperty("prevClosePrice") Double prevClosePrice,
+      @JsonProperty("lastPrice") Double lastPrice,
+      @JsonProperty("lastQty") Double lastQty,
+      @JsonProperty("bidPrice") Double bidPrice,
+      @JsonProperty("bidQty") Double bidQty,
+      @JsonProperty("askPrice") Double askPrice,
+      @JsonProperty("askQty") Double askQty,
+      @JsonProperty("openPrice") Double openPrice,
+      @JsonProperty("highPrice") Double highPrice,
+      @JsonProperty("lowPrice") Double lowPrice,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("quoteVolume") Double quoteVolume,
       @JsonProperty("openTime") long openTime,
       @JsonProperty("closeTime") long closeTime,
       @JsonProperty("firstId") long firstId,
@@ -94,63 +93,63 @@ public final class BinanceTicker24h {
     this.pair = pair;
   }
 
-  public BigDecimal getPriceChange() {
+  public Double getPriceChange() {
     return priceChange;
   }
 
-  public BigDecimal getPriceChangePercent() {
+  public Double getPriceChangePercent() {
     return priceChangePercent;
   }
 
-  public BigDecimal getWeightedAvgPrice() {
+  public Double getWeightedAvgPrice() {
     return weightedAvgPrice;
   }
 
-  public BigDecimal getPrevClosePrice() {
+  public Double getPrevClosePrice() {
     return prevClosePrice;
   }
 
-  public BigDecimal getLastPrice() {
+  public Double getLastPrice() {
     return lastPrice;
   }
 
-  public BigDecimal getLastQty() {
+  public Double getLastQty() {
     return lastQty;
   }
 
-  public BigDecimal getBidPrice() {
+  public Double getBidPrice() {
     return bidPrice;
   }
 
-  public BigDecimal getBidQty() {
+  public Double getBidQty() {
     return bidQty;
   }
 
-  public BigDecimal getAskPrice() {
+  public Double getAskPrice() {
     return askPrice;
   }
 
-  public BigDecimal getAskQty() {
+  public Double getAskQty() {
     return askQty;
   }
 
-  public BigDecimal getOpenPrice() {
+  public Double getOpenPrice() {
     return openPrice;
   }
 
-  public BigDecimal getHighPrice() {
+  public Double getHighPrice() {
     return highPrice;
   }
 
-  public BigDecimal getLowPrice() {
+  public Double getLowPrice() {
     return lowPrice;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getQuoteVolume() {
+  public Double getQuoteVolume() {
     return quoteVolume;
   }
 

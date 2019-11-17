@@ -1,6 +1,5 @@
 package org.knowm.xchange.coinsuper;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -75,13 +74,6 @@ public class CoinsuperAdapters {
         .build();
   }
 
-  /**
-   * Adapts a to a OrderBook Object
-   *
-   * @param currencyPair (e.g. BTC/USD)
-   * @param timeScale polled order books provide a timestamp in seconds, stream in ms
-   * @return The XChange OrderBook
-   */
   public static OrderBook adaptOrderBook(
       CoinsuperResponse<CoinsuperOrderbook> coinsuperOrderbook, CurrencyPair currencyPair) {
     List<LimitOrder> asks = new ArrayList<LimitOrder>();
@@ -91,22 +83,22 @@ public class CoinsuperAdapters {
       asks.add(
           new LimitOrder(
               OrderType.ASK,
-              new BigDecimal(coinsuperAsk.getQuantity()),
+              new Double(coinsuperAsk.getQuantity()),
               currencyPair,
               null,
               null,
-              new BigDecimal(coinsuperAsk.getLimitPrice())));
+              new Double(coinsuperAsk.getLimitPrice())));
     }
 
     for (Bid coinsuperBid : coinsuperOrderbook.getData().getResult().getBids()) {
       bids.add(
           new LimitOrder(
               OrderType.BID,
-              new BigDecimal(coinsuperBid.getQuantity()),
+              new Double(coinsuperBid.getQuantity()),
               currencyPair,
               null,
               null,
-              new BigDecimal(coinsuperBid.getLimitPrice())));
+              new Double(coinsuperBid.getLimitPrice())));
     }
 
     return new OrderBook(new Date(), asks, bids);
@@ -145,7 +137,7 @@ public class CoinsuperAdapters {
                       .getAsset()
                       .getAnyAssetBalance(currency)
                       .getTotal())
-              .frozen(new BigDecimal("0"))
+              .frozen(new Double("0"))
               .build());
     }
 
@@ -160,11 +152,11 @@ public class CoinsuperAdapters {
    * @return
    */
   public static CoinsuperGenericOrder adaptOrder(String orderId, OrderList orderList) {
-    BigDecimal averagePrice = new BigDecimal(orderList.getPriceLimit());
-    BigDecimal cumulativeAmount = new BigDecimal(orderList.getQuantity());
-    BigDecimal totalFee = new BigDecimal(orderList.getFee());
+    Double averagePrice = new Double(orderList.getPriceLimit());
+    Double cumulativeAmount = new Double(orderList.getQuantity());
+    Double totalFee = new Double(orderList.getFee());
 
-    BigDecimal amount = new BigDecimal(orderList.getQuantity());
+    Double amount = new Double(orderList.getQuantity());
     OrderType action = OrderType.ASK;
     if (orderList.getAction().equals("Buy")) {
       action = OrderType.BID;
@@ -193,12 +185,6 @@ public class CoinsuperAdapters {
     return coinsuperGenericOrder;
   }
 
-  /**
-   * Adapt the user's trades
-   *
-   * @param CoinsuperUserTransaction
-   * @return
-   */
   public static UserTrades adaptTradeHistory(CoinsuperResponse<List<OrderDetail>> OrderDetails) {
     List<UserTrade> trades = new ArrayList<>();
     long lastTradeId = 0;
@@ -213,13 +199,13 @@ public class CoinsuperAdapters {
       UserTrade trade =
           new UserTrade(
               orderType,
-              orderDetail.getAmount().abs(),
+              Math.abs(orderDetail.getAmount()),
               new CurrencyPair(orderDetail.getSymbol()),
-              orderDetail.getPriceLimit().abs(),
+              Math.abs(orderDetail.getPriceLimit()),
               new Date(),
               Long.toString(orderDetail.getOrderNo()),
               Long.toString(orderDetail.getOrderNo()),
-              new BigDecimal(orderDetail.getFee()),
+              orderDetail.getFee(),
               Currency.getInstance(orderDetail.getSymbol().toUpperCase()));
       lastTradeId = orderDetail.getOrderNo();
       trades.add(trade);

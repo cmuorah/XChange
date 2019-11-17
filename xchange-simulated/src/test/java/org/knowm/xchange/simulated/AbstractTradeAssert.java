@@ -117,7 +117,7 @@ abstract class AbstractTradeAssert<S extends AbstractTradeAssert<S, A>, A extend
    * @return this assertion object.
    * @throws AssertionError - if the actual Trade's originalAmount is not equal to the given one.
    */
-  public S hasOriginalAmount(java.math.BigDecimal originalAmount) {
+  public S hasOriginalAmount(java.math.Double originalAmount) {
     // check that actual Trade we want to make assertions on is not null.
     isNotNull();
 
@@ -126,7 +126,7 @@ abstract class AbstractTradeAssert<S extends AbstractTradeAssert<S, A>, A extend
         "\nExpecting originalAmount of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
     // null safe check
-    java.math.BigDecimal actualOriginalAmount = actual.getOriginalAmount();
+    java.math.Double actualOriginalAmount = actual.getOriginalAmount();
     if (!Objects.areEqual(actualOriginalAmount, originalAmount)) {
       failWithMessage(assertjErrorMessage, actual, originalAmount, actualOriginalAmount);
     }
@@ -142,7 +142,7 @@ abstract class AbstractTradeAssert<S extends AbstractTradeAssert<S, A>, A extend
    * @return this assertion object.
    * @throws AssertionError - if the actual Trade's price is not equal to the given one.
    */
-  public S hasPrice(java.math.BigDecimal price) {
+  public S hasPrice(java.math.Double price) {
     // check that actual Trade we want to make assertions on is not null.
     isNotNull();
 
@@ -150,7 +150,7 @@ abstract class AbstractTradeAssert<S extends AbstractTradeAssert<S, A>, A extend
     String assertjErrorMessage = "\nExpecting price of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
     // null safe check
-    java.math.BigDecimal actualPrice = actual.getPrice();
+    java.math.Double actualPrice = actual.getPrice();
     if (!Objects.areEqual(actualPrice, price)) {
       failWithMessage(assertjErrorMessage, actual, price, actualPrice);
     }

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,13 +32,13 @@ import javax.annotation.Generated;
 public class BiboxCoin {
 
   @JsonProperty("totalBalance")
-  private BigDecimal totalBalance;
+  private Double totalBalance;
 
   @JsonProperty("balance")
-  private BigDecimal balance;
+  private Double balance;
 
   @JsonProperty("freeze")
-  private BigDecimal freeze;
+  private Double freeze;
 
   @JsonProperty("id")
   private Integer id;
@@ -66,49 +65,49 @@ public class BiboxCoin {
   private Integer confirmCount;
 
   @JsonProperty("BTCValue")
-  private BigDecimal btcValue;
+  private Double btcValue;
 
   @JsonProperty("CNYValue")
-  private BigDecimal cnyValue;
+  private Double cnyValue;
 
   @JsonProperty("USDValue")
-  private BigDecimal usdValue;
+  private Double usdValue;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   /** @return The totalBalance */
   @JsonProperty("totalBalance")
-  public BigDecimal getTotalBalance() {
+  public Double getTotalBalance() {
     return totalBalance;
   }
 
   /** @param totalBalance The totalBalance */
   @JsonProperty("totalBalance")
-  public void setTotalBalance(BigDecimal totalBalance) {
+  public void setTotalBalance(Double totalBalance) {
     this.totalBalance = totalBalance;
   }
 
   /** @return The balance */
   @JsonProperty("balance")
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
   /** @param balance The balance */
   @JsonProperty("balance")
-  public void setBalance(BigDecimal balance) {
+  public void setBalance(Double balance) {
     this.balance = balance;
   }
 
   /** @return The freeze */
   @JsonProperty("freeze")
-  public BigDecimal getFreeze() {
+  public Double getFreeze() {
     return freeze;
   }
 
   /** @param freeze The freeze */
   @JsonProperty("freeze")
-  public void setFreeze(BigDecimal freeze) {
+  public void setFreeze(Double freeze) {
     this.freeze = freeze;
   }
 
@@ -210,37 +209,37 @@ public class BiboxCoin {
 
   /** @return The btcValue */
   @JsonProperty("BTCValue")
-  public BigDecimal getBtcValue() {
+  public Double getBtcValue() {
     return btcValue;
   }
 
   /** @param btcValue The BTCValue */
   @JsonProperty("BTCValue")
-  public void setBtcValue(BigDecimal bTCValue) {
+  public void setBtcValue(Double bTCValue) {
     this.btcValue = bTCValue;
   }
 
   /** @return The cnyValue */
   @JsonProperty("CNYValue")
-  public BigDecimal getCnyValue() {
+  public Double getCnyValue() {
     return cnyValue;
   }
 
   /** @param cnyValue The CNYValue */
   @JsonProperty("CNYValue")
-  public void setCnyValue(BigDecimal cNYValue) {
+  public void setCnyValue(Double cNYValue) {
     this.cnyValue = cNYValue;
   }
 
   /** @return The usdValue */
   @JsonProperty("USDValue")
-  public BigDecimal getUsdValue() {
+  public Double getUsdValue() {
     return usdValue;
   }
 
   /** @param usdValue The USDValue */
   @JsonProperty("USDValue")
-  public void setUsdValue(BigDecimal usdValue) {
+  public void setUsdValue(Double usdValue) {
     this.usdValue = usdValue;
   }
 

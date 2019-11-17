@@ -3,7 +3,6 @@ package org.knowm.xchange.btcmarkets.service;
 import static org.knowm.xchange.dto.Order.OrderType.BID;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -46,7 +45,7 @@ public class BTCMarketsTradeService extends BTCMarketsTradeServiceRaw implements
         order.getCurrencyPair(),
         order.getType(),
         order.getOriginalAmount(),
-        BigDecimal.ZERO,
+        0d,
         BTCMarketsOrder.Type.Market);
   }
 
@@ -63,8 +62,8 @@ public class BTCMarketsTradeService extends BTCMarketsTradeServiceRaw implements
   private String placeOrder(
       CurrencyPair currencyPair,
       Order.OrderType orderSide,
-      BigDecimal amount,
-      BigDecimal price,
+      Double amount,
+      Double price,
       BTCMarketsOrder.Type orderType)
       throws IOException {
     BTCMarketsOrder.Side side =

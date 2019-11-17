@@ -1,7 +1,6 @@
 package org.knowm.xchange.campbx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.campbx.dto.CampBXResponse;
 
@@ -9,27 +8,27 @@ import org.knowm.xchange.campbx.dto.CampBXResponse;
 public final class CampBXOrderBook extends CampBXResponse {
 
   @JsonProperty("Bids")
-  private List<List<BigDecimal>> bids;
+  private List<List<Double>> bids;
 
   @JsonProperty("Asks")
-  private List<List<BigDecimal>> asks;
+  private List<List<Double>> asks;
 
-  public List<List<BigDecimal>> getBids() {
+  public List<List<Double>> getBids() {
 
     return bids;
   }
 
-  public void setBids(List<List<BigDecimal>> bids) {
+  public void setBids(List<List<Double>> bids) {
 
     this.bids = bids;
   }
 
-  public List<List<BigDecimal>> getAsks() {
+  public List<List<Double>> getAsks() {
 
     return asks;
   }
 
-  public void setAsks(List<List<BigDecimal>> asks) {
+  public void setAsks(List<List<Double>> asks) {
 
     this.asks = asks;
   }

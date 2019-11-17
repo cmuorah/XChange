@@ -1,7 +1,6 @@
 package org.knowm.xchange.luno.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -31,12 +30,12 @@ public class LunoOrders {
     public final long completedTimestamp;
     public final OrderType type;
     public final State state;
-    public final BigDecimal limitPrice;
-    public final BigDecimal limitVolume;
-    public final BigDecimal base;
-    public final BigDecimal counter;
-    public final BigDecimal feeBase;
-    public final BigDecimal feeCounter;
+    public final Double limitPrice;
+    public final Double limitVolume;
+    public final Double base;
+    public final Double counter;
+    public final Double feeBase;
+    public final Double feeCounter;
     public final String pair;
 
     public Order(
@@ -46,12 +45,12 @@ public class LunoOrders {
         @JsonProperty(value = "completed_timestamp", required = true) long completedTimestamp,
         @JsonProperty(value = "type", required = false) OrderType type,
         @JsonProperty(value = "state", required = false) State state,
-        @JsonProperty(value = "limit_price", required = true) BigDecimal limitPrice,
-        @JsonProperty(value = "limit_volume", required = true) BigDecimal limitVolume,
-        @JsonProperty(value = "base", required = true) BigDecimal base,
-        @JsonProperty(value = "counter", required = true) BigDecimal counter,
-        @JsonProperty(value = "fee_base", required = true) BigDecimal feeBase,
-        @JsonProperty(value = "fee_counter", required = true) BigDecimal feeCounter,
+        @JsonProperty(value = "limit_price", required = true) Double limitPrice,
+        @JsonProperty(value = "limit_volume", required = true) Double limitVolume,
+        @JsonProperty(value = "base", required = true) Double base,
+        @JsonProperty(value = "counter", required = true) Double counter,
+        @JsonProperty(value = "fee_base", required = true) Double feeBase,
+        @JsonProperty(value = "fee_counter", required = true) Double feeCounter,
         @JsonProperty(value = "pair", required = false) String pair) {
       this.orderId = orderId;
       this.creationTimestamp = creationTimestamp;

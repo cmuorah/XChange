@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitfinex.v2.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.math.BigDecimal;
 import org.knowm.xchange.dto.Order.OrderType;
 
 @JsonFormat(shape = JsonFormat.Shape.ARRAY)
@@ -9,12 +8,12 @@ public class BitfinexPublicTrade {
 
   private long tradeId;
   private long timestamp;
-  private BigDecimal amount;
-  private BigDecimal price;
+  private Double amount;
+  private Double price;
 
   public BitfinexPublicTrade() {}
 
-  public BitfinexPublicTrade(long tradeId, long timestamp, BigDecimal amount, BigDecimal price) {
+  public BitfinexPublicTrade(long tradeId, long timestamp, Double amount, Double price) {
 
     this.tradeId = tradeId;
     this.timestamp = timestamp;
@@ -32,33 +31,31 @@ public class BitfinexPublicTrade {
     return timestamp;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
 
     return amount;
   }
 
   public OrderType getType() {
 
-    return getAmount().signum() == -1 ? OrderType.ASK : OrderType.BID;
+    return Math.signum(getAmount()) == -1 ? OrderType.ASK : OrderType.BID;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
 
     return price;
   }
 
   @Override
   public String toString() {
-    StringBuilder builder = new StringBuilder();
-    builder.append("BitfinexPublicTrade [tradeId=");
-    builder.append(tradeId);
-    builder.append(", timestamp=");
-    builder.append(timestamp);
-    builder.append(", amount=");
-    builder.append(amount);
-    builder.append(", price=");
-    builder.append(price);
-    builder.append("]");
-    return builder.toString();
+    return "BitfinexPublicTrade [tradeId="
+        + tradeId
+        + ", timestamp="
+        + timestamp
+        + ", amount="
+        + amount
+        + ", price="
+        + price
+        + "]";
   }
 }

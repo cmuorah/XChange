@@ -2,15 +2,14 @@ package org.knowm.xchange.coindirect.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CoindirectPriceLevel {
-  public final BigDecimal size;
-  public final BigDecimal price;
+  public final Double size;
+  public final Double price;
 
   public CoindirectPriceLevel(
-      @JsonProperty("size") BigDecimal size, @JsonProperty("price") BigDecimal price) {
+      @JsonProperty("size") Double size, @JsonProperty("price") Double price) {
     this.size = size;
     this.price = price;
   }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,48 +11,48 @@ import java.util.Map;
 @JsonPropertyOrder({"collateral", "open_position_pnl", "require_collateral", "keep_rate"})
 public class BitflyerMarginStatus {
   @JsonProperty("collateral")
-  private BigDecimal collateral;
+  private Double collateral;
 
   @JsonProperty("open_position_pnl")
-  private BigDecimal openPositionPnl;
+  private Double openPositionPnl;
 
   @JsonProperty("require_collateral")
-  private BigDecimal requireCollateral;
+  private Double requireCollateral;
 
   @JsonProperty("keep_rate")
-  private BigDecimal keepRate;
+  private Double keepRate;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<>();
 
-  public BigDecimal getCollateral() {
+  public Double getCollateral() {
     return collateral;
   }
 
-  public void setCollateral(BigDecimal collateral) {
+  public void setCollateral(Double collateral) {
     this.collateral = collateral;
   }
 
-  public BigDecimal getOpenPositionPnl() {
+  public Double getOpenPositionPnl() {
     return openPositionPnl;
   }
 
-  public void setOpenPositionPnl(BigDecimal openPositionPnl) {
+  public void setOpenPositionPnl(Double openPositionPnl) {
     this.openPositionPnl = openPositionPnl;
   }
 
-  public BigDecimal getRequireCollateral() {
+  public Double getRequireCollateral() {
     return requireCollateral;
   }
 
-  public void setRequireCollateral(BigDecimal requireCollateral) {
+  public void setRequireCollateral(Double requireCollateral) {
     this.requireCollateral = requireCollateral;
   }
 
-  public BigDecimal getKeepRate() {
+  public Double getKeepRate() {
     return keepRate;
   }
 
-  public void setKeepRate(BigDecimal keepRate) {
+  public void setKeepRate(Double keepRate) {
     this.keepRate = keepRate;
   }
 

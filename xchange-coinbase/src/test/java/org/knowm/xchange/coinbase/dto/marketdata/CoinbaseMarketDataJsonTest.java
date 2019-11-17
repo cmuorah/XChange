@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fasterxml.jackson.databind.type.MapLikeType;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,13 +28,13 @@ public class CoinbaseMarketDataJsonTest {
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
     MapLikeType mapType =
-        mapper.getTypeFactory().constructMapLikeType(HashMap.class, String.class, BigDecimal.class);
-    Map<String, BigDecimal> exchangeRates = mapper.readValue(is, mapType);
+        mapper.getTypeFactory().constructMapLikeType(HashMap.class, String.class, Double.class);
+    Map<String, Double> exchangeRates = mapper.readValue(is, mapType);
 
     assertThat(exchangeRates.size()).isEqualTo(632);
 
-    BigDecimal exchangeRate = exchangeRates.get("scr_to_btc");
-    assertThat(exchangeRate).isEqualByComparingTo("0.000115");
+    Double exchangeRate = exchangeRates.get("scr_to_btc");
+    assertThat(exchangeRate).isEqualByComparingTo(Double.parseDouble("0.000115"));
   }
 
   @Test
@@ -72,13 +71,13 @@ public class CoinbaseMarketDataJsonTest {
     CoinbasePrice price = mapper.readValue(is, CoinbasePrice.class);
 
     assertThat(price.getSubTotal())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new BigDecimal("723.09")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new Double("723.09")));
     assertThat(price.getCoinbaseFee())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new BigDecimal("7.23")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new Double("7.23")));
     assertThat(price.getBankFee())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new BigDecimal("0.15")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new Double("0.15")));
     assertThat(price.getTotal())
-        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new BigDecimal("730.47")));
+        .isEqualToComparingFieldByField(new CoinbaseMoney("USD", new Double("730.47")));
   }
 
   @Test

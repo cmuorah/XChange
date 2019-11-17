@@ -1,15 +1,14 @@
 package org.knowm.xchange.gemini.v1.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.knowm.xchange.currency.CurrencyPair;
 
 public class GeminiTicker {
 
-  private final BigDecimal bid;
-  private final BigDecimal ask;
-  private final BigDecimal last;
+  private final Double bid;
+  private final Double ask;
+  private final Double last;
   private final Volume volume;
 
   /**
@@ -19,9 +18,9 @@ public class GeminiTicker {
    * @param volume
    */
   public GeminiTicker(
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("last") BigDecimal last,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("last") Double last,
       @JsonProperty("volume") Map<String, Object> volume) {
 
     this.bid = bid;
@@ -30,17 +29,17 @@ public class GeminiTicker {
     this.volume = new Volume(volume);
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return ask;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
@@ -75,12 +74,12 @@ public class GeminiTicker {
       return (long) valueMap.get("timestamp");
     }
 
-    public BigDecimal getBaseVolume(CurrencyPair currencyPair) {
-      return new BigDecimal((String) valueMap.get(currencyPair.base.toString()));
+    public Double getBaseVolume(CurrencyPair currencyPair) {
+      return new Double((String) valueMap.get(currencyPair.base.toString()));
     }
 
-    public BigDecimal getCounterVolume(CurrencyPair currencyPair) {
-      return new BigDecimal((String) valueMap.get(currencyPair.counter.toString()));
+    public Double getCounterVolume(CurrencyPair currencyPair) {
+      return new Double((String) valueMap.get(currencyPair.counter.toString()));
     }
   }
 }

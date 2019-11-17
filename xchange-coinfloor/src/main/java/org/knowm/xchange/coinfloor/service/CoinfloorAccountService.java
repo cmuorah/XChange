@@ -1,7 +1,6 @@
 package org.knowm.xchange.coinfloor.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.knowm.xchange.Exchange;
@@ -32,7 +31,7 @@ public class CoinfloorAccountService extends CoinfloorAccountServiceRaw implemen
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+  public String withdrawFunds(Currency currency, Double amount, String address)
       throws NotAvailableFromExchangeException {
     throw new NotAvailableFromExchangeException();
   }

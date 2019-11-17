@@ -9,7 +9,6 @@ import static org.powermock.api.mockito.PowerMockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 import org.knowm.xchange.acx.dto.account.AcxAccountInfo;
@@ -43,10 +42,9 @@ public class AcxAccountServiceTest {
 
     assertEquals("Satoshi Nakamoto", accountInfo.getUsername());
     assertEquals(
-        new BigDecimal("2159091.0"), accountInfo.getWallet().getBalance(Currency.BTC).getTotal());
+        new Double("2159091.0"), accountInfo.getWallet().getBalance(Currency.BTC).getTotal());
     assertEquals(
-        new BigDecimal("2159090.0"),
-        accountInfo.getWallet().getBalance(Currency.BTC).getAvailable());
+        new Double("2159090.0"), accountInfo.getWallet().getBalance(Currency.BTC).getAvailable());
   }
 
   private <T> T read(String path, Class<T> clz) throws IOException {

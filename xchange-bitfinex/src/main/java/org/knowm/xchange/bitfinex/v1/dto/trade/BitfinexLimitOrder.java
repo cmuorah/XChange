@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.trade.LimitOrder;
@@ -10,28 +9,28 @@ import org.knowm.xchange.dto.trade.LimitOrder;
  * supplied to the trade service orderEntry method it will be populated with this information.
  */
 public class BitfinexLimitOrder extends LimitOrder {
-  private BigDecimal myOcoStopLimit;
+  private Double myOcoStopLimit;
 
   private BitfinexOrderStatusResponse response = null;
 
   public BitfinexLimitOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal limitPrice) {
+      Double limitPrice) {
     this(type, originalAmount, currencyPair, id, timestamp, limitPrice, null);
   }
 
   public BitfinexLimitOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal limitPrice,
-      BigDecimal ocoStopLimit) {
+      Double limitPrice,
+      Double ocoStopLimit) {
     super(type, originalAmount, currencyPair, id, timestamp, limitPrice);
     myOcoStopLimit = ocoStopLimit;
   }
@@ -44,11 +43,11 @@ public class BitfinexLimitOrder extends LimitOrder {
     response = value;
   }
 
-  public BigDecimal getOcoStopLimit() {
+  public Double getOcoStopLimit() {
     return myOcoStopLimit;
   }
 
-  public void setOcoStopLimit(BigDecimal ocoStopLimit) {
+  public void setOcoStopLimit(Double ocoStopLimit) {
     myOcoStopLimit = ocoStopLimit;
   }
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bittrex.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.knowm.xchange.Exchange;
@@ -38,8 +37,7 @@ public class BittrexAccountService extends BittrexAccountServiceRaw implements A
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
-      throws IOException {
+  public String withdrawFunds(Currency currency, Double amount, String address) throws IOException {
     try {
       return withdraw(currency.getCurrencyCode(), amount, address, null);
     } catch (BittrexException e) {

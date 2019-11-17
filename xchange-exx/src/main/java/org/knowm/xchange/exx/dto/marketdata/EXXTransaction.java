@@ -1,7 +1,6 @@
 package org.knowm.xchange.exx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class EXXTransaction {
@@ -10,10 +9,10 @@ public class EXXTransaction {
   private long date;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("trade_type")
   private String tradeType;
@@ -36,7 +35,7 @@ public class EXXTransaction {
    * @param date
    */
   public EXXTransaction(
-      long date, BigDecimal amount, BigDecimal price, String tradeType, String type, long tid) {
+      long date, Double amount, Double price, String tradeType, String type, long tid) {
     super();
     this.date = date;
     this.amount = amount;
@@ -57,22 +56,22 @@ public class EXXTransaction {
   }
 
   @JsonProperty("amount")
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
   @JsonProperty("amount")
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
   @JsonProperty("price")
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 

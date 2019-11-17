@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import org.junit.Test;
@@ -41,7 +40,7 @@ public class CryptonitAdapterTest {
 
     AccountInfo accountInfo = CryptonitAdapters.adaptAccountInfo(cryptonitBalance, "Joe Mama");
     assertThat(accountInfo.getUsername()).isEqualTo("Joe Mama");
-    assertThat(accountInfo.getTradingFee()).isEqualTo(new BigDecimal("0.5000"));
+    assertThat(accountInfo.getTradingFee()).isEqualTo(new Double("0.5000"));
     assertThat(accountInfo.getWallet().getBalance(Currency.USD).getCurrency())
         .isEqualTo(Currency.USD);
     assertThat(accountInfo.getWallet().getBalance(Currency.USD).getTotal()).isEqualTo("172.87");
@@ -77,8 +76,7 @@ public class CryptonitAdapterTest {
     // verify all fields filled
     assertThat(orderBook.getBids().get(0).getLimitPrice().toString()).isEqualTo("123.09");
     assertThat(orderBook.getBids().get(0).getType()).isEqualTo(OrderType.BID);
-    assertThat(orderBook.getBids().get(0).getOriginalAmount())
-        .isEqualTo(new BigDecimal("0.16248274"));
+    assertThat(orderBook.getBids().get(0).getOriginalAmount()).isEqualTo(new Double("0.16248274"));
     assertThat(orderBook.getBids().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     f.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -103,7 +101,7 @@ public class CryptonitAdapterTest {
     // verify all fields filled
     assertThat(trade.getPrice().toString()).isEqualTo("13.14");
     assertThat(trade.getType()).isEqualTo(OrderType.BID);
-    assertThat(trade.getOriginalAmount()).isEqualTo(new BigDecimal("23.66362253"));
+    assertThat(trade.getOriginalAmount()).isEqualTo(new Double("23.66362253"));
     assertThat(trade.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
   }
 
@@ -126,8 +124,7 @@ public class CryptonitAdapterTest {
     assertThat(trades.getTrades().get(0).getId()).isEqualTo("121984");
     assertThat(trades.getTrades().get(0).getPrice().toString()).isEqualTo("13.14");
     assertThat(trades.getTrades().get(0).getType()).isEqualTo(OrderType.BID);
-    assertThat(trades.getTrades().get(0).getOriginalAmount())
-        .isEqualTo(new BigDecimal("10.11643836"));
+    assertThat(trades.getTrades().get(0).getOriginalAmount()).isEqualTo(new Double("10.11643836"));
     assertThat(trades.getTrades().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_USD);
   }
 
@@ -148,7 +145,7 @@ public class CryptonitAdapterTest {
     assertThat(ticker.getLast().toString()).isEqualTo("134.89");
     assertThat(ticker.getBid().toString()).isEqualTo("134.89");
     assertThat(ticker.getAsk().toString()).isEqualTo("134.92");
-    assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("21982.44926674"));
+    assertThat(ticker.getVolume()).isEqualTo(new Double("21982.44926674"));
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     f.setTimeZone(TimeZone.getTimeZone("UTC"));
     String dateString = f.format(ticker.getTimestamp());

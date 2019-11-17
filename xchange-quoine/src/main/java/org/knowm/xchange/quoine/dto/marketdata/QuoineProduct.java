@@ -1,7 +1,6 @@
 package org.knowm.xchange.quoine.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author timmolter */
 public final class QuoineProduct {
@@ -19,10 +18,10 @@ public final class QuoineProduct {
   private final String name;
 
   @JsonProperty("market_ask")
-  private final BigDecimal marketAsk;
+  private final Double marketAsk;
 
   @JsonProperty("market_bid")
-  private final BigDecimal marketBid;
+  private final Double marketBid;
 
   @JsonProperty("indicator")
   private final int indicator;
@@ -40,40 +39,40 @@ public final class QuoineProduct {
   private final String symbol;
 
   @JsonProperty("btc_minimum_withdraw")
-  private final BigDecimal btcMinimumWithdraw;
+  private final Double btcMinimumWithdraw;
 
   @JsonProperty("fiat_minimum_withdraw")
-  private final BigDecimal fiatMinimumWithdraw;
+  private final Double fiatMinimumWithdraw;
 
   @JsonProperty("pusher_channel")
   private final String pusherChannel;
 
   @JsonProperty("taker_fee")
-  private final BigDecimal takerFee;
+  private final Double takerFee;
 
   @JsonProperty("maker_fee")
-  private final BigDecimal makerFee;
+  private final Double makerFee;
 
   @JsonProperty("low_market_bid")
-  private final BigDecimal lowMarketBid;
+  private final Double lowMarketBid;
 
   @JsonProperty("high_market_ask")
-  private final BigDecimal highMarketAsk;
+  private final Double highMarketAsk;
 
   @JsonProperty("volume_24h")
-  private final BigDecimal volume24h;
+  private final Double volume24h;
 
   @JsonProperty("last_price_24h")
-  private final BigDecimal lastPrice24h;
+  private final Double lastPrice24h;
 
   @JsonProperty("cash_spot_ask")
-  private final BigDecimal cashSpotAsk;
+  private final Double cashSpotAsk;
 
   @JsonProperty("cash_spot_bid")
-  private final BigDecimal cashSpotBid;
+  private final Double cashSpotBid;
 
   @JsonProperty("last_traded_price")
-  private final BigDecimal lastTradedPrice;
+  private final Double lastTradedPrice;
 
   @JsonProperty("quoted_currency")
   private final String quotedCurrency;
@@ -113,25 +112,25 @@ public final class QuoineProduct {
       @JsonProperty("product_type") String productType,
       @JsonProperty("code") String code,
       @JsonProperty("name") String name,
-      @JsonProperty("market_ask") BigDecimal marketAsk,
-      @JsonProperty("market_bid") BigDecimal marketBid,
+      @JsonProperty("market_ask") Double marketAsk,
+      @JsonProperty("market_bid") Double marketBid,
       @JsonProperty("indicator") int indicator,
       @JsonProperty("currency_pair_id") String currencyPairId,
       @JsonProperty("currency") String currency,
       @JsonProperty("currency_pair_code") String currencyPairCode,
       @JsonProperty("symbol") String symbol,
-      @JsonProperty("btc_minimum_withdraw") BigDecimal btcMinimumWithdraw,
-      @JsonProperty("fiat_minimum_withdraw") BigDecimal fiatMinimumWithdraw,
+      @JsonProperty("btc_minimum_withdraw") Double btcMinimumWithdraw,
+      @JsonProperty("fiat_minimum_withdraw") Double fiatMinimumWithdraw,
       @JsonProperty("pusher_channel") String pusherChannel,
-      @JsonProperty("taker_fee") BigDecimal takerFee,
-      @JsonProperty("maker_fee") BigDecimal makerFee,
-      @JsonProperty("low_market_bid") BigDecimal lowMarketBid,
-      @JsonProperty("high_market_ask") BigDecimal highMarketAsk,
-      @JsonProperty("volume_24h") BigDecimal volume24h,
-      @JsonProperty("last_price_24h") BigDecimal lastPrice24h,
-      @JsonProperty("cash_spot_ask") BigDecimal cashSpotAsk,
-      @JsonProperty("cash_spot_bid") BigDecimal cashSpotBid,
-      @JsonProperty("last_traded_price") BigDecimal lastTradedPrice,
+      @JsonProperty("taker_fee") Double takerFee,
+      @JsonProperty("maker_fee") Double makerFee,
+      @JsonProperty("low_market_bid") Double lowMarketBid,
+      @JsonProperty("high_market_ask") Double highMarketAsk,
+      @JsonProperty("volume_24h") Double volume24h,
+      @JsonProperty("last_price_24h") Double lastPrice24h,
+      @JsonProperty("cash_spot_ask") Double cashSpotAsk,
+      @JsonProperty("cash_spot_bid") Double cashSpotBid,
+      @JsonProperty("last_traded_price") Double lastTradedPrice,
       @JsonProperty("quoted_currency") String quotedCurrency,
       @JsonProperty("base_currency") String baseCurrency) {
     this.id = id;
@@ -177,11 +176,11 @@ public final class QuoineProduct {
     return name;
   }
 
-  public BigDecimal getMarketAsk() {
+  public Double getMarketAsk() {
     return marketAsk;
   }
 
-  public BigDecimal getMarketBid() {
+  public Double getMarketBid() {
     return marketBid;
   }
 
@@ -205,11 +204,11 @@ public final class QuoineProduct {
     return symbol;
   }
 
-  public BigDecimal getBtcMinimumWithdraw() {
+  public Double getBtcMinimumWithdraw() {
     return btcMinimumWithdraw;
   }
 
-  public BigDecimal getFiatMinimumWithdraw() {
+  public Double getFiatMinimumWithdraw() {
     return fiatMinimumWithdraw;
   }
 
@@ -217,39 +216,39 @@ public final class QuoineProduct {
     return pusherChannel;
   }
 
-  public BigDecimal getTakerFee() {
+  public Double getTakerFee() {
     return takerFee;
   }
 
-  public BigDecimal getMakerFee() {
+  public Double getMakerFee() {
     return makerFee;
   }
 
-  public BigDecimal getLowMarketBid() {
+  public Double getLowMarketBid() {
     return lowMarketBid;
   }
 
-  public BigDecimal getHighMarketAsk() {
+  public Double getHighMarketAsk() {
     return highMarketAsk;
   }
 
-  public BigDecimal getVolume24h() {
+  public Double getVolume24h() {
     return volume24h;
   }
 
-  public BigDecimal getLastPrice24h() {
+  public Double getLastPrice24h() {
     return lastPrice24h;
   }
 
-  public BigDecimal getCashSpotAsk() {
+  public Double getCashSpotAsk() {
     return cashSpotAsk;
   }
 
-  public BigDecimal getCashSpotBid() {
+  public Double getCashSpotBid() {
     return cashSpotBid;
   }
 
-  public BigDecimal getLastTradedPrice() {
+  public Double getLastTradedPrice() {
     return lastTradedPrice;
   }
 

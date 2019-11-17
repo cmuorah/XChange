@@ -3,7 +3,6 @@ package org.knowm.xchange.coinsuper.dto.trade;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.math.BigDecimal;
 import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -28,7 +27,7 @@ public class OrderDetail {
   private long orderNo;
 
   @JsonProperty("priceLimit")
-  private BigDecimal priceLimit;
+  private Double priceLimit;
 
   @JsonProperty("quantity")
   private String quantity;
@@ -49,7 +48,7 @@ public class OrderDetail {
   private String quantityRemaining;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("amountRemaining")
   private String amountRemaining;
@@ -79,14 +78,14 @@ public class OrderDetail {
    */
   public OrderDetail(
       long orderNo,
-      BigDecimal priceLimit,
+      Double priceLimit,
       String quantity,
       String symbol,
       String action,
       String orderType,
       double fee,
       String quantityRemaining,
-      BigDecimal amount,
+      Double amount,
       String amountRemaining,
       String state,
       List<Detail> detail) {
@@ -116,12 +115,12 @@ public class OrderDetail {
   }
 
   @JsonProperty("priceLimit")
-  public BigDecimal getPriceLimit() {
+  public Double getPriceLimit() {
     return priceLimit;
   }
 
   @JsonProperty("priceLimit")
-  public void setPriceLimit(BigDecimal priceLimit) {
+  public void setPriceLimit(Double priceLimit) {
     this.priceLimit = priceLimit;
   }
 
@@ -186,12 +185,12 @@ public class OrderDetail {
   }
 
   @JsonProperty("amount")
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
   @JsonProperty("amount")
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
@@ -252,10 +251,10 @@ public class OrderDetail {
     private String matchType;
 
     @JsonProperty("price")
-    private BigDecimal price;
+    private Double price;
 
     @JsonProperty("volume")
-    private BigDecimal volume;
+    private Double volume;
 
     @JsonProperty("utcDeal")
     private long utcDeal;
@@ -270,8 +269,7 @@ public class OrderDetail {
      * @param volume
      * @param dealNo
      */
-    public Detail(
-        long dealNo, String matchType, BigDecimal price, BigDecimal volume, long utcDeal) {
+    public Detail(long dealNo, String matchType, Double price, Double volume, long utcDeal) {
       super();
       this.dealNo = dealNo;
       this.matchType = matchType;
@@ -311,31 +309,31 @@ public class OrderDetail {
     }
 
     @JsonProperty("price")
-    public BigDecimal getPrice() {
+    public Double getPrice() {
       return price;
     }
 
     @JsonProperty("price")
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
       this.price = price;
     }
 
-    public Detail withPrice(BigDecimal price) {
+    public Detail withPrice(Double price) {
       this.price = price;
       return this;
     }
 
     @JsonProperty("volume")
-    public BigDecimal getVolume() {
+    public Double getVolume() {
       return volume;
     }
 
     @JsonProperty("volume")
-    public void setVolume(BigDecimal volume) {
+    public void setVolume(Double volume) {
       this.volume = volume;
     }
 
-    public Detail withVolume(BigDecimal volume) {
+    public Detail withVolume(Double volume) {
       this.volume = volume;
       return this;
     }

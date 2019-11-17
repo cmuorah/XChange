@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -23,16 +22,16 @@ public class PoloniexOpenOrder {
   private String type;
 
   @JsonProperty("rate")
-  private BigDecimal rate;
+  private Double rate;
 
   @JsonProperty("startingAmount")
-  private BigDecimal startingAmount;
+  private Double startingAmount;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("total")
-  private BigDecimal total;
+  private Double total;
 
   @JsonProperty("date")
   private String date;
@@ -60,42 +59,42 @@ public class PoloniexOpenOrder {
   }
 
   @JsonProperty("rate")
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 
   @JsonProperty("rate")
-  public void setRate(BigDecimal rate) {
+  public void setRate(Double rate) {
     this.rate = rate;
   }
 
   @JsonProperty("startingAmount")
-  public BigDecimal getStartingAmount() {
+  public Double getStartingAmount() {
     return startingAmount;
   }
 
   @JsonProperty("startingAmount")
-  public void setStartingAmount(BigDecimal startingAmount) {
+  public void setStartingAmount(Double startingAmount) {
     this.startingAmount = startingAmount;
   }
 
   @JsonProperty("amount")
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
   @JsonProperty("amount")
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
   @JsonProperty("total")
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 
   @JsonProperty("total")
-  public void setTotal(BigDecimal total) {
+  public void setTotal(Double total) {
     this.total = total;
   }
 

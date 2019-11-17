@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.bithumb.trade;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bithumb.BithumbException;
 import org.knowm.xchange.bithumb.dto.account.BithumbOrder;
@@ -52,8 +51,8 @@ public class BithumbTradeDemo {
 
     final LimitOrder limitOrderBuy =
         new LimitOrder.Builder(Order.OrderType.BID, CURRENCY_PAIR)
-            .originalAmount(BigDecimal.valueOf(10))
-            .limitPrice(BigDecimal.valueOf(100))
+            .originalAmount(Double.valueOf(10))
+            .limitPrice(Double.valueOf(100))
             .build();
     log.debug("{}", tradeService.placeLimitOrder(limitOrderBuy));
 
@@ -61,8 +60,8 @@ public class BithumbTradeDemo {
 
     final LimitOrder limitOrderSell =
         new LimitOrder.Builder(Order.OrderType.ASK, CURRENCY_PAIR)
-            .originalAmount(BigDecimal.valueOf(10))
-            .limitPrice(BigDecimal.valueOf(600))
+            .originalAmount(Double.valueOf(10))
+            .limitPrice(Double.valueOf(600))
             .build();
     log.debug("{}", tradeService.placeLimitOrder(limitOrderSell));
 
@@ -91,7 +90,7 @@ public class BithumbTradeDemo {
               }
             });
     //        log.debug("{}",tradeService.placeMarketOrder(new MarketOrder(Order.OrderType.ASK,
-    // BigDecimal.valueOf(10), CURRENCY_PAIR)));
+    // Double.valueOf(10), CURRENCY_PAIR)));
   }
 
   private static void raw(BithumbTradeServiceRaw tradeServiceRaw)
@@ -109,8 +108,8 @@ public class BithumbTradeDemo {
 
     final LimitOrder limitOrderBuy =
         new LimitOrder.Builder(Order.OrderType.BID, CURRENCY_PAIR)
-            .originalAmount(BigDecimal.valueOf(10))
-            .limitPrice(BigDecimal.valueOf(100))
+            .originalAmount(Double.valueOf(10))
+            .limitPrice(Double.valueOf(100))
             .build();
     log.debug("{}", tradeServiceRaw.placeBithumbLimitOrder(limitOrderBuy));
 
@@ -118,8 +117,8 @@ public class BithumbTradeDemo {
 
     final LimitOrder limitOrderSell =
         new LimitOrder.Builder(Order.OrderType.ASK, CURRENCY_PAIR)
-            .originalAmount(BigDecimal.valueOf(10))
-            .limitPrice(BigDecimal.valueOf(600))
+            .originalAmount(Double.valueOf(10))
+            .limitPrice(Double.valueOf(600))
             .build();
     log.debug("{}", tradeServiceRaw.placeBithumbLimitOrder(limitOrderSell));
 
@@ -135,6 +134,6 @@ public class BithumbTradeDemo {
               }
             });
     //        log.debug("{}", tradeServiceRaw.placeBithumbMarketOrder(new
-    // MarketOrder(Order.OrderType.ASK, BigDecimal.valueOf(10), CURRENCY_PAIR)));
+    // MarketOrder(Order.OrderType.ASK, Double.valueOf(10), CURRENCY_PAIR)));
   }
 }

@@ -1,25 +1,24 @@
 package org.knowm.xchange.coinfloor.dto.markedata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CoinfloorTicker {
-  private final BigDecimal last;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal vwap;
-  private final BigDecimal volume;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
+  private final Double last;
+  private final Double high;
+  private final Double low;
+  private final Double vwap;
+  private final Double volume;
+  private final Double bid;
+  private final Double ask;
 
   public CoinfloorTicker(
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("vwap") BigDecimal vwap,
-      @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask) {
+      @JsonProperty("last") Double last,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("vwap") Double vwap,
+      @JsonProperty("volume") Double volume,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("ask") Double ask) {
 
     this.last = last;
     this.high = high;
@@ -30,31 +29,31 @@ public class CoinfloorTicker {
     this.ask = ask;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getVwap() {
+  public Double getVwap() {
     return vwap;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 

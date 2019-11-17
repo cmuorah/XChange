@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.campbx.dto.marketdata.CampBXTicker;
 
@@ -24,8 +23,8 @@ public class TickerJSONTest {
     CampBXTicker campBXTicker = mapper.readValue(is, CampBXTicker.class);
 
     // Verify that the example data was unmarshalled correctly
-    assertThat(campBXTicker.getLast()).isEqualTo(new BigDecimal("13.30"));
-    assertThat(campBXTicker.getBid()).isEqualTo(new BigDecimal("13.30"));
-    assertThat(campBXTicker.getAsk()).isEqualTo(new BigDecimal("13.52"));
+    assertThat(campBXTicker.getLast()).isEqualTo(new Double("13.30"));
+    assertThat(campBXTicker.getBid()).isEqualTo(new Double("13.30"));
+    assertThat(campBXTicker.getAsk()).isEqualTo(new Double("13.52"));
   }
 }

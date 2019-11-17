@@ -24,7 +24,6 @@
 package org.knowm.xchange.coinmate.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coinmate.CoinmateAuthenticated;
 import org.knowm.xchange.coinmate.dto.account.CoinmateBalance;
@@ -68,7 +67,7 @@ public class CoinmateAccountServiceRaw extends CoinmateBaseService {
     return coinmateBalance;
   }
 
-  public CoinmateTradeResponse coinmateBitcoinWithdrawal(BigDecimal amount, String address)
+  public CoinmateTradeResponse coinmateBitcoinWithdrawal(Double amount, String address)
       throws IOException {
     CoinmateTradeResponse response =
         coinmateAuthenticated.bitcoinWithdrawal(
@@ -97,7 +96,7 @@ public class CoinmateAccountServiceRaw extends CoinmateBaseService {
     return addresses;
   }
 
-  public CoinmateTradeResponse coinmateLitecoinWithdrawal(BigDecimal amount, String address)
+  public CoinmateTradeResponse coinmateLitecoinWithdrawal(Double amount, String address)
       throws IOException {
     CoinmateTradeResponse response =
         coinmateAuthenticated.litecoinWithdrawal(
@@ -126,7 +125,7 @@ public class CoinmateAccountServiceRaw extends CoinmateBaseService {
     return addresses;
   }
 
-  public CoinmateTradeResponse coinmateBitcoinCashWithdrawal(BigDecimal amount, String address)
+  public CoinmateTradeResponse coinmateBitcoinCashWithdrawal(Double amount, String address)
       throws IOException {
     CoinmateTradeResponse response =
         coinmateAuthenticated.bitcoinCashWithdrawal(
@@ -155,7 +154,7 @@ public class CoinmateAccountServiceRaw extends CoinmateBaseService {
     return addresses;
   }
 
-  public CoinmateTradeResponse coinmateEthereumWithdrawal(BigDecimal amount, String address)
+  public CoinmateTradeResponse coinmateEthereumWithdrawal(Double amount, String address)
       throws IOException {
     CoinmateTradeResponse response =
         coinmateAuthenticated.ethereumWithdrawal(
@@ -184,7 +183,7 @@ public class CoinmateAccountServiceRaw extends CoinmateBaseService {
     return addresses;
   }
 
-  public CoinmateTradeResponse coinmateRippleWithdrawal(BigDecimal amount, String address)
+  public CoinmateTradeResponse coinmateRippleWithdrawal(Double amount, String address)
       throws IOException {
     CoinmateTradeResponse response =
         coinmateAuthenticated.rippleWithdrawal(
@@ -213,7 +212,7 @@ public class CoinmateAccountServiceRaw extends CoinmateBaseService {
     return addresses;
   }
 
-  public CoinmateTradeResponse coinmateDashWithdrawal(BigDecimal amount, String address)
+  public CoinmateTradeResponse coinmateDashWithdrawal(Double amount, String address)
       throws IOException {
     CoinmateTradeResponse response =
         coinmateAuthenticated.dashWithdrawal(

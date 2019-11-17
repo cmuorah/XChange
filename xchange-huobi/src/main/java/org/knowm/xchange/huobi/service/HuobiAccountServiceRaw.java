@@ -1,7 +1,6 @@
 package org.knowm.xchange.huobi.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.huobi.HuobiUtils;
 import org.knowm.xchange.huobi.dto.account.HuobiAccount;
@@ -105,7 +104,7 @@ public class HuobiAccountServiceRaw extends HuobiBaseService {
   }
 
   public long createWithdraw(
-      String currency, BigDecimal amount, BigDecimal fee, String address, String addressTag)
+      String currency, Double amount, Double fee, String address, String addressTag)
       throws IOException {
     HuobiCreateWithdrawRequest createWithdrawRequest =
         new HuobiCreateWithdrawRequest(address, amount, currency.toLowerCase(), fee, addressTag);

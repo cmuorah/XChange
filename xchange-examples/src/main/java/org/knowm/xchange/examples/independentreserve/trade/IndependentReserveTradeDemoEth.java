@@ -2,7 +2,6 @@ package org.knowm.xchange.examples.independentreserve.trade;
 
 import static org.knowm.xchange.examples.independentreserve.trade.IndependentReserveTradeDemo.printOpenOrders;
 
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -32,11 +31,11 @@ public class IndependentReserveTradeDemoEth {
     LimitOrder limitOrder =
         new LimitOrder(
             (Order.OrderType.ASK),
-            new BigDecimal(".01"),
+            new Double(".01"),
             CurrencyPair.ETH_USD,
             "",
             null,
-            new BigDecimal("1000.00"));
+            new Double("1000.00"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 

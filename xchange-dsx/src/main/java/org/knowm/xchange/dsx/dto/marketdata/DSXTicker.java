@@ -1,31 +1,30 @@
 package org.knowm.xchange.dsx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author Mikhail Wall */
 public final class DSXTicker {
 
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal avg;
-  private final BigDecimal vol;
-  private final BigDecimal volCur;
-  private final BigDecimal last;
-  private final BigDecimal buy;
-  private final BigDecimal sell;
+  private final Double high;
+  private final Double low;
+  private final Double avg;
+  private final Double vol;
+  private final Double volCur;
+  private final Double last;
+  private final Double buy;
+  private final Double sell;
   private final long updated;
   private final String pair;
 
   public DSXTicker(
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("avg") BigDecimal avg,
-      @JsonProperty("vol") BigDecimal vol,
-      @JsonProperty("vol_cur") BigDecimal volCur,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("buy") BigDecimal buy,
-      @JsonProperty("sell") BigDecimal sell,
+      @JsonProperty("high") Double high,
+      @JsonProperty("low") Double low,
+      @JsonProperty("avg") Double avg,
+      @JsonProperty("vol") Double vol,
+      @JsonProperty("vol_cur") Double volCur,
+      @JsonProperty("last") Double last,
+      @JsonProperty("buy") Double buy,
+      @JsonProperty("sell") Double sell,
       @JsonProperty("updated") long updated,
       @JsonProperty("pair") String pair) {
 
@@ -41,42 +40,42 @@ public final class DSXTicker {
     this.pair = pair;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
 
-  public BigDecimal getAvg() {
+  public Double getAvg() {
 
     return avg;
   }
 
-  public BigDecimal getVol() {
+  public Double getVol() {
 
     return vol;
   }
 
-  public BigDecimal getVolCur() {
+  public Double getVolCur() {
 
     return volCur;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
 
-  public BigDecimal getBuy() {
+  public Double getBuy() {
 
     return buy;
   }
 
-  public BigDecimal getSell() {
+  public Double getSell() {
 
     return sell;
   }

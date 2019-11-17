@@ -1,6 +1,5 @@
 package org.knowm.xchange.globitex;
 
-import java.math.BigDecimal;
 import java.util.*;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -162,7 +161,7 @@ public class GlobitexAdapters {
               Balance balance =
                   new Balance(
                       new Currency(convertXBTtoBTC(globitexBalance.getCurrency())),
-                      globitexBalance.getAvailable().add(globitexBalance.getReserved()),
+                      globitexBalance.getAvailable() + (globitexBalance.getReserved()),
                       globitexBalance.getAvailable(),
                       globitexBalance.getReserved());
 
@@ -235,8 +234,7 @@ public class GlobitexAdapters {
     Map<CurrencyPair, CurrencyPairMetaData> currencyPairs = new HashMap<>();
     Map<Currency, CurrencyMetaData> currencies = new HashMap<>();
     List<FeeTier> resultFeeTiers = new ArrayList<FeeTier>();
-    resultFeeTiers.add(
-        new FeeTier(BigDecimal.ONE, new Fee(BigDecimal.valueOf(0.001), BigDecimal.valueOf(0.002))));
+    resultFeeTiers.add(new FeeTier(1d, new Fee(0.001, 0.002)));
 
     globitexSymbols
         .getSymbols()
@@ -245,17 +243,17 @@ public class GlobitexAdapters {
               currencyPairs.put(
                   adaptGlobitexSymbolToCurrencyPair(globitexSymbol),
                   new CurrencyPairMetaData(
-                      BigDecimal.valueOf(0.002),
+                      0.002,
                       globitexSymbol.getSizeMin(),
                       null,
-                      globitexSymbol.getPriceIncrement().scale(),
-                      resultFeeTiers.toArray(new FeeTier[resultFeeTiers.size()])));
+                      8,
+                      resultFeeTiers.toArray(new FeeTier[0])));
               currencies.put(
                   new Currency(convertXBTtoBTC(globitexSymbol.getCurrency())),
-                  new CurrencyMetaData(globitexSymbol.getPriceIncrement().scale(), null));
+                  new CurrencyMetaData(8, null));
               currencies.put(
                   new Currency(convertXBTtoBTC(globitexSymbol.getCommodity())),
-                  new CurrencyMetaData(globitexSymbol.getSizeIncrement().scale(), null));
+                  new CurrencyMetaData(8, null));
             });
 
     return new ExchangeMetaData(currencyPairs, currencies, null, null, null);

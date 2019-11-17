@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.v3.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import lombok.Data;
@@ -15,7 +14,7 @@ public class OkexTransaction {
   @JsonProperty("exec_type")
   private String execType;
 
-  private BigDecimal fee;
+  private Double fee;
 
   @JsonProperty("instrument_id")
   /** trading pair */
@@ -31,14 +30,14 @@ public class OkexTransaction {
   /** order ID */
   private String orderId;
   /** price */
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("product_id")
   private String productId;
   /** bills side (buy, sell or points_fee) */
   private Side side;
   /** quantity */
-  private BigDecimal size;
+  private Double size;
   /** create date */
   private String timestamp;
 

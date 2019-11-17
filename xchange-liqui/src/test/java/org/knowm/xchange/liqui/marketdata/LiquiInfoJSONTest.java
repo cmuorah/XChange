@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.Map;
 import org.junit.Test;
 import org.knowm.xchange.liqui.dto.marketdata.LiquiPairInfo;
@@ -27,22 +26,22 @@ public class LiquiInfoJSONTest {
 
     final LiquiPairInfo ethBtc = result.get("eth_btc");
     assertThat(ethBtc.getDecimalPlaces()).isEqualTo(8);
-    assertThat(ethBtc.getFee()).isEqualTo(new BigDecimal("0.25"));
-    assertThat(ethBtc.getMaxAmount()).isEqualTo(new BigDecimal("1000000000.0"));
-    assertThat(ethBtc.getMaxPrice()).isEqualTo(new BigDecimal("1.0"));
-    assertThat(ethBtc.getMinAmount()).isEqualTo(new BigDecimal("0.00000001"));
-    assertThat(ethBtc.getMinPrice()).isEqualTo(new BigDecimal("0.00000001"));
-    assertThat(ethBtc.getMinTotal()).isEqualTo(new BigDecimal("0.0001"));
+    assertThat(ethBtc.getFee()).isEqualTo(new Double("0.25"));
+    assertThat(ethBtc.getMaxAmount()).isEqualTo(new Double("1000000000.0"));
+    assertThat(ethBtc.getMaxPrice()).isEqualTo(new Double("1.0"));
+    assertThat(ethBtc.getMinAmount()).isEqualTo(new Double("0.00000001"));
+    assertThat(ethBtc.getMinPrice()).isEqualTo(new Double("0.00000001"));
+    assertThat(ethBtc.getMinTotal()).isEqualTo(new Double("0.0001"));
     assertThat(ethBtc.isHidden()).isFalse();
 
     final LiquiPairInfo ltcBtc = result.get("ltc_btc");
     assertThat(ltcBtc.getDecimalPlaces()).isEqualTo(8);
-    assertThat(ltcBtc.getFee()).isEqualTo(new BigDecimal("0.25"));
-    assertThat(ltcBtc.getMaxAmount()).isEqualTo(new BigDecimal("1000000.0"));
-    assertThat(ltcBtc.getMaxPrice()).isEqualTo(new BigDecimal("1.0"));
-    assertThat(ltcBtc.getMinAmount()).isEqualTo(new BigDecimal("0.00000001"));
-    assertThat(ltcBtc.getMinPrice()).isEqualTo(new BigDecimal("0.00000001"));
-    assertThat(ltcBtc.getMinTotal()).isEqualTo(new BigDecimal("0.0001"));
+    assertThat(ltcBtc.getFee()).isEqualTo(new Double("0.25"));
+    assertThat(ltcBtc.getMaxAmount()).isEqualTo(new Double("1000000.0"));
+    assertThat(ltcBtc.getMaxPrice()).isEqualTo(new Double("1.0"));
+    assertThat(ltcBtc.getMinAmount()).isEqualTo(new Double("0.00000001"));
+    assertThat(ltcBtc.getMinPrice()).isEqualTo(new Double("0.00000001"));
+    assertThat(ltcBtc.getMinTotal()).isEqualTo(new Double("0.0001"));
     assertThat(ltcBtc.isHidden()).isFalse();
   }
 }

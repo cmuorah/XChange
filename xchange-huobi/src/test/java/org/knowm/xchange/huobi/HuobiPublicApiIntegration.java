@@ -2,7 +2,6 @@ package org.knowm.xchange.huobi;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,8 +26,8 @@ public class HuobiPublicApiIntegration {
     Ticker ticker = marketDataService.getTicker(CurrencyPair.BTC_USDT);
 
     assertThat(ticker).isNotNull();
-    assertThat(ticker.getBid()).isGreaterThan(BigDecimal.ZERO);
-    assertThat(ticker.getAsk()).isGreaterThan(BigDecimal.ZERO);
+    assertThat(ticker.getBid()).isGreaterThan(0d);
+    assertThat(ticker.getAsk()).isGreaterThan(0d);
   }
 
   @Test

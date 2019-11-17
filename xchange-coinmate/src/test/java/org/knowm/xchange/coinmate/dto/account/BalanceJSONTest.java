@@ -28,7 +28,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.coinmate.dto.marketdata.OrderBookJSONTest;
 
@@ -49,18 +48,16 @@ public class BalanceJSONTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(coinmateBalance.getData().get("EUR").getCurrency()).isEqualTo("EUR");
     assertThat(coinmateBalance.getData().get("EUR").getBalance())
-        .isEqualTo(new BigDecimal("20925.48295"));
-    assertThat(coinmateBalance.getData().get("EUR").getReserved())
-        .isEqualTo(new BigDecimal("9.009"));
+        .isEqualTo(new Double("20925.48295"));
+    assertThat(coinmateBalance.getData().get("EUR").getReserved()).isEqualTo(new Double("9.009"));
     assertThat(coinmateBalance.getData().get("EUR").getAvailable())
-        .isEqualTo(new BigDecimal("20916.47395"));
+        .isEqualTo(new Double("20916.47395"));
 
     assertThat(coinmateBalance.getData().get("BTC").getCurrency()).isEqualTo("BTC");
     assertThat(coinmateBalance.getData().get("BTC").getBalance())
-        .isEqualTo(new BigDecimal("9934.56163999"));
-    assertThat(coinmateBalance.getData().get("BTC").getReserved())
-        .isEqualTo(new BigDecimal("8.008"));
+        .isEqualTo(new Double("9934.56163999"));
+    assertThat(coinmateBalance.getData().get("BTC").getReserved()).isEqualTo(new Double("8.008"));
     assertThat(coinmateBalance.getData().get("BTC").getAvailable())
-        .isEqualTo(new BigDecimal("9926.55363999"));
+        .isEqualTo(new Double("9926.55363999"));
   }
 }

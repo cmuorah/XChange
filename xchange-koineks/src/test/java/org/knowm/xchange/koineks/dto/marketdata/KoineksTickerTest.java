@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.currency.Currency;
 
@@ -31,12 +30,12 @@ public class KoineksTickerTest {
     assertThat(koineksTicker.getKoineksDOGETicker()).isNotNull();
 
     KoineksBTCTicker btcTicker = koineksTicker.getKoineksBTCTicker();
-    assertThat(btcTicker.getCurrent()).isEqualTo(new BigDecimal("47423.00"));
-    assertThat(btcTicker.getAsk()).isEqualTo(new BigDecimal("47400.00"));
-    assertThat(btcTicker.getBid()).isEqualTo(new BigDecimal("47303.00"));
-    assertThat(btcTicker.getVolume()).isEqualTo(new BigDecimal("24.62"));
-    assertThat(btcTicker.getHigh()).isEqualTo(new BigDecimal("47500.00"));
-    assertThat(btcTicker.getLow()).isEqualTo(new BigDecimal("46500.00"));
+    assertThat(btcTicker.getCurrent()).isEqualTo(new Double("47423.00"));
+    assertThat(btcTicker.getAsk()).isEqualTo(new Double("47400.00"));
+    assertThat(btcTicker.getBid()).isEqualTo(new Double("47303.00"));
+    assertThat(btcTicker.getVolume()).isEqualTo(new Double("24.62"));
+    assertThat(btcTicker.getHigh()).isEqualTo(new Double("47500.00"));
+    assertThat(btcTicker.getLow()).isEqualTo(new Double("46500.00"));
     assertThat(btcTicker.getTimestamp()).isEqualTo("1512481980");
     assertThat(btcTicker.getChangeAmount()).isEqualTo("+423.00");
     assertThat(btcTicker.getChangePercentage()).isEqualTo("0.9");

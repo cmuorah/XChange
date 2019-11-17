@@ -2,21 +2,20 @@ package org.knowm.xchange.coinegg.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.dto.Order.OrderType;
 
 public class CoinEggTrade {
 
-  private final BigDecimal price;
-  private final BigDecimal amount;
+  private final Double price;
+  private final Double amount;
   private final Type type;
   private final long timestamp;
   private final int tid;
 
   public CoinEggTrade(
       @JsonProperty("date") long timestamp,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("tid") int tid,
       @JsonProperty("type") Type type) {
 
@@ -27,11 +26,11 @@ public class CoinEggTrade {
     this.type = type;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

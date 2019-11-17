@@ -1,7 +1,6 @@
 package org.knowm.xchange.gateio.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class GateioWithdrawal {
@@ -9,7 +8,7 @@ public class GateioWithdrawal {
   public final String id;
   public final String currency;
   public final String address;
-  public final BigDecimal amount;
+  public final Double amount;
   public final String txid;
   public final long timestamp;
   public final String status;
@@ -18,7 +17,7 @@ public class GateioWithdrawal {
       @JsonProperty("id") String id,
       @JsonProperty("currency") String currency,
       @JsonProperty("address") String address,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("txid") String txid,
       @JsonProperty("timestamp") long timestamp,
       @JsonProperty("status") String status) {

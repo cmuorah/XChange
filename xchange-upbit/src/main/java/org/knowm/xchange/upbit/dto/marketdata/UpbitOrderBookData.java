@@ -1,15 +1,14 @@
 package org.knowm.xchange.upbit.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 /** @author interwater */
 public class UpbitOrderBookData {
 
-  private final BigDecimal askPrice;
-  private final BigDecimal bidPrice;
-  private final BigDecimal askSize;
-  private final BigDecimal bidSize;
+  private final Double askPrice;
+  private final Double bidPrice;
+  private final Double askSize;
+  private final Double bidSize;
 
   /**
    * @param askPrice
@@ -18,29 +17,29 @@ public class UpbitOrderBookData {
    * @param bidSize
    */
   public UpbitOrderBookData(
-      @JsonProperty("ask_price") BigDecimal askPrice,
-      @JsonProperty("bid_price") BigDecimal bidPrice,
-      @JsonProperty("ask_size") BigDecimal askSize,
-      @JsonProperty("bid_size") BigDecimal bidSize) {
+      @JsonProperty("ask_price") Double askPrice,
+      @JsonProperty("bid_price") Double bidPrice,
+      @JsonProperty("ask_size") Double askSize,
+      @JsonProperty("bid_size") Double bidSize) {
     this.askPrice = askPrice;
     this.bidPrice = bidPrice;
     this.askSize = askSize;
     this.bidSize = bidSize;
   }
 
-  public BigDecimal getAskPrice() {
+  public Double getAskPrice() {
     return askPrice;
   }
 
-  public BigDecimal getBidPrice() {
+  public Double getBidPrice() {
     return bidPrice;
   }
 
-  public BigDecimal getAskSize() {
+  public Double getAskSize() {
     return askSize;
   }
 
-  public BigDecimal getBidSize() {
+  public Double getBidSize() {
     return bidSize;
   }
 

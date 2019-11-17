@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitz.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitz.BitZ;
@@ -70,8 +69,8 @@ public class BitZTradeServiceRaw extends BitZBaseService {
    * @return
    * @throws IOException
    */
-  public BitZTradeAddResult addEntrustSheet(
-      String symbol, String type, BigDecimal price, BigDecimal number) throws IOException {
+  public BitZTradeAddResult addEntrustSheet(String symbol, String type, Double price, Double number)
+      throws IOException {
     return bitz.addEntrustSheet(
         apiKey, symbol, getTimeStamp(), nonce, signer, type, price, number, tradePwd);
   }

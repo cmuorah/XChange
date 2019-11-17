@@ -1,37 +1,36 @@
 package org.knowm.xchange.bitfinex.v2.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.math.BigDecimal;
 
 @JsonFormat(shape = JsonFormat.Shape.ARRAY)
 public class BitfinexTicker {
 
   private String symbol;
-  private BigDecimal bid;
-  private BigDecimal bidSize;
-  private BigDecimal ask;
-  private BigDecimal askSize;
-  private BigDecimal dailyChange;
-  private BigDecimal dailyChangePerc;
-  private BigDecimal lastPrice;
-  private BigDecimal volume;
-  private BigDecimal high;
-  private BigDecimal low;
+  private Double bid;
+  private Double bidSize;
+  private Double ask;
+  private Double askSize;
+  private Double dailyChange;
+  private Double dailyChangePerc;
+  private Double lastPrice;
+  private Double volume;
+  private Double high;
+  private Double low;
 
   public BitfinexTicker() {}
 
   public BitfinexTicker(
       String symbol,
-      BigDecimal bid,
-      BigDecimal bidSize,
-      BigDecimal ask,
-      BigDecimal askSize,
-      BigDecimal dailyChange,
-      BigDecimal dailyChangePerc,
-      BigDecimal lastPrice,
-      BigDecimal volume,
-      BigDecimal high,
-      BigDecimal low) {
+      Double bid,
+      Double bidSize,
+      Double ask,
+      Double askSize,
+      Double dailyChange,
+      Double dailyChangePerc,
+      Double lastPrice,
+      Double volume,
+      Double high,
+      Double low) {
 
     this.symbol = symbol;
     this.bid = bid;
@@ -50,43 +49,43 @@ public class BitfinexTicker {
     return symbol;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getBidSize() {
+  public Double getBidSize() {
     return bidSize;
   }
 
-  public BigDecimal getAskSize() {
+  public Double getAskSize() {
     return askSize;
   }
 
-  public BigDecimal getDailyChange() {
+  public Double getDailyChange() {
     return dailyChange;
   }
 
-  public BigDecimal getDailyChangePerc() {
+  public Double getDailyChangePerc() {
     return dailyChangePerc;
   }
 
-  public BigDecimal getLastPrice() {
+  public Double getLastPrice() {
     return lastPrice;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 

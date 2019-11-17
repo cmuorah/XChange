@@ -1,6 +1,5 @@
 package org.knowm.xchange.cobinhood;
 
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.knowm.xchange.cobinhood.dto.CobinhoodResponse;
@@ -101,7 +100,7 @@ public class CobinhoodAdapters {
   }
 
   private static LimitOrder adaptLimitOrder(
-      CurrencyPair currencyPair, OrderType orderType, List<BigDecimal> cobinhoodLimitOrder) {
+      CurrencyPair currencyPair, OrderType orderType, List<Double> cobinhoodLimitOrder) {
 
     return new LimitOrder(
         orderType,

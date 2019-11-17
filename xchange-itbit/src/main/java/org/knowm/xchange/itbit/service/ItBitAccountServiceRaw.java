@@ -1,7 +1,6 @@
 package org.knowm.xchange.itbit.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -50,7 +49,7 @@ public class ItBitAccountServiceRaw extends ItBitBaseService {
         perPage);
   }
 
-  public String withdrawItBitFunds(String currency, BigDecimal amount, String address)
+  public String withdrawItBitFunds(String currency, Double amount, String address)
       throws IOException {
 
     String formattedAmount = ItBitAdapters.formatCryptoAmount(amount);

@@ -83,7 +83,7 @@ public class RippleExchange extends BaseExchange implements Exchange {
     // Wait for ledger consensus before confirming successful order entry or cancel
     specification.setExchangeSpecificParametersItem(PARAMETER_VALIDATE_ORDER_REQUESTS, true);
 
-    // Round to this decimal places on BigDecimal division
+    // Round to this decimal places on Double division
     specification.setExchangeSpecificParametersItem(
         PARAMETER_ROUNDING_SCALE, DEFAULT_ROUNDING_SCALE);
 

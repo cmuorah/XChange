@@ -2,26 +2,25 @@ package org.knowm.xchange.therock.dto.account;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import java.math.BigDecimal;
 
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class TheRockBalance {
 
   private String currency;
 
-  private BigDecimal balance;
+  private Double balance;
 
-  private BigDecimal tradingBalance;
+  private Double tradingBalance;
 
   public String getCurrency() {
     return currency;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
-  public BigDecimal getTradingBalance() {
+  public Double getTradingBalance() {
     return tradingBalance;
   }
 

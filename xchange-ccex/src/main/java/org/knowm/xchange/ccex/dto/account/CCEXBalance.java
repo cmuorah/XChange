@@ -1,21 +1,20 @@
 package org.knowm.xchange.ccex.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class CCEXBalance {
 
   private String Currency;
-  private BigDecimal Balance;
-  private BigDecimal Available;
-  private BigDecimal Pending;
+  private Double Balance;
+  private Double Available;
+  private Double Pending;
   private String CryptoAddress;
 
   public CCEXBalance(
       @JsonProperty("Currency") String currency,
-      @JsonProperty("Balance") BigDecimal balance,
-      @JsonProperty("Available") BigDecimal available,
-      @JsonProperty("Pending") BigDecimal pending,
+      @JsonProperty("Balance") Double balance,
+      @JsonProperty("Available") Double available,
+      @JsonProperty("Pending") Double pending,
       @JsonProperty("CryptoAddress") String cryptoAddress) {
     super();
     Currency = currency;
@@ -33,27 +32,27 @@ public class CCEXBalance {
     Currency = currency;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return Balance;
   }
 
-  public void setBalance(BigDecimal balance) {
+  public void setBalance(Double balance) {
     Balance = balance;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return Available;
   }
 
-  public void setAvailable(BigDecimal available) {
+  public void setAvailable(Double available) {
     Available = available;
   }
 
-  public BigDecimal getPending() {
+  public Double getPending() {
     return Pending;
   }
 
-  public void setPending(BigDecimal pending) {
+  public void setPending(Double pending) {
     Pending = pending;
   }
 

@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitcointoyou.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.*;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +16,8 @@ import javax.annotation.Generated;
 @JsonPropertyOrder({"asks", "bids"})
 public class BitcointoyouOrderBook {
 
-  private final List<List<BigDecimal>> asks;
-  private final List<List<BigDecimal>> bids;
+  private final List<List<Double>> asks;
+  private final List<List<Double>> bids;
   @JsonIgnore private final Map<String, Object> additionalProperties = new HashMap<>();
 
   @Override
@@ -50,20 +49,20 @@ public class BitcointoyouOrderBook {
   }
 
   public BitcointoyouOrderBook(
-      @JsonProperty("asks") List<List<BigDecimal>> asks,
-      @JsonProperty("bids") List<List<BigDecimal>> bids) {
+      @JsonProperty("asks") List<List<Double>> asks,
+      @JsonProperty("bids") List<List<Double>> bids) {
     this.asks = asks;
     this.bids = bids;
   }
 
   /** @return The asks */
-  public List<List<BigDecimal>> getAsks() {
+  public List<List<Double>> getAsks() {
 
     return asks;
   }
 
   /** @return The bids */
-  public List<List<BigDecimal>> getBids() {
+  public List<List<Double>> getBids() {
 
     return bids;
   }

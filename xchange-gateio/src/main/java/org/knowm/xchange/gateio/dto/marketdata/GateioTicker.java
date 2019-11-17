@@ -1,39 +1,38 @@
 package org.knowm.xchange.gateio.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import org.knowm.xchange.gateio.dto.GateioBaseResponse;
 
 public class GateioTicker extends GateioBaseResponse {
-  private BigDecimal highestBid;
+  private Double highestBid;
 
   private boolean result;
 
-  private BigDecimal low24hr;
+  private Double low24hr;
 
-  private BigDecimal last;
+  private Double last;
 
-  private BigDecimal high24hr;
+  private Double high24hr;
 
-  private BigDecimal percentChange;
+  private Double percentChange;
 
-  private BigDecimal lowestAsk;
+  private Double lowestAsk;
 
-  private BigDecimal quoteVolume;
+  private Double quoteVolume;
 
-  private BigDecimal baseVolume;
+  private Double baseVolume;
 
   public GateioTicker(
       @JsonProperty("result") boolean result,
       @JsonProperty("message") String message,
-      @JsonProperty("highestBid") BigDecimal highestBid,
-      @JsonProperty("low24hr") BigDecimal low24hr,
-      @JsonProperty("last") BigDecimal last,
-      @JsonProperty("high24hr") BigDecimal high24hr,
-      @JsonProperty("percentChange") BigDecimal percentChange,
-      @JsonProperty("lowestAsk") BigDecimal lowestAsk,
-      @JsonProperty("quoteVolume") BigDecimal quoteVolume,
-      @JsonProperty("baseVolume") BigDecimal baseVolume) {
+      @JsonProperty("highestBid") Double highestBid,
+      @JsonProperty("low24hr") Double low24hr,
+      @JsonProperty("last") Double last,
+      @JsonProperty("high24hr") Double high24hr,
+      @JsonProperty("percentChange") Double percentChange,
+      @JsonProperty("lowestAsk") Double lowestAsk,
+      @JsonProperty("quoteVolume") Double quoteVolume,
+      @JsonProperty("baseVolume") Double baseVolume) {
     super(result, message);
     this.highestBid = highestBid;
     this.result = result;
@@ -46,7 +45,7 @@ public class GateioTicker extends GateioBaseResponse {
     this.baseVolume = baseVolume;
   }
 
-  public BigDecimal getHighestBid() {
+  public Double getHighestBid() {
     return highestBid;
   }
 
@@ -55,31 +54,31 @@ public class GateioTicker extends GateioBaseResponse {
     return result;
   }
 
-  public BigDecimal getLow24hr() {
+  public Double getLow24hr() {
     return low24hr;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getHigh24hr() {
+  public Double getHigh24hr() {
     return high24hr;
   }
 
-  public BigDecimal getPercentChange() {
+  public Double getPercentChange() {
     return percentChange;
   }
 
-  public BigDecimal getLowestAsk() {
+  public Double getLowestAsk() {
     return lowestAsk;
   }
 
-  public BigDecimal getQuoteVolume() {
+  public Double getQuoteVolume() {
     return quoteVolume;
   }
 
-  public BigDecimal getBaseVolume() {
+  public Double getBaseVolume() {
     return baseVolume;
   }
 

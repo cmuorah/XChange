@@ -1,19 +1,18 @@
 package org.knowm.xchange.huobi.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public final class HuobiWithdrawFeeRange {
 
-  private final BigDecimal defaultAmount;
-  private final BigDecimal minAmount;
-  private final BigDecimal maxAmount;
+  private final Double defaultAmount;
+  private final Double minAmount;
+  private final Double maxAmount;
   private final String dynamicSwitch;
 
   public HuobiWithdrawFeeRange(
-      @JsonProperty("default-amount") BigDecimal defaultAmount,
-      @JsonProperty("min-amount") BigDecimal minAmount,
-      @JsonProperty("max-amount") BigDecimal maxAmount,
+      @JsonProperty("default-amount") Double defaultAmount,
+      @JsonProperty("min-amount") Double minAmount,
+      @JsonProperty("max-amount") Double maxAmount,
       @JsonProperty("dynamic-switch") String dynamicSwitch) {
     this.defaultAmount = defaultAmount;
     this.minAmount = minAmount;
@@ -21,15 +20,15 @@ public final class HuobiWithdrawFeeRange {
     this.dynamicSwitch = dynamicSwitch;
   }
 
-  public BigDecimal getDefaultAmount() {
+  public Double getDefaultAmount() {
     return defaultAmount;
   }
 
-  public BigDecimal getMinAmount() {
+  public Double getMinAmount() {
     return minAmount;
   }
 
-  public BigDecimal getMaxAmount() {
+  public Double getMaxAmount() {
     return maxAmount;
   }
 

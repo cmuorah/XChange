@@ -2,7 +2,6 @@ package org.knowm.xchange.deribit.v2.service.marketdata;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
@@ -31,7 +30,7 @@ public class DeribitTickerFetchIntegration {
 
     assertThat(ticker).isNotNull();
     assertThat(ticker.getInstrumentName()).isEqualTo("BTC-PERPETUAL");
-    assertThat(ticker.getLastPrice()).isGreaterThan(new BigDecimal("0"));
+    assertThat(ticker.getLastPrice()).isGreaterThan(new Double("0"));
   }
 
   @Test

@@ -1,17 +1,16 @@
 package org.knowm.xchange.bitfinex.v1.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexTicker {
 
-  private final BigDecimal mid;
-  private final BigDecimal bid;
-  private final BigDecimal ask;
-  private final BigDecimal high;
-  private final BigDecimal low;
-  private final BigDecimal last;
-  private final BigDecimal volume;
+  private final Double mid;
+  private final Double bid;
+  private final Double ask;
+  private final Double high;
+  private final Double low;
+  private final Double last;
+  private final Double volume;
   private final double timestamp;
 
   /**
@@ -25,14 +24,14 @@ public class BitfinexTicker {
    * @param volume
    */
   public BitfinexTicker(
-      @JsonProperty("mid") BigDecimal mid,
-      @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("low") BigDecimal low,
-      @JsonProperty("high") BigDecimal high,
-      @JsonProperty("last_price") BigDecimal last,
+      @JsonProperty("mid") Double mid,
+      @JsonProperty("bid") Double bid,
+      @JsonProperty("ask") Double ask,
+      @JsonProperty("low") Double low,
+      @JsonProperty("high") Double high,
+      @JsonProperty("last_price") Double last,
       @JsonProperty("timestamp") double timestamp,
-      @JsonProperty("volume") BigDecimal volume) {
+      @JsonProperty("volume") Double volume) {
 
     this.mid = mid;
     this.bid = bid;
@@ -44,37 +43,37 @@ public class BitfinexTicker {
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getMid() {
+  public Double getMid() {
 
     return mid;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return bid;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return ask;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return low;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return high;
   }
 
-  public BigDecimal getLast_price() {
+  public Double getLast_price() {
 
     return last;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return volume;
   }

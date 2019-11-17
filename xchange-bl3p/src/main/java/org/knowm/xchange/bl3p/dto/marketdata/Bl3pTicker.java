@@ -1,25 +1,24 @@
 package org.knowm.xchange.bl3p.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class Bl3pTicker {
 
   @JsonProperty("ask")
-  private BigDecimal ask;
+  private Double ask;
 
   @JsonProperty("bid")
-  private BigDecimal bid;
+  private Double bid;
 
   @JsonProperty("high")
-  private BigDecimal high;
+  private Double high;
 
   @JsonProperty("last")
-  private BigDecimal last;
+  private Double last;
 
   @JsonProperty("low")
-  private BigDecimal low;
+  private Double low;
 
   private Date timestamp;
 
@@ -30,23 +29,23 @@ public class Bl3pTicker {
     this.timestamp = new Date(timestamp * 1000l);
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
     return ask;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
     return high;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
     return last;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
     return low;
   }
 
@@ -60,16 +59,16 @@ public class Bl3pTicker {
 
   public static class Bl3pTickerVolume {
     @JsonProperty("24h")
-    private BigDecimal day;
+    private Double day;
 
     @JsonProperty("30d")
-    private BigDecimal month;
+    private Double month;
 
-    public BigDecimal getDay() {
+    public Double getDay() {
       return day;
     }
 
-    public BigDecimal getMonth() {
+    public Double getMonth() {
       return month;
     }
   }

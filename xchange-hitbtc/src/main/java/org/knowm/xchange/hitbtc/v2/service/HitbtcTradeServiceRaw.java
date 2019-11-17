@@ -1,7 +1,6 @@
 package org.knowm.xchange.hitbtc.v2.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -73,7 +72,7 @@ public class HitbtcTradeServiceRaw extends HitbtcBaseService {
   }
 
   public HitbtcOrder updateMarketOrderRaw(
-      String clientOrderId, BigDecimal quantity, String requestClientId, Optional<BigDecimal> price)
+      String clientOrderId, Double quantity, String requestClientId, Optional<Double> price)
       throws IOException {
 
     return hitbtc.updateHitbtcOrder(clientOrderId, quantity, requestClientId, price.orElse(null));

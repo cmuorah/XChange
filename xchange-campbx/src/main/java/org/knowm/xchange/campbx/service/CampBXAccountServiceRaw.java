@@ -1,7 +1,6 @@
 package org.knowm.xchange.campbx.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.campbx.dto.CampBXResponse;
 import org.knowm.xchange.campbx.dto.account.MyFunds;
@@ -28,7 +27,7 @@ public class CampBXAccountServiceRaw extends CampBXBaseService {
     return myFunds;
   }
 
-  public CampBXResponse withdrawCampBXFunds(BigDecimal amount, String address) throws IOException {
+  public CampBXResponse withdrawCampBXFunds(Double amount, String address) throws IOException {
 
     CampBXResponse campBXResponse =
         campBX.withdrawBtc(

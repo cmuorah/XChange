@@ -3,7 +3,6 @@ package org.knowm.xchange.globitex.dto.marketdata;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class GlobitexTrade implements Serializable {
 
@@ -11,10 +10,10 @@ public class GlobitexTrade implements Serializable {
   private final long timestamp;
 
   @JsonProperty("price")
-  private final BigDecimal price;
+  private final Double price;
 
   @JsonProperty("amount")
-  private final BigDecimal amount;
+  private final Double amount;
 
   @JsonProperty("tid")
   private final long tid;
@@ -25,8 +24,8 @@ public class GlobitexTrade implements Serializable {
 
   public GlobitexTrade(
       @JsonProperty("date") long timestamp,
-      @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price") Double price,
+      @JsonProperty("amount") Double amount,
       @JsonProperty("tid") long tid,
       @JsonProperty("side") String side) {
     this.timestamp = timestamp;
@@ -40,11 +39,11 @@ public class GlobitexTrade implements Serializable {
     return timestamp;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 

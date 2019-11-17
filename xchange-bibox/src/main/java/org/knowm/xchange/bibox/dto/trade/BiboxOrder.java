@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -54,16 +53,16 @@ public class BiboxOrder {
   private BiboxOrderType orderType;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private Double price;
 
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("money")
-  private BigDecimal money;
+  private Double money;
 
   @JsonProperty("deal_amount")
-  private BigDecimal dealAmount;
+  private Double dealAmount;
 
   @JsonProperty("deal_percent")
   private String dealPercent;
@@ -72,10 +71,10 @@ public class BiboxOrder {
   private BiboxOrderStatus status;
 
   @JsonProperty("unexecuted")
-  private BigDecimal unexecuted;
+  private Double unexecuted;
   /** only for order history */
   @JsonProperty("fee")
-  private BigDecimal fee;
+  private Double fee;
 
   @JsonProperty("fee_symbol")
   private String feeSymbol;
@@ -168,49 +167,49 @@ public class BiboxOrder {
 
   /** @return The price */
   @JsonProperty("price")
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
   /** @param price The price */
   @JsonProperty("price")
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
   /** @return The amount */
   @JsonProperty("amount")
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
   /** @param amount The amount */
   @JsonProperty("amount")
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
   /** @return The money */
   @JsonProperty("money")
-  public BigDecimal getMoney() {
+  public Double getMoney() {
     return money;
   }
 
   /** @param money The money */
   @JsonProperty("money")
-  public void setMoney(BigDecimal money) {
+  public void setMoney(Double money) {
     this.money = money;
   }
 
   /** @return The dealAmount */
   @JsonProperty("deal_amount")
-  public BigDecimal getDealAmount() {
+  public Double getDealAmount() {
     return dealAmount;
   }
 
   /** @param dealAmount The deal_amount */
   @JsonProperty("deal_amount")
-  public void setDealAmount(BigDecimal dealAmount) {
+  public void setDealAmount(Double dealAmount) {
     this.dealAmount = dealAmount;
   }
 
@@ -240,21 +239,21 @@ public class BiboxOrder {
 
   /** @return The unexecuted */
   @JsonProperty("unexecuted")
-  public BigDecimal getUnexecuted() {
+  public Double getUnexecuted() {
     return unexecuted;
   }
 
   /** @param unexecuted The unexecuted */
   @JsonProperty("unexecuted")
-  public void setUnexecuted(BigDecimal unexecuted) {
+  public void setUnexecuted(Double unexecuted) {
     this.unexecuted = unexecuted;
   }
 
-  public BigDecimal getFee() {
+  public Double getFee() {
     return fee;
   }
 
-  public void setFee(BigDecimal fee) {
+  public void setFee(Double fee) {
     this.fee = fee;
   }
 

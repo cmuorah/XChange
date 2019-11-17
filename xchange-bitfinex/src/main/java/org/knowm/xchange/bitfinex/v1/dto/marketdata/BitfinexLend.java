@@ -1,12 +1,11 @@
 package org.knowm.xchange.bitfinex.v1.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BitfinexLend {
 
-  private final BigDecimal rate;
-  private final BigDecimal amountLent;
+  private final Double rate;
+  private final Double amountLent;
   private final long timestamp;
 
   /**
@@ -17,8 +16,8 @@ public class BitfinexLend {
    * @param timestamp
    */
   public BitfinexLend(
-      @JsonProperty("rate") BigDecimal rate,
-      @JsonProperty("amount_lent") BigDecimal amountLent,
+      @JsonProperty("rate") Double rate,
+      @JsonProperty("amount_lent") Double amountLent,
       @JsonProperty("timestamp") long timestamp) {
 
     this.rate = rate;
@@ -26,12 +25,12 @@ public class BitfinexLend {
     this.timestamp = timestamp;
   }
 
-  public BigDecimal getRate() {
+  public Double getRate() {
 
     return rate;
   }
 
-  public BigDecimal getAmountLent() {
+  public Double getAmountLent() {
 
     return amountLent;
   }

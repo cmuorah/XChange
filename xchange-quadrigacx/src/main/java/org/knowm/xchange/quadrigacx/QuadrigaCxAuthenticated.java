@@ -1,7 +1,6 @@
 package org.knowm.xchange.quadrigacx;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -38,8 +37,8 @@ public interface QuadrigaCxAuthenticated {
       @FormParam("key") String apiKey,
       @FormParam("signature") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
-      @FormParam("price") BigDecimal price)
+      @FormParam("amount") Double amount,
+      @FormParam("price") Double price)
       throws QuadrigaCxException, IOException;
 
   @POST
@@ -49,8 +48,8 @@ public interface QuadrigaCxAuthenticated {
       @FormParam("key") String apiKey,
       @FormParam("signature") ParamsDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
-      @FormParam("price") BigDecimal price)
+      @FormParam("amount") Double amount,
+      @FormParam("price") Double price)
       throws QuadrigaCxException, IOException;
 
   /** @return true if order has been canceled. */
@@ -129,7 +128,7 @@ public interface QuadrigaCxAuthenticated {
       @FormParam("key") String apiKey,
       @FormParam("signature") QuadrigaCxDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws QuadrigaCxException, IOException;
 
@@ -139,7 +138,7 @@ public interface QuadrigaCxAuthenticated {
       @FormParam("key") String apiKey,
       @FormParam("signature") QuadrigaCxDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws QuadrigaCxException, IOException;
 
@@ -149,7 +148,7 @@ public interface QuadrigaCxAuthenticated {
       @FormParam("key") String apiKey,
       @FormParam("signature") QuadrigaCxDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws QuadrigaCxException, IOException;
 
@@ -159,7 +158,7 @@ public interface QuadrigaCxAuthenticated {
       @FormParam("key") String apiKey,
       @FormParam("signature") QuadrigaCxDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws QuadrigaCxException, IOException;
 
@@ -169,7 +168,7 @@ public interface QuadrigaCxAuthenticated {
       @FormParam("key") String apiKey,
       @FormParam("signature") QuadrigaCxDigest signer,
       @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-      @FormParam("amount") BigDecimal amount,
+      @FormParam("amount") Double amount,
       @FormParam("address") String address)
       throws QuadrigaCxException, IOException;
 }

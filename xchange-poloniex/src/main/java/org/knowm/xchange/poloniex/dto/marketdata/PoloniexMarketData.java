@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -24,115 +23,115 @@ import javax.annotation.Generated;
 public class PoloniexMarketData {
 
   @JsonProperty("high24hr")
-  private BigDecimal high24hr;
+  private Double high24hr;
 
   @JsonProperty("low24hr")
-  private BigDecimal low24hr;
+  private Double low24hr;
 
   @JsonProperty("last")
-  private BigDecimal last;
+  private Double last;
 
   @JsonProperty("lowestAsk")
-  private BigDecimal lowestAsk;
+  private Double lowestAsk;
 
   @JsonProperty("highestBid")
-  private BigDecimal highestBid;
+  private Double highestBid;
 
   @JsonProperty("percentChange")
-  private BigDecimal percentChange;
+  private Double percentChange;
 
   @JsonProperty("baseVolume")
-  private BigDecimal baseVolume;
+  private Double baseVolume;
 
   @JsonProperty("quoteVolume")
-  private BigDecimal quoteVolume;
+  private Double quoteVolume;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-  public BigDecimal getHigh24hr() {
+  public Double getHigh24hr() {
     return high24hr;
   }
 
-  public void setHigh24hr(BigDecimal high24hr) {
+  public void setHigh24hr(Double high24hr) {
     this.high24hr = high24hr;
   }
 
-  public BigDecimal getLow24hr() {
+  public Double getLow24hr() {
     return low24hr;
   }
 
-  public void setLow24hr(BigDecimal low24hr) {
+  public void setLow24hr(Double low24hr) {
     this.low24hr = low24hr;
   }
 
   @JsonProperty("last")
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return last;
   }
 
   @JsonProperty("last")
-  public void setLast(BigDecimal last) {
+  public void setLast(Double last) {
 
     this.last = last;
   }
 
   @JsonProperty("lowestAsk")
-  public BigDecimal getLowestAsk() {
+  public Double getLowestAsk() {
 
     return lowestAsk;
   }
 
   @JsonProperty("lowestAsk")
-  public void setLowestAsk(BigDecimal lowestAsk) {
+  public void setLowestAsk(Double lowestAsk) {
 
     this.lowestAsk = lowestAsk;
   }
 
   @JsonProperty("highestBid")
-  public BigDecimal getHighestBid() {
+  public Double getHighestBid() {
 
     return highestBid;
   }
 
   @JsonProperty("highestBid")
-  public void setHighestBid(BigDecimal highestBid) {
+  public void setHighestBid(Double highestBid) {
 
     this.highestBid = highestBid;
   }
 
   @JsonProperty("percentChange")
-  public BigDecimal getPercentChange() {
+  public Double getPercentChange() {
 
     return percentChange;
   }
 
   @JsonProperty("percentChange")
-  public void setPercentChange(BigDecimal percentChange) {
+  public void setPercentChange(Double percentChange) {
 
     this.percentChange = percentChange;
   }
 
   @JsonProperty("baseVolume")
-  public BigDecimal getBaseVolume() {
+  public Double getBaseVolume() {
 
     return baseVolume;
   }
 
   @JsonProperty("baseVolume")
-  public void setBaseVolume(BigDecimal baseVolume) {
+  public void setBaseVolume(Double baseVolume) {
 
     this.baseVolume = baseVolume;
   }
 
   @JsonProperty("quoteVolume")
-  public BigDecimal getQuoteVolume() {
+  public Double getQuoteVolume() {
 
     return quoteVolume;
   }
 
   @JsonProperty("quoteVolume")
-  public void setQuoteVolume(BigDecimal quoteVolume) {
+  public void setQuoteVolume(Double quoteVolume) {
 
     this.quoteVolume = quoteVolume;
   }

@@ -1,6 +1,5 @@
 package org.knowm.xchange.dvchain;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +24,7 @@ public class DVChainAdapters {
 
   public static LimitOrder adaptOrder(
       DVChainLevel level, Order.OrderType type, CurrencyPair currencyPair) {
-    BigDecimal price = null;
+    Double price = null;
     if (type == Order.OrderType.BID) {
       price = level.getBuyPrice();
     } else {
@@ -56,7 +55,7 @@ public class DVChainAdapters {
           trade.getSide().equalsIgnoreCase("buy") ? Order.OrderType.BID : Order.OrderType.ASK;
       Date timestamp = Date.from(trade.getCreatedAt());
       CurrencyPair currencyPair = new CurrencyPair(trade.getAsset(), "USD");
-      final BigDecimal fee = null;
+      final Double fee = null;
       pastTrades.add(
           new UserTrade(
               orderType,
@@ -76,8 +75,8 @@ public class DVChainAdapters {
 
     Order.OrderType orderType =
         trade.getSide().equals("buy") ? Order.OrderType.BID : Order.OrderType.ASK;
-    BigDecimal amount = trade.getQuantity();
-    BigDecimal price = trade.getPrice();
+    Double amount = trade.getQuantity();
+    Double price = trade.getPrice();
     Date date = Date.from(trade.getCreatedAt());
     final String tradeId = trade.getId();
     return new Trade(orderType, amount, currencyPair, price, date, tradeId);

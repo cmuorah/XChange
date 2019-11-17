@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,49 +19,49 @@ import java.util.Map;
 })
 public class PoloniexMarginPostionResponse {
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
 
   @JsonProperty("total")
-  private BigDecimal total;
+  private Double total;
 
   @JsonProperty("basePrice")
-  private BigDecimal basePrice;
+  private Double basePrice;
 
   @JsonProperty("liquidationPrice")
-  private BigDecimal liquidationPrice;
+  private Double liquidationPrice;
 
   @JsonProperty("pl")
-  private BigDecimal pl;
+  private Double pl;
 
   @JsonProperty("lendingFees")
-  private BigDecimal lendingFees;
+  private Double lendingFees;
 
   @JsonProperty("type")
   private String type;
 
   @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public BigDecimal getTotal() {
+  public Double getTotal() {
     return total;
   }
 
-  public BigDecimal getBasePrice() {
+  public Double getBasePrice() {
     return basePrice;
   }
 
-  public BigDecimal getLiquidationPrice() {
+  public Double getLiquidationPrice() {
     return liquidationPrice;
   }
 
-  public BigDecimal getPl() {
+  public Double getPl() {
     return pl;
   }
 
-  public BigDecimal getLendingFees() {
+  public Double getLendingFees() {
     return lendingFees;
   }
 

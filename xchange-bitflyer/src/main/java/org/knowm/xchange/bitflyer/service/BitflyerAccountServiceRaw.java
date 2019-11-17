@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitflyer.service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitflyer.dto.BitflyerException;
@@ -78,7 +77,7 @@ public class BitflyerAccountServiceRaw extends BitflyerBaseService {
   }
 
   public BitflyerWithdrawResponse withdrawFunds(
-      String currencyCode, String bankAccountID, BigDecimal amount) throws IOException {
+      String currencyCode, String bankAccountID, Double amount) throws IOException {
     try {
       return bitflyer.withdrawFunds(
           apiKey,

@@ -1,6 +1,5 @@
 package org.knowm.xchange.dto.trade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -32,13 +31,13 @@ public class MarketOrder extends Order {
    */
   public MarketOrder(
       OrderType type,
-      BigDecimal originalAmount,
+      Double originalAmount,
       CurrencyPair currencyPair,
       String id,
       Date timestamp,
-      BigDecimal averagePrice,
-      BigDecimal cumulativeAmount,
-      BigDecimal fee,
+      Double averagePrice,
+      Double cumulativeAmount,
+      Double fee,
       OrderStatus status) {
     super(
         type,
@@ -60,11 +59,7 @@ public class MarketOrder extends Order {
    * @param timestamp the absolute time for this order
    */
   public MarketOrder(
-      OrderType type,
-      BigDecimal originalAmount,
-      CurrencyPair currencyPair,
-      String id,
-      Date timestamp) {
+      OrderType type, Double originalAmount, CurrencyPair currencyPair, String id, Date timestamp) {
 
     super(type, originalAmount, currencyPair, id, timestamp);
   }
@@ -76,7 +71,7 @@ public class MarketOrder extends Order {
    * @param timestamp the absolute time for this order
    */
   public MarketOrder(
-      OrderType type, BigDecimal originalAmount, CurrencyPair currencyPair, Date timestamp) {
+      OrderType type, Double originalAmount, CurrencyPair currencyPair, Date timestamp) {
 
     super(type, originalAmount, currencyPair, "", timestamp);
   }
@@ -86,7 +81,7 @@ public class MarketOrder extends Order {
    * @param originalAmount The amount to trade
    * @param currencyPair currencyPair The identifier (e.g. BTC/USD)
    */
-  public MarketOrder(OrderType type, BigDecimal originalAmount, CurrencyPair currencyPair) {
+  public MarketOrder(OrderType type, Double originalAmount, CurrencyPair currencyPair) {
 
     super(type, originalAmount, currencyPair, "", null);
   }
@@ -124,25 +119,25 @@ public class MarketOrder extends Order {
     }
 
     @Override
-    public Builder averagePrice(BigDecimal averagePrice) {
+    public Builder averagePrice(Double averagePrice) {
 
       return (Builder) super.averagePrice(averagePrice);
     }
 
     @Override
-    public Builder cumulativeAmount(BigDecimal cumulativeAmount) {
+    public Builder cumulativeAmount(Double cumulativeAmount) {
 
       return (Builder) super.cumulativeAmount(cumulativeAmount);
     }
 
     @Override
-    public Builder fee(BigDecimal fee) {
+    public Builder fee(Double fee) {
 
       return (Builder) super.fee(fee);
     }
 
     @Override
-    public Builder originalAmount(BigDecimal originalAmount) {
+    public Builder originalAmount(Double originalAmount) {
 
       return (Builder) super.originalAmount(originalAmount);
     }

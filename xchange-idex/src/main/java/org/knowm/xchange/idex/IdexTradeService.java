@@ -7,9 +7,7 @@ import static org.knowm.xchange.idex.IdexExchange.Companion.getCurrencyPair;
 import static org.knowm.xchange.idex.IdexExchange.Companion.safeParse;
 import static org.knowm.xchange.idex.IdexSignature.generateSignature;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.math.MathContext;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.bouncycastle.util.encoders.Hex;
@@ -217,8 +215,8 @@ public class IdexTradeService extends BaseExchangeService implements TradeServic
     OrderType type = placeOrder.getType();
     Currency baseCurrency = placeOrder.getCurrencyPair().base;
     Currency counterCurrency = placeOrder.getCurrencyPair().counter;
-    BigDecimal originalAmount = placeOrder.getOriginalAmount();
-    BigDecimal limitPrice = placeOrder.getLimitPrice();
+    Double originalAmount = placeOrder.getOriginalAmount();
+    Double limitPrice = placeOrder.getLimitPrice();
     OrderReq orderReq =
         createNormalizedLimitOrderReq(
             baseCurrency, counterCurrency, type, limitPrice, originalAmount, null, null, null);
@@ -236,8 +234,8 @@ public class IdexTradeService extends BaseExchangeService implements TradeServic
       Currency baseCurrency,
       Currency counterCurrency,
       OrderType type,
-      BigDecimal limitPrice,
-      BigDecimal originalAmount,
+      Double limitPrice,
+      Double originalAmount,
       String contractAddress,
       BigInteger nonce,
       BigInteger expires) {
@@ -249,54 +247,48 @@ public class IdexTradeService extends BaseExchangeService implements TradeServic
     OrderReq orderReq = null;
 
     boolean untested = true;
-    if (untested) {
-      List<Currency> listOfCurrencies = asList(baseCurrency, /*OMG*/ counterCurrency /*ETH*/);
-      if (type == BID) Collections.reverse(listOfCurrencies);
+    List<Currency> listOfCurrencies = asList(baseCurrency, /*OMG*/ counterCurrency /*ETH*/);
+    if (type == BID) Collections.reverse(listOfCurrencies);
 
-      IdexCurrencyMeta buy_currency =
-          (IdexCurrencyMeta)
-              exchange.getExchangeMetaData().getCurrencies().get(listOfCurrencies.get(0));
-      IdexCurrencyMeta sell_currency =
-          (IdexCurrencyMeta)
-              exchange.getExchangeMetaData().getCurrencies().get(listOfCurrencies.get(1));
-      BigDecimal divide = originalAmount.divide(limitPrice, MathContext.DECIMAL128);
-      BigDecimal amount_buy =
-          divide.multiply(
-              new BigDecimal("1e" + buy_currency.getDecimals()), MathContext.DECIMAL128);
-      BigDecimal amount_sell =
-          originalAmount.multiply(
-              new BigDecimal("1e" + sell_currency.getDecimals()), MathContext.DECIMAL128);
-      String buyc = buy_currency.getAddress();
-      String sellc = sell_currency.getAddress();
-      List<List<String>> hash_data =
-          asList(
-              asList("contractAddress", contractAddress, "address"),
-              asList("tokenBuy", buyc, "address"),
-              asList("amountBuy", amount_buy.toString(), "uint256"),
-              asList("tokenSell", sellc, "address"),
-              asList("amountSell", amount_sell.toString(), "uint256"),
-              asList("expires", "" + expires, "uint256"),
-              asList("nonce", "" + nonce, "uint256"),
-              asList("address", "" + getApiKey(), "address"));
+    IdexCurrencyMeta buy_currency =
+        (IdexCurrencyMeta)
+            exchange.getExchangeMetaData().getCurrencies().get(listOfCurrencies.get(0));
+    IdexCurrencyMeta sell_currency =
+        (IdexCurrencyMeta)
+            exchange.getExchangeMetaData().getCurrencies().get(listOfCurrencies.get(1));
+    double divide = originalAmount / limitPrice;
+    double amount_buy = divide * new Double("1e" + buy_currency.getDecimals());
+    double amount_sell = originalAmount * (new Double("1e" + sell_currency.getDecimals()));
+    String buyc = buy_currency.getAddress();
+    String sellc = sell_currency.getAddress();
+    List<List<String>> hash_data =
+        asList(
+            asList("contractAddress", contractAddress, "address"),
+            asList("tokenBuy", buyc, "address"),
+            asList("amountBuy", Double.toString(amount_buy), "uint256"),
+            asList("tokenSell", sellc, "address"),
+            asList("amountSell", Double.toString(amount_sell), "uint256"),
+            asList("expires", "" + expires, "uint256"),
+            asList("nonce", "" + nonce, "uint256"),
+            asList("address", "" + getApiKey(), "address"));
 
-      SignatureData sig =
-          generateSignature(exchange.getExchangeSpecification().getSecretKey(), hash_data);
-      byte v = sig.getV();
-      byte[] r = sig.getR();
-      byte[] s = sig.getS();
-      orderReq =
-          new OrderReq()
-              .address(getApiKey())
-              .nonce(nonce)
-              .tokenBuy(buyc)
-              .amountBuy(amount_buy.toString())
-              .tokenSell(sellc)
-              .amountSell(amount_sell.toString())
-              .expires(expires)
-              .r("0x" + new String(Hex.toHexString(r)))
-              .s("0x" + new String(Hex.toHexString(s)))
-              .v(BigInteger.valueOf(v & 0xffl));
-    }
+    SignatureData sig =
+        generateSignature(exchange.getExchangeSpecification().getSecretKey(), hash_data);
+    byte v = sig.getV();
+    byte[] r = sig.getR();
+    byte[] s = sig.getS();
+    orderReq =
+        new OrderReq()
+            .address(getApiKey())
+            .nonce(nonce)
+            .tokenBuy(buyc)
+            .amountBuy(Double.toString(amount_buy))
+            .tokenSell(sellc)
+            .amountSell(Double.toString(amount_sell))
+            .expires(expires)
+            .r("0x" + new String(Hex.toHexString(r)))
+            .s("0x" + new String(Hex.toHexString(s)))
+            .v(BigInteger.valueOf(v & 0xffL));
     return orderReq;
   }
 

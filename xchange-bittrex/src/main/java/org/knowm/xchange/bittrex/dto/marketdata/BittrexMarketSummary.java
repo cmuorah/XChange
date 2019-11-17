@@ -1,40 +1,39 @@
 package org.knowm.xchange.bittrex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BittrexMarketSummary {
 
-  private BigDecimal ask;
-  private BigDecimal baseVolume;
-  private BigDecimal bid;
+  private Double ask;
+  private Double baseVolume;
+  private Double bid;
   private String created;
   private String displayMarketName;
-  private BigDecimal high;
-  private BigDecimal last;
-  private BigDecimal low;
+  private Double high;
+  private Double last;
+  private Double low;
   private String marketName;
   private int openBuyOrders;
   private int openSellOrders;
-  private BigDecimal prevDay;
+  private Double prevDay;
   private String timeStamp;
-  private BigDecimal volume;
+  private Double volume;
 
   public BittrexMarketSummary(
-      @JsonProperty("Ask") BigDecimal ask,
-      @JsonProperty("BaseVolume") BigDecimal baseVolume,
-      @JsonProperty("Bid") BigDecimal bid,
+      @JsonProperty("Ask") Double ask,
+      @JsonProperty("BaseVolume") Double baseVolume,
+      @JsonProperty("Bid") Double bid,
       @JsonProperty("Created") String created,
       @JsonProperty("DisplayMarketName") String displayMarketName,
-      @JsonProperty("High") BigDecimal high,
-      @JsonProperty("Last") BigDecimal last,
-      @JsonProperty("Low") BigDecimal low,
+      @JsonProperty("High") Double high,
+      @JsonProperty("Last") Double last,
+      @JsonProperty("Low") Double low,
       @JsonProperty("MarketName") String marketName,
       @JsonProperty("OpenBuyOrders") int openBuyOrders,
       @JsonProperty("OpenSellOrders") int openSellOrders,
-      @JsonProperty("PrevDay") BigDecimal prevDay,
+      @JsonProperty("PrevDay") Double prevDay,
       @JsonProperty("TimeStamp") String timeStamp,
-      @JsonProperty("Volume") BigDecimal volume) {
+      @JsonProperty("Volume") Double volume) {
 
     this.ask = ask;
     this.baseVolume = baseVolume;
@@ -52,32 +51,32 @@ public class BittrexMarketSummary {
     this.volume = volume;
   }
 
-  public BigDecimal getAsk() {
+  public Double getAsk() {
 
     return this.ask;
   }
 
-  public void setAsk(BigDecimal ask) {
+  public void setAsk(Double ask) {
 
     this.ask = ask;
   }
 
-  public BigDecimal getBaseVolume() {
+  public Double getBaseVolume() {
 
     return this.baseVolume;
   }
 
-  public void setBaseVolume(BigDecimal baseVolume) {
+  public void setBaseVolume(Double baseVolume) {
 
     this.baseVolume = baseVolume;
   }
 
-  public BigDecimal getBid() {
+  public Double getBid() {
 
     return this.bid;
   }
 
-  public void setBid(BigDecimal bid) {
+  public void setBid(Double bid) {
 
     this.bid = bid;
   }
@@ -102,32 +101,32 @@ public class BittrexMarketSummary {
     this.displayMarketName = displayMarketName;
   }
 
-  public BigDecimal getHigh() {
+  public Double getHigh() {
 
     return this.high;
   }
 
-  public void setHigh(BigDecimal high) {
+  public void setHigh(Double high) {
 
     this.high = high;
   }
 
-  public BigDecimal getLast() {
+  public Double getLast() {
 
     return this.last;
   }
 
-  public void setLast(BigDecimal last) {
+  public void setLast(Double last) {
 
     this.last = last;
   }
 
-  public BigDecimal getLow() {
+  public Double getLow() {
 
     return this.low;
   }
 
-  public void setLow(BigDecimal low) {
+  public void setLow(Double low) {
 
     this.low = low;
   }
@@ -162,12 +161,12 @@ public class BittrexMarketSummary {
     this.openSellOrders = openSellOrders;
   }
 
-  public BigDecimal getPrevDay() {
+  public Double getPrevDay() {
 
     return this.prevDay;
   }
 
-  public void setPrevDay(BigDecimal prevDay) {
+  public void setPrevDay(Double prevDay) {
 
     this.prevDay = prevDay;
   }
@@ -182,12 +181,12 @@ public class BittrexMarketSummary {
     this.timeStamp = timeStamp;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
 
     return this.volume;
   }
 
-  public void setVolume(BigDecimal volume) {
+  public void setVolume(Double volume) {
 
     this.volume = volume;
   }

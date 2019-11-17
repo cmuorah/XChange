@@ -1,14 +1,13 @@
 package org.knowm.xchange.bittrex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
 
 public class BittrexCurrency {
 
   private final String currency;
   private final String currencyLong;
   private final int minConfirmations;
-  private final BigDecimal txFee;
+  private final Double txFee;
   private final boolean isActive;
   private final String coinType;
   private final String baseAddress;
@@ -17,7 +16,7 @@ public class BittrexCurrency {
       @JsonProperty("Currency") String currency,
       @JsonProperty("CurrencyLong") String currencyLong,
       @JsonProperty("MinConfirmation") int minConfirmations,
-      @JsonProperty("TxFee") BigDecimal txFee,
+      @JsonProperty("TxFee") Double txFee,
       @JsonProperty("IsActive") boolean isActive,
       @JsonProperty("CoinType") String coinType,
       @JsonProperty("BaseAddress") String baseAddress) {
@@ -46,7 +45,7 @@ public class BittrexCurrency {
     return minConfirmations;
   }
 
-  public BigDecimal getTxFee() {
+  public Double getTxFee() {
 
     return txFee;
   }

@@ -8,25 +8,24 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.knowm.xchange.bitz.dto.marketdata.BitZPublicOrder.BitZOrderDeserializer;
 
 @JsonDeserialize(using = BitZOrderDeserializer.class)
 public class BitZPublicOrder {
 
-  private final BigDecimal price;
-  private final BigDecimal volume;
+  private final Double price;
+  private final Double volume;
 
-  public BitZPublicOrder(BigDecimal price, BigDecimal volume) {
+  public BitZPublicOrder(Double price, Double volume) {
     this.price = price;
     this.volume = volume;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getVolume() {
+  public Double getVolume() {
     return volume;
   }
 
@@ -39,8 +38,8 @@ public class BitZPublicOrder {
       JsonNode node = oc.readTree(p);
 
       if (node.isArray()) {
-        BigDecimal price = new BigDecimal(node.path(0).asText());
-        BigDecimal volume = new BigDecimal(node.path(1).asText());
+        Double price = new Double(node.path(0).asText());
+        Double volume = new Double(node.path(1).asText());
 
         return new BitZPublicOrder(price, volume);
       }
