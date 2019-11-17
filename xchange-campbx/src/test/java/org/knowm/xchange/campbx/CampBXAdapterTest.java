@@ -52,8 +52,8 @@ public class CampBXAdapterTest {
 
     Ticker ticker = CampBXAdapters.adaptTicker(campBXTicker, CurrencyPair.BTC_USD);
 
-    assertThat(ticker.getLast()).isEqualTo("13.30");
-    assertThat(ticker.getBid()).isEqualTo("13.30");
-    assertThat(ticker.getAsk()).isEqualTo("13.52");
+    assertThat(ticker.getLast()).isEqualTo(13.30);
+    assertThat(ticker.getBid()).isEqualTo(13.30);
+    assertThat(ticker.getAsk()).isEqualTo(13.52);
   }
 }

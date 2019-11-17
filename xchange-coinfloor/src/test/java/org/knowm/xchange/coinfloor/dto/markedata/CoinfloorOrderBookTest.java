@@ -20,7 +20,7 @@ public class CoinfloorOrderBookTest {
     assertThat(orderBook.getBids()).hasSize(68);
     assertThat(orderBook.getAsks()).hasSize(103);
 
-    assertThat(orderBook.getBids().get(1).get(1)).isEqualTo("5.1322");
-    assertThat(orderBook.getAsks().get(0).get(0)).isEqualTo("801.00");
+    assertThat(orderBook.getBids().get(1).get(1)).isEqualTo(5.1322);
+    assertThat(orderBook.getAsks().get(0).get(0)).isEqualTo(801.00);
   }
 }

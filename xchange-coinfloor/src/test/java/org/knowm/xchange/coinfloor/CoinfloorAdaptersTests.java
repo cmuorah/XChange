@@ -43,12 +43,12 @@ public class CoinfloorAdaptersTests {
     Ticker ticker = CoinfloorAdapters.adaptTicker(rawTicker, CurrencyPair.BTC_GBP);
     assertThat(ticker.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_GBP);
     assertThat(ticker.getLast()).isNull();
-    assertThat(ticker.getHigh()).isEqualTo("834.00");
-    assertThat(ticker.getLow()).isEqualTo("761.00");
-    assertThat(ticker.getVwap()).isEqualTo("800.37");
-    assertThat(ticker.getVolume()).isEqualTo("590.1081");
-    assertThat(ticker.getBid()).isEqualTo("827.00");
-    assertThat(ticker.getAsk()).isEqualTo("832.00");
+    assertThat(ticker.getHigh()).isEqualTo(834.00);
+    assertThat(ticker.getLow()).isEqualTo(761.00);
+    assertThat(ticker.getVwap()).isEqualTo(800.37);
+    assertThat(ticker.getVolume()).isEqualTo(590.1081);
+    assertThat(ticker.getBid()).isEqualTo(827.00);
+    assertThat(ticker.getAsk()).isEqualTo(832.00);
   }
 
   @Test
@@ -66,8 +66,8 @@ public class CoinfloorAdaptersTests {
     assertThat(orderBook.getAsks()).hasSize(103);
 
     assertThat(orderBook.getBids().get(1).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_GBP);
-    assertThat(orderBook.getBids().get(1).getOriginalAmount()).isEqualTo("5.1322");
-    assertThat(orderBook.getAsks().get(0).getLimitPrice()).isEqualTo("801.00");
+    assertThat(orderBook.getBids().get(1).getOriginalAmount()).isEqualTo(5.1322);
+    assertThat(orderBook.getAsks().get(0).getLimitPrice()).isEqualTo(801.00);
   }
 
   @Test
@@ -87,8 +87,8 @@ public class CoinfloorAdaptersTests {
     assertThat(trade.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_GBP);
     assertThat(trade.getTimestamp().getTime()).isEqualTo(1489938696000L);
     assertThat(trade.getId()).isEqualTo("1489938696270805");
-    assertThat(trade.getPrice()).isEqualTo("827.00");
-    assertThat(trade.getOriginalAmount()).isEqualTo("0.2028");
+    assertThat(trade.getPrice()).isEqualTo(827.00);
+    assertThat(trade.getOriginalAmount()).isEqualTo(0.2028);
   }
 
   @Test
@@ -115,19 +115,19 @@ public class CoinfloorAdaptersTests {
     assertThat(info.getWallet().getBalances()).hasSize(3);
 
     Balance btc = info.getWallet().getBalance(Currency.BTC);
-    assertThat(btc.getTotal()).isEqualTo("120.3500");
-    assertThat(btc.getFrozen()).isEqualTo("0");
-    assertThat(btc.getAvailable()).isEqualTo("120.3500");
+    assertThat(btc.getTotal()).isEqualTo(120.3500);
+    assertThat(btc.getFrozen()).isEqualTo(0);
+    assertThat(btc.getAvailable()).isEqualTo(120.3500);
 
     Balance gbp = info.getWallet().getBalance(Currency.GBP);
-    assertThat(gbp.getTotal()).isEqualTo("50000.00");
-    assertThat(gbp.getFrozen()).isEqualTo("20000.00");
-    assertThat(gbp.getAvailable()).isEqualTo("0.00");
+    assertThat(gbp.getTotal()).isEqualTo(50000.00);
+    assertThat(gbp.getFrozen()).isEqualTo(20000.00);
+    assertThat(gbp.getAvailable()).isEqualTo(0.00);
 
     Balance usd = info.getWallet().getBalance(Currency.USD);
-    assertThat(usd.getTotal()).isEqualTo("700.00");
-    assertThat(usd.getFrozen()).isEqualTo("0");
-    assertThat(usd.getAvailable()).isEqualTo("700.00");
+    assertThat(usd.getTotal()).isEqualTo(700.00);
+    assertThat(usd.getFrozen()).isEqualTo(0);
+    assertThat(usd.getAvailable()).isEqualTo(700.00);
   }
 
   @Test
@@ -149,20 +149,20 @@ public class CoinfloorAdaptersTests {
     UserTrade trade0 = (UserTrade) trades.getTrades().get(0);
     assertThat(trade0.getTimestamp().getTime()).isEqualTo(1489284172000L);
     assertThat(trade0.getId()).isEqualTo("2489586572518170");
-    assertThat(trade0.getOriginalAmount()).isEqualTo("0.1660");
-    assertThat(trade0.getPrice()).isEqualTo("1020.00");
+    assertThat(trade0.getOriginalAmount()).isEqualTo(0.1660);
+    assertThat(trade0.getPrice()).isEqualTo(1020.00);
     assertThat(trade0.getType()).isEqualTo(OrderType.BID);
-    assertThat(trade0.getFeeAmount()).isEqualTo("1.22");
+    assertThat(trade0.getFeeAmount()).isEqualTo(1.22);
     assertThat(trade0.getFeeCurrency()).isEqualTo(Currency.GBP);
     assertThat(trade0.getOrderId()).isEqualTo("66574450");
 
     UserTrade trade1 = (UserTrade) trades.getTrades().get(1);
     assertThat(trade1.getTimestamp().getTime()).isEqualTo(1491184972000L);
     assertThat(trade1.getId()).isEqualTo("2489586572518770");
-    assertThat(trade1.getOriginalAmount()).isEqualTo("1.8340");
-    assertThat(trade1.getPrice()).isEqualTo("1027.00");
+    assertThat(trade1.getOriginalAmount()).isEqualTo(1.8340);
+    assertThat(trade1.getPrice()).isEqualTo(1027.00);
     assertThat(trade1.getType()).isEqualTo(OrderType.ASK);
-    assertThat(trade1.getFeeAmount()).isEqualTo("0.00");
+    assertThat(trade1.getFeeAmount()).isEqualTo(0.00);
     assertThat(trade1.getFeeCurrency()).isEqualTo(Currency.GBP);
     assertThat(trade1.getOrderId()).isEqualTo("66564380");
   }
@@ -181,14 +181,14 @@ public class CoinfloorAdaptersTests {
     assertThat(order0.getId()).isEqualTo("66688608");
     assertThat(order0.getTimestamp().getTime()).isEqualTo(1490009484000L);
     assertThat(order0.getType()).isEqualTo(OrderType.ASK);
-    assertThat(order0.getLimitPrice()).isEqualTo("2301.00");
-    assertThat(order0.getOriginalAmount()).isEqualTo("0.0001");
+    assertThat(order0.getLimitPrice()).isEqualTo(2301.00);
+    assertThat(order0.getOriginalAmount()).isEqualTo(0.0001);
 
     LimitOrder order1 = orders.getOpenOrders().get(1);
     assertThat(order1.getId()).isEqualTo("66688691");
     assertThat(order1.getTimestamp().getTime()).isEqualTo(1491392044000L);
     assertThat(order1.getType()).isEqualTo(OrderType.BID);
-    assertThat(order1.getLimitPrice()).isEqualTo("2303.00");
-    assertThat(order1.getOriginalAmount()).isEqualTo("1.0001");
+    assertThat(order1.getLimitPrice()).isEqualTo(2303.00);
+    assertThat(order1.getOriginalAmount()).isEqualTo(1.0001);
   }
 }

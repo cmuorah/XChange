@@ -20,7 +20,7 @@ public class CoinfloorLimitOrderResponseTest {
     assertThat(response.getId()).isEqualTo(66648479);
     assertThat(response.getDatetime()).isEqualTo("2017-03-20 07:56:41");
     assertThat(response.getType()).isEqualTo(1);
-    assertThat(response.getPrice()).isEqualTo("1300.00");
-    assertThat(response.getAmount()).isEqualTo("0.0001");
+    assertThat(response.getPrice()).isEqualTo(1300.00);
+    assertThat(response.getAmount()).isEqualTo(0.0001);
   }
 }

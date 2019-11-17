@@ -30,7 +30,7 @@ public class CoinexBalancesTest {
 
     System.out.println(balances.keySet());
     CoinexBalanceInfo balanceInfo = balances.get("BTC");
-    assertThat(balanceInfo.getFrozen()).isEqualTo("7000.00");
-    assertThat(balanceInfo.getAvailable()).isEqualTo("32590.16");
+    assertThat(balanceInfo.getFrozen()).isEqualTo(7000.00);
+    assertThat(balanceInfo.getAvailable()).isEqualTo(32590.16);
   }
 }

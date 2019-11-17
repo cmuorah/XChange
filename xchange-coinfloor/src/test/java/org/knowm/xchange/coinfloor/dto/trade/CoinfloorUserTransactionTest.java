@@ -33,7 +33,7 @@ public class CoinfloorUserTransactionTest {
     assertThat(btcDeposit.getCurrency()).isEqualTo(Currency.BTC);
     assertThat(btcDeposit.getCurrencyPair()).isNull();
     assertThat(btcDeposit.getSide()).isNull();
-    assertThat(btcDeposit.getAmount()).isEqualTo("0.3500");
+    assertThat(btcDeposit.getAmount()).isEqualTo(0.3500);
     assertThat(btcDeposit.getPrice()).isZero();
     assertThat(btcDeposit.getFee()).isZero();
     assertThat(btcDeposit.getOrderId()).isEqualTo(0);
@@ -49,7 +49,7 @@ public class CoinfloorUserTransactionTest {
     assertThat(gbpWithdrawal.getCurrency()).isEqualTo(Currency.GBP);
     assertThat(gbpWithdrawal.getCurrencyPair()).isNull();
     assertThat(gbpWithdrawal.getSide()).isNull();
-    assertThat(gbpWithdrawal.getAmount()).isEqualTo("-104.35");
+    assertThat(gbpWithdrawal.getAmount()).isEqualTo(-104.35);
     assertThat(gbpWithdrawal.getPrice()).isZero();
     assertThat(gbpWithdrawal.getFee()).isZero();
     assertThat(gbpWithdrawal.getOrderId()).isEqualTo(0);
@@ -64,8 +64,8 @@ public class CoinfloorUserTransactionTest {
     assertThat(tradeSell.getCurrency()).isNull();
     assertThat(tradeSell.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_GBP);
     assertThat(tradeSell.getSide()).isEqualTo(OrderType.ASK);
-    assertThat(tradeSell.getAmount()).isEqualTo("-1.8340");
-    assertThat(tradeSell.getPrice()).isEqualTo("1027.00");
+    assertThat(tradeSell.getAmount()).isEqualTo(-1.8340);
+    assertThat(tradeSell.getPrice()).isEqualTo(1027.00);
     assertThat(tradeSell.getFee()).isZero();
     assertThat(tradeSell.getOrderId()).isEqualTo(66564380);
 
@@ -79,9 +79,9 @@ public class CoinfloorUserTransactionTest {
     assertThat(tradeBuy.getCurrency()).isNull();
     assertThat(tradeBuy.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_GBP);
     assertThat(tradeBuy.getSide()).isEqualTo(OrderType.BID);
-    assertThat(tradeBuy.getAmount()).isEqualTo("0.1660");
-    assertThat(tradeBuy.getPrice()).isEqualTo("1020.00");
-    assertThat(tradeBuy.getFee()).isEqualTo("1.22");
+    assertThat(tradeBuy.getAmount()).isEqualTo(0.1660);
+    assertThat(tradeBuy.getPrice()).isEqualTo(1020.00);
+    assertThat(tradeBuy.getFee()).isEqualTo(1.22);
     assertThat(tradeBuy.getOrderId()).isEqualTo(66574450);
   }
 }

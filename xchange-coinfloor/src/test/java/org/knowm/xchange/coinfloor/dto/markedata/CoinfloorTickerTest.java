@@ -17,11 +17,11 @@ public class CoinfloorTickerTest {
     CoinfloorTicker ticker = mapper.readValue(is, CoinfloorTicker.class);
 
     assertThat(ticker.getLast()).isNull();
-    assertThat(ticker.getHigh()).isEqualTo("834.00");
-    assertThat(ticker.getLow()).isEqualTo("761.00");
-    assertThat(ticker.getVwap()).isEqualTo("800.37");
-    assertThat(ticker.getVolume()).isEqualTo("590.1081");
-    assertThat(ticker.getBid()).isEqualTo("827.00");
-    assertThat(ticker.getAsk()).isEqualTo("832.00");
+    assertThat(ticker.getHigh()).isEqualTo(834.00);
+    assertThat(ticker.getLow()).isEqualTo(761.00);
+    assertThat(ticker.getVwap()).isEqualTo(800.37);
+    assertThat(ticker.getVolume()).isEqualTo(590.1081);
+    assertThat(ticker.getBid()).isEqualTo(827.00);
+    assertThat(ticker.getAsk()).isEqualTo(832.00);
   }
 }

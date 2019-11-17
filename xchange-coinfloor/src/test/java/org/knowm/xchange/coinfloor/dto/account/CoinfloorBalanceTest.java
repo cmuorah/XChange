@@ -17,11 +17,11 @@ public class CoinfloorBalanceTest {
     ObjectMapper mapper = new ObjectMapper();
     CoinfloorBalance balance = mapper.readValue(is, CoinfloorBalance.class);
 
-    assertThat(balance.btcBalance).isEqualTo("120.3500");
-    assertThat(balance.gbpBalance).isEqualTo("50000.00");
-    assertThat(balance.btcReserved).isEqualTo("0");
-    assertThat(balance.gbpReserved).isEqualTo("20000.00");
-    assertThat(balance.btcAvailable).isEqualTo("120.3500");
-    assertThat(balance.gbpAvailable).isEqualTo("0.00");
+    assertThat(balance.btcBalance).isEqualTo(120.3500);
+    assertThat(balance.gbpBalance).isEqualTo(50000.00);
+    assertThat(balance.btcReserved).isEqualTo(0);
+    assertThat(balance.gbpReserved).isEqualTo(20000.00);
+    assertThat(balance.btcAvailable).isEqualTo(120.3500);
+    assertThat(balance.gbpAvailable).isEqualTo(0.00);
   }
 }

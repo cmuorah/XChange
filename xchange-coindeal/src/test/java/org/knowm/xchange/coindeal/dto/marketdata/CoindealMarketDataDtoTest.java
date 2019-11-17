@@ -22,9 +22,9 @@ public class CoindealMarketDataDtoTest {
     CoindealOrderBook coindealOrderBook = mapper.readValue(is, CoindealOrderBook.class);
 
     // verify that the example data was unmarshalled correctly
-    assertThat(coindealOrderBook.getAsks().get(0).getPrice()).isEqualTo("5636.99000000");
-    assertThat(coindealOrderBook.getAsks().get(0).getAmount()).isEqualTo("2.07368963");
-    assertThat(coindealOrderBook.getBids().get(0).getPrice()).isEqualTo("5598.67000000");
-    assertThat(coindealOrderBook.getBids().get(0).getAmount()).isEqualTo("0.10000000");
+    assertThat(coindealOrderBook.getAsks().get(0).getPrice()).isEqualTo(5636.99000000);
+    assertThat(coindealOrderBook.getAsks().get(0).getAmount()).isEqualTo(2.07368963);
+    assertThat(coindealOrderBook.getBids().get(0).getPrice()).isEqualTo(5598.67000000);
+    assertThat(coindealOrderBook.getBids().get(0).getAmount()).isEqualTo(0.10000000);
   }
 }

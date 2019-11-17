@@ -77,13 +77,13 @@ public class CoinbaseProAdaptersTest {
     Ticker ticker =
         CoinbaseProAdapters.adaptTicker(coinbaseExTicker, coinbaseExStats, CurrencyPair.BTC_USD);
 
-    assertThat(ticker.getLast().toString()).isEqualTo("246.28000000");
-    assertThat(ticker.getOpen().toString()).isEqualTo("254.04000000");
-    assertThat(ticker.getBid().toString()).isEqualTo("637");
-    assertThat(ticker.getAsk().toString()).isEqualTo("637.11");
-    assertThat(ticker.getHigh().toString()).isEqualTo("255.47000000");
-    assertThat(ticker.getLow().toString()).isEqualTo("244.29000000");
-    assertThat(ticker.getVolume()).isEqualTo(new Double("4661.70407704"));
+    assertThat(ticker.getLast()).isEqualTo(246.28000000);
+    assertThat(ticker.getOpen()).isEqualTo(254.04000000);
+    assertThat(ticker.getBid()).isEqualTo(637);
+    assertThat(ticker.getAsk()).isEqualTo(637.11);
+    assertThat(ticker.getHigh()).isEqualTo(255.47000000);
+    assertThat(ticker.getLow()).isEqualTo(244.29000000);
+    assertThat(ticker.getVolume()).isEqualTo(4661.70407704);
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     f.setTimeZone(TimeZone.getTimeZone("UTC"));
     String dateString = f.format(ticker.getTimestamp());
@@ -109,11 +109,11 @@ public class CoinbaseProAdaptersTest {
 
     assertThat(trade.getId()).isEqualTo("470768");
     assertThat(trade.getCurrencyPair()).isEqualTo(CurrencyPair.ETH_BTC);
-    assertThat(trade.getPrice()).isEqualTo("0.05915000");
-    assertThat(trade.getOriginalAmount()).isEqualTo("0.01000000");
+    assertThat(trade.getPrice()).isEqualTo(0.05915000);
+    assertThat(trade.getOriginalAmount()).isEqualTo(0.01000000);
     assertThat(trade.getOrderId()).isEqualTo("b4b3bbb1-e0e3-4532-9413-23123448ce35");
     assertThat(trade.getTimestamp().getTime()).isEqualTo(1493623910243L);
-    assertThat(trade.getFeeAmount()).isEqualTo("0.0000017745000000");
+    assertThat(trade.getFeeAmount()).isEqualTo(0.0000017745000000);
     assertThat(trade.getType()).isEqualTo(OrderType.BID);
   }
 

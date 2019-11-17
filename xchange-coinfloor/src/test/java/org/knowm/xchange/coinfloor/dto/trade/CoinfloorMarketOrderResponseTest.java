@@ -18,6 +18,6 @@ public class CoinfloorMarketOrderResponseTest {
     CoinfloorMarketOrderResponse response =
         mapper.readValue(is, CoinfloorMarketOrderResponse.class);
 
-    assertThat(response.getRemaining()).isEqualTo("0.0000");
+    assertThat(response.getRemaining()).isEqualTo(0.0000);
   }
 }
