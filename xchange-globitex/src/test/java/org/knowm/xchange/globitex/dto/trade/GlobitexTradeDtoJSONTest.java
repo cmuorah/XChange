@@ -81,7 +81,7 @@ public class GlobitexTradeDtoJSONTest {
     assertThat(activeOrders.getObject().getSymbol()).isEqualTo("XBTEUR");
     assertThat(activeOrders.getObject().getSide()).isEqualTo("buy");
     assertThat(activeOrders.getObject().getPrice())
-        .isEqualTo(new Double(0.1).setScale(1, RoundingMode.HALF_EVEN));
+        .isEqualTo(0.1);
     assertThat(activeOrders.getObject().getQuantity()).isEqualTo(new Double(100));
     assertThat(activeOrders.getObject().getType()).isEqualTo("limit");
     assertThat(activeOrders.getObject().getTimeInForce()).isEqualTo("GTC");

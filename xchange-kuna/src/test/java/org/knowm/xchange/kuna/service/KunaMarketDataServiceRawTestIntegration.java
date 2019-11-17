@@ -19,7 +19,7 @@ import org.knowm.xchange.kuna.dto.KunaTrade;
 
 public class KunaMarketDataServiceRawTestIntegration extends BaseKunaTest {
 
-  public static final long DEFAULT_OFFSET = 5l;
+  public static final long DEFAULT_OFFSET = 5L;
   private static KunaMarketDataServiceRaw marketDataServiceRaw;
 
   @BeforeClass
