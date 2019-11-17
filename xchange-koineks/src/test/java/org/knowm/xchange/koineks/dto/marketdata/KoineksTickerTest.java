@@ -38,7 +38,7 @@ public class KoineksTickerTest {
     assertThat(btcTicker.getLow()).isEqualTo(new Double("46500.00"));
     assertThat(btcTicker.getTimestamp()).isEqualTo("1512481980");
     assertThat(btcTicker.getChangeAmount()).isEqualTo("+423.00");
-    assertThat(btcTicker.getChangePercentage()).isEqualTo("0.9");
+    assertThat(btcTicker.getChangePercentage()).isEqualTo(0.9);
     assertThat(btcTicker.getShortCode()).isEqualTo(Currency.BTC);
     assertThat(btcTicker.getName()).isEqualTo("Bitcoin");
     assertThat(btcTicker.getCurrency()).isEqualTo(Currency.TRY);

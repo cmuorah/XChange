@@ -27,10 +27,10 @@ public class GlobitexTradeDtoJSONTest {
     assertThat(usertrades.getUserTrades().get(0).getSide()).isEqualTo("sell");
     assertThat(usertrades.getUserTrades().get(0).getOriginalOrderId()).isEqualTo("114");
     assertThat(usertrades.getUserTrades().get(0).getClientOrderId()).isEqualTo("FTO18jd4ou41--25");
-    assertThat(usertrades.getUserTrades().get(0).getQuantity()).isEqualTo("10");
-    assertThat(usertrades.getUserTrades().get(0).getPrice()).isEqualTo("150");
+    assertThat(usertrades.getUserTrades().get(0).getQuantity()).isEqualTo(10d);
+    assertThat(usertrades.getUserTrades().get(0).getPrice()).isEqualTo(150d);
     assertThat(usertrades.getUserTrades().get(0).getTimestamp()).isEqualTo(1395231854030L);
-    assertThat(usertrades.getUserTrades().get(0).getFee()).isEqualTo("0.03");
+    assertThat(usertrades.getUserTrades().get(0).getFee()).isEqualTo(0.03);
     assertThat(usertrades.getUserTrades().get(0).isLiqProvided()).isEqualTo(false);
     assertThat(usertrades.getUserTrades().get(0).getFeeCurrency()).isEqualTo("EUR");
     assertThat(usertrades.getUserTrades().get(0).getAccount()).isEqualTo("ADE922A21");
@@ -49,9 +49,9 @@ public class GlobitexTradeDtoJSONTest {
     assertThat(activeOrders.getOrders().get(0).getOrderId()).isEqualTo("7242835");
     assertThat(activeOrders.getOrders().get(0).getOrderStatus()).isEqualTo("new");
     assertThat(activeOrders.getOrders().get(0).getLastTimestamp()).isEqualTo(1495038022000L);
-    assertThat(activeOrders.getOrders().get(0).getOrderPrice()).isEqualTo("2000.000");
-    assertThat(activeOrders.getOrders().get(0).getOrderQuantity()).isEqualTo("1.00000");
-    assertThat(activeOrders.getOrders().get(0).getAvgPrice()).isEqualTo("0");
+    assertThat(activeOrders.getOrders().get(0).getOrderPrice()).isEqualTo(2000.000);
+    assertThat(activeOrders.getOrders().get(0).getOrderQuantity()).isEqualTo(1.00000);
+    assertThat(activeOrders.getOrders().get(0).getAvgPrice()).isEqualTo(0);
     assertThat(activeOrders.getOrders().get(0).getType()).isEqualTo("limit");
     assertThat(activeOrders.getOrders().get(0).getTimeInForce()).isEqualTo("GTC");
     assertThat(activeOrders.getOrders().get(0).getClientOrderId()).isEqualTo("1495038022448");
@@ -59,11 +59,11 @@ public class GlobitexTradeDtoJSONTest {
     assertThat(activeOrders.getOrders().get(0).getSide()).isEqualTo("sell");
     assertThat(activeOrders.getOrders().get(0).getAccount()).isEqualTo("ZAN034A01");
     assertThat(activeOrders.getOrders().get(0).getOrderSource()).isEqualTo("WEB");
-    assertThat(activeOrders.getOrders().get(0).getLeavesQuantity()).isEqualTo("1.00000");
-    assertThat(activeOrders.getOrders().get(0).getCumQuantity()).isEqualTo("0.00000");
-    assertThat(activeOrders.getOrders().get(0).getExecQuantity()).isEqualTo("0.00000");
+    assertThat(activeOrders.getOrders().get(0).getLeavesQuantity()).isEqualTo(1.00000);
+    assertThat(activeOrders.getOrders().get(0).getCumQuantity()).isEqualTo(0.00000);
+    assertThat(activeOrders.getOrders().get(0).getExecQuantity()).isEqualTo(0.00000);
     assertThat(activeOrders.getOrders().get(1).getExpireTime()).isEqualTo(2241464400000L);
-    assertThat(activeOrders.getOrders().get(2).getStopPrice()).isEqualTo("808.000");
+    assertThat(activeOrders.getOrders().get(2).getStopPrice()).isEqualTo(808.000);
   }
 
   @Test

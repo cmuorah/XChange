@@ -29,11 +29,11 @@ public class HitbtcCandleJsonTest {
     assertThat(hitbtcCandles).hasSize(720);
     HitbtcCandle candle = hitbtcCandles.get(0);
     assertThat(candle.getTimestamp()).isEqualTo("2017-02-28T08:00:00.000Z");
-    assertThat(candle.getOpen()).isEqualTo("1125.27");
-    assertThat(candle.getClose()).isEqualTo("1125.27");
-    assertThat(candle.getMax()).isEqualTo("1125.27");
-    assertThat(candle.getMin()).isEqualTo("1125.27");
-    assertThat(candle.getVolume()).isEqualTo("0.01");
-    assertThat(candle.getVolumeQuote()).isEqualTo("11.2527");
+    assertThat(candle.getOpen()).isEqualTo(1125.27);
+    assertThat(candle.getClose()).isEqualTo(1125.27);
+    assertThat(candle.getMax()).isEqualTo(1125.27);
+    assertThat(candle.getMin()).isEqualTo(1125.27);
+    assertThat(candle.getVolume()).isEqualTo(0.01);
+    assertThat(candle.getVolumeQuote()).isEqualTo(11.2527);
   }
 }

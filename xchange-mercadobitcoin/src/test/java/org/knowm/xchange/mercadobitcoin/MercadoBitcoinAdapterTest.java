@@ -75,7 +75,7 @@ public class MercadoBitcoinAdapterTest {
     assertThat(trades.getlastID()).isEqualTo(99518);
     // verify all fields filled
     assertThat(trades.getTrades().get(0).getId()).isEqualTo("98519");
-    assertThat(trades.getTrades().get(0).getPrice().toString()).isEqualTo("1015");
+    assertThat(trades.getTrades().get(0).getPrice()).isEqualTo(1015d);
     assertThat(trades.getTrades().get(0).getType() == OrderType.BID);
     assertThat(trades.getTrades().get(0).getOriginalAmount()).isEqualTo(new Double("1"));
     assertThat(trades.getTrades().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_BRL);
@@ -95,9 +95,9 @@ public class MercadoBitcoinAdapterTest {
 
     Ticker ticker = MercadoBitcoinAdapters.adaptTicker(mercadoBitcoinTicker, CurrencyPair.BTC_BRL);
 
-    assertThat(ticker.getLast().toString()).isEqualTo("1019.99999");
-    assertThat(ticker.getBid().toString()).isEqualTo("1019.99999");
-    assertThat(ticker.getAsk().toString()).isEqualTo("1020");
+    assertThat(ticker.getLast()).isEqualTo(1019.99999);
+    assertThat(ticker.getBid()).isEqualTo(1019.99999);
+    assertThat(ticker.getAsk()).isEqualTo(1020d);
     assertThat(ticker.getVolume()).isEqualTo(new Double("6.90157391"));
     assertThat(ticker.getTimestamp()).isEqualTo(new Date(1417226432L * 1000L));
   }
