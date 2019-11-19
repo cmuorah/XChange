@@ -135,11 +135,11 @@ public class BitcointoyouAdaptersTest {
 
     final SoftAssertions softly = new SoftAssertions();
 
-    softly.assertThat(ticker.getLast().toString()).isEqualTo("49349.16");
-    softly.assertThat(ticker.getBid().toString()).isEqualTo("48968.290000000000000");
-    softly.assertThat(ticker.getAsk().toString()).isEqualTo("49349.150000000000000");
-    softly.assertThat(ticker.getHigh().toString()).isEqualTo("52990.00");
-    softly.assertThat(ticker.getLow().toString()).isEqualTo("47000.00");
+    softly.assertThat(ticker.getLast()).isEqualTo(49349.16);
+    softly.assertThat(ticker.getBid()).isEqualTo(48968.290000000000000);
+    softly.assertThat(ticker.getAsk()).isEqualTo(49349.150000000000000);
+    softly.assertThat(ticker.getHigh()).isEqualTo(52990.00);
+    softly.assertThat(ticker.getLow()).isEqualTo(47000.00);
     softly.assertThat(ticker.getVolume()).isEqualTo(new Double("136.99427076"));
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     f.setTimeZone(TimeZone.getTimeZone("UTC"));

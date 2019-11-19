@@ -46,14 +46,14 @@ public class TrueFxTickerTest {
     assertThat(ticker.getPair()).isEqualTo("GBP/USD");
     assertThat(ticker.getTimestamp()).isEqualTo(1490388297563L);
 
-    assertThat(ticker.getBid()).isEqualTo("1.24");
-    assertThat(ticker.getBidBP()).isEqualTo("876");
-    assertThat(ticker.calcBid()).isEqualTo("1.24876");
-    assertThat(ticker.getAsk()).isEqualTo("1.24");
-    assertThat(ticker.getAskBP()).isEqualTo("886");
-    assertThat(ticker.calcAsk()).isEqualTo("1.24886");
-    assertThat(ticker.getLow()).isEqualTo("1.24689");
-    assertThat(ticker.getHigh()).isEqualTo("1.25266");
-    assertThat(ticker.getOpen()).isEqualTo("1.25207");
+    assertThat(ticker.getBid()).isEqualTo(1.24);
+    assertThat(ticker.getBidBP()).isEqualTo(876);
+    assertThat(ticker.calcBid()).isEqualTo(1.24876);
+    assertThat(ticker.getAsk()).isEqualTo(1.24);
+    assertThat(ticker.getAskBP()).isEqualTo(886);
+    assertThat(ticker.calcAsk()).isEqualTo(1.24886);
+    assertThat(ticker.getLow()).isEqualTo(1.24689);
+    assertThat(ticker.getHigh()).isEqualTo(1.25266);
+    assertThat(ticker.getOpen()).isEqualTo(1.25207);
   }
 }

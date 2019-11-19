@@ -40,9 +40,9 @@ public class BleutradeExtendedDtoTest extends BleutradeDtoTestSupport {
 
   protected static final String CURRENCIES_RETURN_STR =
       "BleutradeCurrenciesReturn [success=true, message=, result=["
-          + "BleutradeCurrency [Currency=BTC, CurrencyLong=Bitcoin, MinConfirmation=2, TxFee=0.00080000, "
+          + "BleutradeCurrency [Currency=BTC, CurrencyLong=Bitcoin, MinConfirmation=2, TxFee=0.0008, "
           + "IsActive=true, CoinType=BITCOIN, additionalProperties={MaintenanceMode=false}], "
-          + "BleutradeCurrency [Currency=LTC, CurrencyLong=Litecoin, MinConfirmation=4, TxFee=0.02000000, "
+          + "BleutradeCurrency [Currency=LTC, CurrencyLong=Litecoin, MinConfirmation=4, TxFee=0.02, "
           + "IsActive=true, CoinType=BITCOIN, additionalProperties={MaintenanceMode=false}]"
           + "], additionalProperties={ext=extended value}]";
 

@@ -82,7 +82,7 @@ public class KrakenAdapters {
     }
 
     double time = krakenOrder.getOpenTimestamp() * 1000; // eg: "opentm":1519731205.9987
-    Date timestamp = new Date(Double.doubleToLongBits(time));
+    Date timestamp = new Date((long)time);
 
     if (krakenOrder.getOrderDescription().getOrderType().equals(KrakenOrderType.LIMIT))
       return new LimitOrder(

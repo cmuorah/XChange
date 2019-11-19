@@ -28,10 +28,10 @@ public class ZaifAdaptersTest {
 
     assertThat(orderBook.getBids().get(0).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_JPY);
 
-    assertThat(orderBook.getBids().get(0).getLimitPrice()).isEqualTo("934920");
-    assertThat(orderBook.getBids().get(0).getOriginalAmount()).isEqualTo("0.03");
+    assertThat(orderBook.getBids().get(0).getLimitPrice()).isEqualTo(934920d);
+    assertThat(orderBook.getBids().get(0).getOriginalAmount()).isEqualTo(0.03);
 
-    assertThat(orderBook.getAsks().get(0).getLimitPrice()).isEqualTo("935355");
-    assertThat(orderBook.getAsks().get(0).getOriginalAmount()).isEqualTo("0.02");
+    assertThat(orderBook.getAsks().get(0).getLimitPrice()).isEqualTo(935355d);
+    assertThat(orderBook.getAsks().get(0).getOriginalAmount()).isEqualTo(0.02);
   }
 }

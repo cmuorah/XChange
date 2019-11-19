@@ -39,27 +39,27 @@ public class RippleOrderBookTest {
     final RippleAmount bidPrice = firstBid.getPrice();
     assertThat(bidPrice.getCurrency()).isEqualTo("BTC");
     assertThat(bidPrice.getCounterparty()).isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
-    assertThat(bidPrice.getValue()).isEqualTo("0.00003373502057421809");
+    assertThat(bidPrice.getValue()).isEqualTo(0.00003373502057421809d);
 
     final RippleAmount bidGetsFunded = firstBid.getTakerGetsFunded();
     assertThat(bidGetsFunded.getCurrency()).isEqualTo("BTC");
     assertThat(bidGetsFunded.getCounterparty()).isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
-    assertThat(bidGetsFunded.getValue()).isEqualTo("1.346439063213329");
+    assertThat(bidGetsFunded.getValue()).isEqualTo(1.346439063213329);
 
     final RippleAmount bidGetsTotal = firstBid.getTakerGetsTotal();
     assertThat(bidGetsTotal.getCurrency()).isEqualTo("BTC");
     assertThat(bidGetsTotal.getCounterparty()).isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
-    assertThat(bidGetsTotal.getValue()).isEqualTo("1.346439063213329");
+    assertThat(bidGetsTotal.getValue()).isEqualTo(1.346439063213329);
 
     final RippleAmount bidPaysFunded = firstBid.getTakerPaysFunded();
     assertThat(bidPaysFunded.getCurrency()).isEqualTo("XRP");
     assertThat(bidPaysFunded.getCounterparty()).isEqualTo("");
-    assertThat(bidPaysFunded.getValue()).isEqualTo("39912.205189");
+    assertThat(bidPaysFunded.getValue()).isEqualTo(39912.205189);
 
     final RippleAmount bidPaysTotal = firstBid.getTakerPaysTotal();
     assertThat(bidPaysTotal.getCurrency()).isEqualTo("XRP");
     assertThat(bidPaysTotal.getCounterparty()).isEqualTo("");
-    assertThat(bidPaysTotal.getValue()).isEqualTo("39912.205189");
+    assertThat(bidPaysTotal.getValue()).isEqualTo(39912.205189);
 
     // check number of ask orders and values in last order
     final List<RippleOrder> asks = orderBook.getAsks();
@@ -74,26 +74,26 @@ public class RippleOrderBookTest {
     final RippleAmount askPrice = lastAsk.getPrice();
     assertThat(askPrice.getCurrency()).isEqualTo("BTC");
     assertThat(askPrice.getCounterparty()).isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
-    assertThat(askPrice.getValue()).isEqualTo("0.00003426853990917158");
+    assertThat(askPrice.getValue()).isEqualTo(0.00003426853990917158);
 
     final RippleAmount askGetsFunded = lastAsk.getTakerGetsFunded();
     assertThat(askGetsFunded.getCurrency()).isEqualTo("XRP");
     assertThat(askGetsFunded.getCounterparty()).isEqualTo("");
-    assertThat(askGetsFunded.getValue()).isEqualTo("27199.15512");
+    assertThat(askGetsFunded.getValue()).isEqualTo(27199.15512);
 
     final RippleAmount askGetsTotal = lastAsk.getTakerGetsTotal();
     assertThat(askGetsTotal.getCurrency()).isEqualTo("XRP");
     assertThat(askGetsTotal.getCounterparty()).isEqualTo("");
-    assertThat(askGetsTotal.getValue()).isEqualTo("27199.15512");
+    assertThat(askGetsTotal.getValue()).isEqualTo(27199.15512);
 
     final RippleAmount askPaysFunded = lastAsk.getTakerPaysFunded();
     assertThat(askPaysFunded.getCurrency()).isEqualTo("BTC");
     assertThat(askPaysFunded.getCounterparty()).isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
-    assertThat(askPaysFunded.getValue()).isEqualTo("0.9320753327254685");
+    assertThat(askPaysFunded.getValue()).isEqualTo(0.9320753327254685);
 
     final RippleAmount askPaysTotal = lastAsk.getTakerPaysTotal();
     assertThat(askPaysTotal.getCurrency()).isEqualTo("BTC");
     assertThat(askPaysTotal.getCounterparty()).isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
-    assertThat(askPaysTotal.getValue()).isEqualTo("0.9320753327254685");
+    assertThat(askPaysTotal.getValue()).isEqualTo(0.9320753327254685);
   }
 }

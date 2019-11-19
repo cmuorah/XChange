@@ -131,7 +131,7 @@ public class BitfinexDepositWithdrawalHistoryResponse {
   }
 
   public Date getTimestamp() {
-    return new Date(Double.doubleToLongBits(timestamp * 1e3));
+    return new Date((long)(timestamp * 1e3));
   }
 
   public String getTxid() {
@@ -139,7 +139,7 @@ public class BitfinexDepositWithdrawalHistoryResponse {
   }
 
   public Date getTimestampCreated() {
-    return new Date(Double.doubleToLongBits(timestampCreated * 1e3));
+    return new Date((long)(timestampCreated * 1e3));
   }
 
   public Double getFee() {

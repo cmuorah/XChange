@@ -30,9 +30,9 @@ public class TrueFxAdaptersTest {
 
     assertThat(ticker.getCurrencyPair()).isEqualTo(CurrencyPair.GBP_USD);
     assertThat(ticker.getTimestamp().getTime()).isEqualTo(1490388297563L);
-    assertThat(ticker.getBid()).isEqualTo("1.24876");
-    assertThat(ticker.getAsk()).isEqualTo("1.24886");
-    assertThat(ticker.getLow()).isEqualTo("1.24689");
-    assertThat(ticker.getHigh()).isEqualTo("1.25266");
+    assertThat(ticker.getBid()).isEqualTo(1.24876);
+    assertThat(ticker.getAsk()).isEqualTo(1.24886);
+    assertThat(ticker.getLow()).isEqualTo(1.24689);
+    assertThat(ticker.getHigh()).isEqualTo(1.25266);
   }
 }

@@ -197,7 +197,7 @@ public class BTCTradeAdaptersTest {
     assertEquals(BTCTradeAdapters.zeroIfNull(0d), 0d, 1e-8);
     assertEquals(BTCTradeAdapters.zeroIfNull(null), 0d, 1e-8);
 
-    assertEquals(BTCTradeAdapters.nullSafeSum(10d, 2d), new Double(3));
+    assertEquals(BTCTradeAdapters.nullSafeSum(10d, 2d), new Double(12));
     assertEquals(BTCTradeAdapters.nullSafeSum(10d, null), 10d, 1e-8);
     assertEquals(BTCTradeAdapters.nullSafeSum(null, 2d), new Double(2));
     assertEquals(BTCTradeAdapters.nullSafeSum(null, null), 0d, 1e-8);

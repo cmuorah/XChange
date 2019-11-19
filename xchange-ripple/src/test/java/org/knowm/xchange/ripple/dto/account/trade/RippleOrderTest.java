@@ -37,19 +37,19 @@ public class RippleOrderTest {
 
     final RippleOrderResponseBody order = response.getOrder();
     assertThat(order.getAccount()).isEqualTo("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9");
-    assertThat(order.getFee()).isEqualTo("0.012");
+    assertThat(order.getFee()).isEqualTo(0.012);
     assertThat(order.getType()).isEqualTo("sell");
     assertThat(order.getSequence()).isEqualTo(99);
 
     assertThat(order.getTakerPays().getCurrency()).isEqualTo("JPY");
     assertThat(order.getTakerPays().getCounterparty())
         .isEqualTo("rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6");
-    assertThat(order.getTakerPays().getValue()).isEqualTo("4000");
+    assertThat(order.getTakerPays().getValue()).isEqualTo(4000d);
 
     assertThat(order.getTakerGets().getCurrency()).isEqualTo("USD");
     assertThat(order.getTakerGets().getCounterparty())
         .isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
-    assertThat(order.getTakerGets().getValue()).isEqualTo("0.25");
+    assertThat(order.getTakerGets().getValue()).isEqualTo(0.25d);
   }
 
   @Test
@@ -71,7 +71,7 @@ public class RippleOrderTest {
     assertThat(response.getState()).isEqualTo("validated");
 
     assertThat(response.getOrder().getAccount()).isEqualTo("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9");
-    assertThat(response.getOrder().getFee()).isEqualTo("0.012");
+    assertThat(response.getOrder().getFee()).isEqualTo(0.012);
     assertThat(response.getOrder().getOfferSequence()).isEqualTo(99);
     assertThat(response.getOrder().getSequence()).isEqualTo(100);
   }
@@ -98,12 +98,12 @@ public class RippleOrderTest {
     assertThat(thirdOrder.getTakerGets().getCurrency()).isEqualTo("CAD");
     assertThat(thirdOrder.getTakerGets().getCounterparty())
         .isEqualTo("rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc");
-    assertThat(thirdOrder.getTakerGets().getValue()).isEqualTo("11205.2494363431");
+    assertThat(thirdOrder.getTakerGets().getValue()).isEqualTo(11205.2494363431);
 
     assertThat(thirdOrder.getTakerPays().getCurrency()).isEqualTo("USD");
     assertThat(thirdOrder.getTakerPays().getCounterparty())
         .isEqualTo("rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By");
-    assertThat(thirdOrder.getTakerPays().getValue()).isEqualTo("9933.731769807718");
+    assertThat(thirdOrder.getTakerPays().getValue()).isEqualTo(9933.731769807718);
 
     final RippleAccountOrdersBody lastOrder =
         response.getOrders().get(response.getOrders().size() - 1);
@@ -114,12 +114,12 @@ public class RippleOrderTest {
     assertThat(lastOrder.getTakerGets().getCurrency()).isEqualTo("USD");
     assertThat(lastOrder.getTakerGets().getCounterparty())
         .isEqualTo("rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q");
-    assertThat(lastOrder.getTakerGets().getValue()).isEqualTo("2");
+    assertThat(lastOrder.getTakerGets().getValue()).isEqualTo(2d);
 
     assertThat(lastOrder.getTakerPays().getCurrency()).isEqualTo("CAD");
     assertThat(lastOrder.getTakerPays().getCounterparty())
         .isEqualTo("rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc");
-    assertThat(lastOrder.getTakerPays().getValue()).isEqualTo("2");
+    assertThat(lastOrder.getTakerPays().getValue()).isEqualTo(2d);
   }
 
   @Test
@@ -140,7 +140,7 @@ public class RippleOrderTest {
 
     assertThat(response.getTimestamp())
         .isEqualTo(RippleExchange.ToDate("2015-06-13T11:24:40.000Z"));
-    assertThat(response.getFee()).isEqualTo("0.012");
+    assertThat(response.getFee()).isEqualTo(0.012);
     assertThat(response.getAction()).isEqualTo("order_cancel");
     assertThat(response.getDirection()).isEqualTo("outgoing");
 
@@ -153,7 +153,7 @@ public class RippleOrderTest {
     final RippleAmount balanceChanges = response.getBalanceChanges().get(0);
     assertThat(balanceChanges.getCounterparty()).isEqualTo("");
     assertThat(balanceChanges.getCurrency()).isEqualTo("XRP");
-    assertThat(balanceChanges.getValue()).isEqualTo("-0.012");
+    assertThat(balanceChanges.getValue()).isEqualTo(-0.012);
 
     final RippleOrderResponseBody orderChanges = response.getOrderChanges().get(0);
     assertThat(orderChanges.getSequence()).isEqualTo(79);
@@ -162,10 +162,10 @@ public class RippleOrderTest {
     assertThat(orderChanges.getTakerPays().getCurrency()).isEqualTo("BTC");
     assertThat(orderChanges.getTakerPays().getCounterparty())
         .isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
-    assertThat(orderChanges.getTakerPays().getValue()).isEqualTo("0");
+    assertThat(orderChanges.getTakerPays().getValue()).isEqualTo(0);
 
     assertThat(orderChanges.getTakerGets().getCurrency()).isEqualTo("XRP");
     assertThat(orderChanges.getTakerGets().getCounterparty()).isEqualTo("");
-    assertThat(orderChanges.getTakerGets().getValue()).isEqualTo("0");
+    assertThat(orderChanges.getTakerGets().getValue()).isEqualTo(0d);
   }
 }

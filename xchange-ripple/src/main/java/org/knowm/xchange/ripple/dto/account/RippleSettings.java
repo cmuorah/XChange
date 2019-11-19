@@ -75,7 +75,7 @@ public class RippleSettings {
     if (transferRate == 0) {
       return 0d;
     } else {
-      return (double) transferRate / (TRANSFER_RATE_DENOMINATOR) - (10d);
+      return (double) transferRate / (TRANSFER_RATE_DENOMINATOR);
     }
   }
 

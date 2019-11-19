@@ -33,17 +33,17 @@ public class RippleAccountTest {
     final Iterator<RippleBalance> iterator = balances.iterator();
 
     final RippleBalance balance1 = iterator.next();
-    assertThat(balance1.getValue()).isEqualTo("861.401578");
+    assertThat(balance1.getValue()).isEqualTo(861.401578);
     assertThat(balance1.getCurrency()).isEqualTo("XRP");
     assertThat(balance1.getCounterparty()).isEqualTo("");
 
     final RippleBalance balance2 = iterator.next();
-    assertThat(balance2.getValue()).isEqualTo("0.038777349225374");
+    assertThat(balance2.getValue()).isEqualTo(0.038777349225374);
     assertThat(balance2.getCurrency()).isEqualTo("BTC");
     assertThat(balance2.getCounterparty()).isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
 
     final RippleBalance balance3 = iterator.next();
-    assertThat(balance3.getValue()).isEqualTo("10");
+    assertThat(balance3.getValue()).isEqualTo(10d);
     assertThat(balance3.getCurrency()).isEqualTo("USD");
     assertThat(balance3.getCounterparty()).isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
   }
@@ -61,7 +61,7 @@ public class RippleAccountTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(settings.getAccount()).isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
     assertThat(settings.getTransferRate()).isEqualTo(1002000000);
-    assertThat(settings.getTransferFeeRate()).isEqualTo("0.002");
+    assertThat(settings.getTransferFeeRate()).isEqualTo(1.002d);
     assertThat(settings.isPasswordSpent()).isFalse();
     assertThat(settings.isRequireDestinationTag()).isTrue();
     assertThat(settings.isRequireAuthorization()).isFalse();

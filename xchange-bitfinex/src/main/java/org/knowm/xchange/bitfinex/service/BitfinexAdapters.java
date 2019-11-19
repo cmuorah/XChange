@@ -190,7 +190,7 @@ public final class BitfinexAdapters {
               timestamp));
     }
 
-    long maxTimestampInMillis = Double.doubleToLongBits(maxTimestamp * 1000L);
+    long maxTimestampInMillis = (long)(maxTimestamp * 1000L);
     return new OrdersContainer(maxTimestampInMillis, limitOrders);
   }
 
@@ -522,7 +522,7 @@ public final class BitfinexAdapters {
 
   private static Date convertDoubleTimestampToDate(Double timestamp) {
     double timestampInMillis = timestamp * 1000d;
-    return new Date(Double.doubleToLongBits(timestampInMillis));
+    return new Date((long)(timestampInMillis));
   }
 
   public static ExchangeMetaData adaptMetaData(

@@ -119,9 +119,9 @@ public class WexAdapterTest {
             bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)),
             CurrencyPair.BTC_USD);
 
-    assertThat(ticker.getLast().toString()).isEqualTo("757");
-    assertThat(ticker.getLow().toString()).isEqualTo("655");
-    assertThat(ticker.getHigh().toString()).isEqualTo("770");
+    assertThat(ticker.getLast()).isEqualTo(757d);
+    assertThat(ticker.getLow()).isEqualTo(655d);
+    assertThat(ticker.getHigh()).isEqualTo(770d);
     assertThat(ticker.getVolume()).isEqualTo(new Double("24620.6561"));
     assertThat(DateUtils.toUTCString(ticker.getTimestamp())).isEqualTo("2013-11-23 11:13:39 GMT");
   }
@@ -143,7 +143,7 @@ public class WexAdapterTest {
     UserTrade lastTrade = tradeList.get(tradeList.size() - 1);
     assertThat(lastTrade.getId()).isEqualTo("7258275");
     assertThat(lastTrade.getType()).isEqualTo(OrderType.ASK);
-    assertThat(lastTrade.getPrice().toString()).isEqualTo("125.75");
+    assertThat(lastTrade.getPrice()).isEqualTo(125.75);
     assertThat(lastTrade.getTimestamp().getTime()).isEqualTo(1378194574000L);
     assertThat(DateUtils.toUTCString(lastTrade.getTimestamp()))
         .isEqualTo("2013-09-03 07:49:34 GMT");
