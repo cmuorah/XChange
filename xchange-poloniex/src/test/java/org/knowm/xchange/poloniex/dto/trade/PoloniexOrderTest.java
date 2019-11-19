@@ -35,7 +35,7 @@ public class PoloniexOrderTest {
     assertThat(trade.getDate()).isEqualTo("2016-08-19 12:06:35");
     assertThat(trade.getRate()).isEqualTo(0.00623991);
     assertThat(trade.getTotal()).isEqualTo(0.00062399);
-    assertThat(trade.getTradeID()).isEqualTo(1623424);
+    assertThat(trade.getTradeID()).isEqualTo("1623424");
     assertThat(trade.getType()).isEqualTo("buy");
   }
 

@@ -53,18 +53,18 @@ public class RippleAdaptersTest implements ITransferFeeSource {
     assertThat(counterWallet.getBalances()).hasSize(2);
 
     final Balance btcBalance = counterWallet.getBalance(Currency.BTC);
-    assertThat(btcBalance.getTotal()).isEqualTo("0.038777349225374");
+    assertThat(btcBalance.getTotal()).isEqualTo(0.038777349225374);
     assertThat(btcBalance.getCurrency()).isEqualTo(Currency.BTC);
 
     final Balance usdBalance = counterWallet.getBalance(Currency.USD);
-    assertThat(usdBalance.getTotal()).isEqualTo("10");
+    assertThat(usdBalance.getTotal()).isEqualTo(10d);
     assertThat(usdBalance.getCurrency()).isEqualTo(Currency.USD);
 
     final Wallet mainWallet = account.getWallet("main");
     assertThat(mainWallet.getBalances()).hasSize(1);
 
     final Balance xrpBalance = mainWallet.getBalance(Currency.XRP);
-    assertThat(xrpBalance.getTotal()).isEqualTo("861.401578");
+    assertThat(xrpBalance.getTotal()).isEqualTo(861.401578);
     assertThat(xrpBalance.getCurrency()).isEqualTo(Currency.XRP);
   }
 
@@ -98,8 +98,8 @@ public class RippleAdaptersTest implements ITransferFeeSource {
         .isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
     assertThat(lastBid.getType()).isEqualTo(OrderType.BID);
     assertThat(lastBid.getId()).isEqualTo("1303704");
-    assertThat(lastBid.getOriginalAmount()).isEqualTo("66314.537782");
-    assertThat(lastBid.getLimitPrice()).isEqualTo("0.00003317721777288062");
+    assertThat(lastBid.getOriginalAmount()).isEqualTo(66314.537782);
+    assertThat(lastBid.getLimitPrice()).isEqualTo(0.00003317721777288062);
 
     final LimitOrder firstAsk = orderBook.getAsks().get(0);
     assertThat(firstAsk).isInstanceOf(RippleLimitOrder.class);
@@ -108,8 +108,8 @@ public class RippleAdaptersTest implements ITransferFeeSource {
         .isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
     assertThat(firstAsk.getType()).isEqualTo(OrderType.ASK);
     assertThat(firstAsk.getId()).isEqualTo("1011310");
-    assertThat(firstAsk.getOriginalAmount()).isEqualTo("35447.914936");
-    assertThat(firstAsk.getLimitPrice()).isEqualTo("0.00003380846624897726");
+    assertThat(firstAsk.getOriginalAmount()).isEqualTo(35447.914936);
+    assertThat(firstAsk.getLimitPrice()).isEqualTo(0.00003380846624897726);
   }
 
   @Test
@@ -134,9 +134,9 @@ public class RippleAdaptersTest implements ITransferFeeSource {
     assertThat(((RippleLimitOrder) firstOrder).getCounterCounterparty())
         .isEqualTo("rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
     assertThat(firstOrder.getId()).isEqualTo("5");
-    assertThat(firstOrder.getLimitPrice()).isEqualTo("0.00003226");
+    assertThat(firstOrder.getLimitPrice()).isEqualTo(0.00003226);
     assertThat(firstOrder.getTimestamp()).isNull();
-    assertThat(firstOrder.getOriginalAmount()).isEqualTo("1");
+    assertThat(firstOrder.getOriginalAmount()).isEqualTo(1);
     assertThat(firstOrder.getType()).isEqualTo(OrderType.BID);
 
     final LimitOrder secondOrder = orders.getOpenOrders().get(1);
@@ -147,9 +147,9 @@ public class RippleAdaptersTest implements ITransferFeeSource {
     assertThat(secondOrder.getId()).isEqualTo("7");
     // Price = 15159.38551342023 / 123.123456
     assertThat(secondOrder.getLimitPrice())
-        .isEqualTo("123.12345677999998635515884154518859509596611713043533");
+        .isEqualTo(123.12345677999998635515884154518859509596611713043533);
     assertThat(secondOrder.getTimestamp()).isNull();
-    assertThat(secondOrder.getOriginalAmount()).isEqualTo("123.123456");
+    assertThat(secondOrder.getOriginalAmount()).isEqualTo(123.123456);
     assertThat(secondOrder.getType()).isEqualTo(OrderType.ASK);
   }
 
@@ -184,7 +184,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
 
     final UserTrade trade = RippleAdapters.adaptTrade(response, params, this, roundingScale);
     assertThat(trade.getCurrencyPair()).isEqualTo(CurrencyPair.XRP_BTC);
-    assertThat(trade.getFeeAmount()).isEqualTo("0.012");
+    assertThat(trade.getFeeAmount()).isEqualTo(0.012);
     assertThat(trade.getFeeCurrency()).isEqualTo(Currency.XRP);
     assertThat(trade.getId())
         .isEqualTo("0000000000000000000000000000000000000000000000000000000000000000");
@@ -229,7 +229,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
 
     final UserTrade trade = RippleAdapters.adaptTrade(response, params, this, roundingScale);
     assertThat(trade.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_XRP);
-    assertThat(trade.getFeeAmount()).isEqualTo("0.012");
+    assertThat(trade.getFeeAmount()).isEqualTo(0.012);
     assertThat(trade.getFeeCurrency()).isEqualTo(Currency.XRP);
     assertThat(trade.getId())
         .isEqualTo("0000000000000000000000000000000000000000000000000000000000000000");
@@ -247,7 +247,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
 
     assertThat(ripple.getBaseCounterparty()).isEqualTo("rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q");
     // Transfer fee = 0.000029309526038 * 0.002
-    assertThat(ripple.getBaseTransferFee()).isEqualTo("0.000000058619052076");
+    assertThat(ripple.getBaseTransferFee()).isEqualTo(0.000000058619052076);
     assertThat(ripple.getBaseTransferFeeCurrency()).isEqualTo(Currency.BTC);
     assertThat(ripple.getBaseTransferFeeCurrency()).isEqualTo(trade.getCurrencyPair().base);
 
@@ -331,7 +331,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
 
     final UserTrade trade = RippleAdapters.adaptTrade(response, params, this, roundingScale);
     assertThat(trade.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_XRP);
-    assertThat(trade.getFeeAmount()).isEqualTo("0.012");
+    assertThat(trade.getFeeAmount()).isEqualTo(0.012);
     assertThat(trade.getFeeCurrency()).isEqualTo(Currency.XRP);
     assertThat(trade.getId())
         .isEqualTo("1111111111111111111111111111111111111111111111111111111111111111");
@@ -340,7 +340,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
     assertThat(trade.getPrice())
         .isEqualTo(new Double("34999.23000574012011552062010939099496310569328655387396"));
     assertThat(trade.getTimestamp()).isEqualTo(RippleExchange.ToDate("2011-11-11T11:11:11.111Z"));
-    assertThat(trade.getOriginalAmount()).isEqualTo("0.000028572057152");
+    assertThat(trade.getOriginalAmount()).isEqualTo(0.000028572057152);
     assertThat(trade.getType()).isEqualTo(OrderType.BID);
 
     assertThat(trade).isInstanceOf(RippleUserTrade.class);
@@ -431,7 +431,7 @@ public class RippleAdaptersTest implements ITransferFeeSource {
 
     // Price = 0.009941478580724 / (349.559725 - 0.012)
     assertThat(trade.getPrice())
-        .isEqualTo(new Double("0.00002844097635229638527900589254299967193321026478"));
+        .isEqualTo(new Double("0.000028440976352296383"));
     assertThat(trade.getTimestamp()).isEqualTo(RippleExchange.ToDate("2015-08-07T03:58:10.000Z"));
     assertThat(trade.getOriginalAmount()).isEqualTo(349.547725);
     assertThat(trade.getType()).isEqualTo(OrderType.ASK);

@@ -65,7 +65,7 @@ public class RipplePaymentTest {
     assertThat(response.getClientResourceId()).isEqualTo("");
     assertThat(response.getHash())
         .isEqualTo("GHRE072948B95345396B2D9A364363GDE521HRT67QQRGGRTHYTRUP0RRB631107");
-    assertThat(response.getLedger()).isEqualTo(15103564);
+    assertThat(response.getLedger()).isEqualTo("15103564");
     assertThat(response.getState()).isEqualTo("validated");
     assertThat(response.isSuccess()).isEqualTo(true);
   }

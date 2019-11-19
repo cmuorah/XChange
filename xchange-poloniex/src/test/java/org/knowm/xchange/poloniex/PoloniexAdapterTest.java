@@ -37,7 +37,7 @@ public class PoloniexAdapterTest {
 
     LimitOrder result = PoloniexAdapters.adaptUserTradesToOrderStatus("102", tradeHistory);
 
-    Assert.assertEquals(new Double("0.0102693100000000"), result.getAveragePrice());
+    Assert.assertEquals(new Double("0.0102693100000000"), result.getAveragePrice(), 1e-8);
     Assert.assertEquals(new Double("0.03000000"), result.getCumulativeAmount());
     Assert.assertEquals(null, result.getOriginalAmount());
     Assert.assertEquals("102", result.getId());

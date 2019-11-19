@@ -37,21 +37,21 @@ public class PoloniexLoansDataTest {
     assertThat(providedLoans).hasSize(2);
     assertThat(providedLoans[0].getId()).isEqualTo("75073");
     assertThat(providedLoans[0].getCurrency()).isEqualTo(Currency.LTC.getCurrencyCode());
-    assertThat(providedLoans[0].getRate()).isEqualTo("0.00020000");
-    assertThat(providedLoans[0].getAmount()).isEqualTo("0.72234880");
+    assertThat(providedLoans[0].getRate()).isEqualTo(0.00020000);
+    assertThat(providedLoans[0].getAmount()).isEqualTo(0.72234880);
     assertThat(providedLoans[0].getRange()).isEqualTo(2);
     assertThat(providedLoans[0].getDate()).isEqualTo("2015-05-10 23:45:05");
-    assertThat(providedLoans[0].getFees()).isEqualTo("0.00006000");
+    assertThat(providedLoans[0].getFees()).isEqualTo(0.00006000);
     assertThat(providedLoans[0].isAutoRenew()).isEqualTo(false);
 
     PoloniexLoan[] usedLoans = loansInfo.get("used");
     assertThat(usedLoans).hasSize(1);
     assertThat(usedLoans[0].getId()).isEqualTo("75238");
     assertThat(usedLoans[0].getCurrency()).isEqualTo(Currency.BTC.getCurrencyCode());
-    assertThat(usedLoans[0].getRate()).isEqualTo("0.00020000");
-    assertThat(usedLoans[0].getAmount()).isEqualTo("0.04843834");
+    assertThat(usedLoans[0].getRate()).isEqualTo(0.00020000);
+    assertThat(usedLoans[0].getAmount()).isEqualTo(0.04843834);
     assertThat(usedLoans[0].getRange()).isEqualTo(2);
     assertThat(usedLoans[0].getDate()).isEqualTo("2015-05-10 23:51:12");
-    assertThat(usedLoans[0].getFees()).isEqualTo("-0.00000001");
+    assertThat(usedLoans[0].getFees()).isEqualTo(-0.00000001);
   }
 }
