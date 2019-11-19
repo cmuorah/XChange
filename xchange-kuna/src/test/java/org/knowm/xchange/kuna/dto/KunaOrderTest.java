@@ -76,7 +76,7 @@ public class KunaOrderTest {
   @Test
   public void test_price() {
     assertEquals(0d, KunaOrder.builder().withPrice(0d).build().getPrice(), 1e-8);
-    assertEquals(1d, KunaOrder.builder().withPrice(0d).build().getPrice(), 1e-8);
+    assertEquals(1d, KunaOrder.builder().withPrice(1d).build().getPrice(), 1e-8);
     assertEquals(10d, KunaOrder.builder().withPrice(10d).build().getPrice(), 1e-8);
 
     assertThat(order().getPrice()).isEqualByComparingTo(new Double("359995.0"));

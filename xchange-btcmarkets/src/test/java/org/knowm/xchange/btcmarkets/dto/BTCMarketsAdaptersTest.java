@@ -62,8 +62,8 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
     assertThat(openOrders.getOpenOrders().get(1).getType()).isEqualTo(Order.OrderType.ASK);
     assertThat(openOrders.getOpenOrders().get(1).getTimestamp().getTime())
         .isEqualTo(1378636912705L);
-    assertThat(openOrders.getOpenOrders().get(1).getLimitPrice()).isEqualTo("130.00000000");
-    assertThat(openOrders.getOpenOrders().get(1).getOriginalAmount()).isEqualTo("0.10000000");
+    assertThat(openOrders.getOpenOrders().get(1).getLimitPrice()).isEqualTo(130.00000000);
+    assertThat(openOrders.getOpenOrders().get(1).getOriginalAmount()).isEqualTo(0.10000000);
     assertThat(openOrders.getOpenOrders().get(1).getCumulativeAmount())
         .isEqualTo(Double.valueOf(0.1));
     assertThat(openOrders.getOpenOrders().get(1).getAveragePrice())

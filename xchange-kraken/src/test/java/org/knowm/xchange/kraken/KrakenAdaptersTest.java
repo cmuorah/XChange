@@ -155,7 +155,7 @@ public class KrakenAdaptersTest {
     assertThat(asks.size()).isEqualTo(3);
     LimitOrder order = asks.get(0);
     assertThat(order.getLimitPrice()).isEqualTo(new Double("530.75513"));
-    assertThat(order.getOriginalAmount()).isEqualTo("0.248");
+    assertThat(order.getOriginalAmount()).isEqualTo(0.248);
     assertThat(order.getTimestamp()).isEqualTo(new Date(1391825343000L));
   }
 
@@ -220,8 +220,8 @@ public class KrakenAdaptersTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(orders.getOpenOrders()).hasSize(1);
     assertThat(orders.getOpenOrders().get(0).getId()).isEqualTo("OR6QMM-BCKM4-Q6YHIN");
-    assertThat(orders.getOpenOrders().get(0).getLimitPrice()).isEqualTo("500.00000");
-    assertThat(orders.getOpenOrders().get(0).getOriginalAmount()).isEqualTo("1.00000000");
+    assertThat(orders.getOpenOrders().get(0).getLimitPrice()).isEqualTo(500.00000);
+    assertThat(orders.getOpenOrders().get(0).getOriginalAmount()).isEqualTo(1.00000000);
     assertThat(orders.getOpenOrders().get(0).getCurrencyPair().base).isEqualTo(Currency.BTC);
     assertThat(orders.getOpenOrders().get(0).getCurrencyPair().counter).isEqualTo(Currency.EUR);
     assertThat(orders.getOpenOrders().get(0).getType()).isEqualTo(OrderType.BID);

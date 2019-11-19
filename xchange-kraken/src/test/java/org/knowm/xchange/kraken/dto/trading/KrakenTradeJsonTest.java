@@ -43,9 +43,9 @@ public class KrakenTradeJsonTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(openOrderEntry.getKey()).isEqualTo("O767CW-TXHCL-FWZ5R2");
     assertThat(order.getOpenTimestamp()).isEqualTo(1499872460.2572);
-    assertThat(order.getPrice()).isEqualTo("0.000000000");
-    assertThat(order.getVolume()).isEqualTo("1000.00000000");
-    assertThat(order.getVolumeExecuted()).isEqualTo("0.00000000");
+    assertThat(order.getPrice()).isEqualTo(0.000000000);
+    assertThat(order.getVolume()).isEqualTo(1000.00000000);
+    assertThat(order.getVolumeExecuted()).isEqualTo(0.00000000);
     assertThat(order.getStatus()).isEqualTo(KrakenOrderStatus.OPEN);
     KrakenOrderDescription orderDescription = order.getOrderDescription();
     assertThat(orderDescription.getAssetPair()).isEqualTo("XRPXBT");
@@ -54,8 +54,8 @@ public class KrakenTradeJsonTest {
         .isEqualTo("buy 1000.00000000 XRPXBT @ limit 0.00001000");
     assertThat(orderDescription.getOrderType()).isEqualTo(KrakenOrderType.LIMIT);
     assertThat(orderDescription.getType()).isEqualTo(KrakenType.BUY);
-    assertThat(orderDescription.getPrice()).isEqualTo("0.00001000");
-    assertThat(orderDescription.getSecondaryPrice()).isEqualTo("0");
+    assertThat(orderDescription.getPrice()).isEqualTo(0.00001000);
+    assertThat(orderDescription.getSecondaryPrice()).isEqualTo(0);
   }
 
   @Test
@@ -74,11 +74,11 @@ public class KrakenTradeJsonTest {
     KrakenTrade trade = krakenTradeHistoryMap.get("TY5BYV-WJUQF-XPYEYD");
 
     assertThat(trade.getAssetPair()).isEqualTo("XLTCXXBT");
-    assertThat(trade.getPrice()).isEqualTo("32.07562");
-    assertThat(trade.getCost()).isEqualTo("16.03781");
-    assertThat(trade.getFee()).isEqualTo("0.03208");
-    assertThat(trade.getMargin()).isEqualTo("0.00000");
-    assertThat(trade.getVolume()).isEqualTo("0.50000000");
+    assertThat(trade.getPrice()).isEqualTo(32.07562);
+    assertThat(trade.getCost()).isEqualTo(16.03781);
+    assertThat(trade.getFee()).isEqualTo(0.03208);
+    assertThat(trade.getMargin()).isEqualTo(0.00000);
+    assertThat(trade.getVolume()).isEqualTo(0.50000000);
     assertThat(trade.getOrderTxId()).isEqualTo("ONRNOX-DVI4W-76DL6Q");
     assertThat(trade.getUnixTimestamp()).isEqualTo(1389071942.2089);
     assertThat(trade.getType()).isEqualTo(KrakenType.SELL);

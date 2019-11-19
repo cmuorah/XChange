@@ -25,8 +25,8 @@ public class KrakenSpreadsJSONTest {
 
     assertThat(spreads.getLast()).isEqualTo(1391837200);
     KrakenSpread spread = spreads.getSpreads().get(0);
-    assertThat(spread.getAsk()).isEqualTo("720.00000");
-    assertThat(spread.getBid()).isEqualTo("709.17169");
+    assertThat(spread.getAsk()).isEqualTo(720.00000);
+    assertThat(spread.getBid()).isEqualTo(709.17169);
     assertThat(spread.getTime()).isEqualTo(1391836639);
   }
 }

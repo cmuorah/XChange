@@ -32,7 +32,7 @@ public class KrakenAccountJSONTest {
     KrakenBalanceResult krakenBalance = mapper.readValue(is, KrakenBalanceResult.class);
     Assert.assertEquals(3, krakenBalance.getResult().size());
     assertThat(krakenBalance.getResult().get("ZUSD")).isNull();
-    assertThat(krakenBalance.getResult().get("ZEUR")).isEqualTo("1.0539");
+    assertThat(krakenBalance.getResult().get("ZEUR")).isEqualTo(1.0539);
   }
 
   @Test
@@ -49,13 +49,13 @@ public class KrakenAccountJSONTest {
         mapper.readValue(is, KrakenTradeBalanceInfoResult.class);
     KrakenTradeBalanceInfo tradeBalanceInfo = krakenResult.getResult();
 
-    assertThat(tradeBalanceInfo.getTradeBalance()).isEqualTo("71.6310");
-    assertThat(tradeBalanceInfo.getMargin()).isEqualTo("0.0000");
-    assertThat(tradeBalanceInfo.getFreeMargin()).isEqualTo("71.6310");
-    assertThat(tradeBalanceInfo.getCostBasis()).isEqualTo("0.0000");
-    assertThat(tradeBalanceInfo.getEquity()).isEqualTo("71.6310");
-    assertThat(tradeBalanceInfo.getFloatingValuation()).isEqualTo("0.0000");
-    assertThat(tradeBalanceInfo.getUnrealizedGainsLosses()).isEqualTo("0.0000");
+    assertThat(tradeBalanceInfo.getTradeBalance()).isEqualTo(71.6310);
+    assertThat(tradeBalanceInfo.getMargin()).isEqualTo(0.0000);
+    assertThat(tradeBalanceInfo.getFreeMargin()).isEqualTo(71.6310);
+    assertThat(tradeBalanceInfo.getCostBasis()).isEqualTo(0.0000);
+    assertThat(tradeBalanceInfo.getEquity()).isEqualTo(71.6310);
+    assertThat(tradeBalanceInfo.getFloatingValuation()).isEqualTo(0.0000);
+    assertThat(tradeBalanceInfo.getUnrealizedGainsLosses()).isEqualTo(0.0000);
   }
 
   @Test
@@ -74,9 +74,9 @@ public class KrakenAccountJSONTest {
 
     assertThat(ledger.getAsset()).isEqualTo("XXBT");
     assertThat(ledger.getAssetClass()).isEqualTo("currency");
-    assertThat(ledger.getBalance()).isEqualTo("0.1000000000");
-    assertThat(ledger.getFee()).isEqualTo("0.0000000000");
-    assertThat(ledger.getTransactionAmount()).isEqualTo("0.1000000000");
+    assertThat(ledger.getBalance()).isEqualTo(0.1000000000);
+    assertThat(ledger.getFee()).isEqualTo(0.0000000000);
+    assertThat(ledger.getTransactionAmount()).isEqualTo(0.1000000000);
     assertThat(ledger.getLedgerType()).isEqualTo(LedgerType.DEPOSIT);
     assertThat(ledger.getRefId()).isEqualTo("QGBJIZV-4F6SPK-ZCBT5O");
     assertThat(ledger.getUnixTime()).isEqualTo(1391400160.0679);
@@ -96,22 +96,22 @@ public class KrakenAccountJSONTest {
     KrakenTradeVolume tradeVolume = krakenResult.getResult();
 
     assertThat(tradeVolume.getCurrency()).isEqualTo("ZUSD");
-    assertThat(tradeVolume.getVolume()).isEqualTo("451.3040");
+    assertThat(tradeVolume.getVolume()).isEqualTo(451.3040);
     Map<String, KrakenVolumeFee> fees = tradeVolume.getFees();
     KrakenVolumeFee fee = fees.get("XXBTZUSD");
-    assertThat(fee.getFee()).isEqualTo("0.3000");
-    assertThat(fee.getMinFee()).isEqualTo("0.0500");
-    assertThat(fee.getMaxFee()).isEqualTo("0.3000");
-    assertThat(fee.getNextFee()).isEqualTo("0.2900");
-    assertThat(fee.getNextVolume()).isEqualTo("1000.0000");
-    assertThat(fee.getTierVolume()).isEqualTo("0.0000");
+    assertThat(fee.getFee()).isEqualTo(0.3000);
+    assertThat(fee.getMinFee()).isEqualTo(0.0500);
+    assertThat(fee.getMaxFee()).isEqualTo(0.3000);
+    assertThat(fee.getNextFee()).isEqualTo(0.2900);
+    assertThat(fee.getNextVolume()).isEqualTo(1000.0000);
+    assertThat(fee.getTierVolume()).isEqualTo(0.0000);
 
     KrakenVolumeFee maker = tradeVolume.getFeesMaker().get("XXBTZUSD");
-    assertThat(maker.getFee()).isEqualTo("0.1600");
-    assertThat(maker.getMinFee()).isEqualTo("0.0000");
-    assertThat(maker.getMaxFee()).isEqualTo("0.1600");
-    assertThat(maker.getNextFee()).isEqualTo("0.1400");
-    assertThat(maker.getNextVolume()).isEqualTo("1000.0000");
-    assertThat(maker.getTierVolume()).isEqualTo("0.0000");
+    assertThat(maker.getFee()).isEqualTo(0.1600);
+    assertThat(maker.getMinFee()).isEqualTo(0.0000);
+    assertThat(maker.getMaxFee()).isEqualTo(0.1600);
+    assertThat(maker.getNextFee()).isEqualTo(0.1400);
+    assertThat(maker.getNextVolume()).isEqualTo(1000.0000);
+    assertThat(maker.getTierVolume()).isEqualTo(0.0000);
   }
 }
