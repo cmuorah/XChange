@@ -2,9 +2,11 @@ package org.knowm.xchange.globitex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 
-public class GlobitexTrade implements Serializable {
+public class GlobitexTrade extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("date")
   private final long timestamp;

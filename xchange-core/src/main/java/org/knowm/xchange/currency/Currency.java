@@ -1,5 +1,7 @@
 package org.knowm.xchange.currency;
 
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,7 +16,7 @@ import java.util.TreeSet;
  * it was acquired with -- so {@link #getInstance}("BTC").{@link #getCurrencyCode}() will always be
  * "BTC", even though the proposed ISO 4217 code is "XBT"
  */
-public class Currency implements Comparable<Currency>, Serializable {
+public class Currency extends AbstractMarshallable implements Comparable<Currency>, Serializable {
 
   private static final long serialVersionUID = -7340731832345284129L;
   private static final Map<String, Currency> currencies = new HashMap<>();
@@ -486,7 +488,7 @@ public class Currency implements Comparable<Currency>, Serializable {
     return comparison;
   }
 
-  private static class CurrencyAttributes implements Serializable {
+  private static class CurrencyAttributes extends AbstractMarshallable implements Serializable {
 
     private static final long serialVersionUID = -5575649542242146958L;
 

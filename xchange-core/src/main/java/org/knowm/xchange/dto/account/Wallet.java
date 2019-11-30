@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.Currency;
 
 /**
@@ -11,7 +13,7 @@ import org.knowm.xchange.currency.Currency;
  *
  * <p>A wallet has a set of current balances in various currencies held on the exchange.
  */
-public final class Wallet implements Serializable {
+public final class Wallet extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = -4136681413143690633L;
 

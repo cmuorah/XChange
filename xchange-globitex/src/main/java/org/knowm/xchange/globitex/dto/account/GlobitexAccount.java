@@ -1,10 +1,12 @@
 package org.knowm.xchange.globitex.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class GlobitexAccount implements Serializable {
+public class GlobitexAccount extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("account")
   private final String account;

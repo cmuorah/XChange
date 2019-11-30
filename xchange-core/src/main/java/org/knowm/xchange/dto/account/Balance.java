@@ -1,6 +1,8 @@
 package org.knowm.xchange.dto.account;
 
 import java.io.Serializable;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.Currency;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,10 +15,10 @@ import org.slf4j.LoggerFactory;
  *
  * <p>This class is immutable.
  */
-public final class Balance implements Comparable<Balance>, Serializable {
+public final class Balance extends AbstractMarshallable implements Comparable<Balance>, Serializable {
 
   private static final long serialVersionUID = -1460694403597268635L;
-  private static final Logger log = LoggerFactory.getLogger(Balance.class);
+  private static final Logger LOG = LoggerFactory.getLogger(Balance.class);
 
   private final Currency currency;
 
@@ -101,7 +103,7 @@ public final class Balance implements Comparable<Balance>, Serializable {
     if (total != null && available != null) {
       Double sum = (available + frozen) - (borrowed) + (loaned) + (withdrawing) + (depositing);
       if (0 != total.compareTo(sum)) {
-        log.warn(
+        LOG.warn(
             "{} = total != available + frozen - borrowed + loaned + withdrawing + depositing = {}",
             total,
             sum);

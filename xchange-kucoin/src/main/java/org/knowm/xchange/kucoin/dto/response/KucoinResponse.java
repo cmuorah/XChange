@@ -4,11 +4,12 @@ package org.knowm.xchange.kucoin.dto.response;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import lombok.Data;
+import net.openhft.chronicle.wire.AbstractMarshallable;
 
 /** Created by zicong.lu on 2018/12/14. */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class KucoinResponse<R> implements Serializable {
+public class KucoinResponse<R> extends AbstractMarshallable implements Serializable {
   private static final long serialVersionUID = 1L;
   private static final String SUCCESS_CODE = "200000";
   private String code;

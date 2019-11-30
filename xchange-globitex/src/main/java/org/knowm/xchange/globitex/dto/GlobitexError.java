@@ -1,9 +1,11 @@
 package org.knowm.xchange.globitex.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 
-public class GlobitexError implements Serializable {
+public class GlobitexError extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("code")
   private final int code;

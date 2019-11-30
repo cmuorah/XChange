@@ -7,12 +7,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
 /** DTO representing the exchange order book */
-public final class OrderBook implements Serializable {
+public final class OrderBook extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = -7788306758114464314L;
 

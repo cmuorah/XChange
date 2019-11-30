@@ -1,10 +1,12 @@
 package org.knowm.xchange.campbx.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 
 /** @author Matija Mazi */
-public class CampBXResponse implements Serializable {
+public class CampBXResponse extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("Success")
   private String success;

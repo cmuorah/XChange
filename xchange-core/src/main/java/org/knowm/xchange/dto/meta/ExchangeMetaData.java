@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Map;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.utils.ObjectMapperHelper;
@@ -19,7 +21,7 @@ import org.knowm.xchange.utils.ObjectMapperHelper;
  * <p>This class is used only in the API by the classes that merge metadata stored in custom JSON
  * file and online info from the remote exchange.
  */
-public class ExchangeMetaData implements Serializable {
+public class ExchangeMetaData extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = -1495610469981534977L;
 

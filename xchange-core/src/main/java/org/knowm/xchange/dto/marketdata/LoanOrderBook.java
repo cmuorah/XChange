@@ -5,11 +5,13 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.dto.trade.FixedRateLoanOrder;
 import org.knowm.xchange.dto.trade.FloatingRateLoanOrder;
 
 /** DTO representing the exchange loan order book */
-public final class LoanOrderBook implements Serializable {
+public final class LoanOrderBook extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = -2894416631375841830L;
 

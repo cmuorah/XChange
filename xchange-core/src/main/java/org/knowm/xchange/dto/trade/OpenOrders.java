@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.dto.Order;
 
 /**
@@ -12,7 +14,7 @@ import org.knowm.xchange.dto.Order;
  * <p>Open orders are orders that you have placed with the exchange that have not yet been matched
  * to a counter-party.
  */
-public final class OpenOrders implements Serializable {
+public final class OpenOrders extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = 6641558609478576563L;
 

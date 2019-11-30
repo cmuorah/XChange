@@ -3,12 +3,14 @@ package org.knowm.xchange.dto.marketdata;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /** Data object representing a Trade */
-public class Trade implements Serializable {
+public class Trade extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = -4078893146776655648L;
 

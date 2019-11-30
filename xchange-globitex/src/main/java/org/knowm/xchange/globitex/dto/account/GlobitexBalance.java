@@ -1,9 +1,11 @@
 package org.knowm.xchange.globitex.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 
-public class GlobitexBalance implements Serializable {
+public class GlobitexBalance extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("currency")
   private final String currency;

@@ -1,6 +1,8 @@
 package org.knowm.xchange.currency;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 
 /**
@@ -15,7 +17,7 @@ import java.io.Serializable;
  * 1.25 USD
  */
 @JsonSerialize(using = CustomCurrencyPairSerializer.class)
-public class CurrencyPair implements Comparable<CurrencyPair>, Serializable {
+public class CurrencyPair extends AbstractMarshallable implements Comparable<CurrencyPair>, Serializable {
 
   private static final long serialVersionUID = 414711266389792746L;
 

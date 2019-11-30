@@ -7,11 +7,13 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.IOException;
 import java.io.Serializable;
 
 @JsonDeserialize(using = GlobitexOrder.GlobitexOrderDeserializer.class)
-public class GlobitexOrder implements Serializable {
+public class GlobitexOrder extends AbstractMarshallable implements Serializable {
 
   private final Double price;
 

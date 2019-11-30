@@ -1,5 +1,7 @@
 package org.knowm.xchange.dto.trade;
 
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
  * DTO representing open loan orders Open loan orders are loan order that have placed with the
  * exchange that have not yet been matched to a counterparty.
  */
-public final class OpenLoanOrders implements Serializable {
+public final class OpenLoanOrders extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = -8880758230367635109L;
 

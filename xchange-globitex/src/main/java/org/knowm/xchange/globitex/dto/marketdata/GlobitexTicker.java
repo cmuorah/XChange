@@ -3,6 +3,8 @@ package org.knowm.xchange.globitex.dto.marketdata;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -18,7 +20,7 @@ import java.io.Serializable;
   "volumeQuote",
   "timestamp"
 })
-public class GlobitexTicker implements Serializable {
+public class GlobitexTicker extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("symbol")
   private final String symbol;

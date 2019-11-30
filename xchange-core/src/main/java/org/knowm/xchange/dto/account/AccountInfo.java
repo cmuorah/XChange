@@ -1,5 +1,7 @@
 package org.knowm.xchange.dto.account;
 
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 import java.util.*;
 import javax.annotation.Nullable;
@@ -9,7 +11,7 @@ import javax.annotation.Nullable;
  *
  * <p>Account information is anything particular associated with the user's login
  */
-public final class AccountInfo implements Serializable {
+public final class AccountInfo extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = -3572240060624800060L;
 

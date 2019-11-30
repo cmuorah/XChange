@@ -1,5 +1,7 @@
 package org.knowm.xchange.dto.marketdata;
 
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import static org.knowm.xchange.dto.marketdata.Trades.TradeSortType.SortByID;
 
 import java.io.Serializable;
@@ -10,7 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /** DTO representing a collection of trades */
-public class Trades implements Serializable {
+public class Trades extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = 5790082783307641329L;
 

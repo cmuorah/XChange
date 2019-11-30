@@ -3,12 +3,14 @@ package org.knowm.xchange.globitex.dto.marketdata;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"asks", "bids"})
-public class GlobitexOrderBook implements Serializable {
+public class GlobitexOrderBook extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("asks")
   private final List<GlobitexOrder> asks;

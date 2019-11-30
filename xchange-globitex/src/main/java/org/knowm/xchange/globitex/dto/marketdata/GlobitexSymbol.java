@@ -1,9 +1,11 @@
 package org.knowm.xchange.globitex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 
-public class GlobitexSymbol implements Serializable {
+public class GlobitexSymbol extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("symbol")
   private final String symbol;

@@ -2,9 +2,11 @@ package org.knowm.xchange.dto.meta;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.dto.account.Fee;
 
-public class FeeTier implements Serializable, Comparable<FeeTier> {
+public class FeeTier extends AbstractMarshallable implements Serializable, Comparable<FeeTier> {
 
   private static final long serialVersionUID = -4350427635840047928L;
 

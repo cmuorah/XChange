@@ -1,9 +1,11 @@
 package org.knowm.xchange.dto.account;
 
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public final class AddressWithTag implements Serializable {
+public final class AddressWithTag extends AbstractMarshallable implements Serializable {
 
   private final String address;
 

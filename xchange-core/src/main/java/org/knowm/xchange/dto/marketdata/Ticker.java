@@ -2,6 +2,8 @@ package org.knowm.xchange.dto.marketdata;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.utils.Assert;
 import org.knowm.xchange.utils.DateUtils;
@@ -12,7 +14,7 @@ import org.knowm.xchange.utils.DateUtils;
  *
  * <p>A ticker contains data representing the latest trade.
  */
-public final class Ticker implements Serializable {
+public final class Ticker extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = -3247730106987193154L;
 

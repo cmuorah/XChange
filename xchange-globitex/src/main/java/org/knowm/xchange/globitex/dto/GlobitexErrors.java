@@ -1,10 +1,12 @@
 package org.knowm.xchange.globitex.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class GlobitexErrors implements Serializable {
+public class GlobitexErrors extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("errors")
   private final List<GlobitexError> errors;

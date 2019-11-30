@@ -3,9 +3,11 @@ package org.knowm.xchange.dto.meta;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Arrays;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.Currency;
 
-public class CurrencyPairMetaData implements Serializable {
+public class CurrencyPairMetaData extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = 4749144540694704221L;
 

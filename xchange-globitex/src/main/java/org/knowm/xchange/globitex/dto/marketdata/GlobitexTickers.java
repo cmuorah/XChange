@@ -1,10 +1,12 @@
 package org.knowm.xchange.globitex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class GlobitexTickers implements Serializable {
+public class GlobitexTickers extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("instruments")
   private final List<GlobitexTicker> globitexTickerList;

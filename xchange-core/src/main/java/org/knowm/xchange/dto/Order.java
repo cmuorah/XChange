@@ -5,10 +5,12 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.CurrencyPair;
 
 /** Data object representing an order */
-public abstract class Order implements Serializable {
+public abstract class Order extends AbstractMarshallable implements Serializable{
 
   private static final long serialVersionUID = -8132103343647993259L;
 

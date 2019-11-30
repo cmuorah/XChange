@@ -1,9 +1,11 @@
 package org.knowm.xchange.globitex.dto.trade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.openhft.chronicle.wire.AbstractMarshallable;
+
 import java.io.Serializable;
 
-public class GlobitexUserTrade implements Serializable {
+public class GlobitexUserTrade extends AbstractMarshallable implements Serializable {
 
   @JsonProperty("tradeId")
   private final long tradeId;

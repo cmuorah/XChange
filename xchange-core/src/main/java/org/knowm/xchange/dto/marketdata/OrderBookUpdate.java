@@ -2,12 +2,14 @@ package org.knowm.xchange.dto.marketdata;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
 /** Immutable data object representing a Market Depth update. */
-public final class OrderBookUpdate implements Serializable {
+public final class OrderBookUpdate extends AbstractMarshallable implements Serializable {
 
   private static final long serialVersionUID = -7283757982319511254L;
 
