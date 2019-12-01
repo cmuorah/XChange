@@ -59,7 +59,7 @@ public class BitsoTradeService extends BitsoTradeServiceRaw implements TradeServ
               bitsoOrder.getAmount(),
               new CurrencyPair(Currency.BTC, Currency.MXN),
               id,
-              bitsoOrder.getTime(),
+              bitsoOrder.getTime().getTime(),
               price));
     }
     return new OpenOrders(limitOrders);

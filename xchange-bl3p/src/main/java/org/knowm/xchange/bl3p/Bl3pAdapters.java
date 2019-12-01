@@ -54,7 +54,7 @@ public class Bl3pAdapters {
               .limitPrice(limitPrice)
               .originalAmount(originalAmount)
               .remainingAmount(remainingAmount)
-              .timestamp(bl3pOrder.getTimestamp())
+              .timestamp(bl3pOrder.getTimestamp().getTime())
               .build());
     }
 
@@ -75,7 +75,7 @@ public class Bl3pAdapters {
         .limitPrice(limitPrice)
         .originalAmount(originalAmount)
         .remainingAmount(remainingAmount)
-        .timestamp(bl3pOrder.getTimestamp())
+        .timestamp(bl3pOrder.getTimestamp().getTime())
         .build();
   }
 
@@ -89,8 +89,8 @@ public class Bl3pAdapters {
               .currencyPair(CurrencyPair.BTC_EUR)
               .id(Integer.toString(t.id))
               .orderId(Integer.toString(t.orderId))
-              .type(t.type == "credit" ? Order.OrderType.BID : Order.OrderType.ASK)
-              .timestamp(t.date)
+              .type("credit".equals(t.type) ? Order.OrderType.BID : Order.OrderType.ASK)
+              .timestamp(t.date.getTime())
               .price(t.price.value)
               .feeAmount(t.fee.value)
               .feeCurrency(Currency.getInstance(t.fee.currency))
@@ -113,10 +113,10 @@ public class Bl3pAdapters {
               .setAmount(tx.amount.value)
               .setBalance(tx.balance.value)
               .setCurrency(Currency.getInstance(tx.amount.currency))
-              .setDate(tx.date)
+              .setDate(tx.date.getTime())
               .setFee(tx.fee == null ? null : tx.fee.value)
               .setType(
-                  tx.type == "deposit" ? FundingRecord.Type.DEPOSIT : FundingRecord.Type.WITHDRAWAL)
+                      "deposit".equals(tx.type) ? FundingRecord.Type.DEPOSIT : FundingRecord.Type.WITHDRAWAL)
               .build());
     }
 

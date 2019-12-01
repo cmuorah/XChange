@@ -42,9 +42,7 @@ public final class LgoAdapters {
     Map<CurrencyPair, CurrencyPairMetaData> currencyPairs = metaData.getCurrencyPairs();
     Map<Currency, CurrencyMetaData> currency = metaData.getCurrencies();
     for (LgoCurrency lgoCurrency : currencies.getCurrencies()) {
-      currency.put(
-          Currency.getInstance(lgoCurrency.getCode()),
-          new CurrencyMetaData(lgoCurrency.getDecimals(), null));
+      currency.put(Currency.getInstance(lgoCurrency.getCode()), new CurrencyMetaData(lgoCurrency.getDecimals(), null));
     }
     for (LgoProduct product : products.getProducts()) {
       Double minAmount = product.getBase().getLimits().getMin();
@@ -98,14 +96,14 @@ public final class LgoAdapters {
         product,
         limitOrder.getOriginalAmount(),
         limitOrder.getLimitPrice(),
-        limitOrder.getTimestamp().toInstant());
+        Instant.ofEpochMilli(limitOrder.getTimestamp()));
   }
 
   public static LgoPlaceOrder adaptMarketOrder(MarketOrder marketOrder) {
     String product = adaptCurrencyPair(marketOrder.getCurrencyPair());
     String side = adaptOrderType(marketOrder.getType());
     return new LgoPlaceMarketOrder(
-        0, side, product, marketOrder.getOriginalAmount(), marketOrder.getTimestamp().toInstant());
+        0, side, product, marketOrder.getOriginalAmount(), Instant.ofEpochMilli(marketOrder.getTimestamp()));
   }
 
   public static String adaptOrderType(OrderType type) {
@@ -126,7 +124,7 @@ public final class LgoAdapters {
         lgoUserTrade.getQuantity(),
         currencyPair,
         lgoUserTrade.getPrice(),
-        creationDate,
+        creationDate.getTime(),
         lgoUserTrade.getId(),
         lgoUserTrade.getOrderId(),
         lgoUserTrade.getFees(),

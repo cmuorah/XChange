@@ -146,7 +146,7 @@ public class ANXAdapterTest {
     assertThat(trade.getPrice()).isEqualTo(655.0);
     assertThat(trade.getId()).isEqualTo("1402189342525");
     assertThat(trade.getType()).isEqualTo(OrderType.BID);
-    assertThat(trade.getTimestamp().getTime()).isEqualTo(1402189342525L);
+    assertThat(trade.getTimestamp().longValue()).isEqualTo(1402189342525L);
   }
 
   @Test

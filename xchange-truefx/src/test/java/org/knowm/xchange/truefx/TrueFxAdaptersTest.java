@@ -17,7 +17,7 @@ import org.knowm.xchange.truefx.service.TrueFxMarketDataServiceRaw;
 
 public class TrueFxAdaptersTest {
   @Test
-  public void adaptTickerTest() throws JsonParseException, JsonMappingException, IOException {
+  public void adaptTickerTest() throws IOException {
     InputStream is = getClass().getResourceAsStream("/marketdata/example-ticker.csv");
 
     Exchange exchange = ExchangeFactory.INSTANCE.createExchange(TrueFxExchange.class.getName());
@@ -29,7 +29,7 @@ public class TrueFxAdaptersTest {
     Ticker ticker = TrueFxAdapters.adaptTicker(rawTicker);
 
     assertThat(ticker.getCurrencyPair()).isEqualTo(CurrencyPair.GBP_USD);
-    assertThat(ticker.getTimestamp().getTime()).isEqualTo(1490388297563L);
+    assertThat(ticker.getTimestamp()).isEqualTo(1490388297563L);
     assertThat(ticker.getBid()).isEqualTo(1.24876);
     assertThat(ticker.getAsk()).isEqualTo(1.24886);
     assertThat(ticker.getLow()).isEqualTo(1.24689);

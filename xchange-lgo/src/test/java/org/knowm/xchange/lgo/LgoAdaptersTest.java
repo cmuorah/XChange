@@ -6,10 +6,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TimeZone;
@@ -66,7 +66,7 @@ public class LgoAdaptersTest {
   public void adaptsKeysIndex() throws IOException {
     InputStream is =
         LgoAdaptersTest.class.getResourceAsStream("/org/knowm/xchange/lgo/key/index.txt");
-    String indexFile = IOUtils.toString(is, "ASCII");
+    String indexFile = IOUtils.toString(is, StandardCharsets.US_ASCII);
 
     List<LgoKey> keys = LgoAdapters.adaptKeysIndex(indexFile).collect(Collectors.toList());
 
@@ -87,22 +87,19 @@ public class LgoAdaptersTest {
 
   @Test
   public void adaptsBidLimitOrder() {
-    Date now = new Date();
-    LimitOrder limitOrder =
-        new LimitOrder(
-            OrderType.BID, new Double("1"), CurrencyPair.BTC_USD, null, now, new Double("6000"));
-
+    long now = System.currentTimeMillis();
+    LimitOrder limitOrder = new LimitOrder(OrderType.BID, new Double("1"), CurrencyPair.BTC_USD, null, now, new Double("6000"));
     LgoPlaceOrder bidOrder = LgoAdapters.adaptLimitOrder(limitOrder);
 
     assertThat(bidOrder)
         .isEqualToComparingFieldByField(
             new LgoPlaceLimitOrder(
-                0, "B", "BTC-USD", new Double("1"), new Double("6000"), now.toInstant()));
+                0, "B", "BTC-USD", new Double("1"), new Double("6000"), Instant.ofEpochMilli(now)));
   }
 
   @Test
   public void adaptsAskLimitOrder() {
-    Date timestamp = new Date();
+    long timestamp = System.currentTimeMillis();
     LimitOrder limitOrder =
         new LimitOrder(
             OrderType.ASK,
@@ -113,29 +110,24 @@ public class LgoAdaptersTest {
             new Double("6000"));
 
     LgoPlaceOrder bidOrder = LgoAdapters.adaptLimitOrder(limitOrder);
-
-    assertThat(bidOrder)
-        .isEqualToComparingFieldByField(
-            new LgoPlaceLimitOrder(
-                0, "S", "BTC-USD", new Double("1"), new Double("6000"), timestamp.toInstant()));
+    assertThat(bidOrder).isEqualToComparingFieldByField(new LgoPlaceLimitOrder(0, "S", "BTC-USD", new Double("1"), new Double("6000"), Instant.ofEpochMilli(timestamp)));
   }
 
   @Test
   public void adaptsBidMarketOrder() {
-    Date now = new Date();
-    MarketOrder marketOrder =
-        new MarketOrder(OrderType.BID, new Double("1"), CurrencyPair.BTC_USD, null, now);
+    long now = System.currentTimeMillis();
+    MarketOrder marketOrder = new MarketOrder(OrderType.BID, new Double("1"), CurrencyPair.BTC_USD, null, now);
 
     LgoPlaceOrder bidOrder = LgoAdapters.adaptMarketOrder(marketOrder);
 
     assertThat(bidOrder)
         .isEqualToComparingFieldByField(
-            new LgoPlaceMarketOrder(0, "B", "BTC-USD", new Double("1"), now.toInstant()));
+            new LgoPlaceMarketOrder(0, "B", "BTC-USD", new Double("1"), Instant.ofEpochMilli(now)));
   }
 
   @Test
   public void adaptsAskMarketOrder() {
-    Date timestamp = new Date();
+    long timestamp = System.currentTimeMillis();
     MarketOrder marketOrder =
         new MarketOrder(OrderType.ASK, new Double("1"), CurrencyPair.BTC_USD, null, timestamp);
 
@@ -143,7 +135,7 @@ public class LgoAdaptersTest {
 
     assertThat(bidOrder)
         .isEqualToComparingFieldByField(
-            new LgoPlaceMarketOrder(0, "S", "BTC-USD", new Double("1"), timestamp.toInstant()));
+            new LgoPlaceMarketOrder(0, "S", "BTC-USD", new Double("1"), Instant.ofEpochMilli(timestamp)));
   }
 
   @Test
@@ -179,7 +171,7 @@ public class LgoAdaptersTest {
                 new Double("0.00500000"),
                 CurrencyPair.BTC_USD,
                 new Double("3854.0000"),
-                dateFormat.parse("2019-03-05T16:37:17.220Z"),
+                dateFormat.parse("2019-03-05T16:37:17.220Z").getTime(),
                 "2",
                 "155180383648300001",
                 new Double("0.0096"),
@@ -191,7 +183,7 @@ public class LgoAdaptersTest {
                 new Double("0.00829566"),
                 CurrencyPair.BTC_USD,
                 new Double("2410.9000"),
-                dateFormat.parse("2019-06-20T15:37:21.855Z"),
+                dateFormat.parse("2019-06-20T15:37:21.855Z").getTime(),
                 "2477363",
                 "156104504046400001",
                 new Double("0.0100"),

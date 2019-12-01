@@ -1,13 +1,9 @@
 package org.knowm.xchange.okcoin.v3.service;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
+import org.knowm.xchange.dto.marketdata.Trade;
 import org.knowm.xchange.dto.marketdata.Trades.TradeSortType;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.OpenOrders;
@@ -24,6 +20,12 @@ import org.knowm.xchange.service.trade.params.orders.DefaultOpenOrdersParamCurre
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParamCurrencyPair;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class OkexTradeService extends OkexTradeServiceRaw implements TradeService {
 
   private static final int orders_limit = 100;
@@ -37,7 +39,7 @@ public class OkexTradeService extends OkexTradeServiceRaw implements TradeServic
   public String placeLimitOrder(LimitOrder o) throws IOException {
 
     // 0: Normal limit order (Unfilled and 0 represent normal limit order) 1: Post only 2: Fill Or
-    // Kill 3: Immediatel Or Cancel
+    // Kill 3: Immediate Or Cancel
     OrderPlacementType orderType =
         o.hasFlag(OkexOrderFlags.POST_ONLY)
             ? OrderPlacementType.post_only
@@ -102,7 +104,7 @@ public class OkexTradeService extends OkexTradeServiceRaw implements TradeServic
 
     String from = null;
     List<OkexOpenOrder> all = new ArrayList<>();
-    boolean stop = false;
+    boolean stop;
     do {
 
       List<OkexOpenOrder> l = getSpotOrderList(instrument, from, null, orders_limit, state);
@@ -140,7 +142,7 @@ public class OkexTradeService extends OkexTradeServiceRaw implements TradeServic
 
     String from = null;
     List<OkexOpenOrder> allOrdersWithTrades = new ArrayList<>();
-    boolean stop = false;
+    boolean stop;
     do {
       List<OkexOpenOrder> l = getSpotOrderList(instrument, from, to, orders_limit, state);
       allOrdersWithTrades.addAll(l);
@@ -165,8 +167,8 @@ public class OkexTradeService extends OkexTradeServiceRaw implements TradeServic
                     t -> {
                       CurrencyPair p = OkexAdaptersV3.toPair(t.getInstrumentId());
 
-                      Double amount = null;
-                      Currency feeCurrency = null;
+                      Double amount;
+                      Currency feeCurrency;
 
                       if (o.getSide() == Side.buy) { // the same side as the order!
                         amount = t.getSize();
@@ -183,7 +185,7 @@ public class OkexTradeService extends OkexTradeServiceRaw implements TradeServic
                               .orderId(o.getOrderId())
                               .originalAmount(amount)
                               .price(t.getPrice())
-                              .timestamp(t.getTimestamp())
+                              .timestamp(t.getTimestamp().getTime())
                               .type(o.getSide() == Side.buy ? OrderType.BID : OrderType.ASK)
                               .feeAmount(t.getFee())
                               .feeCurrency(feeCurrency)
@@ -195,14 +197,14 @@ public class OkexTradeService extends OkexTradeServiceRaw implements TradeServic
             throw new ExchangeException("Could not fetch transactions for " + o, e);
           }
         });
-    Collections.sort(userTrades, (t1, t2) -> t1.getTimestamp().compareTo(t2.getTimestamp()));
+    userTrades.sort(Comparator.comparing(Trade::getTimestamp));
     return new UserTrades(userTrades, TradeSortType.SortByTimestamp);
   }
 
   private List<OkexTransaction> fetchTradesForOrder(OkexOpenOrder o) throws IOException {
     String from = null;
     List<OkexTransaction> all = new ArrayList<>();
-    boolean stop = false;
+    boolean stop;
     do {
       List<OkexTransaction> l =
           getSpotTransactionDetails(o.getOrderId(), o.getInstrumentId(), from, null, null);

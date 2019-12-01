@@ -59,7 +59,7 @@ public class BitmexOrderReplaceTest {
             originalOrderSize,
             CurrencyPair.XBT_USD,
             nosOrdId,
-            new Date(),
+            System.currentTimeMillis(),
             price);
     String orderId = tradeService.placeLimitOrder(limitOrder);
 

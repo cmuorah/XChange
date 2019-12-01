@@ -68,7 +68,7 @@ public class CampBXTradeService extends CampBXTradeServiceRaw implements TradeSe
                   cbo.getQuantity(),
                   CurrencyPair.BTC_USD,
                   id,
-                  cbo.getOrderEntered(),
+                  cbo.getOrderEntered().getTime(),
                   price));
         }
       }
@@ -85,7 +85,7 @@ public class CampBXTradeService extends CampBXTradeServiceRaw implements TradeSe
                   cbo.getQuantity(),
                   CurrencyPair.BTC_USD,
                   id,
-                  cbo.getOrderEntered(),
+                  cbo.getOrderEntered().getTime(),
                   price));
         }
       }
@@ -156,7 +156,7 @@ public class CampBXTradeService extends CampBXTradeServiceRaw implements TradeSe
   }
 
   @Override
-  public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
+  public UserTrades getTradeHistory(TradeHistoryParams params) {
 
     throw new NotAvailableFromExchangeException();
   }

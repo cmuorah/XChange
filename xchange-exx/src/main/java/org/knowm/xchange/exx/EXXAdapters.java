@@ -1,10 +1,5 @@
 package org.knowm.xchange.exx;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -25,16 +20,17 @@ import org.knowm.xchange.exx.dto.marketdata.EXXTicker;
 import org.knowm.xchange.exx.dto.marketdata.EXXTickerResponse;
 import org.knowm.xchange.exx.dto.marketdata.EXXTransaction;
 import org.knowm.xchange.exx.dto.trade.EXXOrder;
-import org.knowm.xchange.exx.utils.CommonUtil;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class EXXAdapters {
 
   private EXXAdapters() {}
 
-  /**
-   * @param pair
-   * @return
-   */
+
   public static String toSymbol(CurrencyPair pair) {
     if (pair.equals(CurrencyPair.IOTA_BTC)) {
       return "IOTABTC";
@@ -42,10 +38,7 @@ public class EXXAdapters {
     return pair.base.getCurrencyCode() + pair.counter.getCurrencyCode();
   }
 
-  /**
-   * @param currency
-   * @return
-   */
+
   public static String toSymbol(Currency currency) {
     if (Currency.IOT.equals(currency)) {
       return "IOTA";
@@ -57,10 +50,7 @@ public class EXXAdapters {
     return currencyPair.base.getCurrencyCode() + currencyPair.counter.getCurrencyCode();
   }
 
-  /**
-   * @param ticker
-   * @return
-   */
+
   public static Ticker convertTicker(EXXTickerResponse exxTickerResponse) {
     EXXTicker ticker = exxTickerResponse.getTicker();
 
@@ -71,12 +61,12 @@ public class EXXAdapters {
         .low(ticker.getLow())
         .volume(ticker.getVol())
         .last(ticker.getLast())
-        .timestamp(CommonUtil.timeStampToDate(exxTickerResponse.getDate()))
+        .timestamp(exxTickerResponse.getDate())
         .build();
   }
 
   public static List<Ticker> convertTickerMap(Map<String, EXXTicker> exxTickers) {
-    List<Ticker> tickers = new ArrayList<Ticker>();
+    List<Ticker> tickers = new ArrayList<>();
 
     for (Map.Entry<String, EXXTicker> exxTickerMap : exxTickers.entrySet()) {
       String pair = exxTickerMap.getKey();
@@ -106,12 +96,11 @@ public class EXXAdapters {
    * Adapts a to a OrderBook Object
    *
    * @param currencyPair (e.g. BTC/USD)
-   * @param timeScale polled order books provide a timestamp in seconds, stream in ms
    * @return The XChange OrderBook
    */
   public static OrderBook adaptOrderBook(EXXOrderbook exxOrderbook, CurrencyPair currencyPair) {
-    List<LimitOrder> asks = new ArrayList<LimitOrder>();
-    List<LimitOrder> bids = new ArrayList<LimitOrder>();
+    List<LimitOrder> asks = new ArrayList<>();
+    List<LimitOrder> bids = new ArrayList<>();
 
     for (Double[] exxAsk : exxOrderbook.getAsks()) {
       asks.add(new LimitOrder(OrderType.ASK, exxAsk[1], currencyPair, null, null, exxAsk[0]));
@@ -121,7 +110,7 @@ public class EXXAdapters {
       bids.add(new LimitOrder(OrderType.BID, exxBid[1], currencyPair, null, null, exxBid[0]));
     }
 
-    return new OrderBook(new Date(), asks, bids);
+    return new OrderBook(System.currentTimeMillis(), asks, bids);
   }
 
   /**
@@ -146,7 +135,7 @@ public class EXXAdapters {
               .id(String.valueOf(transaction.getTid()))
               .originalAmount((transaction.getAmount()))
               .price(transaction.getPrice())
-              .timestamp(new Date(transaction.getDate()))
+              .timestamp(transaction.getDate())
               .currencyPair(currencyPair)
               .type(orderType)
               .build());
@@ -155,12 +144,9 @@ public class EXXAdapters {
     return new Trades(trades, lastTradeId, TradeSortType.SortByID);
   }
 
-  /**
-   * @param exxAccountInformation
-   * @return
-   */
+
   public static AccountInfo convertBalance(EXXAccountInformation exxAccountInformation) {
-    List<Balance> balances = new ArrayList<Balance>();
+    List<Balance> balances = new ArrayList<>();
 
     Map<String, EXXBalance> exxBalances = exxAccountInformation.getBalances();
 
@@ -188,7 +174,7 @@ public class EXXAdapters {
       openOrders.add(
           new LimitOrder.Builder(convertType(exxOrder.getType()), currencyPair)
               .id(exxOrder.getId())
-              .timestamp(new Date(exxOrder.getTradeDate()))
+              .timestamp(exxOrder.getTradeDate())
               .limitPrice(exxOrder.getPrice())
               .originalAmount(exxOrder.getTotalAmount())
               .build());

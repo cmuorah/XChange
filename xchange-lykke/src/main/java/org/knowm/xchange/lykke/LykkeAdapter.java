@@ -64,7 +64,7 @@ public class LykkeAdapter {
               Math.abs(lykkePrices.getVolume()),
               currencyPair,
               null,
-              DateUtils.fromISO8601DateString(lykkeOrderBook.getTimestamp()),
+              DateUtils.fromISO8601DateString(lykkeOrderBook.getTimestamp()).getTime(),
               lykkePrices.getPrice()));
     }
 
@@ -90,7 +90,7 @@ public class LykkeAdapter {
         Math.abs(lykkeOrder.getVolume()),
         adaptToCurrencyPair(currencyPairList, lykkeOrder.getAssetPairId()),
         lykkeOrder.getId(),
-        DateUtils.fromISO8601DateString(lykkeOrder.getCreatedAt()),
+        DateUtils.fromISO8601DateString(lykkeOrder.getCreatedAt()).getTime(),
         lykkeOrder.getPrice());
   }
 
@@ -113,7 +113,7 @@ public class LykkeAdapter {
         Math.abs(tradeHistory.getVolume()),
         adaptToCurrencyPair(currencyPairList, tradeHistory.getAssetPairId()),
         tradeHistory.getPrice(),
-        DateUtils.fromISO8601DateString(tradeHistory.getCreatedAt()),
+        DateUtils.fromISO8601DateString(tradeHistory.getCreatedAt()).getTime(),
         tradeHistory.getId(), // .substring(tradeHistory.getId().lastIndexOf('_')+1
         tradeHistory.getId(),
         null,

@@ -45,7 +45,7 @@ public class LunoMarketDataService extends LunoBaseService implements MarketData
         .ask(t.ask)
         .bid(t.bid)
         .last(t.lastTrade)
-        .timestamp(t.getTimestamp())
+        .timestamp(t.getTimestamp().getTime())
         .volume(t.rolling24HourVolume)
         .build();
   }
@@ -54,7 +54,7 @@ public class LunoMarketDataService extends LunoBaseService implements MarketData
   public OrderBook getOrderBook(CurrencyPair currencyPair, Object... args) throws IOException {
     LunoOrderBook ob = lunoAPI.orderbook(LunoUtil.toLunoPair(currencyPair));
     return new OrderBook(
-        ob.getTimestamp(),
+        ob.getTimestamp().getTime(),
         convert(ob.getAsks(), currencyPair, OrderType.ASK),
         convert(ob.getBids(), currencyPair, OrderType.BID));
   }
@@ -82,7 +82,7 @@ public class LunoMarketDataService extends LunoBaseService implements MarketData
               lt.volume,
               currencyPair,
               lt.price,
-              lt.getTimestamp(),
+              lt.getTimestamp().getTime(),
               null));
     }
     return new Trades(list, TradeSortType.SortByTimestamp);

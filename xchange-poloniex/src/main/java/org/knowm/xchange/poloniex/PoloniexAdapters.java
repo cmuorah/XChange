@@ -116,7 +116,7 @@ public class PoloniexAdapters {
         poloniexTrade.getAmount(),
         currencyPair,
         poloniexTrade.getRate(),
-        timestamp,
+        timestamp.getTime(),
         poloniexTrade.getTradeID());
   }
 
@@ -149,7 +149,7 @@ public class PoloniexAdapters {
                 poloniexLoan.getAmount(),
                 poloniexLoan.getRange(),
                 poloniexLoan.getId(),
-                date,
+                date.getTime(),
                 poloniexLoan.getRate())); // TODO
       }
       loans.put(item.getKey(), loanOrders);
@@ -185,7 +185,7 @@ public class PoloniexAdapters {
         .originalAmount(openOrder.getStartingAmount())
         .cumulativeAmount(openOrder.getStartingAmount() - openOrder.getAmount())
         .id(openOrder.getOrderNumber())
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -217,7 +217,7 @@ public class PoloniexAdapters {
         amount,
         currencyPair,
         price,
-        date,
+        date.getTime(),
         tradeId,
         orderId,
         feeAmount,
@@ -259,7 +259,7 @@ public class PoloniexAdapters {
       fundingRecords.add(
           new FundingRecord(
               null,
-              a.getTimestamp(),
+              a.getTimestamp().getTime(),
               Currency.getInstance(a.getCurrency()),
               a.getAmount(),
               null,
@@ -282,7 +282,7 @@ public class PoloniexAdapters {
       fundingRecords.add(
           new FundingRecord(
               d.getAddress(),
-              d.getTimestamp(),
+              d.getTimestamp().getTime(),
               Currency.getInstance(d.getCurrency()),
               d.getAmount(),
               String.valueOf(d.getDepositNumber()),
@@ -305,7 +305,7 @@ public class PoloniexAdapters {
       fundingRecords.add(
           new FundingRecord(
               w.getAddress(),
-              w.getTimestamp(),
+              w.getTimestamp().getTime(),
               Currency.getInstance(w.getCurrency()),
               w.getAmount(),
               String.valueOf(w.getWithdrawalNumber()),

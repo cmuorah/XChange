@@ -56,7 +56,7 @@ public class BiboxAdapters {
         .low(ticker.getLow())
         .last(ticker.getLast())
         .volume(ticker.getVol())
-        .timestamp(new Date(ticker.getTimestamp()))
+        .timestamp(ticker.getTimestamp())
         .build();
   }
 
@@ -82,7 +82,7 @@ public class BiboxAdapters {
 
   public static OrderBook adaptOrderBook(BiboxOrderBook orderBook, CurrencyPair currencyPair) {
     return new OrderBook(
-        new Date(orderBook.getUpdateTime()),
+        orderBook.getUpdateTime(),
         orderBook.getAsks().stream()
             .map(e -> adaptOrderBookOrder(e, OrderType.ASK, currencyPair))
             .collect(Collectors.toList()),
@@ -111,7 +111,7 @@ public class BiboxAdapters {
         new CurrencyPair(biboxOrder.getCoinSymbol(), biboxOrder.getCurrencySymbol());
     return new LimitOrder.Builder(biboxOrder.getOrderSide().getOrderType(), currencyPair)
         .id(String.valueOf(biboxOrder.getId()))
-        .timestamp(new Date(biboxOrder.getCreatedAt()))
+        .timestamp(biboxOrder.getCreatedAt())
         .limitPrice(biboxOrder.getPrice())
         .originalAmount(biboxOrder.getAmount())
         .cumulativeAmount(biboxOrder.getDealAmount())
@@ -145,7 +145,7 @@ public class BiboxAdapters {
         .currencyPair(new CurrencyPair(order.getCoinSymbol(), order.getCurrencySymbol()))
         .price(order.getPrice())
         .originalAmount(order.getAmount())
-        .timestamp(new Date(order.getCreatedAt()))
+        .timestamp(order.getCreatedAt())
         .type(order.getOrderSide().getOrderType())
         .feeCurrency(Currency.getInstance(order.getFeeSymbol()))
         .feeAmount(order.getFee())
@@ -169,7 +169,7 @@ public class BiboxAdapters {
   public static FundingRecord adaptDeposit(BiboxDeposit d) {
     return new FundingRecord(
         d.to,
-        d.getCreatedAt(),
+        d.getCreatedAt().getTime(),
         Currency.getInstance(d.coinSymbol),
         d.amount,
         null,
@@ -184,7 +184,7 @@ public class BiboxAdapters {
   public static FundingRecord adaptDeposit(BiboxWithdrawal w) {
     return new FundingRecord(
         w.toAddress,
-        w.getCreatedAt(),
+        w.getCreatedAt().getTime(),
         Currency.getInstance(w.coinSymbol),
         w.amountReal,
         null,
@@ -219,7 +219,7 @@ public class BiboxAdapters {
                         d.getAmount(),
                         currencyPair,
                         d.getPrice(),
-                        new Date(d.getTime()),
+                        d.getTime(),
                         d.getId()))
             .collect(Collectors.toList());
     return new Trades(trades, TradeSortType.SortByTimestamp);

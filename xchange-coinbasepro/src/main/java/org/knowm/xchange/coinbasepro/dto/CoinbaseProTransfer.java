@@ -1,9 +1,7 @@
 package org.knowm.xchange.coinbasepro.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.knowm.xchange.coinbasepro.CoinbaseProAdapters;
 import org.knowm.xchange.dto.account.FundingRecord;
 
 /*
@@ -183,24 +181,24 @@ public class CoinbaseProTransfer {
     return createdAt;
   }
 
-  public Date createdAt() {
-    return parse(createdAt);
+  public Long createdAt() {
+    return CoinbaseProAdapters.parseDate(createdAt);
   }
 
   public String getCanceledAt() {
     return canceledAt;
   }
 
-  public Date canceledAt() {
-    return parse(canceledAt);
+  public Long canceledAt() {
+    return CoinbaseProAdapters.parseDate(canceledAt);
   }
 
   public String getProcessedAt() {
     return processedAt;
   }
 
-  public Date processedAt() {
-    return parse(processedAt);
+  public Long processedAt() {
+    return CoinbaseProAdapters.parseDate(processedAt);
   }
 
   public String getAmount() {
@@ -215,15 +213,6 @@ public class CoinbaseProTransfer {
     return details;
   }
 
-  private static Date parse(String time) {
-    try {
-      return time == null
-          ? null
-          : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSZ").parse(time + "00");
-    } catch (ParseException e) {
-      throw new IllegalStateException("Cannot parse '" + time + "'", e);
-    }
-  }
 
   @Override
   public String toString() {

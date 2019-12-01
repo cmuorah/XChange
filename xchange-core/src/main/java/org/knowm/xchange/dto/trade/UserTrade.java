@@ -1,6 +1,5 @@
 package org.knowm.xchange.dto.trade;
 
-import java.util.Date;
 import java.util.Objects;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -42,7 +41,7 @@ public class UserTrade extends Trade {
       Double originalAmount,
       CurrencyPair currencyPair,
       Double price,
-      Date timestamp,
+      Long timestamp,
       String id,
       String orderId,
       Double feeAmount,
@@ -152,7 +151,7 @@ public class UserTrade extends Trade {
     }
 
     @Override
-    public Builder timestamp(Date timestamp) {
+    public Builder timestamp(Long timestamp) {
       return (Builder) super.timestamp(timestamp);
     }
 

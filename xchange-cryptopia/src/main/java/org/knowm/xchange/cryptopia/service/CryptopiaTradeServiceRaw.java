@@ -64,7 +64,7 @@ public class CryptopiaTradeServiceRaw extends CryptopiaBaseService {
               originalAmount,
               pair,
               id,
-              timestamp,
+              timestamp.getTime(),
               limitPrice,
               averagePrice,
               cumulativeAmount,
@@ -126,11 +126,10 @@ public class CryptopiaTradeServiceRaw extends CryptopiaBaseService {
       Date timestamp = CryptopiaAdapters.convertTimestamp(map.get("TimeStamp").toString());
       String id = map.get("TradeId").toString();
       Double fee = new Double(map.get("Fee").toString());
-      String orderId = id;
 
       CurrencyPair pair = new CurrencyPair(map.get("Market").toString());
       Currency feeCcy = pair.counter;
-      results.add(new UserTrade(type, amount, pair, price, timestamp, id, orderId, fee, feeCcy));
+      results.add(new UserTrade(type, amount, pair, price, timestamp.getTime(), id, id, fee, feeCcy));
     }
 
     return results;

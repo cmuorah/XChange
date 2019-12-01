@@ -150,7 +150,7 @@ public class QuoineAdapters {
                 model.getFilledQuantity(),
                 currencyPair,
                 model.getId(),
-                timestamp,
+                timestamp.getTime(),
                 model.getPrice());
 
         openOrders.add(limitOrder);
@@ -195,7 +195,7 @@ public class QuoineAdapters {
               execution.quantity,
               currencyPair,
               execution.price,
-              DateUtils.fromUnixTime(execution.createdAt),
+              DateUtils.fromUnixTime(execution.createdAt).getTime(),
               execution.id,
               execution.orderId,
               null,
@@ -219,7 +219,7 @@ public class QuoineAdapters {
 
     return new FundingRecord(
         null,
-        DateUtils.fromUnixTime(transaction.createdAt),
+        DateUtils.fromUnixTime(transaction.createdAt).getTime(),
         currency,
         transaction.gross_amount,
         transaction.id,

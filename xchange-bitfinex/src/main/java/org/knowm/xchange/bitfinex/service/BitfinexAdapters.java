@@ -164,7 +164,7 @@ public final class BitfinexAdapters {
         adaptOrders(btceDepth.getBids(), currencyPair, OrderType.BID);
 
     return new OrderBook(
-        new Date(Math.max(asksOrdersContainer.getTimestamp(), bidsOrdersContainer.getTimestamp())),
+        Math.max(asksOrdersContainer.getTimestamp(), bidsOrdersContainer.getTimestamp()),
         asksOrdersContainer.getLimitOrders(),
         bidsOrdersContainer.getLimitOrders());
   }
@@ -201,7 +201,7 @@ public final class BitfinexAdapters {
       OrderType orderType,
       Date timestamp) {
 
-    return new LimitOrder(orderType, originalAmount, currencyPair, "", timestamp, price);
+    return new LimitOrder(orderType, originalAmount, currencyPair, "", timestamp.getTime(), price);
   }
 
   public static List<FixedRateLoanOrder> adaptFixedRateLoanOrders(
@@ -280,7 +280,7 @@ public final class BitfinexAdapters {
     Date date =
         DateUtils.fromMillisUtc(trade.getTimestamp() * 1000L); // Bitfinex uses Unix timestamps
     final String tradeId = String.valueOf(trade.getTradeId());
-    return new Trade(orderType, amount, currencyPair, price, date, tradeId);
+    return new Trade(orderType, amount, currencyPair, price, date.getTime(), tradeId);
   }
 
   public static Trades adaptTrades(BitfinexTrade[] trades, CurrencyPair currencyPair) {
@@ -316,7 +316,7 @@ public final class BitfinexAdapters {
         .high(high)
         .low(low)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -384,7 +384,7 @@ public final class BitfinexAdapters {
                   order.getOriginalAmount(),
                   currencyPair,
                   String.valueOf(order.getId()),
-                  timestamp,
+                  timestamp.getTime(),
                   order.getPrice(),
                   order.getAvgExecutionPrice(),
                   order.getExecutedAmount(),
@@ -398,7 +398,7 @@ public final class BitfinexAdapters {
                   order.getOriginalAmount(),
                   currencyPair,
                   String.valueOf(order.getId()),
-                  timestamp,
+                  timestamp.getTime(),
                   order.getPrice(),
                   null,
                   order.getAvgExecutionPrice(),
@@ -510,7 +510,7 @@ public final class BitfinexAdapters {
               trade.getAmount(),
               currencyPair,
               trade.getPrice(),
-              timestamp,
+              timestamp.getTime(),
               trade.getTradeId(),
               trade.getOrderId(),
               fee,
@@ -702,7 +702,7 @@ public final class BitfinexAdapters {
       FundingRecord fundingRecordEntry =
           new FundingRecord(
               address,
-              responseEntry.getTimestamp(),
+              responseEntry.getTimestamp().getTime(),
               currency,
               responseEntry.getAmount(),
               String.valueOf(responseEntry.getId()),
@@ -764,7 +764,7 @@ public final class BitfinexAdapters {
     Date date = DateUtils.fromMillisUtc(trade.getTimestamp());
     final String tradeId = String.valueOf(trade.getTradeId());
     return new Trade(
-        orderType, amount == null ? null : Math.abs(amount), currencyPair, price, date, tradeId);
+        orderType, amount == null ? null : Math.abs(amount), currencyPair, price, date.getTime(), tradeId);
   }
 
   public static Trades adaptPublicTrades(BitfinexPublicTrade[] trades, CurrencyPair currencyPair) {

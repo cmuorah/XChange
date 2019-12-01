@@ -48,7 +48,7 @@ public class CryptoFacilitiesAdapters {
       builder.low(cryptoFacilitiesTicker.getLow24H());
       builder.high(cryptoFacilitiesTicker.getHigh24H());
       builder.volume(cryptoFacilitiesTicker.getVol24H());
-      builder.timestamp(cryptoFacilitiesTicker.getLastTime());
+      builder.timestamp(cryptoFacilitiesTicker.getLastTime().getTime());
 
       return builder.build();
     }
@@ -141,7 +141,7 @@ public class CryptoFacilitiesAdapters {
         ord.getQuantity(),
         new CurrencyPair(ord.getSymbol(), ord.getSymbol().substring(6, 9)),
         ord.getId(),
-        ord.getTimestamp(),
+        ord.getTimestamp().getTime(),
         ord.getLimitPrice(),
         0d,
         ord.getFilled(),
@@ -171,11 +171,11 @@ public class CryptoFacilitiesAdapters {
         fill.getSize(),
         new CurrencyPair(fill.getSymbol(), fill.getSymbol().substring(6, 9)),
         fill.getPrice(),
-        fill.getFillTime(),
+        fill.getFillTime().getTime(),
         fill.getFillId(),
         fill.getOrderId(),
         null,
-        (Currency) null);
+            null);
   }
 
   public static UserTrades adaptFills(CryptoFacilitiesFills cryptoFacilitiesFills) {
@@ -202,7 +202,7 @@ public class CryptoFacilitiesAdapters {
             cryptoFacilitiesOrderBook.getCurrencyPair(),
             Order.OrderType.BID,
             cryptoFacilitiesOrderBook.getBids());
-    return new OrderBook(cryptoFacilitiesOrderBook.getServerTime(), asks, bids);
+    return new OrderBook(cryptoFacilitiesOrderBook.getServerTime().getTime(), asks, bids);
   }
 
   public static List<LimitOrder> createOrders(

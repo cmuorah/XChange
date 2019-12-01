@@ -99,7 +99,7 @@ public class CryptopiaAccountServiceRaw extends CryptopiaBaseService {
       FundingRecord fundingRecord =
           new FundingRecord(
               address,
-              timeStamp,
+              timeStamp.getTime(),
               currency,
               new Double(map.get("Amount").toString()),
               map.get("Id").toString(),

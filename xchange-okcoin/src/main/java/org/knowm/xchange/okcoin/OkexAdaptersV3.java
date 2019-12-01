@@ -67,7 +67,7 @@ public class OkexAdaptersV3 {
    */
   public static CurrencyPair toPair(String instrument) {
     String[] split = instrument.split("-");
-    if (split == null || split.length < 2) {
+    if (split.length < 2) {
       throw new ExchangeException("Not supported instrument: " + instrument);
     }
     return new CurrencyPair(split[0], split[1]);
@@ -81,7 +81,7 @@ public class OkexAdaptersV3 {
         .ask(i.getAsk())
         .volume(i.getBaseVolume24h())
         .quoteVolume(i.getQuoteVolume24h())
-        .timestamp(i.getTimestamp())
+        .timestamp(i.getTimestamp().getTime())
         .build();
   }
 
@@ -91,7 +91,7 @@ public class OkexAdaptersV3 {
         .id(o.getOrderId())
         .limitPrice(o.getPrice())
         .originalAmount(o.getSize())
-        .timestamp(o.getCreatedAt())
+        .timestamp(o.getCreatedAt().getTime())
         .build();
   }
 
@@ -100,7 +100,7 @@ public class OkexAdaptersV3 {
         .setAddress(r.getTo())
         .setAmount(r.getAmount())
         .setCurrency(Currency.getInstance(r.getCurrency()))
-        .setDate(r.getTimestamp())
+        .setDate(r.getTimestamp().getTime())
         .setInternalId(r.getWithdrawalId())
         .setStatus(convertWithdrawalStatus(r.getStatus()))
         .setBlockchainTransactionHash(r.getTxid())
@@ -137,7 +137,7 @@ public class OkexAdaptersV3 {
         .setAddress(r.getTo())
         .setAmount(r.getAmount())
         .setCurrency(Currency.getInstance(r.getCurrency()))
-        .setDate(r.getTimestamp())
+        .setDate(r.getTimestamp().getTime())
         .setStatus(convertDepositStatus(r.getStatus()))
         .setBlockchainTransactionHash(r.getTxid())
         .setType(Type.DEPOSIT)

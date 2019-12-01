@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +16,7 @@ import org.knowm.xchange.dto.trade.LimitOrder;
 public class OrderBookTest {
 
   private OrderBook orderBook;
+  private long timeStamp = System.currentTimeMillis();
 
   @Before
   public void setUp() {
@@ -26,13 +26,11 @@ public class OrderBookTest {
 
     List<LimitOrder> asks = new ArrayList<>(Collections.singletonList(askOrder));
     List<LimitOrder> bids = new ArrayList<>(Collections.singletonList(bidOrder));
-    Date timeStamp = new Date(0);
     orderBook = new OrderBook(timeStamp, asks, bids);
   }
 
   @Test
   public void testUpdateAddOrder() {
-    Date timeStamp = new Date(0);
     OrderBookUpdate lowerBidUpdate =
         new OrderBookUpdate(OrderType.BID, 1d, CurrencyPair.BTC_USD, 10d - (1d), timeStamp, 1d);
     orderBook.update(lowerBidUpdate);
@@ -41,7 +39,6 @@ public class OrderBookTest {
 
   @Test
   public void testUpdateRemoveOrder() {
-    Date timeStamp = new Date(0);
     OrderBookUpdate lowerBidUpdate =
         new OrderBookUpdate(OrderType.BID, 1d, CurrencyPair.BTC_USD, 10d, timeStamp, 0d);
     orderBook.update(lowerBidUpdate);
@@ -51,7 +48,6 @@ public class OrderBookTest {
   @Test
   public void testUpdateAddVolume() {
 
-    Date timeStamp = new Date(0);
     OrderBookUpdate lowerBidUpdate =
         new OrderBookUpdate(OrderType.BID, 1d, CurrencyPair.BTC_USD, 10d, timeStamp, 10d);
     orderBook.update(lowerBidUpdate);
@@ -62,10 +58,9 @@ public class OrderBookTest {
   @Test
   public void testDateSame() {
 
-    Date timeStamp = new Date(0);
     OrderBookUpdate lowerBidUpdate =
         new OrderBookUpdate(OrderType.BID, 1d, CurrencyPair.BTC_USD, 10d, timeStamp, 10d);
-    Date oldDate = orderBook.getTimeStamp();
+    Long oldDate = orderBook.getTimeStamp();
     orderBook.update(lowerBidUpdate);
     assertThat(orderBook.getTimeStamp()).isEqualTo(oldDate);
   }
@@ -73,12 +68,11 @@ public class OrderBookTest {
   @Test
   public void testDateOther() {
 
-    Date timeStamp = new Date(10);
     OrderBookUpdate lowerBidUpdate =
         new OrderBookUpdate(OrderType.BID, 1d, CurrencyPair.BTC_USD, 10d, timeStamp, 10d);
-    Date oldDate = orderBook.getTimeStamp();
+    Long oldDate = orderBook.getTimeStamp();
     orderBook.update(lowerBidUpdate);
-    assertThat(orderBook.getTimeStamp()).isAfter(oldDate);
-    assertThat(orderBook.getTimeStamp()).isEqualTo(timeStamp);
+    assertThat(orderBook.getTimeStamp() > (oldDate));
+    assertThat(orderBook.getTimeStamp() == timeStamp);
   }
 }

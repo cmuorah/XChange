@@ -3,7 +3,6 @@ package org.knowm.xchange.dto.trade;
 import org.knowm.xchange.dto.LoanOrder;
 import org.knowm.xchange.dto.Order;
 
-import java.util.Date;
 
 /**
  * DTO representing a floating rate loan order A floating rate loan order is a loan order whose rate
@@ -31,7 +30,7 @@ public final class FloatingRateLoanOrder extends LoanOrder implements Comparable
             Double originalAmount,
             int dayPeriod,
             String id,
-            Date timestamp,
+            Long timestamp,
             Double rate) {
 
         super(type, currency, originalAmount, dayPeriod, id, timestamp);

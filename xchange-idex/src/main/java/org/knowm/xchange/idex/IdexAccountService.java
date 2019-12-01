@@ -7,6 +7,8 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.dto.account.Balance;
@@ -114,13 +116,13 @@ public class IdexAccountService extends BaseExchangeService implements AccountSe
   private final List<FundingRecord> mutableList(
       ReturnDepositsWithdrawalsResponse returnDepositsWithdrawalsPost) {
 
-    return Arrays.asList(
+    return Stream.of(
             returnDepositsWithdrawalsPost.getWithdrawals().stream()
                 .map(
                     fundingLedger ->
                         new FundingRecord(
                             exchange.getExchangeSpecification().getApiKey(),
-                            new Date(Long.parseLong(fundingLedger.getTimestamp()) * 1000),
+                            Long.parseLong(fundingLedger.getTimestamp()) * 1000L,
                             new Currency(fundingLedger.getCurrency()),
                             safeParse(fundingLedger.getAmount()),
                             fundingLedger.getTransactionHash(),
@@ -136,7 +138,7 @@ public class IdexAccountService extends BaseExchangeService implements AccountSe
                     fundingLedger1 ->
                         new FundingRecord(
                             exchange.getExchangeSpecification().getApiKey(),
-                            new Date(Long.parseLong(fundingLedger1.getTimestamp()) * 1000),
+                            Long.parseLong(fundingLedger1.getTimestamp()) * 1000L,
                             new Currency(fundingLedger1.getCurrency()),
                             safeParse(fundingLedger1.getAmount()),
                             fundingLedger1.getTransactionHash(),
@@ -147,7 +149,6 @@ public class IdexAccountService extends BaseExchangeService implements AccountSe
                             0d,
                             ""))
                 .collect(Collectors.toList()))
-        .stream()
         .flatMap(List::stream)
         .sorted(Comparator.comparing(FundingRecord::getDate))
         .collect(Collectors.toList());

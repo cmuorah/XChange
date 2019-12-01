@@ -23,7 +23,7 @@ public class HitbtcMarketOrder extends MarketOrder {
         originalAmount,
         currencyPair,
         id,
-        timestamp,
+        timestamp.getTime(),
         averagePrice,
         cumulativeAmount,
         fee,
@@ -38,7 +38,7 @@ public class HitbtcMarketOrder extends MarketOrder {
       String id,
       Date timestamp,
       String clientOrderId) {
-    super(type, originalAmount, currencyPair, id, timestamp);
+    super(type, originalAmount, currencyPair, id, timestamp.getTime());
     this.clientOrderId = clientOrderId;
   }
 
@@ -48,7 +48,7 @@ public class HitbtcMarketOrder extends MarketOrder {
       CurrencyPair currencyPair,
       Date timestamp,
       String clientOrderId) {
-    super(type, originalAmount, currencyPair, timestamp);
+    super(type, originalAmount, currencyPair, timestamp.getTime());
     this.clientOrderId = clientOrderId;
   }
 

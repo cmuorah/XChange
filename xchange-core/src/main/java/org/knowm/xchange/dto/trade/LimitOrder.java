@@ -3,7 +3,6 @@ package org.knowm.xchange.dto.trade;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 
-import java.util.Date;
 import java.util.Set;
 
 /**
@@ -28,7 +27,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
      * @param originalAmount The amount to trade
      * @param currencyPair   The identifier (e.g. BTC/USD)
      * @param id             An id (usually provided by the exchange)
-     * @param timestamp      a Date object representing the order's timestamp according to the exchange's
+     * @param timestamp      a Long object representing the order's timestamp according to the exchange's
      *                       server, null if not provided
      * @param limitPrice     In a BID this is the highest acceptable price, in an ASK this is the lowest
      *                       acceptable price
@@ -38,7 +37,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
             Double originalAmount,
             CurrencyPair currencyPair,
             String id,
-            Date timestamp,
+            Long timestamp,
             Double limitPrice) {
 
         super(type, originalAmount, currencyPair, id, timestamp);
@@ -51,7 +50,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
      * @param cumulativeAmount The cumulative amount
      * @param currencyPair     The identifier (e.g. BTC/USD)
      * @param id               An id (usually provided by the exchange)
-     * @param timestamp        a Date object representing the order's timestamp according to the exchange's
+     * @param timestamp        a Long object representing the order's timestamp according to the exchange's
      *                         server, null if not provided
      * @param limitPrice       In a BID this is the highest acceptable price, in an ASK this is the lowest
      *                         acceptable price
@@ -62,7 +61,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
             Double cumulativeAmount,
             CurrencyPair currencyPair,
             String id,
-            Date timestamp,
+            Long timestamp,
             Double limitPrice) {
 
         super(
@@ -83,7 +82,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
      * @param originalAmount   The amount to trade
      * @param currencyPair     The identifier (e.g. BTC/USD)
      * @param id               An id (usually provided by the exchange)
-     * @param timestamp        a Date object representing the order's timestamp according to the exchange's
+     * @param timestamp        a Long object representing the order's timestamp according to the exchange's
      *                         server, null if not provided
      * @param limitPrice       In a BID this is the highest acceptable price, in an ASK this is the lowest
      *                         acceptable price
@@ -97,7 +96,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
             Double originalAmount,
             CurrencyPair currencyPair,
             String id,
-            Date timestamp,
+            Long timestamp,
             Double limitPrice,
             Double averagePrice,
             Double cumulativeAmount,
@@ -243,7 +242,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
         }
 
         @Override
-        public Builder timestamp(Date timestamp) {
+        public Builder timestamp(Long timestamp) {
 
             return (Builder) super.timestamp(timestamp);
         }

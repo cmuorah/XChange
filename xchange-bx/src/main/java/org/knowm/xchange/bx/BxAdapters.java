@@ -59,7 +59,7 @@ public class BxAdapters {
     builder.bid(bxTicker.getOrderBook().getBids().getHighBid());
     builder.ask(bxTicker.getOrderBook().getAsks().getHighBid());
     builder.volume(bxTicker.getVolume24hours());
-    builder.timestamp(new Date(nonce.createValue()));
+    builder.timestamp(nonce.createValue());
     return builder.build();
   }
 
@@ -108,7 +108,7 @@ public class BxAdapters {
         bxOrder.getAmount(),
         BxUtils.translateBxCurrencyPair(bxOrder.getPairingId()),
         bxOrder.getOrderId(),
-        adaptDate(bxOrder.getDate()),
+        adaptDate(bxOrder.getDate()).getTime(),
         bxOrder.getRate());
   }
 
@@ -171,7 +171,7 @@ public class BxAdapters {
                 new CurrencyPair(
                     history.getCurrency(), histories.get(indexOfFirstTrade).getCurrency()),
                 Math.abs(histories.get(indexOfFirstTrade).getAmount() / history.getAmount()),
-                adaptDate(history.getDate()),
+                adaptDate(history.getDate()).getTime(),
                 String.valueOf(history.getTransactionId()),
                 String.valueOf(history.getRefId()),
                 (indexOfFee < 0) ? null : Math.abs(histories.get(indexOfFee).getAmount()),

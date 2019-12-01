@@ -62,7 +62,7 @@ public class BitstampTradeService extends BitstampTradeServiceRaw implements Tra
                 bitstampOrder.getAmount(),
                 pair,
                 id,
-                bitstampOrder.getDatetime(),
+                bitstampOrder.getDatetime().getTime(),
                 price));
       }
     }

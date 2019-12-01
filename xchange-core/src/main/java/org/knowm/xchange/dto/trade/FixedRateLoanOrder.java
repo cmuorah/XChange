@@ -1,6 +1,5 @@
 package org.knowm.xchange.dto.trade;
 
-import java.util.Date;
 import org.knowm.xchange.dto.LoanOrder;
 import org.knowm.xchange.dto.Order.OrderType;
 
@@ -32,7 +31,7 @@ public final class FixedRateLoanOrder extends LoanOrder implements Comparable<Fi
       Double originalAmount,
       int dayPeriod,
       String id,
-      Date timestamp,
+      Long timestamp,
       Double rate) {
 
     super(type, currency, originalAmount, dayPeriod, id, timestamp);

@@ -67,7 +67,7 @@ public class DSXAdapters {
     Date date = DateUtils.fromMillisUtc(dSXTrade.getDate() * 1000L);
 
     final String tradeId = String.valueOf(dSXTrade.getTid());
-    return new Trade(orderType, amount, currencyPair, price, date, tradeId);
+    return new Trade(orderType, amount, currencyPair, price, date.getTime(), tradeId);
   }
 
   public static Trades adaptTrades(DSXTrade[] dSXTrades, CurrencyPair currencyPair) {
@@ -105,7 +105,7 @@ public class DSXAdapters {
         .low(low)
         .vwap(avg)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -141,7 +141,7 @@ public class DSXAdapters {
               dsxOrder.getAmount() - (dsxOrder.getRemainingVolume()),
               currencyPair,
               Long.toString(id),
-              timestamp,
+              timestamp.getTime(),
               price));
     }
     return new OpenOrders(limitOrders);
@@ -168,7 +168,7 @@ public class DSXAdapters {
               originalAmount,
               currencyPair,
               price,
-              timeStamp,
+              timeStamp.getTime(),
               tradeId,
               orderId,
               feeAmount,

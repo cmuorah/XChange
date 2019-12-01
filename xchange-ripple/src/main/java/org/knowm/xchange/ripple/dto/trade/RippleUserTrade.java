@@ -1,6 +1,5 @@
 package org.knowm.xchange.ripple.dto.trade;
 
-import java.util.Date;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -19,7 +18,7 @@ public class RippleUserTrade extends UserTrade {
       final Double originalAmount,
       final CurrencyPair currencyPair,
       final Double price,
-      final Date timestamp,
+      final Long timestamp,
       final String id,
       final String orderId,
       final Double feeAmount,

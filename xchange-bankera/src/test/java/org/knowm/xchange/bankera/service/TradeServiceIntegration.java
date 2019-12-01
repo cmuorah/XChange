@@ -42,11 +42,11 @@ public class TradeServiceIntegration {
     LimitOrder limitOrder =
         new LimitOrder(
             Order.OrderType.BID,
-            Double.valueOf(0.01),
+                0.01,
             CurrencyPair.ETH_BTC,
             "",
-            new Date(),
-            Double.valueOf(0.000001));
+            System.currentTimeMillis(),
+                0.000001);
     String createdOrderId = tradeService.placeLimitOrder(limitOrder);
     Assert.assertNotNull(createdOrderId);
     orderId = createdOrderId;
@@ -58,7 +58,7 @@ public class TradeServiceIntegration {
 
     MarketOrder marketOrder =
         new MarketOrder(
-            Order.OrderType.ASK, Double.valueOf(0.01), CurrencyPair.ETH_BTC, "", new Date());
+            Order.OrderType.ASK, 0.01, CurrencyPair.ETH_BTC, "", System.currentTimeMillis());
 
     Assert.assertNotNull(tradeService.placeMarketOrder(marketOrder));
   }
@@ -82,7 +82,7 @@ public class TradeServiceIntegration {
   @Test
   public void testFcancelOrderTest() throws Exception {
 
-    Assert.assertTrue(tradeService.cancelOrder(this.orderId));
+    Assert.assertTrue(tradeService.cancelOrder(orderId));
   }
 
   @Test(expected = NotYetImplementedForExchangeException.class)
@@ -94,7 +94,7 @@ public class TradeServiceIntegration {
   @Test
   public void testEgetUserOrder() throws Exception {
 
-    Collection<Order> orders = tradeService.getOrder(this.orderId);
+    Collection<Order> orders = tradeService.getOrder(orderId);
     logger.info("Response: {}", orders);
   }
 

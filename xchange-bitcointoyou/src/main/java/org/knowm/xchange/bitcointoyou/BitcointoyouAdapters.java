@@ -66,7 +66,7 @@ public final class BitcointoyouAdapters {
         .high(high)
         .low(low)
         .volume(volume)
-        .timestamp(fromUnixTime(bitcointoyouMarketData.getDate()))
+        .timestamp(fromUnixTime(bitcointoyouMarketData.getDate()).getTime())
         .build();
   }
 
@@ -78,7 +78,7 @@ public final class BitcointoyouAdapters {
     List<LimitOrder> bids =
         adaptBitcointoyouPublicOrders(depth.getBids(), OrderType.BID, currencyPair);
 
-    return new OrderBook(new Date(), asks, bids);
+    return new OrderBook(System.currentTimeMillis(), asks, bids);
   }
 
   static List<LimitOrder> adaptBitcointoyouPublicOrders(
@@ -132,7 +132,7 @@ public final class BitcointoyouAdapters {
         bitcointoyouTrade.getAmount(),
         currencyPair,
         bitcointoyouTrade.getPrice(),
-        timestamp,
+        timestamp.getTime(),
         bitcointoyouTrade.getTid().toString());
   }
 
@@ -198,7 +198,7 @@ public final class BitcointoyouAdapters {
         .limitPrice(orderInfo.getPrice())
         .originalAmount(orderInfo.getAmount())
         .id(orderInfo.getId())
-        .timestamp(orderDate)
+        .timestamp(orderDate.getTime())
         .build();
   }
 

@@ -59,7 +59,7 @@ public class HitbtcTradeServiceRawIntegration extends BaseAuthenticatedServiceTe
             new Double("0.01"),
             CurrencyPair.BTC_USD,
             id,
-            new Date(),
+            System.currentTimeMillis(),
             limitPrice);
 
     exception.expect(HitbtcException.class);
@@ -78,7 +78,7 @@ public class HitbtcTradeServiceRawIntegration extends BaseAuthenticatedServiceTe
     exception.expectMessage("Insufficient funds");
     MarketOrder limitOrder =
         new MarketOrder(
-            Order.OrderType.BID, new Double("0.01"), CurrencyPair.BTC_USD, id, new Date());
+            Order.OrderType.BID, new Double("0.01"), CurrencyPair.BTC_USD, id, System.currentTimeMillis());
 
     service.placeMarketOrderRaw(limitOrder);
   }

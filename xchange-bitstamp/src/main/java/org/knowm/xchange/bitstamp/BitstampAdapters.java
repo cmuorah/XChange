@@ -88,7 +88,7 @@ public final class BitstampAdapters {
         createOrders(currencyPair, Order.OrderType.ASK, bitstampOrderBook.getAsks());
     List<LimitOrder> bids =
         createOrders(currencyPair, Order.OrderType.BID, bitstampOrderBook.getBids());
-    return new OrderBook(bitstampOrderBook.getTimestamp(), asks, bids);
+    return new OrderBook(bitstampOrderBook.getTimestamp().getTime(), asks, bids);
   }
 
   public static List<LimitOrder> createOrders(
@@ -155,7 +155,7 @@ public final class BitstampAdapters {
         DateUtils.fromMillisUtc(
             tx.getDate()
                 * timeScale); // polled order books provide a timestamp in seconds, stream in ms
-    return new Trade(orderType, tx.getAmount(), currencyPair, tx.getPrice(), date, tradeId);
+    return new Trade(orderType, tx.getAmount(), currencyPair, tx.getPrice(), date.getTime(), tradeId);
   }
 
   /**
@@ -187,7 +187,7 @@ public final class BitstampAdapters {
         .low(low)
         .vwap(vwap)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -221,7 +221,7 @@ public final class BitstampAdapters {
               Math.abs(t.getBaseAmount()),
               pair,
               Math.abs(t.getPrice()),
-              t.getDatetime(),
+              t.getDatetime().getTime(),
               Long.toString(tradeId),
               Long.toString(t.getOrderId()),
               t.getFee(),
@@ -253,7 +253,7 @@ public final class BitstampAdapters {
         FundingRecord record =
             new FundingRecord(
                 null,
-                trans.getDatetime(),
+                trans.getDatetime().getTime(),
                 Currency.getInstance(amount.getKey()),
                 Math.abs(amount.getValue()),
                 String.valueOf(trans.getId()),

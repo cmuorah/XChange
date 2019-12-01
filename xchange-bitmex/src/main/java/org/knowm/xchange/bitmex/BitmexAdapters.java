@@ -37,7 +37,7 @@ public class BitmexAdapters {
         adaptOrders(bitmexDepth.getBids(), currencyPair, OrderType.BID, false);
 
     return new OrderBook(
-        new Date(Math.max(asksOrdersContainer.getTimestamp(), bidsOrdersContainer.getTimestamp())),
+        Math.max(asksOrdersContainer.getTimestamp(), bidsOrdersContainer.getTimestamp()),
         asksOrdersContainer.getLimitOrders(),
         bidsOrdersContainer.getLimitOrders());
   }
@@ -104,7 +104,7 @@ public class BitmexAdapters {
         rawOrder.getVolume(),
         pair,
         rawOrder.getId(),
-        rawOrder.getTimestamp(),
+        rawOrder.getTimestamp().getTime(),
         rawOrder.getPrice(),
         rawOrder.getAvgPx(),
         rawOrder.getCumQty(),
@@ -140,7 +140,7 @@ public class BitmexAdapters {
         originalAmount,
         currencyPair,
         bitmexPublicTrade.getPrice(),
-        timestamp,
+        timestamp.getTime(),
         String.valueOf(timestamp.getTime()));
   }
 
@@ -196,7 +196,7 @@ public class BitmexAdapters {
         originalAmount,
         pair,
         id,
-        timestamp,
+        timestamp.getTime(),
         orderDescription.getPrice(),
         orderDescription.getPrice(),
         filledAmount,
@@ -302,7 +302,7 @@ public class BitmexAdapters {
             .price(exec.lastPx)
             .feeAmount(exec.commission * (exec.lastQty))
             .feeCurrency(pair.counter.equals(Currency.USD) ? pair.counter : pair.base)
-            .timestamp(exec.timestamp)
+            .timestamp(exec.timestamp.getTime())
             .type(orderType)
             .build();
   }
@@ -339,7 +339,7 @@ public class BitmexAdapters {
 
     return new FundingRecord(
         walletTransaction.getAddress(),
-        dateFunding,
+        dateFunding.getTime(),
         Currency.getInstance(currency),
         walletTransaction.getAmount() / (SATOSHIS_BY_BTC),
         walletTransaction.getTransactID(),

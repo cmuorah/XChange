@@ -18,7 +18,7 @@ public class ExmoAdapters {
     Order.OrderType type = adaptOrderType(tradeDatum);
     Double amount = new Double(tradeDatum.get("quantity"));
     Double price = new Double(tradeDatum.get("price"));
-    Date date = DateUtils.fromUnixTime(Long.parseLong(tradeDatum.get("date")));
+    Long date = Long.parseLong(tradeDatum.get("date")) * 1000L;
     String tradeId = tradeDatum.get("trade_id");
     String orderId = tradeDatum.get("order_id");
 
@@ -59,7 +59,7 @@ public class ExmoAdapters {
         .last(new Double(data.get("last_trade")))
         .low(new Double(data.get("low")))
         .volume(new Double(data.get("vol")))
-        .timestamp(DateUtils.fromMillisUtc(Long.parseLong(data.get("updated"))))
+        .timestamp(Long.parseLong(data.get("updated")))
         .build();
   }
 

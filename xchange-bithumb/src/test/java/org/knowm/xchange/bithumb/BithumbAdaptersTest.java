@@ -114,7 +114,7 @@ public class BithumbAdaptersTest {
     assertThat(ticker.getLow()).isEqualTo(new Double("148600"));
     assertThat(ticker.getVwap()).isEqualTo(new Double("161373.9643"));
     assertThat(ticker.getVolume()).isEqualTo(new Double("294028.02849871"));
-    assertThat(ticker.getTimestamp().getTime()).isEqualTo(1546440237614L);
+    assertThat(ticker.getTimestamp()).isEqualTo(1546440237614L);
   }
 
   @Test
@@ -142,7 +142,7 @@ public class BithumbAdaptersTest {
     assertThat(ticker.getLow()).isEqualTo(new Double("4137000"));
     assertThat(ticker.getVwap()).isEqualTo(new Double("4252435.9159"));
     assertThat(ticker.getVolume()).isEqualTo(new Double("3815.4174696"));
-    assertThat(ticker.getTimestamp().getTime()).isEqualTo(1546440191110L);
+    assertThat(ticker.getTimestamp()).isEqualTo(1546440191110L);
   }
 
   @Test

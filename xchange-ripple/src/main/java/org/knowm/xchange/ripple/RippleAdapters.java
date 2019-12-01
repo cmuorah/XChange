@@ -398,7 +398,7 @@ public abstract class RippleAdapters {
                 .id(trade.getHash())
                 .orderId(orderId)
                 .price(price)
-                .timestamp(trade.getTimestamp())
+                .timestamp(trade.getTimestamp().getTime())
                 .originalAmount(quantity)
                 .type(type);
     builder.baseTransferFee(Math.abs(baseTransferFee));

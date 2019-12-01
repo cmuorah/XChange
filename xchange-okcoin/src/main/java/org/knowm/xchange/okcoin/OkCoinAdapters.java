@@ -87,7 +87,7 @@ public final class OkCoinAdapters {
         .ask(tickerResponse.getTicker().getSell())
         .last(tickerResponse.getTicker().getLast())
         .volume(tickerResponse.getTicker().getVol())
-        .timestamp(date)
+        .timestamp(date.getTime())
         .build();
   }
 
@@ -98,7 +98,7 @@ public final class OkCoinAdapters {
     Stream<LimitOrder> bids =
         adaptLimitOrders(OrderType.BID, depth.getBids(), depth.getTimestamp(), currencyPair)
             .sorted();
-    return new OrderBook(depth.getTimestamp(), asks, bids);
+    return new OrderBook(depth.getTimestamp().getTime(), asks, bids);
   }
 
   public static Trades adaptTrades(OkCoinTrade[] trades, CurrencyPair currencyPair) {
@@ -229,7 +229,7 @@ public final class OkCoinAdapters {
   private static LimitOrder adaptLimitOrder(
       OrderType type, Double[] data, CurrencyPair currencyPair, String id, Date timestamp) {
 
-    return new LimitOrder(type, data[1], currencyPair, id, timestamp, data[0]);
+    return new LimitOrder(type, data[1], currencyPair, id, timestamp.getTime(), data[0]);
   }
 
   private static Trade adaptTrade(OkCoinTrade trade, CurrencyPair currencyPair) {
@@ -239,7 +239,7 @@ public final class OkCoinAdapters {
         trade.getAmount(),
         currencyPair,
         trade.getPrice(),
-        trade.getDate(),
+        trade.getDate().getTime(),
         "" + trade.getTid());
   }
 
@@ -250,7 +250,7 @@ public final class OkCoinAdapters {
         order.getAmount(),
         adaptSymbol(order.getSymbol()),
         String.valueOf(order.getOrderId()),
-        order.getCreateDate(),
+        order.getCreateDate().getTime(),
         order.getPrice(),
         order.getAveragePrice(),
         order.getDealAmount(),
@@ -264,7 +264,7 @@ public final class OkCoinAdapters {
         order.getAmount(),
         adaptSymbol(order.getSymbol()),
         String.valueOf(order.getOrderId()),
-        order.getCreatedDate(),
+        order.getCreatedDate().getTime(),
         order.getPrice(),
         order.getAvgPrice(),
         order.getDealAmount(),
@@ -276,15 +276,11 @@ public final class OkCoinAdapters {
 
     switch (type) {
       case "buy":
-        return OrderType.BID;
       case "buy_market":
-        return OrderType.BID;
-      case "sell":
-        return OrderType.ASK;
-      case "sell_market":
-        return OrderType.ASK;
       case "1":
         return OrderType.BID;
+      case "sell":
+      case "sell_market":
       case "2":
         return OrderType.ASK;
       case "3":
@@ -324,7 +320,7 @@ public final class OkCoinAdapters {
         order.getDealAmount(),
         adaptSymbol(order.getSymbol()),
         order.getAveragePrice(),
-        order.getCreateDate(),
+        order.getCreateDate().getTime(),
         tradeId,
         orderId,
         null,
@@ -338,7 +334,7 @@ public final class OkCoinAdapters {
         order.getDealAmount(),
         adaptSymbol(order.getSymbol()),
         order.getPrice(),
-        order.getCreatedDate(),
+        order.getCreatedDate().getTime(),
         null,
         String.valueOf(order.getOrderId()),
         null,
@@ -373,7 +369,7 @@ public final class OkCoinAdapters {
               originalAmount,
               currencyPair,
               price,
-              timestamp,
+              timestamp.getTime(),
               tradeId,
               orderId,
               feeAmont,
@@ -415,7 +411,7 @@ public final class OkCoinAdapters {
         fundingRecords.add(
             new FundingRecord(
                 okCoinRecordEntry.getAddress(),
-                adaptDate(okCoinRecordEntry.getDate()),
+                adaptDate(okCoinRecordEntry.getDate()).getTime(),
                 c,
                 okCoinRecordEntry.getAmount(),
                 null,

@@ -2,7 +2,6 @@ package org.knowm.xchange.dto.trade;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Date;
 import org.junit.Test;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -18,7 +17,7 @@ public class StopOrderTest {
     final Double limitPrice = new Double("251.64");
     final Double stopPrice = new Double("266.21");
     final Double fee = new Double("22.2");
-    final Date timestamp = new Date();
+    final Long timestamp = System.currentTimeMillis();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
 
@@ -62,7 +61,7 @@ public class StopOrderTest {
     final Double cumulativeAmount = new Double("0.00");
     final Double stopPrice = new Double("266.21");
     final Double fee = new Double("22.2");
-    final Date timestamp = new Date();
+    final Long timestamp = System.currentTimeMillis();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
 

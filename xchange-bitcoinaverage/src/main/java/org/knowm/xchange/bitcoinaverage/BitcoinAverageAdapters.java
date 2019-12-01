@@ -42,7 +42,7 @@ public final class BitcoinAverageAdapters {
         .bid(bid)
         .ask(ask)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 

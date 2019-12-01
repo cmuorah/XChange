@@ -51,14 +51,14 @@ public class BleutradeTestData {
           new Double("654971.69417461"),
           CurrencyPair.BTC_AUD,
           new Double("0.00000055"),
-          new Date(1406657280000L),
+          1406657280000L,
           null),
       new Trade(
           Order.OrderType.ASK,
           new Double("120.00000000"),
           CurrencyPair.BTC_AUD,
           new Double("0.00006600"),
-          new Date(1406657555000L),
+          1406657555000L,
           null),
     };
   }
@@ -90,7 +90,7 @@ public class BleutradeTestData {
           new Double("15.00000000"),
           CurrencyPair.LTC_BTC,
           "65489",
-          toDate("2014-08-03 13:55:20"),
+          toDate("2014-08-03 13:55:20").getTime(),
           new Double("0.01268311")),
       new LimitOrder(
           Order.OrderType.ASK,
@@ -98,7 +98,7 @@ public class BleutradeTestData {
           (new Double("150491.98700000")) - (new Double("795.00000000")),
           CurrencyPair.DOGE_BTC,
           "65724",
-          toDate("2014-07-29 18:45:17"),
+          toDate("2014-07-29 18:45:17").getTime(),
           new Double("0.00000055")),
     };
   }
@@ -165,7 +165,7 @@ public class BleutradeTestData {
         .low(new Double("0.00086000"))
         .vwap(new Double("0.00103455"))
         .volume(new Double("2450.97496015"))
-        .timestamp(new Date(1406632770000L))
+        .timestamp(1406632770000L)
         .build();
   }
 

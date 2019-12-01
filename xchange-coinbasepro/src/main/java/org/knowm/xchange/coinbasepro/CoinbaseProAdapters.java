@@ -1,10 +1,5 @@
 package org.knowm.xchange.coinbasepro;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.knowm.xchange.coinbasepro.dto.CoinbaseProTransfer;
 import org.knowm.xchange.coinbasepro.dto.account.CoinbaseProAccount;
 import org.knowm.xchange.coinbasepro.dto.marketdata.*;
@@ -29,54 +24,31 @@ import org.knowm.xchange.dto.trade.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CoinbaseProAdapters {
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+public class CoinbaseProAdapters {
+    private static final DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+            .appendPattern("yyyy-MM-dd'T'HH:mm:ss")
+            .appendFraction(ChronoField.MICRO_OF_SECOND, 0, 9, true) // Nanoseconds = 0-9 digits of fractional second.
+            .appendLiteral('Z')
+            .toFormatter();
   private static Logger logger = LoggerFactory.getLogger(CoinbaseProAdapters.class);
 
   private CoinbaseProAdapters() {}
 
-  protected static Date parseDate(final String rawDate) {
+  public static Long parseDate(final String rawLong) {
 
-    String modified;
-    if (rawDate.length() > 23) {
-      modified = rawDate.substring(0, 23);
-    } else if (rawDate.endsWith("Z")) {
-      switch (rawDate.length()) {
-        case 20:
-          modified = rawDate.substring(0, 19) + ".000";
-          break;
-        case 22:
-          modified = rawDate.substring(0, 21) + "00";
-          break;
-        case 23:
-          modified = rawDate.substring(0, 22) + "0";
-          break;
-        default:
-          modified = rawDate;
-          break;
-      }
-    } else {
-      switch (rawDate.length()) {
-        case 19:
-          modified = rawDate + ".000";
-          break;
-        case 21:
-          modified = rawDate + "00";
-          break;
-        case 22:
-          modified = rawDate + "0";
-          break;
-        default:
-          modified = rawDate;
-          break;
-      }
-    }
     try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-      dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-      return dateFormat.parse(modified);
-    } catch (ParseException e) {
-      logger.warn("unable to parse rawDate={} modified={}", rawDate, modified, e);
+      return LocalDateTime.parse(rawLong, formatter).toInstant(ZoneOffset.UTC).toEpochMilli();
+    } catch (Exception e) {
+      logger.warn("unable to parse rawLong={}", rawLong, e);
       return null;
     }
   }
@@ -91,7 +63,7 @@ public class CoinbaseProAdapters {
     Double buy = ticker.getBid();
     Double sell = ticker.getAsk();
     Double volume = ticker.getVolume();
-    Date date = parseDate(ticker.getTime());
+    Long date = parseDate(ticker.getTime());
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
@@ -106,8 +78,7 @@ public class CoinbaseProAdapters {
         .build();
   }
 
-  public static OrderBook adaptOrderBook(
-      CoinbaseProProductBook book, CurrencyPair currencyPair, Date date) {
+  public static OrderBook adaptOrderBook(CoinbaseProProductBook book, CurrencyPair currencyPair, Long date) {
     List<LimitOrder> asks = toLimitOrderList(book.getAsks(), OrderType.ASK, currencyPair);
     List<LimitOrder> bids = toLimitOrderList(book.getBids(), OrderType.BID, currencyPair);
     return new OrderBook(date, asks, bids);
@@ -445,13 +416,13 @@ public class CoinbaseProAdapters {
       Currency currency, CoinbaseProTransfer coinbaseProTransfer) {
     FundingRecord.Status status = FundingRecord.Status.PROCESSING;
 
-    Date processedAt = coinbaseProTransfer.processedAt();
-    Date canceledAt = coinbaseProTransfer.canceledAt();
+    Long processedAt = coinbaseProTransfer.processedAt();
+    Long canceledAt = coinbaseProTransfer.canceledAt();
 
     if (canceledAt != null) status = FundingRecord.Status.CANCELLED;
     else if (processedAt != null) status = FundingRecord.Status.COMPLETE;
 
-    Date timestamp = coinbaseProTransfer.createdAt();
+    Long timestamp = coinbaseProTransfer.createdAt();
 
     String address = coinbaseProTransfer.getDetails().getCryptoAddress();
     if (address == null) address = coinbaseProTransfer.getDetails().getSentToAddress();

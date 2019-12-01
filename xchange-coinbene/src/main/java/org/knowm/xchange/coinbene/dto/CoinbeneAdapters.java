@@ -57,7 +57,7 @@ public class CoinbeneAdapters {
         .low(ticker.getDayLow())
         .last(ticker.getLast())
         .volume(ticker.getDayVolume())
-        .timestamp(new Date(timestamp))
+        .timestamp(timestamp)
         .build();
   }
 
@@ -91,7 +91,7 @@ public class CoinbeneAdapters {
         .originalAmount(trade.getQuantity())
         .currencyPair(pair)
         .type(trade.getTake().getOrderType())
-        .timestamp(new Date(trade.getTimestamp()))
+        .timestamp(trade.getTimestamp())
         .id(trade.getTradeId())
         .build();
   }
@@ -99,7 +99,7 @@ public class CoinbeneAdapters {
   public static OpenOrders adaptOpenOrders(CoinbeneOrders orders) {
 
     if (orders == null) {
-      return new OpenOrders(Collections.EMPTY_LIST);
+      return new OpenOrders(Collections.emptyList());
     }
 
     return new OpenOrders(
@@ -136,7 +136,7 @@ public class CoinbeneAdapters {
 
     return new LimitOrder.Builder(null, adaptSymbol(order.getSymbol()))
         .id(order.getOrderId())
-        .timestamp(new Date(order.getCreateTime()))
+        .timestamp(order.getCreateTime())
         .orderStatus(order.getOrderStatus().getStatus())
         .limitPrice(order.getPrice())
         .cumulativeAmount(order.getFilledQuantity())

@@ -24,7 +24,7 @@ public class MarketOrderDemo {
     Double tradeableAmount = new Double("0.01");
 
     MarketOrder marketOrder =
-        new MarketOrder(orderType, tradeableAmount, CurrencyPair.BTC_USD, new Date());
+        new MarketOrder(orderType, tradeableAmount, CurrencyPair.BTC_USD, System.currentTimeMillis());
 
     String orderID = tradeService.placeMarketOrder(marketOrder);
     System.out.println("Market Order return value: " + orderID);

@@ -87,7 +87,7 @@ public final class BankeraAdapters {
         .ask(ask)
         .last(last)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -109,7 +109,7 @@ public final class BankeraAdapters {
         bankeraTrade -> {
           Double amount = new Double(bankeraTrade.getAmount());
           Double price = new Double(bankeraTrade.getPrice());
-          Date date = new Date(Long.parseLong(bankeraTrade.getTime()));
+          Long date = Long.parseLong(bankeraTrade.getTime());
           OrderType type =
               bankeraTrade.getSide().equalsIgnoreCase(ORDER_SIDE_BUY)
                   ? OrderType.BID
@@ -160,7 +160,7 @@ public final class BankeraAdapters {
                       new Double(bankeraOrder.getRemainingAmount()),
                       pair,
                       String.valueOf(bankeraOrder.getId()),
-                      new Date(Long.parseLong(bankeraOrder.getCreatedAt())),
+                      Long.parseLong(bankeraOrder.getCreatedAt()),
                       new Double(bankeraOrder.getPrice())));
             });
 
@@ -183,7 +183,7 @@ public final class BankeraAdapters {
                       new Double(trade.getAmount()),
                       pair,
                       new Double(trade.getPrice()),
-                      new Date(Long.parseLong(trade.getCompletedAt())),
+                      Long.parseLong(trade.getCompletedAt()),
                       String.valueOf(trade.getId()),
                       String.valueOf(trade.getOrderId()),
                       new Double(trade.getFeeAmount()),
@@ -201,7 +201,7 @@ public final class BankeraAdapters {
         new Double(bankeraOrder.getAmount()),
         pair,
         String.valueOf(bankeraOrder.getId()),
-        new Date(Long.parseLong(bankeraOrder.getCreatedAt())),
+        Long.parseLong(bankeraOrder.getCreatedAt()),
         Double.parseDouble(bankeraOrder.getPrice()),
         Double.parseDouble(bankeraOrder.getPrice()),
         Double.parseDouble(bankeraOrder.getExecutedAmount()),

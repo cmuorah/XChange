@@ -306,7 +306,7 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
                           t.qty,
                           pair,
                           t.price,
-                          t.getTime(),
+                          t.getTime().getTime(),
                           Long.toString(t.id),
                           Long.toString(t.orderId),
                           t.commission,

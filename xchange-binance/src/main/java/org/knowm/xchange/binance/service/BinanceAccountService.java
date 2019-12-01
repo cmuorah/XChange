@@ -211,7 +211,7 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
                         new FundingRecord(
                             w.address,
                             w.destinationTag,
-                            new Date(w.applyTime),
+                            w.applyTime,
                             Currency.getInstance(w.asset),
                             w.amount,
                             w.id,
@@ -230,7 +230,7 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
                     result.add(
                         new FundingRecord(
                             d.address,
-                            new Date(d.insertTime),
+                            d.insertTime,
                             Currency.getInstance(d.asset),
                             d.amount,
                             null,

@@ -63,7 +63,7 @@ public class CCEXAdapters {
             cCEXTrade.getQuantity(),
             currencyPair,
             cCEXTrade.getPrice(),
-            timestamp,
+            timestamp.getTime(),
             cCEXTrade.getId());
     return trade;
   }
@@ -81,8 +81,7 @@ public class CCEXAdapters {
         createOrders(currencyPair, Order.OrderType.ASK, ccexOrderBook.getAsks());
     List<LimitOrder> bids =
         createOrders(currencyPair, Order.OrderType.BID, ccexOrderBook.getBids());
-    Date date = new Date();
-    return new OrderBook(date, asks, bids);
+    return new OrderBook(System.currentTimeMillis(), asks, bids);
   }
 
   public static List<LimitOrder> createOrders(
@@ -230,7 +229,7 @@ public class CCEXAdapters {
         amount,
         currencyPair,
         price,
-        date,
+        date.getTime(),
         orderId,
         orderId,
         trade.getCommission(),
@@ -256,7 +255,7 @@ public class CCEXAdapters {
         .high(high)
         .low(low)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 }

@@ -83,7 +83,7 @@ public class ANXMarketDataService extends ANXMarketDataServiceRaw implements Mar
             currencyPair.counter.getCurrencyCode(),
             "bid",
             "");
-    Date date = new Date(anxDepthWrapper.getAnxDepth().getMicroTime() / 1000);
+    long date = anxDepthWrapper.getAnxDepth().getMicroTime() / 1000L;
     return new OrderBook(date, asks, bids);
   }
 

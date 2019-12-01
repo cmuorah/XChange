@@ -80,7 +80,7 @@ public class HitbtcAdapters {
         .high(high)
         .low(low)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -156,7 +156,7 @@ public class HitbtcAdapters {
         lastTradeId = longTradeId;
       }
       OrderType orderType = adaptSide(hitbtcTrade.getSide());
-      Trade trade = new Trade(orderType, amount, currencyPair, price, timestamp, tid);
+      Trade trade = new Trade(orderType, amount, currencyPair, price, timestamp.getTime(), tid);
       trades.add(trade);
     }
 
@@ -307,7 +307,7 @@ public class HitbtcAdapters {
         .setStatus(convertStatus(transaction.getStatus()))
         .setInternalId(transaction.getId())
         .setBlockchainTransactionHash(transaction.getHash())
-        .setDate(transaction.getCreatedAt())
+        .setDate(transaction.getCreatedAt().getTime())
         .build();
   }
 

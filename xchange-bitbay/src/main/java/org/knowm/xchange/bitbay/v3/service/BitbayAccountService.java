@@ -88,7 +88,7 @@ public class BitbayAccountService extends BitbayAccountServiceRaw implements Acc
         .setAddress(null) // not available in the API yet
         .setAmount(Math.abs(Double.parseDouble(item.get("value").toString())))
         .setCurrency(Currency.getInstance(((Map) item.get("balance")).get("currency").toString()))
-        .setDate(DateUtils.fromMillisUtc(Long.parseLong(item.get("time").toString())))
+        .setDate(Long.parseLong(item.get("time").toString()))
         .setInternalId(item.get("historyId").toString()) // could be detailId maybe?
         .setFee(null) // not available in the API yet
         .setStatus(FundingRecord.Status.COMPLETE)

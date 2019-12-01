@@ -69,7 +69,7 @@ public class CoinbaseAdapterTest {
             originalAmount,
             CurrencyPair.BTC_USD,
             price,
-            DateUtils.fromISO8601DateString("2014-02-06T18:12:38-08:00"),
+            DateUtils.fromISO8601DateString("2014-02-06T18:12:38-08:00").getTime(),
             "52f4411767c71baf9000003f",
             "52f4411667c71baf9000003c",
             new Double("9.05"),

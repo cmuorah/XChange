@@ -36,7 +36,7 @@ public class Bl3pMarketDataService extends Bl3pBaseService implements MarketData
         .high(ticker.getHigh())
         .last(ticker.getLast())
         .low(ticker.getLow())
-        .timestamp(ticker.getTimestamp())
+        .timestamp(ticker.getTimestamp().getTime())
         .volume(ticker.getVolume().getDay())
         .build();
   }
@@ -44,7 +44,7 @@ public class Bl3pMarketDataService extends Bl3pBaseService implements MarketData
   @Override
   public OrderBook getOrderBook(CurrencyPair currencyPair, Object... args) throws IOException {
     Bl3pOrderBook orderBook = this.bl3p.getOrderBook(Bl3pUtils.toPairString(currencyPair));
-    Date now = new Date();
+    long now = System.currentTimeMillis();
 
     return new OrderBook(
         now,
@@ -62,10 +62,10 @@ public class Bl3pMarketDataService extends Bl3pBaseService implements MarketData
       Trade trade =
           new Trade(
               null, // TODO @BL3P Trade Type is not returned by API
-              Bl3pUtils.fromSatoshi(new Double(bl3pTrade.getAmountInt())),
+              Bl3pUtils.fromSatoshi((double) bl3pTrade.getAmountInt()),
               currencyPair,
-              Bl3pUtils.fromEuroshi(new Double(bl3pTrade.getPriceInt())),
-              bl3pTrade.getDate(),
+              Bl3pUtils.fromEuroshi((double) bl3pTrade.getPriceInt()),
+              bl3pTrade.getDate().getTime(),
               "" + bl3pTrade.getTradeId());
 
       tradesList.add(trade);
@@ -78,18 +78,18 @@ public class Bl3pMarketDataService extends Bl3pBaseService implements MarketData
       Bl3pOrderBook.Bl3pOrderBookOrder[] bl3pOrders,
       Order.OrderType type,
       CurrencyPair currencyPair,
-      Date timestamp) {
+      long timestamp) {
     List<LimitOrder> orders = new ArrayList<>(bl3pOrders.length);
 
     for (Bl3pOrderBook.Bl3pOrderBookOrder bl3pOrder : bl3pOrders) {
       LimitOrder order =
           new LimitOrder(
               type,
-              new Double(bl3pOrder.getAmountInt()) * (new Double(1e8)),
+                  (double) bl3pOrder.getAmountInt() * (1e8),
               currencyPair,
               "",
               timestamp,
-              new Double(bl3pOrder.getPriceInt()) * (new Double(1e5)));
+                  (double) bl3pOrder.getPriceInt() * (1e5));
 
       orders.add(order);
     }

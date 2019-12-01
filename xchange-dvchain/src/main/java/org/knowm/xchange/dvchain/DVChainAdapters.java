@@ -44,7 +44,7 @@ public class DVChainAdapters {
         marketData.getLevels().stream()
             .map(level -> adaptOrder(level, Order.OrderType.BID, currencyPair))
             .collect(Collectors.toList());
-    return new OrderBook(timeStamp, asks, bids);
+    return new OrderBook(timeStamp.getTime(), asks, bids);
   }
 
   public static UserTrades adaptTradeHistory(List<DVChainTrade> trades) {
@@ -62,7 +62,7 @@ public class DVChainAdapters {
               trade.getQuantity(),
               currencyPair,
               trade.getPrice(),
-              timestamp,
+              timestamp.getTime(),
               trade.getId(),
               trade.getId(),
               fee,
@@ -79,11 +79,10 @@ public class DVChainAdapters {
     Double price = trade.getPrice();
     Date date = Date.from(trade.getCreatedAt());
     final String tradeId = trade.getId();
-    return new Trade(orderType, amount, currencyPair, price, date, tradeId);
+    return new Trade(orderType, amount, currencyPair, price, date.getTime(), tradeId);
   }
 
   public static Trades adaptTrades(List<DVChainTrade> trades) {
-
     List<Trade> tradesList = new ArrayList<>(trades.size());
     long lastTradeId = 0;
     for (DVChainTrade trade : trades) {
@@ -106,7 +105,7 @@ public class DVChainAdapters {
               order.getQuantity(),
               currencyPair,
               order.getId(),
-              Date.from(order.getCreatedAt()),
+              Date.from(order.getCreatedAt()).getTime(),
               order.getLimitPrice());
       openOrders.add(limitOrder);
     }

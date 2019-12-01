@@ -22,7 +22,7 @@ public class CoinsuperGenericOrder extends Order {
         originalAmount,
         currencyPair,
         id,
-        timestamp,
+        timestamp.getTime(),
         averagePrice,
         cumulativeAmount,
         fee,

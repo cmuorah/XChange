@@ -22,7 +22,7 @@ public class BitstampGenericOrder extends Order {
         originalAmount,
         currencyPair,
         id,
-        timestamp,
+        timestamp.getTime(),
         averagePrice,
         cumulativeAmount,
         fee,

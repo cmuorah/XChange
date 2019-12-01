@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto.account;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,8 +23,8 @@ public final class FundingRecord extends AbstractMarshallable implements Seriali
   /** Crypto currency destination tag for deposit/withdrawal */
   private final String destinationTag;
 
-  /** Date/Time of transaction */
-  private final Date date;
+  /** Long/Time of transaction */
+  private final Long date;
 
   /** The transaction currency */
   private final Currency currency;
@@ -59,7 +58,7 @@ public final class FundingRecord extends AbstractMarshallable implements Seriali
    * Constructs a {@link FundingRecord}.
    *
    * @param address Crypto currency address for deposit/withdrawal
-   * @param date Date/Time of transaction
+   * @param date Long/Time of transaction
    * @param currency The transaction currency
    * @param amount Amount deposited/withdrawn (always positive)
    * @param internalId Internal transaction identifier, specific to the Exchange
@@ -78,7 +77,7 @@ public final class FundingRecord extends AbstractMarshallable implements Seriali
   @Deprecated
   public FundingRecord(
       final String address,
-      final Date date,
+      final Long date,
       final Currency currency,
       final Double amount,
       final String internalId,
@@ -113,7 +112,7 @@ public final class FundingRecord extends AbstractMarshallable implements Seriali
    *
    * @param address Crypto currency address for deposit/withdrawal
    * @param destinationTag Crypto address destination tag for deposit/withdrawal
-   * @param date Date/Time of transaction
+   * @param date Long/Time of transaction
    * @param currency The transaction currency
    * @param amount Amount deposited/withdrawn (always positive)
    * @param internalId Internal transaction identifier, specific to the Exchange
@@ -129,7 +128,7 @@ public final class FundingRecord extends AbstractMarshallable implements Seriali
   public FundingRecord(
       final String address,
       final String destinationTag,
-      final Date date,
+      final Long date,
       final Currency currency,
       final Double amount,
       final String internalId,
@@ -157,7 +156,7 @@ public final class FundingRecord extends AbstractMarshallable implements Seriali
    * Constructs a {@link FundingRecord}.
    *
    * @param address Crypto currency address for deposit/withdrawal
-   * @param date Date/Time of transaction
+   * @param date Long/Time of transaction
    * @param currency The transaction currency
    * @param amount Amount deposited/withdrawn (always positive)
    * @param internalId Internal transaction identifier, specific to the Exchange
@@ -172,7 +171,7 @@ public final class FundingRecord extends AbstractMarshallable implements Seriali
    */
   public FundingRecord(
       final String address,
-      final Date date,
+      final Long date,
       final Currency currency,
       final Double amount,
       final String internalId,
@@ -206,8 +205,8 @@ public final class FundingRecord extends AbstractMarshallable implements Seriali
     return destinationTag;
   }
 
-  /** @return Date/Time of transaction */
-  public Date getDate() {
+  /** @return Long/Time of transaction */
+  public Long getDate() {
     return date;
   }
 
@@ -364,7 +363,7 @@ public final class FundingRecord extends AbstractMarshallable implements Seriali
   public static final class Builder {
 
     private String address;
-    private Date date;
+    private Long date;
     private Currency currency;
     private Double amount;
     private String internalId;
@@ -394,7 +393,7 @@ public final class FundingRecord extends AbstractMarshallable implements Seriali
       return this;
     }
 
-    public Builder setDate(Date date) {
+    public Builder setDate(Long date) {
       this.date = date;
       return this;
     }

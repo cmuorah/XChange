@@ -42,7 +42,7 @@ public class BitbayAdapters {
               .originalAmount(trade.getAmount())
               .currencyPair(pair)
               .price(trade.getRate())
-              .timestamp(timestamp)
+              .timestamp(timestamp.getTime())
               .build());
     }
     return new UserTrades(

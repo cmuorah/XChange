@@ -53,7 +53,7 @@ public final class BTCTurkAdapters {
     Double average = btcTurkTicker.getAverage();
 
     return new Ticker.Builder()
-        .currencyPair(pair != null ? pair : null)
+        .currencyPair(pair)
         .last(last)
         .bid(bid)
         .ask(ask)
@@ -62,12 +62,12 @@ public final class BTCTurkAdapters {
         .vwap(average)
         .open(open)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
   public static List<Ticker> adaptTicker(List<BTCTurkTicker> btcTurkTickers) {
-    List<Ticker> result = new ArrayList<Ticker>();
+    List<Ticker> result = new ArrayList<>();
     for (BTCTurkTicker ticker : btcTurkTickers) {
       result.add(adaptTicker(ticker));
     }
@@ -106,7 +106,7 @@ public final class BTCTurkAdapters {
         btcTurkTrade.getAmount(),
         currencyPair,
         btcTurkTrade.getPrice(),
-        btcTurkTrade.getDate(),
+        btcTurkTrade.getDate().getTime(),
         btcTurkTrade.getTid().toString());
   }
 
@@ -123,7 +123,7 @@ public final class BTCTurkAdapters {
         createOrders(currencyPair, Order.OrderType.ASK, btcTurkOrderBook.getAsks());
     List<LimitOrder> bids =
         createOrders(currencyPair, Order.OrderType.BID, btcTurkOrderBook.getBids());
-    return new OrderBook(btcTurkOrderBook.getTimestamp(), asks, bids);
+    return new OrderBook(btcTurkOrderBook.getTimestamp().getTime(), asks, bids);
   }
 
   public static List<LimitOrder> createOrders(
@@ -208,8 +208,8 @@ public final class BTCTurkAdapters {
     }
 
     return new FundingRecord.Builder()
-        .setInternalId(transaction.getId().toString())
-        .setDate(transaction.getDate())
+        .setInternalId(transaction.getId())
+        .setDate(transaction.getDate().getTime())
         .setType(transaction.getOperation().getType())
         .setCurrency(transaction.getCurrency())
         .setAmount(transaction.getAmount())
@@ -238,8 +238,8 @@ public final class BTCTurkAdapters {
         order.getType().equals("BuyBtc") ? OrderType.BID : OrderType.ASK,
         order.getAmount(),
         order.getPairsymbol().pair,
-        order.getId().toString(),
-        order.getDatetime(),
+            order.getId(),
+        order.getDatetime().getTime(),
         order.getPrice(),
         order.getPrice(),
         order.getAmount(),

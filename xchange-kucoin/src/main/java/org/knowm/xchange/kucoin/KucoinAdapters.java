@@ -62,7 +62,7 @@ public class KucoinAdapters {
         .volume(stats.getVol())
         .quoteVolume(stats.getVolValue())
         .open(stats.getOpen())
-        .timestamp(new Date(stats.getTime()));
+        .timestamp(stats.getTime());
   }
 
   public static List<Ticker> adaptAllTickers(AllTickersResponse allTickersResponse) {
@@ -139,7 +139,7 @@ public class KucoinAdapters {
             .sorted(Comparator.comparingDouble(o -> -o.price))
             .map(s -> adaptLimitOrder(currencyPair, BID, s, timestamp))
             .collect(toCollection(LinkedList::new));
-    return new OrderBook(timestamp, asks, bids);
+    return new OrderBook(timestamp.getTime(), asks, bids);
   }
 
   private static LimitOrder adaptLimitOrder(
@@ -167,7 +167,7 @@ public class KucoinAdapters {
         .currencyPair(currencyPair)
         .originalAmount(trade.getSize())
         .price(trade.getPrice())
-        .timestamp(new Date(Long.parseLong(trade.getSequence())))
+        .timestamp(Long.parseLong(trade.getSequence()))
         .type(adaptSide(trade.getSide()))
         .build();
   }
@@ -223,7 +223,7 @@ public class KucoinAdapters {
             .orderStatus(status)
             .originalAmount(order.getSize())
             .remainingAmount(order.getSize() - (order.getDealSize()))
-            .timestamp(order.getCreatedAt());
+            .timestamp(order.getCreatedAt().getTime());
 
     if (StringUtils.isNotEmpty(order.getTimeInForce())) {
       builder.flag(TimeInForce.getTimeInForce(order.getTimeInForce()));
@@ -243,7 +243,7 @@ public class KucoinAdapters {
         .orderId(trade.getOrderId())
         .originalAmount(trade.getSize())
         .price(trade.getPrice())
-        .timestamp(trade.getTradeCreatedAt())
+        .timestamp(trade.getTradeCreatedAt().getTime())
         .type(adaptSide(trade.getSide()))
         .build();
   }
@@ -308,7 +308,7 @@ public class KucoinAdapters {
         .setInternalId(wr.getId())
         .setBlockchainTransactionHash(wr.getWalletTxId())
         .setDescription(wr.getMemo())
-        .setDate(wr.getCreatedAt())
+        .setDate(wr.getCreatedAt().getTime())
         .build();
   }
 
@@ -339,7 +339,7 @@ public class KucoinAdapters {
         .setStatus(convertStatus(dr.getStatus()))
         .setBlockchainTransactionHash(dr.getWalletTxId())
         .setDescription(dr.getMemo())
-        .setDate(dr.getCreatedAt())
+        .setDate(dr.getCreatedAt().getTime())
         .build();
   }
 

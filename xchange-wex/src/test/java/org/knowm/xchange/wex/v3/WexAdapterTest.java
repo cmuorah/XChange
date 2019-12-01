@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
@@ -95,8 +95,7 @@ public class WexAdapterTest {
     // assertThat("transactionCurrency should be PLN",
     // trades.getTrades().get(0).getTransactionCurrency().equals("PLN"));
     // System.out.println(DateUtils.toUTCString(trades.getTrades().get(0).getTimestamp()));
-    assertThat(DateUtils.toUTCString(trades.getTrades().get(0).getTimestamp()))
-        .isEqualTo("2013-11-23 11:10:04 GMT");
+    assertThat(DateUtils.toUTCString(trades.getTrades().get(0).getTimestamp())).isEqualTo("2013-11-23 11:10:04 GMT");
   }
 
   @Test
@@ -144,7 +143,7 @@ public class WexAdapterTest {
     assertThat(lastTrade.getId()).isEqualTo("7258275");
     assertThat(lastTrade.getType()).isEqualTo(OrderType.ASK);
     assertThat(lastTrade.getPrice()).isEqualTo(125.75);
-    assertThat(lastTrade.getTimestamp().getTime()).isEqualTo(1378194574000L);
+    assertThat(lastTrade.getTimestamp()).isEqualTo(1378194574000L);
     assertThat(DateUtils.toUTCString(lastTrade.getTimestamp()))
         .isEqualTo("2013-09-03 07:49:34 GMT");
     assertThat(lastTrade.getFeeAmount()).isNull();
@@ -164,7 +163,7 @@ public class WexAdapterTest {
 
     Map<Long, WexOrderInfoResult> rv = bTCEOrderInfoReturn.getReturnValue();
 
-    assertThat(rv.keySet()).containsAll(Arrays.asList(343152L));
+    assertThat(rv.keySet()).containsAll(Collections.singletonList(343152L));
 
     LimitOrder order = WexAdapters.adaptOrderInfo("343152", rv.get(343152L));
 
@@ -175,6 +174,6 @@ public class WexAdapterTest {
     assertEquals(new Double("2.00000000"), order.getOriginalAmount());
     assertEquals(new Double("1.00000000"), order.getCumulativeAmount());
     assertEquals(OrderStatus.PARTIALLY_FILLED, order.getStatus());
-    assertThat(order.getTimestamp().getTime()).isEqualTo(1342448420000L);
+    assertThat(order.getTimestamp()).isEqualTo(1342448420000L);
   }
 }

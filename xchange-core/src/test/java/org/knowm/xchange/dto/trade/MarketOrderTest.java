@@ -2,7 +2,6 @@ package org.knowm.xchange.dto.trade;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Date;
 import org.junit.Test;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -16,7 +15,7 @@ public class MarketOrderTest {
     final Double averagePrice = new Double("255.00");
     final CurrencyPair currencyPair = CurrencyPair.LTC_BTC;
     final Double fee = new Double("22.2");
-    final Date timestamp = new Date();
+    final Long timestamp = System.currentTimeMillis();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
 
@@ -54,7 +53,7 @@ public class MarketOrderTest {
     final Double averagePrice = new Double("255.00");
     final CurrencyPair currencyPair = CurrencyPair.BTC_USD;
     final Double fee = new Double("22.2");
-    final Date timestamp = new Date();
+    final Long timestamp = System.currentTimeMillis();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
 

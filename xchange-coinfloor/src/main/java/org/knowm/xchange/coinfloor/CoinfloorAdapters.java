@@ -1,9 +1,5 @@
 package org.knowm.xchange.coinfloor;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 import org.knowm.xchange.coinfloor.dto.account.CoinfloorBalance;
 import org.knowm.xchange.coinfloor.dto.markedata.CoinfloorOrderBook;
 import org.knowm.xchange.coinfloor.dto.markedata.CoinfloorTicker;
@@ -26,7 +22,11 @@ import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.dto.trade.UserTrade;
 import org.knowm.xchange.dto.trade.UserTrades;
-import org.knowm.xchange.utils.DateUtils;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 public class CoinfloorAdapters {
 
@@ -85,7 +85,7 @@ public class CoinfloorAdapters {
               tx.getAmount(),
               pair,
               tx.getPrice(),
-              DateUtils.fromMillisUtc(msSinceEpoch),
+              msSinceEpoch,
               String.valueOf(tradeId));
       trades.add(trade);
     }
@@ -133,7 +133,7 @@ public class CoinfloorAdapters {
               Math.abs(transaction.getAmount()),
               transaction.getCurrencyPair(),
               transaction.getPrice(),
-              timestamp,
+              timestamp.getTime(),
               tradeId,
               orderId,
               feeAmount,
@@ -153,7 +153,7 @@ public class CoinfloorAdapters {
               rawOrder.getAmount(),
               rawOrder.getCurrencyPair(),
               Long.toString(rawOrder.getId()),
-              CoinfloorUtils.parseDate(rawOrder.getDatetime()),
+              CoinfloorUtils.parseDate(rawOrder.getDatetime()).getTime(),
               rawOrder.getPrice());
       order.setOrderStatus(OrderStatus.NEW);
       limitOrders.add(order);

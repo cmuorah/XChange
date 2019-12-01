@@ -105,7 +105,7 @@ public class LunoAccountService extends LunoBaseService implements AccountServic
       result.add(
           new FundingRecord(
               null,
-              w.getCreatedAt(),
+              w.getCreatedAt().getTime(),
               LunoUtil.fromLunoCurrency(w.currency),
               w.amount,
               w.id,

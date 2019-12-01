@@ -97,7 +97,7 @@ public class BTCTurkTradeService extends BTCTurkTradeServiceRaw implements Trade
                 transaction.getAmount(),
                 null,
                 transaction.getPrice(),
-                transaction.getDate(),
+                transaction.getDate().getTime(),
                 transaction.getId(),
                 null,
                 transaction.getFee(),

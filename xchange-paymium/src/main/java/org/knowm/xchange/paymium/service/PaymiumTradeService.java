@@ -75,7 +75,7 @@ public class PaymiumTradeService extends PaymiumTradeServiceRaw implements Trade
               order.getTradedCurrency(),
               CurrencyPair.BTC_EUR,
               order.getPrice(),
-              order.getUpdatedAt(),
+              order.getUpdatedAt().getTime(),
               order.getUuid(),
               order.getUuid(),
               fee,

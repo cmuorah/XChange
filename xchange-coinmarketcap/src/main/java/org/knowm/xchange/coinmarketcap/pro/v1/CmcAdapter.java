@@ -20,7 +20,7 @@ public class CmcAdapter {
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .open(price)
         .last(price)
         .bid(price)

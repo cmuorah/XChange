@@ -1,9 +1,5 @@
 package org.knowm.xchange.bithumb;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
 import org.knowm.xchange.bithumb.dto.account.BithumbAccount;
 import org.knowm.xchange.bithumb.dto.account.BithumbBalance;
@@ -25,6 +21,10 @@ import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.dto.trade.UserTrade;
 import org.knowm.xchange.dto.trade.UserTrades;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public final class BithumbAdapters {
 
   /** private Constructor */
@@ -36,7 +36,7 @@ public final class BithumbAdapters {
         new CurrencyPair(orderbook.getOrderCurrency(), orderbook.getPaymentCurrency());
 
     return new OrderBook(
-        new Date(orderbook.getTimestamp()),
+        orderbook.getTimestamp(),
         createOrder(currencyPair, orderbook.getAsks(), Order.OrderType.ASK),
         createOrder(currencyPair, orderbook.getBids(), Order.OrderType.BID));
   }
@@ -82,7 +82,7 @@ public final class BithumbAdapters {
         .open(bithumbTicker.getOpeningPrice())
         .vwap(bithumbTicker.getAveragePrice())
         .volume(bithumbTicker.getUnitsTraded())
-        .timestamp(new Date(bithumbTicker.getDate()))
+        .timestamp(bithumbTicker.getDate())
         .build();
   }
 
@@ -114,7 +114,7 @@ public final class BithumbAdapters {
         .originalAmount(trade.getUnitsTraded())
         .price(trade.getPrice())
         .type(adaptOrderType(trade.getType()))
-        .timestamp(trade.getTimestamp())
+        .timestamp(trade.getTimestamp().getTime())
         .build();
   }
 
@@ -142,7 +142,7 @@ public final class BithumbAdapters {
             StringUtils.equals(order.getStatus(), "placed")
                 ? Order.OrderStatus.NEW
                 : Order.OrderStatus.UNKNOWN)
-        .timestamp(new Date(order.getOrderDate() / 1000L))
+        .timestamp(order.getOrderDate())
         .build();
   }
 
@@ -167,7 +167,7 @@ public final class BithumbAdapters {
         .feeAmount(bithumbTransaction.getFee())
         .feeCurrency(currencyPair.counter)
         .price(bithumbTransaction.getPrice())
-        .timestamp(new Date(bithumbTransaction.getTransferDate()))
+        .timestamp(bithumbTransaction.getTransferDate())
         .build();
   }
 

@@ -131,7 +131,7 @@ public class DSXAccountServiceCore<T extends DSXAuthenticatedV2> extends DSXAcco
       result.add(
           new FundingRecord(
               t.getValue().getAddress(),
-              new Date(t.getValue().getTimestamp() * 1000),
+              t.getValue().getTimestamp() * 1000L,
               Currency.getInstance(t.getValue().getCurrency()),
               t.getValue().getAmount(),
               Long.toString(t.getValue().getId()),

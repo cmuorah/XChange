@@ -62,17 +62,17 @@ public class PaymiumAccountService extends PaymiumAccountServiceRaw implements A
       switch (order.getType()) {
         case "WireDeposit":
         case "BitcoinDeposit":
-          funding = funding.DEPOSIT;
+          funding = FundingRecord.Type.DEPOSIT;
           break;
         case "Transfer":
-          funding = funding.WITHDRAWAL;
+          funding = FundingRecord.Type.WITHDRAWAL;
           break;
       }
 
       res.add(
           new FundingRecord(
               order.getBitcoinAddress(),
-              order.getUpdatedAt(),
+              order.getUpdatedAt().getTime(),
               Currency.getInstance(order.getCurrency()),
               order.getAmount(),
               String.valueOf(order.getUuid()),

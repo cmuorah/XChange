@@ -3,7 +3,6 @@ package org.knowm.xchange.dto.marketdata;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -23,7 +22,7 @@ public final class OrderBook extends AbstractMarshallable implements Serializabl
   /** the bids */
   private final List<LimitOrder> bids;
   /** the timestamp of the orderbook according to the exchange's server, null if not provided */
-  private Date timeStamp;
+  private Long timeStamp;
 
   /**
    * Constructor
@@ -33,7 +32,7 @@ public final class OrderBook extends AbstractMarshallable implements Serializabl
    * @param asks The ASK orders
    * @param bids The BID orders
    */
-  public OrderBook(Date timeStamp, List<LimitOrder> asks, List<LimitOrder> bids) {
+  public OrderBook(Long timeStamp, List<LimitOrder> asks, List<LimitOrder> bids) {
 
     this(timeStamp, asks, bids, false);
   }
@@ -47,7 +46,7 @@ public final class OrderBook extends AbstractMarshallable implements Serializabl
    * @param bids The BID orders
    * @param sort True if the asks and bids need to be sorted
    */
-  public OrderBook(Date timeStamp, List<LimitOrder> asks, List<LimitOrder> bids, boolean sort) {
+  public OrderBook(Long timeStamp, List<LimitOrder> asks, List<LimitOrder> bids, boolean sort) {
 
     this.timeStamp = timeStamp;
     if (sort) {
@@ -69,7 +68,7 @@ public final class OrderBook extends AbstractMarshallable implements Serializabl
    * @param asks The ASK orders
    * @param bids The BID orders
    */
-  public OrderBook(Date timeStamp, Stream<LimitOrder> asks, Stream<LimitOrder> bids) {
+  public OrderBook(Long timeStamp, Stream<LimitOrder> asks, Stream<LimitOrder> bids) {
 
     this(timeStamp, asks, bids, false);
   }
@@ -83,7 +82,7 @@ public final class OrderBook extends AbstractMarshallable implements Serializabl
    * @param bids The BID orders
    * @param sort True if the asks and bids need to be sorted
    */
-  public OrderBook(Date timeStamp, Stream<LimitOrder> asks, Stream<LimitOrder> bids, boolean sort) {
+  public OrderBook(Long timeStamp, Stream<LimitOrder> asks, Stream<LimitOrder> bids, boolean sort) {
 
     this.timeStamp = timeStamp;
     if (sort) {
@@ -101,12 +100,12 @@ public final class OrderBook extends AbstractMarshallable implements Serializabl
     OrderType type = limitOrder.getType();
     CurrencyPair currencyPair = limitOrder.getCurrencyPair();
     String id = limitOrder.getId();
-    Date date = limitOrder.getTimestamp();
+    Long date = limitOrder.getTimestamp();
     Double limit = limitOrder.getLimitPrice();
     return new LimitOrder(type, tradeableAmount, currencyPair, id, date, limit);
   }
 
-  public Date getTimeStamp() {
+  public Long getTimeStamp() {
 
     return timeStamp;
   }
@@ -136,7 +135,7 @@ public final class OrderBook extends AbstractMarshallable implements Serializabl
   public void update(LimitOrder limitOrder) {
 
     update(getOrders(limitOrder.getType()), limitOrder);
-    updateDate(limitOrder.getTimestamp());
+    updateLong(limitOrder.getTimestamp());
   }
 
   // Replace the amount for limitOrder's price in the provided list.
@@ -174,15 +173,15 @@ public final class OrderBook extends AbstractMarshallable implements Serializabl
       limitOrders.add(idx, updatedOrder);
     }
 
-    updateDate(limitOrder.getTimestamp());
+    updateLong(limitOrder.getTimestamp());
   }
 
   // Replace timeStamp if the provided date is non-null and in the future
   // TODO should this raise an exception if the order timestamp is in the past?
-  private void updateDate(Date updateDate) {
+  private void updateLong(Long updateLong) {
 
-    if (updateDate != null && (timeStamp == null || updateDate.after(timeStamp))) {
-      this.timeStamp = updateDate;
+    if (updateLong != null && (timeStamp == null || updateLong > timeStamp)) {
+      this.timeStamp = updateLong;
     }
   }
 
@@ -249,7 +248,7 @@ public final class OrderBook extends AbstractMarshallable implements Serializabl
       return false;
     }
 
-    Date timestamp = new Date();
+    Long timestamp = System.currentTimeMillis();
     OrderBook thisOb = new OrderBook(timestamp, this.getAsks(), this.getBids());
     OrderBook thatOb = new OrderBook(timestamp, ob.getAsks(), ob.getBids());
     return thisOb.equals(thatOb);

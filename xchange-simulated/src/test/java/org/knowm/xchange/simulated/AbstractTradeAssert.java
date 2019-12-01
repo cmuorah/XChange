@@ -200,7 +200,7 @@ abstract class AbstractTradeAssert<S extends AbstractTradeAssert<S, A>, A extend
         "\nExpecting timestamp of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
     // null safe check
-    java.util.Date actualTimestamp = actual.getTimestamp();
+    long actualTimestamp = actual.getTimestamp();
     if (!Objects.areEqual(actualTimestamp, timestamp)) {
       failWithMessage(assertjErrorMessage, actual, timestamp, actualTimestamp);
     }

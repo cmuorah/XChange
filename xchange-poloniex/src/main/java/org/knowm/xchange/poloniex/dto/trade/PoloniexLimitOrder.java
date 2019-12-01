@@ -1,6 +1,5 @@
 package org.knowm.xchange.poloniex.dto.trade;
 
-import java.util.Date;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
@@ -18,7 +17,7 @@ public class PoloniexLimitOrder extends LimitOrder {
       Double originalAmount,
       CurrencyPair currencyPair,
       String id,
-      Date timestamp,
+      Long timestamp,
       Double limitPrice) {
     super(type, originalAmount, currencyPair, id, timestamp, limitPrice);
   }

@@ -31,7 +31,7 @@ public final class UpbitAdapters {
     Map<OrderType, List<LimitOrder>> orderbookMap =
         adaptMarketOrderToLimitOrder(upbitOrderBook.getOrderbookUnits(), currencyPair);
     return new OrderBook(
-        DateUtils.fromMillisUtc(upbitOrderBook.getTimestamp().longValue()),
+        upbitOrderBook.getTimestamp().longValue(),
         orderbookMap.get(OrderType.ASK),
         orderbookMap.get(OrderType.BID));
   }
@@ -69,7 +69,7 @@ public final class UpbitAdapters {
     CurrencyPair currencyPair =
         new CurrencyPair(
             Currency.getInstance(market.split("-")[0]), Currency.getInstance(market.split("-")[1]));
-    final Date date = DateUtils.fromMillisUtc(ticker.getTimestamp().longValue() * 1000);
+    final Long date = ticker.getTimestamp().longValue() * 1000;
     return new Ticker.Builder()
         .currencyPair(currencyPair)
         .high(ticker.getHigh_price())
@@ -99,7 +99,7 @@ public final class UpbitAdapters {
         trade.getTradeVolume(),
         currencyPair,
         trade.getTradePrice(),
-        DateUtils.fromMillisUtc(trade.getTimestamp().longValue()),
+        trade.getTimestamp().longValue(),
         "");
   }
 
@@ -139,7 +139,7 @@ public final class UpbitAdapters {
         originalAmount,
         currencyPair,
         orderId,
-        Date.from(dateTime.toInstant()),
+        dateTime.toEpochSecond() * 1000L,
         price,
         price,
         cumulativeAmount,

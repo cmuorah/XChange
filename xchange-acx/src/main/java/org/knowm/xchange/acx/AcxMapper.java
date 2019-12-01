@@ -1,8 +1,5 @@
 package org.knowm.xchange.acx;
 
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.knowm.xchange.acx.dto.AcxTrade;
 import org.knowm.xchange.acx.dto.account.AcxAccount;
 import org.knowm.xchange.acx.dto.account.AcxAccountInfo;
@@ -24,12 +21,15 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.dto.marketdata.Trades.TradeSortType;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class AcxMapper {
   public Ticker mapTicker(CurrencyPair currencyPair, AcxMarket tickerData) {
     AcxTicker ticker = tickerData.ticker;
     return new Ticker.Builder()
         .currencyPair(currencyPair)
-        .timestamp(new Date(tickerData.at * 1000))
+        .timestamp(tickerData.at * 1000L)
         .ask(ticker.sell)
         .bid(ticker.buy)
         .open(ticker.open)
@@ -55,7 +55,7 @@ public class AcxMapper {
         .id(order.id)
         .limitPrice(order.price)
         .averagePrice(order.avgPrice)
-        .timestamp(order.createdAt)
+        .timestamp(order.createdAt.getTime())
         .originalAmount(order.volume)
         .remainingAmount(order.remainingVolume)
         .cumulativeAmount(order.executedVolume)
@@ -97,7 +97,7 @@ public class AcxMapper {
         .id(trade.id)
         .price(trade.price)
         .originalAmount(trade.volume)
-        .timestamp(trade.createdAt)
+        .timestamp(trade.createdAt.getTime())
         .type(mapTradeType(trade.side))
         .build();
   }

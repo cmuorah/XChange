@@ -50,7 +50,7 @@ public final class BityAdapters {
     String orderId = order.getResourceUri();
 
     return new UserTrade(
-        orderType, amount, currencyPair, price, date, orderId, orderId, fee, currencyPair.counter);
+        orderType, amount, currencyPair, price, date.getTime(), orderId, orderId, fee, currencyPair.counter);
   }
 
   public static ExchangeMetaData adaptMetaData(
@@ -113,7 +113,7 @@ public final class BityAdapters {
         .last(last)
         .bid(bid)
         .ask(ask)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 }

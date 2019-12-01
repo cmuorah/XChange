@@ -98,7 +98,7 @@ public class CoindirectTradeService extends CoindirectTradeServiceRaw implements
                       t.executedAmount,
                       CoindirectAdapters.toCurrencyPair(t.symbol),
                       t.executedPrice,
-                      t.dateCreated,
+                      t.dateCreated.getTime(),
                       t.uuid,
                       t.uuid,
                       t.executedFees,

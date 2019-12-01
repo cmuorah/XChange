@@ -1,7 +1,6 @@
 package org.knowm.xchange.yobit;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -23,7 +22,6 @@ import org.knowm.xchange.dto.meta.ExchangeMetaData;
 import org.knowm.xchange.dto.meta.FeeTier;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.UserTrade;
-import org.knowm.xchange.utils.DateUtils;
 import org.knowm.xchange.yobit.dto.marketdata.YoBitAsksBidsData;
 import org.knowm.xchange.yobit.dto.marketdata.YoBitInfo;
 import org.knowm.xchange.yobit.dto.marketdata.YoBitOrderBook;
@@ -137,8 +135,8 @@ public class YoBitAdapters {
     return new Trades(trades, ctrades.get(lastTrade).getTid(), TradeSortType.SortByID);
   }
 
-  private static Date parseDate(Long rawDateLong) {
-    return new Date(rawDateLong * 1000);
+  private static Long parseDate(Long rawDateLong) {
+    return rawDateLong * 1000;
   }
 
   public static Ticker adaptTicker(YoBitTicker ticker, CurrencyPair currencyPair) {
@@ -151,7 +149,7 @@ public class YoBitAdapters {
     builder.high(ticker.getHigh());
     builder.low(ticker.getLow());
     builder.volume(ticker.getVolCur());
-    builder.timestamp(new Date(ticker.getUpdated() * 1000L));
+    builder.timestamp(ticker.getUpdated() * 1000L);
 
     return builder.build();
   }
@@ -210,7 +208,7 @@ public class YoBitAdapters {
             .toString(); // status: 0 - active, 1 - fulfilled and closed, 2 - cancelled, 3 -//
     // cancelled after partially fulfilled.
 
-    Date time = DateUtils.fromUnixTime(Long.valueOf(timestamp));
+    Long time = Long.valueOf(timestamp);
 
     Order.OrderStatus orderStatus = adaptOrderStatus(status);
 
@@ -236,7 +234,7 @@ public class YoBitAdapters {
     String pair = tradeData.get("pair").toString();
     String timestamp = tradeData.get("timestamp").toString();
 
-    Date time = DateUtils.fromUnixTime(Long.valueOf(timestamp));
+    Long time = Long.valueOf(timestamp);
 
     return new UserTrade(
         adaptType(type),

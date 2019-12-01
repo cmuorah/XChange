@@ -111,7 +111,7 @@ public final class MercadoBitcoinAdapters {
         .high(high)
         .low(low)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -138,7 +138,7 @@ public final class MercadoBitcoinAdapters {
               tx.getAmount(),
               currencyPair,
               tx.getPrice(),
-              DateUtils.fromMillisUtc(tx.getDate() * 1000L),
+              tx.getDate() * 1000L,
               String.valueOf(tradeId)));
     }
 
@@ -192,7 +192,7 @@ public final class MercadoBitcoinAdapters {
     Double price = userOrdersEntry.getPrice();
     Double volume = userOrdersEntry.getVolume();
     long time = userOrdersEntry.getCreated() * 1000L;
-    return new LimitOrder(orderType, volume, currencyPair, id, new Date(time), price);
+    return new LimitOrder(orderType, volume, currencyPair, id, time, price);
   }
 
   private static OrderType toOrderType(String mercadoType) {
@@ -219,7 +219,7 @@ public final class MercadoBitcoinAdapters {
                 .id(txId)
                 .orderId(orderId)
                 .price(op.getPrice())
-                .timestamp(fromUnixTime(op.getCreated()))
+                .timestamp(fromUnixTime(op.getCreated()).getTime())
                 .originalAmount(op.getVolume())
                 .type(type)
                 .build());

@@ -138,7 +138,7 @@ public final class CoingiAdapters {
               order.getOriginalBaseAmount(),
               adaptCurrency(order.getCurrencyPair()),
               order.getId(),
-              new Date(order.getTimestamp()),
+              order.getTimestamp(),
               order.getPrice());
       limitOrder.setOrderStatus(adaptOrderStatus(order.getStatus()));
       list.add(limitOrder);
@@ -164,7 +164,7 @@ public final class CoingiAdapters {
         DateUtils.fromMillisUtc(
             tx.getTimestamp()
                 * timeScale); // polled order books provide a timestamp in seconds, stream in ms
-    return new Trade(orderType, tx.getBaseAmount(), currencyPair, tx.getPrice(), date, tradeId);
+    return new Trade(orderType, tx.getBaseAmount(), currencyPair, tx.getPrice(), date.getTime(), tradeId);
   }
 
   public static Trade adaptTrade(
@@ -174,7 +174,7 @@ public final class CoingiAdapters {
     OrderType orderType = tx.getType() == 0 ? OrderType.BID : OrderType.ASK;
     final String tradeId = tx.getId();
     Date date = new Date(tx.getTimestamp());
-    return new Trade(orderType, tx.getAmount(), currencyPair, tx.getPrice(), date, tradeId);
+    return new Trade(orderType, tx.getAmount(), currencyPair, tx.getPrice(), date.getTime(), tradeId);
   }
 
   public static UserTrades adaptTradeHistory(CoingiOrdersList ordersList) {
@@ -193,7 +193,7 @@ public final class CoingiAdapters {
               o.getOriginalBaseAmount(),
               pair,
               o.getPrice(),
-              new Date(o.getTimestamp()),
+              o.getTimestamp(),
               o.getId(),
               o.getId(),
               (double) 0,
@@ -247,7 +247,7 @@ public final class CoingiAdapters {
         .low(tickers.get(0).getLow())
         .vwap(tickers.get(0).getVwap())
         .volume(tickers.get(0).getVolume())
-        .timestamp(getTimestamp(tickers))
+        .timestamp(getTimestamp(tickers).getTime())
         .bid(getBid(orderBook))
         .ask(getAsk(orderBook))
         .build();

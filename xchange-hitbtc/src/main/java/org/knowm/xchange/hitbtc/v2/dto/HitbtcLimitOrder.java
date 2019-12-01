@@ -15,7 +15,7 @@ public class HitbtcLimitOrder extends LimitOrder {
       Date timestamp,
       Double limitPrice,
       String clientOrderId) {
-    super(type, originalAmount, currencyPair, id, timestamp, limitPrice);
+    super(type, originalAmount, currencyPair, id, timestamp.getTime(), limitPrice);
     this.clientOrderId = clientOrderId;
   }
 
@@ -28,7 +28,7 @@ public class HitbtcLimitOrder extends LimitOrder {
       Date timestamp,
       Double limitPrice,
       String clientOrderId) {
-    super(type, originalAmount, cumulativeAmount, currencyPair, id, timestamp, limitPrice);
+    super(type, originalAmount, cumulativeAmount, currencyPair, id, timestamp.getTime(), limitPrice);
     this.clientOrderId = clientOrderId;
   }
 
@@ -49,7 +49,7 @@ public class HitbtcLimitOrder extends LimitOrder {
         originalAmount,
         currencyPair,
         id,
-        timestamp,
+        timestamp.getTime(),
         limitPrice,
         averagePrice,
         cumulativeAmount,

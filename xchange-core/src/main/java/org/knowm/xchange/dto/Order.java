@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -23,7 +22,7 @@ public abstract class Order extends AbstractMarshallable implements Serializable
   /** An identifier that uniquely identifies the order */
   private final String id;
   /** The timestamp on the order according to the exchange's server, null if not provided */
-  private final Date timestamp;
+  private final Long timestamp;
   /** Any applicable order flags */
   private final Set<IOrderFlags> flags = new HashSet<>();
   /** Status of order during it lifecycle */
@@ -46,7 +45,7 @@ public abstract class Order extends AbstractMarshallable implements Serializable
    *     not provided
    */
   public Order(
-      OrderType type, Double originalAmount, CurrencyPair currencyPair, String id, Date timestamp) {
+      OrderType type, Double originalAmount, CurrencyPair currencyPair, String id, Long timestamp) {
     this(type, originalAmount, currencyPair, id, timestamp, null, null, null, null);
   }
 
@@ -67,7 +66,7 @@ public abstract class Order extends AbstractMarshallable implements Serializable
       Double originalAmount,
       CurrencyPair currencyPair,
       String id,
-      Date timestamp,
+      Long timestamp,
       Double averagePrice,
       Double cumulativeAmount,
       Double fee,
@@ -176,7 +175,7 @@ public abstract class Order extends AbstractMarshallable implements Serializable
     return id;
   }
 
-  public Date getTimestamp() {
+  public Long getTimestamp() {
 
     return timestamp;
   }
@@ -387,7 +386,7 @@ public abstract class Order extends AbstractMarshallable implements Serializable
     protected Double remainingAmount;
     protected CurrencyPair currencyPair;
     protected String id;
-    protected Date timestamp;
+    protected Long timestamp;
     protected Double averagePrice;
     protected OrderStatus status;
     protected Double fee;
@@ -452,7 +451,7 @@ public abstract class Order extends AbstractMarshallable implements Serializable
       return this;
     }
 
-    public Builder timestamp(Date timestamp) {
+    public Builder timestamp(Long timestamp) {
 
       this.timestamp = timestamp;
       return this;

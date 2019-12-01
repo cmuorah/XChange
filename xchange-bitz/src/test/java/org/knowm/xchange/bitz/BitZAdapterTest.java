@@ -32,7 +32,7 @@ public class BitZAdapterTest {
     // TODO: Implement Actual Currency MZC
     Ticker ticker = BitZAdapters.adaptTicker(bitZTickerResult.getData(), CurrencyPair.BTC_LTC);
 
-    assertThat(ticker.getTimestamp().getTime()).isEqualTo(1515076017L);
+    assertThat(ticker.getTimestamp()).isEqualTo(1515076017L);
     assertThat(ticker.getLast()).isEqualTo(new Double("0.00098657"));
     assertThat(ticker.getAsk()).isEqualTo(new Double("0.00092992"));
     assertThat(ticker.getBid()).isEqualTo(new Double("0.00098657"));
@@ -61,7 +61,7 @@ public class BitZAdapterTest {
     assertThat(book).isNotNull();
     assertThat(book.getAsks()).isNotEmpty();
     assertThat(book.getBids()).isNotEmpty();
-    assertThat(book.getTimeStamp().getTime()).isEqualTo(1515076082L);
+    assertThat(book.getTimeStamp()).isEqualTo(1515076082L);
 
     // TODO: Deeper Test Cases
   }

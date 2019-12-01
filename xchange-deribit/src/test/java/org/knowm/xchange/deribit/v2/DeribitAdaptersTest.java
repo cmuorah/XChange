@@ -56,7 +56,7 @@ public class DeribitAdaptersTest {
     assertThat(ticker.getVolume()).isEqualTo(new Double("0.5"));
     assertThat(ticker.getBidSize()).isEqualTo(new Double("5"));
     assertThat(ticker.getAskSize()).isEqualTo(new Double("5"));
-    assertThat(ticker.getTimestamp().getTime()).isEqualTo(1556125162701L);
+    assertThat(ticker.getTimestamp()).isEqualTo(1556125162701L);
   }
 
   @Test
@@ -73,7 +73,7 @@ public class DeribitAdaptersTest {
 
     // then
     assertThat(orderBook).isNotNull();
-    assertThat(orderBook.getTimeStamp().getTime()).isEqualTo(1550757626706L);
+    assertThat(orderBook.getTimeStamp()).isEqualTo(1550757626706L);
     assertThat(orderBook.getBids()).isNotEmpty();
     assertThat(orderBook.getBids().get(0).getType()).isEqualTo(Order.OrderType.BID);
     assertThat(orderBook.getBids().get(0).getLimitPrice()).isEqualTo(new Double("3955.75"));
@@ -111,7 +111,7 @@ public class DeribitAdaptersTest {
     assertThat(trade.getOriginalAmount()).isEqualTo(new Double("10"));
     assertThat(trade.getPrice()).isEqualTo(new Double("3610"));
 
-    assertThat(trade.getTimestamp().getTime()).isEqualTo(1550050591859L);
+    assertThat(trade.getTimestamp()).isEqualTo(1550050591859L);
     assertThat(trade.getId()).isEqualTo("48470");
   }
 }

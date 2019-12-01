@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto.marketdata;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -36,7 +35,7 @@ public final class OrderBookUpdate extends AbstractMarshallable implements Seria
       Double volume,
       CurrencyPair currencyPair,
       Double limitPrice,
-      Date timestamp,
+      Long timestamp,
       Double totalVolume) {
 
     this.limitOrder = new LimitOrder(type, volume, currencyPair, "", timestamp, limitPrice);

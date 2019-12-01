@@ -53,7 +53,7 @@ public class BleutradeMarketDataServiceIntegration extends BleutradeServiceTestS
           .low(new Double("0.00086000"))
           .vwap(new Double("0.00103455"))
           .volume(new Double("2450.97496015"))
-          .timestamp(new Date(1406632770000L))
+          .timestamp(1406632770000L)
           .build();
   private BleutradeMarketDataService marketDataService;
 

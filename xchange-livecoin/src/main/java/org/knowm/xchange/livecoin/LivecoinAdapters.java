@@ -126,7 +126,7 @@ public class LivecoinAdapters {
               trade.getQuantity(),
               currencyPair,
               trade.getPrice(),
-              parseDate(trade.getTime()),
+              trade.getTime(),
               String.valueOf(trade.getId()));
       trades.add(t);
     }
@@ -208,7 +208,7 @@ public class LivecoinAdapters {
     return builder
         .originalAmount(order.getQuantity())
         .id(order.getId().toString())
-        .timestamp(DateUtils.fromUnixTime(order.getIssueTime()))
+        .timestamp(order.getIssueTime())
         .orderStatus(status)
         .build();
   }
@@ -232,7 +232,7 @@ public class LivecoinAdapters {
         amountA,
         new CurrencyPair(ccyA, ccyB),
         price,
-        DateUtils.fromMillisUtc(Long.parseLong(map.get("date").toString())),
+        Long.parseLong(map.get("date").toString()),
         id,
         Optional.ofNullable(map.get("externalKey")).map(Object::toString).orElse(null),
         new Double(map.get("fee").toString()),
@@ -245,7 +245,7 @@ public class LivecoinAdapters {
 
     return new FundingRecord(
         Optional.ofNullable(map.get("externalKey")).map(Object::toString).orElse(null),
-        DateUtils.fromMillisUtc(Long.parseLong(map.get("date").toString())),
+        DateUtils.fromMillisUtc(Long.parseLong(map.get("date").toString())).getTime(),
         getInstance(map.get("fixedCurrency").toString()),
         new Double(map.get("amount").toString()),
         map.get("id").toString(),

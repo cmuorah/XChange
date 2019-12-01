@@ -1,6 +1,5 @@
 package org.knowm.xchange.ripple.dto.trade;
 
-import java.util.Date;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.trade.LimitOrder;
@@ -15,7 +14,7 @@ public class RippleLimitOrder extends LimitOrder {
       final Double originalAmount,
       final CurrencyPair currencyPair,
       final String id,
-      final Date timestamp,
+      final Long timestamp,
       final Double limitPrice,
       final String baseCounterparty,
       final String counterCounterparty) {

@@ -1,6 +1,5 @@
 package org.knowm.xchange.bitfinex.v1.dto.trade;
 
-import java.util.Date;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
@@ -18,7 +17,7 @@ public class BitfinexLimitOrder extends LimitOrder {
       Double originalAmount,
       CurrencyPair currencyPair,
       String id,
-      Date timestamp,
+      Long timestamp,
       Double limitPrice) {
     this(type, originalAmount, currencyPair, id, timestamp, limitPrice, null);
   }
@@ -28,7 +27,7 @@ public class BitfinexLimitOrder extends LimitOrder {
       Double originalAmount,
       CurrencyPair currencyPair,
       String id,
-      Date timestamp,
+      Long timestamp,
       Double limitPrice,
       Double ocoStopLimit) {
     super(type, originalAmount, currencyPair, id, timestamp, limitPrice);

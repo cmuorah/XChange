@@ -3,7 +3,6 @@ package org.knowm.xchange.dto.trade;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
 import org.junit.Test;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -20,7 +19,7 @@ public class LimitOrderTest {
     final CurrencyPair currencyPair = CurrencyPair.LTC_BTC;
     final Double limitPrice = new Double("251.64");
     final Double fee = new Double("22.2");
-    final Date timestamp = new Date();
+    final Long timestamp = System.currentTimeMillis();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
 
@@ -60,7 +59,7 @@ public class LimitOrderTest {
     final CurrencyPair currencyPair = CurrencyPair.BTC_USD;
     final Double limitPrice = new Double("250.34");
     final Double fee = new Double("22.2");
-    final Date timestamp = new Date();
+    final Long timestamp = System.currentTimeMillis();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
 

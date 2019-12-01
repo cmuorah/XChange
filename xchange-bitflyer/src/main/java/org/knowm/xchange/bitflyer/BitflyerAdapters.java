@@ -92,7 +92,7 @@ public class BitflyerAdapters {
         .ask(ask)
         .last(ask)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -116,7 +116,7 @@ public class BitflyerAdapters {
   public static FundingRecord adaptFundingRecord(
       BitflyerCoinHistory history, FundingRecord.Type type) {
     return new FundingRecord.Builder()
-        .setDate(BitflyerUtils.parseDate(history.getEventDate()))
+        .setDate(BitflyerUtils.parseDate(history.getEventDate()).getTime())
         .setCurrency(new Currency(history.getCurrencyCode()))
         .setAmount(history.getAmount())
         .setAddress(history.getAddress())
@@ -131,7 +131,7 @@ public class BitflyerAdapters {
   public static FundingRecord adaptFundingRecord(
       BitflyerDepositOrWithdrawal history, FundingRecord.Type type) {
     return new FundingRecord.Builder()
-        .setDate(BitflyerUtils.parseDate(history.getEventDate()))
+        .setDate(BitflyerUtils.parseDate(history.getEventDate()).getTime())
         .setCurrency(new Currency(history.getCurrencyCode()))
         .setAmount(history.getAmount())
         .setInternalId(history.getID())
@@ -152,7 +152,7 @@ public class BitflyerAdapters {
                             new CurrencyPair(result.getProductCode().replace("_", "/")))
                         .id(result.getChildOrderId())
                         .orderStatus(adaptOrderStatus(result.getChildOrderState()))
-                        .timestamp(BitflyerUtils.parseDate(result.getChildOrderDate()))
+                        .timestamp(BitflyerUtils.parseDate(result.getChildOrderDate()).getTime())
                         .limitPrice(result.getPrice())
                         .averagePrice(result.getAveragePrice())
                         .originalAmount(result.getSize())

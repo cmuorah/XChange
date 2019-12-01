@@ -49,7 +49,7 @@ public final class EnigmaAdapters {
         .currencyPair(getCurrencyPairFromString(enigmaTrade.getProductName()))
         .price(enigmaTrade.getPrice())
         .originalAmount(enigmaTrade.getQuantity())
-        .timestamp(enigmaTrade.getCreatedAt())
+        .timestamp(enigmaTrade.getCreatedAt().getTime())
         .type(enigmaTrade.getSide().equals("sell") ? Order.OrderType.ASK : Order.OrderType.BID)
         .build();
   }
@@ -60,7 +60,7 @@ public final class EnigmaAdapters {
         .currencyPair(getCurrencyPairFromString(enigmaTrade.getProductName()))
         .price(enigmaTrade.getPrice())
         .originalAmount(enigmaTrade.getQuantity())
-        .timestamp(enigmaTrade.getSent())
+        .timestamp(enigmaTrade.getSent().getTime())
         .type(enigmaTrade.getSide().equals("sell") ? Order.OrderType.ASK : Order.OrderType.BID)
         .build();
   }
@@ -84,7 +84,7 @@ public final class EnigmaAdapters {
                         .currencyPair(currencyPair)
                         .price(enigmaTransaction.getPrice())
                         .originalAmount(enigmaTransaction.getQuantity())
-                        .timestamp(enigmaTransaction.getSentAt())
+                        .timestamp(enigmaTransaction.getSentAt().getTime())
                         .type(
                             enigmaTransaction.getSide().equals("sell")
                                 ? Order.OrderType.ASK
@@ -119,7 +119,7 @@ public final class EnigmaAdapters {
         createOrders(currencyPair, Order.OrderType.ASK, enigmaOrderBook.getAsks());
     List<LimitOrder> bids =
         createOrders(currencyPair, Order.OrderType.BID, enigmaOrderBook.getBids());
-    return new OrderBook(enigmaOrderBook.getTimestamp(), asks, bids);
+    return new OrderBook(enigmaOrderBook.getTimestamp().getTime(), asks, bids);
   }
 
   public static List<LimitOrder> createOrders(

@@ -177,7 +177,7 @@ public class BTCTradeAdaptersTest {
     assertEquals("16636810", order.getId());
     assertEquals(new Double("1.01"), order.getLimitPrice());
     // 2014-09-14 12:48:53 Asia/Shanghai
-    assertEquals(1410670133000L, order.getTimestamp().getTime());
+    assertEquals(1410670133000L, order.getTimestamp().longValue());
     assertEquals(new Double("0.1"), order.getOriginalAmount());
     assertEquals(OrderType.BID, order.getType());
 
@@ -186,7 +186,7 @@ public class BTCTradeAdaptersTest {
     assertEquals("16634460", order.getId());
     assertEquals(new Double("10.01"), order.getLimitPrice());
     // 2014-09-14 12:31:46 Asia/Shanghai
-    assertEquals(1410669106000L, order.getTimestamp().getTime());
+    assertEquals(1410669106000L, order.getTimestamp().longValue());
     assertEquals(new Double("0.01"), order.getOriginalAmount());
     assertEquals(OrderType.BID, order.getType());
   }

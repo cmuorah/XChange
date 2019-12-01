@@ -1,10 +1,8 @@
 package org.knowm.xchange.dto.trade;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
-import java.util.Date;
 import org.junit.Test;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -18,7 +16,7 @@ public class UserTradeTest {
     final Double originalAmount = new Double("99.401");
     final CurrencyPair currencyPair = CurrencyPair.LTC_BTC;
     final Double price = new Double("251.64");
-    final Date timestamp = new Date();
+    final Long timestamp = System.currentTimeMillis();
     final String id = "id";
     final String orderId = "OrderId";
     final Double feeAmount = new Double("0.0006");
@@ -54,7 +52,7 @@ public class UserTradeTest {
     final Double originalAmount = new Double("100.501");
     final CurrencyPair currencyPair = CurrencyPair.BTC_USD;
     final Double price = new Double("250.34");
-    final Date timestamp = new Date();
+    final Long timestamp = System.currentTimeMillis();
     final String id = "id";
     final String orderId = "OrderId";
     final Double feeAmount = new Double("0");
@@ -90,7 +88,7 @@ public class UserTradeTest {
     final Double originalAmount = new Double("100.501");
     final CurrencyPair currencyPair = CurrencyPair.BTC_USD;
     final Double price = new Double("250.34");
-    final Date timestamp = new Date();
+    final Long timestamp = System.currentTimeMillis();
     final String id = "id";
     final String orderId = "OrderId";
     final Double feeAmount = new Double("0");
@@ -130,7 +128,7 @@ public class UserTradeTest {
             new Double("100.501"),
             CurrencyPair.BTC_USD,
             new Double("250.34"),
-            new Date(),
+            System.currentTimeMillis(),
             "id",
             "FooOrderId",
             new Double("0"),
@@ -142,13 +140,13 @@ public class UserTradeTest {
             new Double("100.501"),
             CurrencyPair.BTC_USD,
             new Double("250.34"),
-            new Date(),
+            System.currentTimeMillis(),
             "id",
             "BarOrderId",
             new Double("0.15"),
             Currency.USD);
 
-    assertFalse(original.equals(copy));
+    assertNotEquals(original, copy);
   }
 
   @Test
@@ -159,7 +157,7 @@ public class UserTradeTest {
             new Double("100.501"),
             CurrencyPair.BTC_USD,
             new Double("250.34"),
-            new Date(),
+            System.currentTimeMillis(),
             "FooTradeId",
             "OrderId",
             new Double("0"),
@@ -171,12 +169,12 @@ public class UserTradeTest {
             new Double("100.501"),
             CurrencyPair.BTC_USD,
             new Double("250.34"),
-            new Date(),
+            System.currentTimeMillis(),
             "BarTradeId",
             "OrderId",
             new Double("0"),
             Currency.BTC);
 
-    assertFalse(original.equals(copy));
+    assertNotEquals(original, copy);
   }
 }

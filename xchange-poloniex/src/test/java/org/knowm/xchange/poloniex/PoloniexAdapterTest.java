@@ -39,12 +39,12 @@ public class PoloniexAdapterTest {
 
     Assert.assertEquals(new Double("0.0102693100000000"), result.getAveragePrice(), 1e-8);
     Assert.assertEquals(new Double("0.03000000"), result.getCumulativeAmount());
-    Assert.assertEquals(null, result.getOriginalAmount());
+    Assert.assertNull(result.getOriginalAmount());
     Assert.assertEquals("102", result.getId());
   }
 
   @Test
-  public void testFundingHistory() throws JsonParseException, JsonMappingException, IOException {
+  public void testFundingHistory() throws IOException {
 
     final InputStream is =
         PoloniexLoansDataTest.class.getResourceAsStream(
@@ -66,7 +66,7 @@ public class PoloniexAdapterTest {
             .orElseThrow(NullPointerException::new);
 
     assertThat(adjustment.getAddress()).isNull();
-    assertThat(adjustment.getDate()).isEqualTo(new Date(1564782686000L));
+    assertThat(adjustment.getDate()).isEqualTo(1564782686000L);
     assertThat(adjustment.getCurrency()).isEqualTo(Currency.USDT);
     assertThat(adjustment.getAmount()).isCloseTo(new Double("0.01752476"), Offset.offset(0d));
     assertThat(adjustment.getInternalId()).isNull();
@@ -116,7 +116,6 @@ public class PoloniexAdapterTest {
     assertThat(withdrawal.getStatus()).isEqualTo(FundingRecord.Status.COMPLETE);
     assertThat(withdrawal.getBalance()).isNull();
     assertThat(withdrawal.getFee()).isCloseTo(new Double("0.01"), Offset.offset(0d));
-    ;
     assertThat(withdrawal.getDescription())
         .isEqualTo("COMPLETE: 0xf85d3870a4c9a077cd333f59ad49db7f2b21e4a67326961c09d629f6a7bb2e9d");
   }

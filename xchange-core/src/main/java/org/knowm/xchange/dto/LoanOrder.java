@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -27,7 +26,7 @@ public class LoanOrder extends AbstractMarshallable implements Serializable {
   private final String id;
 
   /** The timestamp on the order according to the exchange's server, null if not provided */
-  private final Date timestamp;
+  private final Long timestamp;
 
   /**
    * Constructor
@@ -46,7 +45,7 @@ public class LoanOrder extends AbstractMarshallable implements Serializable {
       Double originalAmount,
       int dayPeriod,
       String id,
-      Date timestamp) {
+      Long timestamp) {
 
     this.type = type;
     this.currency = currency;
@@ -81,7 +80,7 @@ public class LoanOrder extends AbstractMarshallable implements Serializable {
     return id;
   }
 
-  public Date getTimestamp() {
+  public Long getTimestamp() {
 
     return timestamp;
   }

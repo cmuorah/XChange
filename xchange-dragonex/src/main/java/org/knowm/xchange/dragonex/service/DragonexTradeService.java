@@ -39,7 +39,7 @@ public class DragonexTradeService extends DragonexTradeServiceRaw implements Tra
   }
 
   @Override
-  public OpenOrders getOpenOrders() throws IOException {
+  public OpenOrders getOpenOrders() {
     throw new ExchangeException("You need to provide the currency pair.");
   }
 
@@ -66,7 +66,7 @@ public class DragonexTradeService extends DragonexTradeServiceRaw implements Tra
                         o.volume,
                         exchange.pair(o.symbolId),
                         Long.toString(o.orderId),
-                        o.getTimestamp(),
+                        o.getTimestamp().getTime(),
                         o.price))
             .collect(Collectors.toList());
     return new OpenOrders(openOrders);
@@ -102,7 +102,7 @@ public class DragonexTradeService extends DragonexTradeServiceRaw implements Tra
     }
     long orderId;
     try {
-      orderId = Long.valueOf(((CancelOrderByIdParams) params).getOrderId());
+      orderId = Long.parseLong(((CancelOrderByIdParams) params).getOrderId());
     } catch (Throwable e) {
       throw new ExchangeException("You need to provide the order id as a number.", e);
     }
@@ -139,7 +139,7 @@ public class DragonexTradeService extends DragonexTradeServiceRaw implements Tra
                       d.volume,
                       p,
                       d.price,
-                      d.getTimestamp(),
+                      d.getTimestamp().getTime(),
                       d.tradeId,
                       d.orderId,
                       d.charge,

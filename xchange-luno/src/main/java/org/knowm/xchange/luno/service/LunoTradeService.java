@@ -73,7 +73,7 @@ public class LunoTradeService extends LunoBaseService implements TradeService {
               lo.limitVolume,
               LunoUtil.fromLunoPair(lo.pair),
               lo.orderId,
-              lo.getCreationTimestamp(),
+              lo.getCreationTimestamp().getTime(),
               lo.limitPrice));
     }
     return new OpenOrders(list);
@@ -177,7 +177,7 @@ public class LunoTradeService extends LunoBaseService implements TradeService {
               t.volume,
               pair,
               t.price,
-              t.getTimestamp(),
+              t.getTimestamp().getTime(),
               tradeId,
               t.orderId,
               feeAmount,

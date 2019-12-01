@@ -35,7 +35,7 @@ public class TheRockAccountService extends TheRockAccountServiceRaw implements A
 
     return new FundingRecord(
         address,
-        txn.getDate(),
+        txn.getDate().getTime(),
         Currency.getInstance(txn.getCurrency()),
         txn.getPrice(),
         String.valueOf(txn.getId()),

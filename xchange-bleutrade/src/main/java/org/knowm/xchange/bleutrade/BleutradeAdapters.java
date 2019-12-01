@@ -57,7 +57,7 @@ public class BleutradeAdapters {
     builder.high(bleutradeTicker.getHigh());
     builder.last(bleutradeTicker.getLast());
     builder.low(bleutradeTicker.getLow());
-    builder.timestamp(BleutradeUtils.toDate(bleutradeTicker.getTimeStamp()));
+    builder.timestamp(BleutradeUtils.toDate(bleutradeTicker.getTimeStamp()).getTime());
     builder.volume(bleutradeTicker.getVolume());
     builder.vwap(bleutradeTicker.getAverage());
 
@@ -104,7 +104,7 @@ public class BleutradeAdapters {
       Trade.Builder builder = new Trade.Builder();
       builder.currencyPair(currencyPair);
       builder.price(bleutradeTrade.getPrice());
-      builder.timestamp(BleutradeUtils.toDate(bleutradeTrade.getTimeStamp()));
+      builder.timestamp(BleutradeUtils.toDate(bleutradeTrade.getTimeStamp()).getTime());
       builder.originalAmount(bleutradeTrade.getQuantity());
       builder.type(bleutradeTrade.getOrderType().equals("BUY") ? OrderType.BID : OrderType.ASK);
       trades.add(builder.build());
@@ -143,7 +143,7 @@ public class BleutradeAdapters {
       builder.limitPrice(bleuTradeOpenOrder.getPrice());
       builder.remainingAmount(bleuTradeOpenOrder.getQuantityRemaining());
       builder.originalAmount(bleuTradeOpenOrder.getQuantity());
-      builder.timestamp(BleutradeUtils.toDate(bleuTradeOpenOrder.getCreated()));
+      builder.timestamp(BleutradeUtils.toDate(bleuTradeOpenOrder.getCreated()).getTime());
       openOrders.add(builder.build());
     }
 
@@ -184,7 +184,7 @@ public class BleutradeAdapters {
         trade.quantity,
         currencyPair,
         trade.price,
-        BleutradeUtils.toDate(trade.created),
+        BleutradeUtils.toDate(trade.created).getTime(),
         trade.orderId,
         trade.orderId,
         null,

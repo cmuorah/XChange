@@ -40,7 +40,7 @@ public class CoinsuperTradeService extends CoinsuperTradeServiceRaw implements T
     CoinsuperResponse<List<String>> openOrders = orderOpenList(parameters);
 
     for (String orderNo : openOrders.getData().getResult()) {
-      limitOrders.add(new LimitOrder(null, null, null, orderNo, new Date(), null));
+      limitOrders.add(new LimitOrder(null, null, null, orderNo, System.currentTimeMillis(), null));
     }
 
     return new OpenOrders(limitOrders);

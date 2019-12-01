@@ -50,7 +50,7 @@ public class CobinhoodAdapters {
         .low(ticker.getDayLow())
         .last(ticker.getLastTradePrice())
         .volume(ticker.getDayVolume())
-        .timestamp(new Date(ticker.getTimestamp()))
+        .timestamp(ticker.getTimestamp())
         .build();
   }
 
@@ -72,7 +72,7 @@ public class CobinhoodAdapters {
         .originalAmount(trade.getSize())
         .currencyPair(pair)
         .type(trade.getMakerSide().getOrderType())
-        .timestamp(new Date(trade.getTimestamp()))
+        .timestamp(trade.getTimestamp())
         .id(trade.getId())
         .build();
   }
@@ -116,7 +116,7 @@ public class CobinhoodAdapters {
     return new LimitOrder.Builder(
             order.getSide().getOrderType(), adaptSymbol(order.getTradingPair()))
         .id(order.getId())
-        .timestamp(new Date(order.getTimestamp()))
+        .timestamp(order.getTimestamp())
         .orderType(order.getSide().getOrderType())
         .orderStatus(order.getState().getStatus())
         .limitPrice(order.getPrice())

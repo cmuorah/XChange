@@ -1,7 +1,5 @@
 package org.knowm.xchange.exmo.service;
 
-import java.io.IOException;
-import java.util.*;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.marketdata.Trades;
@@ -15,30 +13,35 @@ import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 import org.knowm.xchange.service.trade.params.orders.OrderQueryParams;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
 public class ExmoTradeService extends ExmoTradeServiceRaw implements TradeService {
   public ExmoTradeService(ExmoExchange exmoExchange) {
     super(exmoExchange);
   }
 
   @Override
-  public OpenOrders getOpenOrders() throws IOException {
+  public OpenOrders getOpenOrders() {
     return getOpenOrders(null);
   }
 
   @Override
-  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) {
     return new OpenOrders(openOrders());
   }
 
   @Override
-  public String placeMarketOrder(MarketOrder marketOrder) throws IOException {
+  public String placeMarketOrder(MarketOrder marketOrder) {
     String type = marketOrder.getType().equals(Order.OrderType.BID) ? "market_buy" : "market_sell";
 
     return placeOrder(type, 0d, marketOrder.getCurrencyPair(), marketOrder.getOriginalAmount());
   }
 
   @Override
-  public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
+  public String placeLimitOrder(LimitOrder limitOrder) {
     String type = limitOrder.getType().equals(Order.OrderType.BID) ? "buy" : "sell";
 
     return placeOrder(
@@ -49,7 +52,7 @@ public class ExmoTradeService extends ExmoTradeServiceRaw implements TradeServic
   }
 
   @Override
-  public boolean cancelOrder(CancelOrderParams orderParams) throws IOException {
+  public boolean cancelOrder(CancelOrderParams orderParams) {
     if (orderParams instanceof CancelOrderByIdParams) {
       CancelOrderByIdParams params = (CancelOrderByIdParams) orderParams;
       String orderId = params.getOrderId();
@@ -61,7 +64,7 @@ public class ExmoTradeService extends ExmoTradeServiceRaw implements TradeServic
   }
 
   @Override
-  public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
+  public UserTrades getTradeHistory(TradeHistoryParams params) {
     Integer limit = 10000;
     Long offset = 0L;
     List<CurrencyPair> currencyPairs = new ArrayList<>();
@@ -89,16 +92,16 @@ public class ExmoTradeService extends ExmoTradeServiceRaw implements TradeServic
   }
 
   @Override
-  public String placeStopOrder(StopOrder stopOrder) throws IOException {
+  public String placeStopOrder(StopOrder stopOrder) {
     throw new NotAvailableFromExchangeException();
   }
 
   @Override
-  /**
+  /*
    * Warning: this make multiple api requests (one per parameter) so may result in you exceeding
    * your api limits
    */
-  public Collection<Order> getOrder(OrderQueryParams... orderQueryParams) throws IOException {
+  public Collection<Order> getOrder(OrderQueryParams... orderQueryParams) {
     List<Order> results = new ArrayList<>();
 
     for (OrderQueryParams orderQueryParam : orderQueryParams) {
@@ -107,7 +110,7 @@ public class ExmoTradeService extends ExmoTradeServiceRaw implements TradeServic
       Order.OrderType type = null;
       CurrencyPair currencyPair = null;
       String id = null;
-      Date timestamp = null;
+      Long timestamp = null;
       Double totalValue = 0d;
       Double cumulativeAmount = 0d;
       Double fee = 0d;
@@ -123,13 +126,12 @@ public class ExmoTradeService extends ExmoTradeServiceRaw implements TradeServic
         currencyPair = userTrade.getCurrencyPair();
         id = userTrade.getOrderId();
 
-        if (timestamp == null) timestamp = userTrade.getTimestamp();
+        if (timestamp == null)
+          timestamp = userTrade.getTimestamp();
 
-        if (timestamp.getTime()
-            < userTrade
-                .getTimestamp()
-                .getTime()) // arbitarily use the timestmap from the most recent trade
-        timestamp = userTrade.getTimestamp();
+        // arbitrarily use the timestamp from the most recent trade
+        if (timestamp < userTrade.getTimestamp())
+          timestamp = userTrade.getTimestamp();
 
         Double amountForFill = userTrade.getOriginalAmount();
         Double priceForFill = userTrade.getPrice();

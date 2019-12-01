@@ -102,7 +102,7 @@ public class BTCMarketsTradeServiceTest extends BTCMarketsTestSupport {
             new Double("10.00000000"),
             CurrencyPair.BTC_AUD,
             "11111",
-            new Date(1234567890L),
+            1234567890L,
             new Double("20.00000000"));
 
     BTCMarketsOrder btcMarketsOrder =

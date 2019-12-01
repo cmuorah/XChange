@@ -1,14 +1,5 @@
 package org.knowm.xchange.kucoin;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.knowm.xchange.kucoin.KucoinMarketDataService.PARAM_FULL_ORDERBOOK;
-
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import org.junit.Test;
 import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -18,15 +9,25 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.dto.meta.ExchangeMetaData;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.knowm.xchange.kucoin.KucoinMarketDataService.PARAM_FULL_ORDERBOOK;
+
 public class KucoinMarketDataServiceIntegration {
 
   private final CurrencyPair ETH = CurrencyPair.ETH_BTC;
 
   @Test
-  public void testGetMarketData() throws Exception {
+  public void testGetMarketData() {
     KucoinExchange exchange = exchange();
     ExchangeMetaData exchangeMetaData = exchange.getExchangeMetaData();
-    exchangeMetaData.getCurrencyPairs().entrySet().forEach(pair -> System.out.println(pair));
+    exchangeMetaData.getCurrencyPairs().entrySet().forEach(System.out::println);
   }
 
   @Test
@@ -74,16 +75,16 @@ public class KucoinMarketDataServiceIntegration {
     return ExchangeFactory.INSTANCE.createExchange(KucoinExchange.class);
   }
 
-  private void checkTimestamp(Date date) {
+  private void checkTimestamp(Long date) {
     assertThat(
         Math.abs(
-                LocalDateTime.ofInstant(date.toInstant(), ZoneOffset.UTC)
+                LocalDateTime.ofInstant(Instant.ofEpochMilli(date), ZoneOffset.UTC)
                     .until(LocalDateTime.now(), ChronoUnit.MINUTES))
             < 5);
   }
 
   private void checkOrderBookIntegrity(OrderBook orderBook) {
-    Double previousPrice = new Double(1000000000000000000L);
+    Double previousPrice = (double) 1000000000000000000L;
     for (LimitOrder o : orderBook.getBids()) {
       assertThat(o.getLimitPrice()).isLessThan(previousPrice);
       previousPrice = o.getLimitPrice();

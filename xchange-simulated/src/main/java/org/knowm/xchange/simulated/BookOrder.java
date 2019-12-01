@@ -74,7 +74,7 @@ final class BookOrder {
                     ? OrderStatus.FILLED
                     : OrderStatus.PARTIALLY_FILLED)
         .originalAmount(originalAmount)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 }

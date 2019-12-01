@@ -1,12 +1,10 @@
 package org.knowm.xchange.dto.marketdata;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import net.openhft.chronicle.wire.AbstractMarshallable;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.utils.Assert;
-import org.knowm.xchange.utils.DateUtils;
 
 /**
  * A class encapsulating the information a "Ticker" can contain. Some fields can be empty if not
@@ -29,7 +27,7 @@ public final class Ticker extends AbstractMarshallable implements Serializable {
   private final Double volume;
   private final Double quoteVolume;
   /** the timestamp of the ticker according to the exchange's server, null if not provided */
-  private final Date timestamp;
+  private final Long timestamp;
 
   private final Double bidSize;
   private final Double askSize;
@@ -62,7 +60,7 @@ public final class Ticker extends AbstractMarshallable implements Serializable {
       Double vwap,
       Double volume,
       Double quoteVolume,
-      Date timestamp,
+      Long timestamp,
       Double bidSize,
       Double askSize) {
     this.open = open;
@@ -132,7 +130,7 @@ public final class Ticker extends AbstractMarshallable implements Serializable {
     return quoteVolume;
   }
 
-  public Date getTimestamp() {
+  public Long getTimestamp() {
 
     return timestamp;
   }
@@ -169,7 +167,7 @@ public final class Ticker extends AbstractMarshallable implements Serializable {
         + ", quoteVolume="
         + quoteVolume
         + ", timestamp="
-        + DateUtils.toMillisNullSafe(timestamp)
+        + timestamp
         + ", bidSize="
         + bidSize
         + ", askSize="
@@ -196,7 +194,7 @@ public final class Ticker extends AbstractMarshallable implements Serializable {
     private Double vwap;
     private Double volume;
     private Double quoteVolume;
-    private Date timestamp;
+    private Long timestamp;
     private Double bidSize;
     private Double askSize;
 
@@ -295,7 +293,7 @@ public final class Ticker extends AbstractMarshallable implements Serializable {
       return this;
     }
 
-    public Builder timestamp(Date timestamp) {
+    public Builder timestamp(Long timestamp) {
 
       this.timestamp = timestamp;
       return this;

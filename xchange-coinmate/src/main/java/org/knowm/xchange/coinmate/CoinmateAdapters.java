@@ -77,7 +77,7 @@ public class CoinmateAdapters {
         .high(high)
         .low(low)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -122,7 +122,7 @@ public class CoinmateAdapters {
         coinmateEntry.getAmount(),
         CoinmateUtils.getPair(coinmateEntry.getCurrencyPair()),
         coinmateEntry.getPrice(),
-        new Date(coinmateEntry.getTimestamp()),
+        coinmateEntry.getTimestamp(),
         coinmateEntry.getTransactionId());
   }
 
@@ -171,7 +171,7 @@ public class CoinmateAdapters {
               entry.getAmount(),
               CoinmateUtils.getPair(entry.getAmountCurrency() + "_" + entry.getPriceCurrency()),
               entry.getPrice(),
-              new Date(entry.getTimestamp()),
+              entry.getTimestamp(),
               Long.toString(entry.getTransactionId()),
               Long.toString(entry.getOrderId()),
               entry.getFee(),
@@ -208,7 +208,7 @@ public class CoinmateAdapters {
               entry.getAmount(),
               CoinmateUtils.getPair(entry.getCurrencyPair()),
               entry.getPrice(),
-              new Date(entry.getCreatedTimestamp()),
+              entry.getCreatedTimestamp(),
               Long.toString(entry.getTransactionId()),
               Long.toString(entry.getOrderId()),
               entry.getFee(),
@@ -275,7 +275,7 @@ public class CoinmateAdapters {
       FundingRecord funding =
           new FundingRecord(
               null,
-              new Date(entry.getTimestamp()),
+              entry.getTimestamp(),
               Currency.getInstance(entry.getAmountCurrency()),
               entry.getAmount(),
               transactionId,
@@ -315,7 +315,7 @@ public class CoinmateAdapters {
               entry.getAmount(),
               CoinmateUtils.getPair(entry.getCurrencyPair()),
               Long.toString(entry.getId()),
-              new Date(entry.getTimestamp()),
+              entry.getTimestamp(),
               entry.getPrice());
 
       ordersList.add(limitOrder);

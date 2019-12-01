@@ -50,7 +50,7 @@ public class DeribitAdapters {
         .volume(deribitTicker.getStats().getVolume())
         .bidSize(deribitTicker.getBestBidAmount())
         .askSize(deribitTicker.getBestAskAmount())
-        .timestamp(deribitTicker.getTimestamp())
+        .timestamp(deribitTicker.getTimestamp().getTime())
         .build();
   }
 
@@ -58,7 +58,7 @@ public class DeribitAdapters {
     CurrencyPair pair = adaptCurrencyPair(deribitOrderBook.getInstrumentName());
     List<LimitOrder> bids = adaptOrdersList(deribitOrderBook.getBids(), Order.OrderType.BID, pair);
     List<LimitOrder> asks = adaptOrdersList(deribitOrderBook.getAsks(), Order.OrderType.ASK, pair);
-    return new OrderBook(deribitOrderBook.getTimestamp(), asks, bids);
+    return new OrderBook(deribitOrderBook.getTimestamp().getTime(), asks, bids);
   }
 
   /** convert orders map (price -> amount) to a list of limit orders */
@@ -88,7 +88,7 @@ public class DeribitAdapters {
         deribitTrade.getAmount(),
         adaptCurrencyPair(deribitTrade.getInstrumentName()),
         deribitTrade.getPrice(),
-        deribitTrade.getTimestamp(),
+        deribitTrade.getTimestamp().getTime(),
         deribitTrade.getTradeId());
   }
 
@@ -96,7 +96,7 @@ public class DeribitAdapters {
 
     return new Trades(
         deribitTrades.getTrades().stream()
-            .map(trade -> adaptTrade(trade))
+            .map(DeribitAdapters::adaptTrade)
             .collect(Collectors.toList()));
   }
 
@@ -116,12 +116,10 @@ public class DeribitAdapters {
         msg += " - " + data;
       }
 
-      switch (code) {
-        case -32602:
-          return new CurrencyPairNotValidException(data, ex);
-        default:
-          return new ExchangeException(msg, ex);
+      if (code == -32602) {
+        return new CurrencyPairNotValidException(data, ex);
       }
+      return new ExchangeException(msg, ex);
     }
     return new ExchangeException("Operation failed without any error message", ex);
   }

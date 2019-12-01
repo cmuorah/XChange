@@ -159,7 +159,7 @@ public class CoingiTradeService extends CoingiTradeServiceRaw implements TradeSe
                 coingiOrder.getOriginalBaseAmount(),
                 currencyPair,
                 coingiOrder.getId(),
-                date,
+                date.getTime(),
                 coingiOrder.getPrice());
         order.setOrderStatus(CoingiAdapters.adaptOrderStatus(coingiOrder.getStatus()));
         orders.add(order);

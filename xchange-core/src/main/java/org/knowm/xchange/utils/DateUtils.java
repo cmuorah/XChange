@@ -43,6 +43,9 @@ public class DateUtils {
     return sd.format(date);
   }
 
+  public static String toUTCString(Long utcMillis) {
+    return toUTCString(new Date(utcMillis));
+  }
   /**
    * Converts an ISO formatted Date String to a Java Date ISO format: yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
    *

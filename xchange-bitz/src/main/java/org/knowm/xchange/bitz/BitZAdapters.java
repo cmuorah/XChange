@@ -33,19 +33,16 @@ public class BitZAdapters {
     Double volume = bitzTicker.getVolume();
     Date timestamp = DateUtils.fromMillisUtc(bitzTicker.getTimestamp());
 
-    Ticker ticker =
-        new Ticker.Builder()
-            .currencyPair(currencyPair)
-            .last(last)
-            .bid(bid)
-            .ask(ask)
-            .high(high)
-            .low(low)
-            .volume(volume)
-            .timestamp(timestamp)
-            .build();
-
-    return ticker;
+    return new Ticker.Builder()
+        .currencyPair(currencyPair)
+        .last(last)
+        .bid(bid)
+        .ask(ask)
+        .high(high)
+        .low(low)
+        .volume(volume)
+        .timestamp(timestamp.getTime())
+        .build();
   }
 
   public static Trade adaptTrade(BitZPublicTrade trade, CurrencyPair pair) {
@@ -67,8 +64,8 @@ public class BitZAdapters {
   public static OrderBook adaptOrders(BitZOrders bitZOrders, CurrencyPair currencyPair) {
 
     Date timestamp = DateUtils.fromMillisUtc(bitZOrders.getTimestamp());
-    List<LimitOrder> asks = new ArrayList<LimitOrder>();
-    List<LimitOrder> bids = new ArrayList<LimitOrder>();
+    List<LimitOrder> asks = new ArrayList<>();
+    List<LimitOrder> bids = new ArrayList<>();
 
     for (BitZPublicOrder order : bitZOrders.getAsks()) {
       asks.add(
@@ -86,12 +83,12 @@ public class BitZAdapters {
               .build());
     }
 
-    return new OrderBook(timestamp, asks, bids);
+    return new OrderBook(timestamp.getTime(), asks, bids);
   }
 
   public static List<Ticker> adaptTickers(BitZTickerAllResult bitZTickerAllResult) {
 
-    List<Ticker> tickers = new ArrayList<Ticker>();
+    List<Ticker> tickers = new ArrayList<>();
 
     for (Entry<String, BitZTicker> ticker :
         bitZTickerAllResult.getData().getAllTickers().entrySet()) {

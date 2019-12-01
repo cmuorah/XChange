@@ -57,7 +57,7 @@ public class CoinMarketCapMarketDataService extends CoinMarketCapMarketDataServi
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
-        .timestamp(cmcB.getLastUpdated())
+        .timestamp(cmcB.getLastUpdated().getTime())
         .last(price)
         .bid(price)
         .ask(price)

@@ -153,7 +153,7 @@ public class BitfinexAdaptersTest {
       long expectedTimestampMillis = Math.round(levels[i].getTimestamp() * (1000d));
 
       assertEquals(levels[i].getAmount(), order.getOriginalAmount());
-      assertEquals(expectedTimestampMillis, order.getTimestamp().getTime());
+      assertEquals(expectedTimestampMillis, order.getTimestamp().longValue());
       assertEquals(levels[i].getPrice(), order.getLimitPrice());
     }
   }
@@ -199,7 +199,7 @@ public class BitfinexAdaptersTest {
       assertEquals(responses[i].getOriginalAmount(), order.getOriginalAmount());
       assertEquals(BitfinexAdapters.adaptCurrencyPair(SYMBOL), order.getCurrencyPair());
       assertEquals(expectedOrderType, order.getType());
-      assertEquals(expectedTimestampMillis, order.getTimestamp().getTime());
+      assertEquals(expectedTimestampMillis, order.getTimestamp().longValue());
       assertEquals(responses[i].getPrice(), order.getLimitPrice());
     }
   }
@@ -264,7 +264,7 @@ public class BitfinexAdaptersTest {
       assertEquals(responses[i].getPrice(), trade.getPrice());
       assertEquals(responses[i].getAmount(), trade.getOriginalAmount());
       assertEquals(BitfinexAdapters.adaptCurrencyPair(SYMBOL), trade.getCurrencyPair());
-      assertEquals(expectedTimestampMillis, trade.getTimestamp().getTime());
+      assertEquals(expectedTimestampMillis, trade.getTimestamp().longValue());
       assertEquals(expectedOrderType, trade.getType());
       assertEquals(responses[i].getTradeId(), trade.getId());
     }

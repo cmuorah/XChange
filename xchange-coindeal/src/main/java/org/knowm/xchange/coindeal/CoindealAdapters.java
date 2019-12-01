@@ -37,7 +37,7 @@ public final class CoindealAdapters {
               coindealTradeHistory.getQuantity(),
               CurrencyPairDeserializer.getCurrencyPairFromString(coindealTradeHistory.getSymbol()),
               coindealTradeHistory.getPrice(),
-              DateUtils.fromRfc3339DateString(coindealTradeHistory.getTimestamp()),
+              DateUtils.fromRfc3339DateString(coindealTradeHistory.getTimestamp()).getTime(),
               coindealTradeHistory.getId(),
               coindealTradeHistory.getOrderId(),
               coindealTradeHistory.getFee(),
@@ -130,7 +130,7 @@ public final class CoindealAdapters {
               coindealOrder.getCumQuantity(),
               CurrencyPairDeserializer.getCurrencyPairFromString(coindealOrder.getSymbol()),
               coindealOrder.getClientOrderId(),
-              DateUtils.fromISODateString(coindealOrder.getCreatedAt()),
+              DateUtils.fromISODateString(coindealOrder.getCreatedAt()).getTime(),
               coindealOrder.getPrice()));
     }
 

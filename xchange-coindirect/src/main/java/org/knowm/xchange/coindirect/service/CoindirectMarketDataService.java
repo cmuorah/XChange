@@ -1,10 +1,5 @@
 package org.knowm.xchange.coindirect.service;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.coindirect.CoindirectAdapters;
 import org.knowm.xchange.coindirect.dto.marketdata.*;
@@ -16,6 +11,11 @@ import org.knowm.xchange.dto.marketdata.Trade;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 import org.knowm.xchange.service.marketdata.params.Params;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CoindirectMarketDataService extends CoindirectMarketDataServiceRaw
     implements MarketDataService {
@@ -59,7 +59,7 @@ public class CoindirectMarketDataService extends CoindirectMarketDataServiceRaw
                           at.volume,
                           pair,
                           at.price,
-                          new Date(at.time),
+                          at.time,
                           Long.toString(at.time)))
               .collect(Collectors.toList());
     }

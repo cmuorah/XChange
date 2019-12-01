@@ -1,7 +1,6 @@
 package org.knowm.xchange.vaultoro;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.currency.Currency;
@@ -66,7 +65,7 @@ public final class VaultoroAdapters {
     List<Trade> trades = new ArrayList<>();
 
     for (VaultoroTrade vaultoroTrade : vaultoroTransactions) {
-      Date date = VaultoroUtils.parseDate(vaultoroTrade.getTime());
+      Long date = VaultoroUtils.parseDate(vaultoroTrade.getTime()).getTime();
       trades.add(
           new Trade.Builder()
               .timestamp(date)

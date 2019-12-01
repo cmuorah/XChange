@@ -69,7 +69,7 @@ public class BitbayAdapters {
     if (orders != null) {
       for (Double[] order : orders) {
         limitOrders.add(
-            new LimitOrder(orderType, order[1], currencyPair, null, new Date(), order[0]));
+            new LimitOrder(orderType, order[1], currencyPair, null, System.currentTimeMillis(), order[0]));
       }
     }
 
@@ -97,7 +97,7 @@ public class BitbayAdapters {
               bitbayTrade.getAmount(),
               currencyPair,
               bitbayTrade.getPrice(),
-              new Date(bitbayTrade.getDate() * 1000),
+              bitbayTrade.getDate() * 1000L,
               bitbayTrade.getTid());
 
       tradeList.add(trade);
@@ -168,7 +168,7 @@ public class BitbayAdapters {
         bitbayOrder.getAmount(),
         currencyPair,
         String.valueOf(bitbayOrder.getId()),
-        date,
+        date.getTime(),
         bitbayOrder.getStartPrice() / (bitbayOrder.getStartAmount()));
   }
 
@@ -190,7 +190,7 @@ public class BitbayAdapters {
         bitbayOrder.getAmount(),
         currencyPair,
         bitbayOrder.getCurrentPrice() / (bitbayOrder.getStartAmount()),
-        date,
+        date.getTime(),
         String.valueOf(bitbayOrder.getId()),
         String.valueOf(bitbayOrder.getId()),
         null,
@@ -223,7 +223,7 @@ public class BitbayAdapters {
         // there's no id - create a synthetic one
         String id = (type + "_" + date + "_" + market).replaceAll("\\s+", "");
 
-        trades.add(new UserTrade(orderType, amount, pair, price, timestamp, id, null, null, null));
+        trades.add(new UserTrade(orderType, amount, pair, price, timestamp.getTime(), id, null, null, null));
       } catch (ParseException e) {
         throw new IllegalStateException("Cannot parse " + map);
       }

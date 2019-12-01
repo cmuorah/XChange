@@ -57,7 +57,7 @@ public class CryptonitTradeService extends CryptonitTradeServiceRaw implements T
                 CryptonitOrder.getAmount(),
                 pair,
                 id,
-                CryptonitOrder.getDatetime(),
+                CryptonitOrder.getDatetime().getTime(),
                 price));
       }
     }

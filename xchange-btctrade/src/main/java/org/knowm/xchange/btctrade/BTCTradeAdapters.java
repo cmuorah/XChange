@@ -119,7 +119,7 @@ public final class BTCTradeAdapters {
         btcTradeTrade.getAmount(),
         currencyPair,
         btcTradeTrade.getPrice(),
-        new Date(btcTradeTrade.getDate() * 1000),
+        btcTradeTrade.getDate() * 1000L,
         String.valueOf(btcTradeTrade.getTid()));
   }
 
@@ -229,7 +229,7 @@ public final class BTCTradeAdapters {
               order.getAmountOutstanding(),
               currencyPair,
               order.getId(),
-              adaptDatetime(order.getDatetime()),
+              adaptDatetime(order.getDatetime()).getTime(),
               order.getPrice());
     }
 
@@ -266,7 +266,7 @@ public final class BTCTradeAdapters {
         trade.getAmount(),
         currencyPair,
         trade.getPrice(),
-        adaptDatetime(trade.getDatetime()),
+        adaptDatetime(trade.getDatetime()).getTime(),
         trade.getTradeId(),
         order.getId(),
         null,

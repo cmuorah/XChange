@@ -79,7 +79,7 @@ public class BTCMarketsMarketDataServiceTest extends BTCMarketsTestSupport {
     OrderBook orderBook = marketDataService.getOrderBook(CurrencyPair.BTC_AUD);
 
     // then
-    assertThat(orderBook.getTimeStamp().getTime()).isEqualTo(1442997827000L);
+    assertThat(orderBook.getTimeStamp()).isEqualTo(1442997827000L);
 
     List<LimitOrder> asks = orderBook.getAsks();
     assertThat(asks).hasSize(3);

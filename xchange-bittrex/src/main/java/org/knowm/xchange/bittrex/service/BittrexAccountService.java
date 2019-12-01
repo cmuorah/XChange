@@ -102,7 +102,7 @@ public class BittrexAccountService extends BittrexAccountServiceRaw implements A
         res.add(
             new FundingRecord(
                 depositHistory.getCryptoAddress(),
-                depositHistory.getLastUpdated(),
+                depositHistory.getLastUpdated().getTime(),
                 Currency.getInstance(depositHistory.getCurrency()),
                 depositHistory.getAmount(),
                 String.valueOf(depositHistory.getId()),
@@ -127,7 +127,7 @@ public class BittrexAccountService extends BittrexAccountServiceRaw implements A
         res.add(
             new FundingRecord(
                 withdrawalHistory.getAddress(),
-                withdrawalHistory.getOpened(),
+                withdrawalHistory.getOpened().getTime(),
                 Currency.getInstance(withdrawalHistory.getCurrency()),
                 withdrawalHistory.getAmount(),
                 withdrawalHistory.getPaymentUuid(),

@@ -64,7 +64,7 @@ public final class BTCMarketsAdapters {
         createOrders(Order.OrderType.BID, btcmarketsOrderBook.getBids(), currencyPair);
     bids.sort(BID_COMPARATOR);
     asks.sort(ASK_COMPARATOR);
-    return new OrderBook(btcmarketsOrderBook.getTimestamp(), asks, bids);
+    return new OrderBook(btcmarketsOrderBook.getTimestamp().getTime(), asks, bids);
   }
 
   public static List<LimitOrder> createOrders(
@@ -99,7 +99,7 @@ public final class BTCMarketsAdapters {
         o.getVolume(),
         new CurrencyPair(o.getInstrument(), o.getCurrency()),
         Long.toString(o.getId()),
-        o.getCreationTime(),
+        o.getCreationTime().getTime(),
         o.getPrice(),
         averagePrice,
         cumulativeAmount,
@@ -127,7 +127,7 @@ public final class BTCMarketsAdapters {
         trade.getVolume(),
         currencyPair,
         Math.abs(trade.getPrice()),
-        trade.getCreationTime(),
+        trade.getCreationTime().getTime(),
         tradeId,
         String.valueOf(orderId),
         trade.getFee(),
@@ -152,7 +152,7 @@ public final class BTCMarketsAdapters {
         .last(t.getLastPrice())
         .bid(t.getBestBid())
         .ask(t.getBestAsk())
-        .timestamp(t.getTimestamp())
+        .timestamp(t.getTimestamp().getTime())
         .build();
   }
 
@@ -183,7 +183,7 @@ public final class BTCMarketsAdapters {
       result.add(
           new FundingRecord(
               address,
-              transfer.getCreationTime(),
+              transfer.getCreationTime().getTime(),
               Currency.getInstance(transfer.getCurrency()),
               transfer.getAmount(),
               Long.toString(transfer.getFundTransferId()),

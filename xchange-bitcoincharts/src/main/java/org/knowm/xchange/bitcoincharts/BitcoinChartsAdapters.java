@@ -49,7 +49,7 @@ public final class BitcoinChartsAdapters {
             .high(high)
             .low(low)
             .volume(volume)
-            .timestamp(timeStamp)
+            .timestamp(timeStamp.getTime())
             .build();
       }
     }

@@ -20,7 +20,7 @@ public class DragonexAdapters {
         .setStatus(convertStatus(p.status))
         .setBlockchainTransactionHash(p.txId)
         .setDescription(p.tag)
-        .setDate(p.getArriveTime())
+        .setDate(p.getArriveTime().getTime())
         .build();
   }
 
@@ -34,7 +34,7 @@ public class DragonexAdapters {
         .setStatus(convertStatus(p.status))
         .setBlockchainTransactionHash(p.txId)
         .setDescription(p.rejectReason)
-        .setDate(p.getArriveTime())
+        .setDate(p.getArriveTime().getTime())
         .build();
   }
 

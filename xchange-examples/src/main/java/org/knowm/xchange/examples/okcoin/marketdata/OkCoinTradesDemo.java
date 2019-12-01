@@ -1,7 +1,6 @@
 package org.knowm.xchange.examples.okcoin.marketdata;
 
 import java.io.IOException;
-import java.util.Date;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.ExchangeSpecification;
@@ -59,8 +58,8 @@ public class OkCoinTradesDemo {
             OkCoinAdapters.adaptSymbol(CurrencyPair.BTC_USD), FuturesContract.ThisWeek);
     OkCoinPosition[] positions = futuresPosition.getPositions();
 
-    for (int i = 0; i < positions.length; i++) {
-      System.out.println(positions[i].getContractId());
+    for (OkCoinPosition position : positions) {
+      System.out.println(position.getContractId());
     }
 
     String placeLimitOrder =
@@ -70,7 +69,7 @@ public class OkCoinTradesDemo {
                 new Double("1"),
                 CurrencyPair.BTC_USD,
                 "0",
-                new Date(),
+                System.currentTimeMillis(),
                 new Double("200")));
     System.out.println(placeLimitOrder);
 
@@ -111,8 +110,7 @@ public class OkCoinTradesDemo {
     trades =
         okCoinMarketDataServiceRaw.getTrades(
             CurrencyPair.BTC_CNY, trades[trades.length - 1].getTid() - 10);
-    for (int i = 0; i < trades.length; i++) {
-      OkCoinTrade okCoinTrade = trades[i];
+    for (OkCoinTrade okCoinTrade : trades) {
       System.out.println(okCoinTrade.toString());
     }
     System.out.println("Trades size: " + trades.length);

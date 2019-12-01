@@ -111,7 +111,7 @@ public final class ItBitAdapters {
     Date date = DateUtils.fromISODateString(timestamp);
     final String matchNumber = String.valueOf(trade.getMatchNumber());
 
-    return new Trade(null, trade.getAmount(), currencyPair, trade.getPrice(), date, matchNumber);
+    return new Trade(null, trade.getAmount(), currencyPair, trade.getPrice(), date.getTime(), matchNumber);
   }
 
   public static List<LimitOrder> adaptOrders(
@@ -136,7 +136,7 @@ public final class ItBitAdapters {
       OrderType orderType,
       Date timestamp) {
 
-    return new LimitOrder(orderType, amount, currencyPair, orderId, timestamp, price);
+    return new LimitOrder(orderType, amount, currencyPair, orderId, timestamp.getTime(), price);
   }
 
   public static AccountInfo adaptAccountInfo(ItBitAccountInfoReturn[] info) {
@@ -241,7 +241,7 @@ public final class ItBitAdapters {
               totalQuantity,
               currencyPair,
               volumeWeightedAveragePrice,
-              itBitTrade.getTimestamp(),
+              itBitTrade.getTimestamp().getTime(),
               orderId,
               // itbit doesn't have trade ids, so we use the order id instead
               orderId,
@@ -285,7 +285,7 @@ public final class ItBitAdapters {
         .high(high)
         .low(low)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .bidSize(itBitTicker.getBidAmt())
         .askSize(itBitTicker.getAskAmt())
         .build();
@@ -331,7 +331,7 @@ public final class ItBitAdapters {
 
       return new FundingRecord(
           itBitFunding.destinationAddress,
-          date,
+          date.getTime(),
           currency,
           itBitFunding.amount,
           itBitFunding.withdrawalId,

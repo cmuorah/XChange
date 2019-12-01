@@ -70,7 +70,7 @@ public class CoinsuperAdapters {
         .low(coinsuperTicker.getPrice())
         .volume(coinsuperTicker.getVolume())
         .last(coinsuperTicker.getPrice())
-        .timestamp(CommonUtil.timeStampToDate(coinsuperTicker.getTimestamp()))
+        .timestamp(CommonUtil.timeStampToDate(coinsuperTicker.getTimestamp()).getTime())
         .build();
   }
 
@@ -101,7 +101,7 @@ public class CoinsuperAdapters {
               new Double(coinsuperBid.getLimitPrice())));
     }
 
-    return new OrderBook(new Date(), asks, bids);
+    return new OrderBook(System.currentTimeMillis(), asks, bids);
   }
 
   /**
@@ -202,7 +202,7 @@ public class CoinsuperAdapters {
               Math.abs(orderDetail.getAmount()),
               new CurrencyPair(orderDetail.getSymbol()),
               Math.abs(orderDetail.getPriceLimit()),
-              new Date(),
+              System.currentTimeMillis(),
               Long.toString(orderDetail.getOrderNo()),
               Long.toString(orderDetail.getOrderNo()),
               orderDetail.getFee(),

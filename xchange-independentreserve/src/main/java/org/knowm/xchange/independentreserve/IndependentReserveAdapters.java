@@ -62,7 +62,6 @@ public class IndependentReserveAdapters {
       case "Cancelled":
         return Order.OrderStatus.CANCELED;
       case "PartiallyFilledAndExpired":
-        return Order.OrderStatus.EXPIRED;
       case "Expired":
         return Order.OrderStatus.EXPIRED;
       default:
@@ -84,7 +83,7 @@ public class IndependentReserveAdapters {
         adaptOrders(independentReserveOrderBook.getSellOrders(), Order.OrderType.ASK, currencyPair);
     Date timestamp = independentReserveOrderBook.getCreatedTimestamp();
 
-    return new OrderBook(timestamp, asks, bids);
+    return new OrderBook(timestamp.getTime(), asks, bids);
   }
 
   /**
@@ -115,7 +114,7 @@ public class IndependentReserveAdapters {
         .low(low)
         .vwap(vwap)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -164,7 +163,7 @@ public class IndependentReserveAdapters {
               order.getOutstanding(),
               currencyPair,
               order.getOrderGuid(),
-              order.getCreatedTimestamp(),
+              order.getCreatedTimestamp().getTime(),
               order.getPrice());
       limitOrders.add(limitOrder);
     }
@@ -198,7 +197,7 @@ public class IndependentReserveAdapters {
               trade.getVolumeTraded(),
               currencyPair,
               trade.getPrice(),
-              trade.getTradeTimestamp(),
+              trade.getTradeTimestamp().getTime(),
               trade.getTradeGuid(),
               trade.getOrderGuid(),
               null,
@@ -216,7 +215,7 @@ public class IndependentReserveAdapters {
           details.getVolumeOrdered(),
           new CurrencyPair(details.getPrimaryCurrencyCode(), details.getSecondaryCurrencyCode()),
           details.getOrderGuid(),
-          details.getCreatedTimestamp(),
+          details.getCreatedTimestamp().getTime(),
           details.getAvgPrice(),
           details.getVolumeFilled(),
           null,
@@ -227,7 +226,7 @@ public class IndependentReserveAdapters {
           details.getVolumeOrdered(),
           new CurrencyPair(details.getPrimaryCurrencyCode(), details.getSecondaryCurrencyCode()),
           details.getOrderGuid(),
-          details.getCreatedTimestamp(),
+          details.getCreatedTimestamp().getTime(),
           details.getAvgPrice(),
           details.getAvgPrice(),
           details.getVolumeFilled(),
@@ -275,7 +274,7 @@ public class IndependentReserveAdapters {
     }
     return new FundingRecord(
         null,
-        transaction.getCreatedTimestamp(),
+        transaction.getCreatedTimestamp().getTime(),
         new Currency(transaction.getCurrencyCode()),
         amount,
         null,

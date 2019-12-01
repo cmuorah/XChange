@@ -80,7 +80,7 @@ public final class ANXAdapters {
     CurrencyPair currencyPair = adaptCurrencyPair(tradedCurrency, transactionCurrency);
 
     LimitOrder limitOrder =
-        new LimitOrder(orderType, originalAmount, currencyPair, id, timestamp, price);
+        new LimitOrder(orderType, originalAmount, currencyPair, id, timestamp.getTime(), price);
 
     return limitOrder;
   }
@@ -232,7 +232,7 @@ public final class ANXAdapters {
     Date dateTime = DateUtils.fromMillisUtc(anxTrade.getTid());
     final String tradeId = String.valueOf(anxTrade.getTid());
 
-    return new Trade(orderType, amount, currencyPair, price, dateTime, tradeId);
+    return new Trade(orderType, amount, currencyPair, price, dateTime.getTime(), tradeId);
   }
 
   public static Ticker adaptTicker(ANXTicker anxTicker) {
@@ -256,7 +256,7 @@ public final class ANXAdapters {
         .high(high)
         .low(low)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -288,7 +288,7 @@ public final class ANXAdapters {
         tradedCurrencyFillAmount,
         currencyPair,
         price,
-        aNXTradeResult.getTimestamp(),
+        aNXTradeResult.getTimestamp().getTime(),
         aNXTradeResult.getTradeId(),
         aNXTradeResult.getOrderId(),
         null,
@@ -373,7 +373,7 @@ public final class ANXAdapters {
 
     return new FundingRecord(
         entry.getInfo(),
-        date,
+        date.getTime(),
         currency,
         value.getValue(),
         entry.getTransactionId(),

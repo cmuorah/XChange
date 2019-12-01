@@ -1,6 +1,5 @@
 package org.knowm.xchange.gemini.v1.dto.trade;
 
-import java.util.Date;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
@@ -11,37 +10,37 @@ import org.knowm.xchange.dto.trade.LimitOrder;
  */
 public class GeminiLimitOrder extends LimitOrder {
 
-  private GeminiOrderStatusResponse response = null;
+    private GeminiOrderStatusResponse response = null;
 
-  public GeminiLimitOrder(
-      OrderType type,
-      Double originalAmount,
-      CurrencyPair currencyPair,
-      String id,
-      Date timestamp,
-      Double limitPrice) {
-    super(type, originalAmount, currencyPair, id, timestamp, limitPrice);
-  }
-
-  public GeminiOrderStatusResponse getResponse() {
-    return response;
-  }
-
-  public void setResponse(GeminiOrderStatusResponse value) {
-    response = value;
-  }
-
-  public static class Builder extends LimitOrder.Builder {
-
-    public Builder(OrderType orderType, CurrencyPair currencyPair) {
-      super(orderType, currencyPair);
+    public GeminiLimitOrder(
+            OrderType type,
+            Double originalAmount,
+            CurrencyPair currencyPair,
+            String id,
+            Long timestamp,
+            Double limitPrice) {
+        super(type, originalAmount, currencyPair, id, timestamp, limitPrice);
     }
 
-    public GeminiLimitOrder build() {
-      final GeminiLimitOrder order =
-          new GeminiLimitOrder(orderType, originalAmount, currencyPair, id, timestamp, limitPrice);
-      order.setOrderFlags(flags);
-      return order;
+    public GeminiOrderStatusResponse getResponse() {
+        return response;
     }
-  }
+
+    public void setResponse(GeminiOrderStatusResponse value) {
+        response = value;
+    }
+
+    public static class Builder extends LimitOrder.Builder {
+
+        public Builder(OrderType orderType, CurrencyPair currencyPair) {
+            super(orderType, currencyPair);
+        }
+
+        public GeminiLimitOrder build() {
+            final GeminiLimitOrder order =
+                    new GeminiLimitOrder(orderType, originalAmount, currencyPair, id, timestamp, limitPrice);
+            order.setOrderFlags(flags);
+            return order;
+        }
+    }
 }

@@ -39,7 +39,7 @@ public final class QuadrigaCxAdapters {
         .low(t.getLow())
         .vwap(t.getVwap())
         .volume(t.getVolume())
-        .timestamp(t.getTimestamp())
+        .timestamp(t.getTimestamp().getTime())
         .build();
   }
 
@@ -69,7 +69,7 @@ public final class QuadrigaCxAdapters {
         new Date(
             quadrigacxOrderBook.getTimestamp()
                 * timeScale); // polled order books provide a timestamp in seconds, stream in ms
-    return new OrderBook(date, asks, bids);
+    return new OrderBook(date.getTime(), asks, bids);
   }
 
   public static List<LimitOrder> createOrders(
@@ -125,7 +125,7 @@ public final class QuadrigaCxAdapters {
               tx.getAmount(),
               currencyPair,
               tx.getPrice(),
-              DateUtils.fromMillisUtc(tx.getDate() * 1000L),
+              DateUtils.fromMillisUtc(tx.getDate() * 1000L).getTime(),
               String.valueOf(tradeId)));
     }
 
@@ -195,7 +195,7 @@ public final class QuadrigaCxAdapters {
         Math.abs(originalAmount),
         currencyPair,
         price,
-        timestamp,
+        timestamp.getTime(),
         tradeId,
         orderId,
         feeAmount,

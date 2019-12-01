@@ -43,7 +43,7 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
 
     final OrderBook orderBook = BTCMarketsAdapters.adaptOrderBook(response, CurrencyPair.BTC_AUD);
 
-    assertThat(orderBook.getTimeStamp().getTime()).isEqualTo(1442997827000L);
+    assertThat(orderBook.getTimeStamp()).isEqualTo(1442997827000L);
     assertThat(orderBook.getAsks()).hasSize(135);
     assertThat(orderBook.getAsks().get(2).getLimitPrice()).isEqualTo(new Double("329.41"));
     assertThat(orderBook.getAsks().get(2).getOriginalAmount()).isEqualTo(new Double("10.0"));
@@ -60,7 +60,7 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
     assertThat(openOrders.getOpenOrders().get(1).getId()).isEqualTo("4345675");
     assertThat(openOrders.getOpenOrders().get(1).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_AUD);
     assertThat(openOrders.getOpenOrders().get(1).getType()).isEqualTo(Order.OrderType.ASK);
-    assertThat(openOrders.getOpenOrders().get(1).getTimestamp().getTime())
+    assertThat(openOrders.getOpenOrders().get(1).getTimestamp())
         .isEqualTo(1378636912705L);
     assertThat(openOrders.getOpenOrders().get(1).getLimitPrice()).isEqualTo(130.00000000);
     assertThat(openOrders.getOpenOrders().get(1).getOriginalAmount()).isEqualTo(0.10000000);
@@ -81,7 +81,7 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
     assertThat(ticker.getAsk()).isEqualTo("140.00");
     assertThat(ticker.getLast()).isEqualTo("140.00");
     assertThat(ticker.getCurrencyPair()).isEqualTo(CurrencyPair.BTC_AUD);
-    assertThat(ticker.getTimestamp().getTime()).isEqualTo(1378878117000L);
+    assertThat(ticker.getTimestamp()).isEqualTo(1378878117000L);
   }
 
   @Test
@@ -93,7 +93,7 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
             .getUserTrades();
     assertThat(userTrades).hasSize(3);
     assertThat(userTrades.get(2).getId()).isEqualTo("45118157");
-    assertThat(userTrades.get(2).getTimestamp().getTime()).isEqualTo(1442994673684L);
+    assertThat(userTrades.get(2).getTimestamp()).isEqualTo(1442994673684L);
     assertThat(userTrades.get(2).getPrice()).isEqualTo("330.00000000");
     assertThat(userTrades.get(2).getOriginalAmount()).isEqualTo("0.00100000");
     assertThat(userTrades.get(2).getType()).isEqualTo(Order.OrderType.BID);

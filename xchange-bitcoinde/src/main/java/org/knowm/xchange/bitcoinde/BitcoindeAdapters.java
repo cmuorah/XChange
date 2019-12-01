@@ -126,7 +126,7 @@ public final class BitcoindeAdapters {
         bitcoindeOrder.getAmount(),
         currencyPair,
         orderId,
-        timeStamp,
+        timeStamp.getTime(),
         bitcoindeOrder.getPrice());
   }
 
@@ -152,8 +152,7 @@ public final class BitcoindeAdapters {
               null,
               bitcoindeTrade.getAmount(),
               currencyPair,
-              bitcoindeTrade.getPrice(),
-              DateUtils.fromMillisUtc(bitcoindeTrade.getDate() * 1000L),
+              bitcoindeTrade.getPrice(), bitcoindeTrade.getDate() * 1000L,
               String.valueOf(tid)));
     }
     return new Trades(trades, lastTradeId, TradeSortType.SortByID);
@@ -184,7 +183,7 @@ public final class BitcoindeAdapters {
               bitcoindeMyOrder.getMaxAmount(),
               tradingPair,
               bitcoindeMyOrder.getOrderId(),
-              timestamp,
+              timestamp.getTime(),
               bitcoindeMyOrder.getPrice());
       orders.add(limitOrder);
     }

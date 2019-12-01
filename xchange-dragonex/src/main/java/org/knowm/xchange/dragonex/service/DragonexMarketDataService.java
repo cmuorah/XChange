@@ -34,7 +34,7 @@ public class DragonexMarketDataService extends DragonexMarketDataServiceRaw
         .low(t.minPrice)
         .open(t.openPrice)
         .last(t.closePrice)
-        .timestamp(new Date(t.timestamp * 1000))
+        .timestamp(t.timestamp * 1000L)
         .build();
   }
 

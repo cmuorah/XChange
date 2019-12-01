@@ -1,7 +1,6 @@
 package org.knowm.xchange.dto.marketdata;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 
 import net.openhft.chronicle.wire.AbstractMarshallable;
@@ -27,7 +26,7 @@ public class Trade extends AbstractMarshallable implements Serializable {
   protected final Double price;
 
   /** The timestamp of the trade according to the exchange's server, null if not provided */
-  protected final Date timestamp;
+  protected final Long timestamp;
 
   /** The trade id */
   protected final String id;
@@ -53,7 +52,7 @@ public class Trade extends AbstractMarshallable implements Serializable {
       Double originalAmount,
       CurrencyPair currencyPair,
       Double price,
-      Date timestamp,
+      Long timestamp,
       String id) {
 
     this.type = type;
@@ -84,8 +83,7 @@ public class Trade extends AbstractMarshallable implements Serializable {
     return price;
   }
 
-  public Date getTimestamp() {
-
+  public Long getTimestamp() {
     return timestamp;
   }
 
@@ -159,7 +157,7 @@ public class Trade extends AbstractMarshallable implements Serializable {
     protected Double originalAmount;
     protected CurrencyPair currencyPair;
     protected Double price;
-    protected Date timestamp;
+    protected Long timestamp;
     protected String id;
 
     public static Builder from(Trade trade) {
@@ -196,7 +194,7 @@ public class Trade extends AbstractMarshallable implements Serializable {
       return this;
     }
 
-    public Builder timestamp(Date timestamp) {
+    public Builder timestamp(Long timestamp) {
 
       this.timestamp = timestamp;
       return this;

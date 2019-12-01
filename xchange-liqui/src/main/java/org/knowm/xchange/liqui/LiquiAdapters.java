@@ -1,12 +1,5 @@
 package org.knowm.xchange.liqui;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -27,15 +20,13 @@ import org.knowm.xchange.dto.trade.UserTrade;
 import org.knowm.xchange.dto.trade.UserTrades;
 import org.knowm.xchange.liqui.dto.LiquiTradeType;
 import org.knowm.xchange.liqui.dto.account.LiquiAccountInfo;
-import org.knowm.xchange.liqui.dto.marketdata.LiquiDepth;
-import org.knowm.xchange.liqui.dto.marketdata.LiquiPairInfo;
-import org.knowm.xchange.liqui.dto.marketdata.LiquiPublicAsk;
-import org.knowm.xchange.liqui.dto.marketdata.LiquiPublicBid;
-import org.knowm.xchange.liqui.dto.marketdata.LiquiPublicTrade;
-import org.knowm.xchange.liqui.dto.marketdata.LiquiTicker;
+import org.knowm.xchange.liqui.dto.marketdata.*;
 import org.knowm.xchange.liqui.dto.trade.LiquiOrderInfo;
 import org.knowm.xchange.liqui.dto.trade.LiquiTrade;
 import org.knowm.xchange.liqui.dto.trade.LiquiUserTrade;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class LiquiAdapters {
 
@@ -48,9 +39,7 @@ public class LiquiAdapters {
     builder.last(ticker.getLast());
     builder.volume(ticker.getVol());
     builder.currencyPair(currencyPair);
-    final Date timestamp = new Date(ticker.getUpdated());
-    builder.timestamp(timestamp);
-
+    builder.timestamp(ticker.getUpdated());
     return builder.build();
   }
 
@@ -95,7 +84,7 @@ public class LiquiAdapters {
   public static Trade adaptTrade(final LiquiPublicTrade trade, final CurrencyPair currencyPair) {
     final OrderType type = adaptOrderType(trade.getType());
     final Double originalAmount = trade.getAmount();
-    final Date timestamp = new Date((long) (trade.getTimestamp() * 1000L));
+    final long timestamp = trade.getTimestamp() * 1000L;
     final Double price = trade.getPrice();
     final long tradeId = trade.getTradeId();
 
@@ -153,7 +142,7 @@ public class LiquiAdapters {
     final OrderType orderType = adaptOrderType(liquiTrade.getType());
     final Double originalAmount = liquiTrade.getAmount();
     final CurrencyPair pair = liquiTrade.getPair();
-    final Date timestamp = new Date(liquiTrade.getTimestamp() * 1000L);
+    final Long timestamp = liquiTrade.getTimestamp() * 1000L;
     final Double price = liquiTrade.getRate();
 
     return new UserTrade(
@@ -177,9 +166,8 @@ public class LiquiAdapters {
 
     final OrderType type = adaptOrderType(orderInfo.getType());
     final Optional<Double> originalAmount = Optional.ofNullable(orderInfo.getStartAmount());
-    final Optional<Double> cumulativeAmount =
-        originalAmount.map(startAmount -> startAmount - (orderInfo.getAmount()));
-    final Date timestamp = new Date(orderInfo.getTimestampCreated() * 1000L);
+    final Optional<Double> cumulativeAmount = originalAmount.map(startAmount -> startAmount - (orderInfo.getAmount()));
+    final Long timestamp = orderInfo.getTimestampCreated() * 1000L;
     final Order.OrderStatus status = adaptOrderStatus(orderInfo.getStatus());
 
     return new LimitOrder.Builder(type, orderInfo.getPair())

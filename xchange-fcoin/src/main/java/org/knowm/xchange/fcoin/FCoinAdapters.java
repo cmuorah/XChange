@@ -18,7 +18,7 @@ public final class FCoinAdapters {
     Stream<LimitOrder> bids =
         adaptLimitOrders(Order.OrderType.BID, depth.getBids(), depth.getTs(), currencyPair)
             .sorted();
-    return new OrderBook(depth.getTs(), asks, bids);
+    return new OrderBook(depth.getTs().getTime(), asks, bids);
   }
 
   private static Stream<LimitOrder> adaptLimitOrders(
@@ -27,9 +27,7 @@ public final class FCoinAdapters {
         .map(data -> adaptLimitOrder(type, data, currencyPair, null, timestamp));
   }
 
-  private static LimitOrder adaptLimitOrder(
-      Order.OrderType type, Double[] data, CurrencyPair currencyPair, String id, Date timestamp) {
-
-    return new LimitOrder(type, data[1], currencyPair, id, timestamp, data[0]);
+  private static LimitOrder adaptLimitOrder(Order.OrderType type, Double[] data, CurrencyPair currencyPair, String id, Date timestamp) {
+    return new LimitOrder(type, data[1], currencyPair, id, timestamp.getTime(), data[0]);
   }
 }

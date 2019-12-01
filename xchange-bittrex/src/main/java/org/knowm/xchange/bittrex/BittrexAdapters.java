@@ -79,7 +79,7 @@ public final class BittrexAdapters {
     return new LimitOrder.Builder(type, pair)
         .originalAmount(order.getQuantity())
         .id(order.getOrderUuid())
-        .timestamp(order.getOpened())
+        .timestamp(order.getOpened().getTime())
         .limitPrice(order.getLimit())
         .averagePrice(order.getPricePerUnit())
         .cumulativeAmount(
@@ -178,7 +178,7 @@ public final class BittrexAdapters {
     Double price = trade.getPrice();
     Date date = BittrexUtils.toDate(trade.getTimeStamp());
     final String tradeId = String.valueOf(trade.getId());
-    return new Trade(orderType, amount, currencyPair, price, date, tradeId);
+    return new Trade(orderType, amount, currencyPair, price, date.getTime(), tradeId);
   }
 
   public static Trades adaptTrades(List<BittrexTrade> trades, CurrencyPair currencyPair) {
@@ -186,7 +186,7 @@ public final class BittrexAdapters {
     List<Trade> tradesList = new ArrayList<>(trades.size());
     long lastTradeId = 0;
     for (BittrexTrade trade : trades) {
-      long tradeId = Long.valueOf(trade.getId());
+      long tradeId = Long.parseLong(trade.getId());
       if (tradeId > lastTradeId) {
         lastTradeId = tradeId;
       }
@@ -214,7 +214,7 @@ public final class BittrexAdapters {
         .high(high)
         .low(low)
         .volume(volume)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 
@@ -296,7 +296,7 @@ public final class BittrexAdapters {
         amount,
         currencyPair,
         price,
-        date,
+        date.getTime(),
         orderId,
         orderId,
         trade.getCommission(),
@@ -333,7 +333,7 @@ public final class BittrexAdapters {
         fundingRecords.add(
             new FundingRecord(
                 f.getCryptoAddress(),
-                f.getLastUpdated(),
+                f.getLastUpdated().getTime(),
                 Currency.getInstance(f.getCurrency()),
                 f.getAmount(),
                 String.valueOf(f.getId()),
@@ -366,7 +366,7 @@ public final class BittrexAdapters {
         fundingRecords.add(
             new FundingRecord(
                 f.getAddress(),
-                f.getOpened(),
+                f.getOpened().getTime(),
                 Currency.getInstance(f.getCurrency()),
                 f.getAmount(),
                 f.getPaymentUuid(),

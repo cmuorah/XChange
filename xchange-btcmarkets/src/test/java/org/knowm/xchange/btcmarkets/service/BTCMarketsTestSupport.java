@@ -34,7 +34,7 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
           .ask(new Double("140.00"))
           .last(new Double("140.00"))
           .currencyPair(CurrencyPair.BTC_AUD)
-          .timestamp(new Date(1378878117000L))
+          .timestamp(1378878117000L)
           .build();
   protected static final BTCMarketsTicker EXPECTED_BTC_MARKETS_TICKER =
       new BTCMarketsTicker(
@@ -116,7 +116,7 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
           new Double("20.00000000"),
           CurrencyPair.BTC_AUD,
           new Double("10.00000000"),
-          new Date(111111111L),
+          111111111L,
           "1",
           "null",
           new Double("1"),
@@ -126,7 +126,7 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
           new Double("40.00000000"),
           CurrencyPair.BTC_AUD,
           new Double("30.00000000"),
-          new Date(222222222L),
+          222222222L,
           "2",
           "null",
           new Double("2"),
@@ -136,7 +136,7 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
           new Double("60.00000000"),
           CurrencyPair.BTC_AUD,
           new Double("50.00000000"),
-          new Date(333333333L),
+          333333333L,
           "3",
           "null",
           new Double("3"),
@@ -146,7 +146,7 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
           new Double("80.00000000"),
           CurrencyPair.BTC_AUD,
           new Double("70.00000000"),
-          new Date(444444444L),
+          444444444L,
           "4",
           "null",
           new Double("4"),
@@ -156,7 +156,7 @@ public class BTCMarketsTestSupport extends BTCMarketsDtoTestSupport {
           new Double("0"),
           CurrencyPair.BTC_AUD,
           new Double("90.00000000"),
-          new Date(555555555L),
+          555555555L,
           "5",
           "null",
           new Double("5"),

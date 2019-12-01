@@ -2,7 +2,6 @@ package org.knowm.xchange.dto.marketdata;
 
 import java.io.Serializable;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public final class LoanOrderBook extends AbstractMarshallable implements Seriali
   private final List<FixedRateLoanOrder> fixedRateBids;
   private final List<FloatingRateLoanOrder> floatingRateAsks;
   private final List<FloatingRateLoanOrder> floatingRateBids;
-  private Date timestamp;
+  private Long timestamp;
 
   /**
    * Constructor
@@ -31,7 +30,7 @@ public final class LoanOrderBook extends AbstractMarshallable implements Seriali
    * @param floatingRateBids
    */
   public LoanOrderBook(
-      Date timestamp,
+      Long timestamp,
       List<FixedRateLoanOrder> fixedRateAsks,
       List<FixedRateLoanOrder> fixedRateBids,
       List<FloatingRateLoanOrder> floatingRateAsks,
@@ -44,7 +43,7 @@ public final class LoanOrderBook extends AbstractMarshallable implements Seriali
     this.floatingRateBids = floatingRateBids;
   }
 
-  public Date getTimestamp() {
+  public Long getTimestamp() {
 
     return timestamp;
   }
@@ -163,7 +162,7 @@ public final class LoanOrderBook extends AbstractMarshallable implements Seriali
     updateTimestamp(updatedLoanOrder.getTimestamp());
   }
 
-  private void updateTimestamp(Date timestamp) {
+  private void updateTimestamp(Long timestamp) {
 
     this.timestamp = timestamp;
   }

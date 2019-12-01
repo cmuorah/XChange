@@ -114,7 +114,7 @@ public class ExmoMarketDataServiceRaw extends BaseExmoService {
         String quantity = tradeData.get("quantity").toString();
         String amount = tradeData.get("amount").toString();
 
-        long unixTimestamp = Long.valueOf(tradeData.get("date").toString());
+        long unixTimestamp = Long.parseLong(tradeData.get("date").toString());
 
         results.add(
             new Trade(
@@ -122,7 +122,7 @@ public class ExmoMarketDataServiceRaw extends BaseExmoService {
                 new Double(quantity),
                 currencyPair,
                 new Double(price),
-                new Date(unixTimestamp * 1000L),
+                unixTimestamp * 1000L,
                 id));
       }
     }

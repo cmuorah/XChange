@@ -66,7 +66,7 @@ public class ExmoAccountServiceRaw extends BaseExmoService {
       FundingRecord fundingRecord =
           new FundingRecord(
               address,
-              DateUtils.fromUnixTime(time),
+              DateUtils.fromUnixTime(time).getTime(),
               Currency.getInstance(curr),
               Math.abs(Double.parseDouble(amount)),
               null,

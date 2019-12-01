@@ -39,7 +39,7 @@ public class DSXTradeDemoV3 {
             new Double("0.01"),
             CurrencyPair.BTC_USD,
             "",
-            new Date(),
+            System.currentTimeMillis(),
             new Double("900"));
 
     String limitOrderReturnValue = null;

@@ -37,18 +37,15 @@ public class CoinEggAdapters {
     Double low = coinEggTicker.getLow();
     Double volume = coinEggTicker.getVolume();
 
-    Ticker ticker =
-        new Ticker.Builder()
-            .currencyPair(currencyPair)
-            .last(last)
-            .bid(bid)
-            .ask(ask)
-            .high(high)
-            .low(low)
-            .volume(volume)
-            .build();
-
-    return ticker;
+    return new Ticker.Builder()
+        .currencyPair(currencyPair)
+        .last(last)
+        .bid(bid)
+        .ask(ask)
+        .high(high)
+        .low(low)
+        .volume(volume)
+        .build();
   }
 
   public static LimitOrder adaptOrder(
@@ -56,13 +53,10 @@ public class CoinEggAdapters {
     Double quantity = order.getQuantity();
     Double price = order.getPrice();
 
-    LimitOrder limitOrder =
-        new LimitOrder.Builder(type, currencyPair)
-            .originalAmount(quantity)
-            .limitPrice(price)
-            .build();
-
-    return limitOrder;
+    return new LimitOrder.Builder(type, currencyPair)
+        .originalAmount(quantity)
+        .limitPrice(price)
+        .build();
   }
 
   public static OrderBook adaptOrders(CoinEggOrders coinEggOrders, CurrencyPair currencyPair) {
@@ -103,17 +97,17 @@ public class CoinEggAdapters {
     String userName = exchange.getExchangeSpecification().getUserName();
     Wallet btcWallet =
         Wallet.Builder.from(
-                Arrays.asList(new Balance(Currency.BTC, coinEggBalance.getBTCBalance())))
+                Collections.singletonList(new Balance(Currency.BTC, coinEggBalance.getBTCBalance())))
             .id(Currency.BTC.getCurrencyCode())
             .build();
     Wallet ethWallet =
         Wallet.Builder.from(
-                Arrays.asList(new Balance(Currency.ETH, coinEggBalance.getETHBalance())))
+                Collections.singletonList(new Balance(Currency.ETH, coinEggBalance.getETHBalance())))
             .id(Currency.ETH.getCurrencyCode())
             .build();
     // Wallet xasWallet = new Wallet(new Balance(Currency.XAS, coinEggBalance.getXASBalance()));
 
-    Set<Wallet> wallets = new HashSet<Wallet>();
+    Set<Wallet> wallets = new HashSet<>();
     wallets.add(btcWallet);
     wallets.add(ethWallet);
     // wallets.add(xasWallet);
@@ -124,7 +118,7 @@ public class CoinEggAdapters {
   // TODO: Cleanup Code
   // TODO: Make Use Of Adapt Trade
   public static UserTrades adaptTradeHistory(CoinEggTradeView coinEggTradeView) {
-    List<UserTrade> trades = new ArrayList<UserTrade>();
+    List<UserTrade> trades = new ArrayList<>();
     Trade trade =
         new Trade.Builder()
             // .currencyPair(null)
@@ -132,7 +126,7 @@ public class CoinEggAdapters {
             .type(coinEggTradeView.getType() == Type.BUY ? OrderType.ASK : OrderType.BID)
             .price(coinEggTradeView.getPrice())
             .originalAmount(coinEggTradeView.getAmountOriginal())
-            .timestamp(coinEggTradeView.getDateTime())
+            .timestamp(coinEggTradeView.getDateTime().getTime())
             .build();
 
     trades.add((UserTrade) UserTrade.Builder.from(trade).build());

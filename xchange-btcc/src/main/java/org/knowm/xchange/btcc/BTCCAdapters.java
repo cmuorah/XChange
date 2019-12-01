@@ -25,7 +25,7 @@ public class BTCCAdapters {
         .volume(volume)
         .ask(ask)
         .bid(bid)
-        .timestamp(timestamp)
+        .timestamp(timestamp.getTime())
         .build();
   }
 }

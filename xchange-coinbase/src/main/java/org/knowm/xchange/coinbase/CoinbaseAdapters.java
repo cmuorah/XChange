@@ -69,7 +69,7 @@ public final class CoinbaseAdapters {
         originalAmount,
         new CurrencyPair(tradableIdentifier, transactionCurrency),
         price,
-        timestamp,
+        timestamp.getTime(),
         id,
         transferId,
         feeAmount,
