@@ -32,15 +32,15 @@
 
         <version.java>1.8</version.java>
         <version.assertj>3.13.2</version.assertj>
-        <version.commons.io>2.6</version.commons.io>
-        <version.commons.lang3>3.9</version.commons.lang3>
+        <version.commons.io>2.14.0</version.commons.io>
+        <version.commons.lang3>3.18.0</version.commons.lang3>
         <version.fasterxml>2.9.9</version.fasterxml>
         <version.github.mmazi>2.0.2</version.github.mmazi>
-        <version.junit>4.12</version.junit>
+        <version.junit>4.13.1</version.junit>
         <version.lombok>1.18.10</version.lombok>
         <version.knowm.xchart>3.5.4</version.knowm.xchart>
         <version.powermock>2.0.2</version.powermock>
-        <version.qos.logback>1.2.3</version.qos.logback>
+        <version.qos.logback>1.2.13</version.qos.logback>
         <version.reflections>0.9.11</version.reflections>
         <version.slf4j>1.7.28</version.slf4j>
         <version.crypto>4.2.0</version.crypto>
@@ -265,7 +265,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>28.1-jre</version>
+                <version>32.0.0-jre</version>
             </dependency>
 
             <dependency>
